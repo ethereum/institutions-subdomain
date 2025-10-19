@@ -1,13 +1,9 @@
-// TODO: Delete when new API path initialized
 import { type NextRequest, NextResponse } from "next/server"
 
 import type { GrowthepieApiResult } from "@/lib/types"
 
 type JSONData = GrowthepieApiResult
 
-/**
- * @deprecated
- */
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams
   const secret = searchParams.get("secret")

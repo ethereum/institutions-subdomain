@@ -1,3 +1,4 @@
+// TODO: Delete when new API path initialized
 import { type NextRequest, NextResponse } from "next/server"
 
 import type { RwaApiTimeseriesResponse } from "@/lib/types"
@@ -15,6 +16,9 @@ export const RWA_XYZ_TREASURIES_ASSET_IDS = {
 
 type JSONData = RwaApiTimeseriesResponse
 
+/**
+ * @deprecated
+ */
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams
   const secret = searchParams.get("secret")
