@@ -1,9 +1,10 @@
 "use server"
 
 import type {
-  ASSET_CATEGORY,
+  AssetCategory,
   DataSeriesWithCurrent,
   DataTimestamped,
+  RwaApiTimeseriesResponse,
 } from "@/lib/types"
 
 import {
@@ -18,16 +19,7 @@ import {
   SOURCE,
 } from "@/lib/constants"
 
-type JSONData = {
-  results: {
-    points: [string, number][]
-    group: {
-      id: number
-      type: string
-      name: string
-    }
-  }[]
-}
+type JSONData = RwaApiTimeseriesResponse
 
 export type TimeseriesAssetsValueData = {
   mainnet: DataSeriesWithCurrent
@@ -35,7 +27,7 @@ export type TimeseriesAssetsValueData = {
 }
 
 export const fetchTimeseriesAssetsValue = async (
-  category: ASSET_CATEGORY
+  category: AssetCategory
 ): Promise<DataTimestamped<TimeseriesAssetsValueData>> => {
   const url = new URL("https://api.rwa.xyz/v3/assets/aggregates/timeseries")
 

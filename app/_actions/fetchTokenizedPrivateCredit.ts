@@ -1,22 +1,13 @@
 "use server"
 
-import type { DataTimestamped } from "@/lib/types"
+import type { DataTimestamped, RwaApiTimeseriesResponse } from "@/lib/types"
 
 import { getRwaApiEthereumNetworksFilter } from "@/lib/utils/data"
 import { every } from "@/lib/utils/time"
 
 import { SOURCE } from "@/lib/constants"
 
-type JSONData = {
-  results: {
-    points: [string, number][]
-    group: {
-      id: number
-      type: string
-      name: string
-    }
-  }[]
-}
+type JSONData = RwaApiTimeseriesResponse
 
 export type TokenizedPrivateCreditData = {
   totalPrivateCredit: number

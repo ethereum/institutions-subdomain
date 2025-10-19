@@ -1,10 +1,9 @@
 import { Metadata } from "next"
 import Image, { type StaticImageData } from "next/image"
 
-import { MetricWithSource } from "@/lib/types"
+import { Metric } from "@/lib/types"
 
 import BigNumber from "@/components/BigNumber"
-import { libraryItems } from "@/components/data/library"
 import Hero from "@/components/Hero"
 import { SourceInfoTooltip } from "@/components/InfoTooltip"
 import MaskedParallelsIcon from "@/components/MaskedParallelsIcon"
@@ -60,6 +59,7 @@ import fetchSecuritizeAum from "./_actions/fetchSecuritizeAum"
 import fetchDefiTvlAllCurrent from "./_actions/fetchTvlDefiAllCurrent"
 import { getTimeSinceGenesis } from "./_actions/getTimeSinceGenesis"
 
+import { libraryItems } from "@/app/library/data"
 import robertMitchnick from "@/public/images/robert-mitchnick.png"
 import tomZschach from "@/public/images/tom-zschach.png"
 import vladTenev from "@/public/images/vlad-tenev.png"
@@ -149,7 +149,7 @@ export default async function Home() {
   const securitizeAumData = await fetchSecuritizeAum()
   const baseTvlData = await fetchBaseTvl()
 
-  const metrics: MetricWithSource[] = [
+  const metrics: Metric[] = [
     {
       value: formatDuration(uptime, { maxDecimalPoints: 1 }),
       label: "Uninterrupted uptime and liveness",
@@ -229,7 +229,7 @@ export default async function Home() {
     name: string
     imgSrc: StaticImageData
     className?: string
-  } & MetricWithSource)[] = [
+  } & Metric)[] = [
     {
       name: "BlackRock",
       imgSrc: blackRockSvg,

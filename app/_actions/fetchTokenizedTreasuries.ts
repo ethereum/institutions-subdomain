@@ -1,22 +1,14 @@
 "use server"
 
-import type { DataTimestamped } from "@/lib/types"
+import type { DataTimestamped, RwaApiTimeseriesResponse } from "@/lib/types"
 
-import { dateNDaysAgo, getRwaApiEthereumNetworksFilter } from "@/lib/utils/data"
+import { getRwaApiEthereumNetworksFilter } from "@/lib/utils/data"
+import { dateNDaysAgo } from "@/lib/utils/date"
 import { every } from "@/lib/utils/time"
 
 import { RWA_API_MEASURE_ID_BY_CATEGORY, SOURCE } from "@/lib/constants"
 
-type JSONData = {
-  results: {
-    points: [string, number][]
-    group: {
-      id: number
-      type: string
-      name: string
-    }
-  }[]
-}
+type JSONData = RwaApiTimeseriesResponse
 
 export type TokenizedTreasuriesData = {
   totalTreasuries: number

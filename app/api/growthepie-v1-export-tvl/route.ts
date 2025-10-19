@@ -1,15 +1,13 @@
 import { type NextRequest, NextResponse } from "next/server"
 
-import type { L2TvlExportData } from "@/lib/types"
+import type {
+  GrowthepieApiResult,
+  InternalGrowthepieApiTimeseriesData,
+} from "@/lib/types"
 
 import { filterFirstAndFifteenth } from "@/lib/utils/data"
 
-type JSONData = {
-  metric_key: "tvl" | "tvl_eth"
-  origin_key: string // Layer 2 network
-  date: string // '2025-07-30'
-  value: number // USD (metric_key === "tvl") or ETH (metric_key === "tvl_eth")
-}
+type JSONData = GrowthepieApiResult
 
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams
@@ -32,7 +30,7 @@ export async function GET(req: NextRequest) {
 
   // Trim/aggregate to { date, value } for metric_key === "tvl"
   const dataAllUSD = json.filter(({ metric_key }) => metric_key === "tvl")
-  const dataSummed: L2TvlExportData = Object.values(
+  const dataSummed: InternalGrowthepieApiTimeseriesData = Object.values(
     dataAllUSD.reduce<Record<string, { date: number; value: number }>>(
       (acc, { date, value }) => {
         const numericalDate = new Date(date).getTime()

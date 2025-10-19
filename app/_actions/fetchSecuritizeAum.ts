@@ -4,6 +4,7 @@ import type {
   DataSeries,
   DataSeriesWithCurrent,
   DataTimestamped,
+  RwaApiTimeseriesResponse,
 } from "@/lib/types"
 
 import {
@@ -14,11 +15,7 @@ import { every } from "@/lib/utils/time"
 
 import { RWA_API_MEASURE_ID_BY_CATEGORY, SOURCE } from "@/lib/constants"
 
-type JSONData = {
-  results: {
-    points: [string, number][]
-  }[]
-}
+type JSONData = RwaApiTimeseriesResponse
 
 export type SecuritizeAumData = DataSeriesWithCurrent
 

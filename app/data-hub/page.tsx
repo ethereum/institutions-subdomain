@@ -1,6 +1,6 @@
 import type { Metadata } from "next/types"
 
-import { MetricWithSource } from "@/lib/types"
+import { Metric } from "@/lib/types"
 
 import DefiTimeseriesTvlEthereumLineChart from "@/components/data/defi-timeseries-tvl-ethereum-line-chart"
 import L2TimeseriesTvlLineChart from "@/components/data/l2-timeseries-tvl-line-chart"
@@ -21,7 +21,6 @@ import {
 } from "@/components/ui/card"
 import Link from "@/components/ui/link"
 
-import { stablecoinMarketShareToPieChartData } from "@/lib/utils/data"
 import { formatDateMonthDayYear } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
 import {
@@ -43,6 +42,7 @@ import fetchDefiTvlAllCurrent from "../_actions/fetchTvlDefiAllCurrent"
 
 import RwaChartCard from "./_components/rwa-chart-card"
 import StablecoinChartCard from "./_components/stablecoin-chart-card"
+import { stablecoinMarketShareToPieChartData } from "./utils"
 
 export default async function Page() {
   const timeseriesDefiTvlEthereumData = await fetchTimeseriesDefiTvlEthereum()
@@ -63,7 +63,7 @@ export default async function Page() {
   const rwaAssetMarketShareData = await fetchAssetMarketShare("RWAS")
   const etherMarketDetailsData = await fetchEtherMarketDetails()
 
-  const metrics: MetricWithSource[] = [
+  const metrics: Metric[] = [
     {
       label: "Market Cap",
       value: formatLargeCurrency(etherMarketDetailsData.data.etherMarketCap),

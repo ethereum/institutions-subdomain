@@ -1,7 +1,7 @@
 import Image from "next/image"
 import type { Metadata } from "next/types"
 
-import { MetricWithSource } from "@/lib/types"
+import { Metric } from "@/lib/types"
 
 import Hero from "@/components/Hero"
 import { SourceInfoTooltip } from "@/components/InfoTooltip"
@@ -34,7 +34,7 @@ export default async function Page() {
   const defiTvlAllCurrentData = await fetchDefiTvlAllCurrent()
   const dexVolume = await fetchDexVolume()
 
-  const metrics: MetricWithSource[] = [
+  const metrics: Metric[] = [
     {
       label: (
         <>

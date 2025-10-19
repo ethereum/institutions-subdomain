@@ -1,16 +1,18 @@
 import humanizeDuration, { HumanizerOptions } from "humanize-duration"
 
+import type { DateArg } from "../types"
+
 import { isValidDate } from "./date"
 
 /**
  * Calculates the time elapsed since the given date/time.
  *
- * @param datetime - The date/time to compare against the current time. Can be a string, number, or Date object.
+ * @param value - The date/time to compare against the current time. Can be a string, number, or Date object.
  * @returns The number of milliseconds elapsed since the provided date/time. Returns 0 if the input is not a valid date.
  */
-export const getTimeSince = (datetime: string | number | Date): number => {
-  if (!isValidDate(datetime)) return 0
-  return Date.now() - new Date(datetime).getTime()
+export const getTimeSince = (value: DateArg): number => {
+  if (!isValidDate(value)) return 0
+  return Date.now() - new Date(value).getTime()
 }
 
 /**

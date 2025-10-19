@@ -1,6 +1,6 @@
 "use server"
 
-import type { DataTimestamped } from "@/lib/types"
+import type { DataTimestamped, RwaApiTimeseriesResponse } from "@/lib/types"
 
 import { every } from "@/lib/utils/time"
 
@@ -10,11 +10,7 @@ import {
   SOURCE,
 } from "@/lib/constants"
 
-type JSONData = {
-  results: {
-    points: [string, number][]
-  }[]
-}
+type JSONData = RwaApiTimeseriesResponse
 
 export type CeloMonthlyStablecoinVolumeData = {
   celoMonthlyStablecoinVolume: number

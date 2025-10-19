@@ -3,7 +3,7 @@ import { Check } from "lucide-react"
 import Image, { type StaticImageData } from "next/image"
 import type { Metadata } from "next/types"
 
-import { MetricLastUpdated, MetricWithSource, SourceInfo } from "@/lib/types"
+import { LastUpdated, Metric, SourceInfo } from "@/lib/types"
 
 import Hero from "@/components/Hero"
 import { SourceInfoTooltip } from "@/components/InfoTooltip"
@@ -65,7 +65,7 @@ export default async function Page() {
   const celoMonthlyStablecoinVolumeData =
     await fetchCeloMonthlyStablecoinVolume()
 
-  const metrics: MetricWithSource[] = [
+  const metrics: Metric[] = [
     {
       label: <span title="Total Value Locked">TVL Across L2s</span>,
       value: formatLargeCurrency(l2ScalingSummaryData.data.totalTvl),
@@ -164,7 +164,7 @@ export default async function Page() {
     },
   ]
 
-  const caseStudies: (CardItem & Partial<SourceInfo & MetricLastUpdated>)[] = [
+  const caseStudies: (CardItem & Partial<SourceInfo & LastUpdated>)[] = [
     {
       heading: "Ernst & Young",
       description: "Nightfall L2 Platform",

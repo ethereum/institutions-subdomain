@@ -12,29 +12,9 @@ import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
 import { sanitizeInput } from "@/lib/utils/sanitize"
 
-import {
-  ENTERPRISE_EMAIL,
-  ENTERPRISE_MAILTO,
-  MAX_INPUT_LENGTH,
-  MAX_MESSAGE_LENGTH,
-} from "@/lib/constants"
+import { ENTERPRISE_EMAIL } from "@/lib/constants"
 
 import Link from "../ui/link"
-
-type FormState = {
-  name: string
-  email: string
-  message: string
-}
-
-type FormErrors = {
-  name?: React.ReactNode
-  email?: React.ReactNode
-  message?: React.ReactNode
-  general?: React.ReactNode
-}
-
-type SubmissionState = "idle" | "submitting" | "success" | "error"
 
 // Consumer email domains to block
 const CONSUMER_DOMAINS = [
@@ -64,6 +44,24 @@ const CONSUMER_DOMAINS = [
   "10minutemail.com",
   "guerrillamail.com",
 ]
+
+const MAX_INPUT_LENGTH = 2 ** 6 // 64
+const MAX_MESSAGE_LENGTH = 2 ** 12 // 4,096
+
+type FormState = {
+  name: string
+  email: string
+  message: string
+}
+
+type FormErrors = {
+  name?: React.ReactNode
+  email?: React.ReactNode
+  message?: React.ReactNode
+  general?: React.ReactNode
+}
+
+type SubmissionState = "idle" | "submitting" | "success" | "error"
 
 const EnterpriseContactForm = () => {
   const pathname = usePathname()
@@ -214,7 +212,7 @@ const EnterpriseContactForm = () => {
             Unable to send your message. Please try again or contact us directly
             at{" "}
             <Link
-              href={ENTERPRISE_MAILTO}
+              href={`mailto:${ENTERPRISE_EMAIL}?subject=Enterprise%20inquiry`}
               inline
               showDecorator
               className="text-current hover:text-current/80"

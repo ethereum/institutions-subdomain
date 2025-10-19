@@ -1,54 +1,5 @@
-import { RWA_API_LAYER_2S, RWA_API_MAINNET } from "../constants"
-import type { DataSeries, DataTimestamped, NetworkPieChartData } from "../types"
-
-import { AssetMarketShareData } from "@/app/_actions/fetchAssetMarketShare"
-
-export const stablecoinMarketShareToPieChartData = (
-  apiData: DataTimestamped<AssetMarketShareData>
-): DataTimestamped<NetworkPieChartData> => {
-  return {
-    ...apiData,
-    data: [
-      {
-        network: "ethereum",
-        marketShare: apiData.data.marketShare.mainnet,
-        fill: "var(--color-ethereum)",
-      },
-      {
-        network: "ethereum-l2s",
-        marketShare: apiData.data.marketShare.layer2,
-        fill: "var(--color-ethereum-l2s)",
-      },
-      {
-        network: "alt-2nd",
-        marketShare: apiData.data.marketShare.altNetwork2nd,
-        fill: "var(--color-alt-2nd)",
-      },
-      {
-        network: "alt-3rd",
-        marketShare: apiData.data.marketShare.altNetwork3rd,
-        fill: "var(--color-alt-3rd)",
-      },
-      {
-        network: "alt-rest",
-        marketShare: apiData.data.marketShare.altNetworksRest,
-        fill: "var(--color-alt-rest)",
-      },
-    ],
-  }
-}
-
-/**
- * Trim large timeseries data, default one value per week (mod 7).
- * Filters any array to include only elements whose index modulo `mod` equals the last index modulo `mod`.
- *
- * @deprecated Use filterFirstAndFifteenth for data series trimming
- * @param array - The array to filter.
- * @param mod - The modulus value used for filtering. Defaults to 7 (one value per week).
- * @returns A new array containing elements that satisfy the filtering condition.
- */
-export const modFilter = <T>(array: T[], mod: number = 28): T[] =>
-  array.filter((_, idx) => idx % mod === (array.length - 1) % mod)
+import { RWA_API_LAYER_2S_IDS, RWA_API_MAINNET } from "../constants"
+import type { DataSeries, DateArg } from "../types"
 
 /**
  * Filters an array of objects, returning only those whose `date` property falls on the specified days of the month (UTC),
@@ -64,7 +15,7 @@ export const modFilter = <T>(array: T[], mod: number = 28): T[] =>
  * @returns A new array containing only the objects whose `date` property matches one of the specified days (UTC), plus the last element if not already included. Results are returned in ascending chronological order (UTC).
  */
 export const filterFirstAndFifteenth = <
-  T extends { date: string | number | Date } & Record<string, unknown>,
+  T extends { date: DateArg } & Record<string, unknown>,
 >(
   array: T[],
   dateMatches = [1, 15]
@@ -96,6 +47,20 @@ export const filterFirstAndFifteenth = <
   return [...filtered, sorted[sorted.length - 1]]
 }
 
+/**
+ * Produces a series (optionally filtered) and the current value from the original series array.
+ *
+ * @param seriesMapped - The input data series to read from. Must be a non-empty DataSeries.
+ * @param skipFiltering - If true, the original seriesMapped is returned unchanged. If false or omitted, the series is passed through `filterFirstAndFifteenth`.
+ * @returns An object containing:
+ *  - `series`: the resulting DataSeries (filtered unless `skipFiltering` is true),
+ *  - `currentValue`: the `value` of the last element in the original `seriesMapped` array.
+ *
+ * @throws {Error} If `seriesMapped` is empty or not provided.
+ *
+ * @remarks
+ * The function does not mutate the input `seriesMapped`; it either returns it directly or returns the result of `filterFirstAndFifteenth(seriesMapped)`.
+ */
 export const getSeriesWithCurrent = (
   seriesMapped: DataSeries,
   skipFiltering?: boolean
@@ -142,18 +107,18 @@ export const getRwaApiEthereumNetworksFilter = (
 ) => {
   if (!networks.length) return
 
-  const BASE_FIELD_OPERATOR = {
+  const COMMON_FIELD_OPERATOR = {
     field: "networkID",
     operator: "equals",
   }
 
   const mainnetFilter = {
-    ...BASE_FIELD_OPERATOR,
+    ...COMMON_FIELD_OPERATOR,
     value: RWA_API_MAINNET.id,
   }
 
-  const layer2Filters = RWA_API_LAYER_2S.map(({ id }) => ({
-    ...BASE_FIELD_OPERATOR,
+  const layer2Filters = RWA_API_LAYER_2S_IDS.map((id) => ({
+    ...COMMON_FIELD_OPERATOR,
     value: id,
   }))
 
@@ -164,11 +129,3 @@ export const getRwaApiEthereumNetworksFilter = (
 
   return { operator: "or", filters }
 }
-/**
- * Returns an ISO string representing the date `n` days ago from the current date.
- *
- * @param n - The number of days to subtract from the current date. Defaults to 2.
- * @returns An ISO 8601 formatted string of the calculated date.
- */
-export const dateNDaysAgo = (n: number = 2) =>
-  new Date(Date.now() - n * 24 * 60 * 60 * 1000).toISOString()

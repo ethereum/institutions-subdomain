@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
 import { Info } from "lucide-react"
 
-import type { MetricLastUpdated, SourceInfo } from "@/lib/types"
+import type { LastUpdated, SourceInfo } from "@/lib/types"
 
 import { cn } from "@/lib/utils"
 
@@ -31,7 +31,7 @@ const SourceInfoTooltip = ({
   children,
   className,
 }: SourceInfo &
-  MetricLastUpdated &
+  LastUpdated &
   Omit<InfoTooltipProps, "children"> & { children?: string }) => (
   <InlineTextIcon className={className}>
     <InfoTooltip ariaLabel="Source information">

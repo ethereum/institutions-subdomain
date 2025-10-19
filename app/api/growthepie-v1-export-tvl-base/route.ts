@@ -1,11 +1,8 @@
 import { type NextRequest, NextResponse } from "next/server"
 
-type JSONData = {
-  metric_key: "tvl" | "tvl_eth"
-  origin_key: string // Layer 2 network, e.g., "base"
-  date: string // '2025-07-30'
-  value: number // USD (metric_key === "tvl") or ETH (metric_key === "tvl_eth")
-}
+import type { GrowthepieApiResult } from "@/lib/types"
+
+type JSONData = GrowthepieApiResult
 
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams

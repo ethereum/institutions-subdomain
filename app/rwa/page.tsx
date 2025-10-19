@@ -2,7 +2,7 @@ import { Check } from "lucide-react"
 import Image, { StaticImageData } from "next/image"
 import type { Metadata } from "next/types"
 
-import { MetricLastUpdated, MetricWithSource, SourceInfo } from "@/lib/types"
+import { LastUpdated, Metric, SourceInfo } from "@/lib/types"
 
 import Hero from "@/components/Hero"
 import { SourceInfoTooltip } from "@/components/InfoTooltip"
@@ -41,7 +41,7 @@ export default async function Page() {
   const tokenizedPrivateCreditExamplesData =
     await fetchTokenizedPrivateCreditExamples()
 
-  const metrics: MetricWithSource[] = [
+  const metrics: Metric[] = [
     {
       label: "Stablecoins on Ethereum L1",
       value: formatLargeCurrency(
@@ -127,7 +127,7 @@ export default async function Page() {
     issuer?: string
     metricHref: string
     visitHref: string
-  } & Partial<MetricLastUpdated & SourceInfo>
+  } & Partial<LastUpdated & SourceInfo>
 
   const cashEquivalents: AssetDetails[] = [
     {

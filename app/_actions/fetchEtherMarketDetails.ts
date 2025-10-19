@@ -1,6 +1,6 @@
 "use server"
 
-import type { AssetValueMetrics, DataTimestamped } from "@/lib/types"
+import type { DataTimestamped, RwaApiAssetValueMetrics } from "@/lib/types"
 
 import { every } from "@/lib/utils/time"
 
@@ -9,8 +9,8 @@ import { SOURCE } from "@/lib/constants"
 type JSONData = {
   results: {
     slug: string // e.g., 'ethereum'
-    price_dollar: AssetValueMetrics
-    market_cap_dollar: AssetValueMetrics
+    price_dollar: RwaApiAssetValueMetrics
+    market_cap_dollar: RwaApiAssetValueMetrics
     _updated_at: string // e.g., '2025-10-15T16:50:10.901
   }[]
 }

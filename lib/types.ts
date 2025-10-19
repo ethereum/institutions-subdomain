@@ -1,40 +1,32 @@
 import { ReactNode } from "react"
-import { StaticImageData } from "next/image"
 
-import {
-  RWA_API_LAYER_2S,
-  RWA_API_MAINNET,
-  RWA_API_MEASURE_ID_BY_CATEGORY,
-} from "./constants"
+import { RWA_API_MEASURE_ID_BY_CATEGORY } from "./constants"
 
-export type LibraryItem = {
-  title: string
-  imgSrc: StaticImageData
-  date: string
-  href: string
-}
+/**
+ * General
+ */
+
+export type DateArg = ConstructorParameters<typeof Date>[0]
 
 export type SourceInfo = {
   source?: string
   sourceHref?: string
 }
 
-export type MetricLastUpdated = {
-  lastUpdated?: string
+export type LastUpdated<T extends string | number = string> = {
+  lastUpdated?: T
 }
 
-export type Metric = {
-  label: ReactNode
-  value: string | number
-} & MetricLastUpdated
-
-export type MetricWithSource = Metric & SourceInfo
+export type Metric = SourceInfo &
+  LastUpdated & {
+    label: ReactNode
+    value: string | number
+  }
 
 export type DataTimestamped<T> = {
   data: T
-  lastUpdated: number
-  sourceInfo: SourceInfo
-}
+  sourceInfo: Required<SourceInfo>
+} & Required<LastUpdated<number>>
 
 export type DataSeries = {
   date: string
@@ -60,39 +52,14 @@ export type NetworkPieChartData = {
 }[]
 
 /**
- * RWA.xyz API types https://api.rwa.xyz/v4/networks response types
+ * RWA.xyz API usage
  */
+
+export type AssetCategory = keyof typeof RWA_API_MEASURE_ID_BY_CATEGORY
 
 export type NetworkNameId = { id: number; name: string }
 
-export type RwaApiNetworkName =
-  | (typeof RWA_API_LAYER_2S)[number]["name"]
-  | (typeof RWA_API_MAINNET)["name"]
-
-export type RwaApiNetworkId =
-  | (typeof RWA_API_LAYER_2S)[number]["id"]
-  | (typeof RWA_API_MAINNET)["id"]
-
-export type RwaApiNetwork = {
-  id: RwaApiNetworkId
-  name: RwaApiNetworkName
-}
-
-export type ASSET_CATEGORY = keyof typeof RWA_API_MEASURE_ID_BY_CATEGORY
-
-type AssetClassSlug =
-  | "corporate-bonds"
-  | "cryptocurrencies"
-  | "public-equity"
-  | "us-treasury-debt"
-  | "non-us-government-debt"
-  | "stablecoins"
-  | "actively-managed-strategies"
-  | "commodities"
-  | "private-credit"
-  | "institutional-alternative-funds"
-
-export type AssetValueMetrics = {
+export type RwaApiAssetValueMetrics = {
   val: number
   val_7d: number
   val_30d: number
@@ -103,24 +70,6 @@ export type AssetValueMetrics = {
   chg_30d_pct: number
   chg_90d_amt: number
   chg_90d_pct: number
-}
-
-type AssetClassStats = {
-  id: number
-  name: string
-  slug: AssetClassSlug
-  icon_url?: string | null
-  color_hex?: string
-  asset_count: number
-  description?: string | null
-  daily_mints_token: AssetValueMetrics
-  daily_mints_dollar: AssetValueMetrics
-  holding_addresses_count: AssetValueMetrics
-  bridged_token_value_dollar: AssetValueMetrics
-  circulating_asset_value_dollar: AssetValueMetrics
-  bridged_token_market_cap_dollar: AssetValueMetrics
-  trailing_30_day_transfer_volume: AssetValueMetrics
-  trailing_30_day_active_addresses_count: AssetValueMetrics
 }
 
 export type RwaApiNetworkResult = {
@@ -145,7 +94,35 @@ export type RwaApiNetworkResult = {
   issuer_ids: number[]
   protocol_ids: number[]
   jurisdiction_country_ids: number[]
-  asset_class_stats: AssetClassStats[]
+  asset_class_stats: ({
+    id: number
+    name: string
+    slug:
+      | "corporate-bonds"
+      | "cryptocurrencies"
+      | "public-equity"
+      | "us-treasury-debt"
+      | "non-us-government-debt"
+      | "stablecoins"
+      | "actively-managed-strategies"
+      | "commodities"
+      | "private-credit"
+      | "institutional-alternative-funds"
+    icon_url?: string | null
+    color_hex?: string
+    asset_count: number
+    description?: string | null
+  } & Record<
+    | "daily_mints_token"
+    | "daily_mints_dollar"
+    | "holding_addresses_count"
+    | "bridged_token_value_dollar"
+    | "circulating_asset_value_dollar"
+    | "bridged_token_market_cap_dollar"
+    | "trailing_30_day_transfer_volume"
+    | "trailing_30_day_active_addresses_count",
+    RwaApiAssetValueMetrics
+  >)[]
   issuer_stats: unknown[]
   protocol_stats: unknown[]
   jurisdiction_country_stats: unknown[]
@@ -159,7 +136,7 @@ export type RwaApiNetworkResult = {
   trailing_30_day_transfer_volume: Record<string, unknown>
 }
 
-export type RWA_API_TIMESERIES_RESPONSE = {
+export type RwaApiTimeseriesResponse = {
   results: {
     measure: {
       id: number
@@ -178,10 +155,17 @@ export type RWA_API_TIMESERIES_RESPONSE = {
 }
 
 /**
- * growthepie https://api.growthepie.com/v1/export/tvl.json response type
+ * growthepie.com API usage
  */
 
-export type L2TvlExportData = {
+export type GrowthepieApiResult = {
+  metric_key: "tvl" | "txcosts_median_usd" | "txcount"
+  origin_key: string // Network, e.g., "ethereum" | "base" etc.
+  date: string // '2025-07-30'
+  value: number // USD (metric_key: "tvl" | "txcosts_median_usd")
+}
+
+export type InternalGrowthepieApiTimeseriesData = {
   date: number
   value: number
 }[]

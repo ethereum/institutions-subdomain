@@ -1,6 +1,6 @@
 import type { ComponentProps } from "react"
 
-import { MetricWithSource } from "@/lib/types"
+import { Metric } from "@/lib/types"
 
 import { cn } from "@/lib/utils"
 
@@ -9,7 +9,7 @@ import { AnimatedNumberInView } from "../ui/animated-number"
 import { InlineText } from "../ui/inline-text"
 
 type BigNumberProps = Pick<ComponentProps<"div">, "className" | "children"> &
-  Omit<MetricWithSource, "label">
+  Omit<Metric, "label">
 
 const BigNumber = ({
   value,

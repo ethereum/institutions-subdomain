@@ -1,17 +1,12 @@
 "use server"
 
-import type { DataTimestamped } from "@/lib/types"
+import type { DataTimestamped, GrowthepieApiResult } from "@/lib/types"
 
 import { every } from "@/lib/utils/time"
 
 import { SOURCE } from "@/lib/constants"
 
-type JSONData = {
-  metric_key: "txcosts_median_usd" | "txcount"
-  origin_key: string // Network, e.g., "ethereum"
-  date: string // '2025-07-30'
-  value: number // USD
-}[]
+type JSONData = GrowthepieApiResult[]
 
 export type L2MedianTxCostData = {
   latestWeightedMedianTxCostUsd: number

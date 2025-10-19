@@ -1,6 +1,9 @@
 import { type NextRequest, NextResponse } from "next/server"
 
-import { dateNDaysAgo, getRwaApiEthereumNetworksFilter } from "@/lib/utils/data"
+import type { RwaApiTimeseriesResponse } from "@/lib/types"
+
+import { getRwaApiEthereumNetworksFilter } from "@/lib/utils/data"
+import { dateNDaysAgo } from "@/lib/utils/date"
 
 import { RWA_API_MEASURE_ID_BY_CATEGORY } from "@/lib/constants"
 
@@ -10,16 +13,7 @@ export const RWA_XYZ_TREASURIES_ASSET_IDS = {
   OUSG: 57,
 } as const satisfies Record<string, number>
 
-type JSONData = {
-  results: {
-    points: [string, number][]
-    group: {
-      id: number
-      type: string
-      name: string
-    }
-  }[]
-}
+type JSONData = RwaApiTimeseriesResponse
 
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams

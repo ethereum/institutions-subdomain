@@ -1,4 +1,4 @@
-import type { LibraryItem } from "@/lib/types"
+import type { StaticImageData } from "next/image"
 
 import blockchainScotland from "@/public/images/library/blockchain-scotland-1.png"
 import citi from "@/public/images/library/citi-1.png"
@@ -10,6 +10,13 @@ import fidelity2 from "@/public/images/library/fidelity-2.png"
 import galaxy from "@/public/images/library/galaxy-1.png"
 import goldmanSachs from "@/public/images/library/goldman-sachs-1.png"
 import nextFinSummit from "@/public/images/library/nextfin-summit-1.png"
+
+type LibraryItem = {
+  title: string
+  imgSrc: StaticImageData
+  date: string
+  href: string
+}
 
 export const libraryItems: LibraryItem[] = [
   {

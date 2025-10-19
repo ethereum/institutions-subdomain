@@ -1,12 +1,14 @@
+import type { DateArg } from "../types"
+
 /**
  * Checks if the provided value is a valid date string or timestamp.
  *
- * @param dateString - The date value to validate. Can be a string or number.
+ * @param value - The date value to validate. Can be a string or number.
  * @returns `true` if the value represents a valid date, otherwise `false`.
  */
-export const isValidDate = (dateString?: string | number | Date): boolean => {
-  if (!dateString) return false
-  const date = new Date(dateString)
+export const isValidDate = (value?: DateArg): boolean => {
+  if (!value) return false
+  const date = new Date(value)
   return !isNaN(date.getTime())
 }
 
@@ -62,3 +64,12 @@ export const formatDateFull = (
     month: "long",
     ...options,
   })
+
+/**
+ * Returns an ISO string representing the date `n` days ago from the current date.
+ *
+ * @param n - The number of days to subtract from the current date. Defaults to 2.
+ * @returns An ISO 8601 formatted string of the calculated date.
+ */
+export const dateNDaysAgo = (n: number = 2) =>
+  new Date(Date.now() - n * 24 * 60 * 60 * 1000).toISOString()

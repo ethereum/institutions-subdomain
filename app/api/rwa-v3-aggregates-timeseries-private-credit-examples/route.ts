@@ -1,19 +1,13 @@
 import { type NextRequest, NextResponse } from "next/server"
 
-import { dateNDaysAgo, getRwaApiEthereumNetworksFilter } from "@/lib/utils/data"
+import type { RwaApiTimeseriesResponse } from "@/lib/types"
+
+import { getRwaApiEthereumNetworksFilter } from "@/lib/utils/data"
+import { dateNDaysAgo } from "@/lib/utils/date"
 
 export const RWA_XYZ_PROTOCOL_SLUGS = ["centrifuge", "maple", "truefi"]
 
-type JSONData = {
-  results: {
-    points: [string, number][]
-    group: {
-      id: number
-      type: string
-      name: string
-    }
-  }[]
-}
+type JSONData = RwaApiTimeseriesResponse
 
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams

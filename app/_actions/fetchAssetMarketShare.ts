@@ -1,12 +1,12 @@
 "use server"
 
 import type {
-  ASSET_CATEGORY,
+  AssetCategory,
   DataTimestamped,
-  RWA_API_TIMESERIES_RESPONSE,
+  RwaApiTimeseriesResponse,
 } from "@/lib/types"
 
-import { dateNDaysAgo } from "@/lib/utils/data"
+import { dateNDaysAgo } from "@/lib/utils/date"
 import { every } from "@/lib/utils/time"
 
 import {
@@ -17,7 +17,7 @@ import {
   SOURCE,
 } from "@/lib/constants"
 
-type JSONData = RWA_API_TIMESERIES_RESPONSE
+type JSONData = RwaApiTimeseriesResponse
 
 type NetworkBreakdown = {
   mainnet: number
@@ -34,7 +34,7 @@ export type AssetMarketShareData = {
 }
 
 export const fetchAssetMarketShare = async (
-  category: ASSET_CATEGORY
+  category: AssetCategory
 ): Promise<DataTimestamped<AssetMarketShareData>> => {
   const url = new URL("https://api.rwa.xyz/v3/assets/aggregates/timeseries")
 

@@ -4,7 +4,7 @@ import type {
   DataSeries,
   DataSeriesWithCurrent,
   DataTimestamped,
-  L2TvlExportData,
+  InternalGrowthepieApiTimeseriesData,
 } from "@/lib/types"
 
 import { getDataSeriesWithCurrent } from "@/lib/utils/data"
@@ -12,7 +12,7 @@ import { every } from "@/lib/utils/time"
 
 import { SITE_ORIGIN, SOURCE } from "@/lib/constants"
 
-type JSONData = { data: L2TvlExportData }
+type JSONData = { data: InternalGrowthepieApiTimeseriesData }
 
 export type TimeseriesL2TvlData = DataSeriesWithCurrent
 
