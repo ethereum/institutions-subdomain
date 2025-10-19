@@ -156,17 +156,13 @@ export default function RootLayout({
                 <DrawerHeader>
                   <DrawerTitle className="sr-only">Navigation menu</DrawerTitle>
                   <DrawerClose asChild>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="ms-auto me-4 mt-4"
-                    >
+                    <Button variant="ghost" size="icon" className="ms-auto">
                       <X className="size-10" />
                     </Button>
                   </DrawerClose>
                 </DrawerHeader>
-                <div className="flex flex-col gap-y-6 p-10 [&_hr]:border-[#5676E1]">
-                  <p className="text-[#5676E1]">Digital Assets</p>
+                <div className="[&_hr]:border-chart-2 flex flex-col gap-y-6 overflow-y-auto p-10 pb-26">
+                  <p className="text-chart-2">Digital Assets</p>
                   {[...DA_NAV_ITEM_LINKS, ...NAV_ITEM_LINKS].map(
                     (props, idx) => (
                       <Fragment key={idx}>
