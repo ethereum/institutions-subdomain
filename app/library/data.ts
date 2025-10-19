@@ -8,7 +8,7 @@ import ey from "@/public/images/library/ey-1.png"
 import fidelity1 from "@/public/images/library/fidelity-1.jpg"
 import fidelity2 from "@/public/images/library/fidelity-2.png"
 import galaxy from "@/public/images/library/galaxy-1.png"
-import goldmanSachs from "@/public/images/library/glodman-sachs-1.png"
+import goldmanSachs from "@/public/images/library/goldman-sachs-1.png"
 import nextFinSummit from "@/public/images/library/nextfin-summit-1.png"
 
 export const libraryItems: LibraryItem[] = [

@@ -1,6 +1,5 @@
 import type { Metadata } from "next/types"
 
-import { libraryItems } from "@/components/data/library"
 import Hero from "@/components/Hero"
 import {
   LibraryCard,
@@ -13,6 +12,8 @@ import {
 
 import { isValidDate } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
+
+import { libraryItems } from "./data"
 
 export default function Page() {
   return (
