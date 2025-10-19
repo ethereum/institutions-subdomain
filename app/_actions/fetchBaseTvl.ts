@@ -16,7 +16,7 @@ export const fetchBaseTvl = async (): Promise<DataTimestamped<BaseTvlData>> => {
 
   if (!secret) throw new Error("Internal API secret not found")
 
-  const internalUrl = new URL("/api/growthepie-v1-export-tvl-base", SITE_ORIGIN)
+  const internalUrl = new URL("/api/growthepie-v1-export-tvl/base", SITE_ORIGIN)
 
   internalUrl.searchParams.set("secret", secret)
 

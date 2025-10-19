@@ -21,7 +21,7 @@ export const fetchTokenizedTreasuryExamples = async (): Promise<
   if (!secret) throw new Error("Internal API secret not found")
 
   const internalUrl = new URL(
-    "/api/rwa-v3-aggregates-timeseries-treasury-examples",
+    "/api/rwa-v3-aggregates-timeseries/treasury-examples",
     SITE_ORIGIN
   )
 
