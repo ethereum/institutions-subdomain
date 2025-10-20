@@ -13,7 +13,7 @@ export function InlineText({
 
   return (
     <Comp
-      className={cn("relative inline-block", className)}
+      className={cn("relative inline-block pe-[1.25em]", className)}
       data-slot="inline-text"
       {...props}
     />
