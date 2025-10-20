@@ -13,11 +13,11 @@ import Link from "@/components/ui/link"
 import { cn } from "@/lib/utils"
 import { getMetadata } from "@/lib/utils/metadata"
 
-import aztec from "@/public/images/app-logos/aztec.png"
-import chainlink from "@/public/images/app-logos/chainlink.png"
-import railgun from "@/public/images/app-logos/railgun.png"
-import zama from "@/public/images/app-logos/zama.png"
-import blurWalking from "@/public/images/blur-walking.png"
+import blurWalking from "@/public/images/banners/blur-walking.png"
+import chainlink from "@/public/images/logos/apps/chainlink.png"
+import railgun from "@/public/images/logos/apps/railgun.png"
+import zama from "@/public/images/logos/apps/zama.png"
+import aztec from "@/public/images/logos/networks/aztec.png"
 
 export default function Page() {
   const productionSolutions: {

@@ -28,7 +28,7 @@ import fetchDefiTvlAllCurrent from "../_actions/fetchTvlDefiAllCurrent"
 
 import AppGrid from "./_components/AppGrid"
 
-import buildings from "@/public/images/buildings2.png"
+import buildings from "@/public/images/banners/buildings2.png"
 
 export default async function Page() {
   const defiTvlAllCurrentData = await fetchDefiTvlAllCurrent()

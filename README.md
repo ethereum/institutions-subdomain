@@ -1,7 +1,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/be8e1a60-7b3f-45b1-9aa9-56c18c57b7b4/deploy-status)](https://app.netlify.com/projects/ef-institutions/deploys) <!-- TODO: Update for production when launched -->
 
 <div align="center" style="margin-top: 1em; margin-bottom: 3em;">
-  <a href="https://institutions.ethereum.org"><img alt="ethereum institutions logo" src="./public/large-banner.svg" alt="institutions.ethereum.org" width="420"></a>
+  <a href="https://institutions.ethereum.org"><img alt="ethereum institutions logo" src="./public/images/banners/black-white-site-hero.svg" alt="institutions.ethereum.org" width="420"></a>
   <h1>Ethereum for Institutions</h1>
 </div>
 
