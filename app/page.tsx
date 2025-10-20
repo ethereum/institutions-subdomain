@@ -60,6 +60,7 @@ import fetchDefiTvlAllCurrent from "./_actions/fetchTvlDefiAllCurrent"
 import { getTimeSinceGenesis } from "./_actions/getTimeSinceGenesis"
 
 import { libraryItems } from "@/app/library/data"
+import geoffreyKendrick from "@/public/images/geoffrey-kendrick.jpeg"
 import robertMitchnick from "@/public/images/robert-mitchnick.png"
 import tomZschach from "@/public/images/tom-zschach.png"
 import vladTenev from "@/public/images/vlad-tenev.png"
@@ -109,6 +110,15 @@ const testimonials: {
   content: string[]
   imgSrc: StaticImageData
 }[] = [
+  {
+    name: "Geoffrey Kendrick",
+    role: "Global Head of Digital Assets Research @ Standard Chartered",
+    content: [
+      "I think tokenised real-world assets will grow from $34bn today to $300bn over the next 12 months. All of this growth will happen on Ethereum because TradFi trusts Ethereum.",
+      "It is irrelevant that other chains are faster or cheaper. Ethereum has been around for over 10 years and has never gone down. For TradFi, trustworthiness trumps marginal speed and cost savings every day of the week.",
+    ],
+    imgSrc: geoffreyKendrick,
+  },
   {
     name: "Tom Zschach",
     role: "CIO @ SWIFT",
@@ -561,7 +571,7 @@ export default async function Home() {
                             src={imgSrc}
                             alt={`${name} profile picture`}
                             fill
-                            className="object-cover grayscale"
+                            className="object-cover object-top grayscale"
                             placeholder="blur"
                             sizes="48px"
                             draggable={false}
