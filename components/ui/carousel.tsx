@@ -192,21 +192,23 @@ function CarouselIndicator({
 
   return (
     <div className={cn("mt-14 w-fit", className)}>
-      <div className="flex space-x-2.5">
+      <ul role="tablist" className="flex">
         {Array.from({ length: itemsCount }, (_, i) => (
-          <button
-            key={i}
-            type="button"
-            aria-label={`Go to slide ${i + 1}`}
-            onClick={() => setIndex(i)}
-            className={cn(
-              "size-3.5 shrink-0 rounded-full transition-opacity duration-300",
-              index === i ? "bg-secondary-foreground" : "bg-muted",
-              classNameButton
-            )}
-          />
+          <li key={i} role="presentation">
+            <button
+              type="button"
+              role="tab"
+              aria-label={`Go to slide ${i + 1}`}
+              onClick={() => setIndex(i)}
+              className={cn(
+                "mx-2 size-2.5 shrink-0 rounded-full transition-opacity duration-300",
+                index === i ? "bg-secondary-foreground" : "bg-muted",
+                classNameButton
+              )}
+            />
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   )
 }
