@@ -231,14 +231,15 @@ export default async function Page() {
     <main className="row-start-2 flex flex-col items-center sm:items-start">
       <Hero heading="Ethereum L2s" shape="layers-2">
         <p>
-          Layer 2s (L2s) are networks that settle to Ethereum, making execution
-          faster, cheaper and more scalable—while still relying on Ethereum for
-          security and finality.
+          Layer 2s (L2s) are scalable execution layers built on top of Ethereum.
+          Rollups, a primary category of L2, bundle transactions and post data
+          back to Ethereum mainnet, allowing them to inherit Ethereum&apos;s
+          security and decentralization.
         </p>
         <p>
-          Ideal for payments and compliant appchains, L2s let L1-issued assets
-          scale efficiently while keeping Ethereum&apos;s native security and
-          recovery guarantees.
+          Ideal for tokenization, payments, and compliant appchains, L2s can
+          offer custom environments, optimized rails, and faster, cheaper
+          execution, while relying on Ethereum for finality.
         </p>
       </Hero>
       <article className="max-w-8xl mx-auto w-full space-y-20 px-4 py-10 sm:px-10 sm:py-20 md:space-y-40">

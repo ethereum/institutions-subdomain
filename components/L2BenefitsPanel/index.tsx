@@ -46,7 +46,7 @@ export function L2BenefitsPanel({ validatorsCount }: L2BenefitsPanelProps) {
               </Link>
               , paying only usage-based fees.
             </>,
-            "L2s all settle on Ethereum, creating a shared, decentralized security and data availability layer",
+            "Rollups all settle on Ethereum, creating a shared, decentralized security and data availability layer",
           ],
         },
       ],
