@@ -131,77 +131,98 @@ export default function Page() {
             Privacy Building Blocks on Ethereum
           </h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <Card className="space-y-2">
-              <div className="size-37 shrink-0 overflow-hidden p-2.5">
-                <MaskedParallelsIcon
-                  className="text-secondary-foreground"
-                  maskShape={<TargetCheck className="size-full text-white" />}
-                />
-              </div>
+            <Link
+              href="https://ethereum.org/zero-knowledge-proofs/"
+              className="group transition-transform hover:scale-105 hover:transition-transform"
+            >
+              <Card className="h-full space-y-2">
+                <div className="size-37 shrink-0 overflow-hidden p-2.5">
+                  <MaskedParallelsIcon
+                    className="text-secondary-foreground"
+                    maskShape={<TargetCheck className="size-full text-white" />}
+                  />
+                </div>
 
-              <h3 className="text-h5 text-section-foreground tracking-[0.03rem]">
-                Zero-Knowledge Proofs (ZK)
-              </h3>
-              <p className="text-muted-foreground font-medium">
-                Prove policy checks (KYC, limits, SOW) without exposing raw
-                data. Enable selective disclosure for regulators and
-                counterparties while keeping transactions composable with
-                Ethereum liquidity.
-              </p>
-            </Card>
-            <Card className="space-y-2">
-              <div className="size-37 shrink-0 overflow-hidden p-2.5">
-                <MaskedParallelsIcon
-                  className="text-secondary-foreground"
-                  maskShape={<BinaryLock className="size-full text-white" />}
-                />
-              </div>
+                <h3 className="text-h5 text-section-foreground group-hover:text-secondary-foreground tracking-[0.03rem]">
+                  Zero-Knowledge Proofs (ZK)
+                </h3>
+                <p className="text-muted-foreground font-medium">
+                  Prove policy checks (KYC, limits, SOW) without exposing raw
+                  data. Enable selective disclosure for regulators and
+                  counterparties while keeping transactions composable with
+                  Ethereum liquidity.
+                </p>
+              </Card>
+            </Link>
+            <Link
+              href="https://pse.dev/blog/zero-to-start-applied-fully-homomorphic-encryption-fhe-part-1"
+              className="group transition-transform hover:scale-105 hover:transition-transform"
+            >
+              <Card className="h-full space-y-2">
+                <div className="size-37 shrink-0 overflow-hidden p-2.5">
+                  <MaskedParallelsIcon
+                    className="text-secondary-foreground"
+                    maskShape={<BinaryLock className="size-full text-white" />}
+                  />
+                </div>
 
-              <h3 className="text-h5 text-section-foreground tracking-[0.03rem]">
-                Fully Homomorphic Encryption (FHE)
-              </h3>
-              <p className="text-muted-foreground font-medium">
-                Compute on encrypted data (risk, pricing, and netting). An early
-                tech that&apos;s advancing quickly. FHE is best for
-                highly-sensitivity analytics, where even intermediaries
-                shouldn&apos;t see plaintext.
-              </p>
-            </Card>
-            <Card className="space-y-2">
-              <div className="size-37 shrink-0 overflow-hidden p-2.5">
-                <MaskedParallelsIcon
-                  className="text-secondary-foreground"
-                  maskShape={<CpuLock className="size-full text-white" />}
-                />
-              </div>
+                <h3 className="text-h5 text-section-foreground group-hover:text-secondary-foreground tracking-[0.03rem]">
+                  Fully Homomorphic Encryption (FHE)
+                </h3>
+                <p className="text-muted-foreground font-medium">
+                  Compute on encrypted data (risk, pricing, and netting). An
+                  early tech that&apos;s advancing quickly. FHE is best for
+                  highly-sensitivity analytics, where even intermediaries
+                  shouldn&apos;t see plaintext.
+                </p>
+              </Card>
+            </Link>
+            <Link
+              href="https://ethereum.org/developers/docs/oracles/#authenticity-proofs"
+              className="group transition-transform hover:scale-105 hover:transition-transform"
+            >
+              <Card className="h-full space-y-2">
+                <div className="size-37 shrink-0 overflow-hidden p-2.5">
+                  <MaskedParallelsIcon
+                    className="text-secondary-foreground"
+                    maskShape={<CpuLock className="size-full text-white" />}
+                  />
+                </div>
 
-              <h3 className="text-h5 text-section-foreground tracking-[0.03rem]">
-                Trusted Execution Environments (TEE)
-              </h3>
-              <p className="text-muted-foreground font-medium">
-                Hardware-attested confidential compute for low-latency workflows
-                (matching, auctions). TEEs keep code and data sealed, then emit
-                verifiable attestations suitable for audits and due diligence.
-              </p>
-            </Card>
-            <Card className="space-y-2">
-              <div className="size-37 shrink-0 overflow-hidden p-2.5">
-                <MaskedParallelsIcon
-                  className="text-secondary-foreground"
-                  maskShape={<LayersLock className="size-full text-white" />}
-                />
-              </div>
+                <h3 className="text-h5 text-section-foreground group-hover:text-secondary-foreground tracking-[0.03rem]">
+                  Trusted Execution Environments (TEE)
+                </h3>
+                <p className="text-muted-foreground font-medium">
+                  Hardware-attested confidential compute for low-latency
+                  workflows (matching, auctions). TEEs keep code and data
+                  sealed, then emit verifiable attestations suitable for audits
+                  and due diligence.
+                </p>
+              </Card>
+            </Link>
+            <Link
+              href="https://l2beat.com/zk-catalog"
+              className="group transition-transform hover:scale-105 hover:transition-transform"
+            >
+              <Card className="h-full space-y-2">
+                <div className="size-37 shrink-0 overflow-hidden p-2.5">
+                  <MaskedParallelsIcon
+                    className="text-secondary-foreground"
+                    maskShape={<LayersLock className="size-full text-white" />}
+                  />
+                </div>
 
-              <h3 className="text-h5 text-section-foreground tracking-[0.03rem]">
-                Privacy-Focused L2s
-              </h3>
-              <p className="text-muted-foreground font-medium">
-                Confidential rollups settle on Ethereum while keeping
-                counterparties, amounts, and logic private via ZK, FHE or TEEs.
-                Get L1 security, liquidity, and auditability, plus access to
-                selective disclosure.
-              </p>
-            </Card>
+                <h3 className="text-h5 text-section-foreground group-hover:text-secondary-foreground tracking-[0.03rem]">
+                  Privacy-Focused L2s
+                </h3>
+                <p className="text-muted-foreground font-medium">
+                  Confidential rollups settle on Ethereum while keeping
+                  counterparties, amounts, and logic private via ZK, FHE or
+                  TEEs. Get L1 security, liquidity, and auditability, plus
+                  access to selective disclosure.
+                </p>
+              </Card>
+            </Link>
           </div>
         </section>
 
