@@ -39,12 +39,15 @@ import coinbase from "@/public/images/logos/apps/coinbase.png"
 import deutscheBank from "@/public/images/logos/apps/deutsche-bank.png"
 import ey from "@/public/images/logos/apps/ey.png"
 import arbitrum from "@/public/images/logos/networks/arbitrum.png"
-import aztec from "@/public/images/logos/networks/aztec.png"
 import base from "@/public/images/logos/networks/base.png"
 import celo from "@/public/images/logos/networks/celo.png"
+import ink from "@/public/images/logos/networks/ink.webp"
 import linea from "@/public/images/logos/networks/linea.png"
 import optimism from "@/public/images/logos/networks/optimism.png"
 import polygon from "@/public/images/logos/networks/polygon.png"
+import scroll from "@/public/images/logos/networks/scroll.png"
+import starknet from "@/public/images/logos/networks/starknet.png"
+import unichain from "@/public/images/logos/networks/unichain.png"
 import zksync from "@/public/images/logos/networks/zksync.png"
 
 type CardItem = {
@@ -136,16 +139,16 @@ export default async function Page() {
     {
       heading: "Linea",
       description:
-        "Linea is a general purpose, EVM equivalent L2, built by Consensys. Allowing use of existing Ethereum tooling and smart contracts with minimal changes. ",
+        "Linea is a general purpose, EVM equivalent L2, built by Consensys. Allowing use of existing Ethereum tooling and smart contracts with minimal changes.",
       href: "https://linea.build/",
       imgSrc: linea,
     },
     {
-      heading: "Aztec",
+      heading: "Starknet",
       description:
-        "Aztec is a privacy-focused L2 combining composability across private and public execution and state. It enables confidential smart contracts with built-in privacy and scalability.",
-      href: "https://aztec.network/",
-      imgSrc: aztec,
+        "Starknet is a validity rollup (ZK-Rollup) L2 enabling provable computation using STARK proofs. Focused on high-throughput apps and low-cost transactions, combined with Ethereum's security.",
+      href: "https://www.starknet.io/",
+      imgSrc: starknet,
     },
     {
       heading: "Base",
@@ -153,6 +156,27 @@ export default async function Page() {
         "Base is a secure, low-cost L2 built on Optimism's OP Stack, offering seamless Ethereum compatibility. It enables fast, scalable transactions while keeping assets and apps fully onchain.",
       href: "https://www.base.org/",
       imgSrc: base,
+    },
+    {
+      heading: "Ink",
+      description:
+        "Ink is a L2 built by Kraken, focused on bridging centralized finance with onchain applications. Offers accessible DeFi to exchange users, combining L2 scalability with a CEX-native experience.",
+      href: "https://inkonchain.com/",
+      imgSrc: ink,
+    },
+    {
+      heading: "Unichain",
+      description:
+        "Unichain is a DeFi-centered L2 built for high-throughput transactions and cross-chain liquidity. Providing a unified environment for financial protocols, combining capital efficiency with rollup security.",
+      href: "https://www.unichain.org/",
+      imgSrc: unichain,
+    },
+    {
+      heading: "Scroll",
+      description:
+        "Scroll is a zkEVM-based Layer 2 built for Ethereum compatibility. It enables native deployment of existing smart contracts while maintaining full EVM equivalence and trustless proofs anchored to L1.",
+      href: "https://scroll.io/",
+      imgSrc: scroll,
     },
   ]
 
@@ -494,7 +518,7 @@ export default async function Page() {
               overhead of launching and maintaining your own chain
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,260px),1fr))] gap-4">
             {networks.map(({ heading, description, imgSrc, href }) => (
               <Link
                 key={heading}
