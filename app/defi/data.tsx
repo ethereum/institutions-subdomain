@@ -100,7 +100,7 @@ export const defiEcosystem = {
       {
         name: "Compound",
         description:
-          "An algorithmic, autonomous interest rate protocol that allows users to earn interest by lending digital assets to borrowers, designed for developers to build DeFi applications on top of. ",
+          "An algorithmic, autonomous interest rate protocol that allows users to earn interest by lending digital assets to borrowers, designed for developers to build DeFi applications on top of.",
         imgSrc: compound,
         href: "https://compound.finance/",
       },
@@ -142,7 +142,7 @@ export const defiEcosystem = {
       {
         name: "Sky",
         description:
-          "A DeFi protocol (created by the MakerDAO community) that offers a suite of tools for trading, converting, staking, and earning yield from digital assets, including the USDS stablecoin. ",
+          "A DeFi protocol (created by the MakerDAO community) that offers a suite of tools for trading, converting, staking, and earning yield from digital assets, including the USDS stablecoin.",
         imgSrc: sky,
         href: "https://sky.money/",
       },
@@ -163,7 +163,7 @@ export const defiEcosystem = {
       {
         name: "Circle",
         description:
-          "A global financial technology firm that provides payments and financial infrastructure, tokenized money market funds, and more, best known for issuing the fully-regulated USD Coin (USDC) stablecoin. ",
+          "A global financial technology firm that provides payments and financial infrastructure, tokenized money market funds, and more, best known for issuing the fully-regulated USD Coin (USDC) stablecoin.",
         imgSrc: circle,
         href: "https://www.circle.com/",
       },
@@ -191,28 +191,28 @@ export const defiEcosystem = {
       {
         name: "Ondo",
         description:
-          "A DeFi protocol focused on making institutional-grade financial products and services, like tokenized U.S. Treasuries, accessible onchain. ",
+          "A DeFi protocol focused on making institutional-grade financial products and services, like tokenized U.S. Treasuries, accessible onchain.",
         imgSrc: ondo,
         href: "https://ondo.finance/",
       },
       {
         name: "Pendle",
         description:
-          "A DeFi protocol for trading interest rate derivatives via the tokenization of future yield, allowing users to lock in future yield from yield-bearing tokens, speculate on yield movements, and provide liquidity for yield-bearing tokens. ",
+          "A DeFi protocol for trading interest rate derivatives via the tokenization of future yield, allowing users to lock in future yield from yield-bearing tokens, speculate on yield movements, and provide liquidity for yield-bearing tokens.",
         imgSrc: pendle,
         href: "https://www.pendle.finance/",
       },
       {
         name: "Securitize",
         description:
-          "A platform for tokenizing real-world assets and  issuing and managing digital asset securities onchain, allowing businesses to raise capital and investors to trade tokenized shares in funds and private companies.",
+          "A platform for tokenizing real-world assets and issuing and managing digital asset securities onchain, allowing businesses to raise capital and investors to trade tokenized shares in funds and private companies.",
         imgSrc: securitize,
         href: "https://securitize.io/",
       },
       {
         name: "Sky",
         description:
-          "A DeFi protocol (created by the MakerDAO community) that offers a suite of tools for trading, converting, staking, and earning yield from digital assets, including the USDS stablecoin. ",
+          "A DeFi protocol (created by the MakerDAO community) that offers a suite of tools for trading, converting, staking, and earning yield from digital assets, including the USDS stablecoin.",
         imgSrc: sky,
         href: "https://sky.money/",
       },
@@ -226,7 +226,7 @@ export const defiEcosystem = {
       {
         name: "Veda",
         description:
-          "A vault infrastructure platform for institutions to launch and manage custom onchain products at scale. ",
+          "A vault infrastructure platform for institutions to launch and manage custom onchain products at scale.",
         imgSrc: veda,
         href: "https://veda.tech/",
       },
@@ -261,7 +261,7 @@ export const defiEcosystem = {
       {
         name: "Lido",
         description:
-          "A DAO-managed liquid staking network that allows users to stake their ETH and other PoS assets to earn staking rewards, with staked assets represented by stETH, a liquid staking token that can be used in DeFi and is issued to represent staking rewards. ",
+          "A DAO-managed liquid staking network that allows users to stake their ETH and other PoS assets to earn staking rewards, with staked assets represented by stETH, a liquid staking token that can be used in DeFi and is issued to represent staking rewards.",
         imgSrc: lido,
         href: "https://lido.fi/",
       },
@@ -275,14 +275,14 @@ export const defiEcosystem = {
       {
         name: "Rocket Pool",
         description:
-          "A liquid staking protocol focused on decentralization and censorship resistance, allowing users with as little as 0.01 ETH to participate in staking and receive a liquid staking token (rETH) that can be used in DeFi while it continues to accrue staking rewards. ",
+          "A liquid staking protocol focused on decentralization and censorship resistance, allowing users with as little as 0.01 ETH to participate in staking and receive a liquid staking token (rETH) that can be used in DeFi while it continues to accrue staking rewards.",
         imgSrc: rocketPool,
         href: "https://rocketpool.net/",
       },
       {
         name: "Stakewise",
         description:
-          "A liquid staking platform that offers both solo and pooled staking options, backed by a decentralized network of custom staking vaults, with a unified liquid staking token (osETH) that can be used in DeFi while it continues to accrue staking rewards.  ",
+          "A liquid staking platform that offers both solo and pooled staking options, backed by a decentralized network of custom staking vaults, with a unified liquid staking token (osETH) that can be used in DeFi while it continues to accrue staking rewards.",
         imgSrc: stakewise,
         href: "https://www.stakewise.io/",
       },

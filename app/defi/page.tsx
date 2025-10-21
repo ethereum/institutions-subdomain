@@ -87,7 +87,7 @@ export default async function Page() {
     {
       heading: "Monetary Authority of Singapore & J.P. Morgan",
       description:
-        "Live foreign exchange transaction executed via smart contract-based liquidity pool on Polygon L2 mainnet ",
+        "Live foreign exchange transaction executed via smart contract-based liquidity pool on Polygon L2 mainnet",
       year: "2022",
       href: "https://www.jpmorgan.com/insights/payments/wallets/institutional-defi",
     },
