@@ -42,7 +42,6 @@ import arbitrum from "@/public/images/logos/networks/arbitrum.png"
 import aztec from "@/public/images/logos/networks/aztec.png"
 import base from "@/public/images/logos/networks/base.png"
 import celo from "@/public/images/logos/networks/celo.png"
-import jovay from "@/public/images/logos/networks/jovay.png"
 import linea from "@/public/images/logos/networks/linea.png"
 import optimism from "@/public/images/logos/networks/optimism.png"
 import polygon from "@/public/images/logos/networks/polygon.png"
@@ -154,13 +153,6 @@ export default async function Page() {
         "Base is a secure, low-cost L2 built on Optimism's OP Stack, offering seamless Ethereum compatibility. It enables fast, scalable transactions while keeping assets and apps fully onchain.",
       href: "https://www.base.org/",
       imgSrc: base,
-    },
-    {
-      heading: "Jovay",
-      description:
-        "Jovay, by Ant Digital Technologies, is an Ethereum Layer 2 blockchain built for real-world assets and users.",
-      href: "https://jovay.io/",
-      imgSrc: jovay,
     },
   ]
 
