@@ -22,7 +22,6 @@ import fetchTokenizedTreasuries from "../_actions/fetchTokenizedTreasuries"
 import fetchTokenizedTreasuryExamples from "../_actions/fetchTokenizedTreasuryExamples"
 
 import buildings from "@/public/images/banners/buildings.png"
-import buidlUsd from "@/public/images/logos/tokens/buidl-usd.svg"
 import dai from "@/public/images/logos/tokens/dai.svg"
 import fdusd from "@/public/images/logos/tokens/fdusd.svg"
 import pyusd from "@/public/images/logos/tokens/pyusd.svg"
@@ -30,6 +29,7 @@ import usdc from "@/public/images/logos/tokens/usdc.svg"
 import usde from "@/public/images/logos/tokens/usde.svg"
 import usds from "@/public/images/logos/tokens/usds.svg"
 import usdt from "@/public/images/logos/tokens/usdt.svg"
+import usdtb from "@/public/images/logos/tokens/usdtb.svg"
 
 export default async function Page() {
   const stablecoinAssetMarketShareData =
@@ -107,16 +107,16 @@ export default async function Page() {
       href: "https://www.paypal.com/us/digital-wallet/manage-money/crypto/pyusd",
     },
     {
+      ticker: "USDtb",
+      issuer: "Ethena, Blackrock, & Securitize",
+      imgSrc: usdtb,
+      href: "https://usdtb.money/",
+    },
+    {
       ticker: "FDUSD",
       issuer: "First Digital",
       imgSrc: fdusd,
       href: "https://firstdigitallabs.com/fdusd",
-    },
-    {
-      ticker: "BUIDL USD",
-      issuer: "BlackRock & Securitize",
-      imgSrc: buidlUsd,
-      href: "https://securitize.io/blackrock/buidl",
     },
   ]
 
