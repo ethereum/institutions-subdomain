@@ -6,11 +6,12 @@ import { every } from "@/lib/utils/time"
 
 import { SITE_ORIGIN, SOURCE } from "@/lib/constants"
 
-export type TokenizedTreasuryExamplesData = {
-  BUIDL: number
-  BENJI: number
-  OUSG: number
-}
+import { RWA_XYZ_TREASURIES_ASSET_IDS } from "../api/rwa-v3-aggregates-timeseries/treasury-examples/route"
+
+type TokenizedTreasuryExamplesData = Record<
+  keyof typeof RWA_XYZ_TREASURIES_ASSET_IDS,
+  number
+>
 
 export const fetchTokenizedTreasuryExamples = async (): Promise<
   DataTimestamped<TokenizedTreasuryExamplesData>

@@ -6,11 +6,12 @@ import { every } from "@/lib/utils/time"
 
 import { SITE_ORIGIN, SOURCE } from "@/lib/constants"
 
-export type TokenizedPrivateCreditExamplesData = {
-  centrifuge: number
-  maple: number
-  truefi: number
-}
+import { RWA_XYZ_PROTOCOL_SLUGS } from "../api/rwa-v3-aggregates-timeseries/private-credit-examples/route"
+
+export type TokenizedPrivateCreditExamplesData = Record<
+  (typeof RWA_XYZ_PROTOCOL_SLUGS)[number],
+  number
+>
 
 export const fetchTokenizedPrivateCreditExamples = async (): Promise<
   DataTimestamped<TokenizedPrivateCreditExamplesData>

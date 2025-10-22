@@ -11,6 +11,7 @@ export const RWA_XYZ_TREASURIES_ASSET_IDS = {
   BUIDL: 2331,
   BENJI: 63,
   OUSG: 57,
+  mF_ONE: 15152,
 } as const satisfies Record<string, number>
 
 type JSONData = RwaApiTimeseriesResponse

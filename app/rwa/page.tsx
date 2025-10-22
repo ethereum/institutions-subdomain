@@ -197,16 +197,14 @@ export default async function Page() {
       ),
     },
     {
-      header: "TrueFi",
-      valuation: formatLargeCurrency(
-        tokenizedPrivateCreditExamplesData.data.truefi
-      ),
+      header: "Midas mF-ONE",
+      valuation: formatLargeCurrency(tokenizedTreasuryExamplesData.data.mF_ONE),
       description: "Active loans on Ethereum + L2s",
-      metricHref: "https://app.rwa.xyz/private-credit",
-      visitHref: "https://truefi.io/",
-      ...tokenizedPrivateCreditExamplesData.sourceInfo,
+      metricHref: "https://app.rwa.xyz/assets/mF-ONE",
+      visitHref: "https://midas.app/mfone",
+      ...tokenizedTreasuryExamplesData.sourceInfo,
       lastUpdated: formatDateMonthDayYear(
-        tokenizedPrivateCreditExamplesData.lastUpdated
+        tokenizedTreasuryExamplesData.lastUpdated
       ),
     },
   ]

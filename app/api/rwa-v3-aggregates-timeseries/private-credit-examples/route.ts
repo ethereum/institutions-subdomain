@@ -5,7 +5,7 @@ import type { RwaApiTimeseriesResponse } from "@/lib/types"
 import { getRwaApiEthereumNetworksFilter } from "@/lib/utils/data"
 import { dateNDaysAgo } from "@/lib/utils/date"
 
-export const RWA_XYZ_PROTOCOL_SLUGS = ["centrifuge", "maple", "truefi"]
+export const RWA_XYZ_PROTOCOL_SLUGS = ["centrifuge", "maple"] as const
 
 type JSONData = RwaApiTimeseriesResponse
 
