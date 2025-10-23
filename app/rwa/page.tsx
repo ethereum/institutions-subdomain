@@ -17,8 +17,8 @@ import { formatLargeCurrency } from "@/lib/utils/number"
 
 import fetchAssetMarketShare from "../_actions/fetchAssetMarketShare"
 import fetchAssetValueByAssetIds from "../_actions/fetchAssetValueByAssetIds"
+import fetchProtocolValueBySlug from "../_actions/fetchProtocolValueBySlug"
 import fetchTokenizedPrivateCredit from "../_actions/fetchTokenizedPrivateCredit"
-import fetchTokenizedPrivateCreditExamples from "../_actions/fetchTokenizedPrivateCreditExamples"
 import fetchTokenizedTreasuries from "../_actions/fetchTokenizedTreasuries"
 
 import buildings from "@/public/images/banners/buildings.png"
@@ -38,8 +38,7 @@ export default async function Page() {
   const tokenizedPrivateCreditData = await fetchTokenizedPrivateCredit()
   const tokenizedTreasuriesData = await fetchTokenizedTreasuries()
   const assetValueByAssetIdsData = await fetchAssetValueByAssetIds()
-  const tokenizedPrivateCreditExamplesData =
-    await fetchTokenizedPrivateCreditExamples()
+  const protocolValueBySlugData = await fetchProtocolValueBySlug()
 
   const metrics: Metric[] = [
     {
@@ -166,29 +165,21 @@ export default async function Page() {
   const creditPlatforms: AssetDetails[] = [
     {
       header: "Centrifuge",
-      valuation: formatLargeCurrency(
-        tokenizedPrivateCreditExamplesData.data.centrifuge
-      ),
+      valuation: formatLargeCurrency(protocolValueBySlugData.data.centrifuge),
       description: "Active loans on Ethereum + L2s",
       metricHref: "https://app.rwa.xyz/platforms/centrifuge",
       visitHref: "https://centrifuge.io/",
-      ...tokenizedPrivateCreditExamplesData.sourceInfo,
-      lastUpdated: formatDateMonthDayYear(
-        tokenizedPrivateCreditExamplesData.lastUpdated
-      ),
+      ...protocolValueBySlugData.sourceInfo,
+      lastUpdated: formatDateMonthDayYear(protocolValueBySlugData.lastUpdated),
     },
     {
       header: "Maple Finance",
-      valuation: formatLargeCurrency(
-        tokenizedPrivateCreditExamplesData.data.maple
-      ),
+      valuation: formatLargeCurrency(protocolValueBySlugData.data.maple),
       description: "Active loans on Ethereum + L2s",
       metricHref: "https://app.rwa.xyz/platforms/maple",
       visitHref: "https://maple.finance/",
-      ...tokenizedPrivateCreditExamplesData.sourceInfo,
-      lastUpdated: formatDateMonthDayYear(
-        tokenizedPrivateCreditExamplesData.lastUpdated
-      ),
+      ...protocolValueBySlugData.sourceInfo,
+      lastUpdated: formatDateMonthDayYear(protocolValueBySlugData.lastUpdated),
     },
     {
       header: "Midas mF-ONE",
