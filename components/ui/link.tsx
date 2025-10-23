@@ -74,7 +74,6 @@ export const LinkWithArrow = forwardRef<HTMLAnchorElement, LinkProps>(
     <Link className={cn("group", className)} ref={ref} {...props}>
       {children}
       &nbsp;
-      {/* TODO: Bounce arrow horizontally on link hover */}
       <span className="motion-safe:group-hover:animate-x-bounce inline-block">
         →
       </span>

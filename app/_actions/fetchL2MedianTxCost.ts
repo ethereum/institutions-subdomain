@@ -36,7 +36,6 @@ export const fetchL2MedianTxCost = async (): Promise<
       ["txcosts_median_usd", "txcount"].includes(item.metric_key)
     )
 
-    // TODO: Confirm usage of most recent day
     const latestDate = filteredResponses.reduce((latest, item) => {
       const itemDate = new Date(item.date)
       return itemDate > new Date(latest) ? item.date : latest

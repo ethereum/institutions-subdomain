@@ -68,7 +68,6 @@ const DefiTimeseriesTvlEthereumLineChart = ({
         minTickGap={32}
         tickFormatter={(v) => formatDateMonthYear(v)}
       />
-      {/* // TODO: Debug ChartTooltip error */}
       <ChartTooltip
         content={(props) => (
           <ChartTooltipContent

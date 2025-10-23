@@ -38,7 +38,6 @@
 
   --breakpoint-xs: 30rem; /* 480px */
 
-  /* TODO: Not yet fully defined: */
   --font-sans: var(--font-satoshi);
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
@@ -156,7 +155,6 @@
   --popover: oklch(1 0 0); /* #FFFFFF pure white bg */
   --popover-foreground: oklch(0.25 0 0); /* #222222 near-black text */
 
-  /* TODO: Not yet fully defined */
   --input: oklch(0.922 0 0); /* #E5E5E5 */
 }
 

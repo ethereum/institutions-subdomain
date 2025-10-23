@@ -1,5 +1,4 @@
 "use client"
-// TODO: Mainnet + L2 ("Exclude L2s" filter)
 
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
