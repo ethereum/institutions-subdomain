@@ -16,13 +16,13 @@ const RWA_XYZ_PROTOCOL_SLUGS = ["centrifuge", "maple"] as const
 
 type JSONData = RwaApiTimeseriesResponse
 
-export type ProtocolValueBySlugData = Record<
+export type ProtocolsValueBySlugData = Record<
   (typeof RWA_XYZ_PROTOCOL_SLUGS)[number],
   number
 >
 
-export const fetchProtocolValueBySlug = async (): Promise<
-  DataTimestamped<ProtocolValueBySlugData>
+export const fetchProtocolsValueBySlug = async (): Promise<
+  DataTimestamped<ProtocolsValueBySlugData>
 > => {
   const url = new URL("https://api.rwa.xyz/v3/protocols/timeseries")
 
@@ -108,7 +108,7 @@ export const fetchProtocolValueBySlug = async (): Promise<
         acc[key] = 0
       }
       return acc
-    }, {} as ProtocolValueBySlugData)
+    }, {} as ProtocolsValueBySlugData)
 
     return {
       data,
@@ -119,7 +119,7 @@ export const fetchProtocolValueBySlug = async (): Promise<
       sourceInfo: SOURCE.RWA,
     }
   } catch (error: unknown) {
-    console.error("fetchProtocolValueBySlug failed", {
+    console.error("fetchProtocolsValueBySlug failed", {
       name: error instanceof Error ? error.name : undefined,
       message: error instanceof Error ? error.message : String(error),
       url: url,
@@ -128,4 +128,4 @@ export const fetchProtocolValueBySlug = async (): Promise<
   }
 }
 
-export default fetchProtocolValueBySlug
+export default fetchProtocolsValueBySlug

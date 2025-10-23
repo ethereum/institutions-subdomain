@@ -17,8 +17,8 @@ import { formatLargeCurrency } from "@/lib/utils/number"
 
 import fetchAssetMarketShare from "../_actions/fetchAssetMarketShare"
 import fetchAssetValueByAssetIds from "../_actions/fetchAssetValueByAssetIds"
-import fetchProtocolValueBySlug from "../_actions/fetchProtocolValueBySlug"
-import fetchTokenizedPrivateCredit from "../_actions/fetchTokenizedPrivateCredit"
+import fetchProtocolsValueBySlug from "../_actions/fetchProtocolsValueBySlug"
+import fetchProtocolsValueTotal from "../_actions/fetchProtocolsValueTotal"
 import fetchTokenizedTreasuries from "../_actions/fetchTokenizedTreasuries"
 
 import buildings from "@/public/images/banners/buildings.png"
@@ -35,10 +35,10 @@ export default async function Page() {
   const stablecoinAssetMarketShareData =
     await fetchAssetMarketShare("STABLECOINS")
   const rwaAssetMarketShareData = await fetchAssetMarketShare("RWAS")
-  const tokenizedPrivateCreditData = await fetchTokenizedPrivateCredit()
+  const protocolsValueTotal = await fetchProtocolsValueTotal()
   const tokenizedTreasuriesData = await fetchTokenizedTreasuries()
   const assetValueByAssetIdsData = await fetchAssetValueByAssetIds()
-  const protocolValueBySlugData = await fetchProtocolValueBySlug()
+  const protocolsValueBySlugData = await fetchProtocolsValueBySlug()
 
   const metrics: Metric[] = [
     {
@@ -165,21 +165,21 @@ export default async function Page() {
   const creditPlatforms: AssetDetails[] = [
     {
       header: "Centrifuge",
-      valuation: formatLargeCurrency(protocolValueBySlugData.data.centrifuge),
+      valuation: formatLargeCurrency(protocolsValueBySlugData.data.centrifuge),
       description: "Active loans on Ethereum + L2s",
       metricHref: "https://app.rwa.xyz/platforms/centrifuge",
       visitHref: "https://centrifuge.io/",
-      ...protocolValueBySlugData.sourceInfo,
-      lastUpdated: formatDateMonthDayYear(protocolValueBySlugData.lastUpdated),
+      ...protocolsValueBySlugData.sourceInfo,
+      lastUpdated: formatDateMonthDayYear(protocolsValueBySlugData.lastUpdated),
     },
     {
       header: "Maple Finance",
-      valuation: formatLargeCurrency(protocolValueBySlugData.data.maple),
+      valuation: formatLargeCurrency(protocolsValueBySlugData.data.maple),
       description: "Active loans on Ethereum + L2s",
       metricHref: "https://app.rwa.xyz/platforms/maple",
       visitHref: "https://maple.finance/",
-      ...protocolValueBySlugData.sourceInfo,
-      lastUpdated: formatDateMonthDayYear(protocolValueBySlugData.lastUpdated),
+      ...protocolsValueBySlugData.sourceInfo,
+      lastUpdated: formatDateMonthDayYear(protocolsValueBySlugData.lastUpdated),
     },
     {
       header: "Midas mF-ONE",
@@ -438,16 +438,16 @@ export default async function Page() {
               </h3>
               <p className="text-big font-bold tracking-[0.055rem]">
                 {formatLargeCurrency(
-                  tokenizedPrivateCreditData.data.totalPrivateCredit
+                  protocolsValueTotal.data.totalPrivateCredit
                 )}
               </p>
               <InlineText className="text-muted font-medium">
                 sector on Ethereum + L2s
                 <SourceInfoTooltip
                   lastUpdated={formatDateMonthDayYear(
-                    tokenizedPrivateCreditData.lastUpdated
+                    protocolsValueTotal.lastUpdated
                   )}
-                  {...tokenizedPrivateCreditData.sourceInfo}
+                  {...protocolsValueTotal.sourceInfo}
                 />
               </InlineText>
             </div>

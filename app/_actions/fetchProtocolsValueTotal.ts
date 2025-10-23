@@ -3,18 +3,19 @@
 import type { DataTimestamped, RwaApiTimeseriesResponse } from "@/lib/types"
 
 import { getRwaApiEthereumNetworksFilter } from "@/lib/utils/data"
+import { dateNDaysAgo } from "@/lib/utils/date"
 import { every } from "@/lib/utils/time"
 
 import { SOURCE } from "@/lib/constants"
 
 type JSONData = RwaApiTimeseriesResponse
 
-export type TokenizedPrivateCreditData = {
+export type ProtocolsValueTotalData = {
   totalPrivateCredit: number
 }
 
-export const fetchTokenizedPrivateCredit = async (): Promise<
-  DataTimestamped<TokenizedPrivateCreditData>
+export const fetchProtocolsValueTotal = async (): Promise<
+  DataTimestamped<ProtocolsValueTotalData>
 > => {
   const url = new URL("https://api.rwa.xyz/v3/protocols/timeseries")
 
@@ -34,30 +35,15 @@ export const fetchTokenizedPrivateCredit = async (): Promise<
           value: "outstanding_capital_dollar",
         },
         {
-          field: "protocolSlug",
-          operator: "notEquals",
-          value: "ribbon-lend",
-        },
-        {
-          field: "protocolSlug",
-          operator: "notEquals",
-          value: "florence-finance",
-        },
-        {
-          field: "protocolSlug",
-          operator: "notEquals",
-          value: "homecoin",
-        },
-        {
-          field: "protocolSlug",
-          operator: "notEquals",
-          value: "clearpool",
+          field: "date",
+          operator: "onOrAfter",
+          value: dateNDaysAgo(),
         },
         getRwaApiEthereumNetworksFilter(["mainnet", "layer-2"]),
       ],
     },
     aggregate: {
-      groupBy: "network",
+      groupBy: "measure",
       aggregateFunction: "sum",
       interval: "day",
     },
@@ -81,7 +67,7 @@ export const fetchTokenizedPrivateCredit = async (): Promise<
       },
       next: {
         revalidate: every("day"),
-        tags: ["rwa:v3:protocols:timeseries:private-credit"],
+        tags: ["rwa:v3:protocols:timeseries:total-value"],
       },
     })
 
@@ -108,7 +94,7 @@ export const fetchTokenizedPrivateCredit = async (): Promise<
       sourceInfo: SOURCE.RWA,
     }
   } catch (error: unknown) {
-    console.error("fetchTokenizedPrivateCredit failed", {
+    console.error("fetchProtocolsValueAll failed", {
       name: error instanceof Error ? error.name : undefined,
       message: error instanceof Error ? error.message : String(error),
       url,
@@ -117,4 +103,4 @@ export const fetchTokenizedPrivateCredit = async (): Promise<
   }
 }
 
-export default fetchTokenizedPrivateCredit
+export default fetchProtocolsValueTotal
