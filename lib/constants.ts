@@ -102,6 +102,7 @@ export const RWA_API_LAYER_2S = [
   { id: 7, name: "Celo" },
   { id: 10, name: "Base" },
   { id: 11, name: "Arbitrum" },
+  { id: 17, name: "Polygon zkEVM" },
   { id: 31, name: "ZKsync Era" },
   { id: 33, name: "Mantle" },
   { id: 35, name: "Blast" },
