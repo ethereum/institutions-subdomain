@@ -16,10 +16,10 @@ import { getMetadata } from "@/lib/utils/metadata"
 import { formatLargeCurrency } from "@/lib/utils/number"
 
 import fetchAssetMarketShare from "../_actions/fetchAssetMarketShare"
+import fetchAssetValueByAssetIds from "../_actions/fetchAssetValueByAssetIds"
 import fetchTokenizedPrivateCredit from "../_actions/fetchTokenizedPrivateCredit"
 import fetchTokenizedPrivateCreditExamples from "../_actions/fetchTokenizedPrivateCreditExamples"
 import fetchTokenizedTreasuries from "../_actions/fetchTokenizedTreasuries"
-import fetchTokenizedTreasuryExamples from "../_actions/fetchTokenizedTreasuryExamples"
 
 import buildings from "@/public/images/banners/buildings.png"
 import dai from "@/public/images/logos/tokens/dai.svg"
@@ -37,7 +37,7 @@ export default async function Page() {
   const rwaAssetMarketShareData = await fetchAssetMarketShare("RWAS")
   const tokenizedPrivateCreditData = await fetchTokenizedPrivateCredit()
   const tokenizedTreasuriesData = await fetchTokenizedTreasuries()
-  const tokenizedTreasuryExamplesData = await fetchTokenizedTreasuryExamples()
+  const assetValueByAssetIdsData = await fetchAssetValueByAssetIds()
   const tokenizedPrivateCreditExamplesData =
     await fetchTokenizedPrivateCreditExamples()
 
@@ -132,40 +132,34 @@ export default async function Page() {
   const cashEquivalents: AssetDetails[] = [
     {
       header: "BUIDL",
-      valuation: formatLargeCurrency(tokenizedTreasuryExamplesData.data.BUIDL),
+      valuation: formatLargeCurrency(assetValueByAssetIdsData.data.BUIDL),
       description: "BlackRock USD Institutional Digital Liquidity Fund",
       issuer: "BlackRock & Securitize",
       metricHref: "https://app.rwa.xyz/assets/BUIDL",
       visitHref: "https://securitize.io/blackrock/buidl",
-      ...tokenizedTreasuryExamplesData.sourceInfo,
-      lastUpdated: formatDateMonthDayYear(
-        tokenizedTreasuryExamplesData.lastUpdated
-      ),
+      ...assetValueByAssetIdsData.sourceInfo,
+      lastUpdated: formatDateMonthDayYear(assetValueByAssetIdsData.lastUpdated),
     },
     {
       header: "BENJI",
-      valuation: formatLargeCurrency(tokenizedTreasuryExamplesData.data.BENJI),
+      valuation: formatLargeCurrency(assetValueByAssetIdsData.data.BENJI),
       description: "Franklin OnChain U.S. Government Money Fund",
       issuer: "Franklin Templeton Benji Investments",
       metricHref: "https://app.rwa.xyz/assets/BENJI",
       visitHref:
         "https://www.franklintempleton.com/investments/options/money-market-funds/products/29386/SINGLCLASS/franklin-on-chain-u-s-government-money-fund/FOBXX",
-      ...tokenizedTreasuryExamplesData.sourceInfo,
-      lastUpdated: formatDateMonthDayYear(
-        tokenizedTreasuryExamplesData.lastUpdated
-      ),
+      ...assetValueByAssetIdsData.sourceInfo,
+      lastUpdated: formatDateMonthDayYear(assetValueByAssetIdsData.lastUpdated),
     },
     {
       header: "OUSG",
-      valuation: formatLargeCurrency(tokenizedTreasuryExamplesData.data.OUSG),
+      valuation: formatLargeCurrency(assetValueByAssetIdsData.data.OUSG),
       description: "Ondo Short-Term US Government Bond Fund",
       issuer: "Ondo",
       metricHref: "https://app.rwa.xyz/assets/OUSG",
       visitHref: "https://ondo.finance/ousg",
-      ...tokenizedTreasuryExamplesData.sourceInfo,
-      lastUpdated: formatDateMonthDayYear(
-        tokenizedTreasuryExamplesData.lastUpdated
-      ),
+      ...assetValueByAssetIdsData.sourceInfo,
+      lastUpdated: formatDateMonthDayYear(assetValueByAssetIdsData.lastUpdated),
     },
   ]
 
@@ -198,14 +192,12 @@ export default async function Page() {
     },
     {
       header: "Midas mF-ONE",
-      valuation: formatLargeCurrency(tokenizedTreasuryExamplesData.data.mF_ONE),
+      valuation: formatLargeCurrency(assetValueByAssetIdsData.data.mF_ONE),
       description: "Active loans on Ethereum + L2s",
       metricHref: "https://app.rwa.xyz/assets/mF-ONE",
       visitHref: "https://midas.app/mfone",
-      ...tokenizedTreasuryExamplesData.sourceInfo,
-      lastUpdated: formatDateMonthDayYear(
-        tokenizedTreasuryExamplesData.lastUpdated
-      ),
+      ...assetValueByAssetIdsData.sourceInfo,
+      lastUpdated: formatDateMonthDayYear(assetValueByAssetIdsData.lastUpdated),
     },
   ]
 
