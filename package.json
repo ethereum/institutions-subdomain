@@ -25,10 +25,10 @@
     "humanize-duration": "^3.33.1",
     "lucide-react": "^0.544.0",
     "motion": "^12.23.19",
-    "next": "15.5.3",
+    "next": "16.0.0",
     "next-sitemap": "^4.2.3",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "react-hook-form": "^7.63.0",
     "react-use-measure": "^2.1.7",
     "recharts": "^3.2.1",
@@ -55,7 +55,7 @@
     "prettier-plugin-tailwindcss": "^0.6.14",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.3.8",
-    "typescript": "^5"
+    "typescript": "^5.1.0"
   },
   "packageManager": "pnpm@10.12.4+sha512.5ea8b0deed94ed68691c9bad4c955492705c5eeb8a87ef86bc62c74a26b037b08ff9570f108b2e4dbd1dd1a9186fea925e527f141c648e85af45631074680184"
 }
