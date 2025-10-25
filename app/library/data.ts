@@ -6,9 +6,12 @@ import { formatDateMonthDayYear, isValidDate } from "@/lib/utils/date"
 
 import { fetchPosts, getPostImage } from "./[slug]/utils"
 
+import a16z from "@/public/images/library/a16z-1.png"
 import blockchainScotland from "@/public/images/library/blockchain-scotland-1.png"
 import citi from "@/public/images/library/citi-1.png"
 import consensys from "@/public/images/library/consensys-1.webp"
+import decentralised from "@/public/images/library/decentralised-1.jpg"
+import etherealize from "@/public/images/library/etherealize-1.png"
 import ethtokyo from "@/public/images/library/ethtokyo-1.png"
 import ey from "@/public/images/library/ey-1.png"
 import fidelity1 from "@/public/images/library/fidelity-1.jpg"
@@ -24,21 +27,6 @@ type LibraryItem = {
   date: string
   href: string
 }
-
-const posts = fetchPosts()
-
-const internalLibraryItems: LibraryItem[] = posts.map(
-  ({ frontmatter, slug }) => {
-    const { title, datePublished } = frontmatter
-
-    return {
-      title,
-      imgSrc: getPostImage(frontmatter),
-      date: formatDateMonthDayYear(datePublished),
-      href: join("library", slug),
-    }
-  }
-)
 
 const externalLibraryItems: LibraryItem[] = [
   {
@@ -108,7 +96,38 @@ const externalLibraryItems: LibraryItem[] = [
     date: "October 15, 2025",
     imgSrc: mergeMadrid,
   },
+  {
+    title: "a16z - State of Crypto ",
+    href: "https://stateofcrypto.a16zcrypto.com/",
+    date: "October 22, 2025",
+    imgSrc: a16z,
+  },
+  {
+    title: "Will all L1s Move to Ethereum?",
+    href: "https://www.decentralised.co/p/will-all-l1s-move-to-ethereum",
+    date: "October 1, 2025",
+    imgSrc: decentralised,
+  },
+  {
+    title: "Etherealize - Wall St Needs a Blockchain",
+    href: "https://drive.google.com/file/d/1JMu1pXfNEij2j8P2bSrRI9OQ_oGQG22E/view",
+    date: "September 15, 2025",
+    imgSrc: etherealize,
+  },
 ]
+
+const internalLibraryItems: LibraryItem[] = fetchPosts().map(
+  ({ frontmatter, slug }) => {
+    const { title, datePublished } = frontmatter
+
+    return {
+      title,
+      imgSrc: getPostImage(frontmatter),
+      date: formatDateMonthDayYear(datePublished),
+      href: join("library", slug),
+    }
+  }
+)
 
 export const libraryItems: LibraryItem[] = [
   ...externalLibraryItems,
