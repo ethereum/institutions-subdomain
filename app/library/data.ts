@@ -91,7 +91,7 @@ const externalLibraryItems: LibraryItem[] = [
     imgSrc: galaxy,
   },
   {
-    title: "EY -, 2025 Institutional investor digital assets survey",
+    title: "EY - 2025 Institutional investor digital assets survey",
     href: "https://www.ey.com/content/dam/ey-unified-site/ey-com/en-us/insights/financial-services/documents/ey-growing-enthusiasm-propels-digital-assets-into-the-mainstream.pdf",
     date: "March 18, 2025",
     imgSrc: ey,
