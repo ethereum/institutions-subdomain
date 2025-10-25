@@ -15,6 +15,7 @@ import fidelity1 from "@/public/images/library/fidelity-1.jpg"
 import fidelity2 from "@/public/images/library/fidelity-2.png"
 import galaxy from "@/public/images/library/galaxy-1.png"
 import goldmanSachs from "@/public/images/library/goldman-sachs-1.png"
+import mergeMadrid from "@/public/images/library/merge-madrid-1.jpg"
 import nextFinSummit from "@/public/images/library/nextfin-summit-1.png"
 
 type LibraryItem = {
@@ -100,6 +101,12 @@ const externalLibraryItems: LibraryItem[] = [
     href: "https://drive.google.com/file/d/13YdvzcC7G-CFmYHBjvd-Js6xicgTS8V5/view",
     date: "October 1, 2025",
     imgSrc: nextFinSummit,
+  },
+  {
+    title: "MERGE Madrid - Future of Blockchain Infrastructure",
+    href: "https://www.youtube.com/watch?v=1z1iIc0TIVE",
+    date: "October 15, 2025",
+    imgSrc: mergeMadrid,
   },
 ]
 
