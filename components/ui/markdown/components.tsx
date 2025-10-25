@@ -6,7 +6,12 @@ const MarkdownComponents: Components = {
   a: ({ children, href }) => {
     if (!href) return <a>{children}</a>
     return (
-      <Link inline href={href} className="max-w-full break-all">
+      <Link
+        inline
+        href={href}
+        className="css-secondary max-w-full break-all [&_[data-slot='inline-text-icon']]:ms-[0.25em] [&_[data-slot='inline-text-icon']]:h-[1.5lh] [&_[data-slot='inline-text-icon']]:text-[0.75em]"
+        showDecorator
+      >
         {children}
       </Link>
     )
