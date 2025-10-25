@@ -8,12 +8,13 @@ import { formatDateMonthDayYear, isValidDate } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
 
 import { FrontMatter } from "./types"
-import { fetchPosts, getPost } from "./utils"
+import { getPost } from "./utils"
 
-export async function generateStaticParams() {
-  const allPosts = fetchPosts()
-  return allPosts.map(({ slug }) => ({ slug }))
-}
+// TODO: Re-enable when posts available
+// export async function generateStaticParams() {
+//   const allPosts = fetchPosts()
+//   return allPosts.map(({ slug }) => ({ slug }))
+// }
 
 type Props = { params: Promise<{ slug: string }> }
 
