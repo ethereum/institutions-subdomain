@@ -5,6 +5,8 @@ import NextLink from "next/link"
 import { cn } from "@/lib/utils"
 import * as url from "@/lib/utils/url"
 
+import { InlineText, InlineTextIcon } from "./inline-text"
+
 export type LinkProps = ComponentProps<"a"> &
   ComponentProps<typeof NextLink> & {
     showDecorator?: boolean
@@ -40,24 +42,28 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
 
   if (isExternal) {
     return (
-      <a target="_blank" rel="noopener" {...commonProps}>
-        {isMailto ? (
-          <span className="text-nowrap">
-            {showDecorator && (
-              <Mail className="me-1 !mb-0.5 inline-block size-[1em] shrink-0" />
-            )}
-            {children}
+      <InlineText>
+        <a target="_blank" rel="noopener noreferrer" {...commonProps}>
+          {isMailto ? (
+            <span className="text-//nowrap">
+              {showDecorator && (
+                <Mail className="me-1 !mb-0.5 inline-block size-[1em] shrink-0" />
+              )}
+              {children}
+            </span>
+          ) : (
+            children
+          )}
+          <span className="sr-only">
+            {isMailto ? " (opens email client)" : " (opens in a new tab)"}
           </span>
-        ) : (
-          children
-        )}
-        <span className="sr-only">
-          {isMailto ? " (opens email client)" : " (opens in a new tab)"}
-        </span>
-        {showDecorator && !isMailto && (
-          <ExternalLink className="text-muted group-hover:text-muted-foreground ms-1 !mb-[0.125em] inline size-[1em] shrink-0" />
-        )}
-      </a>
+          {showDecorator && !isMailto && (
+            <InlineTextIcon>
+              <ExternalLink className="text-muted group-hover:text-muted-foreground inline size-[1em] shrink-0" />
+            </InlineTextIcon>
+          )}
+        </a>
+      </InlineText>
     )
   }
 
