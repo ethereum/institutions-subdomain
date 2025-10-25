@@ -11,7 +11,7 @@ function LibraryCard({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card"
-      className={cn("group space-y-4", className)}
+      className={cn("group/card space-y-4", className)}
       {...props}
     />
   )
@@ -36,7 +36,7 @@ function LibraryCardImage({ className, alt, ...props }: ImageProps) {
       data-slot="card-image"
       alt={alt || ""}
       className={cn(
-        "size-full object-cover transition-transform group-has-[a:hover]:scale-105 group-has-[a:hover]:transition-transform",
+        "size-full object-cover transition-transform group-has-[a:hover]/card:scale-105 group-has-[a:hover]/card:transition-transform",
         className
       )}
       placeholder="blur"
