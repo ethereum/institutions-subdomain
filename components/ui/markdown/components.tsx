@@ -1,4 +1,3 @@
-import Image from "next/image"
 import { type Components } from "react-markdown"
 
 import Link from "@/components/ui/link"
@@ -14,7 +13,8 @@ const MarkdownComponents: Components = {
   },
   img: ({ src, alt }) => {
     if (typeof src !== "string") return null
-    return <Image className="mx-auto block" src={src} alt={alt || ""} />
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img src={src} alt={alt || ""} className="mx-auto block" />
   },
   h2: ({ children }) => (
     <h2 className="mt-12 mb-4 text-4xl first:mt-0 md:mt-16 md:text-5xl">
