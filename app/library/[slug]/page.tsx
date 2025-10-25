@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: isValidDate(datePublished)
         ? formatDateMonthDayYear(datePublished)
         : datePublished,
-      image,
+      image: image || "images/og/library.png",
     })
   } catch {
     return getMetadata({
