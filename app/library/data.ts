@@ -25,21 +25,6 @@ type LibraryItem = {
   href: string
 }
 
-const posts = fetchPosts()
-
-const internalLibraryItems: LibraryItem[] = posts.map(
-  ({ frontmatter, slug }) => {
-    const { title, datePublished } = frontmatter
-
-    return {
-      title,
-      imgSrc: getPostImage(frontmatter),
-      date: formatDateMonthDayYear(datePublished),
-      href: join("library", slug),
-    }
-  }
-)
-
 const externalLibraryItems: LibraryItem[] = [
   {
     title: "Citi - Stablecoins 2030 Web3 to Wall Street",
@@ -109,6 +94,19 @@ const externalLibraryItems: LibraryItem[] = [
     imgSrc: mergeMadrid,
   },
 ]
+
+const internalLibraryItems: LibraryItem[] = fetchPosts().map(
+  ({ frontmatter, slug }) => {
+    const { title, datePublished } = frontmatter
+
+    return {
+      title,
+      imgSrc: getPostImage(frontmatter),
+      date: formatDateMonthDayYear(datePublished),
+      href: join("library", slug),
+    }
+  }
+)
 
 export const libraryItems: LibraryItem[] = [
   ...externalLibraryItems,
