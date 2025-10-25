@@ -17,31 +17,6 @@ export async function generateStaticParams() {
 
 type Props = { params: Promise<{ slug: string }> }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
-
-  try {
-    const {
-      frontmatter: { title, image, datePublished },
-    } = getPost(slug)
-
-    return getMetadata({
-      slug: ["library", slug],
-      title,
-      description: isValidDate(datePublished)
-        ? formatDateMonthDayYear(datePublished)
-        : datePublished,
-      image: image || "images/og/library.png",
-    })
-  } catch {
-    return getMetadata({
-      slug: ["library", slug],
-      title: "Ethereum for Institutions",
-      description: "Oops! Page not found",
-    })
-  }
-}
-
 export default async function Page({ params }: Props) {
   const { slug } = await params
 
@@ -64,9 +39,36 @@ export default async function Page({ params }: Props) {
         </time>
       </Hero>
 
-      <article className="mx-auto mb-24 w-full max-w-5xl px-4 sm:px-10">
-        <MarkdownProvider>{content}</MarkdownProvider>
+      <article className="max-w-8xl mx-auto mb-24 w-full px-4 sm:px-10">
+        <div className="max-w-prose">
+          <MarkdownProvider>{content}</MarkdownProvider>
+        </div>
       </article>
     </main>
   )
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
+
+  try {
+    const {
+      frontmatter: { title, image, datePublished },
+    } = getPost(slug)
+    const date = isValidDate(datePublished)
+      ? formatDateMonthDayYear(datePublished)
+      : datePublished
+    return getMetadata({
+      slug: ["library", slug],
+      title,
+      description: date,
+      image: image || `/library/og/?title=${title}&date=${date}`,
+    })
+  } catch {
+    return getMetadata({
+      slug: ["library", slug],
+      title: "Ethereum Institutional Resources",
+      description: "Oops! Post not found",
+    })
+  }
 }

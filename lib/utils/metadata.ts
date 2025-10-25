@@ -2,9 +2,10 @@ import { join } from "path"
 
 import type { Metadata } from "next"
 
+import { DEFAULT_OG_IMAGE } from "../constants"
+
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_ORIGIN || "https://institutions.ethereum.org"
-const DEFAULT_OG_IMAGE = "/images/og/home.png"
 const SITE_NAME = "Ethereum for Institutions"
 
 export const getMetadata = async ({

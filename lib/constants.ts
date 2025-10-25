@@ -13,6 +13,8 @@ export const MAINNET_GENESIS = "2015-07-30T15:26:13Z"
 
 export const ENTERPRISE_EMAIL = "enterprise@ethereum.org"
 
+export const DEFAULT_OG_IMAGE = "/images/og/home.png"
+
 /**
  * Source information for API utilized
  */
