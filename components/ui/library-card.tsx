@@ -31,14 +31,20 @@ function LibraryCardHeader({
 }
 
 function LibraryCardImage({ className, alt, ...props }: ImageProps) {
+  const sharedClasses = cn(
+    "size-full object-cover transition-transform group-has-[a:hover]/card:scale-105 group-has-[a:hover]/card:transition-transform",
+    className
+  )
+
+  if (typeof props.src === "string")
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img src={props.src} alt={alt || ""} className={sharedClasses} />
+
   return (
     <Image
       data-slot="card-image"
       alt={alt || ""}
-      className={cn(
-        "size-full object-cover transition-transform group-has-[a:hover]/card:scale-105 group-has-[a:hover]/card:transition-transform",
-        className
-      )}
+      className={sharedClasses}
       placeholder="blur"
       sizes="(max-width: 640px) 100vw, (max-width: 1400px) 44vw, 608px"
       {...props}

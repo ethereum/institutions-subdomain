@@ -1,4 +1,10 @@
+import { join } from "path"
+
 import type { StaticImageData } from "next/image"
+
+import { formatDateMonthDayYear, isValidDate } from "@/lib/utils/date"
+
+import { fetchPosts, getPostImage } from "./[slug]/utils"
 
 import blockchainScotland from "@/public/images/library/blockchain-scotland-1.png"
 import citi from "@/public/images/library/citi-1.png"
@@ -13,12 +19,27 @@ import nextFinSummit from "@/public/images/library/nextfin-summit-1.png"
 
 type LibraryItem = {
   title: string
-  imgSrc: StaticImageData
+  imgSrc: StaticImageData | string
   date: string
   href: string
 }
 
-export const libraryItems: LibraryItem[] = [
+const posts = fetchPosts()
+
+const internalLibraryItems: LibraryItem[] = posts.map(
+  ({ frontmatter, slug }) => {
+    const { title, datePublished } = frontmatter
+
+    return {
+      title,
+      imgSrc: getPostImage(frontmatter),
+      date: formatDateMonthDayYear(datePublished),
+      href: join("library", slug),
+    }
+  }
+)
+
+const externalLibraryItems: LibraryItem[] = [
   {
     title: "Citi - Stablecoins 2030 Web3 to Wall Street",
     href: "https://www.citigroup.com/rcs/citigpa/storage/public/GPS_Report_Stablecoins_2030.pdf",
@@ -81,3 +102,12 @@ export const libraryItems: LibraryItem[] = [
     imgSrc: nextFinSummit,
   },
 ]
+
+export const libraryItems: LibraryItem[] = [
+  ...externalLibraryItems,
+  ...internalLibraryItems,
+].sort((a, b) => {
+  if (!isValidDate(a.date)) return -1
+  if (!isValidDate(b.date)) return 1
+  return new Date(b.date).getTime() - new Date(a.date).getTime()
+})

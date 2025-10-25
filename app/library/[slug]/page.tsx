@@ -4,11 +4,11 @@ import { notFound } from "next/navigation"
 import Hero from "@/components/Hero"
 import MarkdownProvider from "@/components/ui/markdown/provider"
 
-import { formatDateMonthDayYear, isValidDate } from "@/lib/utils/date"
+import { formatDateMonthDayYear } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
 
 import { FrontMatter } from "./types"
-import { getPost } from "./utils"
+import { getPost, getPostImage } from "./utils"
 
 // TODO: Re-enable when posts available
 // export async function generateStaticParams() {
@@ -53,17 +53,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
 
   try {
-    const {
-      frontmatter: { title, image, datePublished },
-    } = getPost(slug)
-    const date = isValidDate(datePublished)
-      ? formatDateMonthDayYear(datePublished)
-      : datePublished
+    const { frontmatter } = getPost(slug)
+    const { title, datePublished } = frontmatter
+
     return getMetadata({
       slug: ["library", slug],
       title,
-      description: date,
-      image: image || `/library/og/?title=${title}&date=${date}`,
+      description: formatDateMonthDayYear(datePublished),
+      image: getPostImage(frontmatter),
     })
   } catch {
     return getMetadata({

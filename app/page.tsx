@@ -39,7 +39,7 @@ import {
 import { LinkWithArrow } from "@/components/ui/link"
 
 import { cn } from "@/lib/utils"
-import { formatDateMonthDayYear, isValidDate } from "@/lib/utils/date"
+import { formatDateMonthDayYear } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
 import {
   formatLargeCurrency,
@@ -665,24 +665,17 @@ export default async function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8 lg:gap-16">
-            {libraryItems
-              .sort((a, b) => {
-                if (!isValidDate(a.date)) return -1
-                if (!isValidDate(b.date)) return 1
-                return new Date(b.date).getTime() - new Date(a.date).getTime()
-              })
-              .slice(0, 3)
-              .map(({ title, imgSrc, date, href }) => (
-                <LibraryCard key={title}>
-                  <LibraryCardHeader>
-                    <LibraryCardImage src={imgSrc} alt="" />
-                  </LibraryCardHeader>
-                  <LibraryCardTitleLink href={href}>
-                    <LibraryCardTitle>{title}</LibraryCardTitle>
-                  </LibraryCardTitleLink>
-                  <LibraryCardDate>{date}</LibraryCardDate>
-                </LibraryCard>
-              ))}
+            {libraryItems.slice(0, 3).map(({ title, imgSrc, date, href }) => (
+              <LibraryCard key={title}>
+                <LibraryCardHeader>
+                  <LibraryCardImage src={imgSrc} alt="" />
+                </LibraryCardHeader>
+                <LibraryCardTitleLink href={href}>
+                  <LibraryCardTitle>{title}</LibraryCardTitle>
+                </LibraryCardTitleLink>
+                <LibraryCardDate>{date}</LibraryCardDate>
+              </LibraryCard>
+            ))}
           </div>
           <LinkWithArrow
             href="/library"

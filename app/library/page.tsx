@@ -10,7 +10,6 @@ import {
   LibraryCardTitleLink,
 } from "@/components/ui/library-card"
 
-import { isValidDate } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
 
 import { libraryItems } from "./data"
@@ -34,25 +33,19 @@ export default function Page() {
       </Hero>
       <article className="max-w-8xl mx-auto w-full space-y-10 px-4 py-10 sm:px-10 sm:py-20 md:space-y-20">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:gap-[6.5rem]">
-          {libraryItems
-            .sort((a, b) => {
-              if (!isValidDate(a.date)) return -1
-              if (!isValidDate(b.date)) return 1
-              return new Date(b.date).getTime() - new Date(a.date).getTime()
-            })
-            .map(({ title, imgSrc, date, href }) => (
-              <LibraryCard key={title}>
-                <LibraryCardHeader>
-                  <LibraryCardImage src={imgSrc} alt="" />
-                </LibraryCardHeader>
-                <LibraryCardTitleLink href={href}>
-                  <LibraryCardTitle asChild>
-                    <h2>{title}</h2>
-                  </LibraryCardTitle>
-                </LibraryCardTitleLink>
-                <LibraryCardDate>{date}</LibraryCardDate>
-              </LibraryCard>
-            ))}
+          {libraryItems.map(({ title, imgSrc, date, href }) => (
+            <LibraryCard key={title}>
+              <LibraryCardHeader>
+                <LibraryCardImage src={imgSrc} alt="" />
+              </LibraryCardHeader>
+              <LibraryCardTitleLink href={href}>
+                <LibraryCardTitle asChild>
+                  <h2>{title}</h2>
+                </LibraryCardTitle>
+              </LibraryCardTitleLink>
+              <LibraryCardDate>{date}</LibraryCardDate>
+            </LibraryCard>
+          ))}
         </div>
       </article>
     </main>
