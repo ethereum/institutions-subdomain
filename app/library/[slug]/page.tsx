@@ -64,7 +64,7 @@ export default async function Page({ params }: Props) {
         </time>
       </Hero>
 
-      <article className="max-w-8xl mx-auto mb-24 w-full px-4 sm:px-10">
+      <article className="mx-auto mb-24 w-full max-w-5xl px-4 sm:px-10">
         <MarkdownProvider>{content}</MarkdownProvider>
       </article>
     </main>
