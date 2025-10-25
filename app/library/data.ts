@@ -6,7 +6,7 @@ import { formatDateMonthDayYear, isValidDate } from "@/lib/utils/date"
 
 import { fetchPosts, getPostImage } from "./[slug]/utils"
 
-import a16z from "@/public/images/library/a16z-1.png"
+import a16zCrypto from "@/public/images/library/a16z-crypto-1.png"
 import blockchainScotland from "@/public/images/library/blockchain-scotland-1.png"
 import citi from "@/public/images/library/citi-1.png"
 import consensys from "@/public/images/library/consensys-1.webp"
@@ -97,10 +97,10 @@ const externalLibraryItems: LibraryItem[] = [
     imgSrc: mergeMadrid,
   },
   {
-    title: "a16z - State of Crypto ",
+    title: "a16zcrypto - State of Crypto ",
     href: "https://stateofcrypto.a16zcrypto.com/",
     date: "October 22, 2025",
-    imgSrc: a16z,
+    imgSrc: a16zCrypto,
   },
   {
     title: "Will all L1s Move to Ethereum?",
