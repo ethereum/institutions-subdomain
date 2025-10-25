@@ -400,6 +400,7 @@ export default async function Page() {
 
 export async function generateMetadata(): Promise<Metadata> {
   return getMetadata({
+    slug: "data-hub",
     title: "Live Ethereum Network Data | Institutional Onchain Data Hub",
     description:
       "Get live intelligence for the onchain economy. Explore curated metrics for mainnet activity, L2 scaling, DeFi markets, tokenized assets, and more.",

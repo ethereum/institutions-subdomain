@@ -245,6 +245,7 @@ export default function Page() {
 
 export async function generateMetadata(): Promise<Metadata> {
   return getMetadata({
+    slug: "providers",
     title: "Regional Solution Providers",
     description:
       "Discover providers offering expertise, tools, and support for your business.",

@@ -688,6 +688,7 @@ export default async function Page() {
 
 export async function generateMetadata(): Promise<Metadata> {
   return getMetadata({
+    slug: "layer-2",
     title: "Ethereum's Layer 2 Ecosystem | Scalable Enterprise Solutions",
     description:
       "Layer 2s offer faster, cheaper execution, ideal for payments, appchains, and tokenization. Learn how L2s help institutions scale without sacrificing security.",

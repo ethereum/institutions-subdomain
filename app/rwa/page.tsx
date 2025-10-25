@@ -609,6 +609,7 @@ export default async function Page() {
 
 export async function generateMetadata(): Promise<Metadata> {
   return getMetadata({
+    slug: "rwa",
     title: "Stablecoins & Asset Tokenization | RWAs on Ethereum",
     description:
       "Ethereum is the dominant choice for tokenizing assets and issuing stablecoins. Explore the network for 24/7 settlement, programmable cash, and onchain yield.",

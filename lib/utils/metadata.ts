@@ -1,3 +1,5 @@
+import { join } from "path"
+
 import type { Metadata } from "next"
 
 const SITE_URL =
@@ -8,13 +10,18 @@ const SITE_NAME = "Ethereum for Institutions"
 export const getMetadata = async ({
   title,
   description,
+  slug,
   image,
 }: {
   title: string
   description: string
+  slug: string[] | string
   image?: string
 }): Promise<Metadata> => {
+  const path = Array.isArray(slug) ? join(...slug) : join(slug)
+  const url = new URL(path, SITE_URL).href
   const ogImage = image || DEFAULT_OG_IMAGE
+
   return {
     title,
     description,
@@ -23,6 +30,7 @@ export const getMetadata = async ({
       title,
       description,
       type: "website",
+      url,
       siteName: SITE_NAME,
       images: [{ url: ogImage }],
     },
