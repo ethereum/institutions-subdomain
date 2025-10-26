@@ -674,78 +674,78 @@ const HeroBg = ({
       {/* Avoid SSR hydration mismatches by rendering paths only after mount */}
       {mounted &&
         lines.map((line, idx) => {
-        const d = generatePath(line)
-        // Hover emphasis: adjust stroke width and opacity based on proximity to pointer
-        let hoverFactor = 0
-        if (pointer) {
-          const { x, y, length } = line
-          const dx =
-            pointer.x < x
-              ? x - pointer.x
-              : pointer.x > x + length
-                ? pointer.x - (x + length)
-                : 0
-          const dy = Math.abs(pointer.y - y)
-          const fx = Math.exp(
-            -(dx * dx) / (2 * hoverSigmaXView * hoverSigmaXView)
-          )
-          const fy = Math.exp(
-            -(dy * dy) / (2 * hoverSigmaYView * hoverSigmaYView)
-          )
-          hoverFactor = fx * fy // 0..1
-        }
+          const d = generatePath(line)
+          // Hover emphasis: adjust stroke width and opacity based on proximity to pointer
+          let hoverFactor = 0
+          if (pointer) {
+            const { x, y, length } = line
+            const dx =
+              pointer.x < x
+                ? x - pointer.x
+                : pointer.x > x + length
+                  ? pointer.x - (x + length)
+                  : 0
+            const dy = Math.abs(pointer.y - y)
+            const fx = Math.exp(
+              -(dx * dx) / (2 * hoverSigmaXView * hoverSigmaXView)
+            )
+            const fy = Math.exp(
+              -(dy * dy) / (2 * hoverSigmaYView * hoverSigmaYView)
+            )
+            hoverFactor = fx * fy // 0..1
+          }
 
-        const baseStroke = +strokeWidthPx
-        const perPathStrokeWidth =
-          baseStroke * (1 + hoverStrokeGain * hoverFactor)
-        const perPathOpacity = Math.min(
-          1,
-          line.opacity + (1 - line.opacity) * hoverFactor
-        )
-        const style: CSSProperties & { "--x-travel"?: string } = {
-          // animate CSS translate in px; convert viewBox travel distance to px via coverScale
-          "--x-travel": `${line.travel * coverScale}px`,
-          animationName: "hero-bg-slide",
-          animationDuration: `${line.duration}s`,
-          animationDelay: `${line.delay}s`,
-          animationIterationCount: "infinite",
-          animationDirection: "alternate",
-          animationTimingFunction: "cubic-bezier(0.45, 0.05, 0.55, 0.95)",
-          animationPlayState: "running",
-          willChange: "transform",
-        }
+          const baseStroke = +strokeWidthPx
+          const perPathStrokeWidth =
+            baseStroke * (1 + hoverStrokeGain * hoverFactor)
+          const perPathOpacity = Math.min(
+            1,
+            line.opacity + (1 - line.opacity) * hoverFactor
+          )
+          const style: CSSProperties & { "--x-travel"?: string } = {
+            // animate CSS translate in px; convert viewBox travel distance to px via coverScale
+            "--x-travel": `${line.travel * coverScale}px`,
+            animationName: "hero-bg-slide",
+            animationDuration: `${line.duration}s`,
+            animationDelay: `${line.delay}s`,
+            animationIterationCount: "infinite",
+            animationDirection: "alternate",
+            animationTimingFunction: "cubic-bezier(0.45, 0.05, 0.55, 0.95)",
+            animationPlayState: "running",
+            willChange: "transform",
+          }
           return (
-          <path
-            key={line.id}
-            id={line.id}
-            d={d}
-            strokeOpacity={perPathOpacity}
-            strokeWidth={perPathStrokeWidth}
-            vectorEffect="non-scaling-stroke"
-            fill="none"
-            // Normalize path length so dash values use 0..1 and animate drawing from 0 to full
-            pathLength={1}
-            style={{
-              ...style,
-              // Reduced motion: no dash draw; use full stroke and fade SVG opacity instead
-              ...(reduceMotion
-                ? {
-                    strokeDasharray: undefined,
-                    strokeDashoffset: undefined,
-                    transition: undefined,
-                    transitionDelay: undefined,
-                  }
-                : {
-                    // Center-out reveal: when not ready, zero-length dash centered at 0.5
-                    strokeDasharray: drawReady ? "1 0" : "0 1",
-                    strokeDashoffset: drawReady ? 0 : 0.5,
-                    transition: `stroke-dasharray ${initialDrawMs}ms ease-out, stroke-dashoffset ${initialDrawMs}ms ease-out`,
-                    transitionDelay: `${idx * initialDrawStaggerMs}ms`,
-                  }),
-            }}
-            data-hero-bg-line
-            className="motion-reduce:!animate-none"
-          />
+            <path
+              key={line.id}
+              id={line.id}
+              d={d}
+              strokeOpacity={perPathOpacity}
+              strokeWidth={perPathStrokeWidth}
+              vectorEffect="non-scaling-stroke"
+              fill="none"
+              // Normalize path length so dash values use 0..1 and animate drawing from 0 to full
+              pathLength={1}
+              style={{
+                ...style,
+                // Reduced motion: no dash draw; use full stroke and fade SVG opacity instead
+                ...(reduceMotion
+                  ? {
+                      strokeDasharray: undefined,
+                      strokeDashoffset: undefined,
+                      transition: undefined,
+                      transitionDelay: undefined,
+                    }
+                  : {
+                      // Center-out reveal: when not ready, zero-length dash centered at 0.5
+                      strokeDasharray: drawReady ? "1 0" : "0 1",
+                      strokeDashoffset: drawReady ? 0 : 0.5,
+                      transition: `stroke-dasharray ${initialDrawMs}ms ease-out, stroke-dashoffset ${initialDrawMs}ms ease-out`,
+                      transitionDelay: `${idx * initialDrawStaggerMs}ms`,
+                    }),
+              }}
+              data-hero-bg-line
+              className="motion-reduce:!animate-none"
+            />
           )
         })}
     </svg>

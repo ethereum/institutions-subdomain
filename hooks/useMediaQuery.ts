@@ -56,7 +56,7 @@ function listen(query: MediaQueryList, callback: MediaQueryCallback) {
   try {
     query.addEventListener("change", callback)
     return () => query.removeEventListener("change", callback)
-  } catch (e) {
+  } catch {
     query.addListener(callback)
     return () => query.removeListener(callback)
   }
