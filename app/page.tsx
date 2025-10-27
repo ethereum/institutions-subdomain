@@ -262,7 +262,7 @@ export default async function Home() {
       label: "Stablecoin Payment Settlement",
       value: "$1B+ Annual Stablecoin Volume",
       lastUpdated: formatDateMonthDayYear("2025-10-17T00:00:00Z"),
-      source: "Visa",
+      source: "Yahoo! Finance",
       sourceHref:
         "https://finance.yahoo.com/news/visa-v-shares-updates-goldman-185036058.html",
     },
