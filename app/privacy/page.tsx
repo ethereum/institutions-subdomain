@@ -27,9 +27,9 @@ export default function Page() {
     imgSrc: StaticImageData
   }[] = [
     {
-      heading: "Chainlink Automated Compliance Engine (ACE)",
+      heading: "Chainlink ACE",
       description:
-        "Policy enforcement and verifiable entity identity to automate KYC/AML and transfer rules directly in smart contracts.",
+        "The Automated Compliance Engine provides policy enforcement and verifiable entity identity to automate KYC/AML and transfer rules directly in smart contracts.",
       href: "https://chain.link/automated-compliance-engine",
       imgSrc: chainlink,
     },
