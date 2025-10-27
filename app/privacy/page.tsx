@@ -133,7 +133,7 @@ export default function Page() {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
             <Link
               href="https://ethereum.org/zero-knowledge-proofs/"
-              className="group transition-transform hover:scale-105 hover:transition-transform"
+              className="group h-full transition-transform hover:scale-105 hover:transition-transform"
             >
               <Card className="h-full space-y-2">
                 <div className="size-37 shrink-0 overflow-hidden p-2.5">
@@ -156,7 +156,7 @@ export default function Page() {
             </Link>
             <Link
               href="https://pse.dev/blog/zero-to-start-applied-fully-homomorphic-encryption-fhe-part-1"
-              className="group transition-transform hover:scale-105 hover:transition-transform"
+              className="group h-full transition-transform hover:scale-105 hover:transition-transform"
             >
               <Card className="h-full space-y-2">
                 <div className="size-37 shrink-0 overflow-hidden p-2.5">
@@ -179,7 +179,7 @@ export default function Page() {
             </Link>
             <Link
               href="https://ethereum.org/developers/docs/oracles/#authenticity-proofs"
-              className="group transition-transform hover:scale-105 hover:transition-transform"
+              className="group h-full transition-transform hover:scale-105 hover:transition-transform"
             >
               <Card className="h-full space-y-2">
                 <div className="size-37 shrink-0 overflow-hidden p-2.5">
@@ -202,7 +202,7 @@ export default function Page() {
             </Link>
             <Link
               href="https://l2beat.com/zk-catalog"
-              className="group transition-transform hover:scale-105 hover:transition-transform"
+              className="group h-full transition-transform hover:scale-105 hover:transition-transform"
             >
               <Card className="h-full space-y-2">
                 <div className="size-37 shrink-0 overflow-hidden p-2.5">
@@ -297,7 +297,7 @@ export default function Page() {
                 <Link
                   key={heading}
                   href={href}
-                  className="bg-card group flex flex-col justify-between p-6 transition-transform hover:scale-105 hover:transition-transform"
+                  className="bg-card group flex h-full flex-col justify-between p-6 transition-transform hover:scale-105 hover:transition-transform"
                   aria-label={`Visit ${heading}`}
                 >
                   <div className="space-y-2">
