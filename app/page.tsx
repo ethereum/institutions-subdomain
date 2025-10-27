@@ -260,10 +260,11 @@ export default async function Home() {
       name: "Visa",
       imgSrc: visaSvg,
       label: "Stablecoin Payment Settlement",
-      value: "$2.67T Volume 2025",
+      value: "$1B+ Annual Stablecoin Volume",
       lastUpdated: formatDateMonthDayYear("2025-10-17T00:00:00Z"),
       source: "Visa",
-      sourceHref: "https://www.visaonchainanalytics.com/transactions",
+      sourceHref:
+        "https://finance.yahoo.com/news/visa-v-shares-updates-goldman-185036058.html",
     },
     {
       name: "eToro",
