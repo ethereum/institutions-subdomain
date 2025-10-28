@@ -199,7 +199,13 @@ export default async function Home() {
         rwaAssetMarketShareData.data.marketShare.mainnet +
           rwaAssetMarketShareData.data.marketShare.layer2
       ),
-      label: "RWA market share on Ethereum + L2s",
+      label: (
+        <>
+          RWA market share
+          <br />
+          Ethereum Ecosystem
+        </>
+      ),
       lastUpdated: formatDateMonthDayYear(rwaAssetMarketShareData.lastUpdated),
       ...rwaAssetMarketShareData.sourceInfo,
     },
