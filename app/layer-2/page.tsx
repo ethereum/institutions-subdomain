@@ -434,9 +434,9 @@ export default async function Page() {
                 Recoverability
                 <p className="text-muted-foreground mt-1 text-base font-medium tracking-[0.02rem]">
                   Data availability on the L1 makes user funds recoverable even
-                  if the L2 fails, referred to as the “escape hatch”. This is
-                  what keeps rollups trust minimized rather than reliant on the
-                  L2 operator.
+                  if the L2 fails; this feature, referred to as the &quot;escape
+                  hatch,&quot; keeps rollups&apos; trust minimized rather than
+                  reliant on the L2 operator
                 </p>
               </li>
             </ul>
