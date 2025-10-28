@@ -58,6 +58,7 @@
   --animate-write-on-off: write-on-off 2s ease-in-out infinite;
   --animate-fade-in-pause-out: fade-in-pause-out 5s linear infinite;
   --animate-x-bounce: x-bounce 1s infinite;
+  --animate-wiggle: wiggle 1s ease-in-out infinite;
 
   @keyframes quick-trace {
     0% {
@@ -104,6 +105,16 @@
     50% {
       transform: translateX(25%);
       animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
     }
   }
 }

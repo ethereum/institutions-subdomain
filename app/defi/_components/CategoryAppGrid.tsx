@@ -18,7 +18,7 @@ const CategoryAppGrid = ({ category }: { category: CategoryKey }) => {
           <Link
             key={name}
             href={href}
-            className="bg-card group flex flex-col justify-between p-6 transition-transform hover:scale-105 hover:transition-transform"
+            className="bg-card group flex h-full flex-col justify-between p-6 transition-transform hover:scale-105 hover:transition-transform"
             aria-label={`Visit ${name}`}
           >
             <div className="space-y-2">

@@ -40,31 +40,38 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
     href,
   }
 
-  if (isExternal) {
+  const externalProps = {
+    rel: "noopener noreferrer",
+    target: "_blank",
+  }
+
+  if (isMailto)
     return (
-      <InlineText>
-        <a target="_blank" rel="noopener noreferrer" {...commonProps}>
-          {isMailto ? (
-            <span className="text-//nowrap">
-              {showDecorator && (
-                <Mail className="me-1 !mb-0.5 inline-block size-[1em] shrink-0" />
-              )}
-              {children}
-            </span>
-          ) : (
-            children
-          )}
-          <span className="sr-only">
-            {isMailto ? " (opens email client)" : " (opens in a new tab)"}
-          </span>
-          {showDecorator && !isMailto && (
-            <InlineTextIcon>
-              <ExternalLink className="text-muted group-hover:text-muted-foreground inline size-[1em] shrink-0" />
-            </InlineTextIcon>
-          )}
-        </a>
-      </InlineText>
+      <a {...externalProps} {...commonProps}>
+        {showDecorator && (
+          <Mail className="me-1 !mb-0.5 inline-block size-[1em] shrink-0" />
+        )}
+        {children}
+        <span className="sr-only"> (opens email client)</span>
+      </a>
     )
+
+  if (isExternal) {
+    const element = (
+      <a {...externalProps} {...commonProps}>
+        {children}
+        <span className="sr-only"> (opens in a new tab)</span>
+        {showDecorator && (
+          <InlineTextIcon>
+            <ExternalLink className="text-muted group-hover:text-muted-foreground inline size-[1em] shrink-0" />
+          </InlineTextIcon>
+        )}
+      </a>
+    )
+
+    if (showDecorator) return <InlineText asChild>{element}</InlineText>
+
+    return element
   }
 
   if (isHash) {

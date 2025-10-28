@@ -215,7 +215,7 @@ const EnterpriseContactForm = () => {
               href={`mailto:${ENTERPRISE_EMAIL}?subject=Enterprise%20inquiry`}
               inline
               showDecorator
-              className="text-current hover:text-current/80"
+              className="text-nowrap text-current hover:text-current/80"
             >
               {ENTERPRISE_EMAIL}
             </Link>

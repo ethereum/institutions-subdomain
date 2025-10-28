@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation"
 
 import Link from "@/components/ui/link"
 
+import { cn } from "@/lib/utils"
+
 const ParentPathLink = ({ className }: { className?: string }) => {
   const pathname = usePathname()
 
@@ -13,8 +15,8 @@ const ParentPathLink = ({ className }: { className?: string }) => {
   if (!parentPath) return null
 
   return (
-    <Link href={parentPath} className={className}>
-      <CornerUpRight />
+    <Link href={parentPath} className={cn("group/up-link", className)}>
+      <CornerUpRight className="group-hover/up-link:animate-wiggle" />
       &nbsp; Go up to {parentPath}
     </Link>
   )

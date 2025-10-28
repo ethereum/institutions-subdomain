@@ -178,8 +178,11 @@ export default async function Page() {
                 <div className="flex justify-between">
                   <CardSource>
                     Source:{" "}
-                    <Link inline href="https://defillama.com">
-                      defillama.com
+                    <Link
+                      inline
+                      href={timeseriesDefiTvlEthereumData.sourceInfo.sourceHref}
+                    >
+                      {timeseriesDefiTvlEthereumData.sourceInfo.source}
                     </Link>
                     <SourceInfoTooltip
                       lastUpdated={formatDateMonthDayYear(
@@ -210,8 +213,11 @@ export default async function Page() {
                 <div className="flex justify-between">
                   <CardSource>
                     Source:{" "}
-                    <Link inline href="https://defillama.com">
-                      defillama.com
+                    <Link
+                      inline
+                      href={defiTvlAllCurrentData.sourceInfo.sourceHref}
+                    >
+                      {defiTvlAllCurrentData.sourceInfo.source}
                     </Link>
                     <SourceInfoTooltip
                       lastUpdated={formatDateMonthDayYear(
@@ -250,8 +256,11 @@ export default async function Page() {
 
                 <CardSource>
                   Source:{" "}
-                  <Link inline href="https://rwa.xyz">
-                    rwa.xyz
+                  <Link
+                    inline
+                    href={stablecoinMarketShareData.sourceInfo.sourceHref}
+                  >
+                    {stablecoinMarketShareData.sourceInfo.source}
                   </Link>
                   <SourceInfoTooltip
                     lastUpdated={formatDateMonthDayYear(
@@ -286,8 +295,11 @@ export default async function Page() {
                   </CardContent>
                   <CardSource>
                     Source:{" "}
-                    <Link inline href="https://rwa.xyz">
-                      rwa.xyz
+                    <Link
+                      inline
+                      href={rwaAssetMarketShareData.sourceInfo.sourceHref}
+                    >
+                      {rwaAssetMarketShareData.sourceInfo.source}
                     </Link>
                     <SourceInfoTooltip
                       lastUpdated={formatDateMonthDayYear(
@@ -313,8 +325,11 @@ export default async function Page() {
                   </CardContent>
                   <CardSource>
                     Source:{" "}
-                    <Link inline href="https://rwa.xyz">
-                      rwa.xyz
+                    <Link
+                      inline
+                      href={rwaAssetMarketShareData.sourceInfo.sourceHref}
+                    >
+                      {rwaAssetMarketShareData.sourceInfo.source}
                     </Link>
                     <SourceInfoTooltip
                       lastUpdated={formatDateMonthDayYear(
@@ -346,8 +361,11 @@ export default async function Page() {
 
                 <CardSource>
                   Source:{" "}
-                  <Link inline href="https://l2beat.com">
-                    l2beat.com
+                  <Link
+                    inline
+                    href={l2ScalingSummaryData.sourceInfo.sourceHref}
+                  >
+                    {l2ScalingSummaryData.sourceInfo.source}
                   </Link>
                   <SourceInfoTooltip
                     lastUpdated={formatDateMonthDayYear(
@@ -380,8 +398,8 @@ export default async function Page() {
 
                 <CardSource>
                   Source:{" "}
-                  <Link inline href="https://growthepie.com">
-                    growthepie.com
+                  <Link inline href={timeseriesL2TvlData.sourceInfo.sourceHref}>
+                    {timeseriesL2TvlData.sourceInfo.source}
                   </Link>
                   <SourceInfoTooltip
                     lastUpdated={formatDateMonthDayYear(

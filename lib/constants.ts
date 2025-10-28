@@ -22,7 +22,7 @@ export const DEFAULT_OG_IMAGE = "/images/og/home.png"
 export const SOURCE = {
   RWA: {
     source: "rwa.xyz",
-    sourceHref: "https://rwa.xyz",
+    sourceHref: "https://www.rwa.xyz",
   },
   BEACONCHAIN: {
     source: "beaconcha.in",
@@ -42,7 +42,7 @@ export const SOURCE = {
   },
   GROWTHEPIE: {
     source: "growthepie.com",
-    sourceHref: "https://growthepie.com",
+    sourceHref: "https://www.growthepie.com/",
   },
   COINGECKO: {
     source: "coingecko.com",
