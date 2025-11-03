@@ -33,6 +33,7 @@ import fetchCeloMonthlyStablecoinVolume from "../_actions/fetchCeloMonthlyStable
 import fetchL2MedianTxCost from "../_actions/fetchL2MedianTxCost"
 import fetchL2ScalingActivity from "../_actions/fetchL2ScalingActivity"
 import fetchL2ScalingSummary from "../_actions/fetchL2ScalingSummary"
+import fetchWorldChainTxCount from "../_actions/fetchWorldChainTxCount"
 
 import blackGlyphBanner from "@/public/images/banners/black-glyph-banner.png"
 import coinbase from "@/public/images/logos/apps/coinbase.png"
@@ -48,6 +49,7 @@ import polygon from "@/public/images/logos/networks/polygon.png"
 import scroll from "@/public/images/logos/networks/scroll.png"
 import starknet from "@/public/images/logos/networks/starknet.png"
 import unichain from "@/public/images/logos/networks/unichain.png"
+import worldCoin from "@/public/images/logos/networks/world-coin.png"
 import zksync from "@/public/images/logos/networks/zksync.png"
 
 type CardItem = {
@@ -64,6 +66,7 @@ export default async function Page() {
   const l2MedianTxCostData = await fetchL2MedianTxCost()
   const beaconChainData = await fetchBeaconChain()
   const baseTvlData = await fetchBaseTvl()
+  const worldChainTxCountData = await fetchWorldChainTxCount()
   const celoMonthlyStablecoinVolumeData =
     await fetchCeloMonthlyStablecoinVolume()
 
@@ -240,6 +243,21 @@ export default async function Page() {
         celoMonthlyStablecoinVolumeData.lastUpdated
       ),
       ...celoMonthlyStablecoinVolumeData.sourceInfo,
+    },
+    {
+      heading: "World Coin",
+      description: "World Chain L2 to scale Proof of Personhood",
+      href: "https://world.org/world-chain",
+      imgSrc: worldCoin,
+      ctaLabel: (
+        <>
+          {formatLargeNumber(worldChainTxCountData.data.worldChainTxCount)}
+          <br />
+          Daily Transactions
+        </>
+      ),
+      lastUpdated: formatDateMonthDayYear(worldChainTxCountData.lastUpdated),
+      ...worldChainTxCountData.sourceInfo,
     },
   ]
 
