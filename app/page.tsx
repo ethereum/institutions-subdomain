@@ -696,6 +696,8 @@ export default async function Home() {
   )
 }
 
+export const dynamic = "force-dynamic"
+
 export async function generateMetadata(): Promise<Metadata> {
   return getMetadata({
     slug: "",

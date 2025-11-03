@@ -704,6 +704,8 @@ export default async function Page() {
   )
 }
 
+export const dynamic = "force-dynamic"
+
 export async function generateMetadata(): Promise<Metadata> {
   return getMetadata({
     slug: "layer-2",
