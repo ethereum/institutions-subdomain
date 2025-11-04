@@ -33,6 +33,7 @@ import fetchCeloMonthlyStablecoinVolume from "../_actions/fetchCeloMonthlyStable
 import fetchL2MedianTxCost from "../_actions/fetchL2MedianTxCost"
 import fetchL2ScalingActivity from "../_actions/fetchL2ScalingActivity"
 import fetchL2ScalingSummary from "../_actions/fetchL2ScalingSummary"
+import fetchWorldChainTxCount from "../_actions/fetchWorldChainTxCount"
 
 import blackGlyphBanner from "@/public/images/banners/black-glyph-banner.png"
 import coinbase from "@/public/images/logos/apps/coinbase.png"
@@ -48,6 +49,7 @@ import polygon from "@/public/images/logos/networks/polygon.png"
 import scroll from "@/public/images/logos/networks/scroll.png"
 import starknet from "@/public/images/logos/networks/starknet.png"
 import unichain from "@/public/images/logos/networks/unichain.png"
+import worldChain from "@/public/images/logos/networks/world-chain.png"
 import zksync from "@/public/images/logos/networks/zksync.png"
 
 type CardItem = {
@@ -64,6 +66,7 @@ export default async function Page() {
   const l2MedianTxCostData = await fetchL2MedianTxCost()
   const beaconChainData = await fetchBeaconChain()
   const baseTvlData = await fetchBaseTvl()
+  const worldChainTxCountData = await fetchWorldChainTxCount()
   const celoMonthlyStablecoinVolumeData =
     await fetchCeloMonthlyStablecoinVolume()
 
@@ -240,6 +243,21 @@ export default async function Page() {
         celoMonthlyStablecoinVolumeData.lastUpdated
       ),
       ...celoMonthlyStablecoinVolumeData.sourceInfo,
+    },
+    {
+      heading: "World",
+      description: "World Chain L2 to scale Proof of Human",
+      href: "https://world.org/world-chain",
+      imgSrc: worldChain,
+      ctaLabel: (
+        <>
+          {formatLargeNumber(worldChainTxCountData.data.worldChainTxCount)}
+          <br />
+          Daily Transactions
+        </>
+      ),
+      lastUpdated: formatDateMonthDayYear(worldChainTxCountData.lastUpdated),
+      ...worldChainTxCountData.sourceInfo,
     },
   ]
 
@@ -544,7 +562,7 @@ export default async function Page() {
 
         <section id="cases" className="space-y-8">
           <h2 className="text-h3-mobile sm:text-h3">Case Studies</h2>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,260px),1fr))] gap-4">
             {caseStudies.map(
               ({
                 heading,
