@@ -23,7 +23,6 @@ export async function GET(req: NextRequest) {
 
   const json: JSONData[] = await res.json()
 
-  // Trim/aggregate to { date, value } for metric_key === "tvl" and Base network
   const dataWorldTxCount = json.filter(
     ({ origin_key }) => origin_key.toLowerCase() === "worldchain"
   )
