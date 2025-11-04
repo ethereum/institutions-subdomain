@@ -245,8 +245,8 @@ export default async function Page() {
       ...celoMonthlyStablecoinVolumeData.sourceInfo,
     },
     {
-      heading: "World Coin",
-      description: "World Chain L2 to scale Proof of Personhood",
+      heading: "World",
+      description: "World Chain L2 to scale Proof of Human",
       href: "https://world.org/world-chain",
       imgSrc: worldCoin,
       ctaLabel: (
