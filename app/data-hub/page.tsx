@@ -416,7 +416,6 @@ export default async function Page() {
   )
 }
 
-
 export async function generateMetadata(): Promise<Metadata> {
   return getMetadata({
     slug: "data-hub",
