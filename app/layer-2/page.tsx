@@ -49,7 +49,7 @@ import polygon from "@/public/images/logos/networks/polygon.png"
 import scroll from "@/public/images/logos/networks/scroll.png"
 import starknet from "@/public/images/logos/networks/starknet.png"
 import unichain from "@/public/images/logos/networks/unichain.png"
-import worldCoin from "@/public/images/logos/networks/world-coin.png"
+import worldChain from "@/public/images/logos/networks/world-chain.png"
 import zksync from "@/public/images/logos/networks/zksync.png"
 
 type CardItem = {
@@ -248,7 +248,7 @@ export default async function Page() {
       heading: "World",
       description: "World Chain L2 to scale Proof of Human",
       href: "https://world.org/world-chain",
-      imgSrc: worldCoin,
+      imgSrc: worldChain,
       ctaLabel: (
         <>
           {formatLargeNumber(worldChainTxCountData.data.worldChainTxCount)}
@@ -703,7 +703,6 @@ export default async function Page() {
     </main>
   )
 }
-
 
 export async function generateMetadata(): Promise<Metadata> {
   return getMetadata({
