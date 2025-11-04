@@ -33,6 +33,7 @@ import fetchCeloMonthlyStablecoinVolume from "../_actions/fetchCeloMonthlyStable
 import fetchL2MedianTxCost from "../_actions/fetchL2MedianTxCost"
 import fetchL2ScalingActivity from "../_actions/fetchL2ScalingActivity"
 import fetchL2ScalingSummary from "../_actions/fetchL2ScalingSummary"
+import fetchSoneiumTvs from "../_actions/fetchSoneiumTvs"
 import fetchWorldChainTxCount from "../_actions/fetchWorldChainTxCount"
 
 import blackGlyphBanner from "@/public/images/banners/black-glyph-banner.png"
@@ -47,6 +48,7 @@ import linea from "@/public/images/logos/networks/linea.png"
 import optimism from "@/public/images/logos/networks/optimism.png"
 import polygon from "@/public/images/logos/networks/polygon.png"
 import scroll from "@/public/images/logos/networks/scroll.png"
+import soneium from "@/public/images/logos/networks/soneium.png"
 import starknet from "@/public/images/logos/networks/starknet.png"
 import unichain from "@/public/images/logos/networks/unichain.png"
 import worldCoin from "@/public/images/logos/networks/world-coin.png"
@@ -66,9 +68,10 @@ export default async function Page() {
   const l2MedianTxCostData = await fetchL2MedianTxCost()
   const beaconChainData = await fetchBeaconChain()
   const baseTvlData = await fetchBaseTvl()
-  const worldChainTxCountData = await fetchWorldChainTxCount()
   const celoMonthlyStablecoinVolumeData =
     await fetchCeloMonthlyStablecoinVolume()
+  const worldChainTxCountData = await fetchWorldChainTxCount()
+  const soneiumTvsData = await fetchSoneiumTvs()
 
   const metrics: Metric[] = [
     {
@@ -258,6 +261,21 @@ export default async function Page() {
       ),
       lastUpdated: formatDateMonthDayYear(worldChainTxCountData.lastUpdated),
       ...worldChainTxCountData.sourceInfo,
+    },
+    {
+      heading: "Sony Block Solutions Labs",
+      description: "Soneium Public Permissioned L2",
+      href: "https://soneium.org/",
+      imgSrc: soneium,
+      ctaLabel: (
+        <>
+          {formatLargeNumber(soneiumTvsData.data.soneiumTvs)}
+          <br />
+          Total value secured
+        </>
+      ),
+      lastUpdated: formatDateMonthDayYear(soneiumTvsData.lastUpdated),
+      ...soneiumTvsData.sourceInfo,
     },
   ]
 
