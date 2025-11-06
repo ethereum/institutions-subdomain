@@ -187,7 +187,7 @@ export default async function Page() {
     {
       heading: "Ernst & Young",
       description: "Nightfall L2 Platform",
-      href: "https://blockchain.ey.com/uploads/Nightfall_FAQ.pdf",
+      href: "https://blockchain.ey.com/technology",
       imgSrc: ey,
       ctaLabel: (
         <>
@@ -196,11 +196,14 @@ export default async function Page() {
           Cheaper Transactions
         </>
       ),
+      lastUpdated: formatDateMonthDayYear(new Date("2024-04-06")),
+      source: "EY Nightfall FAQ",
+      sourceHref: "https://blockchain.ey.com/uploads/Nightfall_FAQ.pdf",
     },
     {
       heading: "Coinbase",
       description: "Base L2 Ecosystem",
-      href: "https://l2beat.com/scaling/projects/base",
+      href: "https://www.base.org/",
       imgSrc: coinbase,
       ctaLabel: (
         <>
@@ -224,11 +227,15 @@ export default async function Page() {
           Est. Digital-Native by 2045
         </>
       ),
+      lastUpdated: formatDateMonthDayYear(new Date("2025-06-18")),
+      source: "DAMA 2 litepaper",
+      sourceHref:
+        "https://www.db.com/news/detail/20250618-dama-2-litepaper-institutional-blueprint-for-asset-tokenisation-and-servicing-on-ethereum-layer-2?language_id=1",
     },
     {
       heading: "Celo",
       description: "L1 Transitioned to Ethereum L2",
-      href: "https://app.artemisanalytics.com/asset/celo?from=assets&tab=metrics&category=KEY_METRICS&metric=STABLECOIN_TRANSFER_VOLUME",
+      href: "https://celo.org/",
       imgSrc: celo,
       ctaLabel: (
         <>
