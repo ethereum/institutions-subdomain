@@ -167,8 +167,10 @@ export default async function Home() {
       lastUpdated: formatDateMonthDayYear(Date.now()),
     },
     {
-      value: formatLargeNumber(beaconChainData.data.validatorCount),
-      label: "Validators securing the network",
+      value: formatLargeCurrency(
+        beaconChainData.data.totalStakedEther * ethPrice.data.usd
+      ),
+      label: `Total value securing the network (${formatLargeNumber(beaconChainData.data.totalStakedEther)} ETH)`,
       lastUpdated: formatDateMonthDayYear(beaconChainData.lastUpdated),
       ...beaconChainData.sourceInfo,
     },
