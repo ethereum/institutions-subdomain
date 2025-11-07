@@ -15,7 +15,7 @@ type JSONData = {
 }
 
 export type BeaconChainData = {
-  validatorCount: number
+  validatorsCount: number
   totalStakedEther: number
 }
 
@@ -43,7 +43,7 @@ export const fetchBeaconChain = async (): Promise<
 
     return {
       data: {
-        validatorCount: validatorscount,
+        validatorsCount: validatorscount,
         totalStakedEther: eligibleGwei * 1e-9,
       },
       lastUpdated: new Date(ts).getTime() || Date.now(),

@@ -473,7 +473,7 @@ export default async function Home() {
                 <div className="text-muted-foreground font-medium">
                   Secured by{" "}
                   {formatLargeNumber(
-                    beaconChainData.data.validatorCount,
+                    beaconChainData.data.validatorsCount,
                     {},
                     2
                   )}

@@ -78,7 +78,7 @@ export default async function Page() {
     },
     {
       label: "Validator Count",
-      value: formatLargeNumber(beaconChainData.data.validatorCount),
+      value: formatLargeNumber(beaconChainData.data.validatorsCount),
       lastUpdated: formatDateMonthDayYear(beaconChainData.lastUpdated),
       ...beaconChainData.sourceInfo,
     },
