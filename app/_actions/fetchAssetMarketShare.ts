@@ -15,6 +15,7 @@ import {
   RWA_API_MEASURE_ID_BY_CATEGORY,
   RWA_API_STABLECOINS_GROUP_ID,
   SOURCE,
+  TRAILING_7_DAY_TRANSFER_COUNT_MEASURE_ID,
 } from "@/lib/constants"
 
 type JSONData = RwaApiTimeseriesResponse
@@ -49,9 +50,19 @@ export const fetchAssetMarketShare = async (
       operator: "and",
       filters: [
         {
-          field: "measureID",
-          operator: "equals",
-          value: RWA_API_MEASURE_ID_BY_CATEGORY[category],
+          operator: "or",
+          filters: [
+            {
+              field: "measureID",
+              operator: "equals",
+              value: RWA_API_MEASURE_ID_BY_CATEGORY[category],
+            },
+            {
+              field: "measureID",
+              operator: "equals",
+              value: TRAILING_7_DAY_TRANSFER_COUNT_MEASURE_ID,
+            },
+          ],
         },
         {
           field: "date",
@@ -75,7 +86,7 @@ export const fetchAssetMarketShare = async (
     },
     pagination: {
       page: 1,
-      perPage: 25,
+      perPage: 50,
     },
   }
 
@@ -100,26 +111,47 @@ export const fetchAssetMarketShare = async (
 
     const json: JSONData = await response.json()
 
-    const assetValueSumAll = json.results.reduce((prev, { points }) => {
+    const zeroTransferGroupIdSet = new Set<
+      RwaApiTimeseriesResponse["results"][number]["group"]["id"]
+    >()
+
+    const transferCountResults = json.results.filter(
+      ({ measure: { id } }) => id === TRAILING_7_DAY_TRANSFER_COUNT_MEASURE_ID
+    )
+
+    for (const result of transferCountResults) {
+      const [, latestTransferCount] = result.points[result.points.length - 1]
+      if (!latestTransferCount) zeroTransferGroupIdSet.add(result.group.id)
+    }
+
+    const zeroTransferGroupIds = Array.from(zeroTransferGroupIdSet)
+
+    const valueResults = json.results
+      .filter(({ group: { id } }) => !zeroTransferGroupIds.includes(id))
+      .filter(
+        ({ measure: { id } }) => id === RWA_API_MEASURE_ID_BY_CATEGORY[category]
+      )
+
+    const assetValueSumAll = valueResults.reduce((prev, { points }) => {
       const [, latestValue] = points[points.length - 1]
       return prev + latestValue
     }, 0)
 
-    const mainnetAssetValue = json.results
+    const mainnetAssetValue = valueResults
       .filter(({ group: { id } }) => RWA_API_MAINNET.id === id)
       .reduce((prev, { points }) => {
         const [, latestValue] = points[points.length - 1]
         return prev + latestValue
       }, 0)
 
-    const layer2AssetValue = json.results
+    const layer2AssetValue = valueResults
       .filter(({ group: { id } }) => RWA_API_LAYER_2S_IDS.includes(id))
       .reduce((prev, { points }) => {
         const [, latestValue] = points[points.length - 1]
         return prev + latestValue
       }, 0)
 
-    const nonEthereumNetworksValueSorted = json.results
+    const nonEthereumNetworksValueSorted = valueResults
       .filter(
         ({ group: { id } }) =>
           !RWA_API_LAYER_2S_IDS.includes(id) && id !== RWA_API_MAINNET.id
