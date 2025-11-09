@@ -1,3 +1,4 @@
+import { ReactNode } from "react"
 import { Check } from "lucide-react"
 import Image, { StaticImageData } from "next/image"
 import type { Metadata } from "next/types"
@@ -126,6 +127,7 @@ export default async function Page() {
     issuer?: string
     metricHref: string
     visitHref: string
+    tooltip?: ReactNode
   } & Partial<LastUpdated & SourceInfo>
 
   const cashEquivalents: AssetDetails[] = [
@@ -213,7 +215,7 @@ export default async function Page() {
             open, and resilient ecosystem of Ethereum and its L2s
           </p>
           <div className="flex w-full flex-1 gap-4 max-sm:flex-col">
-            {metrics.map(({ label, value, ...sourceInfo }, idx) => {
+            {metrics.map(({ label, value, tooltip, ...sourceInfo }, idx) => {
               const { source, sourceHref } = sourceInfo
               return (
                 <Card key={idx} className="flex-1 space-y-2 py-8">
@@ -236,7 +238,9 @@ export default async function Page() {
                     ) : (
                       source
                     )}
-                    <SourceInfoTooltip {...sourceInfo} />
+                    <SourceInfoTooltip {...sourceInfo}>
+                      {tooltip}
+                    </SourceInfoTooltip>
                   </CardSource>
                 </Card>
               )
@@ -392,6 +396,7 @@ export default async function Page() {
                 issuer,
                 metricHref,
                 visitHref,
+                tooltip,
                 ...tooltipProps
               }) => (
                 <Card
@@ -410,7 +415,9 @@ export default async function Page() {
                       >
                         {valuation}
                       </Link>
-                      <SourceInfoTooltip {...tooltipProps} />
+                      <SourceInfoTooltip {...tooltipProps}>
+                        {tooltip}
+                      </SourceInfoTooltip>
                     </InlineText>
                     <p className="text-muted-foreground font-medium">
                       {description}
@@ -459,6 +466,7 @@ export default async function Page() {
                 issuer,
                 metricHref,
                 visitHref,
+                tooltip,
                 ...tooltipProps
               }) => (
                 <Card
@@ -477,7 +485,9 @@ export default async function Page() {
                       >
                         {valuation}
                       </Link>
-                      <SourceInfoTooltip {...tooltipProps} />
+                      <SourceInfoTooltip {...tooltipProps}>
+                        {tooltip}
+                      </SourceInfoTooltip>
                     </InlineText>
                     <p className="text-muted-foreground font-medium">
                       {description}

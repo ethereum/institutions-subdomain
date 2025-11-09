@@ -112,7 +112,10 @@ export default async function Page() {
           </h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-12 xl:grid-cols-4">
             {metrics.map(
-              ({ label, value, source, sourceHref, lastUpdated }, idx) => (
+              (
+                { label, value, source, sourceHref, lastUpdated, tooltip },
+                idx
+              ) => (
                 <Card key={idx} variant="flex-height">
                   <CardContent>
                     <CardLabel className="text-base font-medium tracking-[0.02rem]">
@@ -139,7 +142,9 @@ export default async function Page() {
                       {lastUpdated && (
                         <SourceInfoTooltip
                           lastUpdated={formatDateMonthDayYear(lastUpdated)}
-                        />
+                        >
+                          {tooltip}
+                        </SourceInfoTooltip>
                       )}
                     </CardSource>
                   )}

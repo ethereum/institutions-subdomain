@@ -21,6 +21,8 @@ export type Metric = SourceInfo &
   LastUpdated & {
     label: ReactNode
     value: string | number
+  } & {
+    tooltip?: ReactNode
   }
 
 export type DataTimestamped<T> = {

@@ -58,6 +58,7 @@ type CardItem = {
   href: string
   imgSrc: StaticImageData
   ctaLabel?: ReactNode
+  tooltip?: ReactNode
 }
 
 export default async function Page() {
@@ -287,7 +288,10 @@ export default async function Page() {
         <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-12 xl:grid-cols-4">
           <h2 className="sr-only">Layer 2 Ecosystem Overview</h2>
           {metrics.map(
-            ({ label, value, source, sourceHref, lastUpdated }, idx) => (
+            (
+              { label, value, source, sourceHref, lastUpdated, tooltip },
+              idx
+            ) => (
               <Card key={idx} variant="flex-height">
                 <CardContent>
                   <CardLabel className="text-base font-medium tracking-[0.02rem]">
@@ -314,7 +318,9 @@ export default async function Page() {
                     {lastUpdated && (
                       <SourceInfoTooltip
                         lastUpdated={formatDateMonthDayYear(lastUpdated)}
-                      />
+                      >
+                        {tooltip}
+                      </SourceInfoTooltip>
                     )}
                   </CardSource>
                 )}
@@ -577,6 +583,7 @@ export default async function Page() {
                 imgSrc,
                 href,
                 ctaLabel,
+                tooltip,
                 ...tooltipProps
               }) => (
                 <Link
@@ -598,7 +605,9 @@ export default async function Page() {
                   <InlineText className="text-secondary-foreground mt-12 font-bold group-hover:underline lg:mt-16">
                     {ctaLabel || "Visit →"}
                     {tooltipProps.source && (
-                      <SourceInfoTooltip {...tooltipProps} />
+                      <SourceInfoTooltip {...tooltipProps}>
+                        {tooltip}
+                      </SourceInfoTooltip>
                     )}
                   </InlineText>
                 </Link>

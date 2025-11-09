@@ -15,6 +15,7 @@ const BigNumber = ({
   value,
   className,
   children,
+  tooltip,
   ...sourceInfo
 }: BigNumberProps) => (
   <div
@@ -32,7 +33,7 @@ const BigNumber = ({
       <InlineText className="text-muted-foreground mx-auto max-w-52 font-medium tracking-[0.02rem]">
         {children}
         {(sourceInfo.source || sourceInfo.lastUpdated) && (
-          <SourceInfoTooltip {...sourceInfo} />
+          <SourceInfoTooltip {...sourceInfo}>{tooltip}</SourceInfoTooltip>
         )}
       </InlineText>
     )}

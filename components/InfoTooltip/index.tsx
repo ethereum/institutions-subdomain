@@ -32,7 +32,7 @@ const SourceInfoTooltip = ({
   className,
 }: SourceInfo &
   LastUpdated &
-  Omit<InfoTooltipProps, "children"> & { children?: string }) => (
+  Omit<InfoTooltipProps, "children"> & { children?: ReactNode }) => (
   <InlineTextIcon className={className}>
     <InfoTooltip ariaLabel="Source information">
       {children}

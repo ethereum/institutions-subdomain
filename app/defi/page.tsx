@@ -133,7 +133,10 @@ export default async function Page() {
         >
           <h2 className="sr-only">DeFi Ecosystem Overview</h2>
           {metrics.map(
-            ({ label, value, source, sourceHref, lastUpdated }, idx) => (
+            (
+              { label, value, source, sourceHref, lastUpdated, tooltip },
+              idx
+            ) => (
               <Card key={idx} variant="flex-height">
                 <CardContent className="space-between flex flex-1 flex-col">
                   <CardLabel className="text-base font-medium tracking-[0.02rem]">
@@ -162,7 +165,9 @@ export default async function Page() {
                     {lastUpdated && (
                       <SourceInfoTooltip
                         lastUpdated={formatDateMonthDayYear(lastUpdated)}
-                      />
+                      >
+                        {tooltip}
+                      </SourceInfoTooltip>
                     )}
                   </CardSource>
                 )}
