@@ -25,7 +25,6 @@ import { formatDateMonthDayYear } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
 import {
   formatLargeCurrency,
-  formatLargeNumber,
   formatMultiplier,
   formatPercent,
 } from "@/lib/utils/number"
@@ -33,6 +32,7 @@ import {
 import fetchAssetMarketShare from "../_actions/fetchAssetMarketShare"
 import fetchBeaconChain from "../_actions/fetchBeaconChain"
 import fetchEtherMarketDetails from "../_actions/fetchEtherMarketDetails"
+import fetchEtherPrice from "../_actions/fetchEtherPrice"
 import fetchL2ScalingSummary from "../_actions/fetchL2ScalingSummary"
 import fetchTimeseriesAssetsValue from "../_actions/fetchTimeseriesAssetsValue"
 import fetchTimeseriesDefiTvlEthereum from "../_actions/fetchTimeseriesDefiTvlEthereum"
@@ -45,6 +45,7 @@ import StablecoinChartCard from "./_components/stablecoin-chart-card"
 import { stablecoinMarketShareToPieChartData } from "./utils"
 
 export default async function Page() {
+  const ethPrice = await fetchEtherPrice()
   const timeseriesDefiTvlEthereumData = await fetchTimeseriesDefiTvlEthereum()
   const timeseriesStablecoinsValueData =
     await fetchTimeseriesAssetsValue("STABLECOINS")
@@ -77,8 +78,10 @@ export default async function Page() {
       ...totalValueSecuredData.sourceInfo,
     },
     {
-      label: "Validator Count",
-      value: formatLargeNumber(beaconChainData.data.validatorsCount),
+      label: "ETH Staked",
+      value: formatLargeCurrency(
+        beaconChainData.data.totalStakedEther * ethPrice.data.usd
+      ),
       lastUpdated: formatDateMonthDayYear(beaconChainData.lastUpdated),
       ...beaconChainData.sourceInfo,
     },
