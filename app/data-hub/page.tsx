@@ -78,7 +78,7 @@ export default async function Page() {
       ...totalValueSecuredData.sourceInfo,
     },
     {
-      label: "Validator Valuation",
+      label: "ETH Staked",
       value: formatLargeCurrency(
         beaconChainData.data.totalStakedEther * ethPrice.data.usd
       ),
