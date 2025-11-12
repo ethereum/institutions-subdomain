@@ -111,7 +111,7 @@ export const fetchAssetMarketShare = async (
 
     const json: JSONData = await response.json()
 
-    const zeroTransferGroupIdSet = new Set<
+    const transferableGroupIdSet = new Set<
       RwaApiTimeseriesResponse["results"][number]["group"]["id"]
     >()
 
@@ -121,13 +121,13 @@ export const fetchAssetMarketShare = async (
 
     for (const result of transferCountResults) {
       const [, latestTransferCount] = result.points[result.points.length - 1]
-      if (!latestTransferCount) zeroTransferGroupIdSet.add(result.group.id)
+      if (latestTransferCount > 0) transferableGroupIdSet.add(result.group.id)
     }
 
-    const zeroTransferGroupIds = Array.from(zeroTransferGroupIdSet)
+    const transferableGroupIds = Array.from(transferableGroupIdSet)
 
     const valueResults = json.results
-      .filter(({ group: { id } }) => !zeroTransferGroupIds.includes(id))
+      .filter(({ group: { id } }) => transferableGroupIds.includes(id))
       .filter(
         ({ measure: { id } }) => id === RWA_API_MEASURE_ID_BY_CATEGORY[category]
       )
