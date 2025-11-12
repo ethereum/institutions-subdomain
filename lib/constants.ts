@@ -84,6 +84,8 @@ export const NAV_ITEM_LINKS: LinkProps[] = [
 
 export const RWA_API_STABLECOINS_GROUP_ID = 28
 
+export const TRAILING_7_DAY_TRANSFER_COUNT_MEASURE_ID = 1004 // 30-DAY ID: 1006
+
 export const RWA_API_MEASURE_ID_BY_CATEGORY = {
   RWAS: 71, // Bridged Token Value (Dollar)
   STABLECOINS: 70, // Bridged Token Market Cap (Dollar)
