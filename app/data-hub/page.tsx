@@ -310,7 +310,7 @@ export default async function Page() {
                       lastUpdated={formatDateMonthDayYear(
                         rwaAssetMarketShareData.lastUpdated
                       )}
-                    />
+                    >Excludes non-transferable RWAs</SourceInfoTooltip>
                   </CardSource>
                 </CardContent>
               </Card>
@@ -340,7 +340,7 @@ export default async function Page() {
                       lastUpdated={formatDateMonthDayYear(
                         rwaAssetMarketShareData.lastUpdated
                       )}
-                    />
+                    >Excludes non-transferable RWAs</SourceInfoTooltip>
                   </CardSource>
                 </CardContent>
               </Card>

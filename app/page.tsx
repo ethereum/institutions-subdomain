@@ -210,6 +210,7 @@ export default async function Home() {
       ),
       lastUpdated: formatDateMonthDayYear(rwaAssetMarketShareData.lastUpdated),
       ...rwaAssetMarketShareData.sourceInfo,
+      tooltip: "Excludes non-transferable RWAs",
     },
     {
       value: formatLargeCurrency(defiTvlAllCurrentData.data.mainnetDefiTvl),
