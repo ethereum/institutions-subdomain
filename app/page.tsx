@@ -196,21 +196,21 @@ export default async function Home() {
       ),
       ...stablecoinAssetMarketShareData.sourceInfo,
     },
-    {
-      value: formatPercent(
-        rwaAssetMarketShareData.data.marketShare.mainnet +
-          rwaAssetMarketShareData.data.marketShare.layer2
-      ),
-      label: (
-        <>
-          RWA market share
-          <br />
-          Ethereum Ecosystem
-        </>
-      ),
-      lastUpdated: formatDateMonthDayYear(rwaAssetMarketShareData.lastUpdated),
-      ...rwaAssetMarketShareData.sourceInfo,
-    },
+    // {
+    //   value: formatPercent(
+    //     rwaAssetMarketShareData.data.marketShare.mainnet +
+    //       rwaAssetMarketShareData.data.marketShare.layer2
+    //   ),
+    //   label: (
+    //     <>
+    //       RWA market share
+    //       <br />
+    //       Ethereum Ecosystem
+    //     </>
+    //   ),
+    //   lastUpdated: formatDateMonthDayYear(rwaAssetMarketShareData.lastUpdated),
+    //   ...rwaAssetMarketShareData.sourceInfo,
+    // },
     {
       value: formatLargeCurrency(defiTvlAllCurrentData.data.mainnetDefiTvl),
       label: (

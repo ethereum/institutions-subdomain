@@ -23,11 +23,7 @@ import Link from "@/components/ui/link"
 
 import { formatDateMonthDayYear } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
-import {
-  formatLargeCurrency,
-  formatMultiplier,
-  formatPercent,
-} from "@/lib/utils/number"
+import { formatLargeCurrency, formatMultiplier } from "@/lib/utils/number"
 
 import fetchAssetMarketShare from "../_actions/fetchAssetMarketShare"
 import fetchBeaconChain from "../_actions/fetchBeaconChain"
@@ -61,7 +57,6 @@ export default async function Page() {
     stablecoinAssetMarketShareData
   )
   const l2ScalingSummaryData = await fetchL2ScalingSummary()
-  const rwaAssetMarketShareData = await fetchAssetMarketShare("RWAS")
   const etherMarketDetailsData = await fetchEtherMarketDetails()
 
   const metrics: Metric[] = [
@@ -280,7 +275,8 @@ export default async function Page() {
           <h2 className="text-h3-mobile sm:text-h3 lg:w-lg lg:max-w-lg lg:shrink-0">
             Real-World Assets
           </h2>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_16rem]">
+          <RwaChartCard data={timeseriesRwaValueData} />
+          {/* <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_16rem]">
             <RwaChartCard data={timeseriesRwaValueData} />
 
             <div className="flex flex-col gap-y-4">
@@ -343,7 +339,7 @@ export default async function Page() {
                 </CardContent>
               </Card>
             </div>
-          </div>
+          </div> */}
         </section>
 
         <section id="layer-2" className="space-y-4">
