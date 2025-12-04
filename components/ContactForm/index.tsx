@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import { HeartHandshake, TriangleAlert } from "lucide-react"
 import { usePathname } from "next/navigation"
+import posthog from "posthog-js"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -184,6 +185,9 @@ const EnterpriseContactForm = () => {
 
     setSubmissionState("submitting")
     setErrors({})
+
+    // Track form submission attempt
+    posthog.capture("contact_form_attempt")
 
     try {
       const sanitizedData = {
