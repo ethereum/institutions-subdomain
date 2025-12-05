@@ -14,6 +14,7 @@ import {
 import { every } from "@/lib/utils/time"
 
 import {
+  RWA_API_MAINNET,
   RWA_API_MEASURE_ID_BY_CATEGORY,
   RWA_API_STABLECOINS_GROUP_ID,
   SOURCE,
@@ -90,7 +91,9 @@ export const fetchTimeseriesAssetsValue = async (
 
     const json: JSONData = await response.json()
 
-    const mainnetAssetData = json.results[0]
+    const mainnetAssetData = json.results.filter(
+      (result) => result.group.id === RWA_API_MAINNET.id
+    )[0]
     const layer2AssetDataArray = json.results.slice(1)
 
     const mainnetSeriesMapped = mainnetAssetData?.points?.length
