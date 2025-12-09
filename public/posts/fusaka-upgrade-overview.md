@@ -10,7 +10,7 @@ datePublished: 2025-12-09
 * The second network upgrade of 2025, Fusaka delivers a structural shift in the Ethereum network’s capacity without compromising security or decentralization.  
 * Fusaka resolves critical barriers to adoption: user experience, data capacity constraints, custodial complexity, and costs. 
 
-*Learn more about the Ethereum Improvement Proposals (EIPs) deployed in Fusaka [here](https://forkcast.org/upgrade/fusaka), and about the EIPs under consideration for Glamsterdam, the next network upgrade, [here](https://forkcast.org/upgrade/glamsterdam).* 
+*Learn more about the [Ethereum Improvement Proposals (EIPs) deployed in Fusaka here](https://forkcast.org/upgrade/fusaka), and about the [EIPs under consideration for Glamsterdam, the next network upgrade, here](https://forkcast.org/upgrade/glamsterdam).* 
 
 ## Fusaka: Key technical improvements
 
@@ -57,4 +57,4 @@ Primary objective: Internalizing block production ([Enshrined Proposer-Builder S
 * ePBS eliminates reliance on third-party relays (middleware) to facilitate block production, removing a counterparty layer and further decentralizing the network   
 * Glamsterdam will further solidify Ethereum as a neutral settlement layer where transaction inclusion is guaranteed by the protocol itself, not by third-parties
 
-Learn more about the EIPs being considered for Glamsterdam [here](https://forkcast.org/upgrade/glamsterdam). 
+Learn more about the [EIPs being considered for Glamsterdam here](https://forkcast.org/upgrade/glamsterdam). 
