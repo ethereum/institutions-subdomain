@@ -1,5 +1,5 @@
 ---
-title: Fusaka upgrade&#58; Ethereum is securely scaling 
+title: "Fusaka upgrade: Ethereum is securely scaling"
 datePublished: 2025-12-09
 ---
 
