@@ -1,5 +1,6 @@
 import Image, { StaticImageData } from "next/image"
 import type { Metadata } from "next/types"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import Hero from "@/components/Hero"
 import MaskedParallelsIcon from "@/components/MaskedParallelsIcon"
@@ -13,13 +14,28 @@ import Link from "@/components/ui/link"
 import { cn } from "@/lib/utils"
 import { getMetadata } from "@/lib/utils/metadata"
 
+import { type Locale, routing } from "@/i18n/routing"
 import blurWalking from "@/public/images/banners/blur-walking.png"
 import chainlink from "@/public/images/logos/apps/chainlink.png"
 import railgun from "@/public/images/logos/apps/railgun.png"
 import zama from "@/public/images/logos/apps/zama.png"
 import aztec from "@/public/images/logos/networks/aztec.png"
 
-export default function Page() {
+type Props = {
+  params: Promise<{ locale: Locale }>
+}
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+export default async function Page({ params }: Props) {
+  const { locale } = await params
+  setRequestLocale(locale)
+
+  const t = await getTranslations("privacy")
+  const tCommon = await getTranslations("common")
+
   const productionSolutions: {
     heading: string
     description: string
@@ -58,69 +74,55 @@ export default function Page() {
 
   return (
     <main className="row-start-2 flex flex-col items-center sm:items-start">
-      <Hero heading="Compliant Privacy for Institutions" shape="lock">
+      <Hero heading={t("hero.heading")} shape="lock">
         <p>
-          On Ethereum, you can keep counterparties, data, and business logic
-          confidential while settling against the deepest onchain liquidity.
+          {t("hero.description1")}
         </p>
         <p>
-          Privacy isn&apos;t a sidechain or a silo. It&apos;s a set of open
-          standards you compose on L1 or L2 to meet regulatory, risk, and audit
-          needs.
+          {t("hero.description2")}
         </p>
       </Hero>
       <article className="max-w-8xl mx-auto w-full space-y-20 px-4 py-10 sm:px-10 sm:py-20 md:space-y-40">
         <section id="direct" className="flex gap-10 max-lg:flex-col md:gap-16">
           <div className="space-y-6">
             <h2 className="text-h3-mobile sm:text-h3 max-lg:mx-auto max-lg:text-center lg:w-lg lg:max-w-lg lg:shrink-0">
-              A Privacy Strike Team for Institutions
+              {t("direct.heading")}
             </h2>
             <p>
-              The Ethereum Foundation pairs its cryptographic research team
-              (PSE) of 50+ leading privacy researchers with its Institutional
-              Privacy Task Force (IPTF) to deliver institutional-grade privacy
-              on public rails
+              {t("direct.description")}
             </p>
           </div>
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
             <div className="space-y-2">
               <h3 className="text-h5 text-foreground tracking-[0.03rem]">
-                Neutral Privacy Stacks
+                {t("direct.neutralStacks")}
               </h3>
               <div className="text-muted-foreground font-medium">
-                Avoid vendor lock-in with privacy stacks that map to
-                institutional use cases. IPTF advises, designs, and ships
-                vendor-neutral privacy solutions on Ethereum.
+                {t("direct.neutralStacksDesc")}
               </div>
             </div>
             <div className="space-y-2">
               <h3 className="text-h5 text-foreground tracking-[0.03rem]">
-                Advancing Compliance
+                {t("direct.compliance")}
               </h3>
               <div className="text-muted-foreground font-medium">
-                Co-design policy proofs that satisfy enterprise audit standards
-                and regulation. PSE works to advance onchain privacy solutions
-                and auditability for real-world adoption.
+                {t("direct.complianceDesc")}
               </div>
             </div>
             <div className="space-y-2">
               <h3 className="text-h5 text-foreground tracking-[0.03rem]">
-                Production-Ready Pilots
+                {t("direct.pilots")}
               </h3>
               <div className="text-muted-foreground font-medium">
-                Stand up pilots that settle publicly and compose with existing
-                liquidity, while keeping specific counterparties, amounts, and
-                logic confidential.
+                {t("direct.pilotsDesc")}
               </div>
             </div>
             <div className="space-y-2">
               <h3 className="text-h5 text-foreground tracking-[0.03rem]">
-                Institutional Education
+                {t("direct.education")}
               </h3>
               <div className="text-muted-foreground font-medium">
-                We engage directly to identify privacy needs and onchain
-                solutions, publishing guidance and reports to share learnings
-                and accelerate safe, compliant adoption.
+                {t("direct.educationDesc")}
               </div>
             </div>
           </div>
@@ -128,7 +130,7 @@ export default function Page() {
 
         <section id="building-blocks" className="space-y-14">
           <h2 className="text-h3-mobile sm:text-h3 max-w-lg tracking-[0.055rem]">
-            Privacy Building Blocks on Ethereum
+            {t("buildingBlocks.heading")}
           </h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
             <Link
@@ -144,13 +146,10 @@ export default function Page() {
                 </div>
 
                 <h3 className="text-h5 text-section-foreground group-hover:text-secondary-foreground tracking-[0.03rem]">
-                  Zero-Knowledge Proofs (ZK)
+                  {t("buildingBlocks.zk.label")}
                 </h3>
                 <p className="text-muted-foreground font-medium">
-                  Prove policy checks (KYC, limits, SOW) without exposing raw
-                  data. Enable selective disclosure for regulators and
-                  counterparties while keeping transactions composable with
-                  Ethereum liquidity.
+                  {t("buildingBlocks.zk.description")}
                 </p>
               </Card>
             </Link>
@@ -167,13 +166,10 @@ export default function Page() {
                 </div>
 
                 <h3 className="text-h5 text-section-foreground group-hover:text-secondary-foreground tracking-[0.03rem]">
-                  Fully Homomorphic Encryption (FHE)
+                  {t("buildingBlocks.fhe.label")}
                 </h3>
                 <p className="text-muted-foreground font-medium">
-                  Compute on encrypted data (risk, pricing, and netting). An
-                  early tech that&apos;s advancing quickly. FHE is best for
-                  highly-sensitivity analytics, where even intermediaries
-                  shouldn&apos;t see plaintext.
+                  {t("buildingBlocks.fhe.description")}
                 </p>
               </Card>
             </Link>
@@ -190,13 +186,10 @@ export default function Page() {
                 </div>
 
                 <h3 className="text-h5 text-section-foreground group-hover:text-secondary-foreground tracking-[0.03rem]">
-                  Trusted Execution Environments (TEE)
+                  {t("buildingBlocks.tee.label")}
                 </h3>
                 <p className="text-muted-foreground font-medium">
-                  Hardware-attested confidential compute for low-latency
-                  workflows (matching, auctions). TEEs keep code and data
-                  sealed, then emit verifiable attestations suitable for audits
-                  and due diligence.
+                  {t("buildingBlocks.tee.description")}
                 </p>
               </Card>
             </Link>
@@ -213,13 +206,10 @@ export default function Page() {
                 </div>
 
                 <h3 className="text-h5 text-section-foreground group-hover:text-secondary-foreground tracking-[0.03rem]">
-                  Privacy-Focused L2s
+                  {t("buildingBlocks.l2.label")}
                 </h3>
                 <p className="text-muted-foreground font-medium">
-                  Confidential rollups settle on Ethereum while keeping
-                  counterparties, amounts, and logic private via ZK, FHE or
-                  TEEs. Get L1 security, liquidity, and auditability, plus
-                  access to selective disclosure.
+                  {t("buildingBlocks.l2.description")}
                 </p>
               </Card>
             </Link>
@@ -229,43 +219,31 @@ export default function Page() {
         <section id="why" className="flex gap-x-32 gap-y-14 max-lg:flex-col">
           <div className="flex-3 space-y-7">
             <h2 className="text-h3-mobile sm:text-h3 tracking-[0.055rem] lg:max-w-lg">
-              Why Ethereum for Privacy
+              {t("why.heading")}
             </h2>
             <ul className="max-w-prose space-y-4">
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                Credibly Neutral, Audit-Ready
+                {t("why.auditReady")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  Prove compliance without exposing raw data. Unlock
-                  verification of KYC-checks, legitimate sources of funds, and
-                  transaction limits, with selective disclosure for regulators
-                  and auditors.
+                  {t("why.auditReadyDesc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                Composability with Liquidity
+                {t("why.composability")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  Private flows can still plug into the liquidity on Ethereum
-                  and its L2s. Privacy is composable with stablecoin and
-                  real-world asset (RWA) rails, DEX liquidity, institutional
-                  custody, and more.
+                  {t("why.composabilityDesc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                No Vendor Lock In
+                {t("why.noLockIn")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  Launch on Ethereum mainnet for maximum composability, or
-                  launch on Ethereum&apos;s L2s for lower settlement costs, with
-                  access to the same privacy tooling and vendor-neutral
-                  standards.
+                  {t("why.noLockInDesc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                Security at Scale
+                {t("why.security")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  Privacy features inherit Ethereum&apos;s decentralization and
-                  resilience. Build future-proof products and services on a
-                  global foundation designed for maximum security and permanent
-                  availability.
+                  {t("why.securityDesc")}
                 </p>
               </li>
             </ul>
@@ -284,7 +262,7 @@ export default function Page() {
 
         <section id="solutions" className="space-y-8">
           <h2 className="text-h4 tracking-[0.04rem]">
-            Privacy Solutions in Production
+            {t("solutions.heading")}
           </h2>
           <div
             className={cn(
@@ -315,7 +293,7 @@ export default function Page() {
                     </p>
                   </div>
                   <p className="text-secondary-foreground mt-4 mb-0">
-                    Visit{" "}
+                    {tCommon("visit")}{" "}
                     <span className="group-hover:animate-x-bounce inline-block">
                       →
                     </span>
@@ -330,12 +308,15 @@ export default function Page() {
   )
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: "privacy" })
+
   return getMetadata({
     slug: "privacy",
-    title: "Blockchain Privacy & Compliance for Institutions | Ethereum",
-    description:
-      "Settle onchain while protecting sensitive business data. Explore Ethereum's privacy features and tooling for institutional regulatory, risk, and audit needs.",
+    title: t("metadata.title"),
+    description: t("metadata.description"),
     image: "/images/og/privacy.png",
+    locale,
   })
 }

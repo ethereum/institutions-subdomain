@@ -1,4 +1,5 @@
 import type { Metadata } from "next/types"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import Hero from "@/components/Hero"
 import {
@@ -14,21 +15,33 @@ import { getMetadata } from "@/lib/utils/metadata"
 
 import { libraryItems } from "./data"
 
-export default function Page() {
+import { type Locale, routing } from "@/i18n/routing"
+
+type Props = {
+  params: Promise<{ locale: Locale }>
+}
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+export default async function Page({ params }: Props) {
+  const { locale } = await params
+  setRequestLocale(locale)
+
+  const t = await getTranslations("library")
+
   return (
     <main className="row-start-2 flex flex-col items-center sm:items-start">
       <Hero
-        heading="Library: Institutional Insights"
+        heading={t("hero.heading")}
         shape="book-open-text-fill"
       >
         <p>
-          Reports, articles, and analyses from across the institutional
-          landscape, along with thought leadership and updates from the Ethereum
-          Foundation&apos;s Enterprise Acceleration team.
+          {t("hero.description1")}
         </p>
         <p>
-          Explore market trends, technical developments, and strategic
-          opportunities for institutions building in the onchain economy.
+          {t("hero.description2")}
         </p>
       </Hero>
       <article className="max-w-8xl mx-auto w-full space-y-10 px-4 py-10 sm:px-10 sm:py-20 md:space-y-20">
@@ -52,12 +65,15 @@ export default function Page() {
   )
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: "library" })
+
   return getMetadata({
     slug: "library",
-    title: "Research & Insights | Ethereum Institutional Resources",
-    description:
-      "Explore a curated library for businesses adopting Ethereum, with reports, analysis, market trends, and the latest institutional insights.",
+    title: t("metadata.title"),
+    description: t("metadata.description"),
     image: "/images/og/library.png",
+    locale,
   })
 }

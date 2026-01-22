@@ -2,6 +2,7 @@ import { ReactNode } from "react"
 import { Check } from "lucide-react"
 import Image, { type StaticImageData } from "next/image"
 import type { Metadata } from "next/types"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { LastUpdated, Metric, SourceInfo } from "@/lib/types"
 
@@ -27,14 +28,14 @@ import {
   formatLargeNumber,
 } from "@/lib/utils/number"
 
-import fetchBaseTvl from "../_actions/fetchBaseTvl"
-import fetchBeaconChain from "../_actions/fetchBeaconChain"
-import fetchCeloMonthlyStablecoinVolume from "../_actions/fetchCeloMonthlyStablecoinVolume"
-import fetchL2MedianTxCost from "../_actions/fetchL2MedianTxCost"
-import fetchL2ScalingActivity from "../_actions/fetchL2ScalingActivity"
-import fetchL2ScalingSummary from "../_actions/fetchL2ScalingSummary"
-import fetchWorldChainTxCount from "../_actions/fetchWorldChainTxCount"
-
+import fetchBaseTvl from "@/app/_actions/fetchBaseTvl"
+import fetchBeaconChain from "@/app/_actions/fetchBeaconChain"
+import fetchCeloMonthlyStablecoinVolume from "@/app/_actions/fetchCeloMonthlyStablecoinVolume"
+import fetchL2MedianTxCost from "@/app/_actions/fetchL2MedianTxCost"
+import fetchL2ScalingActivity from "@/app/_actions/fetchL2ScalingActivity"
+import fetchL2ScalingSummary from "@/app/_actions/fetchL2ScalingSummary"
+import fetchWorldChainTxCount from "@/app/_actions/fetchWorldChainTxCount"
+import { type Locale, routing } from "@/i18n/routing"
 import blackGlyphBanner from "@/public/images/banners/black-glyph-banner.png"
 import coinbase from "@/public/images/logos/apps/coinbase.png"
 import deutscheBank from "@/public/images/logos/apps/deutsche-bank.png"
@@ -60,7 +61,21 @@ type CardItem = {
   ctaLabel?: ReactNode
 }
 
-export default async function Page() {
+type Props = {
+  params: Promise<{ locale: Locale }>
+}
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+export default async function Page({ params }: Props) {
+  const { locale } = await params
+  setRequestLocale(locale)
+
+  const t = await getTranslations("layer2")
+  const tCommon = await getTranslations("common")
+
   const l2ScalingSummaryData = await fetchL2ScalingSummary()
   const l2ScalingActivityData = await fetchL2ScalingActivity()
   const l2MedianTxCostData = await fetchL2MedianTxCost()
@@ -72,13 +87,13 @@ export default async function Page() {
 
   const metrics: Metric[] = [
     {
-      label: <span title="Total Value Locked">TVL Across L2s</span>,
+      label: <span title="Total Value Locked">{t("metrics.tvlAcross")}</span>,
       value: formatLargeCurrency(l2ScalingSummaryData.data.totalTvl),
       lastUpdated: formatDateMonthDayYear(l2ScalingSummaryData.lastUpdated),
       ...l2ScalingSummaryData.sourceInfo,
     },
     {
-      label: "Avg Transaction Cost Daily",
+      label: t("metrics.avgTxCost"),
       value: formatCurrency(
         l2MedianTxCostData.data.latestWeightedMedianTxCostUsd,
         {
@@ -92,7 +107,7 @@ export default async function Page() {
     {
       label: (
         <>
-          Avg <span title="User Operations Per Second">UOPS</span>
+          {t("metrics.avgUops")} <span title="User Operations Per Second">UOPS</span>
         </>
       ),
       value: formatLargeNumber(l2ScalingActivityData.data.uops),
@@ -100,7 +115,7 @@ export default async function Page() {
       ...l2ScalingActivityData.sourceInfo,
     },
     {
-      label: "Number of L2s",
+      label: t("metrics.numberOfL2s"),
       value: l2ScalingSummaryData.data.allProjectsCount,
       lastUpdated: formatDateMonthDayYear(l2ScalingSummaryData.lastUpdated),
       ...l2ScalingSummaryData.sourceInfo,
@@ -110,29 +125,25 @@ export default async function Page() {
   const frameworks: CardItem[] = [
     {
       heading: "Arbitrum",
-      description:
-        "A suite of Ethereum scaling solutions that make it easy to build and use decentralized applications.",
+      description: t("frameworks.arbitrum"),
       href: "https://arbitrum.io/",
       imgSrc: arbitrum,
     },
     {
       heading: "Optimism",
-      description:
-        "The OP Stack is a standardized  development stack to spin up a L2. The Superchain is a network of interoperable OP Stack chains.",
+      description: t("frameworks.optimism"),
       href: "https://www.optimism.io/",
       imgSrc: optimism,
     },
     {
       heading: "Polygon",
-      description:
-        "Polygon protocols and scaling technologies are used to build and deploy apps, or launch ZK rollups and validiums as L2s.",
+      description: t("frameworks.polygon"),
       href: "https://polygon.technology/",
       imgSrc: polygon,
     },
     {
       heading: "ZKSync",
-      description:
-        "A scaling and privacy engine for Ethereum with a network of interoperable chains, secured by ZK privacy technology.",
+      description: t("frameworks.zksync"),
       href: "https://www.zksync.io/",
       imgSrc: zksync,
     },
@@ -141,43 +152,37 @@ export default async function Page() {
   const networks: CardItem[] = [
     {
       heading: "Linea",
-      description:
-        "Linea is a general purpose, EVM equivalent L2, built by Consensys. Allowing use of existing Ethereum tooling and smart contracts with minimal changes.",
+      description: t("networks.linea"),
       href: "https://linea.build/",
       imgSrc: linea,
     },
     {
       heading: "Starknet",
-      description:
-        "Starknet is a validity rollup (ZK-Rollup) L2 enabling provable computation using STARK proofs. Focused on high-throughput apps and low-cost transactions, combined with Ethereum's security.",
+      description: t("networks.starknet"),
       href: "https://www.starknet.io/",
       imgSrc: starknet,
     },
     {
       heading: "Base",
-      description:
-        "Base is a secure, low-cost L2 built on Optimism's OP Stack, offering seamless Ethereum compatibility. It enables fast, scalable transactions while keeping assets and apps fully onchain.",
+      description: t("networks.base"),
       href: "https://www.base.org/",
       imgSrc: base,
     },
     {
       heading: "Ink",
-      description:
-        "Ink is a L2 built by Kraken, focused on bridging centralized finance with onchain applications. Offers accessible DeFi to exchange users, combining L2 scalability with a CEX-native experience.",
+      description: t("networks.ink"),
       href: "https://inkonchain.com/",
       imgSrc: ink,
     },
     {
       heading: "Unichain",
-      description:
-        "Unichain is a DeFi-centered L2 built for high-throughput transactions and cross-chain liquidity. Providing a unified environment for financial protocols, combining capital efficiency with rollup security.",
+      description: t("networks.unichain"),
       href: "https://www.unichain.org/",
       imgSrc: unichain,
     },
     {
       heading: "Scroll",
-      description:
-        "Scroll is a zkEVM-based Layer 2 built for Ethereum compatibility. It enables native deployment of existing smart contracts while maintaining full EVM equivalence and trustless proofs anchored to L1.",
+      description: t("networks.scroll"),
       href: "https://scroll.io/",
       imgSrc: scroll,
     },
@@ -188,14 +193,14 @@ export default async function Page() {
     Partial<SourceInfo & LastUpdated>)[] = [
     {
       heading: "Ernst & Young",
-      description: "Nightfall L2 Platform",
+      description: t("caseStudies.ey.description"),
       href: "https://blockchain.ey.com/technology",
       imgSrc: ey,
       ctaLabel: (
         <>
           90%
           <br />
-          Cheaper Transactions
+          {t("caseStudies.ey.ctaLabel")}
         </>
       ),
       lastUpdated: formatDateMonthDayYear(new Date("2024-04-06")),
@@ -204,14 +209,14 @@ export default async function Page() {
     },
     {
       heading: "Coinbase",
-      description: "Base L2 Ecosystem",
+      description: t("caseStudies.coinbase.description"),
       href: "https://www.base.org/",
       imgSrc: coinbase,
       ctaLabel: (
         <>
           {formatLargeCurrency(baseTvlData.data.baseTvl)}
           <br />
-          Total Value Secured
+          {t("caseStudies.coinbase.ctaLabel")}
         </>
       ),
       lastUpdated: formatDateMonthDayYear(baseTvlData.lastUpdated),
@@ -219,14 +224,14 @@ export default async function Page() {
     },
     {
       heading: "Deutsche Bank",
-      description: "DAMA 2 Permissioned L2",
+      description: t("caseStudies.deutscheBank.description"),
       href: "https://www.db.com/news/detail/20250618-dama-2-litepaper-institutional-blueprint-for-asset-tokenisation-and-servicing-on-ethereum-layer-2?language_id=1",
       imgSrc: deutscheBank,
       ctaLabel: (
         <>
           $84T
           <br />
-          Est. Digital-Native by 2045
+          {t("caseStudies.deutscheBank.ctaLabel")}
         </>
       ),
       lastUpdated: formatDateMonthDayYear(new Date("2025-06-18")),
@@ -236,7 +241,7 @@ export default async function Page() {
     },
     {
       heading: "Celo",
-      description: "L1 Transitioned to Ethereum L2",
+      description: t("caseStudies.celo.description"),
       href: "https://celo.org/",
       imgSrc: celo,
       ctaLabel: (
@@ -245,7 +250,7 @@ export default async function Page() {
             celoMonthlyStablecoinVolumeData.data.celoMonthlyStablecoinVolume
           )}
           <br />
-          Monthly Stablecoin Volume
+          {t("caseStudies.celo.ctaLabel")}
         </>
       ),
       lastUpdated: formatDateMonthDayYear(
@@ -255,14 +260,14 @@ export default async function Page() {
     },
     {
       heading: "World",
-      description: "World Chain L2 to scale Proof of Human",
+      description: t("caseStudies.world.description"),
       href: "https://world.org/world-chain",
       imgSrc: worldChain,
       ctaLabel: (
         <>
           {formatLargeNumber(worldChainTxCountData.data.worldChainTxCount)}
           <br />
-          Daily Transactions
+          {t("caseStudies.world.ctaLabel")}
         </>
       ),
       lastUpdated: formatDateMonthDayYear(worldChainTxCountData.lastUpdated),
@@ -272,22 +277,17 @@ export default async function Page() {
 
   return (
     <main className="row-start-2 flex flex-col items-center sm:items-start">
-      <Hero heading="Ethereum L2s" shape="layers-2">
+      <Hero heading={t("hero.heading")} shape="layers-2">
         <p>
-          Layer 2s (L2s) are scalable execution layers built on top of Ethereum.
-          Rollups, a primary category of L2, bundle transactions and post data
-          back to Ethereum mainnet, allowing them to inherit Ethereum&apos;s
-          security and decentralization.
+          {t("hero.description1")}
         </p>
         <p>
-          Ideal for tokenization, payments, and compliant appchains, L2s can
-          offer custom environments, optimized rails, and faster, cheaper
-          execution, while relying on Ethereum for finality.
+          {t("hero.description2")}
         </p>
       </Hero>
       <article className="max-w-8xl mx-auto w-full space-y-20 px-4 py-10 sm:px-10 sm:py-20 md:space-y-40">
         <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-12 xl:grid-cols-4">
-          <h2 className="sr-only">Layer 2 Ecosystem Overview</h2>
+          <h2 className="sr-only">{t("metrics.srHeading")}</h2>
           {metrics.map(
             ({ label, value, source, sourceHref, lastUpdated }, idx) => (
               <Card key={idx} variant="flex-height">
@@ -325,13 +325,13 @@ export default async function Page() {
           )}
         </section>
         <section id="role" className="space-y-8">
-          <h2 className="text-h3-mobile sm:text-h3">The Role of L2s</h2>
+          <h2 className="text-h3-mobile sm:text-h3">{t("role.heading")}</h2>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <Card className="p-10">
               <h3 className="text-h4">
-                Ethereum L1
+                {t("role.l1.heading")}
                 <br />
-                The Settlement & Liquidity Layer
+                {t("role.l1.subheading")}
               </h3>
 
               <hr className="my-6" />
@@ -339,40 +339,37 @@ export default async function Page() {
               <div className="grid gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">Finality & Credible Neutrality</h4>
+                  <h4 className="text-h6">{t("role.l1.finality")}</h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  High-value settlement, state roots for rollups, and durable
-                  records institutions can audit and attest against
+                  {t("role.l1.finalityDesc")}
                 </div>
               </div>
               <div className="grid gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">Security</h4>
+                  <h4 className="text-h6">{t("role.l1.security")}</h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  Assets can be stored in an environment that is built to
-                  withstand major catastrophes and geopolitical tensions
+                  {t("role.l1.securityDesc")}
                 </div>
               </div>
               <div className="grid gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">Risk Gating</h4>
+                  <h4 className="text-h6">{t("role.l1.riskGating")}</h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  Keep complex or experimental logic off L1; use it for final
-                  settlement, collateral custody, and proofs
+                  {t("role.l1.riskGatingDesc")}
                 </div>
               </div>
             </Card>
 
             <Card className="p-10">
               <h3 className="text-h4">
-                Ethereum&apos;s L2s
+                {t("role.l2.heading")}
                 <br />
-                The Execution and Scaling Layer
+                {t("role.l2.subheading")}
               </h3>
 
               <hr className="my-6" />
@@ -380,34 +377,28 @@ export default async function Page() {
               <div className="grid gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">Throughput & UX</h4>
+                  <h4 className="text-h6">{t("role.l2.throughput")}</h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  Rollups process transactions off-chain, inherit L1 security,
-                  and deliver low fees suitable for payments, market-making, and
-                  high-frequency flows
+                  {t("role.l2.throughputDesc")}
                 </div>
               </div>
               <div className="grid gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">Configurable</h4>
+                  <h4 className="text-h6">{t("role.l2.configurable")}</h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  L2s can add compliance features, like allowlisting or
-                  KYC&apos;d pools, while remaining non-custodial and settling
-                  to L1
+                  {t("role.l2.configurableDesc")}
                 </div>
               </div>
               <div className="grid gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">Specialization</h4>
+                  <h4 className="text-h6">{t("role.l2.specialization")}</h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  Multiple L2s let institutions segregate workloads, such as
-                  retail payments vs. treasury ops, without fragmenting trust,
-                  because settlement reconciles on L1
+                  {t("role.l2.specializationDesc")}
                 </div>
               </div>
             </Card>
@@ -415,7 +406,7 @@ export default async function Page() {
         </section>
 
         <section id="benefits" className="space-y-8">
-          <h2 className="text-h3-mobile sm:text-h3">Benefits of L2s</h2>
+          <h2 className="text-h3-mobile sm:text-h3">{t("benefits.heading")}</h2>
 
           <L2BenefitsPanel
             validatorsCount={formatLargeNumber(
@@ -429,66 +420,57 @@ export default async function Page() {
         <section id="trust" className="flex gap-x-32 gap-y-14 max-lg:flex-col">
           <div className="flex-1 space-y-8">
             <h2 className="text-h3-mobile sm:text-h3 tracking-[0.055rem]">
-              Ethereum as the Trust Layer
+              {t("trust.heading")}
             </h2>
             <p className="text-muted-foreground max-w-xl text-xl font-medium tracking-[0.025rem]">
-              In a rollup, transactions are executed off-chain but the data is
-              published to Ethereum L1
+              {t("trust.description")}
             </p>
             <ul className="max-w-prose space-y-4 font-medium">
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                Transparency
+                {t("trust.transparency")}
                 <p className="text-muted-foreground mt-1 text-base font-medium tracking-[0.02rem]">
-                  Every user can see the rollup state on the L1
+                  {t("trust.transparencyDesc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                Data availability
+                {t("trust.dataAvailability")}
                 <p className="text-muted-foreground mt-1 text-base font-medium tracking-[0.02rem]">
-                  Even if the L2 sequencer disappears or censors users, the
-                  entire history of transactions is accessible and immutable on
-                  Ethereum
+                  {t("trust.dataAvailabilityDesc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                Exit window
+                {t("trust.exitWindow")}
                 <p className="text-muted-foreground mt-1 text-base font-medium tracking-[0.02rem]">
-                  Anyone can directly withdraw their assets from the L2 to the
-                  L1 by interacting with the L1 smart contract
+                  {t("trust.exitWindowDesc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                Recoverability
+                {t("trust.recoverability")}
                 <p className="text-muted-foreground mt-1 text-base font-medium tracking-[0.02rem]">
-                  Data availability on the L1 makes user funds recoverable even
-                  if the L2 fails; this feature, referred to as the &quot;escape
-                  hatch,&quot; keeps rollups&apos; trust minimized rather than
-                  reliant on the L2 operator
+                  {t("trust.recoverabilityDesc")}
                 </p>
               </li>
             </ul>
 
             <div className="space-y-4">
               <h3 className="text-h5 tracking-[0.03rem]">
-                Issuance on L1 (Bridging to L2)
+                {t("trust.issuance.heading")}
               </h3>
               <p className="text-muted-foreground text-xl font-medium">
-                Assets should be issued on the L1 and bridged to the L2
+                {t("trust.issuance.description")}
               </p>
               <ul className="space-y-2 font-medium">
                 <li className="flex gap-4">
                   <Check className="text-secondary-foreground" />
-                  Anchors assets to Ethereum&apos;s most secure, neutral and
-                  resilient layer
+                  {t("trust.issuance.anchors")}
                 </li>
                 <li className="flex gap-4">
                   <Check className="text-secondary-foreground" />
-                  Guarantees asset redeemability (escape hatch)
+                  {t("trust.issuance.guarantees")}
                 </li>
                 <li className="flex gap-4">
                   <Check className="text-secondary-foreground" />
-                  Maximizes interoperability and composability across Ethereum
-                  ecosystem
+                  {t("trust.issuance.maximizes")}
                 </li>
               </ul>
             </div>
@@ -508,11 +490,10 @@ export default async function Page() {
         <section id="frameworks" className="space-y-8">
           <div className="space-y-2">
             <h2 className="text-h3-mobile sm:text-h3">
-              Simplified Deployment and Flexibility
+              {t("frameworksSection.heading")}
             </h2>
             <p className="text-muted-foreground font-medium">
-              Choose from robust, audited frameworks to launch your blockchain
-              in weeks, not years
+              {t("frameworksSection.description")}
             </p>
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -529,7 +510,7 @@ export default async function Page() {
                   <p className="font-medium">{description}</p>
                 </div>
                 <p className="text-secondary-foreground mt-12 font-bold lg:mt-16">
-                  Visit{" "}
+                  {tCommon("visit")}{" "}
                   <span className="group-hover:animate-x-bounce inline-block">
                     →
                   </span>
@@ -539,10 +520,9 @@ export default async function Page() {
           </div>
 
           <div className="space-y-2">
-            <h3 className="text-h4-mobile sm:text-h4">Deploy on Proven L2s</h3>
+            <h3 className="text-h4-mobile sm:text-h4">{t("networksSection.heading")}</h3>
             <p className="text-muted-foreground font-medium">
-              Build on secure and scalable networks without the operational
-              overhead of launching and maintaining your own chain
+              {t("networksSection.description")}
             </p>
           </div>
           <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,260px),1fr))] gap-4">
@@ -559,7 +539,7 @@ export default async function Page() {
                   <p className="font-medium">{description}</p>
                 </div>
                 <p className="text-secondary-foreground mt-12 font-bold lg:mt-16">
-                  Visit{" "}
+                  {tCommon("visit")}{" "}
                   <span className="group-hover:animate-x-bounce inline-block">
                     →
                   </span>
@@ -570,7 +550,7 @@ export default async function Page() {
         </section>
 
         <section id="cases" className="space-y-8">
-          <h2 className="text-h3-mobile sm:text-h3">Case Studies</h2>
+          <h2 className="text-h3-mobile sm:text-h3">{t("caseStudiesSection.heading")}</h2>
           <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,260px),1fr))] gap-4">
             {caseStudies.map(
               ({
@@ -614,99 +594,91 @@ export default async function Page() {
         </section>
 
         <section id="enterprise" className="space-y-8">
-          <h2 className="text-h3-mobile sm:text-h3">L2s for Enterprise</h2>
+          <h2 className="text-h3-mobile sm:text-h3">{t("enterprise.heading")}</h2>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <Card className="p-10">
-              <h3 className="text-h4">Use an Existing L2</h3>
+              <h3 className="text-h4">{t("enterprise.existing.heading")}</h3>
 
               <hr className="my-6" />
 
               <div className="grid gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">Immediate Access</h4>
+                  <h4 className="text-h6">{t("enterprise.existing.immediateAccess")}</h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  Tap into mature ecosystems with large developer communities
-                  and liquidity networks
+                  {t("enterprise.existing.immediateAccessDesc")}
                 </div>
               </div>
               <div className="grid gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">Lower Integration Costs</h4>
+                  <h4 className="text-h6">{t("enterprise.existing.lowerCosts")}</h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  Inherit Ethereum&apos;s decentralisation and security—no need
-                  to bootstrap infrastructure
+                  {t("enterprise.existing.lowerCostsDesc")}
                 </div>
               </div>
               <div className="grid gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">Regulatory Alignment</h4>
+                  <h4 className="text-h6">{t("enterprise.existing.regulatoryAlignment")}</h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  Many L2s are already building compliance modules suited for
-                  financial institutions
+                  {t("enterprise.existing.regulatoryAlignmentDesc")}
                 </div>
               </div>
               <div className="grid gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">Production Security</h4>
+                  <h4 className="text-h6">{t("enterprise.existing.productionSecurity")}</h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  Build on live and battle-tested L2 chains, with billions of
-                  dollars in value secured
+                  {t("enterprise.existing.productionSecurityDesc")}
                 </div>
               </div>
             </Card>
 
             <Card className="p-10">
-              <h3 className="text-h4">Launch a Custom L2</h3>
+              <h3 className="text-h4">{t("enterprise.custom.heading")}</h3>
 
               <hr className="my-6" />
 
               <div className="grid gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">Tailored Environments</h4>
+                  <h4 className="text-h6">{t("enterprise.custom.tailoredEnvironments")}</h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  Deploy a private or public rollup using existing stacks,
-                  tailored to your specific enterprise needs
+                  {t("enterprise.custom.tailoredEnvironmentsDesc")}
                 </div>
               </div>
               <div className="grid gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">Custom Features</h4>
+                  <h4 className="text-h6">{t("enterprise.custom.customFeatures")}</h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  Implement permissioned access, privacy layers, compliance
-                  hooks, or internal system integration
+                  {t("enterprise.custom.customFeaturesDesc")}
                 </div>
               </div>
               <div className="grid gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">Shared Security</h4>
+                  <h4 className="text-h6">{t("enterprise.custom.sharedSecurity")}</h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  Even private rollups settle to Ethereum, benefiting from its
-                  validator set without the cost of building one
+                  {t("enterprise.custom.sharedSecurityDesc")}
                 </div>
               </div>
               <div className="grid gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">Faster Time to Market</h4>
+                  <h4 className="text-h6">{t("enterprise.custom.fasterTimeToMarket")}</h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  Build using audited, battle-tested rollup frameworks to deploy
-                  in weeks, not years
+                  {t("enterprise.custom.fasterTimeToMarketDesc")}
                 </div>
               </div>
             </Card>
@@ -717,12 +689,15 @@ export default async function Page() {
   )
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: "layer2" })
+
   return getMetadata({
     slug: "layer-2",
-    title: "Ethereum's Layer 2 Ecosystem | Scalable Enterprise Solutions",
-    description:
-      "Layer 2s offer faster, cheaper execution, ideal for payments, appchains, and tokenization. Learn how L2s help institutions scale without sacrificing security.",
+    title: t("metadata.title"),
+    description: t("metadata.description"),
     image: "/images/og/layer-2.png",
+    locale,
   })
 }

@@ -5,17 +5,21 @@ import { Triangle } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-import { DA_NAV_ITEM_LINKS } from "@/lib/constants"
-
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu"
-import Link from "../ui/link"
+import Link, { LinkProps } from "../ui/link"
 
-const DigitalAssetsDropdown = ({ className }: { className?: string }) => {
+type DigitalAssetsDropdownProps = {
+  className?: string
+  label: string
+  links: LinkProps[]
+}
+
+const DigitalAssetsDropdown = ({ className, label, links }: DigitalAssetsDropdownProps) => {
   const [open, setOpen] = useState(false)
 
   return (
@@ -26,11 +30,11 @@ const DigitalAssetsDropdown = ({ className }: { className?: string }) => {
           className
         )}
       >
-        Digital Assets&nbsp;
+        {label}&nbsp;
         <Triangle className="inline size-[0.75em] -scale-y-75 fill-current transition-transform" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        {DA_NAV_ITEM_LINKS.map((props) => (
+        {links.map((props) => (
           <DropdownMenuItem key={props.href} asChild>
             <Link
               onClick={() => setOpen(false)}

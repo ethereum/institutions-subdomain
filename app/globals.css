@@ -227,4 +227,9 @@
       transform: translateX(var(--x-travel));
     }
   }
+
+  /* Chinese language font support */
+  :lang(zh) {
+    font-family: "PingFang SC", "Microsoft YaHei", "SimHei", system-ui, sans-serif;
+  }
 }

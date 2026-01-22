@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import Image, { type StaticImageData } from "next/image"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { Metric } from "@/lib/types"
 
@@ -50,16 +51,17 @@ import { formatDuration } from "@/lib/utils/time"
 
 import { MAINNET_GENESIS } from "@/lib/constants"
 
-import fetchAssetMarketShare from "./_actions/fetchAssetMarketShare"
-import fetchBaseTvl from "./_actions/fetchBaseTvl"
-import fetchBeaconChain from "./_actions/fetchBeaconChain"
-import fetchDexVolume from "./_actions/fetchDexVolume"
-import fetchEtherPrice from "./_actions/fetchEtherPrice"
-import fetchSecuritizeAum from "./_actions/fetchSecuritizeAum"
-import fetchDefiTvlAllCurrent from "./_actions/fetchTvlDefiAllCurrent"
-import { getTimeSinceGenesis } from "./_actions/getTimeSinceGenesis"
+import { libraryItems } from "./library/data"
 
-import { libraryItems } from "@/app/library/data"
+import fetchAssetMarketShare from "@/app/_actions/fetchAssetMarketShare"
+import fetchBaseTvl from "@/app/_actions/fetchBaseTvl"
+import fetchBeaconChain from "@/app/_actions/fetchBeaconChain"
+import fetchDexVolume from "@/app/_actions/fetchDexVolume"
+import fetchEtherPrice from "@/app/_actions/fetchEtherPrice"
+import fetchSecuritizeAum from "@/app/_actions/fetchSecuritizeAum"
+import fetchDefiTvlAllCurrent from "@/app/_actions/fetchTvlDefiAllCurrent"
+import { getTimeSinceGenesis } from "@/app/_actions/getTimeSinceGenesis"
+import { type Locale, routing } from "@/i18n/routing"
 import blackRock from "@/public/images/logos/institutions/black-rock.png"
 import blackRockSvg from "@/public/images/logos/institutions/black-rock.svg"
 import citi from "@/public/images/logos/institutions/citi.png"
@@ -147,7 +149,21 @@ const testimonials: {
   },
 ]
 
-export default async function Home() {
+type Props = {
+  params: Promise<{ locale: Locale }>
+}
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+export default async function Home({ params }: Props) {
+  const { locale } = await params
+  setRequestLocale(locale)
+
+  const t = await getTranslations("home")
+  const tCommon = await getTranslations("common")
+
   const uptime = getTimeSinceGenesis()
   const beaconChainData = await fetchBeaconChain()
   const ethPrice = await fetchEtherPrice()
@@ -162,15 +178,15 @@ export default async function Home() {
   const metrics: Metric[] = [
     {
       value: formatDuration(uptime, { maxDecimalPoints: 1 }),
-      label: "Uninterrupted uptime and liveness",
-      source: `Genesis ${formatDateMonthDayYear(MAINNET_GENESIS)}`,
+      label: t("numbers.uptimeLabel"),
+      source: t("numbers.genesisSource", { date: formatDateMonthDayYear(MAINNET_GENESIS) }),
       lastUpdated: formatDateMonthDayYear(Date.now()),
     },
     {
       value: formatLargeCurrency(
         beaconChainData.data.totalStakedEther * ethPrice.data.usd
       ),
-      label: `Total value securing the network (${formatLargeNumber(beaconChainData.data.totalStakedEther)} ETH)`,
+      label: t("numbers.networkSecurityLabel", { ethAmount: formatLargeNumber(beaconChainData.data.totalStakedEther) }),
       lastUpdated: formatDateMonthDayYear(beaconChainData.lastUpdated),
       ...beaconChainData.sourceInfo,
     },
@@ -180,15 +196,11 @@ export default async function Home() {
       ),
       label: (
         <>
-          Stablecoin TVL
+          {t("numbers.stablecoinTvlLabel")}
           <br />
           <span className="font-medium">
-            {formatPercent(
-              stablecoinAssetMarketShareData.data.marketShare.mainnet
-            )}
-            +
-          </span>{" "}
-          of global supply
+            {t("numbers.stablecoinMarketShare", { percent: formatPercent(stablecoinAssetMarketShareData.data.marketShare.mainnet) })}
+          </span>
         </>
       ),
       lastUpdated: formatDateMonthDayYear(
@@ -196,34 +208,18 @@ export default async function Home() {
       ),
       ...stablecoinAssetMarketShareData.sourceInfo,
     },
-    // {
-    //   value: formatPercent(
-    //     rwaAssetMarketShareData.data.marketShare.mainnet +
-    //       rwaAssetMarketShareData.data.marketShare.layer2
-    //   ),
-    //   label: (
-    //     <>
-    //       RWA market share
-    //       <br />
-    //       Ethereum Ecosystem
-    //     </>
-    //   ),
-    //   lastUpdated: formatDateMonthDayYear(rwaAssetMarketShareData.lastUpdated),
-    //   ...rwaAssetMarketShareData.sourceInfo,
-    // },
     {
       value: formatLargeCurrency(defiTvlAllCurrentData.data.mainnetDefiTvl),
       label: (
         <>
-          DeFi TVL
+          {t("numbers.defiTvlLabel")}
           <br />{" "}
           <span className="font-medium">
-            {formatPercent(
+            {t("numbers.defiMarketShare", { percent: formatPercent(
               defiTvlAllCurrentData.data.mainnetDefiMarketshare +
                 defiTvlAllCurrentData.data.layer2DefiMarketshare
-            )}
+            ) })}
           </span>
-          + of all blockchains
         </>
       ),
       lastUpdated: formatDateMonthDayYear(defiTvlAllCurrentData.lastUpdated),
@@ -233,9 +229,9 @@ export default async function Home() {
       value: formatLargeCurrency(dexVolume.data.trailing12moAvgDexVolume),
       label: (
         <>
-          24-Hour DEX volume
+          {t("numbers.dexVolumeLabel")}
           <br />
-          (12-month avg)
+          {t("numbers.dexVolumeSubLabel")}
         </>
       ),
       lastUpdated: formatDateMonthDayYear(dexVolume.lastUpdated),
@@ -251,24 +247,24 @@ export default async function Home() {
     {
       name: "BlackRock",
       imgSrc: blackRockSvg,
-      label: "Onchain Tokenization via Securitize",
-      value: formatLargeCurrency(securitizeAumData.data.currentValue) + "+ AUM",
+      label: t("platforms.blackrock.label"),
+      value: t("platforms.blackrock.value", { amount: formatLargeCurrency(securitizeAumData.data.currentValue) }),
       lastUpdated: formatDateMonthDayYear(securitizeAumData.lastUpdated),
       ...securitizeAumData.sourceInfo,
     },
     {
       name: "Coinbase",
       imgSrc: coinbaseSvg,
-      label: "Base Layer 2 Ecosystem",
-      value: `${formatLargeCurrency(baseTvlData.data.baseTvl)} TVL`,
+      label: t("platforms.coinbase.label"),
+      value: t("platforms.coinbase.value", { amount: formatLargeCurrency(baseTvlData.data.baseTvl) }),
       lastUpdated: formatDateMonthDayYear(baseTvlData.lastUpdated),
       ...baseTvlData.sourceInfo,
     },
     {
       name: "Visa",
       imgSrc: visaSvg,
-      label: "Stablecoin Payment Settlement",
-      value: "$1B+ Annual Stablecoin Volume",
+      label: t("platforms.visa.label"),
+      value: t("platforms.visa.value"),
       lastUpdated: formatDateMonthDayYear("2025-10-17T00:00:00Z"),
       source: "Yahoo! Finance",
       sourceHref:
@@ -277,8 +273,8 @@ export default async function Home() {
     {
       name: "eToro",
       imgSrc: etoroSvg,
-      label: "Stock Tokenization Platform",
-      value: "100 Stocks Trade 24/5",
+      label: t("platforms.etoro.label"),
+      value: t("platforms.etoro.value"),
       lastUpdated: formatDateMonthDayYear("2025-10-17T00:00:00Z"),
       source: "eToro",
       sourceHref: "https://go.etoro.com/en/unlocked/withoutboundaries",
@@ -289,7 +285,7 @@ export default async function Home() {
     <main className="row-start-2 flex flex-col items-center sm:items-start">
       <Hero
         data-label="hero"
-        heading="The Institutional Liquidity Layer"
+        heading={t("hero.heading")}
         shape="eth-glyph"
         className="css-primary-invert"
         beneath={
@@ -313,13 +309,13 @@ export default async function Home() {
         <section id="numbers" className="flex gap-20 max-lg:flex-col">
           <div className="flex flex-col gap-y-10 max-lg:items-center">
             <h2 className="text-h3-mobile sm:text-h3 max-lg:mx-auto max-lg:text-center lg:max-w-md">
-              Ethereum is the Backbone of the Onchain Economy
+              {t("numbers.heading")}
             </h2>
             <LinkWithArrow
               href="/data-hub"
               className="css-secondary w-fit text-lg"
             >
-              Live Data
+              {tCommon("liveData")}
             </LinkWithArrow>
           </div>
           <div className="grid grid-cols-[auto_auto] gap-14 max-sm:grid-cols-2">
@@ -333,10 +329,9 @@ export default async function Home() {
 
         <section id="digital-assets" className="w-full space-y-7">
           <div className="space-y-2 text-center">
-            <h2>Institutional Use Cases</h2>
+            <h2>{t("useCases.heading")}</h2>
             <p className="text-muted-foreground text-xl tracking-[0.025rem]">
-              Explore Ethereum&apos;s digital asset landscape, from tokens to
-              technologies
+              {t("useCases.subheading")}
             </p>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -350,15 +345,13 @@ export default async function Home() {
                     }
                   />
                 </div>
-                <CardLabel variant="large">RWAs & Stablecoins</CardLabel>
+                <CardLabel variant="large">{t("useCases.rwa.label")}</CardLabel>
                 <CardDescription>
-                  Real-world assets tokenize offchain assets, like real estate,
-                  commodities, or bonds, while stablecoins design for steady
-                  value, often pegged to assets like USD.
+                  {t("useCases.rwa.description")}
                 </CardDescription>
               </CardContent>
               <LinkWithArrow href="/rwa" className="css-secondary max-md:mt-6">
-                More on RWAs
+                {t("useCases.rwa.link")}
               </LinkWithArrow>
             </Card>
             <Card variant="flex-height">
@@ -369,15 +362,13 @@ export default async function Home() {
                     maskShape={<CircleRing className="size-full text-white" />}
                   />
                 </div>
-                <CardLabel variant="large">Decentralized Finance</CardLabel>
+                <CardLabel variant="large">{t("useCases.defi.label")}</CardLabel>
                 <CardDescription>
-                  Open financial systems built on smart contracts instead of
-                  banks. DeFi lets anyone lend, borrow, trade, and earn yield
-                  directly from their wallet.
+                  {t("useCases.defi.description")}
                 </CardDescription>
               </CardContent>
               <LinkWithArrow href="/defi" className="css-secondary max-md:mt-6">
-                More on DeFi
+                {t("useCases.defi.link")}
               </LinkWithArrow>
             </Card>
             <Card variant="flex-height">
@@ -388,18 +379,16 @@ export default async function Home() {
                     maskShape={<LockFill className="size-full text-white" />}
                   />
                 </div>
-                <CardLabel variant="large">Privacy & Compliance</CardLabel>
+                <CardLabel variant="large">{t("useCases.privacy.label")}</CardLabel>
                 <CardDescription>
-                  Deploy on Ethereum&apos;s public Mainnet for global
-                  transparency, or use enterprise-grade privacy solutions for
-                  confidentiality and control.
+                  {t("useCases.privacy.description")}
                 </CardDescription>
               </CardContent>
               <LinkWithArrow
                 href="/privacy"
                 className="css-secondary max-md:mt-6"
               >
-                More on Privacy
+                {t("useCases.privacy.link")}
               </LinkWithArrow>
             </Card>
             <Card variant="flex-height">
@@ -410,17 +399,16 @@ export default async function Home() {
                     maskShape={<Layers2Fill className="size-full text-white" />}
                   />
                 </div>
-                <CardLabel variant="large">L2 Ecosystem</CardLabel>
+                <CardLabel variant="large">{t("useCases.layer2.label")}</CardLabel>
                 <CardDescription>
-                  Layer 2 networks scale Ethereum by processing transactions
-                  faster and cheaper.
+                  {t("useCases.layer2.description")}
                 </CardDescription>
               </CardContent>
               <LinkWithArrow
                 href="/layer-2"
                 className="css-secondary max-md:mt-6"
               >
-                More on L2s
+                {t("useCases.layer2.link")}
               </LinkWithArrow>
             </Card>
           </div>
@@ -433,91 +421,60 @@ export default async function Home() {
           >
             <div className="flex flex-col gap-y-10 max-lg:items-center">
               <h2 className="text-h3-mobile sm:text-h3 max-lg:mx-auto max-lg:text-center lg:w-md lg:max-w-md">
-                Ethereum Leads Where It Matters
+                {t("leader.heading")}
               </h2>
             </div>
             <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-14">
               <CardContent>
-                <CardLabel variant="large">Resilience</CardLabel>
+                <CardLabel variant="large">{t("leader.resilience.label")}</CardLabel>
                 <div className="text-muted-foreground font-medium">
-                  Ethereum has maintained{" "}
-                  <strong>
-                    {formatDuration(uptime, { language: "en" })} of
-                    uninterrupted uptime and liveness
-                  </strong>{" "}
-                  since its launch. Zero downtime through 15+ successful network
-                  upgrades.
+                  {t.rich("leader.resilience.description", {
+                    uptime: formatDuration(uptime),
+                  })}
                 </div>
               </CardContent>
               <CardContent>
-                <CardLabel variant="large">Flexibility</CardLabel>
+                <CardLabel variant="large">{t("leader.flexibility.label")}</CardLabel>
                 <div className="text-muted-foreground font-medium">
-                  Open source, with{" "}
-                  <strong>
-                    complete freedom from lock-in to any single vendor
-                  </strong>
-                  , stack, or architecture. Institutions retain full optionality
-                  for their onchain products as business requirements change.
+                  {t("leader.flexibility.description")}
                 </div>
               </CardContent>
               <CardContent>
-                <CardLabel variant="large">Credible Neutrality</CardLabel>
+                <CardLabel variant="large">{t("leader.neutrality.label")}</CardLabel>
                 <div className="text-muted-foreground font-medium">
-                  No single point of failure, no central coordinator, no pause
-                  button, <strong>no counterparty risk</strong>. Resilient to
-                  geopolitical, regulatory, and infrastructure-level risks.
+                  {t("leader.neutrality.description")}
                 </div>
               </CardContent>
               <CardContent>
-                <CardLabel variant="large">Decentralization</CardLabel>
+                <CardLabel variant="large">{t("leader.decentralization.label")}</CardLabel>
                 <div className="text-muted-foreground font-medium">
-                  Secured by{" "}
-                  {formatLargeNumber(
-                    beaconChainData.data.validatorsCount,
-                    {},
-                    2
-                  )}
-                  + validators distributed across geographies and client
-                  implementations.{" "}
-                  <strong>
-                    {formatLargeCurrency(
-                      beaconChainData.data.totalStakedEther * ethPrice.data.usd
-                    )}
-                    + in economic security
-                  </strong>{" "}
-                  makes Ethereum the most expensive smart contract platform to
-                  attack.
+                  {t.rich("leader.decentralization.description", {
+                    validatorCount: formatLargeNumber(beaconChainData.data.validatorsCount, {}, 2),
+                    securityValue: formatLargeCurrency(beaconChainData.data.totalStakedEther * ethPrice.data.usd),
+                  })}
                 </div>
               </CardContent>
               <CardContent>
-                <CardLabel variant="large">Deep Liquidity</CardLabel>
+                <CardLabel variant="large">{t("leader.liquidity.label")}</CardLabel>
                 <div className="text-muted-foreground font-medium">
-                  {formatLargeCurrency(dexVolume.data.trailing12moAvgDexVolume)}
-                  + in daily DEX volume,{" "}
-                  <strong>
-                    the deepest liquidity of any onchain environment
-                  </strong>
-                  . Ethereum is the chosen liquidity layer for institutions to
-                  build leading next-gen products.
+                  {t.rich("leader.liquidity.description", {
+                    dexVolume: formatLargeCurrency(dexVolume.data.trailing12moAvgDexVolume),
+                  })}
                 </div>
               </CardContent>
               <CardContent>
-                <CardLabel variant="large">Tokenization</CardLabel>
+                <CardLabel variant="large">{t("leader.tokenization.label")}</CardLabel>
                 <div className="text-muted-foreground font-medium">
-                  The leading platform for asset tokenization, with{" "}
-                  <strong>
-                    {formatPercent(
+                  {t.rich("leader.tokenization.description", {
+                    rwaMarketShare: formatPercent(
                       rwaAssetMarketShareData.data.marketShare.mainnet +
                         rwaAssetMarketShareData.data.marketShare.layer2
-                    )}{" "}
-                    of all onchain RWAs deployed on Ethereum
-                  </strong>{" "}
-                  and its L2s, and{" "}
-                  {formatLargeCurrency(
-                    stablecoinAssetMarketShareData.data.assetValue.mainnet +
-                      stablecoinAssetMarketShareData.data.assetValue.layer2
-                  )}{" "}
-                  in stablecoin TVL.
+                    ),
+                    stablecoinTvl: formatLargeCurrency(
+                      stablecoinAssetMarketShareData.data.assetValue.mainnet +
+                        stablecoinAssetMarketShareData.data.assetValue.layer2
+                    ),
+                  })}
                 </div>
               </CardContent>
             </div>
@@ -528,10 +485,10 @@ export default async function Home() {
           <section id="who" className="flex gap-10 max-lg:flex-col md:gap-20">
             <div className="flex flex-col gap-y-2 max-lg:items-center">
               <h2 className="text-h3-mobile sm:text-h3 max-lg:mx-auto max-lg:text-center lg:w-md lg:max-w-md">
-                Market-Proven Platform
+                {t("platforms.heading")}
               </h2>
               <p className="text-muted-foreground font-medium">
-                Institutions innovate on Ethereum
+                {t("platforms.subheading")}
               </p>
             </div>
             <div className="grid w-full grid-cols-2 gap-x-8 gap-y-8 sm:gap-y-14">
@@ -561,7 +518,7 @@ export default async function Home() {
           >
             <div className="flex flex-col gap-y-10 max-lg:items-center">
               <h2 className="text-h3-mobile sm:text-h3 max-lg:mx-auto max-lg:text-center lg:w-md lg:max-w-md">
-                Industry Leaders Choose Ethereum
+                {t("testimonials.heading")}
               </h2>
             </div>
             <div className="relative w-full min-w-0 overflow-x-hidden">
@@ -655,12 +612,9 @@ export default async function Home() {
 
         <section id="scaling" className="space-y-12 md:space-y-20">
           <div className="flex flex-col items-center gap-y-2 text-center">
-            <h2>Ethereum is Scaling</h2>
+            <h2>{t("scaling.heading")}</h2>
             <div className="md:max-w-3xl">
-              Ethereum&apos;s performance isn&apos;t static. The network&apos;s
-              active R&D roadmap sets the stage for an infinitely-scalable
-              ecosystem, while Ethereum-based providers globally push throughput
-              boundaries today.
+              {t("scaling.description")}
             </div>
           </div>
           <ScalingPanel />
@@ -668,9 +622,9 @@ export default async function Home() {
 
         <section id="articles" className="space-y-12">
           <div className="flex flex-col items-center">
-            <h2>Library</h2>
+            <h2>{t("library.heading")}</h2>
             <p className="text-muted-foreground text-xl tracking-[0.025rem]">
-              Latest updates relevant for institutions
+              {t("library.subheading")}
             </p>
           </div>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8 lg:gap-16">
@@ -690,7 +644,7 @@ export default async function Home() {
             href="/library"
             className="css-secondary mx-auto block w-fit text-lg"
           >
-            View All Resources
+            {tCommon("viewAllResources")}
           </LinkWithArrow>
         </section>
       </article>
@@ -698,12 +652,15 @@ export default async function Home() {
   )
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: "home" })
+
   return getMetadata({
     slug: "",
-    title: "Ethereum for Institutions | The Institutional Liquidity Layer",
-    description:
-      "Discover why leading institutions build on Ethereum. Unmatched resilience, deep liquidity, and proven security for the onchain economy. Explore use cases.",
+    title: t("metadata.title"),
+    description: t("metadata.description"),
     image: "/images/og/home.png",
+    locale,
   })
 }
