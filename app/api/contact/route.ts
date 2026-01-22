@@ -3,6 +3,8 @@ import { SendRawEmailCommand, SESClient } from "@aws-sdk/client-ses"
 
 import { sanitizeInput } from "@/lib/utils/sanitize"
 
+import PostHogClient from "@/lib/posthog-server"
+
 const ENTERPRISE_EMAIL = "enterprise@ethereum.org"
 const SES_FROM_EMAIL = "enterprise-contact@ethereum.org"
 
@@ -85,12 +87,23 @@ Reply to this email to respond directly to the sender.
 }
 
 export async function POST(request: NextRequest) {
+  const posthog = PostHogClient()
+
   try {
     const body = await request.json()
     const { name, email, message } = body
 
     // Validate input
     if (!email || !message) {
+      posthog.capture({
+        distinctId: "anonymous",
+        event: "contact_form_error",
+        properties: {
+          error: "missing_required_fields",
+        },
+      })
+      await posthog.shutdown()
+
       return NextResponse.json(
         { error: "Email and message are required" },
         { status: 400 }
@@ -104,6 +117,15 @@ export async function POST(request: NextRequest) {
 
     // Validate email format
     if (!validateEmail(sanitizedEmail)) {
+      posthog.capture({
+        distinctId: "anonymous",
+        event: "contact_form_error",
+        properties: {
+          error: "invalid_email_format",
+        },
+      })
+      await posthog.shutdown()
+
       return NextResponse.json(
         { error: "Invalid email format" },
         { status: 400 }
@@ -113,20 +135,50 @@ export async function POST(request: NextRequest) {
     // Send email via AWS SES
     try {
       await sendEmail(sanitizedName, sanitizedEmail, sanitizedMessage)
+
+      // Track successful submission
+      posthog.capture({
+        distinctId: sanitizedEmail,
+        event: "contact_form_submitted",
+        properties: {
+          name: sanitizedName,
+        },
+      })
+      await posthog.shutdown()
+
+      return NextResponse.json(
+        { message: "Message sent successfully" },
+        { status: 200 }
+      )
     } catch (emailError) {
       console.error("AWS SES email sending failed:", emailError)
+
+      posthog.capture({
+        distinctId: sanitizedEmail,
+        event: "contact_form_error",
+        properties: {
+          error: "email_send_failed",
+        },
+      })
+      await posthog.shutdown()
+
       return NextResponse.json(
         { error: "Failed to send message. Please try again later." },
         { status: 500 }
       )
     }
-
-    return NextResponse.json(
-      { message: "Message sent successfully" },
-      { status: 200 }
-    )
   } catch (error) {
     console.error("Enterprise contact form error:", error)
+
+    posthog.capture({
+      distinctId: "anonymous",
+      event: "contact_form_error",
+      properties: {
+        error: "internal_server_error",
+      },
+    })
+    await posthog.shutdown()
+
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

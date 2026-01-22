@@ -344,7 +344,7 @@ export default async function Page() {
           </div>
         </section>
 
-        <section id="stablecoins" className="space-y-8">
+        <section id="rwas" className="space-y-8">
           <div className="space-y-2">
             <h2>Real-World Assets (RWAs) on Ethereum</h2>
             <p className="text-muted-foreground font-medium">

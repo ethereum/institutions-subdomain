@@ -167,8 +167,10 @@ export default async function Home() {
       lastUpdated: formatDateMonthDayYear(Date.now()),
     },
     {
-      value: formatLargeNumber(beaconChainData.data.validatorCount),
-      label: "Validators securing the network",
+      value: formatLargeCurrency(
+        beaconChainData.data.totalStakedEther * ethPrice.data.usd
+      ),
+      label: `Total value securing the network (${formatLargeNumber(beaconChainData.data.totalStakedEther)} ETH)`,
       lastUpdated: formatDateMonthDayYear(beaconChainData.lastUpdated),
       ...beaconChainData.sourceInfo,
     },
@@ -194,21 +196,21 @@ export default async function Home() {
       ),
       ...stablecoinAssetMarketShareData.sourceInfo,
     },
-    {
-      value: formatPercent(
-        rwaAssetMarketShareData.data.marketShare.mainnet +
-          rwaAssetMarketShareData.data.marketShare.layer2
-      ),
-      label: (
-        <>
-          RWA market share
-          <br />
-          Ethereum Ecosystem
-        </>
-      ),
-      lastUpdated: formatDateMonthDayYear(rwaAssetMarketShareData.lastUpdated),
-      ...rwaAssetMarketShareData.sourceInfo,
-    },
+    // {
+    //   value: formatPercent(
+    //     rwaAssetMarketShareData.data.marketShare.mainnet +
+    //       rwaAssetMarketShareData.data.marketShare.layer2
+    //   ),
+    //   label: (
+    //     <>
+    //       RWA market share
+    //       <br />
+    //       Ethereum Ecosystem
+    //     </>
+    //   ),
+    //   lastUpdated: formatDateMonthDayYear(rwaAssetMarketShareData.lastUpdated),
+    //   ...rwaAssetMarketShareData.sourceInfo,
+    // },
     {
       value: formatLargeCurrency(defiTvlAllCurrentData.data.mainnetDefiTvl),
       label: (
@@ -471,7 +473,7 @@ export default async function Home() {
                 <div className="text-muted-foreground font-medium">
                   Secured by{" "}
                   {formatLargeNumber(
-                    beaconChainData.data.validatorCount,
+                    beaconChainData.data.validatorsCount,
                     {},
                     2
                   )}

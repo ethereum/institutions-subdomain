@@ -23,16 +23,12 @@ import Link from "@/components/ui/link"
 
 import { formatDateMonthDayYear } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
-import {
-  formatLargeCurrency,
-  formatLargeNumber,
-  formatMultiplier,
-  formatPercent,
-} from "@/lib/utils/number"
+import { formatLargeCurrency, formatMultiplier } from "@/lib/utils/number"
 
 import fetchAssetMarketShare from "../_actions/fetchAssetMarketShare"
 import fetchBeaconChain from "../_actions/fetchBeaconChain"
 import fetchEtherMarketDetails from "../_actions/fetchEtherMarketDetails"
+import fetchEtherPrice from "../_actions/fetchEtherPrice"
 import fetchL2ScalingSummary from "../_actions/fetchL2ScalingSummary"
 import fetchTimeseriesAssetsValue from "../_actions/fetchTimeseriesAssetsValue"
 import fetchTimeseriesDefiTvlEthereum from "../_actions/fetchTimeseriesDefiTvlEthereum"
@@ -45,6 +41,7 @@ import StablecoinChartCard from "./_components/stablecoin-chart-card"
 import { stablecoinMarketShareToPieChartData } from "./utils"
 
 export default async function Page() {
+  const ethPrice = await fetchEtherPrice()
   const timeseriesDefiTvlEthereumData = await fetchTimeseriesDefiTvlEthereum()
   const timeseriesStablecoinsValueData =
     await fetchTimeseriesAssetsValue("STABLECOINS")
@@ -60,7 +57,6 @@ export default async function Page() {
     stablecoinAssetMarketShareData
   )
   const l2ScalingSummaryData = await fetchL2ScalingSummary()
-  const rwaAssetMarketShareData = await fetchAssetMarketShare("RWAS")
   const etherMarketDetailsData = await fetchEtherMarketDetails()
 
   const metrics: Metric[] = [
@@ -77,8 +73,10 @@ export default async function Page() {
       ...totalValueSecuredData.sourceInfo,
     },
     {
-      label: "Validator Count",
-      value: formatLargeNumber(beaconChainData.data.validatorCount),
+      label: "ETH Staked",
+      value: formatLargeCurrency(
+        beaconChainData.data.totalStakedEther * ethPrice.data.usd
+      ),
       lastUpdated: formatDateMonthDayYear(beaconChainData.lastUpdated),
       ...beaconChainData.sourceInfo,
     },
@@ -277,7 +275,8 @@ export default async function Page() {
           <h2 className="text-h3-mobile sm:text-h3 lg:w-lg lg:max-w-lg lg:shrink-0">
             Real-World Assets
           </h2>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_16rem]">
+          <RwaChartCard data={timeseriesRwaValueData} />
+          {/* <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_16rem]">
             <RwaChartCard data={timeseriesRwaValueData} />
 
             <div className="flex flex-col gap-y-4">
@@ -340,7 +339,7 @@ export default async function Page() {
                 </CardContent>
               </Card>
             </div>
-          </div>
+          </div> */}
         </section>
 
         <section id="layer-2" className="space-y-4">

@@ -419,7 +419,7 @@ export default async function Page() {
 
           <L2BenefitsPanel
             validatorsCount={formatLargeNumber(
-              beaconChainData.data.validatorCount,
+              beaconChainData.data.validatorsCount,
               {},
               2
             )}

@@ -42,7 +42,7 @@ export function L2BenefitsPanel({ validatorsCount }: L2BenefitsPanelProps) {
                 inline
                 className="css-secondary font-bold"
               >
-                {validatorsCount}+ validators
+                {validatorsCount} validators
               </Link>
               , paying only usage-based fees.
             </>,
