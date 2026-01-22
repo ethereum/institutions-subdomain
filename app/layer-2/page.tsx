@@ -183,7 +183,9 @@ export default async function Page() {
     },
   ]
 
-  const caseStudies: (CardItem & Partial<SourceInfo & LastUpdated>)[] = [
+  const caseStudies: (Omit<CardItem, "ctaLabel"> &
+    Required<Pick<CardItem, "ctaLabel">> &
+    Partial<SourceInfo & LastUpdated>)[] = [
     {
       heading: "Ernst & Young",
       description: "Nightfall L2 Platform",
@@ -579,29 +581,33 @@ export default async function Page() {
                 ctaLabel,
                 ...tooltipProps
               }) => (
-                <Link
+                <div
                   key={heading}
-                  href={href}
-                  className="bg-card group flex h-full w-full flex-col justify-between p-6 transition-transform hover:scale-105 hover:transition-transform"
-                  aria-label={`Visit ${heading}`}
+                  className="bg-card flex h-full w-full flex-col justify-between p-6"
                 >
                   <div className="space-y-2">
-                    <Image
-                      src={imgSrc}
-                      alt=""
-                      sizes="48px"
-                      className="size-12"
-                    />
-                    <h3 className="text-h5">{heading}</h3>
+                    <Link
+                      href={href}
+                      className="group css-secondary space-y-2"
+                      aria-label={`Visit ${heading}`}
+                    >
+                      <Image
+                        src={imgSrc}
+                        alt=""
+                        sizes="48px"
+                        className="size-12 transition-transform group-hover:scale-110 group-hover:transition-transform"
+                      />
+                      <h3 className="text-h5">{heading}</h3>
+                    </Link>
                     <p className="font-medium">{description}</p>
                   </div>
-                  <InlineText className="text-secondary-foreground mt-12 font-bold group-hover:underline lg:mt-16">
-                    {ctaLabel || "Visit →"}
+                  <InlineText className="mt-12 font-bold lg:mt-16">
+                    {ctaLabel}
                     {tooltipProps.source && (
                       <SourceInfoTooltip {...tooltipProps} />
                     )}
                   </InlineText>
-                </Link>
+                </div>
               )
             )}
           </div>
