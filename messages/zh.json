@@ -364,6 +364,26 @@
     "metadata": {
       "title": "以太坊网络实时数据 | 机构链上数据中心",
       "description": "获取链上经济的实时情报。探索主网活动、L2扩容、DeFi市场、代币化资产等精选指标。"
+    },
+    "keyMetrics": {
+      "title": "关键指标",
+      "perpsVolume": "永续合约交易量（24小时）",
+      "inflows": "流入量（24小时）",
+      "activeAddresses": "活跃地址（24小时）",
+      "totalRaised": "总融资额",
+      "bridgedTvl": "跨链TVL",
+      "nftVolume": "NFT交易量（24小时）",
+      "ethPrice": "ETH价格",
+      "ethMarketCap": "ETH市值",
+      "ethFdv": "ETH完全稀释估值",
+      "stablecoinsMcap": "稳定币市值",
+      "dexVolume": "DEX交易量（24小时）",
+      "tokenIncentives": "代币激励（24小时）",
+      "chainFees": "链上费用（24小时）",
+      "chainRevenue": "链上收入（24小时）",
+      "appRevenue": "应用收入（24小时）",
+      "appFees": "应用费用（24小时）",
+      "unavailable": "数据不可用"
     }
   },
   "layer2": {
