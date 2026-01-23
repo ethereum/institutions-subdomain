@@ -32,12 +32,16 @@ import { stablecoinMarketShareToPieChartData } from "./utils"
 
 import fetchAssetMarketShare from "@/app/_actions/fetchAssetMarketShare"
 import fetchBeaconChain from "@/app/_actions/fetchBeaconChain"
+import fetchDefiLlamaKeyMetrics from "@/app/_actions/fetchDefiLlamaKeyMetrics"
 import fetchEtherMarketDetails from "@/app/_actions/fetchEtherMarketDetails"
 import fetchEtherPrice from "@/app/_actions/fetchEtherPrice"
+import fetchEthFdv from "@/app/_actions/fetchEthFdv"
+import fetchGrowthepieKeyMetrics from "@/app/_actions/fetchGrowthepieKeyMetrics"
 import fetchL2ScalingSummary from "@/app/_actions/fetchL2ScalingSummary"
 import fetchTimeseriesAssetsValue from "@/app/_actions/fetchTimeseriesAssetsValue"
 import fetchTimeseriesDefiTvlEthereum from "@/app/_actions/fetchTimeseriesDefiTvlEthereum"
 import fetchTimeseriesL2Tvl from "@/app/_actions/fetchTimeseriesL2Tvl"
+import fetchTokenIncentives from "@/app/_actions/fetchTokenIncentives"
 import fetchTotalValueSecured from "@/app/_actions/fetchTotalValueSecured"
 import fetchDefiTvlAllCurrent from "@/app/_actions/fetchTvlDefiAllCurrent"
 import { type Locale, routing } from "@/i18n/routing"
@@ -73,6 +77,195 @@ export default async function Page({ params }: Props) {
   )
   const l2ScalingSummaryData = await fetchL2ScalingSummary()
   const etherMarketDetailsData = await fetchEtherMarketDetails()
+
+  // Key Metrics data fetching - use Promise.allSettled for graceful degradation
+  const [
+    defiLlamaKeyMetricsResult,
+    growthepieKeyMetricsResult,
+    ethFdvResult,
+    tokenIncentivesResult,
+  ] = await Promise.allSettled([
+    fetchDefiLlamaKeyMetrics(),
+    fetchGrowthepieKeyMetrics(),
+    fetchEthFdv(),
+    fetchTokenIncentives(),
+  ])
+
+  // Extract data with fallbacks for failed fetches
+  const defiLlamaKeyMetrics =
+    defiLlamaKeyMetricsResult.status === "fulfilled"
+      ? defiLlamaKeyMetricsResult.value
+      : null
+  const growthepieKeyMetrics =
+    growthepieKeyMetricsResult.status === "fulfilled"
+      ? growthepieKeyMetricsResult.value
+      : null
+  const ethFdvData =
+    ethFdvResult.status === "fulfilled" ? ethFdvResult.value : null
+  const tokenIncentivesData =
+    tokenIncentivesResult.status === "fulfilled"
+      ? tokenIncentivesResult.value
+      : null
+
+  // Build key metrics array
+  const keyMetrics: Metric[] = [
+    // Column 1
+    {
+      label: t("keyMetrics.perpsVolume"),
+      value: defiLlamaKeyMetrics
+        ? formatLargeCurrency(defiLlamaKeyMetrics.data.perpsVolume24h)
+        : t("keyMetrics.unavailable"),
+      lastUpdated: defiLlamaKeyMetrics
+        ? formatDateMonthDayYear(defiLlamaKeyMetrics.lastUpdated)
+        : undefined,
+      ...defiLlamaKeyMetrics?.sourceInfo,
+    },
+    {
+      label: t("keyMetrics.inflows"),
+      value: defiLlamaKeyMetrics
+        ? formatLargeCurrency(defiLlamaKeyMetrics.data.bridgeInflows24h)
+        : t("keyMetrics.unavailable"),
+      lastUpdated: defiLlamaKeyMetrics
+        ? formatDateMonthDayYear(defiLlamaKeyMetrics.lastUpdated)
+        : undefined,
+      ...defiLlamaKeyMetrics?.sourceInfo,
+    },
+    {
+      label: t("keyMetrics.activeAddresses"),
+      value: growthepieKeyMetrics
+        ? growthepieKeyMetrics.data.activeAddresses24h.toLocaleString()
+        : t("keyMetrics.unavailable"),
+      lastUpdated: growthepieKeyMetrics
+        ? formatDateMonthDayYear(growthepieKeyMetrics.lastUpdated)
+        : undefined,
+      ...growthepieKeyMetrics?.sourceInfo,
+    },
+    {
+      label: t("keyMetrics.totalRaised"),
+      value: defiLlamaKeyMetrics
+        ? formatLargeCurrency(defiLlamaKeyMetrics.data.totalRaised)
+        : t("keyMetrics.unavailable"),
+      lastUpdated: defiLlamaKeyMetrics
+        ? formatDateMonthDayYear(defiLlamaKeyMetrics.lastUpdated)
+        : undefined,
+      ...defiLlamaKeyMetrics?.sourceInfo,
+    },
+    {
+      label: t("keyMetrics.bridgedTvl"),
+      value: defiLlamaKeyMetrics
+        ? formatLargeCurrency(defiLlamaKeyMetrics.data.bridgeTvl)
+        : t("keyMetrics.unavailable"),
+      lastUpdated: defiLlamaKeyMetrics
+        ? formatDateMonthDayYear(defiLlamaKeyMetrics.lastUpdated)
+        : undefined,
+      ...defiLlamaKeyMetrics?.sourceInfo,
+    },
+    {
+      label: t("keyMetrics.nftVolume"),
+      value: defiLlamaKeyMetrics
+        ? formatLargeCurrency(defiLlamaKeyMetrics.data.nftVolume24h)
+        : t("keyMetrics.unavailable"),
+      lastUpdated: defiLlamaKeyMetrics
+        ? formatDateMonthDayYear(defiLlamaKeyMetrics.lastUpdated)
+        : undefined,
+      ...defiLlamaKeyMetrics?.sourceInfo,
+    },
+    // Column 2
+    {
+      label: t("keyMetrics.ethPrice"),
+      value: formatLargeCurrency(ethPrice.data.usd),
+      lastUpdated: formatDateMonthDayYear(ethPrice.lastUpdated),
+      ...ethPrice.sourceInfo,
+    },
+    {
+      label: t("keyMetrics.ethMarketCap"),
+      value: formatLargeCurrency(etherMarketDetailsData.data.etherMarketCap),
+      lastUpdated: formatDateMonthDayYear(etherMarketDetailsData.lastUpdated),
+      ...etherMarketDetailsData.sourceInfo,
+    },
+    {
+      label: t("keyMetrics.ethFdv"),
+      value: ethFdvData
+        ? formatLargeCurrency(ethFdvData.data.fullyDilutedValuation)
+        : t("keyMetrics.unavailable"),
+      lastUpdated: ethFdvData
+        ? formatDateMonthDayYear(ethFdvData.lastUpdated)
+        : undefined,
+      ...ethFdvData?.sourceInfo,
+    },
+    {
+      label: t("keyMetrics.stablecoinsMcap"),
+      value: formatLargeCurrency(
+        timeseriesStablecoinsValueData.data.mainnet.currentValue +
+          timeseriesStablecoinsValueData.data.layer2.currentValue
+      ),
+      lastUpdated: formatDateMonthDayYear(
+        timeseriesStablecoinsValueData.lastUpdated
+      ),
+      ...timeseriesStablecoinsValueData.sourceInfo,
+    },
+    {
+      label: t("keyMetrics.dexVolume"),
+      value: formatLargeCurrency(
+        timeseriesDefiTvlEthereumData.data.currentValue
+      ),
+      lastUpdated: formatDateMonthDayYear(
+        timeseriesDefiTvlEthereumData.lastUpdated
+      ),
+      ...timeseriesDefiTvlEthereumData.sourceInfo,
+    },
+    {
+      label: t("keyMetrics.tokenIncentives"),
+      value: tokenIncentivesData
+        ? formatLargeCurrency(tokenIncentivesData.data.tokenIncentives24h)
+        : t("keyMetrics.unavailable"),
+      lastUpdated: tokenIncentivesData
+        ? formatDateMonthDayYear(tokenIncentivesData.lastUpdated)
+        : undefined,
+      ...tokenIncentivesData?.sourceInfo,
+    },
+    // Column 3
+    {
+      label: t("keyMetrics.chainFees"),
+      value: growthepieKeyMetrics
+        ? formatLargeCurrency(growthepieKeyMetrics.data.chainFees24h)
+        : t("keyMetrics.unavailable"),
+      lastUpdated: growthepieKeyMetrics
+        ? formatDateMonthDayYear(growthepieKeyMetrics.lastUpdated)
+        : undefined,
+      ...growthepieKeyMetrics?.sourceInfo,
+    },
+    {
+      label: t("keyMetrics.chainRevenue"),
+      value: growthepieKeyMetrics
+        ? formatLargeCurrency(growthepieKeyMetrics.data.chainRevenue24h)
+        : t("keyMetrics.unavailable"),
+      lastUpdated: growthepieKeyMetrics
+        ? formatDateMonthDayYear(growthepieKeyMetrics.lastUpdated)
+        : undefined,
+      ...growthepieKeyMetrics?.sourceInfo,
+    },
+    {
+      label: t("keyMetrics.appRevenue"),
+      value: defiLlamaKeyMetrics
+        ? formatLargeCurrency(defiLlamaKeyMetrics.data.appRevenue24h)
+        : t("keyMetrics.unavailable"),
+      lastUpdated: defiLlamaKeyMetrics
+        ? formatDateMonthDayYear(defiLlamaKeyMetrics.lastUpdated)
+        : undefined,
+      ...defiLlamaKeyMetrics?.sourceInfo,
+    },
+    {
+      label: t("keyMetrics.appFees"),
+      value: defiLlamaKeyMetrics
+        ? formatLargeCurrency(defiLlamaKeyMetrics.data.appFees24h)
+        : t("keyMetrics.unavailable"),
+      lastUpdated: defiLlamaKeyMetrics
+        ? formatDateMonthDayYear(defiLlamaKeyMetrics.lastUpdated)
+        : undefined,
+      ...defiLlamaKeyMetrics?.sourceInfo,
+    },
+  ]
 
   const metrics: Metric[] = [
     {
@@ -123,6 +316,49 @@ export default async function Page({ params }: Props) {
           </h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-12 xl:grid-cols-4">
             {metrics.map(
+              ({ label, value, source, sourceHref, lastUpdated }, idx) => (
+                <Card key={idx} variant="flex-height">
+                  <CardContent>
+                    <CardLabel className="text-base font-medium tracking-[0.02rem]">
+                      {label}
+                    </CardLabel>
+                    <CardValue asChild>
+                      <AnimatedNumberInView>{value}</AnimatedNumberInView>
+                    </CardValue>
+                  </CardContent>
+                  {source && (
+                    <CardSource>
+                      Source:{" "}
+                      {sourceHref ? (
+                        <Link
+                          href={sourceHref}
+                          className="text-muted-foreground hover:text-foreground"
+                          inline
+                        >
+                          {source}
+                        </Link>
+                      ) : (
+                        source
+                      )}
+                      {lastUpdated && (
+                        <SourceInfoTooltip
+                          lastUpdated={formatDateMonthDayYear(lastUpdated)}
+                        />
+                      )}
+                    </CardSource>
+                  )}
+                </Card>
+              )
+            )}
+          </div>
+        </section>
+
+        <section id="key-metrics" className="space-y-4">
+          <h2 className="text-h3-mobile sm:text-h3 lg:w-lg lg:max-w-lg lg:shrink-0">
+            {t("keyMetrics.title")}
+          </h2>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {keyMetrics.map(
               ({ label, value, source, sourceHref, lastUpdated }, idx) => (
                 <Card key={idx} variant="flex-height">
                   <CardContent>
