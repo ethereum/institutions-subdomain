@@ -2,6 +2,7 @@ import { join } from "path"
 
 import type { StaticImageData } from "next/image"
 
+import { fetchEnterpriseOnchainFeed } from "@/app/_actions/fetchEnterpriseOnchainFeed"
 import { formatDateMonthDayYear, isValidDate } from "@/lib/utils/date"
 
 import { fetchPosts, getPostImage } from "./[slug]/utils"
@@ -21,7 +22,7 @@ import goldmanSachs from "@/public/images/library/goldman-sachs-1.png"
 import mergeMadrid from "@/public/images/library/merge-madrid-1.jpg"
 import nextFinSummit from "@/public/images/library/nextfin-summit-1.png"
 
-type LibraryItem = {
+export type LibraryItem = {
   title: string
   imgSrc: StaticImageData | string
   date: string
@@ -129,11 +130,27 @@ const internalLibraryItems: LibraryItem[] = fetchPosts().map(
   }
 )
 
-export const libraryItems: LibraryItem[] = [
+function sortByDate(items: LibraryItem[]): LibraryItem[] {
+  return items.sort((a, b) => {
+    if (!isValidDate(a.date)) return -1
+    if (!isValidDate(b.date)) return 1
+    return new Date(b.date).getTime() - new Date(a.date).getTime()
+  })
+}
+
+// Static items (for backwards compatibility)
+export const libraryItems: LibraryItem[] = sortByDate([
   ...externalLibraryItems,
   ...internalLibraryItems,
-].sort((a, b) => {
-  if (!isValidDate(a.date)) return -1
-  if (!isValidDate(b.date)) return 1
-  return new Date(b.date).getTime() - new Date(a.date).getTime()
-})
+])
+
+// Async function that includes Enterprise Onchain newsletter feed
+export async function getLibraryItems(): Promise<LibraryItem[]> {
+  const feedItems = await fetchEnterpriseOnchainFeed()
+
+  return sortByDate([
+    ...externalLibraryItems,
+    ...internalLibraryItems,
+    ...feedItems,
+  ])
+}

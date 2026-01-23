@@ -13,7 +13,7 @@ import {
 
 import { getMetadata } from "@/lib/utils/metadata"
 
-import { libraryItems } from "./data"
+import { getLibraryItems } from "./data"
 
 import { type Locale, routing } from "@/i18n/routing"
 
@@ -30,6 +30,7 @@ export default async function Page({ params }: Props) {
   setRequestLocale(locale)
 
   const t = await getTranslations("library")
+  const libraryItems = await getLibraryItems()
 
   return (
     <main className="row-start-2 flex flex-col items-center sm:items-start">
