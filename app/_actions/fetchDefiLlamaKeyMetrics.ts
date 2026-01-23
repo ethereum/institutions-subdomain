@@ -157,7 +157,8 @@ export const fetchDefiLlamaKeyMetrics = async (): Promise<
       (c) => c.name === "Ethereum"
     )
     const bridgeTvl = 0 // Bridge TVL requires different endpoint
-    const bridgeInflows24h = ethereumBridge?.netFlow ?? 0
+    // Use volumePrevDay as inflows since netFlow is often null
+    const bridgeInflows24h = ethereumBridge?.volumePrevDay ?? ethereumBridge?.netFlow ?? 0
 
     // NFT volume for Ethereum
     const nftVolume24h =

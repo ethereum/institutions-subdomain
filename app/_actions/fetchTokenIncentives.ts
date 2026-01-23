@@ -8,14 +8,13 @@ import { SOURCE } from "@/lib/constants"
 
 /**
  * DefiLlama emissions API response types
+ * Returns array of protocols with daily unlock amounts
  */
-type DefiLlamaEmissionsResponse = {
-  // The emissions API returns protocol-level data
-  // We'll aggregate across major Ethereum protocols
-  emissions?: {
-    date: string
-    unlocked: number
-  }[]
+type DefiLlamaEmissionsProtocol = {
+  name: string
+  unlocksPerDay: number
+  mcap?: number
+  token?: string
 }
 
 /**
@@ -45,14 +44,14 @@ export const fetchTokenIncentives = async (): Promise<
       )
     }
 
-    const data: DefiLlamaEmissionsResponse = await response.json()
+    const data: DefiLlamaEmissionsProtocol[] = await response.json()
 
-    // Get the most recent day's emissions
-    // Note: This is a simplified implementation
-    // The actual API structure may vary and need adjustment
-    const emissions = data.emissions ?? []
-    const latestEmission = emissions[emissions.length - 1]
-    const tokenIncentives24h = latestEmission?.unlocked ?? 0
+    // Sum unlocksPerDay across all protocols
+    // Note: This is total emissions across all chains as API doesn't filter by chain
+    const tokenIncentives24h = data.reduce(
+      (sum, protocol) => sum + (protocol.unlocksPerDay || 0),
+      0
+    )
 
     return {
       data: {
