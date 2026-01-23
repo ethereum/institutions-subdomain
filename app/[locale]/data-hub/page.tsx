@@ -247,9 +247,10 @@ export default async function Page({ params }: Props) {
     },
     {
       label: t("keyMetrics.appRevenue"),
-      value: defiLlamaKeyMetrics
-        ? formatLargeCurrency(defiLlamaKeyMetrics.data.appRevenue24h)
-        : t("keyMetrics.unavailable"),
+      value:
+        defiLlamaKeyMetrics && defiLlamaKeyMetrics.data.appRevenue24h > 0
+          ? formatLargeCurrency(defiLlamaKeyMetrics.data.appRevenue24h)
+          : t("keyMetrics.unavailable"),
       lastUpdated: defiLlamaKeyMetrics
         ? formatDateMonthDayYear(defiLlamaKeyMetrics.lastUpdated)
         : undefined,
