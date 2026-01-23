@@ -354,32 +354,6 @@ export default async function Page({ params }: Props) {
           </div>
         </section>
 
-        <section id="key-metrics" className="space-y-4">
-          <h2 className="text-h3-mobile sm:text-h3">
-            {t("keyMetrics.title")}
-          </h2>
-          <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
-            {/* Split metrics into 3 columns (6, 6, 4 items) */}
-            {[
-              keyMetrics.slice(0, 6),
-              keyMetrics.slice(6, 12),
-              keyMetrics.slice(12),
-            ].map((column, colIdx) => (
-              <div key={colIdx} className="flex flex-col">
-                {column.map(({ label, value }, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-center justify-between border-b border-border py-3"
-                  >
-                    <span className="text-muted-foreground">{label}</span>
-                    <span className="font-semibold tabular-nums">{value}</span>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        </section>
-
         <section id="defi" className="space-y-4">
           <h2 className="text-h3-mobile sm:text-h3 lg:w-lg lg:max-w-lg lg:shrink-0">
             {t("sections.defi")}
@@ -459,6 +433,32 @@ export default async function Page({ params }: Props) {
                 </div>
               </CardContent>
             </Card>
+          </div>
+        </section>
+
+        <section id="key-metrics" className="space-y-4">
+          <h2 className="text-h3-mobile sm:text-h3">
+            {t("keyMetrics.title")}
+          </h2>
+          <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Split metrics into 3 columns (6, 6, 4 items) */}
+            {[
+              keyMetrics.slice(0, 6),
+              keyMetrics.slice(6, 12),
+              keyMetrics.slice(12),
+            ].map((column, colIdx) => (
+              <div key={colIdx} className="flex flex-col">
+                {column.map(({ label, value }, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center justify-between border-b border-border py-3"
+                  >
+                    <span className="text-muted-foreground">{label}</span>
+                    <span className="font-semibold tabular-nums">{value}</span>
+                  </div>
+                ))}
+              </div>
+            ))}
           </div>
         </section>
 

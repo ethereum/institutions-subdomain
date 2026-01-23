@@ -80,18 +80,25 @@ async function fetchWithCache<T>(
   url: string,
   tag: string,
   revalidate: number
-): Promise<T> {
-  const response = await fetch(url, {
-    next: { revalidate, tags: [tag] },
-  })
+): Promise<T | null> {
+  try {
+    const response = await fetch(url, {
+      next: { revalidate, tags: [tag] },
+    })
 
-  if (!response.ok) {
-    throw new Error(
-      `Fetch response not OK from ${url}: ${response.status} ${response.statusText}`
-    )
+    if (!response.ok) {
+      // Log but don't throw - return null for graceful degradation
+      console.warn(
+        `DefiLlama API returned ${response.status} for ${url}`
+      )
+      return null
+    }
+
+    return response.json()
+  } catch (error) {
+    console.warn(`DefiLlama fetch failed for ${url}:`, error)
+    return null
   }
-
-  return response.json()
 }
 
 export const fetchDefiLlamaKeyMetrics = async (): Promise<
@@ -100,60 +107,44 @@ export const fetchDefiLlamaKeyMetrics = async (): Promise<
   try {
     const cacheTime = every("minute", 5)
 
-    // Fetch all endpoints in parallel with graceful failure handling
-    const results = await Promise.allSettled([
-      fetchWithCache<DefiLlamaOverviewResponse>(
-        ENDPOINTS.derivatives,
-        "llama:overview:derivatives",
-        cacheTime
-      ),
-      fetchWithCache<DefiLlamaBridgesResponse>(
-        ENDPOINTS.bridges,
-        "llama:bridges",
-        cacheTime
-      ),
-      fetchWithCache<DefiLlamaOverviewResponse>(
-        ENDPOINTS.nfts,
-        "llama:overview:nfts",
-        cacheTime
-      ),
-      fetchWithCache<DefiLlamaRaisesResponse>(
-        ENDPOINTS.raises,
-        "llama:raises",
-        every("day") // Raises don't change often
-      ),
-      fetchWithCache<DefiLlamaFeesResponse>(
-        ENDPOINTS.fees,
-        "llama:overview:fees",
-        cacheTime
-      ),
-    ])
-
-    const [derivativesResult, bridgesResult, nftsResult, raisesResult, feesResult] = results
-
-    // Log any failures for debugging
-    results.forEach((result, idx) => {
-      if (result.status === "rejected") {
-        const names = ["derivatives", "bridges", "nfts", "raises", "fees"]
-        console.error(`DefiLlama ${names[idx]} fetch failed:`, result.reason)
-      }
-    })
-
-    // Extract data from successful fetches
-    const derivativesData = derivativesResult.status === "fulfilled" ? derivativesResult.value : { protocols: [] }
-    const bridgesData = bridgesResult.status === "fulfilled" ? bridgesResult.value : { chains: [] }
-    const nftsData = nftsResult.status === "fulfilled" ? nftsResult.value : { protocols: [] }
-    const raisesData = raisesResult.status === "fulfilled" ? raisesResult.value : { raises: [] }
-    const feesData = feesResult.status === "fulfilled" ? feesResult.value : { protocols: [] }
+    // Fetch all endpoints in parallel - fetchWithCache returns null on failure
+    const [derivativesData, bridgesData, nftsData, raisesData, feesData] =
+      await Promise.all([
+        fetchWithCache<DefiLlamaOverviewResponse>(
+          ENDPOINTS.derivatives,
+          "llama:overview:derivatives",
+          cacheTime
+        ),
+        fetchWithCache<DefiLlamaBridgesResponse>(
+          ENDPOINTS.bridges,
+          "llama:bridges",
+          cacheTime
+        ),
+        fetchWithCache<DefiLlamaOverviewResponse>(
+          ENDPOINTS.nfts,
+          "llama:overview:nfts",
+          cacheTime
+        ),
+        fetchWithCache<DefiLlamaRaisesResponse>(
+          ENDPOINTS.raises,
+          "llama:raises",
+          every("day") // Raises don't change often
+        ),
+        fetchWithCache<DefiLlamaFeesResponse>(
+          ENDPOINTS.fees,
+          "llama:overview:fees",
+          cacheTime
+        ),
+      ])
 
     // Calculate perps volume (Ethereum protocols only)
     const perpsVolume24h =
-      derivativesData.protocols
+      derivativesData?.protocols
         ?.filter((p) => p.chains?.includes("Ethereum"))
         .reduce((sum, p) => sum + (p.total24h || 0), 0) ?? 0
 
     // Calculate bridge stats for Ethereum
-    const ethereumBridge = bridgesData.chains?.find(
+    const ethereumBridge = bridgesData?.chains?.find(
       (c) => c.name === "Ethereum"
     )
     const bridgeTvl = 0 // Bridge TVL requires different endpoint
@@ -162,19 +153,19 @@ export const fetchDefiLlamaKeyMetrics = async (): Promise<
 
     // NFT volume for Ethereum
     const nftVolume24h =
-      nftsData.protocols
+      nftsData?.protocols
         ?.filter((p) => p.chains?.includes("Ethereum"))
         .reduce((sum, p) => sum + (p.total24h || 0), 0) ?? 0
 
     // Total raised (Ethereum projects all time)
     const totalRaised =
-      raisesData.raises
+      raisesData?.raises
         ?.filter((r) => r.chains?.includes("Ethereum"))
         .reduce((sum, r) => sum + (r.amount || 0), 0) ?? 0
 
     // App fees and revenue (Ethereum protocols)
     const ethereumFeeProtocols =
-      feesData.protocols?.filter((p) => p.chains?.includes("Ethereum")) ?? []
+      feesData?.protocols?.filter((p) => p.chains?.includes("Ethereum")) ?? []
     const appFees24h = ethereumFeeProtocols.reduce(
       (sum, p) => sum + (p.total24h || 0),
       0
