@@ -84,6 +84,16 @@ export const NAV_ITEM_LINKS: LinkProps[] = [
 
 export const RWA_API_STABLECOINS_GROUP_ID = 28
 
+/**
+ * Enterprise/permissioned chains to exclude from public RWA market share calculations.
+ * These chains are excluded in rwa.xyz "Distributed" view.
+ */
+export const RWA_API_EXCLUDED_NETWORK_IDS = [
+  68, // Canton - enterprise blockchain
+  13, // Provenance - enterprise blockchain
+  74, // Intain - enterprise blockchain
+]
+
 export const RWA_API_MEASURE_ID_BY_CATEGORY = {
   RWAS: 71, // Bridged Token Value (Dollar)
   STABLECOINS: 70, // Bridged Token Market Cap (Dollar)
