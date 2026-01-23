@@ -1,5 +1,6 @@
 import Image from "next/image"
 import type { Metadata } from "next/types"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { Metric } from "@/lib/types"
 
@@ -23,14 +24,27 @@ import {
   formatPercent,
 } from "@/lib/utils/number"
 
-import fetchDexVolume from "../_actions/fetchDexVolume"
-import fetchDefiTvlAllCurrent from "../_actions/fetchTvlDefiAllCurrent"
-
 import AppGrid from "./_components/AppGrid"
 
+import fetchDexVolume from "@/app/_actions/fetchDexVolume"
+import fetchDefiTvlAllCurrent from "@/app/_actions/fetchTvlDefiAllCurrent"
+import { type Locale, routing } from "@/i18n/routing"
 import buildings from "@/public/images/banners/buildings2.png"
 
-export default async function Page() {
+type Props = {
+  params: Promise<{ locale: Locale }>
+}
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+export default async function Page({ params }: Props) {
+  const { locale } = await params
+  setRequestLocale(locale)
+
+  const t = await getTranslations("defi")
+
   const defiTvlAllCurrentData = await fetchDefiTvlAllCurrent()
   const dexVolume = await fetchDexVolume()
 
@@ -38,7 +52,7 @@ export default async function Page() {
     {
       label: (
         <>
-          DeFi <span title="Total Value Locked">TVL</span>
+          {t("metrics.defiTvl")} <span title="Total Value Locked">TVL</span>
         </>
       ),
       value: formatLargeCurrency(defiTvlAllCurrentData.data.mainnetDefiTvl),
@@ -48,7 +62,7 @@ export default async function Page() {
     {
       label: (
         <>
-          Share of Global DeFi <span title="Total Value Locked">TVL</span>
+          {t("metrics.shareGlobal")} <span title="Total Value Locked">TVL</span>
         </>
       ),
       value: formatPercent(defiTvlAllCurrentData.data.mainnetDefiMarketshare),
@@ -59,8 +73,7 @@ export default async function Page() {
       value: formatLargeCurrency(dexVolume.data.trailing12moAvgDexVolume),
       label: (
         <>
-          24h <span title="Decentralized Exchange">DEX</span> Volume (12-month
-          avg)
+          {t("metrics.dexVolume")} <span title="Decentralized Exchange">DEX</span> {t("metrics.dexVolumeSuffix")}
         </>
       ),
       lastUpdated: formatDateMonthDayYear(dexVolume.lastUpdated),
@@ -69,7 +82,7 @@ export default async function Page() {
     {
       label: (
         <>
-          <span title="Total Value Locked">TVL</span> vs. Next-Largest Ecosystem
+          <span title="Total Value Locked">TVL</span> {t("metrics.tvlVsNext")}
         </>
       ),
       value: formatMultiplier(defiTvlAllCurrentData.data.runnerUpMultiplier),
@@ -85,30 +98,26 @@ export default async function Page() {
     href: string
   }[] = [
     {
-      heading: "Monetary Authority of Singapore & J.P. Morgan",
-      description:
-        "Live foreign exchange transaction executed via Aave on Polygon L2 mainnet",
+      heading: t("innovations.mas.heading"),
+      description: t("innovations.mas.description"),
       year: "2022",
       href: "https://www.jpmorgan.com/insights/payments/wallets/institutional-defi",
     },
     {
-      heading: "Siemens",
-      description:
-        "€60M digital bond issued onchain, sold directly to investors without engaging central securities depositories",
+      heading: t("innovations.siemens.heading"),
+      description: t("innovations.siemens.description"),
       year: "2023",
       href: "https://press.siemens.com/global/en/pressrelease/siemens-issues-first-digital-bond-blockchain",
     },
     {
-      heading: "Visa",
-      description:
-        "Visa Tokenized Asset Platform (VTAP) launched for financial institutions to issue fiat-backed ERC-20 tokens on Ethereum",
+      heading: t("innovations.visa.heading"),
+      description: t("innovations.visa.description"),
       year: "2024",
       href: "https://investor.visa.com/news/news-details/2024/Visa-Introduces-the-Visa-Tokenized-Asset-Platform/default.aspx",
     },
     {
-      heading: "Société Générale",
-      description:
-        "Euro and dollar stablecoins integrated with Uniswap and Morpho, for institutional clients to swap, lend, and borrow onchain",
+      heading: t("innovations.socgen.heading"),
+      description: t("innovations.socgen.description"),
       year: "2025",
       href: "https://www.dlnews.com/articles/defi/societe-generale-taps-uniswap-and-morpho-in-defi-lending-push/",
     },
@@ -116,14 +125,12 @@ export default async function Page() {
 
   return (
     <main className="row-start-2 flex flex-col items-center sm:items-start">
-      <Hero heading="The Home of Decentralized Finance" shape="coins">
+      <Hero heading={t("hero.heading")} shape="coins">
         <p>
-          Ethereum introduced the world to decentralized finance (DeFi): open
-          financial systems built on smart contracts.
+          {t("hero.description1")}
         </p>
         <p>
-          100% uptime, battle-tested and secure infrastructure, and the deepest
-          liquidity layer of any blockchain—Ethereum is for DeFi.
+          {t("hero.description2")}
         </p>
       </Hero>
       <article className="max-w-8xl mx-auto w-full space-y-10 px-4 py-20 sm:px-10 sm:py-20 md:space-y-40">
@@ -131,7 +138,7 @@ export default async function Page() {
           id="metrics"
           className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-12 xl:grid-cols-4"
         >
-          <h2 className="sr-only">DeFi Ecosystem Overview</h2>
+          <h2 className="sr-only">{t("metrics.srHeading")}</h2>
           {metrics.map(
             ({ label, value, source, sourceHref, lastUpdated }, idx) => (
               <Card key={idx} variant="flex-height">
@@ -177,52 +184,40 @@ export default async function Page() {
         >
           <div className="flex-1 space-y-7">
             <h2 className="text-h3-mobile sm:text-h3 max-w-xl tracking-[0.055rem]">
-              Ethereum is the Platform for DeFi Primitives
+              {t("primitives.heading")}
             </h2>
             <p className="text-muted-foreground max-w-xl font-medium">
-              Ethereum&apos;s battle-tested, always-on infrastructure secures
-              the largest pool of digital assets and liquidity, powered by the
-              most developers and the broadest blockchain ecosystem. Ethereum
-              doesn&apos;t lock users into a single chain, fostering a unified,
-              global ecosystem where innovation and liquidity compound.
+              {t("primitives.description")}
             </p>
             <ul className="max-w-prose space-y-4 font-medium">
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                Open standards
+                {t("primitives.openStandards")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  Ethereum&apos;s shared EVM, token, and smart contract
-                  standards provide interoperability across the entire DeFi
-                  ecosystem
+                  {t("primitives.openStandardsDesc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                Deep liquidity
+                {t("primitives.deepLiquidity")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  Ethereum has the deepest DeFi liquidity of any blockchain,
-                  hosting a single, efficient, global marketplace for digital
-                  assets
+                  {t("primitives.deepLiquidityDesc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                Composable primitives
+                {t("primitives.composable")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  Open-source building blocks and protocols act as &apos;money
-                  legos&apos; that developers can combine to build sophisticated
-                  products
+                  {t("primitives.composableDesc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                Permissionless innovation
+                {t("primitives.permissionless")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  Anyone can build or access new DeFi instruments, unlocking a
-                  dynamic landscape of innovation without gatekeepers
+                  {t("primitives.permissionlessDesc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                Onchain yield
+                {t("primitives.onchainYield")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  Access familiar instruments, like T-bills and short-duration
-                  products
+                  {t("primitives.onchainYieldDesc")}
                 </p>
               </li>
             </ul>
@@ -242,12 +237,10 @@ export default async function Page() {
         <section id="innovation" className="space-y-8">
           <div className="space-y-2">
             <h2 className="text-h3-mobile sm:text-h3">
-              DeFi Powers Enterprise Innovation
+              {t("innovation.heading")}
             </h2>
             <p className="text-muted-foreground font-medium">
-              Institutions build on Ethereum&apos;s open DeFi primitives to
-              advance transparent, efficient, and accessible tools for a global
-              financial system
+              {t("innovation.description")}
             </p>
           </div>
 
@@ -271,11 +264,10 @@ export default async function Page() {
         <section id="ecosystem" className="space-y-8">
           <div className="space-y-2">
             <h2 className="text-h3-mobile sm:text-h3">
-              Ethereum&apos;s DeFi Ecosystem
+              {t("ecosystem.heading")}
             </h2>
             <p className="text-muted-foreground font-medium">
-              A small selection of DeFi applications that run on Ethereum and
-              its Layer 2 networks
+              {t("ecosystem.description")}
             </p>
           </div>
 
@@ -288,12 +280,15 @@ export default async function Page() {
   )
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: "defi" })
+
   return getMetadata({
     slug: "defi",
-    title: "Decentralized Finance for Institutions | Ethereum DeFi",
-    description:
-      "Explore Ethereum's DeFi ecosystem, home to  the deepest liquidity onchain. Learn how open standards power enterprise innovation in lending, borrowing & trading.",
+    title: t("metadata.title"),
+    description: t("metadata.description"),
     image: "/images/og/defi.png",
+    locale,
   })
 }

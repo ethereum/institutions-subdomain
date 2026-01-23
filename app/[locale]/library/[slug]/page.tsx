@@ -1,30 +1,39 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { setRequestLocale } from "next-intl/server"
 
 import Hero from "@/components/Hero"
 import MarkdownProvider from "@/components/ui/markdown/provider"
 
 import { formatDateMonthDayYear } from "@/lib/utils/date"
+import { getLibraryPosts } from "@/lib/utils/library"
 import { getMetadata } from "@/lib/utils/metadata"
 
 import { FrontMatter } from "./types"
 import { getPost, getPostImage } from "./utils"
 
-// TODO: Re-enable when posts available
-// export async function generateStaticParams() {
-//   const allPosts = fetchPosts()
-//   return allPosts.map(({ slug }) => ({ slug }))
-// }
+import { type Locale, routing } from "@/i18n/routing"
 
-type Props = { params: Promise<{ slug: string }> }
+type Props = { params: Promise<{ locale: Locale; slug: string }> }
+
+export async function generateStaticParams() {
+  const posts = await getLibraryPosts("en")
+  return routing.locales.flatMap((locale) =>
+    posts.map((post) => ({
+      locale,
+      slug: post.slug,
+    }))
+  )
+}
 
 export default async function Page({ params }: Props) {
-  const { slug } = await params
+  const { locale, slug } = await params
+  setRequestLocale(locale)
 
   let frontmatter: FrontMatter | undefined
   let content: string | undefined
   try {
-    const post = getPost(slug)
+    const post = getPost(slug, locale)
     frontmatter = post.frontmatter
     content = post.content
   } catch {
@@ -50,10 +59,10 @@ export default async function Page({ params }: Props) {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
+  const { locale, slug } = await params
 
   try {
-    const { frontmatter } = getPost(slug)
+    const { frontmatter } = getPost(slug, locale)
     const { title, datePublished } = frontmatter
 
     return getMetadata({
@@ -61,12 +70,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description: formatDateMonthDayYear(datePublished),
       image: getPostImage(frontmatter),
+      locale,
     })
   } catch {
     return getMetadata({
       slug: ["library", slug],
       title: "Ethereum Institutional Resources",
       description: "Oops! Post not found",
+      locale,
     })
   }
 }

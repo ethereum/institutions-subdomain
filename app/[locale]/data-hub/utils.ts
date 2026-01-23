@@ -1,6 +1,6 @@
 import type { DataTimestamped, NetworkPieChartData } from "@/lib/types"
 
-import type { AssetMarketShareData } from "../_actions/fetchAssetMarketShare"
+import type { AssetMarketShareData } from "@/app/_actions/fetchAssetMarketShare"
 
 export const stablecoinMarketShareToPieChartData = (
   apiData: DataTimestamped<AssetMarketShareData>

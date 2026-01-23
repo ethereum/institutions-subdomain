@@ -1,6 +1,7 @@
 import { Check } from "lucide-react"
 import Image, { StaticImageData } from "next/image"
 import type { Metadata } from "next/types"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { LastUpdated, Metric, SourceInfo } from "@/lib/types"
 
@@ -15,12 +16,12 @@ import { formatDateMonthDayYear } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
 import { formatLargeCurrency } from "@/lib/utils/number"
 
-import fetchAssetMarketShare from "../_actions/fetchAssetMarketShare"
-import fetchAssetValueByAssetIds from "../_actions/fetchAssetValueByAssetIds"
-import fetchProtocolsValueBySlug from "../_actions/fetchProtocolsValueBySlug"
-import fetchProtocolsValueTotal from "../_actions/fetchProtocolsValueTotal"
-import fetchTokenizedTreasuries from "../_actions/fetchTokenizedTreasuries"
-
+import fetchAssetMarketShare from "@/app/_actions/fetchAssetMarketShare"
+import fetchAssetValueByAssetIds from "@/app/_actions/fetchAssetValueByAssetIds"
+import fetchProtocolsValueBySlug from "@/app/_actions/fetchProtocolsValueBySlug"
+import fetchProtocolsValueTotal from "@/app/_actions/fetchProtocolsValueTotal"
+import fetchTokenizedTreasuries from "@/app/_actions/fetchTokenizedTreasuries"
+import { type Locale, routing } from "@/i18n/routing"
 import buildings from "@/public/images/banners/buildings.png"
 import dai from "@/public/images/logos/tokens/dai.svg"
 import fdusd from "@/public/images/logos/tokens/fdusd.svg"
@@ -31,7 +32,21 @@ import usds from "@/public/images/logos/tokens/usds.svg"
 import usdt from "@/public/images/logos/tokens/usdt.svg"
 import usdtb from "@/public/images/logos/tokens/usdtb.svg"
 
-export default async function Page() {
+type Props = {
+  params: Promise<{ locale: Locale }>
+}
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+export default async function Page({ params }: Props) {
+  const { locale } = await params
+  setRequestLocale(locale)
+
+  const t = await getTranslations("rwa")
+  const tCommon = await getTranslations("common")
+
   const stablecoinAssetMarketShareData =
     await fetchAssetMarketShare("STABLECOINS")
   const rwaAssetMarketShareData = await fetchAssetMarketShare("RWAS")
@@ -42,7 +57,7 @@ export default async function Page() {
 
   const metrics: Metric[] = [
     {
-      label: "Stablecoins on Ethereum L1",
+      label: t("overview.stablecoinsL1"),
       value: formatLargeCurrency(
         stablecoinAssetMarketShareData.data.assetValue.mainnet
       ),
@@ -52,7 +67,7 @@ export default async function Page() {
       ...stablecoinAssetMarketShareData.sourceInfo,
     },
     {
-      label: "Stablecoins on Ethereum L2",
+      label: t("overview.stablecoinsL2"),
       value: formatLargeCurrency(
         stablecoinAssetMarketShareData.data.assetValue.layer2
       ),
@@ -194,12 +209,10 @@ export default async function Page() {
   return (
     <main className="row-start-2 flex flex-col items-center sm:items-start">
       <Hero
-        heading="Stablecoins & Real-World Assets on Ethereum"
+        heading={t("hero.heading")}
         shape="badge-dollar-sign"
       >
-        Ethereum is the dominant network for asset tokenization, home to over
-        75% of all tokenized real-world assets (RWAs) and over 60% of global
-        stablecoin supply
+        {t("hero.description")}
       </Hero>
       <article className="max-w-8xl mx-auto w-full space-y-20 px-4 py-10 sm:px-10 sm:py-20 md:space-y-40">
         <section
@@ -208,9 +221,7 @@ export default async function Page() {
         >
           <h2 className="sr-only">Real-World Asset and Stablecoin Overview</h2>
           <p className="flex-1 font-medium">
-            Institutions tokenize stocks, offer 24/7 settlement, deploy
-            programmable cash, launch payment rails, and more, on the liquid,
-            open, and resilient ecosystem of Ethereum and its L2s
+            {t("overview.description")}
           </p>
           <div className="flex w-full flex-1 gap-4 max-sm:flex-col">
             {metrics.map(({ label, value, ...sourceInfo }, idx) => {
@@ -250,45 +261,40 @@ export default async function Page() {
         >
           <div className="flex-1 space-y-7">
             <h2 className="sm:text-h3 text-h3-mobile max-w-lg tracking-[0.055rem]">
-              Ethereum as Financial Market Infrastructure
+              {t("infrastructure.heading")}
             </h2>
             <p className="text-muted-foreground font-medium">
-              Ethereum hosts the largest, most connected stablecoin ecosystem
-              for payments, treasury, and settlement: plugging straight into
-              wallets, exchanges, and DeFi
+              {t("infrastructure.description")}
             </p>
             <ul className="max-w-prose space-y-4 font-medium">
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                Depth
+                {t("infrastructure.depth")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  Ethereum mainnet hosts the majority of all onchain stablecoins
+                  {t("infrastructure.depthDesc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                Scale
+                {t("infrastructure.scale")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  Ethereum&apos;s Layer 2s add low-fee rails for retail and
-                  high-frequency flows
+                  {t("infrastructure.scaleDesc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                Cash-like settlement
+                {t("infrastructure.settlement")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  24/7 dollar-denominated settlement at internet speed
+                  {t("infrastructure.settlementDesc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                Compliance
+                {t("infrastructure.compliance")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  Programmable settlement for compliance, disclosures, and
-                  auditability
+                  {t("infrastructure.complianceDesc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                Onchain yield
+                {t("infrastructure.yield")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  Access familiar instruments, like T-bills and short-duration
-                  products
+                  {t("infrastructure.yieldDesc")}
                 </p>
               </li>
             </ul>
@@ -307,9 +313,9 @@ export default async function Page() {
 
         <section id="stablecoins" className="space-y-8">
           <div className="space-y-2">
-            <h2>Stablecoins on Ethereum</h2>
+            <h2>{t("stablecoins.heading")}</h2>
             <p className="text-muted-foreground font-medium">
-              Total stablecoin market cap on Ethereum L1:{" "}
+              {t("stablecoins.marketCap")}{" "}
               <InlineText className="text-foreground font-bold">
                 {formatLargeCurrency(
                   stablecoinAssetMarketShareData.data.assetValue.mainnet
@@ -332,9 +338,9 @@ export default async function Page() {
               >
                 <Image src={imgSrc} alt="" sizes="48px" className="size-12" />
                 <h3 className="text-h5">{ticker}</h3>
-                <p className="font-medium">By {issuer}</p>
+                <p className="font-medium">{t("stablecoins.by", { issuer })}</p>
                 <p className="text-secondary-foreground mt-6 mb-0">
-                  Visit{" "}
+                  {tCommon("visit")}{" "}
                   <span className="group-hover:animate-x-bounce inline-block">
                     →
                   </span>
@@ -346,9 +352,9 @@ export default async function Page() {
 
         <section id="rwas" className="space-y-8">
           <div className="space-y-2">
-            <h2>Real-World Assets (RWAs) on Ethereum</h2>
+            <h2>{t("rwas.heading")}</h2>
             <p className="text-muted-foreground font-medium">
-              Total RWA sector on Ethereum L1:{" "}
+              {t("rwas.totalSector")}{" "}
               <InlineText className="text-foreground font-bold">
                 {formatLargeCurrency(
                   rwaAssetMarketShareData.data.assetValue.mainnet
@@ -366,7 +372,7 @@ export default async function Page() {
           <div className="grid grid-cols-1 grid-rows-8 gap-4 sm:grid-cols-2 sm:grid-rows-4 lg:grid-cols-4 lg:grid-rows-2">
             <div className="bg-secondary-foreground text-secondary space-y-2 p-8">
               <h3 className="text-xl font-bold tracking-[0.025rem]">
-                Tokenized Treasuries & Cash-Equivalents
+                {t("rwas.treasuries")}
               </h3>
               <p className="text-big font-bold tracking-[0.055rem]">
                 {formatLargeCurrency(
@@ -374,7 +380,7 @@ export default async function Page() {
                 )}
               </p>
               <InlineText className="text-muted font-medium">
-                sector on Ethereum + L2s
+                {t("rwas.treasuriesSector")}
                 <SourceInfoTooltip
                   lastUpdated={formatDateMonthDayYear(
                     tokenizedTreasuriesData.lastUpdated
@@ -433,7 +439,7 @@ export default async function Page() {
 
             <div className="bg-secondary-foreground text-secondary space-y-2 p-8">
               <h3 className="text-xl font-bold tracking-[0.025rem]">
-                Private Credit & Structured Credit
+                {t("rwas.privateCredit")}
               </h3>
               <p className="text-big font-bold tracking-[0.055rem]">
                 {formatLargeCurrency(
@@ -441,7 +447,7 @@ export default async function Page() {
                 )}
               </p>
               <InlineText className="text-muted font-medium">
-                sector on Ethereum + L2s
+                {t("rwas.activeLoans")}
                 <SourceInfoTooltip
                   lastUpdated={formatDateMonthDayYear(
                     protocolsValueTotal.lastUpdated
@@ -503,23 +509,19 @@ export default async function Page() {
         <section id="why-ethereum" className="space-y-16">
           <div className="flex flex-col items-center gap-y-8 text-center">
             <h2 className="text-h3-mobile sm:text-h3 max-w-3xl leading-tight">
-              Why Ethereum for Financial Market Infrastructure
+              {t("why.heading")}
             </h2>
             <p className="text-muted-foreground max-w-4xl font-medium">
-              <strong>Credible settlement, global reach.</strong> Ethereum pairs
-              a maximally-neutral L1 settlement layer with L2 execution
-              environments that deliver scale and cost efficiency, so
-              institutions can move cash-like value and short-duration assets
-              with auditability and programmatic controls.
+              {t("why.description")}
             </p>
           </div>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <Card className="p-10">
               <h3 className="text-h4">
-                Ethereum L1
+                {t("why.l1.heading")}
                 <br />
-                The settlement & liquidity layer
+                {t("why.l1.subheading")}
               </h3>
 
               <hr className="my-6" />
@@ -527,40 +529,37 @@ export default async function Page() {
               <div className="grid gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">Finality & Credible Neutrality</h4>
+                  <h4 className="text-h6">{t("why.l1.finality")}</h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  High-value settlement, state roots for rollups, and durable
-                  records institutions can audit and attest against
+                  {t("why.l1.finalityDesc")}
                 </div>
               </div>
               <div className="grid gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">Security</h4>
+                  <h4 className="text-h6">{t("why.l1.security")}</h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  Assets can be stored in an environment that is built to
-                  withstand major catastrophes and geopolitical tensions
+                  {t("why.l1.securityDesc")}
                 </div>
               </div>
               <div className="grid gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">Risk Gating</h4>
+                  <h4 className="text-h6">{t("why.l1.riskGating")}</h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  Keep complex or experimental logic off L1; use it for final
-                  settlement, collateral custody, and proofs
+                  {t("why.l1.riskGatingDesc")}
                 </div>
               </div>
             </Card>
 
             <Card className="p-10">
               <h3 className="text-h4">
-                Ethereum&apos;s L2s
+                {t("why.l2.heading")}
                 <br />
-                The Execution and Scaling Layer
+                {t("why.l2.subheading")}
               </h3>
 
               <hr className="my-6" />
@@ -568,34 +567,28 @@ export default async function Page() {
               <div className="grid gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">Throughput & UX</h4>
+                  <h4 className="text-h6">{t("why.l2.throughput")}</h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  Rollups process transactions off-chain, inherit L1 security,
-                  and deliver low fees suitable for payments, market-making, and
-                  high-frequency flows
+                  {t("why.l2.throughputDesc")}
                 </div>
               </div>
               <div className="grid gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">Configurable</h4>
+                  <h4 className="text-h6">{t("why.l2.configurable")}</h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  L2s can add compliance features, like allowlisting or
-                  KYC&apos;d pools, while remaining non-custodial and settling
-                  to L1
+                  {t("why.l2.configurableDesc")}
                 </div>
               </div>
               <div className="grid gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">Specialization</h4>
+                  <h4 className="text-h6">{t("why.l2.specialization")}</h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  Multiple L2s let institutions segregate workloads, such as
-                  retail payments vs. treasury ops, without fragmenting trust,
-                  because settlement reconciles on L1
+                  {t("why.l2.specializationDesc")}
                 </div>
               </div>
             </Card>
@@ -606,12 +599,15 @@ export default async function Page() {
   )
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: "rwa" })
+
   return getMetadata({
     slug: "rwa",
-    title: "Stablecoins & Asset Tokenization | RWAs on Ethereum",
-    description:
-      "Ethereum is the dominant choice for tokenizing assets and issuing stablecoins. Explore the network for 24/7 settlement, programmable cash, and onchain yield.",
+    title: t("metadata.title"),
+    description: t("metadata.description"),
     image: "/images/og/rwa.png",
+    locale,
   })
 }

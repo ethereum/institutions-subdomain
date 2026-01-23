@@ -1,4 +1,5 @@
 import type { Metadata } from "next/types"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { Metric } from "@/lib/types"
 
@@ -25,22 +26,36 @@ import { formatDateMonthDayYear } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
 import { formatLargeCurrency, formatMultiplier } from "@/lib/utils/number"
 
-import fetchAssetMarketShare from "../_actions/fetchAssetMarketShare"
-import fetchBeaconChain from "../_actions/fetchBeaconChain"
-import fetchEtherMarketDetails from "../_actions/fetchEtherMarketDetails"
-import fetchEtherPrice from "../_actions/fetchEtherPrice"
-import fetchL2ScalingSummary from "../_actions/fetchL2ScalingSummary"
-import fetchTimeseriesAssetsValue from "../_actions/fetchTimeseriesAssetsValue"
-import fetchTimeseriesDefiTvlEthereum from "../_actions/fetchTimeseriesDefiTvlEthereum"
-import fetchTimeseriesL2Tvl from "../_actions/fetchTimeseriesL2Tvl"
-import fetchTotalValueSecured from "../_actions/fetchTotalValueSecured"
-import fetchDefiTvlAllCurrent from "../_actions/fetchTvlDefiAllCurrent"
-
 import RwaChartCard from "./_components/rwa-chart-card"
 import StablecoinChartCard from "./_components/stablecoin-chart-card"
 import { stablecoinMarketShareToPieChartData } from "./utils"
 
-export default async function Page() {
+import fetchAssetMarketShare from "@/app/_actions/fetchAssetMarketShare"
+import fetchBeaconChain from "@/app/_actions/fetchBeaconChain"
+import fetchEtherMarketDetails from "@/app/_actions/fetchEtherMarketDetails"
+import fetchEtherPrice from "@/app/_actions/fetchEtherPrice"
+import fetchL2ScalingSummary from "@/app/_actions/fetchL2ScalingSummary"
+import fetchTimeseriesAssetsValue from "@/app/_actions/fetchTimeseriesAssetsValue"
+import fetchTimeseriesDefiTvlEthereum from "@/app/_actions/fetchTimeseriesDefiTvlEthereum"
+import fetchTimeseriesL2Tvl from "@/app/_actions/fetchTimeseriesL2Tvl"
+import fetchTotalValueSecured from "@/app/_actions/fetchTotalValueSecured"
+import fetchDefiTvlAllCurrent from "@/app/_actions/fetchTvlDefiAllCurrent"
+import { type Locale, routing } from "@/i18n/routing"
+
+type Props = {
+  params: Promise<{ locale: Locale }>
+}
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+export default async function Page({ params }: Props) {
+  const { locale } = await params
+  setRequestLocale(locale)
+
+  const t = await getTranslations("dataHub")
+
   const ethPrice = await fetchEtherPrice()
   const timeseriesDefiTvlEthereumData = await fetchTimeseriesDefiTvlEthereum()
   const timeseriesStablecoinsValueData =
@@ -61,19 +76,19 @@ export default async function Page() {
 
   const metrics: Metric[] = [
     {
-      label: "Market Cap",
+      label: t("metrics.marketCap"),
       value: formatLargeCurrency(etherMarketDetailsData.data.etherMarketCap),
       lastUpdated: formatDateMonthDayYear(etherMarketDetailsData.lastUpdated),
       ...etherMarketDetailsData.sourceInfo,
     },
     {
-      label: "Total Value Secured (TVS)",
+      label: t("metrics.tvs"),
       value: formatLargeCurrency(totalValueSecuredData.data.sum),
       lastUpdated: formatDateMonthDayYear(totalValueSecuredData.lastUpdated),
       ...totalValueSecuredData.sourceInfo,
     },
     {
-      label: "ETH Staked",
+      label: t("metrics.ethStaked"),
       value: formatLargeCurrency(
         beaconChainData.data.totalStakedEther * ethPrice.data.usd
       ),
@@ -81,7 +96,7 @@ export default async function Page() {
       ...beaconChainData.sourceInfo,
     },
     {
-      label: "Security Ratio",
+      label: t("metrics.securityRatio"),
       value: formatMultiplier(totalValueSecuredData.data.securityRatio),
       lastUpdated: formatDateMonthDayYear(totalValueSecuredData.lastUpdated),
       ...totalValueSecuredData.sourceInfo,
@@ -91,22 +106,20 @@ export default async function Page() {
   return (
     <main className="row-start-2 flex flex-col items-center sm:items-start">
       <Hero
-        heading="Data Hub: Real-Time Intelligence"
+        heading={t("hero.heading")}
         shape="chart-no-axes-combined"
       >
         <p>
-          Ethereum&apos;s onchain data provides an immutable and transparent
-          foundation for institutional analysis and reporting.
+          {t("hero.description1")}
         </p>
         <p>
-          Track live, real-time data for mainnet activity, Layer 2 scaling,
-          tokenized assets, and DeFi markets.
+          {t("hero.description2")}
         </p>
       </Hero>
       <article className="max-w-8xl mx-auto w-full space-y-10 px-4 py-10 sm:px-10 sm:py-20 md:space-y-20">
         <section id="overview" className="space-y-4">
           <h2 className="text-h3-mobile sm:text-h3 lg:w-lg lg:max-w-lg lg:shrink-0">
-            Overview
+            {t("sections.overview")}
           </h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-12 xl:grid-cols-4">
             {metrics.map(
@@ -149,15 +162,15 @@ export default async function Page() {
 
         <section id="defi" className="space-y-4">
           <h2 className="text-h3-mobile sm:text-h3 lg:w-lg lg:max-w-lg lg:shrink-0">
-            Decentralized Finance
+            {t("sections.defi")}
           </h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-[1fr_23rem]">
             <Card variant="flex-column">
               <CardHeader className="flex gap-2 !px-0 max-sm:flex-col sm:items-center">
                 <CardContent className="flex-1 gap-4">
-                  <CardTitle className="text-xl">TVL in DeFi</CardTitle>
+                  <CardTitle className="text-xl">{t("defi.tvl.title")}</CardTitle>
                   <CardDescription className="font-medium">
-                    Sum of funds deposited into DeFi applications on Ethereum
+                    {t("defi.tvl.description")}
                   </CardDescription>
                 </CardContent>
                 <div className="text-h4 font-bold tracking-[0.04rem]">
@@ -194,7 +207,7 @@ export default async function Page() {
 
             <Card variant="flex-column">
               <CardTitle className="text-h5">
-                DeFi TVL vs. Next-Largest Blockchain Ecosystem
+                {t("defi.vsNext.title")}
               </CardTitle>
 
               <CardContent variant="flex-1-height-between">
@@ -205,7 +218,7 @@ export default async function Page() {
                     )}
                   </AnimatedNumberInView>
                   <CardSmallText className="text-center text-sm">
-                    Larger
+                    {t("defi.vsNext.larger")}
                   </CardSmallText>
                 </div>
                 <div className="flex justify-between">
@@ -231,7 +244,7 @@ export default async function Page() {
 
         <section id="stablecoins" className="space-y-4">
           <h2 className="text-h3-mobile sm:text-h3 lg:w-lg lg:max-w-lg lg:shrink-0">
-            Stablecoins
+            {t("sections.stablecoins")}
           </h2>
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -240,10 +253,10 @@ export default async function Page() {
             <Card variant="flex-column">
               <CardContent>
                 <CardTitle className="text-xl">
-                  Stablecoin Market Share
+                  {t("stablecoins.marketShare.title")}
                 </CardTitle>
                 <CardDescription className="text-sm font-medium">
-                  Stablecoin TVL distribution by blockchain
+                  {t("stablecoins.marketShare.description")}
                 </CardDescription>
               </CardContent>
 
@@ -273,7 +286,7 @@ export default async function Page() {
 
         <section id="rwa" className="space-y-4">
           <h2 className="text-h3-mobile sm:text-h3 lg:w-lg lg:max-w-lg lg:shrink-0">
-            Real-World Assets
+            {t("sections.rwa")}
           </h2>
           <RwaChartCard data={timeseriesRwaValueData} />
           {/* <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_16rem]">
@@ -344,14 +357,14 @@ export default async function Page() {
 
         <section id="layer-2" className="space-y-4">
           <h2 className="text-h3-mobile sm:text-h3 lg:w-lg lg:max-w-lg lg:shrink-0">
-            Layer 2 Ecosystem
+            {t("sections.layer2")}
           </h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-[16rem_1fr]">
             <Card variant="flex-column">
               <CardContent variant="flex-1-height-between">
                 <CardContent>
                   <h3 className="text-base font-medium tracking-[0.02rem]">
-                    Number of Live Ethereum L2 Networks
+                    {t("layer2.networks.title")}
                   </h3>
                   <AnimatedNumberInView className="text-big font-bold tracking-[0.055rem]">
                     {l2ScalingSummaryData.data.allProjectsCount}
@@ -379,10 +392,10 @@ export default async function Page() {
               <CardHeader className="flex gap-2 !px-0 max-sm:flex-col sm:items-center">
                 <CardContent className="flex-1 gap-4">
                   <CardTitle className="text-xl">
-                    Daily Average L2 TVL
+                    {t("layer2.tvl.title")}
                   </CardTitle>
                   <CardDescription className="font-medium">
-                    Total value locked on Ethereum&apos;s L2 networks
+                    {t("layer2.tvl.description")}
                   </CardDescription>
                 </CardContent>
                 <div className="text-h4 font-bold tracking-[0.04rem]">
@@ -415,12 +428,14 @@ export default async function Page() {
   )
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: "dataHub" })
   return getMetadata({
     slug: "data-hub",
-    title: "Live Ethereum Network Data | Institutional Onchain Data Hub",
-    description:
-      "Get live intelligence for the onchain economy. Explore curated metrics for mainnet activity, L2 scaling, DeFi markets, tokenized assets, and more.",
+    title: t("metadata.title"),
+    description: t("metadata.description"),
     image: "/images/og/data-hub.png",
+    locale,
   })
 }
