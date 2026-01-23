@@ -150,7 +150,13 @@ export const getValueParts = (input: string | number): NumberParts => {
   const match = input.match(stringValueRegExp) ?? []
 
   const [, prefix, strValue, suffix] = match
-  const clean = strValue.replace(/,/g, "")
+  const clean = strValue?.replace(/,/g, "") ?? ""
+
+  // If no digits found, throw error so AnimatedNumberInView falls back to raw text
+  if (!clean) {
+    throw new Error(`No numeric value found in input: "${input}"`)
+  }
+
   const value = +clean
   const fractionDigits = clean.split(".")[1]?.length ?? 0
 

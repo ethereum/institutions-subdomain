@@ -364,6 +364,26 @@
     "metadata": {
       "title": "Datos en Vivo de la Red Ethereum | Centro de Datos Institucional Onchain",
       "description": "Obtén inteligencia en vivo de la economía onchain. Explora métricas curadas de actividad de mainnet, escalado L2, mercados DeFi, activos tokenizados y más."
+    },
+    "keyMetrics": {
+      "title": "Métricas Clave",
+      "perpsVolume": "Volumen de Perps (24h)",
+      "inflows": "Entradas (24h)",
+      "activeAddresses": "Direcciones Activas (24h)",
+      "totalRaised": "Total Recaudado",
+      "bridgedTvl": "TVL en Puentes",
+      "nftVolume": "Volumen de NFT (24h)",
+      "ethPrice": "Precio de ETH",
+      "ethMarketCap": "Cap. de Mercado de ETH",
+      "ethFdv": "FDV de ETH",
+      "stablecoinsMcap": "Cap. de Stablecoins",
+      "dexVolume": "Volumen DEX (24h)",
+      "tokenIncentives": "Incentivos de Tokens (24h)",
+      "chainFees": "Comisiones de Cadena (24h)",
+      "chainRevenue": "Ingresos de Cadena (24h)",
+      "appRevenue": "Ingresos de Apps (24h)",
+      "appFees": "Comisiones de Apps (24h)",
+      "unavailable": "Datos no disponibles"
     }
   },
   "layer2": {
