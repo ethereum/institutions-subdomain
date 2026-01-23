@@ -100,35 +100,51 @@ export const fetchDefiLlamaKeyMetrics = async (): Promise<
   try {
     const cacheTime = every("minute", 5)
 
-    // Fetch all endpoints in parallel
-    const [derivativesData, bridgesData, nftsData, raisesData, feesData] =
-      await Promise.all([
-        fetchWithCache<DefiLlamaOverviewResponse>(
-          ENDPOINTS.derivatives,
-          "llama:overview:derivatives",
-          cacheTime
-        ),
-        fetchWithCache<DefiLlamaBridgesResponse>(
-          ENDPOINTS.bridges,
-          "llama:bridges",
-          cacheTime
-        ),
-        fetchWithCache<DefiLlamaOverviewResponse>(
-          ENDPOINTS.nfts,
-          "llama:overview:nfts",
-          cacheTime
-        ),
-        fetchWithCache<DefiLlamaRaisesResponse>(
-          ENDPOINTS.raises,
-          "llama:raises",
-          every("day") // Raises don't change often
-        ),
-        fetchWithCache<DefiLlamaFeesResponse>(
-          ENDPOINTS.fees,
-          "llama:overview:fees",
-          cacheTime
-        ),
-      ])
+    // Fetch all endpoints in parallel with graceful failure handling
+    const results = await Promise.allSettled([
+      fetchWithCache<DefiLlamaOverviewResponse>(
+        ENDPOINTS.derivatives,
+        "llama:overview:derivatives",
+        cacheTime
+      ),
+      fetchWithCache<DefiLlamaBridgesResponse>(
+        ENDPOINTS.bridges,
+        "llama:bridges",
+        cacheTime
+      ),
+      fetchWithCache<DefiLlamaOverviewResponse>(
+        ENDPOINTS.nfts,
+        "llama:overview:nfts",
+        cacheTime
+      ),
+      fetchWithCache<DefiLlamaRaisesResponse>(
+        ENDPOINTS.raises,
+        "llama:raises",
+        every("day") // Raises don't change often
+      ),
+      fetchWithCache<DefiLlamaFeesResponse>(
+        ENDPOINTS.fees,
+        "llama:overview:fees",
+        cacheTime
+      ),
+    ])
+
+    const [derivativesResult, bridgesResult, nftsResult, raisesResult, feesResult] = results
+
+    // Log any failures for debugging
+    results.forEach((result, idx) => {
+      if (result.status === "rejected") {
+        const names = ["derivatives", "bridges", "nfts", "raises", "fees"]
+        console.error(`DefiLlama ${names[idx]} fetch failed:`, result.reason)
+      }
+    })
+
+    // Extract data from successful fetches
+    const derivativesData = derivativesResult.status === "fulfilled" ? derivativesResult.value : { protocols: [] }
+    const bridgesData = bridgesResult.status === "fulfilled" ? bridgesResult.value : { chains: [] }
+    const nftsData = nftsResult.status === "fulfilled" ? nftsResult.value : { protocols: [] }
+    const raisesData = raisesResult.status === "fulfilled" ? raisesResult.value : { raises: [] }
+    const feesData = feesResult.status === "fulfilled" ? feesResult.value : { protocols: [] }
 
     // Calculate perps volume (Ethereum protocols only)
     const perpsVolume24h =

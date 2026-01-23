@@ -7,16 +7,22 @@ import { every } from "@/lib/utils/time"
 import { SOURCE } from "@/lib/constants"
 
 /**
- * growthepie API response types
+ * growthepie API response types for individual metric endpoints
  */
-type GrowthepieMetricData = {
-  metric_key: string
-  origin_key: string
-  date: string
-  value: number
+type GrowthepieMetricResponse = {
+  data: {
+    metric_id: string
+    metric_name: string
+    chains: {
+      [chainKey: string]: {
+        daily: {
+          types: string[]
+          data: (number | null)[][]
+        }
+      }
+    }
+  }
 }
-
-type GrowthepieFundamentalsResponse = GrowthepieMetricData[]
 
 /**
  * Output data types
@@ -27,45 +33,74 @@ export type GrowthepieKeyMetricsData = {
   chainRevenue24h: number
 }
 
-const FUNDAMENTALS_URL = "https://api.growthepie.xyz/v1/fundamentals/full.json"
+const ENDPOINTS = {
+  daa: "https://api.growthepie.xyz/v1/metrics/daa.json",
+  fees: "https://api.growthepie.xyz/v1/metrics/fees.json",
+}
+
+async function fetchMetric(
+  url: string,
+  tag: string,
+  revalidate: number
+): Promise<GrowthepieMetricResponse> {
+  const response = await fetch(url, {
+    next: { revalidate, tags: [tag] },
+  })
+
+  if (!response.ok) {
+    throw new Error(
+      `Fetch response not OK from ${url}: ${response.status} ${response.statusText}`
+    )
+  }
+
+  return response.json()
+}
+
+function getLatestEthereumValue(data: GrowthepieMetricResponse): number {
+  const ethereumData = data.data.chains?.ethereum?.daily?.data
+  if (!ethereumData || ethereumData.length === 0) return 0
+  // Data format: [timestamp, value, ...] - get the last entry's value (index 1)
+  const lastEntry = ethereumData[ethereumData.length - 1]
+  return (lastEntry?.[1] as number) ?? 0
+}
 
 export const fetchGrowthepieKeyMetrics = async (): Promise<
   DataTimestamped<GrowthepieKeyMetricsData>
 > => {
   try {
-    const response = await fetch(FUNDAMENTALS_URL, {
-      next: {
-        revalidate: every("minute", 5),
-        tags: ["growthepie:fundamentals:full"],
-      },
-    })
+    const cacheTime = every("minute", 5)
 
-    if (!response.ok) {
-      throw new Error(
-        `Fetch response not OK from ${FUNDAMENTALS_URL}: ${response.status} ${response.statusText}`
-      )
+    // Fetch metrics in parallel with graceful failure handling
+    const results = await Promise.allSettled([
+      fetchMetric(ENDPOINTS.daa, "growthepie:daa", cacheTime),
+      fetchMetric(ENDPOINTS.fees, "growthepie:fees", cacheTime),
+    ])
+
+    const [daaResult, feesResult] = results
+
+    // Extract values from successful fetches, default to 0 on failure
+    const activeAddresses24h =
+      daaResult.status === "fulfilled"
+        ? getLatestEthereumValue(daaResult.value)
+        : 0
+
+    // Fees data format: [timestamp, usd_value, eth_value]
+    const chainFees24h =
+      feesResult.status === "fulfilled"
+        ? getLatestEthereumValue(feesResult.value)
+        : 0
+
+    // Chain revenue for Ethereum L1 isn't directly available - fees are the revenue
+    // For L2s, profit = fees - costs, but for Ethereum L1, revenue ≈ fees
+    const chainRevenue24h = chainFees24h
+
+    // Log any failures for debugging
+    if (daaResult.status === "rejected") {
+      console.error("growthepie DAA fetch failed:", daaResult.reason)
     }
-
-    const data: GrowthepieFundamentalsResponse = await response.json()
-
-    // Filter for Ethereum mainnet and get latest values
-    const ethereumData = data.filter((d) => d.origin_key === "ethereum")
-
-    // Get latest date for each metric
-    const getLatestValue = (metricKey: string): number => {
-      const metricData = ethereumData
-        .filter((d) => d.metric_key === metricKey)
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-      return metricData[0]?.value ?? 0
+    if (feesResult.status === "rejected") {
+      console.error("growthepie fees fetch failed:", feesResult.reason)
     }
-
-    // Map growthepie metrics to our output
-    // daa = Daily Active Addresses
-    // fees_paid_usd = fees in USD
-    // profit_usd = revenue (fees - costs)
-    const activeAddresses24h = getLatestValue("daa")
-    const chainFees24h = getLatestValue("fees_paid_usd")
-    const chainRevenue24h = getLatestValue("profit_usd")
 
     return {
       data: {
