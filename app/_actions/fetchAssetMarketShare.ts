@@ -1,12 +1,13 @@
 "use server"
 
+import { unstable_cache } from "next/cache"
+
 import type {
   AssetCategory,
   DataTimestamped,
   RwaApiTimeseriesResponse,
 } from "@/lib/types"
 
-import { dateNDaysAgo } from "@/lib/utils/date"
 import { every } from "@/lib/utils/time"
 
 import {
@@ -33,9 +34,21 @@ export type AssetMarketShareData = {
   assetValueSumAll: number
 }
 
-export const fetchAssetMarketShare = async (
-  category: AssetCategory
-): Promise<DataTimestamped<AssetMarketShareData>> => {
+// Random delay to stagger API requests across build workers
+const randomDelay = () =>
+  new Promise((resolve) => setTimeout(resolve, Math.random() * 3000))
+
+// Stable date for caching (start of day, 2 days ago)
+const getStableDateNDaysAgo = (n: number = 2) => {
+  const date = new Date()
+  date.setDate(date.getDate() - n)
+  date.setHours(0, 0, 0, 0)
+  return date.toISOString()
+}
+
+const fetchMarketShareData = async (category: AssetCategory) => {
+  await randomDelay()
+
   const url = new URL("https://api.rwa.xyz/v3/assets/aggregates/timeseries")
 
   const apiKey = process.env.RWA_API_KEY || ""
@@ -56,7 +69,7 @@ export const fetchAssetMarketShare = async (
         {
           field: "date",
           operator: "onOrAfter",
-          value: dateNDaysAgo(),
+          value: getStableDateNDaysAgo(),
         },
         {
           field: "assetClassID",
@@ -81,94 +94,101 @@ export const fetchAssetMarketShare = async (
 
   url.searchParams.set("query", JSON.stringify(myQuery))
 
-  try {
-    const response = await fetch(url.toString(), {
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        Accept: "application/json",
-      },
-      next: {
-        revalidate: every("day"),
-        tags: [`rwa:v3:assets:aggregates:timeseries:${category}`],
-      },
-    })
+  const response = await fetch(url.toString(), {
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      Accept: "application/json",
+    },
+  })
 
-    if (!response.ok)
-      throw new Error(
-        `Fetch response not OK from ${decodeURIComponent(url.toString())}: ${response.status} ${response.statusText}`
-      )
+  if (!response.ok)
+    throw new Error(
+      `Fetch response not OK from ${decodeURIComponent(url.toString())}: ${response.status} ${response.statusText}`
+    )
 
-    const json: JSONData = await response.json()
+  const json: JSONData = await response.json()
 
-    const assetValueSumAll = json.results.reduce((prev, { points }) => {
+  const assetValueSumAll = json.results.reduce((prev, { points }) => {
+    const [, latestValue] = points[points.length - 1]
+    return prev + latestValue
+  }, 0)
+
+  const mainnetAssetValue = json.results
+    .filter(({ group: { id } }) => RWA_API_MAINNET.id === id)
+    .reduce((prev, { points }) => {
       const [, latestValue] = points[points.length - 1]
       return prev + latestValue
     }, 0)
 
-    const mainnetAssetValue = json.results
-      .filter(({ group: { id } }) => RWA_API_MAINNET.id === id)
-      .reduce((prev, { points }) => {
-        const [, latestValue] = points[points.length - 1]
-        return prev + latestValue
-      }, 0)
+  const layer2AssetValue = json.results
+    .filter(({ group: { id } }) => RWA_API_LAYER_2S_IDS.includes(id))
+    .reduce((prev, { points }) => {
+      const [, latestValue] = points[points.length - 1]
+      return prev + latestValue
+    }, 0)
 
-    const layer2AssetValue = json.results
-      .filter(({ group: { id } }) => RWA_API_LAYER_2S_IDS.includes(id))
-      .reduce((prev, { points }) => {
-        const [, latestValue] = points[points.length - 1]
-        return prev + latestValue
-      }, 0)
-
-    const nonEthereumNetworksValueSorted = json.results
-      .filter(
-        ({ group: { id } }) =>
-          !RWA_API_LAYER_2S_IDS.includes(id) && id !== RWA_API_MAINNET.id
-      )
-      .sort((a, b) => {
-        const [, aLatest] = a.points[a.points.length - 1]
-        const [, bLatest] = b.points[b.points.length - 1]
-        return bLatest - aLatest
-      })
-
-    const [
-      altNetwork2ndAssetResult,
-      altNetwork3rdAssetResult,
-      ...altNetworksRestAssetResults
-    ] = nonEthereumNetworksValueSorted
-    const [, altNetwork2ndAssetValue] =
-      altNetwork2ndAssetResult.points[
-        altNetwork2ndAssetResult.points.length - 1
-      ]
-    const [, altNetwork3rdAssetValue] =
-      altNetwork3rdAssetResult.points[
-        altNetwork3rdAssetResult.points.length - 1
-      ]
-    const altNetworksRestAssetValue = altNetworksRestAssetResults.reduce(
-      (prev, { points }) => {
-        const [, latestValue] = points[points.length - 1]
-        return prev + latestValue
-      },
-      0
+  const nonEthereumNetworksValueSorted = json.results
+    .filter(
+      ({ group: { id } }) =>
+        !RWA_API_LAYER_2S_IDS.includes(id) && id !== RWA_API_MAINNET.id
     )
+    .sort((a, b) => {
+      const [, aLatest] = a.points[a.points.length - 1]
+      const [, bLatest] = b.points[b.points.length - 1]
+      return bLatest - aLatest
+    })
+
+  const [
+    altNetwork2ndAssetResult,
+    altNetwork3rdAssetResult,
+    ...altNetworksRestAssetResults
+  ] = nonEthereumNetworksValueSorted
+  const [, altNetwork2ndAssetValue] =
+    altNetwork2ndAssetResult.points[altNetwork2ndAssetResult.points.length - 1]
+  const [, altNetwork3rdAssetValue] =
+    altNetwork3rdAssetResult.points[altNetwork3rdAssetResult.points.length - 1]
+  const altNetworksRestAssetValue = altNetworksRestAssetResults.reduce(
+    (prev, { points }) => {
+      const [, latestValue] = points[points.length - 1]
+      return prev + latestValue
+    },
+    0
+  )
+
+  return {
+    assetValue: {
+      mainnet: mainnetAssetValue,
+      layer2: layer2AssetValue,
+      altNetwork2nd: altNetwork2ndAssetValue,
+      altNetwork3rd: altNetwork3rdAssetValue,
+      altNetworksRest: altNetworksRestAssetValue,
+    },
+    marketShare: {
+      mainnet: mainnetAssetValue / assetValueSumAll,
+      layer2: layer2AssetValue / assetValueSumAll,
+      altNetwork2nd: altNetwork2ndAssetValue / assetValueSumAll,
+      altNetwork3rd: altNetwork3rdAssetValue / assetValueSumAll,
+      altNetworksRest: altNetworksRestAssetValue / assetValueSumAll,
+    },
+    assetValueSumAll,
+  }
+}
+
+const getCachedMarketShareData = (category: AssetCategory) =>
+  unstable_cache(
+    () => fetchMarketShareData(category),
+    ["rwa-market-share", category],
+    { revalidate: every("day") }
+  )()
+
+export const fetchAssetMarketShare = async (
+  category: AssetCategory
+): Promise<DataTimestamped<AssetMarketShareData>> => {
+  try {
+    const data = await getCachedMarketShareData(category)
 
     return {
-      data: {
-        assetValue: {
-          mainnet: mainnetAssetValue,
-          layer2: layer2AssetValue,
-          altNetwork2nd: altNetwork2ndAssetValue,
-          altNetwork3rd: altNetwork3rdAssetValue,
-          altNetworksRest: altNetworksRestAssetValue,
-        },
-        marketShare: {
-          mainnet: mainnetAssetValue / assetValueSumAll,
-          layer2: layer2AssetValue / assetValueSumAll,
-          altNetwork2nd: altNetwork2ndAssetValue / assetValueSumAll,
-          altNetwork3rd: altNetwork3rdAssetValue / assetValueSumAll,
-          altNetworksRest: altNetworksRestAssetValue / assetValueSumAll,
-        },
-        assetValueSumAll,
-      },
+      data,
       lastUpdated: Date.now(),
       sourceInfo: SOURCE.RWA,
     }
@@ -176,7 +196,6 @@ export const fetchAssetMarketShare = async (
     console.error("fetchAssetMarketShare failed", {
       name: error instanceof Error ? error.name : undefined,
       message: error instanceof Error ? error.message : String(error),
-      url: url,
     })
     throw error
   }

@@ -29,7 +29,13 @@ export type TimeseriesAssetsValueData = {
   layer2: DataSeriesWithCurrent
 }
 
+// Random delay to stagger API requests across build workers
+const randomDelay = () =>
+  new Promise((resolve) => setTimeout(resolve, Math.random() * 3000))
+
 const fetchTimeseriesData = async (category: AssetCategory) => {
+  await randomDelay()
+
   const url = new URL("https://api.rwa.xyz/v3/assets/aggregates/timeseries")
 
   const apiKey = process.env.RWA_API_KEY || ""
