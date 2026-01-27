@@ -10,7 +10,30 @@
     "visit": "访问"
   },
   "footer": {
-    "copyright": "以太坊基金会。保留所有权利。"
+    "copyright": "以太坊基金会。保留所有权利。",
+    "privacyPolicy": "隐私政策",
+    "termsOfUse": "使用条款",
+    "cookiePolicy": "Cookie政策",
+    "ethereumFoundation": "以太坊基金会",
+    "ethereumOrg": "ethereum.org"
+  },
+  "contactForm": {
+    "namePlaceholder": "您的姓名",
+    "emailPlaceholder": "您的邮箱",
+    "messagePlaceholder": "留言",
+    "send": "发送 →",
+    "sending": "正在发送",
+    "successTitle": "感谢您的联系！",
+    "successMessage": "我们已收到您的留言，企业团队将在几个工作日内与您联系。",
+    "errors": {
+      "required": "必填",
+      "nameTooLong": "姓名过长（最多{max}个字符）",
+      "emailTooLong": "邮箱过长（最多{max}个字符）",
+      "invalidEmail": "请输入有效的邮箱地址",
+      "businessEmailRequired": "请使用企业、机构或组织邮箱（例如，非@gmail邮箱）。",
+      "messageTooLong": "留言过长（最多{max}个字符）",
+      "generalError": "无法发送您的留言。请重试或直接联系我们："
+    }
   },
   "nav": {
     "home": "首页",
@@ -114,7 +137,31 @@
     },
     "scaling": {
       "heading": "以太坊正在扩容",
-      "description": "以太坊的性能并非一成不变。网络活跃的研发路线图为无限可扩展的生态系统奠定了基础，同时全球基于以太坊的提供商正在突破吞吐量的边界。"
+      "description": "以太坊的性能并非一成不变。网络活跃的研发路线图为无限可扩展的生态系统奠定了基础，同时全球基于以太坊的提供商正在突破吞吐量的边界。",
+      "learnMore": "了解更多",
+      "immediateAcceleration": {
+        "title": "即时加速",
+        "card1": "将主网Gas上限提高到100M/区块，快速提升主网TPS",
+        "card2": "PeerDAS数据可用性采样扩展blob容量，成倍提升L2 TPS",
+        "card3": "历史过期机制裁剪存储，在规模化时保持节点性能舒适"
+      },
+      "alternativeProvider": {
+        "title": "替代提供商创新",
+        "card1": "Eigen DA吞吐量达到100MB/秒，使以太坊rollup能够以12.8倍Visa峰值吞吐量运行，实现每秒超过80万次ERC-20转账",
+        "card2": "ZKSync的Airbender达到比竞争对手快6倍的证明吞吐量，用8个nvidia 5090 GPU实时证明以太坊区块，为延迟敏感的金融解锁实时清算"
+      },
+      "activeDevelopment": {
+        "title": "活跃开发",
+        "card1": "PeerDAS数据可用性采样为当今主网吞吐量的8倍奠定基础",
+        "card2": "区块级访问列表支持区块内并行交易执行和并行状态根计算，加速区块处理时间"
+      },
+      "terabyteScale": {
+        "title": "TB级愿景",
+        "card1Heading": "2-5年目标提议",
+        "card1Item1": "L1上1 gigagas/秒：1万TPS，雄心勃勃的垂直扩展",
+        "card1Item2": "L2上1 teragas/秒：1000万TPS，广泛的水平扩展",
+        "card2": "精简以太坊提案目标是实现秒级最终性、后量子blob存储和执行性能提升"
+      }
     },
     "library": {
       "heading": "资料库",
@@ -240,7 +287,23 @@
       "securityDesc": "隐私功能继承了以太坊的去中心化和韧性。在一个为最大安全性和永久可用性设计的全球基础上，构建面向未来的产品和服务。"
     },
     "solutions": {
-      "heading": "生产中的隐私解决方案"
+      "heading": "生产中的隐私解决方案",
+      "chainlink": {
+        "heading": "Chainlink ACE",
+        "description": "自动合规引擎提供策略执行和可验证的实体身份，以自动化KYC/AML和转账规则直接在智能合约中。"
+      },
+      "railgun": {
+        "heading": "Railgun",
+        "description": "链上ZK隐私系统，用于以太坊和主要L2上的私密余额和私密DeFi交互。"
+      },
+      "aztec": {
+        "heading": "Aztec Network",
+        "description": "隐私优先的zkRollup，具有加密状态和选择性披露；在以太坊上构建私密智能合约。"
+      },
+      "zama": {
+        "heading": "Zama",
+        "description": "构建在加密数据上计算的智能合约的工具，使余额和逻辑保持机密。"
+      }
     },
     "metadata": {
       "title": "区块链隐私与机构合规 | 以太坊",
@@ -403,7 +466,58 @@
       }
     },
     "benefits": {
-      "heading": "L2的优势"
+      "heading": "L2的优势",
+      "inheritDecentralization": {
+        "title": "继承以太坊的去中心化",
+        "noBootstrapping": {
+          "heading": "无需从零开始",
+          "item1": "跳过建立和支付新验证者集的高昂过程",
+          "item2": "新链必须从头开始建立去中心化，这是一个缓慢、资本密集的过程，可能导致脆弱和中心化的链",
+          "item3": "L2继承以太坊无与伦比的去中心化，节省资源并获得深度经济安全"
+        },
+        "sharedSecurity": {
+          "heading": "共享安全",
+          "item1": "L2利用以太坊<link>{validatorsCount}验证者</link>的安全性，只支付基于使用量的费用。",
+          "item2": "所有Rollup都在以太坊上结算，创建共享的、去中心化的安全和数据可用性层"
+        }
+      },
+      "cheaperSecurity": {
+        "title": "更低的安全成本",
+        "noInflation": {
+          "heading": "无通胀负担",
+          "item1": "替代L1通过高原生代币通胀率来支付安全和使用费用",
+          "item2": "L2以ETH支付基于使用量的费用，无需原生L2代币来促进经济安全",
+          "item3": "因为L2不需要使用原生代币来支付安全费用，它们可以选择将原生代币用于其他战略功能，如治理、激励或费用",
+          "item4": "高盈利水平，例如Base上95%的利润率"
+        }
+      },
+      "enhancedPerformance": {
+        "title": "增强的性能",
+        "highPerformance": {
+          "heading": "高性能验证",
+          "item1": "通过将执行与共识分离并继承以太坊的最终性，rollup在不牺牲用户安全或去中心化的情况下实现高性能"
+        },
+        "fasterCheaper": {
+          "heading": "更快更便宜",
+          "item1": "Rollup可以并行化执行和证明——它们不需要等待数千个节点同步",
+          "item2": "一个证明替代了节点间数百万次冗余的重新计算，大大降低了验证成本"
+        },
+        "saferValidation": {
+          "heading": "更安全的验证",
+          "item1": "Rollup继承以太坊的抗审查性和最终性",
+          "item2": "资产保存在以太坊合约中，更新通过欺诈或有效性证明强制执行",
+          "item3": "即使L2排序器行为不当，用户也可以强制交易包含并通过以太坊L1安全退出"
+        }
+      },
+      "interoperability": {
+        "title": "互操作性",
+        "sharedStandards": {
+          "heading": "共享标准",
+          "item1": "L2利用以太坊已建立的EVM、代币标准和核心资产如ETH",
+          "item2": "用户和开发者受益于一致的体验，在以太坊的L1和L2生态系统中使用相同的钱包、工具和代码",
+          "item3": "代币和NFT保持规范的L1真实来源，使它们在不同rollup之间可互换"
+        }
+      }
     },
     "trust": {
       "heading": "以太坊作为信任层",

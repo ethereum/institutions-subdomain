@@ -83,28 +83,7 @@ const SOCIAL_LINKS: LinkProps[] = [
   },
 ];
 
-const EXTERNAL_LINKS: LinkProps[] = [
-  {
-    href: "https://ethereum.org/privacy-policy/",
-    children: "Privacy Policy",
-  },
-  {
-    href: "https://ethereum.org/terms-of-use/",
-    children: "Terms of Use",
-  },
-  {
-    href: "https://ethereum.org/cookie-policy/",
-    children: "Cookie Policy",
-  },
-  {
-    href: "https://ethereum.foundation/",
-    children: "Ethereum Foundation",
-  },
-  {
-    href: "https://ethereum.org/",
-    children: "ethereum.org",
-  },
-];
+// External links are built inside the component using translations
 
 type Props = {
   children: React.ReactNode;
@@ -261,7 +240,13 @@ export default async function RootLayout({ children, params }: Props) {
               </div>
               <div className="text-muted-foreground space-y-3 text-xs font-medium *:tracking-[0.0175rem]">
                 <nav className="mx-auto flex justify-center gap-4 max-sm:flex-col max-sm:items-center">
-                  {EXTERNAL_LINKS.map((props) => (
+                  {[
+                    { href: "https://ethereum.org/privacy-policy/", children: tFooter("privacyPolicy") },
+                    { href: "https://ethereum.org/terms-of-use/", children: tFooter("termsOfUse") },
+                    { href: "https://ethereum.org/cookie-policy/", children: tFooter("cookiePolicy") },
+                    { href: "https://ethereum.foundation/", children: tFooter("ethereumFoundation") },
+                    { href: "https://ethereum.org/", children: tFooter("ethereumOrg") },
+                  ].map((props) => (
                     <Link
                       key={props.href}
                       className="text-muted-foreground hover:text-foreground group block"

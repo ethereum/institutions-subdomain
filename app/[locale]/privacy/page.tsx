@@ -37,36 +37,27 @@ export default async function Page({ params }: Props) {
   const tCommon = await getTranslations("common")
 
   const productionSolutions: {
-    heading: string
-    description: string
+    key: string
     href: string
     imgSrc: StaticImageData
   }[] = [
     {
-      heading: "Chainlink ACE",
-      description:
-        "The Automated Compliance Engine provides policy enforcement and verifiable entity identity to automate KYC/AML and transfer rules directly in smart contracts.",
+      key: "chainlink",
       href: "https://chain.link/automated-compliance-engine",
       imgSrc: chainlink,
     },
     {
-      heading: "Railgun",
-      description:
-        "Onchain ZK privacy system for private balances and private DeFi interactions on Ethereum and major L2s.",
+      key: "railgun",
       href: "https://www.railgun.org/",
       imgSrc: railgun,
     },
     {
-      heading: "Aztec Network",
-      description:
-        "Privacy-first zkRollup with encrypted state and selective disclosure; building private smart contracts on Ethereum.",
+      key: "aztec",
       href: "https://aztec.network/",
       imgSrc: aztec,
     },
     {
-      heading: "Zama",
-      description:
-        "Tools to build smart contracts that compute on encrypted data, so balances and logic stay confidential.",
+      key: "zama",
       href: "https://www.zama.ai/",
       imgSrc: zama,
     },
@@ -271,12 +262,12 @@ export default async function Page({ params }: Props) {
             )}
           >
             {productionSolutions.map(
-              ({ heading, imgSrc, description, href }) => (
+              ({ key, imgSrc, href }) => (
                 <Link
-                  key={heading}
+                  key={key}
                   href={href}
                   className="bg-card group flex h-full flex-col justify-between p-6 transition-transform hover:scale-105 hover:transition-transform"
-                  aria-label={`Visit ${heading}`}
+                  aria-label={`${tCommon("visit")} ${t(`solutions.${key}.heading`)}`}
                 >
                   <div className="space-y-2">
                     <Image
@@ -286,10 +277,10 @@ export default async function Page({ params }: Props) {
                       className="size-12"
                     />
                     <h3 className="text-h5 text-section-foreground tracking-[0.03rem]">
-                      {heading}
+                      {t(`solutions.${key}.heading`)}
                     </h3>
                     <p className="text-muted-foreground font-medium">
-                      {description}
+                      {t(`solutions.${key}.description`)}
                     </p>
                   </div>
                   <p className="text-secondary-foreground mt-4 mb-0">

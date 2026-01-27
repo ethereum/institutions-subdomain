@@ -55,6 +55,7 @@ export default async function Page({ params }: Props) {
   setRequestLocale(locale)
 
   const t = await getTranslations("dataHub")
+  const tCommon = await getTranslations("common")
 
   const ethPrice = await fetchEtherPrice()
   const timeseriesDefiTvlEthereumData = await fetchTimeseriesDefiTvlEthereum()
@@ -135,7 +136,7 @@ export default async function Page({ params }: Props) {
                   </CardContent>
                   {source && (
                     <CardSource>
-                      Source:{" "}
+                      {tCommon("source")}:{" "}
                       {sourceHref ? (
                         <Link
                           href={sourceHref}
@@ -188,7 +189,7 @@ export default async function Page({ params }: Props) {
                 />
                 <div className="flex justify-between">
                   <CardSource>
-                    Source:{" "}
+                    {tCommon("source")}:{" "}
                     <Link
                       inline
                       href={timeseriesDefiTvlEthereumData.sourceInfo.sourceHref}
@@ -223,7 +224,7 @@ export default async function Page({ params }: Props) {
                 </div>
                 <div className="flex justify-between">
                   <CardSource>
-                    Source:{" "}
+                    {tCommon("source")}:{" "}
                     <Link
                       inline
                       href={defiTvlAllCurrentData.sourceInfo.sourceHref}
@@ -266,7 +267,7 @@ export default async function Page({ params }: Props) {
                 />
 
                 <CardSource>
-                  Source:{" "}
+                  {tCommon("source")}:{" "}
                   <Link
                     inline
                     href={stablecoinMarketShareData.sourceInfo.sourceHref}
@@ -306,7 +307,7 @@ export default async function Page({ params }: Props) {
                     </AnimatedNumberInView>
                   </CardContent>
                   <CardSource>
-                    Source:{" "}
+                    {tCommon("source")}:{" "}
                     <Link
                       inline
                       href={rwaAssetMarketShareData.sourceInfo.sourceHref}
@@ -336,7 +337,7 @@ export default async function Page({ params }: Props) {
                     </AnimatedNumberInView>
                   </CardContent>
                   <CardSource>
-                    Source:{" "}
+                    {tCommon("source")}:{" "}
                     <Link
                       inline
                       href={rwaAssetMarketShareData.sourceInfo.sourceHref}
@@ -372,7 +373,7 @@ export default async function Page({ params }: Props) {
                 </CardContent>
 
                 <CardSource>
-                  Source:{" "}
+                  {tCommon("source")}:{" "}
                   <Link
                     inline
                     href={l2ScalingSummaryData.sourceInfo.sourceHref}
@@ -409,7 +410,7 @@ export default async function Page({ params }: Props) {
                 <L2TimeseriesTvlLineChart chartData={timeseriesL2TvlData} />
 
                 <CardSource>
-                  Source:{" "}
+                  {tCommon("source")}:{" "}
                   <Link inline href={timeseriesL2TvlData.sourceInfo.sourceHref}>
                     {timeseriesL2TvlData.sourceInfo.source}
                   </Link>

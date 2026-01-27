@@ -10,7 +10,30 @@
     "visit": "Visitar"
   },
   "footer": {
-    "copyright": "Ethereum Foundation. Todos los derechos reservados."
+    "copyright": "Ethereum Foundation. Todos los derechos reservados.",
+    "privacyPolicy": "Política de Privacidad",
+    "termsOfUse": "Términos de Uso",
+    "cookiePolicy": "Política de Cookies",
+    "ethereumFoundation": "Ethereum Foundation",
+    "ethereumOrg": "ethereum.org"
+  },
+  "contactForm": {
+    "namePlaceholder": "Su nombre",
+    "emailPlaceholder": "Su correo electrónico",
+    "messagePlaceholder": "Mensaje",
+    "send": "Enviar →",
+    "sending": "Enviando",
+    "successTitle": "¡Gracias por contactarnos!",
+    "successMessage": "Hemos recibido su mensaje y alguien de nuestro equipo empresarial se pondrá en contacto con usted en unos días hábiles.",
+    "errors": {
+      "required": "Requerido",
+      "nameTooLong": "El nombre es demasiado largo (máximo {max} caracteres)",
+      "emailTooLong": "El correo es demasiado largo (máximo {max} caracteres)",
+      "invalidEmail": "Por favor ingrese una dirección de correo válida",
+      "businessEmailRequired": "Por favor use un correo empresarial, institucional u organizacional (ej. no @gmail).",
+      "messageTooLong": "El mensaje es demasiado largo (máximo {max} caracteres)",
+      "generalError": "No se pudo enviar su mensaje. Por favor intente de nuevo o contáctenos directamente en"
+    }
   },
   "nav": {
     "home": "Inicio",
@@ -114,7 +137,31 @@
     },
     "scaling": {
       "heading": "Ethereum Está Escalando",
-      "description": "El rendimiento de Ethereum no es estático. La hoja de ruta activa de I+D de la red establece las bases para un ecosistema infinitamente escalable, mientras que los proveedores basados en Ethereum a nivel global superan los límites de rendimiento hoy."
+      "description": "El rendimiento de Ethereum no es estático. La hoja de ruta activa de I+D de la red establece las bases para un ecosistema infinitamente escalable, mientras que los proveedores basados en Ethereum a nivel global superan los límites de rendimiento hoy.",
+      "learnMore": "Más información",
+      "immediateAcceleration": {
+        "title": "Aceleración Inmediata",
+        "card1": "Elevar el límite de gas de mainnet a 100M/bloque aumenta rápidamente el TPS de mainnet",
+        "card2": "El muestreo de disponibilidad de datos PeerDAS escala la capacidad de blobs, multiplicando el TPS de L2",
+        "card3": "La expiración de historial poda el almacenamiento para mantener el rendimiento cómodo a escala"
+      },
+      "alternativeProvider": {
+        "title": "Innovación de Proveedores Alternativos",
+        "card1": "El rendimiento de Eigen DA alcanza 100MB/segundo, permitiendo que los rollups de Ethereum operen a 12.8x el rendimiento máximo de Visa y habilitando >800K transferencias ERC-20 por segundo",
+        "card2": "El Airbender de ZKSync alcanza un rendimiento de pruebas hasta 6x más rápido que los competidores, probando bloques de Ethereum en tiempo real con 8 GPUs nvidia 5090, y desbloqueando compensación en tiempo real para finanzas sensibles a latencia"
+      },
+      "activeDevelopment": {
+        "title": "Desarrollo Activo",
+        "card1": "El muestreo de disponibilidad de datos PeerDAS prepara el terreno para 8x el rendimiento actual de mainnet",
+        "card2": "Las Listas de Acceso a Nivel de Bloque permiten ejecución paralela de transacciones y cálculo paralelo de raíz de estado, acelerando tiempos de procesamiento"
+      },
+      "terabyteScale": {
+        "title": "Visión a Escala Terabyte",
+        "card1Heading": "Los objetivos de 2-5 años proponen",
+        "card1Item1": "1 gigagas/seg en L1: 10K TPS, escala vertical ambiciosa",
+        "card1Item2": "1 teragas/seg en L2: 10M TPS, escala horizontal expansiva",
+        "card2": "La propuesta Lean Ethereum apunta a finalidad en segundos, almacenamiento blob post-cuántico y mejoras de rendimiento de ejecución"
+      }
     },
     "library": {
       "heading": "Biblioteca",
@@ -240,7 +287,23 @@
       "securityDesc": "Las características de privacidad heredan la descentralización y resiliencia de Ethereum. Construye productos y servicios a prueba de futuro sobre una base global diseñada para máxima seguridad y disponibilidad permanente."
     },
     "solutions": {
-      "heading": "Soluciones de Privacidad en Producción"
+      "heading": "Soluciones de Privacidad en Producción",
+      "chainlink": {
+        "heading": "Chainlink ACE",
+        "description": "El Motor de Cumplimiento Automatizado proporciona aplicación de políticas e identidad de entidad verificable para automatizar KYC/AML y reglas de transferencia directamente en contratos inteligentes."
+      },
+      "railgun": {
+        "heading": "Railgun",
+        "description": "Sistema de privacidad ZK onchain para saldos privados e interacciones DeFi privadas en Ethereum y principales L2s."
+      },
+      "aztec": {
+        "heading": "Aztec Network",
+        "description": "zkRollup con privacidad primero con estado encriptado y divulgación selectiva; construyendo contratos inteligentes privados en Ethereum."
+      },
+      "zama": {
+        "heading": "Zama",
+        "description": "Herramientas para construir contratos inteligentes que computan sobre datos encriptados, para que los saldos y la lógica permanezcan confidenciales."
+      }
     },
     "metadata": {
       "title": "Privacidad y Cumplimiento Blockchain para Instituciones | Ethereum",
@@ -403,7 +466,58 @@
       }
     },
     "benefits": {
-      "heading": "Beneficios de los L2s"
+      "heading": "Beneficios de los L2s",
+      "inheritDecentralization": {
+        "title": "Heredar la Descentralización de Ethereum",
+        "noBootstrapping": {
+          "heading": "Sin Necesidad de Bootstrap",
+          "item1": "Evita el costoso proceso de construir y pagar un nuevo conjunto de validadores",
+          "item2": "Las nuevas cadenas deben construir la descentralización desde cero, un proceso lento e intensivo en capital que puede llevar a cadenas frágiles y centralizadas",
+          "item3": "Los L2s heredan la descentralización inigualable de Ethereum, ahorrando recursos y accediendo a profunda seguridad económica"
+        },
+        "sharedSecurity": {
+          "heading": "Seguridad Compartida",
+          "item1": "Los L2s aprovechan la seguridad de los <link>{validatorsCount} validadores</link> de Ethereum, pagando solo tarifas basadas en uso.",
+          "item2": "Todos los rollups liquidan en Ethereum, creando una capa compartida y descentralizada de seguridad y disponibilidad de datos"
+        }
+      },
+      "cheaperSecurity": {
+        "title": "Costos de Seguridad Más Bajos",
+        "noInflation": {
+          "heading": "Sin Carga de Inflación",
+          "item1": "Los L1 alternativos pagan por seguridad y uso mediante altas tasas de inflación del token nativo",
+          "item2": "Los L2s pagan tarifas basadas en uso en ETH, eliminando la necesidad de un token nativo L2 para facilitar la seguridad económica",
+          "item3": "Como los L2s no necesitan usar un token nativo para pagar la seguridad, pueden elegir usar un token nativo para otras funciones estratégicas, como gobernanza, incentivos o tarifas",
+          "item4": "Altos niveles de rentabilidad, ej. márgenes del 95% en Base"
+        }
+      },
+      "enhancedPerformance": {
+        "title": "Rendimiento Mejorado",
+        "highPerformance": {
+          "heading": "Validación de Alto Rendimiento",
+          "item1": "Al separar la ejecución del consenso y heredar la finalidad de Ethereum, los rollups permiten alto rendimiento sin sacrificar la seguridad del usuario o la descentralización"
+        },
+        "fasterCheaper": {
+          "heading": "Más Rápido y Más Barato",
+          "item1": "Los rollups pueden paralelizar ejecución y pruebas—no necesitan esperar a que miles de nodos se sincronicen",
+          "item2": "Una prueba reemplaza millones de re-cálculos redundantes entre nodos, reduciendo enormemente los costos de validación"
+        },
+        "saferValidation": {
+          "heading": "Validación Más Segura",
+          "item1": "Los rollups heredan la resistencia a la censura y finalidad de Ethereum",
+          "item2": "Los activos se mantienen en contratos de Ethereum, y las actualizaciones se ejecutan mediante pruebas de fraude o validez",
+          "item3": "Incluso si el secuenciador L2 se comporta mal, los usuarios pueden forzar la inclusión de transacciones y salir de forma segura vía Ethereum L1"
+        }
+      },
+      "interoperability": {
+        "title": "Interoperabilidad",
+        "sharedStandards": {
+          "heading": "Estándares Compartidos",
+          "item1": "Los L2s aprovechan el EVM establecido de Ethereum, estándares de tokens y activos centrales como ETH",
+          "item2": "Usuarios y desarrolladores se benefician de una experiencia consistente, usando las mismas billeteras, herramientas y código en el ecosistema L1 y L2 de Ethereum",
+          "item3": "Los tokens y NFTs mantienen una fuente de verdad canónica en L1, haciéndolos fungibles entre diferentes rollups"
+        }
+      }
     },
     "trust": {
       "heading": "Ethereum como la Capa de Confianza",

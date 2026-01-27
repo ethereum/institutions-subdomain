@@ -10,7 +10,30 @@
     "visit": "Visit"
   },
   "footer": {
-    "copyright": "Ethereum Foundation. All rights reserved."
+    "copyright": "Ethereum Foundation. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use",
+    "cookiePolicy": "Cookie Policy",
+    "ethereumFoundation": "Ethereum Foundation",
+    "ethereumOrg": "ethereum.org"
+  },
+  "contactForm": {
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "Your e-mail",
+    "messagePlaceholder": "Message",
+    "send": "Send →",
+    "sending": "Beaming request",
+    "successTitle": "Thanks for reaching out!",
+    "successMessage": "We've received your message and someone from our enterprise team will get back to you within a few business days.",
+    "errors": {
+      "required": "Required",
+      "nameTooLong": "Name is too long (maximum {max} characters)",
+      "emailTooLong": "Email is too long (maximum {max} characters)",
+      "invalidEmail": "Please enter a valid email address",
+      "businessEmailRequired": "Please use a business, institutional, or organizational email address (e.g., no @gmail).",
+      "messageTooLong": "Message is too long (maximum {max} characters)",
+      "generalError": "Unable to send your message. Please try again or contact us directly at"
+    }
   },
   "nav": {
     "home": "Home",
@@ -114,7 +137,31 @@
     },
     "scaling": {
       "heading": "Ethereum is Scaling",
-      "description": "Ethereum's performance isn't static. The network's active R&D roadmap sets the stage for an infinitely-scalable ecosystem, while Ethereum-based providers globally push throughput boundaries today."
+      "description": "Ethereum's performance isn't static. The network's active R&D roadmap sets the stage for an infinitely-scalable ecosystem, while Ethereum-based providers globally push throughput boundaries today.",
+      "learnMore": "Learn more",
+      "immediateAcceleration": {
+        "title": "Immediate Acceleration",
+        "card1": "Raising mainnet gas limit to 100M/block rapidly increases mainnet TPS",
+        "card2": "PeerDAS data availability sampling scales blob capacity, multiplying L2 TPS",
+        "card3": "History expiry prunes storage to keep node performance comfortable at scale"
+      },
+      "alternativeProvider": {
+        "title": "Alternative Provider Innovation",
+        "card1": "Eigen DA throughput reaches 100MB/second, allowing Ethereum rollups to operate at 12.8x Visa's peak throughput and enabling >800K ERC-20 transfers per second",
+        "card2": "ZKSync's Airbender reaches up to 6x faster proving throughput than competitors, proving Ethereum blocks in real-time with 8 nvidia 5090 GPUs, and unlocking real-time clearing for latency-sensitive finance"
+      },
+      "activeDevelopment": {
+        "title": "Active Development",
+        "card1": "PeerDAS data availability sampling sets the stage to 8x today's mainnet throughput",
+        "card2": "Block-Level Access Lists enable parallel transaction execution within blocks and parallel state root computation, accelerating block processing times"
+      },
+      "terabyteScale": {
+        "title": "Terabyte-Scale Vision",
+        "card1Heading": "2-5 year targets propose",
+        "card1Item1": "1 gigagas/sec on L1: 10K TPS, ambitious vertical scale",
+        "card1Item2": "1 teragas/sec on L2: 10M TPS, sprawling horizontal scale",
+        "card2": "Lean Ethereum proposal targets finality in seconds, post-quantum blob storage, and execution performance boosts"
+      }
     },
     "library": {
       "heading": "Library",
@@ -240,7 +287,23 @@
       "securityDesc": "Privacy features inherit Ethereum's decentralization and resilience. Build future-proof products and services on a global foundation designed for maximum security and permanent availability."
     },
     "solutions": {
-      "heading": "Privacy Solutions in Production"
+      "heading": "Privacy Solutions in Production",
+      "chainlink": {
+        "heading": "Chainlink ACE",
+        "description": "The Automated Compliance Engine provides policy enforcement and verifiable entity identity to automate KYC/AML and transfer rules directly in smart contracts."
+      },
+      "railgun": {
+        "heading": "Railgun",
+        "description": "Onchain ZK privacy system for private balances and private DeFi interactions on Ethereum and major L2s."
+      },
+      "aztec": {
+        "heading": "Aztec Network",
+        "description": "Privacy-first zkRollup with encrypted state and selective disclosure; building private smart contracts on Ethereum."
+      },
+      "zama": {
+        "heading": "Zama",
+        "description": "Tools to build smart contracts that compute on encrypted data, so balances and logic stay confidential."
+      }
     },
     "metadata": {
       "title": "Blockchain Privacy & Compliance for Institutions | Ethereum",
@@ -403,7 +466,58 @@
       }
     },
     "benefits": {
-      "heading": "Benefits of L2s"
+      "heading": "Benefits of L2s",
+      "inheritDecentralization": {
+        "title": "Inherit Ethereum's Decentralization",
+        "noBootstrapping": {
+          "heading": "No Bootstrapping",
+          "item1": "Skip the costly process of building and paying a new validator set",
+          "item2": "New chains must build decentralization from scratch, a slow, capital-intensive process that can lead to fragile and centralized chains",
+          "item3": "L2s inherit Ethereum's unmatched decentralization, saving resources and accessing deep economic security"
+        },
+        "sharedSecurity": {
+          "heading": "Shared Security",
+          "item1": "L2s tap into the security of Ethereum's <link>{validatorsCount} validators</link>, paying only usage-based fees.",
+          "item2": "Rollups all settle on Ethereum, creating a shared, decentralized security and data availability layer"
+        }
+      },
+      "cheaperSecurity": {
+        "title": "Cheaper Security Costs",
+        "noInflation": {
+          "heading": "No Inflation Burden",
+          "item1": "Alternative L1s pay for security and usage via high native token inflation rates",
+          "item2": "L2s pay usage-based fees in ETH, removing the need for a native-L2 token to facilitate economic security",
+          "item3": "Because L2s don't need to use a native token to pay for security, they can choose to use a native token for other strategic functions, like governance, incentives, or fees",
+          "item4": "High levels of profitability e.g. 95% margins on Base"
+        }
+      },
+      "enhancedPerformance": {
+        "title": "Enhanced Performance",
+        "highPerformance": {
+          "heading": "High-Performance Validation",
+          "item1": "By separating execution from consensus and inheriting Ethereum's finality, rollups enable high performance without sacrificing user safety or decentralization"
+        },
+        "fasterCheaper": {
+          "heading": "Faster & Cheaper",
+          "item1": "Rollups can parallelize execution and proving—they don't need to wait for thousands of nodes to sync",
+          "item2": "One proof replaces millions of redundant re-computations across nodes, greatly reducing validation costs"
+        },
+        "saferValidation": {
+          "heading": "Safer Validation",
+          "item1": "Rollups inherit Ethereum's censorship resistance and finality",
+          "item2": "Assets are held in Ethereum contracts, and updates are enforced via fraud or validity proofs",
+          "item3": "Even if the L2 sequencer misbehaves, users can force transaction inclusion and securely exit via Ethereum L1"
+        }
+      },
+      "interoperability": {
+        "title": "Interoperability",
+        "sharedStandards": {
+          "heading": "Shared Standards",
+          "item1": "L2s leverage Ethereum's established EVM, token standards, and core assets like ETH",
+          "item2": "Users and developers benefit from a consistent experience, using the same wallets, tools, and code across Ethereum's L1 and L2 ecosystem",
+          "item3": "Tokens and NFTs maintain a canonical L1 source-of-truth, making them fungible across different rollups"
+        }
+      }
     },
     "trust": {
       "heading": "Ethereum as the Trust Layer",
