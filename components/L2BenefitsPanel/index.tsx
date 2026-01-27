@@ -1,6 +1,7 @@
 "use client"
 
 import { Fragment, ReactNode, useState } from "react"
+import { useTranslations } from "next-intl"
 
 import { TransitionPanel } from "@/components/ui/transition-panel"
 
@@ -12,6 +13,7 @@ type L2BenefitsPanelProps = {
   validatorsCount: string
 }
 export function L2BenefitsPanel({ validatorsCount }: L2BenefitsPanelProps) {
+  const t = useTranslations("layer2.benefits")
   const [activeIndex, setActiveIndex] = useState(0)
 
   const items: {
@@ -22,84 +24,85 @@ export function L2BenefitsPanel({ validatorsCount }: L2BenefitsPanelProps) {
     }[]
   }[] = [
     {
-      title: "Inherit Ethereum's Decentralization",
+      title: t("inheritDecentralization.title"),
       cards: [
         {
-          heading: "No Bootstrapping",
+          heading: t("inheritDecentralization.noBootstrapping.heading"),
           items: [
-            "Skip the costly process of building and paying a new validator set",
-            "New chains must build decentralization from scratch, a slow, capital-intensive process that can lead to fragile and centralized chains",
-            "L2s inherit Ethereum's unmatched decentralization, saving resources and accessing deep economic security",
+            t("inheritDecentralization.noBootstrapping.item1"),
+            t("inheritDecentralization.noBootstrapping.item2"),
+            t("inheritDecentralization.noBootstrapping.item3"),
           ],
         },
         {
-          heading: "Shared Security",
+          heading: t("inheritDecentralization.sharedSecurity.heading"),
           items: [
-            <>
-              L2s tap into the security of Ethereum&apos;s{" "}
-              <Link
-                href="https://explorer.rated.network/network?network=mainnet&timeWindow=1d&rewardsMetric=average&geoDistType=all&hostDistType=all&soloProDist=stake"
-                inline
-                className="css-secondary font-bold"
-              >
-                {validatorsCount} validators
-              </Link>
-              , paying only usage-based fees.
-            </>,
-            "Rollups all settle on Ethereum, creating a shared, decentralized security and data availability layer",
+            t.rich("inheritDecentralization.sharedSecurity.item1", {
+              validatorsCount,
+              link: (chunks) => (
+                <Link
+                  href="https://explorer.rated.network/network?network=mainnet&timeWindow=1d&rewardsMetric=average&geoDistType=all&hostDistType=all&soloProDist=stake"
+                  inline
+                  className="css-secondary font-bold"
+                >
+                  {chunks}
+                </Link>
+              ),
+            }),
+            t("inheritDecentralization.sharedSecurity.item2"),
           ],
         },
       ],
     },
     {
-      title: "Cheaper Security Costs",
+      title: t("cheaperSecurity.title"),
       cards: [
         {
-          heading: "No Inflation Burden",
+          heading: t("cheaperSecurity.noInflation.heading"),
           items: [
-            "Alternative L1s pay for security and usage via high native token inflation rates",
-            "L2s pay usage-based fees in ETH, removing the need for a native-L2 token to facilitate economic security",
-            "Because L2s don't need to use a native token to pay for security, they can choose to use a native token for other strategic functions, like governance, incentives, or fees",
-            "High levels of profitability e.g. 95% margins on Base",
+            t("cheaperSecurity.noInflation.item1"),
+            t("cheaperSecurity.noInflation.item2"),
+            t("cheaperSecurity.noInflation.item3"),
+            t("cheaperSecurity.noInflation.item4"),
           ],
         },
       ],
     },
     {
-      title: "Enhanced Performance",
+      title: t("enhancedPerformance.title"),
       cards: [
         {
-          heading: "High-Performance Validation",
+          heading: t("enhancedPerformance.highPerformance.heading"),
           items: [
-            "By separating execution from consensus and inheriting Ethereum's finality, rollups enable high performance without sacrificing user safety or decentralization",
+            t("enhancedPerformance.highPerformance.item1"),
           ],
         },
         {
-          heading: "Faster & Cheaper",
+          heading: t("enhancedPerformance.fasterCheaper.heading"),
           items: [
-            "Rollups can parallelize execution and proving—they don't need to wait for thousands of nodes to sync",
-            "One proof replaces millions of redundant re-computations across nodes, greatly reducing validation costs",
+            t("enhancedPerformance.fasterCheaper.item1"),
+            t("enhancedPerformance.fasterCheaper.item2"),
           ],
         },
         {
-          heading: "Safer Validation",
+          heading: t("enhancedPerformance.saferValidation.heading"),
           items: [
-            "Rollups inherit Ethereum's censorship resistance and finality",
-            "Assets are held in Ethereum contracts, and updates are enforced via fraud or validity proofs",
-            "Even if the L2 sequencer misbehaves, users can force transaction inclusion and securely exit via Ethereum L1",
+            t("enhancedPerformance.saferValidation.item1"),
+            t("enhancedPerformance.saferValidation.item2"),
+            t("enhancedPerformance.saferValidation.item3"),
           ],
         },
       ],
     },
     {
-      title: "Interoperability",
+      title: t("interoperability.title"),
       cards: [
         {
-          heading: "Shared Standards",
+          heading: t("interoperability.sharedStandards.heading"),
           items: [
-            "L2s leverage Ethereum's established EVM, token standards, and core assets like ETH",
-            "Users and developers benefit from a consistent experience, using the same wallets, tools, and code across Ethereum's L1 and L2 ecosystem",
-            "Tokens and NFTs maintain a canonical L1 source-of-truth, making them fungible across different rollups",
+            t("interoperability.sharedStandards.item1"),
+            t("interoperability.sharedStandards.item2"),
+            t("interoperability.sharedStandards.item3"),
           ],
         },
       ],

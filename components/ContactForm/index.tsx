@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import { HeartHandshake, TriangleAlert } from "lucide-react"
 import { usePathname } from "next/navigation"
+import { useTranslations } from "next-intl"
 import posthog from "posthog-js"
 
 import { Button } from "@/components/ui/button"
@@ -65,6 +66,7 @@ type FormErrors = {
 type SubmissionState = "idle" | "submitting" | "success" | "error"
 
 const EnterpriseContactForm = () => {
+  const t = useTranslations("contactForm")
   const pathname = usePathname()
   const prevPathname = useRef(pathname)
 
@@ -125,10 +127,10 @@ const EnterpriseContactForm = () => {
   const validateName = (name: string): React.ReactNode | undefined => {
     const sanitized = sanitizeInput(name)
 
-    if (!sanitized) return "Required"
+    if (!sanitized) return t("errors.required")
 
     if (sanitized.length > MAX_INPUT_LENGTH)
-      return `Name is too long (maximum ${MAX_MESSAGE_LENGTH} characters)`
+      return t("errors.nameTooLong", { max: MAX_MESSAGE_LENGTH })
 
     return undefined
   }
@@ -136,17 +138,17 @@ const EnterpriseContactForm = () => {
   const validateEmail = (email: string): React.ReactNode | undefined => {
     const sanitized = sanitizeInput(email)
 
-    if (!sanitized) return "Required"
+    if (!sanitized) return t("errors.required")
 
     if (sanitized.length > MAX_INPUT_LENGTH)
-      return `Email is too long (maximum ${MAX_MESSAGE_LENGTH} characters)`
+      return t("errors.emailTooLong", { max: MAX_MESSAGE_LENGTH })
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(sanitized)) return "Please enter a valid email address"
+    if (!emailRegex.test(sanitized)) return t("errors.invalidEmail")
 
     const domain = sanitized.toLowerCase().split("@")[1]
     if (CONSUMER_DOMAINS.includes(domain))
-      return "Please use a business, institutional, or organizational email address (e.g., no @gmail)."
+      return t("errors.businessEmailRequired")
 
     return undefined
   }
@@ -156,10 +158,10 @@ const EnterpriseContactForm = () => {
   ): React.ReactNode | string | undefined => {
     const sanitized = sanitizeInput(message)
 
-    if (!sanitized) return "Required"
+    if (!sanitized) return t("errors.required")
 
     if (sanitized.length > MAX_MESSAGE_LENGTH)
-      return `Message is too long (maximum ${MAX_MESSAGE_LENGTH} characters)`
+      return t("errors.messageTooLong", { max: MAX_MESSAGE_LENGTH })
 
     return undefined
   }
@@ -213,8 +215,7 @@ const EnterpriseContactForm = () => {
       setErrors({
         general: (
           <>
-            Unable to send your message. Please try again or contact us directly
-            at{" "}
+            {t("errors.generalError")}{" "}
             <Link
               href={`mailto:${ENTERPRISE_EMAIL}?subject=Enterprise%20inquiry`}
               inline
@@ -247,11 +248,10 @@ const EnterpriseContactForm = () => {
       <div className="border-border/50 bg-primary flex w-full max-w-prose flex-col items-center gap-y-6 rounded border p-6 text-center">
         <div className="mb-2 flex items-center gap-4">
           <HeartHandshake className="text-primary-foreground size-8" />
-          <h4 className="text-xl font-semibold">Thanks for reaching out!</h4>
+          <h4 className="text-xl font-semibold">{t("successTitle")}</h4>
         </div>
         <p className="text-body-medium">
-          We&apos;ve received your message and someone from our enterprise team
-          will get back to you within a few business days.
+          {t("successMessage")}
         </p>
       </div>
     )
@@ -264,7 +264,7 @@ const EnterpriseContactForm = () => {
           autoComplete="name"
           type="text"
           className="w-full"
-          placeholder="Your name"
+          placeholder={t("namePlaceholder")}
           value={formData.name}
           onChange={handleInputChange("name")}
           onBlur={handleBlur("name")}
@@ -281,7 +281,7 @@ const EnterpriseContactForm = () => {
           autoComplete="email"
           type="email"
           className="w-full"
-          placeholder="Your e-mail"
+          placeholder={t("emailPlaceholder")}
           value={formData.email}
           onChange={handleInputChange("email")}
           onBlur={handleBlur("email")}
@@ -299,7 +299,7 @@ const EnterpriseContactForm = () => {
         <div className="relative">
           <Textarea
             name="message"
-            placeholder="Message"
+            placeholder={t("messagePlaceholder")}
             value={formData.message}
             onChange={handleInputChange("message")}
             onBlur={handleBlur("message")}
@@ -345,10 +345,10 @@ const EnterpriseContactForm = () => {
         {submissionState === "submitting" ? (
           <>
             <Spinner className="text-lg" />
-            Beaming request
+            {t("sending")}
           </>
         ) : (
-          <>Send →</>
+          <>{t("send")}</>
         )}
       </Button>
     </div>

@@ -1,14 +1,15 @@
 import { ComponentProps, forwardRef } from "react"
 import { ExternalLink, Mail } from "lucide-react"
-import NextLink from "next/link"
 
 import { cn } from "@/lib/utils"
 import * as url from "@/lib/utils/url"
 
 import { InlineText, InlineTextIcon } from "./inline-text"
 
+import { Link as IntlLink } from "@/i18n/navigation"
+
 export type LinkProps = ComponentProps<"a"> &
-  ComponentProps<typeof NextLink> & {
+  ComponentProps<typeof IntlLink> & {
     showDecorator?: boolean
     inline?: boolean
   }
@@ -78,7 +79,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
     return <a {...commonProps}>{children}</a>
   }
 
-  return <NextLink {...commonProps}>{children}</NextLink>
+  return <IntlLink {...commonProps}>{children}</IntlLink>
 })
 Link.displayName = "BaseLink"
 
