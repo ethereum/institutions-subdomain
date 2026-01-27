@@ -159,3 +159,4 @@ You can include:
 \*Note: Do not use Heading 1 (H1, `#`) as it is reserved for the main title of the page, automatically handled by the `title` front matter property. Pages should never have more than one H1—use H2 for section titles and H3 for subsections, etc.
 
 Internal images used in content should be stored in the `/public/images/` directory with appropriate subdirectories for organization, referenced by the relative path (excluding domain). External images should use the full URL, including `https://` and domain prefix.
+
