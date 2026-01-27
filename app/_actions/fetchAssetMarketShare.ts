@@ -34,9 +34,9 @@ export type AssetMarketShareData = {
   assetValueSumAll: number
 }
 
-// Random delay to stagger API requests across build workers
+// Random delay to stagger API requests across build workers (0-30s)
 const randomDelay = () =>
-  new Promise((resolve) => setTimeout(resolve, Math.random() * 3000))
+  new Promise((resolve) => setTimeout(resolve, Math.random() * 30000))
 
 // Stable date for caching (start of day, 2 days ago)
 const getStableDateNDaysAgo = (n: number = 2) => {

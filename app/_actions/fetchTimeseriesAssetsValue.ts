@@ -29,9 +29,9 @@ export type TimeseriesAssetsValueData = {
   layer2: DataSeriesWithCurrent
 }
 
-// Random delay to stagger API requests across build workers
+// Random delay to stagger API requests across build workers (0-30s)
 const randomDelay = () =>
-  new Promise((resolve) => setTimeout(resolve, Math.random() * 3000))
+  new Promise((resolve) => setTimeout(resolve, Math.random() * 30000))
 
 const fetchTimeseriesData = async (category: AssetCategory) => {
   await randomDelay()
