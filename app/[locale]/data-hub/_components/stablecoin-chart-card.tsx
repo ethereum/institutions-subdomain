@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useTranslations } from "next-intl"
 
 import { DataTimestamped } from "@/lib/types"
 
@@ -28,6 +29,7 @@ const StablecoinChartCard = ({
 }: {
   data: DataTimestamped<TimeseriesAssetsValueData>
 }) => {
+  const tCommon = useTranslations("common")
   const [showL2, setShowL2] = useState(true)
 
   const toggleShowL2 = () => {
@@ -63,7 +65,7 @@ const StablecoinChartCard = ({
 
         {data.sourceInfo.source && (
           <CardSource>
-            Source:{" "}
+            {tCommon("source")}:{" "}
             {data.sourceInfo.sourceHref && (
               <Link inline href={data.sourceInfo.sourceHref}>
                 {data.sourceInfo.source}

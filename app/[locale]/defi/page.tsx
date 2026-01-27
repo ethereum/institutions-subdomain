@@ -44,6 +44,7 @@ export default async function Page({ params }: Props) {
   setRequestLocale(locale)
 
   const t = await getTranslations("defi")
+  const tCommon = await getTranslations("common")
 
   const defiTvlAllCurrentData = await fetchDefiTvlAllCurrent()
   const dexVolume = await fetchDexVolume()
@@ -154,7 +155,7 @@ export default async function Page({ params }: Props) {
                 </CardContent>
                 {source && (
                   <CardSource>
-                    Source:{" "}
+                    {tCommon("source")}:{" "}
                     {sourceHref ? (
                       <Link
                         href={sourceHref}

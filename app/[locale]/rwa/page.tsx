@@ -235,7 +235,7 @@ export default async function Page({ params }: Props) {
                     {value}
                   </AnimatedNumberInView>
                   <CardSource>
-                    Source:{" "}
+                    {tCommon("source")}:{" "}
                     {sourceHref ? (
                       <Link
                         href={sourceHref}

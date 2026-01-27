@@ -301,7 +301,7 @@ export default async function Page({ params }: Props) {
                 </CardContent>
                 {source && (
                   <CardSource>
-                    Source:{" "}
+                    {tCommon("source")}:{" "}
                     {sourceHref ? (
                       <Link
                         href={sourceHref}

@@ -1,4 +1,7 @@
+"use client"
+
 import Image from "next/image"
+import { useTranslations } from "next-intl"
 
 import Link from "@/components/ui/link"
 
@@ -6,6 +9,7 @@ import { defiEcosystem } from "../data"
 import type { CategoryKey } from "../types"
 
 const CategoryAppGrid = ({ category }: { category: CategoryKey }) => {
+  const tCommon = useTranslations("common")
   const { heading, subtext, platforms } = defiEcosystem[category]
   return (
     <div key={category} className="space-y-4">
@@ -27,7 +31,7 @@ const CategoryAppGrid = ({ category }: { category: CategoryKey }) => {
               <p className="font-medium">{description}</p>
             </div>
             <p className="text-secondary-foreground mt-4">
-              Visit{" "}
+              {tCommon("visit")}{" "}
               <span className="group-hover:animate-x-bounce inline-block">
                 →
               </span>
