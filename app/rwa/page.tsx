@@ -32,13 +32,21 @@ import usdt from "@/public/images/logos/tokens/usdt.svg"
 import usdtb from "@/public/images/logos/tokens/usdtb.svg"
 
 export default async function Page() {
-  const stablecoinAssetMarketShareData =
-    await fetchAssetMarketShare("STABLECOINS")
-  const rwaAssetMarketShareData = await fetchAssetMarketShare("RWAS")
-  const protocolsValueTotal = await fetchProtocolsValueTotal()
-  const tokenizedTreasuriesData = await fetchTokenizedTreasuries()
-  const assetValueByAssetIdsData = await fetchAssetValueByAssetIds()
-  const protocolsValueBySlugData = await fetchProtocolsValueBySlug()
+  const [
+    stablecoinAssetMarketShareData,
+    rwaAssetMarketShareData,
+    protocolsValueTotal,
+    tokenizedTreasuriesData,
+    assetValueByAssetIdsData,
+    protocolsValueBySlugData,
+  ] = await Promise.all([
+    fetchAssetMarketShare("STABLECOINS"),
+    fetchAssetMarketShare("RWAS"),
+    fetchProtocolsValueTotal(),
+    fetchTokenizedTreasuries(),
+    fetchAssetValueByAssetIds(),
+    fetchProtocolsValueBySlug(),
+  ])
 
   const metrics: Metric[] = [
     {

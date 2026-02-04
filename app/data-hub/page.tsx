@@ -41,23 +41,35 @@ import StablecoinChartCard from "./_components/stablecoin-chart-card"
 import { stablecoinMarketShareToPieChartData } from "./utils"
 
 export default async function Page() {
-  const ethPrice = await fetchEtherPrice()
-  const timeseriesDefiTvlEthereumData = await fetchTimeseriesDefiTvlEthereum()
-  const timeseriesStablecoinsValueData =
-    await fetchTimeseriesAssetsValue("STABLECOINS")
-  const timeseriesRwaValueData = await fetchTimeseriesAssetsValue("RWAS")
-  const timeseriesL2TvlData = await fetchTimeseriesL2Tvl()
+  const [
+    ethPrice,
+    timeseriesDefiTvlEthereumData,
+    timeseriesStablecoinsValueData,
+    timeseriesRwaValueData,
+    timeseriesL2TvlData,
+    beaconChainData,
+    defiTvlAllCurrentData,
+    totalValueSecuredData,
+    stablecoinAssetMarketShareData,
+    l2ScalingSummaryData,
+    etherMarketDetailsData,
+  ] = await Promise.all([
+    fetchEtherPrice(),
+    fetchTimeseriesDefiTvlEthereum(),
+    fetchTimeseriesAssetsValue("STABLECOINS"),
+    fetchTimeseriesAssetsValue("RWAS"),
+    fetchTimeseriesL2Tvl(),
+    fetchBeaconChain(),
+    fetchDefiTvlAllCurrent(),
+    fetchTotalValueSecured(),
+    fetchAssetMarketShare("STABLECOINS"),
+    fetchL2ScalingSummary(),
+    fetchEtherMarketDetails(),
+  ])
 
-  const beaconChainData = await fetchBeaconChain()
-  const defiTvlAllCurrentData = await fetchDefiTvlAllCurrent()
-  const totalValueSecuredData = await fetchTotalValueSecured()
-  const stablecoinAssetMarketShareData =
-    await fetchAssetMarketShare("STABLECOINS")
   const stablecoinMarketShareData = stablecoinMarketShareToPieChartData(
     stablecoinAssetMarketShareData
   )
-  const l2ScalingSummaryData = await fetchL2ScalingSummary()
-  const etherMarketDetailsData = await fetchEtherMarketDetails()
 
   const metrics: Metric[] = [
     {
