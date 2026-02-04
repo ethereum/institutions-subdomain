@@ -8,6 +8,7 @@ import type {
 
 import { getRwaApiEthereumNetworksFilter } from "@/lib/utils/data"
 import { dateNDaysAgo, isValidDate } from "@/lib/utils/date"
+import { fetchWithRetry } from "@/lib/utils/fetch"
 import { every } from "@/lib/utils/time"
 
 import { SOURCE } from "@/lib/constants"
@@ -75,7 +76,7 @@ export const fetchProtocolsValueBySlug = async (): Promise<
   url.searchParams.set("query", JSON.stringify(myQuery))
 
   try {
-    const response = await fetch(url.toString(), {
+    const response = await fetchWithRetry(url.toString(), {
       headers: {
         Authorization: `Bearer ${apiKey}`,
         Accept: "application/json",
