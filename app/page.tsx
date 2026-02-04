@@ -149,15 +149,26 @@ const testimonials: {
 
 export default async function Home() {
   const uptime = getTimeSinceGenesis()
-  const beaconChainData = await fetchBeaconChain()
-  const ethPrice = await fetchEtherPrice()
-  const defiTvlAllCurrentData = await fetchDefiTvlAllCurrent()
-  const dexVolume = await fetchDexVolume()
-  const rwaAssetMarketShareData = await fetchAssetMarketShare("RWAS")
-  const stablecoinAssetMarketShareData =
-    await fetchAssetMarketShare("STABLECOINS")
-  const securitizeAumData = await fetchSecuritizeAum()
-  const baseTvlData = await fetchBaseTvl()
+
+  const [
+    beaconChainData,
+    ethPrice,
+    defiTvlAllCurrentData,
+    dexVolume,
+    rwaAssetMarketShareData,
+    stablecoinAssetMarketShareData,
+    securitizeAumData,
+    baseTvlData,
+  ] = await Promise.all([
+    fetchBeaconChain(),
+    fetchEtherPrice(),
+    fetchDefiTvlAllCurrent(),
+    fetchDexVolume(),
+    fetchAssetMarketShare("RWAS"),
+    fetchAssetMarketShare("STABLECOINS"),
+    fetchSecuritizeAum(),
+    fetchBaseTvl(),
+  ])
 
   const metrics: Metric[] = [
     {

@@ -4,6 +4,7 @@ import type { DataTimestamped, RwaApiTimeseriesResponse } from "@/lib/types"
 
 import { getRwaApiEthereumNetworksFilter } from "@/lib/utils/data"
 import { dateNDaysAgo } from "@/lib/utils/date"
+import { fetchWithRetry } from "@/lib/utils/fetch"
 import { every } from "@/lib/utils/time"
 
 import { SOURCE } from "@/lib/constants"
@@ -60,7 +61,7 @@ export const fetchProtocolsValueTotal = async (): Promise<
   url.searchParams.set("query", JSON.stringify(myQuery))
 
   try {
-    const response = await fetch(url, {
+    const response = await fetchWithRetry(url, {
       headers: {
         Authorization: `Bearer ${apiKey}`,
         Accept: "application/json",

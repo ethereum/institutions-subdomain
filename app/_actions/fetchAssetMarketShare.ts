@@ -7,6 +7,7 @@ import type {
 } from "@/lib/types"
 
 import { dateNDaysAgo } from "@/lib/utils/date"
+import { fetchWithRetry } from "@/lib/utils/fetch"
 import { every } from "@/lib/utils/time"
 
 import {
@@ -83,7 +84,7 @@ export const fetchAssetMarketShare = async (
   url.searchParams.set("query", JSON.stringify(myQuery))
 
   try {
-    const response = await fetch(url.toString(), {
+    const response = await fetchWithRetry(url.toString(), {
       headers: {
         Authorization: `Bearer ${apiKey}`,
         Accept: "application/json",
