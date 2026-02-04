@@ -47,13 +47,21 @@ export default async function Page({ params }: Props) {
   const t = await getTranslations("rwa")
   const tCommon = await getTranslations("common")
 
-  const stablecoinAssetMarketShareData =
-    await fetchAssetMarketShare("STABLECOINS")
-  const rwaAssetMarketShareData = await fetchAssetMarketShare("RWAS")
-  const protocolsValueTotal = await fetchProtocolsValueTotal()
-  const tokenizedTreasuriesData = await fetchTokenizedTreasuries()
-  const assetValueByAssetIdsData = await fetchAssetValueByAssetIds()
-  const protocolsValueBySlugData = await fetchProtocolsValueBySlug()
+  const [
+    stablecoinAssetMarketShareData,
+    rwaAssetMarketShareData,
+    protocolsValueTotal,
+    tokenizedTreasuriesData,
+    assetValueByAssetIdsData,
+    protocolsValueBySlugData,
+  ] = await Promise.all([
+    fetchAssetMarketShare("STABLECOINS"),
+    fetchAssetMarketShare("RWAS"),
+    fetchProtocolsValueTotal(),
+    fetchTokenizedTreasuries(),
+    fetchAssetValueByAssetIds(),
+    fetchProtocolsValueBySlug(),
+  ])
 
   const metrics: Metric[] = [
     {

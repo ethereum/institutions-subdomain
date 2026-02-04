@@ -8,9 +8,11 @@ import type {
   RwaApiTimeseriesResponse,
 } from "@/lib/types"
 
+import { fetchWithRetry } from "@/lib/utils/fetch"
 import { every } from "@/lib/utils/time"
 
 import {
+  RWA_API_EXCLUDED_NETWORK_IDS,
   RWA_API_LAYER_2S_IDS,
   RWA_API_MAINNET,
   RWA_API_MEASURE_ID_BY_CATEGORY,
@@ -88,16 +90,20 @@ const fetchMarketShareData = async (category: AssetCategory) => {
     },
     pagination: {
       page: 1,
-      perPage: 25,
+      perPage: 100,
     },
   }
 
   url.searchParams.set("query", JSON.stringify(myQuery))
 
-  const response = await fetch(url.toString(), {
+  const response = await fetchWithRetry(url.toString(), {
     headers: {
       Authorization: `Bearer ${apiKey}`,
       Accept: "application/json",
+    },
+    next: {
+      revalidate: every("day"),
+      tags: [`rwa:v3:assets:aggregates:timeseries:${category}`],
     },
   })
 
@@ -108,26 +114,31 @@ const fetchMarketShareData = async (category: AssetCategory) => {
 
   const json: JSONData = await response.json()
 
-  const assetValueSumAll = json.results.reduce((prev, { points }) => {
+  // Filter out enterprise/permissioned chains for "distributed" market share
+  const distributedResults = json.results.filter(
+    ({ group: { id } }) => !RWA_API_EXCLUDED_NETWORK_IDS.includes(id)
+  )
+
+  const assetValueSumAll = distributedResults.reduce((prev, { points }) => {
     const [, latestValue] = points[points.length - 1]
     return prev + latestValue
   }, 0)
 
-  const mainnetAssetValue = json.results
+  const mainnetAssetValue = distributedResults
     .filter(({ group: { id } }) => RWA_API_MAINNET.id === id)
     .reduce((prev, { points }) => {
       const [, latestValue] = points[points.length - 1]
       return prev + latestValue
     }, 0)
 
-  const layer2AssetValue = json.results
+  const layer2AssetValue = distributedResults
     .filter(({ group: { id } }) => RWA_API_LAYER_2S_IDS.includes(id))
     .reduce((prev, { points }) => {
       const [, latestValue] = points[points.length - 1]
       return prev + latestValue
     }, 0)
 
-  const nonEthereumNetworksValueSorted = json.results
+  const nonEthereumNetworksValueSorted = distributedResults
     .filter(
       ({ group: { id } }) =>
         !RWA_API_LAYER_2S_IDS.includes(id) && id !== RWA_API_MAINNET.id

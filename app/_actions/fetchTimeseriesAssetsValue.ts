@@ -13,6 +13,7 @@ import {
   getRwaApiEthereumNetworksFilter,
   getSeriesWithCurrent,
 } from "@/lib/utils/data"
+import { fetchWithRetry } from "@/lib/utils/fetch"
 import { every } from "@/lib/utils/time"
 
 import {
@@ -78,10 +79,14 @@ const fetchTimeseriesData = async (category: AssetCategory) => {
 
   url.searchParams.set("query", JSON.stringify(myQuery))
 
-  const response = await fetch(url, {
+  const response = await fetchWithRetry(url, {
     headers: {
       Authorization: `Bearer ${apiKey}`,
       Accept: "application/json",
+    },
+    next: {
+      revalidate: every("day"),
+      tags: [`rwa:v3:assets:aggregates:timeseries:${category}`],
     },
   })
 
