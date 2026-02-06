@@ -124,7 +124,7 @@ const getInternalLibraryItems = (locale: string): LibraryItem[] =>
       title,
       imgSrc: getPostImage(frontmatter, locale),
       date: datePublished,
-      href: join("library", slug),
+      href: `/${join("library", slug)}`,
     }
   })
 
