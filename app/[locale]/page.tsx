@@ -106,45 +106,42 @@ const logos: { src: StaticImageData; alt: string; className?: string }[] = [
   { src: ubs, alt: "UBS logo", className: "translate-y-[3px]" },
 ]
 
-const testimonials: {
+const getTestimonials = (
+  t: (key: string) => string
+): {
   name: string
   role: string
   content: string[]
   imgSrc: StaticImageData
-}[] = [
+}[] => [
   {
     name: "Geoffrey Kendrick",
-    role: "Global Head of Digital Assets Research @ Standard Chartered",
+    role: `${t("testimonials.kendrick.role")} @ Standard Chartered`,
     content: [
-      "I think tokenised real-world assets will grow from $34bn today to $300bn over the next 12 months. All of this growth will happen on Ethereum because TradFi trusts Ethereum.",
-      "It is irrelevant that other chains are faster or cheaper. Ethereum has been around for over 10 years and has never gone down. For TradFi, trustworthiness trumps marginal speed and cost savings every day of the week.",
+      t("testimonials.kendrick.quote1"),
+      t("testimonials.kendrick.quote2"),
     ],
     imgSrc: geoffreyKendrick,
   },
   {
     name: "Tom Zschach",
-    role: "CIO @ SWIFT",
+    role: `${t("testimonials.zschach.role")} @ SWIFT`,
     content: [
-      "Saying Ethereum is the wrong blockchain because it has high gas fees is like saying Amazon shouldn't use the internet because dial-up was slow in 1995.",
-      "Banks aren't building on 2015 Ethereum, they're using today's Ethereum stack with tomorrows upgrades.",
+      t("testimonials.zschach.quote1"),
+      t("testimonials.zschach.quote2"),
     ],
     imgSrc: tomZschach,
   },
   {
     name: "Robert Mitchnick",
-    role: "Head of Digital Assets @ BlackRock",
-    content: [
-      "There was no question that the blockchain that we would start our tokenization on was on Ethereum.",
-    ],
+    role: `${t("testimonials.mitchnick.role")} @ BlackRock`,
+    content: [t("testimonials.mitchnick.quote1")],
     imgSrc: robertMitchnick,
   },
   {
     name: "Vlad Tenev",
-    role: "CEO @ Robinhood",
-    content: [
-      "I believe tokenization is the greatest capital markets innovation since the central limit order book.",
-      "The Robinhood Chain is the first Ethereum Layer 2 optimized for real-world assets.",
-    ],
+    role: `${t("testimonials.tenev.role")} @ Robinhood`,
+    content: [t("testimonials.tenev.quote1"), t("testimonials.tenev.quote2")],
     imgSrc: vladTenev,
   },
 ]
@@ -190,54 +187,81 @@ export default async function Home({ params }: Props) {
     {
       value: formatDuration(locale, uptime, { maxDecimalPoints: 1 }),
       label: t("numbers.uptimeLabel"),
-      source: t("numbers.genesisSource", { date: formatDateMonthDayYear(locale, MAINNET_GENESIS) }),
+      source: t("numbers.genesisSource", {
+        date: formatDateMonthDayYear(locale, MAINNET_GENESIS),
+      }),
       lastUpdated: formatDateMonthDayYear(locale, Date.now()),
     },
     {
       value: formatLargeCurrency(
-        locale, beaconChainData.data.totalStakedEther * ethPrice.data.usd
+        locale,
+        beaconChainData.data.totalStakedEther * ethPrice.data.usd
       ),
-      label: t("numbers.networkSecurityLabel", { ethAmount: formatLargeNumber(locale, beaconChainData.data.totalStakedEther) }),
+      label: t("numbers.networkSecurityLabel", {
+        ethAmount: formatLargeNumber(
+          locale,
+          beaconChainData.data.totalStakedEther
+        ),
+      }),
       lastUpdated: formatDateMonthDayYear(locale, beaconChainData.lastUpdated),
       ...beaconChainData.sourceInfo,
     },
     {
       value: formatLargeCurrency(
-        locale, stablecoinAssetMarketShareData.data.assetValue.mainnet
+        locale,
+        stablecoinAssetMarketShareData.data.assetValue.mainnet
       ),
       label: (
         <>
           {t("numbers.stablecoinTvlLabel")}
           <br />
           <span className="font-medium">
-            {t("numbers.stablecoinMarketShare", { percent: formatPercent(locale, stablecoinAssetMarketShareData.data.marketShare.mainnet) })}
+            {t("numbers.stablecoinMarketShare", {
+              percent: formatPercent(
+                locale,
+                stablecoinAssetMarketShareData.data.marketShare.mainnet
+              ),
+            })}
           </span>
         </>
       ),
       lastUpdated: formatDateMonthDayYear(
-        locale, stablecoinAssetMarketShareData.lastUpdated
+        locale,
+        stablecoinAssetMarketShareData.lastUpdated
       ),
       ...stablecoinAssetMarketShareData.sourceInfo,
     },
     {
-      value: formatLargeCurrency(locale, defiTvlAllCurrentData.data.mainnetDefiTvl),
+      value: formatLargeCurrency(
+        locale,
+        defiTvlAllCurrentData.data.mainnetDefiTvl
+      ),
       label: (
         <>
           {t("numbers.defiTvlLabel")}
           <br />{" "}
           <span className="font-medium">
-            {t("numbers.defiMarketShare", { percent: formatPercent(
-              locale, defiTvlAllCurrentData.data.mainnetDefiMarketshare +
-                defiTvlAllCurrentData.data.layer2DefiMarketshare
-            ) })}
+            {t("numbers.defiMarketShare", {
+              percent: formatPercent(
+                locale,
+                defiTvlAllCurrentData.data.mainnetDefiMarketshare +
+                  defiTvlAllCurrentData.data.layer2DefiMarketshare
+              ),
+            })}
           </span>
         </>
       ),
-      lastUpdated: formatDateMonthDayYear(locale, defiTvlAllCurrentData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        defiTvlAllCurrentData.lastUpdated
+      ),
       ...defiTvlAllCurrentData.sourceInfo,
     },
     {
-      value: formatLargeCurrency(locale, dexVolume.data.trailing12moAvgDexVolume),
+      value: formatLargeCurrency(
+        locale,
+        dexVolume.data.trailing12moAvgDexVolume
+      ),
       label: (
         <>
           {t("numbers.dexVolumeLabel")}
@@ -259,15 +283,25 @@ export default async function Home({ params }: Props) {
       name: "BlackRock",
       imgSrc: blackRockSvg,
       label: t("platforms.blackrock.label"),
-      value: t("platforms.blackrock.value", { amount: formatLargeCurrency(locale, securitizeAumData.data.currentValue) }),
-      lastUpdated: formatDateMonthDayYear(locale, securitizeAumData.lastUpdated),
+      value: t("platforms.blackrock.value", {
+        amount: formatLargeCurrency(
+          locale,
+          securitizeAumData.data.currentValue
+        ),
+      }),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        securitizeAumData.lastUpdated
+      ),
       ...securitizeAumData.sourceInfo,
     },
     {
       name: "Coinbase",
       imgSrc: coinbaseSvg,
       label: t("platforms.coinbase.label"),
-      value: t("platforms.coinbase.value", { amount: formatLargeCurrency(locale, baseTvlData.data.baseTvl) }),
+      value: t("platforms.coinbase.value", {
+        amount: formatLargeCurrency(locale, baseTvlData.data.baseTvl),
+      }),
       lastUpdated: formatDateMonthDayYear(locale, baseTvlData.lastUpdated),
       ...baseTvlData.sourceInfo,
     },
@@ -373,7 +407,9 @@ export default async function Home({ params }: Props) {
                     maskShape={<CircleRing className="size-full text-white" />}
                   />
                 </div>
-                <CardLabel variant="large">{t("useCases.defi.label")}</CardLabel>
+                <CardLabel variant="large">
+                  {t("useCases.defi.label")}
+                </CardLabel>
                 <CardDescription>
                   {t("useCases.defi.description")}
                 </CardDescription>
@@ -390,7 +426,9 @@ export default async function Home({ params }: Props) {
                     maskShape={<LockFill className="size-full text-white" />}
                   />
                 </div>
-                <CardLabel variant="large">{t("useCases.privacy.label")}</CardLabel>
+                <CardLabel variant="large">
+                  {t("useCases.privacy.label")}
+                </CardLabel>
                 <CardDescription>
                   {t("useCases.privacy.description")}
                 </CardDescription>
@@ -410,7 +448,9 @@ export default async function Home({ params }: Props) {
                     maskShape={<Layers2Fill className="size-full text-white" />}
                   />
                 </div>
-                <CardLabel variant="large">{t("useCases.layer2.label")}</CardLabel>
+                <CardLabel variant="large">
+                  {t("useCases.layer2.label")}
+                </CardLabel>
                 <CardDescription>
                   {t("useCases.layer2.description")}
                 </CardDescription>
@@ -437,7 +477,9 @@ export default async function Home({ params }: Props) {
             </div>
             <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-14">
               <CardContent>
-                <CardLabel variant="large">{t("leader.resilience.label")}</CardLabel>
+                <CardLabel variant="large">
+                  {t("leader.resilience.label")}
+                </CardLabel>
                 <div className="text-muted-foreground font-medium">
                   {t.rich("leader.resilience.description", {
                     uptime: formatDuration(locale, uptime),
@@ -445,44 +487,67 @@ export default async function Home({ params }: Props) {
                 </div>
               </CardContent>
               <CardContent>
-                <CardLabel variant="large">{t("leader.flexibility.label")}</CardLabel>
+                <CardLabel variant="large">
+                  {t("leader.flexibility.label")}
+                </CardLabel>
                 <div className="text-muted-foreground font-medium">
                   {t("leader.flexibility.description")}
                 </div>
               </CardContent>
               <CardContent>
-                <CardLabel variant="large">{t("leader.neutrality.label")}</CardLabel>
+                <CardLabel variant="large">
+                  {t("leader.neutrality.label")}
+                </CardLabel>
                 <div className="text-muted-foreground font-medium">
                   {t("leader.neutrality.description")}
                 </div>
               </CardContent>
               <CardContent>
-                <CardLabel variant="large">{t("leader.decentralization.label")}</CardLabel>
+                <CardLabel variant="large">
+                  {t("leader.decentralization.label")}
+                </CardLabel>
                 <div className="text-muted-foreground font-medium">
                   {t.rich("leader.decentralization.description", {
-                    validatorCount: formatLargeNumber(locale, beaconChainData.data.validatorsCount, {}, 2),
-                    securityValue: formatLargeCurrency(locale, beaconChainData.data.totalStakedEther * ethPrice.data.usd),
+                    validatorCount: formatLargeNumber(
+                      locale,
+                      beaconChainData.data.validatorsCount,
+                      {},
+                      2
+                    ),
+                    securityValue: formatLargeCurrency(
+                      locale,
+                      beaconChainData.data.totalStakedEther * ethPrice.data.usd
+                    ),
                   })}
                 </div>
               </CardContent>
               <CardContent>
-                <CardLabel variant="large">{t("leader.liquidity.label")}</CardLabel>
+                <CardLabel variant="large">
+                  {t("leader.liquidity.label")}
+                </CardLabel>
                 <div className="text-muted-foreground font-medium">
                   {t.rich("leader.liquidity.description", {
-                    dexVolume: formatLargeCurrency(locale, dexVolume.data.trailing12moAvgDexVolume),
+                    dexVolume: formatLargeCurrency(
+                      locale,
+                      dexVolume.data.trailing12moAvgDexVolume
+                    ),
                   })}
                 </div>
               </CardContent>
               <CardContent>
-                <CardLabel variant="large">{t("leader.tokenization.label")}</CardLabel>
+                <CardLabel variant="large">
+                  {t("leader.tokenization.label")}
+                </CardLabel>
                 <div className="text-muted-foreground font-medium">
                   {t.rich("leader.tokenization.description", {
                     rwaMarketShare: formatPercent(
-                      locale, rwaAssetMarketShareData.data.marketShare.mainnet +
+                      locale,
+                      rwaAssetMarketShareData.data.marketShare.mainnet +
                         rwaAssetMarketShareData.data.marketShare.layer2
                     ),
                     stablecoinTvl: formatLargeCurrency(
-                      locale, stablecoinAssetMarketShareData.data.assetValue.mainnet +
+                      locale,
+                      stablecoinAssetMarketShareData.data.assetValue.mainnet +
                         stablecoinAssetMarketShareData.data.assetValue.layer2
                     ),
                   })}
@@ -535,13 +600,18 @@ export default async function Home({ params }: Props) {
             <div className="relative w-full min-w-0 overflow-x-hidden">
               <Carousel>
                 <CarouselContent>
-                  {testimonials.map(({ name, role, imgSrc, content }) => (
+                  {getTestimonials(t).map(({ name, role, imgSrc, content }) => (
                     <CarouselItem key={name} className="space-y-12">
                       <div className="text-muted-foreground space-y-8 text-xl italic">
                         {content.map((children, idx) => (
                           <p key={idx}>{children}</p>
                         ))}
                       </div>
+                      {locale !== "en" && (
+                        <p className="text-muted-foreground text-sm">
+                          {t("testimonials.translatedFrom")}
+                        </p>
+                      )}
                       <div className="flex gap-4">
                         <div className="relative size-12 shrink-0 overflow-hidden rounded-full">
                           <Image
@@ -624,9 +694,7 @@ export default async function Home({ params }: Props) {
         <section id="scaling" className="space-y-12 md:space-y-20">
           <div className="flex flex-col items-center gap-y-2 text-center">
             <h2>{t("scaling.heading")}</h2>
-            <div className="md:max-w-3xl">
-              {t("scaling.description")}
-            </div>
+            <div className="md:max-w-3xl">{t("scaling.description")}</div>
           </div>
           <ScalingPanel />
         </section>
@@ -639,17 +707,21 @@ export default async function Home({ params }: Props) {
             </p>
           </div>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8 lg:gap-16">
-            {getLibraryItems(locale).slice(0, 3).map(({ title, imgSrc, date, href }) => (
-              <LibraryCard key={title}>
-                <LibraryCardHeader>
-                  <LibraryCardImage src={imgSrc} alt="" />
-                </LibraryCardHeader>
-                <LibraryCardTitleLink href={href}>
-                  <LibraryCardTitle>{title}</LibraryCardTitle>
-                </LibraryCardTitleLink>
-                <LibraryCardDate>{formatDateMonthDayYear(locale, date)}</LibraryCardDate>
-              </LibraryCard>
-            ))}
+            {getLibraryItems(locale)
+              .slice(0, 3)
+              .map(({ title, imgSrc, date, href }) => (
+                <LibraryCard key={title}>
+                  <LibraryCardHeader>
+                    <LibraryCardImage src={imgSrc} alt="" />
+                  </LibraryCardHeader>
+                  <LibraryCardTitleLink href={href}>
+                    <LibraryCardTitle>{title}</LibraryCardTitle>
+                  </LibraryCardTitleLink>
+                  <LibraryCardDate>
+                    {formatDateMonthDayYear(locale, date)}
+                  </LibraryCardDate>
+                </LibraryCard>
+              ))}
           </div>
           <LinkWithArrow
             href="/library"

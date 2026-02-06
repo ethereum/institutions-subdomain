@@ -144,7 +144,27 @@
       }
     },
     "testimonials": {
-      "heading": "Industry Leaders Choose Ethereum"
+      "heading": "Industry Leaders Choose Ethereum",
+      "translatedFrom": "Translated from English",
+      "kendrick": {
+        "role": "Global Head of Digital Assets Research",
+        "quote1": "I think tokenised real-world assets will grow from $34bn today to $300bn over the next 12 months. All of this growth will happen on Ethereum because TradFi trusts Ethereum.",
+        "quote2": "It is irrelevant that other chains are faster or cheaper. Ethereum has been around for over 10 years and has never gone down. For TradFi, trustworthiness trumps marginal speed and cost savings every day of the week."
+      },
+      "zschach": {
+        "role": "CIO",
+        "quote1": "Saying Ethereum is the wrong blockchain because it has high gas fees is like saying Amazon shouldn't use the internet because dial-up was slow in 1995.",
+        "quote2": "Banks aren't building on 2015 Ethereum, they're using today's Ethereum stack with tomorrows upgrades."
+      },
+      "mitchnick": {
+        "role": "Head of Digital Assets",
+        "quote1": "There was no question that the blockchain that we would start our tokenization on was on Ethereum."
+      },
+      "tenev": {
+        "role": "CEO",
+        "quote1": "I believe tokenization is the greatest capital markets innovation since the central limit order book.",
+        "quote2": "The Robinhood Chain is the first Ethereum Layer 2 optimized for real-world assets."
+      }
     },
     "scaling": {
       "heading": "Ethereum is Scaling",

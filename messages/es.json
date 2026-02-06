@@ -144,7 +144,27 @@
       }
     },
     "testimonials": {
-      "heading": "Los líderes de la industria eligen Ethereum"
+      "heading": "Los líderes de la industria eligen Ethereum",
+      "translatedFrom": "Traducido del inglés",
+      "kendrick": {
+        "role": "Director Global de Investigación de Activos Digitales",
+        "quote1": "Creo que los activos del mundo real tokenizados crecerán de los 34 mil millones de dólares actuales a 300 mil millones de dólares en los próximos 12 meses. Todo este crecimiento ocurrirá en Ethereum porque TradFi confía en Ethereum.",
+        "quote2": "Es irrelevante que otras cadenas sean más rápidas o baratas. Ethereum ha existido por más de 10 años y nunca se ha caído. Para TradFi, la confiabilidad supera la velocidad marginal y el ahorro de costos cualquier día de la semana."
+      },
+      "zschach": {
+        "role": "CIO",
+        "quote1": "Decir que Ethereum es la cadena de bloques equivocada porque tiene tarifas de gas elevadas es como decir que Amazon no debería usar Internet porque el acceso telefónico era lento en 1995.",
+        "quote2": "Los bancos no están construyendo sobre el Ethereum de 2015, están usando el stack de Ethereum de hoy con las actualizaciones del mañana."
+      },
+      "mitchnick": {
+        "role": "Director de Activos Digitales",
+        "quote1": "No había ninguna duda de que la cadena de bloques en la que comenzaríamos nuestra tokenización era Ethereum."
+      },
+      "tenev": {
+        "role": "CEO",
+        "quote1": "Creo que la tokenización es la mayor innovación de los mercados de capitales desde el libro de órdenes con límite central.",
+        "quote2": "La Robinhood Chain es la primera capa 2 de Ethereum optimizada para activos del mundo real."
+      }
     },
     "scaling": {
       "heading": "Ethereum está escalando",
