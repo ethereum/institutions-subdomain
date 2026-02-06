@@ -3,7 +3,7 @@ title: "Actualización Fusaka: Ethereum se escala de forma segura"
 datePublished: 2025-12-09
 ---
 
-***Estado***: Activa y estable en la red principal
+***Estado***: Activa y estable en la red principal  
 ***Fecha***: 3 de diciembre de 2025
 
 * La actualización Fusaka de Ethereum se ejecutó con éxito manteniendo un 100% de tiempo de actividad, ya que todos los equipos de clientes independientes implementaron las especificaciones de protocolo de Osaka (ejecución) y Fulu (consenso).
