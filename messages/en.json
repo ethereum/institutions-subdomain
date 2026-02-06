@@ -181,6 +181,7 @@
       "description": "Ethereum is the dominant network for asset tokenization, home to over 75% of all tokenized real-world assets (RWAs) and over 60% of global stablecoin supply"
     },
     "overview": {
+      "srHeading": "Real-World Asset and Stablecoin Overview",
       "description": "Institutions tokenize stocks, offer 24/7 settlement, deploy programmable cash, launch payment rails, and more, on the liquid, open, and resilient ecosystem of Ethereum and its L2s",
       "stablecoinsL1": "Stablecoins on Ethereum L1",
       "stablecoinsL2": "Stablecoins on Ethereum L2"
@@ -211,6 +212,9 @@
       "treasuriesSector": "sector on Ethereum + L2s",
       "privateCredit": "Private Credit & Structured Credit",
       "activeLoans": "Active loans on Ethereum + L2s"
+    },
+    "cards": {
+      "by": "By {issuer}"
     },
     "why": {
       "heading": "Why Ethereum for Financial Market Infrastructure",

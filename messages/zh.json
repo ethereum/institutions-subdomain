@@ -181,6 +181,7 @@
       "description": "以太坊是资产代币化的主导网络，拥有超过75%的代币化真实世界资产（RWA）和超过60%的全球稳定币供应量"
     },
     "overview": {
+      "srHeading": "Real-World Asset and Stablecoin Overview",
       "description": "机构在以太坊及其L2的流动、开放和韧性生态系统上，实现股票代币化、提供24/7结算、部署可编程现金、启动支付通道等",
       "stablecoinsL1": "以太坊L1上的稳定币",
       "stablecoinsL2": "以太坊L2上的稳定币"
@@ -211,6 +212,9 @@
       "treasuriesSector": "以太坊及L2上的行业规模",
       "privateCredit": "私人信贷与结构性信贷",
       "activeLoans": "以太坊及L2上的活跃贷款"
+    },
+    "cards": {
+      "by": "By {issuer}"
     },
     "why": {
       "heading": "为什么选择以太坊作为金融市场基础设施",

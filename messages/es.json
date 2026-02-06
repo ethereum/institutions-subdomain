@@ -181,6 +181,7 @@
       "description": "Ethereum es la red dominante para tokenización de activos, hogar de más del 75% de todos los activos del mundo real tokenizados (RWAs) y más del 60% del suministro global de stablecoins"
     },
     "overview": {
+      "srHeading": "Real-World Asset and Stablecoin Overview",
       "description": "Las instituciones tokenizan acciones, ofrecen liquidación 24/7, despliegan efectivo programable, lanzan rieles de pago y más, en el ecosistema líquido, abierto y resiliente de Ethereum y sus L2s",
       "stablecoinsL1": "Stablecoins en Ethereum L1",
       "stablecoinsL2": "Stablecoins en Ethereum L2"
@@ -211,6 +212,9 @@
       "treasuriesSector": "sector en Ethereum + L2s",
       "privateCredit": "Crédito Privado y Crédito Estructurado",
       "activeLoans": "Préstamos activos en Ethereum + L2s"
+    },
+    "cards": {
+      "by": "By {issuer}"
     },
     "why": {
       "heading": "Por Qué Ethereum para Infraestructura de Mercados Financieros",

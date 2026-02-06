@@ -188,7 +188,7 @@ export default async function Page({ params }: Props) {
     {
       header: "Centrifuge",
       valuation: formatLargeCurrency(locale, protocolsValueBySlugData.data.centrifuge),
-      description: "Active loans on Ethereum + L2s",
+      description: t("rwas.activeLoans"),
       metricHref: "https://app.rwa.xyz/platforms/centrifuge",
       visitHref: "https://centrifuge.io/",
       ...protocolsValueBySlugData.sourceInfo,
@@ -197,7 +197,7 @@ export default async function Page({ params }: Props) {
     {
       header: "Maple Finance",
       valuation: formatLargeCurrency(locale, protocolsValueBySlugData.data.maple),
-      description: "Active loans on Ethereum + L2s",
+      description: t("rwas.activeLoans"),
       metricHref: "https://app.rwa.xyz/platforms/maple",
       visitHref: "https://maple.finance/",
       ...protocolsValueBySlugData.sourceInfo,
@@ -206,7 +206,7 @@ export default async function Page({ params }: Props) {
     {
       header: "Midas mF-ONE",
       valuation: formatLargeCurrency(locale, assetValueByAssetIdsData.data.mF_ONE),
-      description: "Active loans on Ethereum + L2s",
+      description: t("rwas.activeLoans"),
       metricHref: "https://app.rwa.xyz/assets/mF-ONE",
       visitHref: "https://midas.app/mfone",
       ...assetValueByAssetIdsData.sourceInfo,
@@ -227,7 +227,7 @@ export default async function Page({ params }: Props) {
           id="overview"
           className="flex items-center gap-8 border p-8 max-lg:flex-col"
         >
-          <h2 className="sr-only">Real-World Asset and Stablecoin Overview</h2>
+          <h2 className="sr-only">{t("overview.srHeading")}</h2>
           <p className="flex-1 font-medium">
             {t("overview.description")}
           </p>
@@ -431,7 +431,7 @@ export default async function Page({ params }: Props) {
                     </p>
                     {issuer && (
                       <p className="text-muted-foreground mt-6 font-medium">
-                        By {issuer}
+                        {t("cards.by", { issuer })}
                       </p>
                     )}
                   </div>
@@ -439,7 +439,7 @@ export default async function Page({ params }: Props) {
                     href={visitHref}
                     className="css-secondary block"
                   >
-                    Visit
+                    {tCommon("visit")}
                   </LinkWithArrow>
                 </Card>
               )
@@ -498,7 +498,7 @@ export default async function Page({ params }: Props) {
                     </p>
                     {issuer && (
                       <p className="text-muted-foreground mt-6 font-medium">
-                        By {issuer}
+                        {t("cards.by", { issuer })}
                       </p>
                     )}
                   </div>
@@ -506,7 +506,7 @@ export default async function Page({ params }: Props) {
                     href={visitHref}
                     className="css-secondary block"
                   >
-                    Visit
+                    {tCommon("visit")}
                   </LinkWithArrow>
                 </Card>
               )
