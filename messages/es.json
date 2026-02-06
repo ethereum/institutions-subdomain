@@ -222,7 +222,10 @@
       "activeLoans": "Préstamos activos en Ethereum + L2"
     },
     "cards": {
-      "by": "Por {issuer}"
+      "by": "Por {issuer}",
+      "buidlDesc": "Fondo de Liquidez Digital Institucional en USD de {brand}",
+      "ustbDesc": "Fondo de Valores del Gobierno de EE. UU. de Corta Duración de {brand}",
+      "ousgDesc": "Fondo de Bonos del Gobierno de EE. UU. a Corto Plazo de {brand}"
     },
     "why": {
       "heading": "Por qué Ethereum para la infraestructura del mercado financiero",

@@ -222,7 +222,10 @@
       "activeLoans": "Active loans on Ethereum + L2s"
     },
     "cards": {
-      "by": "By {issuer}"
+      "by": "By {issuer}",
+      "buidlDesc": "{brand} USD Institutional Digital Liquidity Fund",
+      "ustbDesc": "{brand} Short Duration US Government Securities Fund",
+      "ousgDesc": "{brand} Short-Term US Government Bond Fund"
     },
     "why": {
       "heading": "Why Ethereum for Financial Market Infrastructure",

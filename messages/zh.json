@@ -222,7 +222,10 @@
       "activeLoans": "以太坊 + 二层网络上的活跃贷款"
     },
     "cards": {
-      "by": "由 {issuer} 发行"
+      "by": "由 {issuer} 发行",
+      "buidlDesc": "{brand} 美元机构数字流动性基金",
+      "ustbDesc": "{brand} 短期美国政府证券基金",
+      "ousgDesc": "{brand} 短期美国政府债券基金"
     },
     "why": {
       "heading": "为什么选择以太坊作为金融市场基础设施",

@@ -155,7 +155,7 @@ export default async function Page({ params }: Props) {
     {
       header: "BUIDL",
       valuation: formatLargeCurrency(locale, assetValueByAssetIdsData.data.BUIDL),
-      description: "BlackRock USD Institutional Digital Liquidity Fund",
+      description: t("cards.buidlDesc", { brand: "BlackRock" }),
       issuer: "BlackRock & Securitize",
       metricHref: "https://app.rwa.xyz/assets/BUIDL",
       visitHref: "https://securitize.io/blackrock/buidl",
@@ -165,7 +165,7 @@ export default async function Page({ params }: Props) {
     {
       header: "USTB",
       valuation: formatLargeCurrency(locale, assetValueByAssetIdsData.data.USTB),
-      description: "Superstate Short Duration US Government Securities Fund",
+      description: t("cards.ustbDesc", { brand: "Superstate" }),
       issuer: "Superstate",
       metricHref: "https://app.rwa.xyz/assets/USTB",
       visitHref: "https://superstate.com/assets/ustb",
@@ -175,7 +175,7 @@ export default async function Page({ params }: Props) {
     {
       header: "OUSG",
       valuation: formatLargeCurrency(locale, assetValueByAssetIdsData.data.OUSG),
-      description: "Ondo Short-Term US Government Bond Fund",
+      description: t("cards.ousgDesc", { brand: "Ondo" }),
       issuer: "Ondo",
       metricHref: "https://app.rwa.xyz/assets/OUSG",
       visitHref: "https://ondo.finance/ousg",
