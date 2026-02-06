@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 import {
   DropdownMenu,
@@ -11,7 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 import { defiCategories } from "../constants"
-import { defiEcosystem } from "../data"
+import { getDefiEcosystem } from "../data"
 import type { CategoryKeyWithAll } from "../types"
 
 type CategoryDropdownProps = {
@@ -21,12 +22,14 @@ type CategoryDropdownProps = {
   ]
 }
 const CategoryDropdown = ({ categoryState }: CategoryDropdownProps) => {
+  const tEcosystem = useTranslations("defi.ecosystem")
+  const defiEcosystem = getDefiEcosystem(tEcosystem)
   const [open, setOpen] = useState(false)
   const [categoryKey, setCategoryKey] = categoryState
 
   const label =
     categoryKey === "all"
-      ? "All categories"
+      ? tEcosystem("allCategories")
       : defiEcosystem[categoryKey].heading
 
   const handleClick = (selectedCategoryKey: CategoryKeyWithAll) => () => {
@@ -43,7 +46,7 @@ const CategoryDropdown = ({ categoryState }: CategoryDropdownProps) => {
       <DropdownMenuContent>
         <DropdownMenuItem>
           <p className="text-base font-bold" onClick={handleClick("all")}>
-            All categories
+            {tEcosystem("allCategories")}
           </p>
         </DropdownMenuItem>
 

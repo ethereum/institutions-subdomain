@@ -380,7 +380,77 @@
     },
     "ecosystem": {
       "heading": "El Ecosistema DeFi de Ethereum",
-      "description": "Una pequeña selección de aplicaciones DeFi que funcionan en Ethereum y sus redes Layer 2"
+      "description": "Una pequeña selección de aplicaciones DeFi que funcionan en Ethereum y sus redes Layer 2",
+      "show": "Show",
+      "allCategories": "All categories",
+      "visitAriaLabel": "Visit {name}",
+      "categories": {
+        "dex": {
+          "heading": "Decentralized Exchanges (DEXs)",
+          "subtext": "Explore onchain platforms where users can trade tokens anytime, 24/7",
+          "platforms": {
+            "oneInch": "A DEX aggregator that sources liquidity from across DEXs and networks to find the best possible swapping routes and rates.",
+            "aerodrome": "A decentralized exchange on the Base L2 that combines an AMM with a governance and protocol reward model designed to align incentives.",
+            "balancer": "A DeFi protocol that acts as an automated portfolio manager and liquidity provider, allowing users to create or invest in customizable liquidity pools.",
+            "cowSwap": "A DEX aggregator built around frequent batch auctions to provide MEV protection, find optimal liquidity, and minimize fees, matching trades peer-to-peer and sending unfilled orders to underlying AMMs.",
+            "curve": "A DEX and AMM focused on efficient trading for stablecoins and volatile tokens, using a unique AMM formula to minimize slippage for similarly-priced assets.",
+            "uniswap": "A DEX protocol that enables permissionless peer-to-peer trading, through a smart contract-based AMM system that allows anyone to create custom pairs and supply liquidity."
+          }
+        },
+        "lending-borrowing": {
+          "heading": "Lending & Borrowing",
+          "subtext": "Borrow against onchain collateral and earn yield for supplying liquidity, via smart contracts with programmable terms",
+          "platforms": {
+            "aave": "A non-custodial protocol where users can create liquidity markets and participate as suppliers or borrowers, earning interest on supplied digital assets and borrowing against them.",
+            "compound": "An algorithmic, autonomous interest rate protocol that allows users to earn interest by lending digital assets to borrowers, designed for developers to build DeFi applications on top of.",
+            "euler": "A permissionless protocol for lending, borrowing, and swapping digital assets, featuring asset tiers and reactive interest rates to manage risk, with a modular lending platform for developers to create and connect custom lending vaults.",
+            "fluid": "A DeFi protocol that offers lending, borrowing, and trading on top of a unified liquidity layer, allowing users to maximize yield and optimize capital efficiency through integrated debt and liquidity products.",
+            "maple": "A decentralized credit market that provides undercollateralized loans to institutional borrowers, and allows lenders to earn yield by supplying liquidity to these curated loans.",
+            "moonwell": "An open lending and borrowing protocol designed to simplify the onchain user experience, featuring single-sided liquidity pools and overcollateralized borrowing across markets.",
+            "morpho": "A decentralized protocol for overcollateralized, vault-based lending and borrowing, aiming to improve the capital efficiency of lending pools through isolated markets, risk curators, and portfolio allocators.",
+            "sky": "A DeFi protocol (created by the MakerDAO community) that offers a suite of tools for trading, converting, staking, and earning yield from digital assets, including the USDS stablecoin."
+          }
+        },
+        "rwa-yield": {
+          "heading": "Real-World Assets (RWA) & Onchain Yield",
+          "subtext": "Tokenized offchain assets, like T-Bills, commodities, or real estate, and onchain comparables to familiar yield instruments",
+          "platforms": {
+            "centrifuge": "An asset-agnostic lending protocol that aims to make credit more accessible to businesses, allowing them to tokenize real-world assets and use them as onchain collateral.",
+            "circle": "A global financial technology firm that provides payments and financial infrastructure, tokenized money market funds, and more, best known for issuing the fully-regulated USD Coin (USDC) stablecoin.",
+            "ethena": "A synthetic dollar protocol focused on providing a crypto-native solution for money, offering USDe, a stablecoin backed by crypto assets and corresponding short futures positions, and a dollar-denominated savings account.",
+            "ftBenji": "A mobile app that allows investors to browse tokenized securities, digital assets, and invest in the Franklin OnChain U.S. Government Money Fund (BENJI), the first tokenized money fund natively issued on a blockchain.",
+            "frax": "A fractional-algorithmic stablecoin ecosystem that aims to provide scalable, decentralized, and algorithmic money in place of fixed-supply digital assets.",
+            "ondo": "A DeFi protocol focused on making institutional-grade financial products and services, like tokenized U.S. Treasuries, accessible onchain.",
+            "pendle": "A DeFi protocol for trading interest rate derivatives via the tokenization of future yield, allowing users to lock in future yield from yield-bearing tokens, speculate on yield movements, and provide liquidity for yield-bearing tokens.",
+            "securitize": "A platform for tokenizing real-world assets and issuing and managing digital asset securities onchain, allowing businesses to raise capital and investors to trade tokenized shares in funds and private companies.",
+            "skyRwa": "A DeFi protocol (created by the MakerDAO community) that offers a suite of tools for trading, converting, staking, and earning yield from digital assets, including the USDS stablecoin.",
+            "tether": "Issuer of the the USDT stablecoin, a stablecoin pegged to the U.S. dollar that's focused on using fiat currencies onchain.",
+            "veda": "A vault infrastructure platform for institutions to launch and manage custom onchain products at scale.",
+            "wisdomTree": "A global asset manager that offers a range of exchange-traded products (ETPs), including physically-backed crypto ETPs."
+          }
+        },
+        "staking": {
+          "heading": "Staking & Restaking",
+          "subtext": "Stake ETH through a staking network to help secure Ethereum and earn rewards, or restake LSTs to help secure other protocols",
+          "platforms": {
+            "etherFi": "A restaking platform to earn additional rewards on stablecoins, liquid staking tokens, and other digital assets, with deposits represented by a liquid restaking token that can be used across DeFi, and automated strategy vaults.",
+            "eigenCloud": "A platform built on EigenLayer restaking that provides verifiable computing for AI and other complex applications, leveraging Ethereum's security through restaked ETH and restaked liquid staking tokens.",
+            "lido": "A DAO-managed liquid staking network that allows users to stake their ETH and other PoS assets to earn staking rewards, with staked assets represented by stETH, a liquid staking token that can be used in DeFi and is issued to represent staking rewards.",
+            "liquidCollective": "A liquid staking network built to provide a secure, decentralized way to stake ETH across operators and platforms, with staked assets represented by LsETH, a liquid staking token that can be used in DeFi while accruing staking rewards that's designed to meet institutional security and compliance requirements.",
+            "rocketPool": "A liquid staking protocol focused on decentralization and censorship resistance, allowing users with as little as 0.01 ETH to participate in staking and receive a liquid staking token (rETH) that can be used in DeFi while it continues to accrue staking rewards.",
+            "stakewise": "A liquid staking platform that offers both solo and pooled staking options, backed by a decentralized network of custom staking vaults, with a unified liquid staking token (osETH) that can be used in DeFi while it continues to accrue staking rewards.",
+            "symbiotic": "A restaking protocol that enables users to secure additional blockchain networks by restaking their existing staked assets and liquid staking tokens, with a flexible and modular system for networks to manage independent rewards and penalties."
+          }
+        },
+        "synthetic": {
+          "heading": "Predictions & Synthetics",
+          "subtext": "Trade on the outcome of future events via smart contract, or access tokens that track the value of any asset",
+          "platforms": {
+            "polymarket": "A decentralized prediction market where users can bet on the outcomes of real-world events by buying and selling shares in different possible outcomes.",
+            "synthetix": "A liquidity protocol for creating synthetic digital assets that track the value of any asset, allowing users to gain exposure to a wide range of instruments without holding them directly."
+          }
+        }
+      }
     },
     "metadata": {
       "title": "Finanzas Descentralizadas para Instituciones | Ethereum DeFi",

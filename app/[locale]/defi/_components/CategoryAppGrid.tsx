@@ -5,11 +5,13 @@ import { useTranslations } from "next-intl"
 
 import Link from "@/components/ui/link"
 
-import { defiEcosystem } from "../data"
+import { getDefiEcosystem } from "../data"
 import type { CategoryKey } from "../types"
 
 const CategoryAppGrid = ({ category }: { category: CategoryKey }) => {
   const tCommon = useTranslations("common")
+  const tEcosystem = useTranslations("defi.ecosystem")
+  const defiEcosystem = getDefiEcosystem(tEcosystem)
   const { heading, subtext, platforms } = defiEcosystem[category]
   return (
     <div key={category} className="space-y-4">
@@ -23,7 +25,7 @@ const CategoryAppGrid = ({ category }: { category: CategoryKey }) => {
             key={name}
             href={href}
             className="bg-card group flex h-full flex-col justify-between p-6 transition-transform hover:scale-105 hover:transition-transform"
-            aria-label={`Visit ${name}`}
+            aria-label={tEcosystem("visitAriaLabel", { name })}
           >
             <div className="space-y-2">
               <Image src={imgSrc} alt="" sizes="48px" className="size-12" />

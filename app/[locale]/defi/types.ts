@@ -1,7 +1,6 @@
 import type { StaticImageData } from "next/image"
 
 import { defiCategories } from "./constants"
-import { defiEcosystem } from "./data"
 
 export type CategoryKey = (typeof defiCategories)[number]
 
@@ -19,6 +18,3 @@ export type CategoryDetails = {
   subtext: string
   platforms: Platform[]
 }
-
-export type CategoryHeading =
-  (typeof defiEcosystem)[keyof typeof defiEcosystem]["heading"]
