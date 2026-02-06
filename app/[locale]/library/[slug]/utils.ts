@@ -5,7 +5,7 @@ import matter from "gray-matter"
 
 import { formatDateMonthDayYear, isValidDate } from "@/lib/utils/date"
 
-import { getPostsDir,VALID_LOCALES } from "./constants"
+import { POSTS_DIR, VALID_LOCALES } from "./constants"
 import type { FrontMatter, PostSummary } from "./types"
 
 const guardValidFrontMatterDate = (frontmatter: FrontMatter, slug: string) => {
@@ -19,45 +19,39 @@ const guardValidFrontMatterDate = (frontmatter: FrontMatter, slug: string) => {
     )
 }
 
-export const getSlug = (filePath: string) =>
-  filePath.replace(/^\/public|\.md$/g, "")
-
 /**
- * Fetch all posts for a given locale with fallback to English
+ * Fetch all posts for a given locale with fallback to English.
+ * Reads slug directories under public/posts/, then resolves
+ * {slug}/{locale}.md with fallback to {slug}/en.md.
  */
 export const fetchPosts = (locale: string = "en"): PostSummary[] => {
-  // Validate locale
   if (!VALID_LOCALES.includes(locale as (typeof VALID_LOCALES)[number])) {
     throw new Error(`Invalid locale: ${locale}`)
   }
 
-  const postsDir = getPostsDir(locale)
-  const englishPostsDir = getPostsDir("en")
-
-  // Check if locale-specific posts directory exists
-  let targetDir = postsDir
-  if (!fs.existsSync(postsDir)) {
-    // Fall back to English
-    targetDir = englishPostsDir
-  }
-
   try {
-    const postsDirContents = fs.readdirSync(targetDir)
+    const slugDirs = fs
+      .readdirSync(POSTS_DIR)
+      .filter((entry) => fs.statSync(path.join(POSTS_DIR, entry)).isDirectory())
 
-    const posts = postsDirContents
-      .filter((filename) => filename.endsWith(".md"))
-      .map((filename) => {
-        const filePath = path.join(targetDir, filename)
+    const posts = slugDirs
+      .map((slug) => {
+        // Try locale-specific, fallback to English
+        let filePath = path.join(POSTS_DIR, slug, `${locale}.md`)
+        if (!fs.existsSync(filePath)) {
+          filePath = path.join(POSTS_DIR, slug, "en.md")
+        }
+        if (!fs.existsSync(filePath)) return null
+
         const file = fs.readFileSync(filePath, "utf-8")
         const { data } = matter(file)
         const frontmatter = data as FrontMatter
 
         guardValidFrontMatterDate(frontmatter, filePath)
 
-        const slug = getSlug(filename)
-
         return { frontmatter, slug } as PostSummary
       })
+      .filter((post): post is PostSummary => post !== null)
       .sort(
         (a, b) =>
           new Date(b.frontmatter.datePublished).getTime() -
@@ -71,21 +65,18 @@ export const fetchPosts = (locale: string = "en"): PostSummary[] => {
 }
 
 /**
- * Get a single post by slug for a given locale with fallback to English
+ * Get a single post by slug for a given locale with fallback to English.
+ * Reads public/posts/{slug}/{locale}.md, falling back to en.md.
  */
 export const getPost = (slug: string, locale: string = "en") => {
-  // Validate locale
   if (!VALID_LOCALES.includes(locale as (typeof VALID_LOCALES)[number])) {
     throw new Error(`Invalid locale: ${locale}`)
   }
 
-  const postsDir = getPostsDir(locale)
-  const englishPostsDir = getPostsDir("en")
-
   // Try locale-specific path first, then fall back to English
-  let filePath = path.join(postsDir, slug + ".md")
+  let filePath = path.join(POSTS_DIR, slug, `${locale}.md`)
   if (!fs.existsSync(filePath)) {
-    filePath = path.join(englishPostsDir, slug + ".md")
+    filePath = path.join(POSTS_DIR, slug, "en.md")
   }
 
   const file = fs.readFileSync(filePath, "utf-8")

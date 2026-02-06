@@ -14,13 +14,13 @@ export type PostSummary = {
 }
 
 const VALID_LOCALES = locales
-
-const getPostsDir = (locale: string) =>
-  path.join(process.cwd(), "public", "posts", locale)
+const POSTS_DIR = path.join(process.cwd(), "public", "posts")
 
 /**
- * Get all library posts for a given locale (falls back to English)
- * This is used by generateStaticParams
+ * Get all library posts for a given locale (falls back to English).
+ * Reads slug directories under public/posts/, then resolves
+ * {slug}/{locale}.md with fallback to {slug}/en.md.
+ * This is used by generateStaticParams.
  */
 export async function getLibraryPosts(
   locale: string = "en"
@@ -30,32 +30,29 @@ export async function getLibraryPosts(
     throw new Error(`Invalid locale: ${locale}`)
   }
 
-  const postsDir = getPostsDir(locale)
-  const englishPostsDir = getPostsDir("en")
-
-  // Check if locale-specific posts directory exists
-  let targetDir = postsDir
-  if (!fs.existsSync(postsDir)) {
-    // Fall back to English
-    targetDir = englishPostsDir
-  }
-
-  // If even English doesn't exist, return empty array
-  if (!fs.existsSync(targetDir)) {
+  // If posts directory doesn't exist, return empty array
+  if (!fs.existsSync(POSTS_DIR)) {
     return []
   }
 
   try {
-    const files = fs.readdirSync(targetDir)
+    const slugDirs = fs
+      .readdirSync(POSTS_DIR)
+      .filter((entry) =>
+        fs.statSync(path.join(POSTS_DIR, entry)).isDirectory()
+      )
 
-    const posts = files
-      .filter((filename) => filename.endsWith(".md"))
-      .map((filename) => {
-        const filePath = path.join(targetDir, filename)
+    const posts = slugDirs
+      .map((slug) => {
+        // Try locale-specific, fallback to English
+        let filePath = path.join(POSTS_DIR, slug, `${locale}.md`)
+        if (!fs.existsSync(filePath)) {
+          filePath = path.join(POSTS_DIR, slug, "en.md")
+        }
+        if (!fs.existsSync(filePath)) return null
+
         const file = fs.readFileSync(filePath, "utf-8")
         const { data } = matter(file)
-
-        const slug = filename.replace(/\.md$/, "")
 
         return {
           slug,
@@ -63,6 +60,7 @@ export async function getLibraryPosts(
           datePublished: data.datePublished || "",
         }
       })
+      .filter((post): post is PostSummary => post !== null)
       .filter((post) => isValidDate(post.datePublished))
       .sort(
         (a, b) =>
