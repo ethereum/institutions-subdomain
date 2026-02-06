@@ -14,7 +14,7 @@ import {
 import { formatDateMonthDayYear } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
 
-import { libraryItems } from "./data"
+import { getLibraryItems } from "./data"
 
 import { type Locale, routing } from "@/i18n/routing"
 
@@ -47,7 +47,7 @@ export default async function Page({ params }: Props) {
       </Hero>
       <article className="max-w-8xl mx-auto w-full space-y-10 px-4 py-10 sm:px-10 sm:py-20 md:space-y-20">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:gap-[6.5rem]">
-          {libraryItems.map(({ title, imgSrc, date, href }) => (
+          {getLibraryItems(locale).map(({ title, imgSrc, date, href }) => (
             <LibraryCard key={title}>
               <LibraryCardHeader>
                 <LibraryCardImage src={imgSrc} alt="" />

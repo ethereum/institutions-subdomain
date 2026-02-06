@@ -100,5 +100,5 @@ export const getPostImage = (
     ? formatDateMonthDayYear(locale, datePublished)
     : datePublished
 
-  return `/library/og/?title=${title}&date=${date}`
+  return `/library/og/?title=${encodeURIComponent(title)}&date=${encodeURIComponent(date)}`
 }

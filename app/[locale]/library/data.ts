@@ -116,24 +116,24 @@ const externalLibraryItems: LibraryItem[] = [
   },
 ]
 
-const internalLibraryItems: LibraryItem[] = fetchPosts().map(
-  ({ frontmatter, slug }) => {
+const getInternalLibraryItems = (locale: string): LibraryItem[] =>
+  fetchPosts(locale).map(({ frontmatter, slug }) => {
     const { title, datePublished } = frontmatter
 
     return {
       title,
-      imgSrc: getPostImage(frontmatter),
+      imgSrc: getPostImage(frontmatter, locale),
       date: datePublished,
       href: join("library", slug),
     }
-  }
-)
+  })
 
-export const libraryItems: LibraryItem[] = [
-  ...externalLibraryItems,
-  ...internalLibraryItems,
-].sort((a, b) => {
-  if (!isValidDate(a.date)) return -1
-  if (!isValidDate(b.date)) return 1
-  return new Date(b.date).getTime() - new Date(a.date).getTime()
-})
+export const getLibraryItems = (locale: string): LibraryItem[] =>
+  [
+    ...externalLibraryItems,
+    ...getInternalLibraryItems(locale),
+  ].sort((a, b) => {
+    if (!isValidDate(a.date)) return -1
+    if (!isValidDate(b.date)) return 1
+    return new Date(b.date).getTime() - new Date(a.date).getTime()
+  })

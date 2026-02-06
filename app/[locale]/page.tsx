@@ -51,7 +51,7 @@ import { formatDuration } from "@/lib/utils/time"
 
 import { MAINNET_GENESIS } from "@/lib/constants"
 
-import { libraryItems } from "./library/data"
+import { getLibraryItems } from "./library/data"
 
 import fetchAssetMarketShare from "@/app/_actions/fetchAssetMarketShare"
 import fetchBaseTvl from "@/app/_actions/fetchBaseTvl"
@@ -639,7 +639,7 @@ export default async function Home({ params }: Props) {
             </p>
           </div>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8 lg:gap-16">
-            {libraryItems.slice(0, 3).map(({ title, imgSrc, date, href }) => (
+            {getLibraryItems(locale).slice(0, 3).map(({ title, imgSrc, date, href }) => (
               <LibraryCard key={title}>
                 <LibraryCardHeader>
                   <LibraryCardImage src={imgSrc} alt="" />
