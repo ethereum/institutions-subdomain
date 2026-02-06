@@ -502,7 +502,7 @@ export default async function Page({ params }: Props) {
                 key={heading}
                 href={href}
                 className="bg-card group flex h-full w-full flex-col justify-between p-6 transition-transform hover:scale-105 hover:transition-transform"
-                aria-label={`Visit ${heading}`}
+                aria-label={tCommon("visitAriaLabel", { name: heading })}
               >
                 <div className="space-y-2">
                   <Image src={imgSrc} alt="" sizes="48px" className="size-12" />
@@ -531,7 +531,7 @@ export default async function Page({ params }: Props) {
                 key={heading}
                 href={href}
                 className="bg-card group flex h-full w-full flex-col justify-between p-6 transition-transform hover:scale-105 hover:transition-transform"
-                aria-label={`Visit ${heading}`}
+                aria-label={tCommon("visitAriaLabel", { name: heading })}
               >
                 <div className="space-y-2">
                   <Image src={imgSrc} alt="" sizes="48px" className="size-12" />
@@ -569,7 +569,7 @@ export default async function Page({ params }: Props) {
                     <Link
                       href={href}
                       className="group css-secondary space-y-2"
-                      aria-label={`Visit ${heading}`}
+                      aria-label={tCommon("visitAriaLabel", { name: heading })}
                     >
                       <Image
                         src={imgSrc}

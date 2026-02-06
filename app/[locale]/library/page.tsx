@@ -11,6 +11,7 @@ import {
   LibraryCardTitleLink,
 } from "@/components/ui/library-card"
 
+import { formatDateMonthDayYear } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
 
 import { libraryItems } from "./data"
@@ -56,7 +57,7 @@ export default async function Page({ params }: Props) {
                   <h2>{title}</h2>
                 </LibraryCardTitle>
               </LibraryCardTitleLink>
-              <LibraryCardDate>{date}</LibraryCardDate>
+              <LibraryCardDate>{formatDateMonthDayYear(locale, date)}</LibraryCardDate>
             </LibraryCard>
           ))}
         </div>

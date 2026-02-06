@@ -110,6 +110,7 @@ export default async function RootLayout({ children, params }: Props) {
   const t = await getTranslations("common");
   const tNav = await getTranslations("nav");
   const tFooter = await getTranslations("footer");
+  const tLayout = await getTranslations("layout");
 
   return (
     <html lang={locale}>
@@ -125,7 +126,7 @@ export default async function RootLayout({ children, params }: Props) {
             <div className="max-w-8xl mx-auto flex justify-between p-4 pb-10 sm:p-10">
               <Link
                 href="/"
-                aria-label="Go home"
+                aria-label={tLayout("goHome")}
                 className="group/link inline-flex items-center gap-x-2.5"
               >
                 <EthereumOrgLogo
@@ -267,7 +268,12 @@ export default async function RootLayout({ children, params }: Props) {
   );
 }
 
-export const metadata: Metadata = {
-  title: "Ethereum for Institutions",
-  description: "Ethereum: The Institutional Liquidity Layer",
-};
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "layout" });
+
+  return {
+    title: t("metadata.title"),
+    description: t("metadata.description"),
+  };
+}

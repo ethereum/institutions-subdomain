@@ -10,7 +10,8 @@
     "lastUpdated": "Last updated",
     "moreInfo": "More information",
     "sourceInfo": "Source information",
-    "visit": "Visitar"
+    "visit": "Visitar",
+    "visitAriaLabel": "Visit {name}"
   },
   "footer": {
     "copyright": "Ethereum Foundation. Todos los derechos reservados.",
@@ -19,6 +20,13 @@
     "cookiePolicy": "Política de Cookies",
     "ethereumFoundation": "Ethereum Foundation",
     "ethereumOrg": "ethereum.org"
+  },
+  "layout": {
+    "goHome": "Go home",
+    "metadata": {
+      "title": "Ethereum for Institutions",
+      "description": "Ethereum: The Institutional Liquidity Layer"
+    }
   },
   "contactForm": {
     "namePlaceholder": "Su nombre",
@@ -322,6 +330,10 @@
       "heading": "Biblioteca: Perspectivas Institucionales",
       "description1": "Informes, artículos y análisis de todo el panorama institucional, junto con liderazgo de pensamiento y actualizaciones del equipo de Aceleración Empresarial de la Fundación Ethereum.",
       "description2": "Explora tendencias de mercado, desarrollos técnicos y oportunidades estratégicas para instituciones que construyen en la economía onchain."
+    },
+    "notFound": {
+      "title": "Ethereum Institutional Resources",
+      "description": "Oops! Post not found"
     },
     "metadata": {
       "title": "Investigación y Perspectivas | Recursos Institucionales de Ethereum",

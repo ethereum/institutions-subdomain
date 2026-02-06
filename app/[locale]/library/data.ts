@@ -2,7 +2,7 @@ import { join } from "path"
 
 import type { StaticImageData } from "next/image"
 
-import { formatDateMonthDayYear, isValidDate } from "@/lib/utils/date"
+import { isValidDate } from "@/lib/utils/date"
 
 import { fetchPosts, getPostImage } from "./[slug]/utils"
 
@@ -32,86 +32,86 @@ const externalLibraryItems: LibraryItem[] = [
   {
     title: "Citi - Stablecoins 2030 Web3 to Wall Street",
     href: "https://www.citigroup.com/rcs/citigpa/storage/public/GPS_Report_Stablecoins_2030.pdf",
-    date: "September 25, 2025",
+    date: "2025-09-25",
     imgSrc: citi,
   },
   {
     title: "ETHTokyo - Ethereum: From tech to real",
     href: "https://www.youtube.com/watch?v=4iWXnYFjbIM",
-    date: "September 16, 2025",
+    date: "2025-09-16",
     imgSrc: ethtokyo,
   },
   {
     title:
       "Blockchain Scotland - Ethereum: Enterprise adoption and financial services",
     href: "https://www.youtube.com/watch?v=AETDWBu3sVU",
-    date: "September 5, 2024",
+    date: "2024-09-05",
     imgSrc: blockchainScotland,
   },
   {
     title: "Fidelity - Coin report: Ethereum (ETH)",
     href: "https://www.fidelitydigitalassets.com/research-and-insights/coin-report-ethereum-eth",
-    date: "August 21, 2025",
+    date: "2025-08-21",
     imgSrc: fidelity1,
   },
   {
     title: "Goldman Sachs - Stablecoin summer",
     href: "https://www.goldmansachs.com/pdfs/insights/goldman-sachs-research/stablecoin-summer/TopOfMind.pdf",
-    date: "August 19, 2025",
+    date: "2025-08-19",
     imgSrc: goldmanSachs,
   },
   {
     title: "Consensys - The industrialization of trust report",
     href: "https://consensys.io/ethereum/trust",
-    date: "August 4, 2025",
+    date: "2025-08-04",
     imgSrc: consensys,
   },
   {
     title: "Fidelity - Blockchains as emerging economies",
     href: "https://institutional.fidelity.com/app/proxy/content?literatureURL=/9919383.PDF",
-    date: "July 16, 2025",
+    date: "2025-07-16",
     imgSrc: fidelity2,
   },
   {
     title: "Galaxy - Beyond Bitcoin: Ethereum as a corporate treasury asset",
     href: "https://www.galaxy.com/insights/research/beyond-btc-ethereum-as-a-corporate-treasury-asset",
-    date: "July 15, 2025",
+    date: "2025-07-15",
     imgSrc: galaxy,
   },
   {
     title: "EY - 2025 Institutional investor digital assets survey",
     href: "https://www.ey.com/content/dam/ey-unified-site/ey-com/en-us/insights/financial-services/documents/ey-growing-enthusiasm-propels-digital-assets-into-the-mainstream.pdf",
-    date: "March 18, 2025",
+    date: "2025-03-18",
     imgSrc: ey,
   },
   {
     title: "NextFin Summit - Low-risk DeFi on Ethereum",
     href: "https://drive.google.com/file/d/13YdvzcC7G-CFmYHBjvd-Js6xicgTS8V5/view",
-    date: "October 1, 2025",
+    date: "2025-10-01",
     imgSrc: nextFinSummit,
   },
   {
     title: "MERGE Madrid - Future of Blockchain Infrastructure",
     href: "https://www.youtube.com/watch?v=1z1iIc0TIVE",
-    date: "October 15, 2025",
+    date: "2025-10-15",
     imgSrc: mergeMadrid,
   },
   {
     title: "a16zcrypto - State of Crypto ",
     href: "https://stateofcrypto.a16zcrypto.com/",
-    date: "October 22, 2025",
+    date: "2025-10-22",
     imgSrc: a16zCrypto,
   },
   {
     title: "Will all L1s Move to Ethereum?",
     href: "https://www.decentralised.co/p/will-all-l1s-move-to-ethereum",
-    date: "October 1, 2025",
+    date: "2025-10-01",
     imgSrc: decentralised,
   },
   {
     title: "Etherealize - Wall St Needs a Blockchain",
     href: "https://drive.google.com/file/d/1JMu1pXfNEij2j8P2bSrRI9OQ_oGQG22E/view",
-    date: "September 15, 2025",
+    date: "2025-09-15",
     imgSrc: etherealize,
   },
 ]
@@ -123,7 +123,7 @@ const internalLibraryItems: LibraryItem[] = fetchPosts().map(
     return {
       title,
       imgSrc: getPostImage(frontmatter),
-      date: formatDateMonthDayYear("en", datePublished),
+      date: datePublished,
       href: join("library", slug),
     }
   }

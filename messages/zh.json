@@ -10,7 +10,8 @@
     "lastUpdated": "Last updated",
     "moreInfo": "More information",
     "sourceInfo": "Source information",
-    "visit": "访问"
+    "visit": "访问",
+    "visitAriaLabel": "Visit {name}"
   },
   "footer": {
     "copyright": "以太坊基金会。保留所有权利。",
@@ -19,6 +20,13 @@
     "cookiePolicy": "Cookie政策",
     "ethereumFoundation": "以太坊基金会",
     "ethereumOrg": "ethereum.org"
+  },
+  "layout": {
+    "goHome": "Go home",
+    "metadata": {
+      "title": "Ethereum for Institutions",
+      "description": "Ethereum: The Institutional Liquidity Layer"
+    }
   },
   "contactForm": {
     "namePlaceholder": "您的姓名",
@@ -322,6 +330,10 @@
       "heading": "资料库：机构洞察",
       "description1": "来自机构领域的报告、文章和分析，以及以太坊基金会企业加速团队的思想领导力和更新。",
       "description2": "探索市场趋势、技术发展和机构在链上经济中构建的战略机会。"
+    },
+    "notFound": {
+      "title": "Ethereum Institutional Resources",
+      "description": "Oops! Post not found"
     },
     "metadata": {
       "title": "研究与洞察 | 以太坊机构资源",

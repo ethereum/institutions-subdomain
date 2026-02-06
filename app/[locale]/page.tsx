@@ -647,7 +647,7 @@ export default async function Home({ params }: Props) {
                 <LibraryCardTitleLink href={href}>
                   <LibraryCardTitle>{title}</LibraryCardTitle>
                 </LibraryCardTitleLink>
-                <LibraryCardDate>{date}</LibraryCardDate>
+                <LibraryCardDate>{formatDateMonthDayYear(locale, date)}</LibraryCardDate>
               </LibraryCard>
             ))}
           </div>

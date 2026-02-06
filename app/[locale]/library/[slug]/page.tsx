@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { setRequestLocale } from "next-intl/server"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import Hero from "@/components/Hero"
 import MarkdownProvider from "@/components/ui/markdown/provider"
@@ -73,10 +73,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale,
     })
   } catch {
+    const tLib = await getTranslations({ locale, namespace: "library" })
     return getMetadata({
       slug: ["library", slug],
-      title: "Ethereum Institutional Resources",
-      description: "Oops! Post not found",
+      title: tLib("notFound.title"),
+      description: tLib("notFound.description"),
       locale,
     })
   }
