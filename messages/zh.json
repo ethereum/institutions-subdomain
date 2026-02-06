@@ -7,6 +7,9 @@
     "liveData": "实时数据",
     "viewAllResources": "查看全部资源",
     "source": "来源",
+    "lastUpdated": "Last updated",
+    "moreInfo": "More information",
+    "sourceInfo": "Source information",
     "visit": "访问"
   },
   "footer": {

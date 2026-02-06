@@ -7,6 +7,9 @@
     "liveData": "Live Data",
     "viewAllResources": "View All Resources",
     "source": "Source",
+    "lastUpdated": "Last updated",
+    "moreInfo": "More information",
+    "sourceInfo": "Source information",
     "visit": "Visit"
   },
   "footer": {
