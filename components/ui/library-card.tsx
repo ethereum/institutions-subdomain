@@ -1,5 +1,6 @@
 import * as React from "react"
 import Image, { type ImageProps } from "next/image"
+import { useLocale } from "next-intl"
 import { Slot } from "@radix-ui/react-slot"
 
 import { isValidDate } from "@/lib/utils/date"
@@ -89,8 +90,9 @@ function LibraryCardDate({
   children,
   ...props
 }: React.ComponentProps<"div">) {
+  const locale = useLocale()
   const date = isValidDate(children as string)
-    ? new Intl.DateTimeFormat("en-US", {
+    ? new Intl.DateTimeFormat(locale, {
         month: "long",
         day: "numeric",
         year: "numeric",

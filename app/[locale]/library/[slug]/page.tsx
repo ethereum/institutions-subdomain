@@ -45,7 +45,7 @@ export default async function Page({ params }: Props) {
     <main className="row-start-2 flex flex-col items-center sm:items-start">
       <Hero heading={title} shape="book-open-text-fill">
         <time dateTime={datePublished}>
-          {formatDateMonthDayYear(datePublished)}
+          {formatDateMonthDayYear(locale, datePublished)}
         </time>
       </Hero>
 
@@ -68,8 +68,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return getMetadata({
       slug: ["library", slug],
       title,
-      description: formatDateMonthDayYear(datePublished),
-      image: getPostImage(frontmatter),
+      description: formatDateMonthDayYear(locale, datePublished),
+      image: getPostImage(frontmatter, locale),
       locale,
     })
   } catch {

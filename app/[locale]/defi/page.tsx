@@ -56,8 +56,8 @@ export default async function Page({ params }: Props) {
           {t("metrics.defiTvl")} <span title="Total Value Locked">TVL</span>
         </>
       ),
-      value: formatLargeCurrency(defiTvlAllCurrentData.data.mainnetDefiTvl),
-      lastUpdated: formatDateMonthDayYear(defiTvlAllCurrentData.lastUpdated),
+      value: formatLargeCurrency(locale, defiTvlAllCurrentData.data.mainnetDefiTvl),
+      lastUpdated: formatDateMonthDayYear(locale, defiTvlAllCurrentData.lastUpdated),
       ...defiTvlAllCurrentData.sourceInfo,
     },
     {
@@ -66,18 +66,18 @@ export default async function Page({ params }: Props) {
           {t("metrics.shareGlobal")} <span title="Total Value Locked">TVL</span>
         </>
       ),
-      value: formatPercent(defiTvlAllCurrentData.data.mainnetDefiMarketshare),
-      lastUpdated: formatDateMonthDayYear(defiTvlAllCurrentData.lastUpdated),
+      value: formatPercent(locale, defiTvlAllCurrentData.data.mainnetDefiMarketshare),
+      lastUpdated: formatDateMonthDayYear(locale, defiTvlAllCurrentData.lastUpdated),
       ...defiTvlAllCurrentData.sourceInfo,
     },
     {
-      value: formatLargeCurrency(dexVolume.data.trailing12moAvgDexVolume),
+      value: formatLargeCurrency(locale, dexVolume.data.trailing12moAvgDexVolume),
       label: (
         <>
           {t("metrics.dexVolume")} <span title="Decentralized Exchange">DEX</span> {t("metrics.dexVolumeSuffix")}
         </>
       ),
-      lastUpdated: formatDateMonthDayYear(dexVolume.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(locale, dexVolume.lastUpdated),
       ...dexVolume.sourceInfo,
     },
     {
@@ -86,8 +86,8 @@ export default async function Page({ params }: Props) {
           <span title="Total Value Locked">TVL</span> {t("metrics.tvlVsNext")}
         </>
       ),
-      value: formatMultiplier(defiTvlAllCurrentData.data.runnerUpMultiplier),
-      lastUpdated: formatDateMonthDayYear(defiTvlAllCurrentData.lastUpdated),
+      value: formatMultiplier(locale, defiTvlAllCurrentData.data.runnerUpMultiplier),
+      lastUpdated: formatDateMonthDayYear(locale, defiTvlAllCurrentData.lastUpdated),
       ...defiTvlAllCurrentData.sourceInfo,
     },
   ]
@@ -169,7 +169,7 @@ export default async function Page({ params }: Props) {
                     )}
                     {lastUpdated && (
                       <SourceInfoTooltip
-                        lastUpdated={formatDateMonthDayYear(lastUpdated)}
+                        lastUpdated={lastUpdated}
                       />
                     )}
                   </CardSource>

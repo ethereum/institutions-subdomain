@@ -88,20 +88,20 @@ export default async function Page({ params }: Props) {
   const metrics: Metric[] = [
     {
       label: <span title="Total Value Locked">{t("metrics.tvlAcross")}</span>,
-      value: formatLargeCurrency(l2ScalingSummaryData.data.totalTvl),
-      lastUpdated: formatDateMonthDayYear(l2ScalingSummaryData.lastUpdated),
+      value: formatLargeCurrency(locale, l2ScalingSummaryData.data.totalTvl),
+      lastUpdated: formatDateMonthDayYear(locale, l2ScalingSummaryData.lastUpdated),
       ...l2ScalingSummaryData.sourceInfo,
     },
     {
       label: t("metrics.avgTxCost"),
-      value: formatCurrency(
+      value: formatCurrency(locale,
         l2MedianTxCostData.data.latestWeightedMedianTxCostUsd,
         {
           minimumSignificantDigits: 3,
           maximumSignificantDigits: 3,
         }
       ),
-      lastUpdated: formatDateMonthDayYear(l2MedianTxCostData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(locale, l2MedianTxCostData.lastUpdated),
       ...l2MedianTxCostData.sourceInfo,
     },
     {
@@ -110,14 +110,14 @@ export default async function Page({ params }: Props) {
           {t("metrics.avgUops")} <span title="User Operations Per Second">UOPS</span>
         </>
       ),
-      value: formatLargeNumber(l2ScalingActivityData.data.uops),
-      lastUpdated: formatDateMonthDayYear(l2ScalingActivityData.lastUpdated),
+      value: formatLargeNumber(locale, l2ScalingActivityData.data.uops),
+      lastUpdated: formatDateMonthDayYear(locale, l2ScalingActivityData.lastUpdated),
       ...l2ScalingActivityData.sourceInfo,
     },
     {
       label: t("metrics.numberOfL2s"),
       value: l2ScalingSummaryData.data.allProjectsCount,
-      lastUpdated: formatDateMonthDayYear(l2ScalingSummaryData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(locale, l2ScalingSummaryData.lastUpdated),
       ...l2ScalingSummaryData.sourceInfo,
     },
   ]
@@ -203,7 +203,7 @@ export default async function Page({ params }: Props) {
           {t("caseStudies.ey.ctaLabel")}
         </>
       ),
-      lastUpdated: formatDateMonthDayYear(new Date("2024-04-06")),
+      lastUpdated: formatDateMonthDayYear(locale, new Date("2024-04-06")),
       source: "EY Nightfall FAQ",
       sourceHref: "https://blockchain.ey.com/uploads/Nightfall_FAQ.pdf",
     },
@@ -214,12 +214,12 @@ export default async function Page({ params }: Props) {
       imgSrc: coinbase,
       ctaLabel: (
         <>
-          {formatLargeCurrency(baseTvlData.data.baseTvl)}
+          {formatLargeCurrency(locale, baseTvlData.data.baseTvl)}
           <br />
           {t("caseStudies.coinbase.ctaLabel")}
         </>
       ),
-      lastUpdated: formatDateMonthDayYear(baseTvlData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(locale, baseTvlData.lastUpdated),
       ...baseTvlData.sourceInfo,
     },
     {
@@ -234,7 +234,7 @@ export default async function Page({ params }: Props) {
           {t("caseStudies.deutscheBank.ctaLabel")}
         </>
       ),
-      lastUpdated: formatDateMonthDayYear(new Date("2025-06-18")),
+      lastUpdated: formatDateMonthDayYear(locale, new Date("2025-06-18")),
       source: "DAMA 2 litepaper",
       sourceHref:
         "https://www.db.com/news/detail/20250618-dama-2-litepaper-institutional-blueprint-for-asset-tokenisation-and-servicing-on-ethereum-layer-2?language_id=1",
@@ -246,14 +246,14 @@ export default async function Page({ params }: Props) {
       imgSrc: celo,
       ctaLabel: (
         <>
-          {formatLargeCurrency(
+          {formatLargeCurrency(locale,
             celoMonthlyStablecoinVolumeData.data.celoMonthlyStablecoinVolume
           )}
           <br />
           {t("caseStudies.celo.ctaLabel")}
         </>
       ),
-      lastUpdated: formatDateMonthDayYear(
+      lastUpdated: formatDateMonthDayYear(locale,
         celoMonthlyStablecoinVolumeData.lastUpdated
       ),
       ...celoMonthlyStablecoinVolumeData.sourceInfo,
@@ -265,12 +265,12 @@ export default async function Page({ params }: Props) {
       imgSrc: worldChain,
       ctaLabel: (
         <>
-          {formatLargeNumber(worldChainTxCountData.data.worldChainTxCount)}
+          {formatLargeNumber(locale, worldChainTxCountData.data.worldChainTxCount)}
           <br />
           {t("caseStudies.world.ctaLabel")}
         </>
       ),
-      lastUpdated: formatDateMonthDayYear(worldChainTxCountData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(locale, worldChainTxCountData.lastUpdated),
       ...worldChainTxCountData.sourceInfo,
     },
   ]
@@ -315,7 +315,7 @@ export default async function Page({ params }: Props) {
                     )}
                     {lastUpdated && (
                       <SourceInfoTooltip
-                        lastUpdated={formatDateMonthDayYear(lastUpdated)}
+                        lastUpdated={lastUpdated}
                       />
                     )}
                   </CardSource>
@@ -409,7 +409,7 @@ export default async function Page({ params }: Props) {
           <h2 className="text-h3-mobile sm:text-h3">{t("benefits.heading")}</h2>
 
           <L2BenefitsPanel
-            validatorsCount={formatLargeNumber(
+            validatorsCount={formatLargeNumber(locale,
               beaconChainData.data.validatorsCount,
               {},
               2

@@ -99,15 +99,14 @@ export const getPost = (slug: string, locale: string = "en") => {
   }
 }
 
-export const getPostImage = ({
-  image,
-  title,
-  datePublished,
-}: FrontMatter): string => {
+export const getPostImage = (
+  { image, title, datePublished }: FrontMatter,
+  locale: string = "en"
+): string => {
   if (image) return image
 
   const date = isValidDate(datePublished)
-    ? formatDateMonthDayYear(datePublished)
+    ? formatDateMonthDayYear(locale, datePublished)
     : datePublished
 
   return `/library/og/?title=${title}&date=${date}`

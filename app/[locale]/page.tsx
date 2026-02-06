@@ -188,56 +188,56 @@ export default async function Home({ params }: Props) {
 
   const metrics: Metric[] = [
     {
-      value: formatDuration(uptime, { maxDecimalPoints: 1 }),
+      value: formatDuration(locale, uptime, { maxDecimalPoints: 1 }),
       label: t("numbers.uptimeLabel"),
-      source: t("numbers.genesisSource", { date: formatDateMonthDayYear(MAINNET_GENESIS) }),
-      lastUpdated: formatDateMonthDayYear(Date.now()),
+      source: t("numbers.genesisSource", { date: formatDateMonthDayYear(locale, MAINNET_GENESIS) }),
+      lastUpdated: formatDateMonthDayYear(locale, Date.now()),
     },
     {
       value: formatLargeCurrency(
-        beaconChainData.data.totalStakedEther * ethPrice.data.usd
+        locale, beaconChainData.data.totalStakedEther * ethPrice.data.usd
       ),
-      label: t("numbers.networkSecurityLabel", { ethAmount: formatLargeNumber(beaconChainData.data.totalStakedEther) }),
-      lastUpdated: formatDateMonthDayYear(beaconChainData.lastUpdated),
+      label: t("numbers.networkSecurityLabel", { ethAmount: formatLargeNumber(locale, beaconChainData.data.totalStakedEther) }),
+      lastUpdated: formatDateMonthDayYear(locale, beaconChainData.lastUpdated),
       ...beaconChainData.sourceInfo,
     },
     {
       value: formatLargeCurrency(
-        stablecoinAssetMarketShareData.data.assetValue.mainnet
+        locale, stablecoinAssetMarketShareData.data.assetValue.mainnet
       ),
       label: (
         <>
           {t("numbers.stablecoinTvlLabel")}
           <br />
           <span className="font-medium">
-            {t("numbers.stablecoinMarketShare", { percent: formatPercent(stablecoinAssetMarketShareData.data.marketShare.mainnet) })}
+            {t("numbers.stablecoinMarketShare", { percent: formatPercent(locale, stablecoinAssetMarketShareData.data.marketShare.mainnet) })}
           </span>
         </>
       ),
       lastUpdated: formatDateMonthDayYear(
-        stablecoinAssetMarketShareData.lastUpdated
+        locale, stablecoinAssetMarketShareData.lastUpdated
       ),
       ...stablecoinAssetMarketShareData.sourceInfo,
     },
     {
-      value: formatLargeCurrency(defiTvlAllCurrentData.data.mainnetDefiTvl),
+      value: formatLargeCurrency(locale, defiTvlAllCurrentData.data.mainnetDefiTvl),
       label: (
         <>
           {t("numbers.defiTvlLabel")}
           <br />{" "}
           <span className="font-medium">
             {t("numbers.defiMarketShare", { percent: formatPercent(
-              defiTvlAllCurrentData.data.mainnetDefiMarketshare +
+              locale, defiTvlAllCurrentData.data.mainnetDefiMarketshare +
                 defiTvlAllCurrentData.data.layer2DefiMarketshare
             ) })}
           </span>
         </>
       ),
-      lastUpdated: formatDateMonthDayYear(defiTvlAllCurrentData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(locale, defiTvlAllCurrentData.lastUpdated),
       ...defiTvlAllCurrentData.sourceInfo,
     },
     {
-      value: formatLargeCurrency(dexVolume.data.trailing12moAvgDexVolume),
+      value: formatLargeCurrency(locale, dexVolume.data.trailing12moAvgDexVolume),
       label: (
         <>
           {t("numbers.dexVolumeLabel")}
@@ -245,7 +245,7 @@ export default async function Home({ params }: Props) {
           {t("numbers.dexVolumeSubLabel")}
         </>
       ),
-      lastUpdated: formatDateMonthDayYear(dexVolume.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(locale, dexVolume.lastUpdated),
       ...dexVolume.sourceInfo,
     },
   ]
@@ -259,16 +259,16 @@ export default async function Home({ params }: Props) {
       name: "BlackRock",
       imgSrc: blackRockSvg,
       label: t("platforms.blackrock.label"),
-      value: t("platforms.blackrock.value", { amount: formatLargeCurrency(securitizeAumData.data.currentValue) }),
-      lastUpdated: formatDateMonthDayYear(securitizeAumData.lastUpdated),
+      value: t("platforms.blackrock.value", { amount: formatLargeCurrency(locale, securitizeAumData.data.currentValue) }),
+      lastUpdated: formatDateMonthDayYear(locale, securitizeAumData.lastUpdated),
       ...securitizeAumData.sourceInfo,
     },
     {
       name: "Coinbase",
       imgSrc: coinbaseSvg,
       label: t("platforms.coinbase.label"),
-      value: t("platforms.coinbase.value", { amount: formatLargeCurrency(baseTvlData.data.baseTvl) }),
-      lastUpdated: formatDateMonthDayYear(baseTvlData.lastUpdated),
+      value: t("platforms.coinbase.value", { amount: formatLargeCurrency(locale, baseTvlData.data.baseTvl) }),
+      lastUpdated: formatDateMonthDayYear(locale, baseTvlData.lastUpdated),
       ...baseTvlData.sourceInfo,
     },
     {
@@ -276,7 +276,7 @@ export default async function Home({ params }: Props) {
       imgSrc: visaSvg,
       label: t("platforms.visa.label"),
       value: t("platforms.visa.value"),
-      lastUpdated: formatDateMonthDayYear("2025-10-17T00:00:00Z"),
+      lastUpdated: formatDateMonthDayYear(locale, "2025-10-17T00:00:00Z"),
       source: "Yahoo! Finance",
       sourceHref:
         "https://finance.yahoo.com/news/visa-v-shares-updates-goldman-185036058.html",
@@ -286,7 +286,7 @@ export default async function Home({ params }: Props) {
       imgSrc: etoroSvg,
       label: t("platforms.etoro.label"),
       value: t("platforms.etoro.value"),
-      lastUpdated: formatDateMonthDayYear("2025-10-17T00:00:00Z"),
+      lastUpdated: formatDateMonthDayYear(locale, "2025-10-17T00:00:00Z"),
       source: "eToro",
       sourceHref: "https://go.etoro.com/en/unlocked/withoutboundaries",
     },
@@ -440,7 +440,7 @@ export default async function Home({ params }: Props) {
                 <CardLabel variant="large">{t("leader.resilience.label")}</CardLabel>
                 <div className="text-muted-foreground font-medium">
                   {t.rich("leader.resilience.description", {
-                    uptime: formatDuration(uptime),
+                    uptime: formatDuration(locale, uptime),
                   })}
                 </div>
               </CardContent>
@@ -460,8 +460,8 @@ export default async function Home({ params }: Props) {
                 <CardLabel variant="large">{t("leader.decentralization.label")}</CardLabel>
                 <div className="text-muted-foreground font-medium">
                   {t.rich("leader.decentralization.description", {
-                    validatorCount: formatLargeNumber(beaconChainData.data.validatorsCount, {}, 2),
-                    securityValue: formatLargeCurrency(beaconChainData.data.totalStakedEther * ethPrice.data.usd),
+                    validatorCount: formatLargeNumber(locale, beaconChainData.data.validatorsCount, {}, 2),
+                    securityValue: formatLargeCurrency(locale, beaconChainData.data.totalStakedEther * ethPrice.data.usd),
                   })}
                 </div>
               </CardContent>
@@ -469,7 +469,7 @@ export default async function Home({ params }: Props) {
                 <CardLabel variant="large">{t("leader.liquidity.label")}</CardLabel>
                 <div className="text-muted-foreground font-medium">
                   {t.rich("leader.liquidity.description", {
-                    dexVolume: formatLargeCurrency(dexVolume.data.trailing12moAvgDexVolume),
+                    dexVolume: formatLargeCurrency(locale, dexVolume.data.trailing12moAvgDexVolume),
                   })}
                 </div>
               </CardContent>
@@ -478,11 +478,11 @@ export default async function Home({ params }: Props) {
                 <div className="text-muted-foreground font-medium">
                   {t.rich("leader.tokenization.description", {
                     rwaMarketShare: formatPercent(
-                      rwaAssetMarketShareData.data.marketShare.mainnet +
+                      locale, rwaAssetMarketShareData.data.marketShare.mainnet +
                         rwaAssetMarketShareData.data.marketShare.layer2
                     ),
                     stablecoinTvl: formatLargeCurrency(
-                      stablecoinAssetMarketShareData.data.assetValue.mainnet +
+                      locale, stablecoinAssetMarketShareData.data.assetValue.mainnet +
                         stablecoinAssetMarketShareData.data.assetValue.layer2
                     ),
                   })}

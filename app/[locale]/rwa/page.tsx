@@ -66,20 +66,20 @@ export default async function Page({ params }: Props) {
   const metrics: Metric[] = [
     {
       label: t("overview.stablecoinsL1"),
-      value: formatLargeCurrency(
+      value: formatLargeCurrency(locale,
         stablecoinAssetMarketShareData.data.assetValue.mainnet
       ),
-      lastUpdated: formatDateMonthDayYear(
+      lastUpdated: formatDateMonthDayYear(locale,
         stablecoinAssetMarketShareData.lastUpdated
       ),
       ...stablecoinAssetMarketShareData.sourceInfo,
     },
     {
       label: t("overview.stablecoinsL2"),
-      value: formatLargeCurrency(
+      value: formatLargeCurrency(locale,
         stablecoinAssetMarketShareData.data.assetValue.layer2
       ),
-      lastUpdated: formatDateMonthDayYear(
+      lastUpdated: formatDateMonthDayYear(locale,
         stablecoinAssetMarketShareData.lastUpdated
       ),
       ...stablecoinAssetMarketShareData.sourceInfo,
@@ -154,63 +154,63 @@ export default async function Page({ params }: Props) {
   const cashEquivalents: AssetDetails[] = [
     {
       header: "BUIDL",
-      valuation: formatLargeCurrency(assetValueByAssetIdsData.data.BUIDL),
+      valuation: formatLargeCurrency(locale, assetValueByAssetIdsData.data.BUIDL),
       description: "BlackRock USD Institutional Digital Liquidity Fund",
       issuer: "BlackRock & Securitize",
       metricHref: "https://app.rwa.xyz/assets/BUIDL",
       visitHref: "https://securitize.io/blackrock/buidl",
       ...assetValueByAssetIdsData.sourceInfo,
-      lastUpdated: formatDateMonthDayYear(assetValueByAssetIdsData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(locale, assetValueByAssetIdsData.lastUpdated),
     },
     {
       header: "USTB",
-      valuation: formatLargeCurrency(assetValueByAssetIdsData.data.USTB),
+      valuation: formatLargeCurrency(locale, assetValueByAssetIdsData.data.USTB),
       description: "Superstate Short Duration US Government Securities Fund",
       issuer: "Superstate",
       metricHref: "https://app.rwa.xyz/assets/USTB",
       visitHref: "https://superstate.com/assets/ustb",
       ...assetValueByAssetIdsData.sourceInfo,
-      lastUpdated: formatDateMonthDayYear(assetValueByAssetIdsData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(locale, assetValueByAssetIdsData.lastUpdated),
     },
     {
       header: "OUSG",
-      valuation: formatLargeCurrency(assetValueByAssetIdsData.data.OUSG),
+      valuation: formatLargeCurrency(locale, assetValueByAssetIdsData.data.OUSG),
       description: "Ondo Short-Term US Government Bond Fund",
       issuer: "Ondo",
       metricHref: "https://app.rwa.xyz/assets/OUSG",
       visitHref: "https://ondo.finance/ousg",
       ...assetValueByAssetIdsData.sourceInfo,
-      lastUpdated: formatDateMonthDayYear(assetValueByAssetIdsData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(locale, assetValueByAssetIdsData.lastUpdated),
     },
   ]
 
   const creditPlatforms: AssetDetails[] = [
     {
       header: "Centrifuge",
-      valuation: formatLargeCurrency(protocolsValueBySlugData.data.centrifuge),
+      valuation: formatLargeCurrency(locale, protocolsValueBySlugData.data.centrifuge),
       description: "Active loans on Ethereum + L2s",
       metricHref: "https://app.rwa.xyz/platforms/centrifuge",
       visitHref: "https://centrifuge.io/",
       ...protocolsValueBySlugData.sourceInfo,
-      lastUpdated: formatDateMonthDayYear(protocolsValueBySlugData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(locale, protocolsValueBySlugData.lastUpdated),
     },
     {
       header: "Maple Finance",
-      valuation: formatLargeCurrency(protocolsValueBySlugData.data.maple),
+      valuation: formatLargeCurrency(locale, protocolsValueBySlugData.data.maple),
       description: "Active loans on Ethereum + L2s",
       metricHref: "https://app.rwa.xyz/platforms/maple",
       visitHref: "https://maple.finance/",
       ...protocolsValueBySlugData.sourceInfo,
-      lastUpdated: formatDateMonthDayYear(protocolsValueBySlugData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(locale, protocolsValueBySlugData.lastUpdated),
     },
     {
       header: "Midas mF-ONE",
-      valuation: formatLargeCurrency(assetValueByAssetIdsData.data.mF_ONE),
+      valuation: formatLargeCurrency(locale, assetValueByAssetIdsData.data.mF_ONE),
       description: "Active loans on Ethereum + L2s",
       metricHref: "https://app.rwa.xyz/assets/mF-ONE",
       visitHref: "https://midas.app/mfone",
       ...assetValueByAssetIdsData.sourceInfo,
-      lastUpdated: formatDateMonthDayYear(assetValueByAssetIdsData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(locale, assetValueByAssetIdsData.lastUpdated),
     },
   ]
 
@@ -325,11 +325,11 @@ export default async function Page({ params }: Props) {
             <p className="text-muted-foreground font-medium">
               {t("stablecoins.marketCap")}{" "}
               <InlineText className="text-foreground font-bold">
-                {formatLargeCurrency(
+                {formatLargeCurrency(locale,
                   stablecoinAssetMarketShareData.data.assetValue.mainnet
                 )}
                 <SourceInfoTooltip
-                  lastUpdated={formatDateMonthDayYear(
+                  lastUpdated={formatDateMonthDayYear(locale,
                     stablecoinAssetMarketShareData.lastUpdated
                   )}
                   {...stablecoinAssetMarketShareData.sourceInfo}
@@ -364,11 +364,11 @@ export default async function Page({ params }: Props) {
             <p className="text-muted-foreground font-medium">
               {t("rwas.totalSector")}{" "}
               <InlineText className="text-foreground font-bold">
-                {formatLargeCurrency(
+                {formatLargeCurrency(locale,
                   rwaAssetMarketShareData.data.assetValue.mainnet
                 )}
                 <SourceInfoTooltip
-                  lastUpdated={formatDateMonthDayYear(
+                  lastUpdated={formatDateMonthDayYear(locale,
                     rwaAssetMarketShareData.lastUpdated
                   )}
                   {...rwaAssetMarketShareData.sourceInfo}
@@ -383,14 +383,14 @@ export default async function Page({ params }: Props) {
                 {t("rwas.treasuries")}
               </h3>
               <p className="text-big font-bold tracking-[0.055rem]">
-                {formatLargeCurrency(
+                {formatLargeCurrency(locale,
                   tokenizedTreasuriesData.data.totalTreasuries
                 )}
               </p>
               <InlineText className="text-muted font-medium">
                 {t("rwas.treasuriesSector")}
                 <SourceInfoTooltip
-                  lastUpdated={formatDateMonthDayYear(
+                  lastUpdated={formatDateMonthDayYear(locale,
                     tokenizedTreasuriesData.lastUpdated
                   )}
                   {...tokenizedTreasuriesData.sourceInfo}
@@ -450,14 +450,14 @@ export default async function Page({ params }: Props) {
                 {t("rwas.privateCredit")}
               </h3>
               <p className="text-big font-bold tracking-[0.055rem]">
-                {formatLargeCurrency(
+                {formatLargeCurrency(locale,
                   protocolsValueTotal.data.totalPrivateCredit
                 )}
               </p>
               <InlineText className="text-muted font-medium">
                 {t("rwas.activeLoans")}
                 <SourceInfoTooltip
-                  lastUpdated={formatDateMonthDayYear(
+                  lastUpdated={formatDateMonthDayYear(locale,
                     protocolsValueTotal.lastUpdated
                   )}
                   {...protocolsValueTotal.sourceInfo}

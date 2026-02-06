@@ -90,28 +90,28 @@ export default async function Page({ params }: Props) {
   const metrics: Metric[] = [
     {
       label: t("metrics.marketCap"),
-      value: formatLargeCurrency(etherMarketDetailsData.data.etherMarketCap),
-      lastUpdated: formatDateMonthDayYear(etherMarketDetailsData.lastUpdated),
+      value: formatLargeCurrency(locale,etherMarketDetailsData.data.etherMarketCap),
+      lastUpdated: formatDateMonthDayYear(locale,etherMarketDetailsData.lastUpdated),
       ...etherMarketDetailsData.sourceInfo,
     },
     {
       label: t("metrics.tvs"),
-      value: formatLargeCurrency(totalValueSecuredData.data.sum),
-      lastUpdated: formatDateMonthDayYear(totalValueSecuredData.lastUpdated),
+      value: formatLargeCurrency(locale,totalValueSecuredData.data.sum),
+      lastUpdated: formatDateMonthDayYear(locale,totalValueSecuredData.lastUpdated),
       ...totalValueSecuredData.sourceInfo,
     },
     {
       label: t("metrics.ethStaked"),
-      value: formatLargeCurrency(
+      value: formatLargeCurrency(locale,
         beaconChainData.data.totalStakedEther * ethPrice.data.usd
       ),
-      lastUpdated: formatDateMonthDayYear(beaconChainData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(locale,beaconChainData.lastUpdated),
       ...beaconChainData.sourceInfo,
     },
     {
       label: t("metrics.securityRatio"),
-      value: formatMultiplier(totalValueSecuredData.data.securityRatio),
-      lastUpdated: formatDateMonthDayYear(totalValueSecuredData.lastUpdated),
+      value: formatMultiplier(locale,totalValueSecuredData.data.securityRatio),
+      lastUpdated: formatDateMonthDayYear(locale,totalValueSecuredData.lastUpdated),
       ...totalValueSecuredData.sourceInfo,
     },
   ]
@@ -162,7 +162,7 @@ export default async function Page({ params }: Props) {
                       )}
                       {lastUpdated && (
                         <SourceInfoTooltip
-                          lastUpdated={formatDateMonthDayYear(lastUpdated)}
+                          lastUpdated={lastUpdated}
                         />
                       )}
                     </CardSource>
@@ -188,7 +188,7 @@ export default async function Page({ params }: Props) {
                 </CardContent>
                 <div className="text-h4 font-bold tracking-[0.04rem]">
                   <AnimatedNumberInView>
-                    {formatLargeCurrency(
+                    {formatLargeCurrency(locale,
                       timeseriesDefiTvlEthereumData.data.currentValue
                     )}
                   </AnimatedNumberInView>
@@ -209,7 +209,7 @@ export default async function Page({ params }: Props) {
                       {timeseriesDefiTvlEthereumData.sourceInfo.source}
                     </Link>
                     <SourceInfoTooltip
-                      lastUpdated={formatDateMonthDayYear(
+                      lastUpdated={formatDateMonthDayYear(locale,
                         timeseriesDefiTvlEthereumData.lastUpdated
                       )}
                     />
@@ -226,7 +226,7 @@ export default async function Page({ params }: Props) {
               <CardContent variant="flex-1-height-between">
                 <div className="my-10 flex flex-col items-center gap-y-6 sm:my-14">
                   <AnimatedNumberInView className="text-6xl font-bold tracking-[0.08rem] sm:text-7xl">
-                    {formatMultiplier(
+                    {formatMultiplier(locale,
                       defiTvlAllCurrentData.data.runnerUpMultiplier
                     )}
                   </AnimatedNumberInView>
@@ -244,7 +244,7 @@ export default async function Page({ params }: Props) {
                       {defiTvlAllCurrentData.sourceInfo.source}
                     </Link>
                     <SourceInfoTooltip
-                      lastUpdated={formatDateMonthDayYear(
+                      lastUpdated={formatDateMonthDayYear(locale,
                         defiTvlAllCurrentData.lastUpdated
                       )}
                     />
@@ -287,7 +287,7 @@ export default async function Page({ params }: Props) {
                     {stablecoinMarketShareData.sourceInfo.source}
                   </Link>
                   <SourceInfoTooltip
-                    lastUpdated={formatDateMonthDayYear(
+                    lastUpdated={formatDateMonthDayYear(locale,
                       stablecoinMarketShareData.lastUpdated
                     )}
                   />
@@ -327,7 +327,7 @@ export default async function Page({ params }: Props) {
                       {rwaAssetMarketShareData.sourceInfo.source}
                     </Link>
                     <SourceInfoTooltip
-                      lastUpdated={formatDateMonthDayYear(
+                      lastUpdated={formatDateMonthDayYear(locale,
                         rwaAssetMarketShareData.lastUpdated
                       )}
                     />
@@ -357,7 +357,7 @@ export default async function Page({ params }: Props) {
                       {rwaAssetMarketShareData.sourceInfo.source}
                     </Link>
                     <SourceInfoTooltip
-                      lastUpdated={formatDateMonthDayYear(
+                      lastUpdated={formatDateMonthDayYear(locale,
                         rwaAssetMarketShareData.lastUpdated
                       )}
                     />
@@ -393,7 +393,7 @@ export default async function Page({ params }: Props) {
                     {l2ScalingSummaryData.sourceInfo.source}
                   </Link>
                   <SourceInfoTooltip
-                    lastUpdated={formatDateMonthDayYear(
+                    lastUpdated={formatDateMonthDayYear(locale,
                       l2ScalingSummaryData.lastUpdated
                     )}
                   />
@@ -413,7 +413,7 @@ export default async function Page({ params }: Props) {
                 </CardContent>
                 <div className="text-h4 font-bold tracking-[0.04rem]">
                   <AnimatedNumberInView>
-                    {formatLargeCurrency(timeseriesL2TvlData.data.currentValue)}
+                    {formatLargeCurrency(locale,timeseriesL2TvlData.data.currentValue)}
                   </AnimatedNumberInView>
                 </div>
               </CardHeader>
@@ -427,7 +427,7 @@ export default async function Page({ params }: Props) {
                     {timeseriesL2TvlData.sourceInfo.source}
                   </Link>
                   <SourceInfoTooltip
-                    lastUpdated={formatDateMonthDayYear(
+                    lastUpdated={formatDateMonthDayYear(locale,
                       timeseriesL2TvlData.lastUpdated
                     )}
                   />

@@ -123,7 +123,7 @@ const internalLibraryItems: LibraryItem[] = fetchPosts().map(
     return {
       title,
       imgSrc: getPostImage(frontmatter),
-      date: formatDateMonthDayYear(datePublished),
+      date: formatDateMonthDayYear("en", datePublished),
       href: join("library", slug),
     }
   }

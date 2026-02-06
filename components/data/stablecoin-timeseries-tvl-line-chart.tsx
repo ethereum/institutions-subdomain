@@ -1,5 +1,6 @@
 "use client"
 
+import { useLocale } from "next-intl"
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
 import type { DataTimestamped } from "@/lib/types"
@@ -35,6 +36,7 @@ const StablecoinTimeseriesTvlLineChart = ({
   chartData,
   showL2,
 }: StablecoinTimeseriesTvlLineChartProps) => {
+  const locale = useLocale()
   const layer2DateValueMapping = chartData.data.layer2.series.reduce(
     (acc, item) => {
       acc[item.date] = item.value
@@ -106,7 +108,9 @@ const StablecoinTimeseriesTvlLineChart = ({
 
         <CartesianGrid vertical horizontal strokeDasharray="8 4" />
         <YAxis
-          tickFormatter={(v) => formatLargeCurrency(v, 3).replace(/\.0+/, "")}
+          tickFormatter={(v) =>
+            formatLargeCurrency(locale, v, 3).replace(/\.0+/, "")
+          }
           axisLine={false}
           tickLine={false}
           tickMargin={8}
@@ -116,13 +120,13 @@ const StablecoinTimeseriesTvlLineChart = ({
           axisLine={false}
           tickMargin={8}
           minTickGap={32}
-          tickFormatter={(v) => formatDateMonthYear(v)}
+          tickFormatter={(v) => formatDateMonthYear(locale, v)}
         />
         <ChartTooltip
           content={(props) => (
             <ChartTooltipContent
               {...props}
-              labelFormatter={(v) => formatDateFull(v)}
+              labelFormatter={(v) => formatDateFull(locale, v)}
               indicator="dot"
             />
           )}

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 
 import { DataTimestamped } from "@/lib/types"
 
@@ -29,6 +29,7 @@ const StablecoinChartCard = ({
 }: {
   data: DataTimestamped<TimeseriesAssetsValueData>
 }) => {
+  const locale = useLocale()
   const tCommon = useTranslations("common")
   const [showL2, setShowL2] = useState(true)
 
@@ -52,6 +53,7 @@ const StablecoinChartCard = ({
         <div className="text-h4 font-bold tracking-[0.04rem]">
           <AnimatedNumberInView>
             {formatLargeCurrency(
+              locale,
               showL2
                 ? data.data.mainnet.currentValue + data.data.layer2.currentValue
                 : data.data.mainnet.currentValue
@@ -73,7 +75,7 @@ const StablecoinChartCard = ({
             )}
             {data.lastUpdated && (
               <SourceInfoTooltip
-                lastUpdated={formatDateMonthDayYear(data.lastUpdated)}
+                lastUpdated={formatDateMonthDayYear(locale, data.lastUpdated)}
               />
             )}
           </CardSource>
