@@ -501,6 +501,22 @@
         "description": "Total value locked on Ethereum's L2 networks"
       }
     },
+    "charts": {
+      "mainnet": "Mainnet",
+      "layer2": "Layer 2",
+      "layer2Tvl": "Layer 2 TVL",
+      "stablecoinTvlWithL2": "Stablecoin TVL (Mainnet and L2s)",
+      "stablecoinTvlMainnetOnly": "Stablecoin TVL (Mainnet)",
+      "rwaTitle": "Value of Real-World Assets (RWAs)",
+      "hideL2Data": "Hide layer 2 data",
+      "showL2Data": "Show layer 2 data",
+      "marketShare": "Percent market share",
+      "ethMainnet": "Ethereum (Mainnet)",
+      "ethL2s": "Ethereum (L2s)",
+      "secondLargest": "2nd largest ecosystem",
+      "thirdLargest": "3rd largest ecosystem",
+      "remainder": "Remainder of market"
+    },
     "metadata": {
       "title": "Live Ethereum Network Data | Institutional Onchain Data Hub",
       "description": "Get live intelligence for the onchain economy. Explore curated metrics for mainnet activity, L2 scaling, DeFi markets, tokenized assets, and more."

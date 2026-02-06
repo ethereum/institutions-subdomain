@@ -501,6 +501,22 @@
         "description": "Valor total bloqueado en las redes L2 de Ethereum"
       }
     },
+    "charts": {
+      "mainnet": "Mainnet",
+      "layer2": "Layer 2",
+      "layer2Tvl": "Layer 2 TVL",
+      "stablecoinTvlWithL2": "Stablecoin TVL (Mainnet and L2s)",
+      "stablecoinTvlMainnetOnly": "Stablecoin TVL (Mainnet)",
+      "rwaTitle": "Value of Real-World Assets (RWAs)",
+      "hideL2Data": "Hide layer 2 data",
+      "showL2Data": "Show layer 2 data",
+      "marketShare": "Percent market share",
+      "ethMainnet": "Ethereum (Mainnet)",
+      "ethL2s": "Ethereum (L2s)",
+      "secondLargest": "2nd largest ecosystem",
+      "thirdLargest": "3rd largest ecosystem",
+      "remainder": "Remainder of market"
+    },
     "metadata": {
       "title": "Datos en Vivo de la Red Ethereum | Centro de Datos Institucional Onchain",
       "description": "Obtén inteligencia en vivo de la economía onchain. Explora métricas curadas de actividad de mainnet, escalado L2, mercados DeFi, activos tokenizados y más."

@@ -31,6 +31,7 @@ const StablecoinChartCard = ({
 }) => {
   const locale = useLocale()
   const tCommon = useTranslations("common")
+  const tCharts = useTranslations("dataHub.charts")
   const [showL2, setShowL2] = useState(true)
 
   const toggleShowL2 = () => {
@@ -42,11 +43,11 @@ const StablecoinChartCard = ({
       <CardHeader className="flex gap-2 !px-0 max-sm:flex-col sm:items-center">
         <CardContent className="flex-1 gap-4">
           <CardTitle className="text-xl">
-            Stablecoin TVL (Mainnet{showL2 ? " and L2s" : ""})
+            {showL2 ? tCharts("stablecoinTvlWithL2") : tCharts("stablecoinTvlMainnetOnly")}
           </CardTitle>
           <CardDescription className="font-medium">
             <Button variant="link" onClick={toggleShowL2}>
-              {showL2 ? "Hide" : "Show"} layer 2 data
+              {showL2 ? tCharts("hideL2Data") : tCharts("showL2Data")}
             </Button>
           </CardDescription>
         </CardContent>

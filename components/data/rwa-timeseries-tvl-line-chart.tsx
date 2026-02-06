@@ -1,6 +1,6 @@
 "use client"
 
-import { useLocale } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
 import type { DataTimestamped } from "@/lib/types"
@@ -17,17 +17,6 @@ import { formatLargeCurrency } from "@/lib/utils/number"
 
 import type { TimeseriesAssetsValueData } from "@/app/_actions/fetchTimeseriesAssetsValue"
 
-const chartConfig = {
-  mainnet: {
-    label: "Mainnet",
-    color: "var(--chart-1)",
-  },
-  layer2: {
-    label: "Layer 2",
-    color: "var(--chart-2)",
-  },
-} satisfies ChartConfig
-
 type RwaTimeseriesTvlLineChartProps = {
   chartData: DataTimestamped<TimeseriesAssetsValueData>
   showL2?: boolean
@@ -37,6 +26,18 @@ const RwaTimeseriesTvlLineChart = ({
   showL2,
 }: RwaTimeseriesTvlLineChartProps) => {
   const locale = useLocale()
+  const tCharts = useTranslations("dataHub.charts")
+
+  const chartConfig = {
+    mainnet: {
+      label: tCharts("mainnet"),
+      color: "var(--chart-1)",
+    },
+    layer2: {
+      label: tCharts("layer2"),
+      color: "var(--chart-2)",
+    },
+  } satisfies ChartConfig
   const layer2DateValueMapping = chartData.data.layer2.series.reduce(
     (acc, item) => {
       acc[item.date] = item.value
@@ -83,11 +84,11 @@ const RwaTimeseriesTvlLineChart = ({
             fill="var(--muted-foreground)"
             className="text-big font-bold opacity-10"
           >
-            Mainnet
+            {tCharts("mainnet")}
             {showL2 && (
               <>
                 <tspan x="53%" dy="1.2em">
-                  Layer 2
+                  {tCharts("layer2")}
                 </tspan>
               </>
             )}

@@ -1,6 +1,6 @@
 "use client"
 
-import { useLocale } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
 import type { DataTimestamped } from "@/lib/types"
@@ -17,13 +17,6 @@ import { formatLargeCurrency } from "@/lib/utils/number"
 
 import type { TimeseriesL2TvlData } from "@/app/_actions/fetchTimeseriesL2Tvl"
 
-const chartConfig = {
-  value: {
-    label: "Layer 2 TVL",
-    color: "var(--chart-1)",
-  },
-} satisfies ChartConfig
-
 type L2TimeseriesTvlLineChartProps = {
   chartData: DataTimestamped<TimeseriesL2TvlData>
 }
@@ -31,6 +24,14 @@ const L2TimeseriesTvlLineChart = ({
   chartData,
 }: L2TimeseriesTvlLineChartProps) => {
   const locale = useLocale()
+  const tCharts = useTranslations("dataHub.charts")
+
+  const chartConfig = {
+    value: {
+      label: tCharts("layer2Tvl"),
+      color: "var(--chart-1)",
+    },
+  } satisfies ChartConfig
   return (
     <ChartContainer
       config={chartConfig}
@@ -55,7 +56,7 @@ const L2TimeseriesTvlLineChart = ({
           >
             Ethereum
             <tspan x="53%" dy="1.2em">
-              Layer 2
+              {tCharts("layer2")}
             </tspan>
           </text>
         </g>

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { useLocale } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import {
   Cell,
   Pie,
@@ -44,31 +44,6 @@ type PieSliceProps = Partial<SectorProps> & {
   payload?: PieSlicePayload
 }
 
-const chartConfig = {
-  marketShare: {
-    label: "Percent market share",
-  },
-  ethereum: {
-    label: "Ethereum (Mainnet)",
-    color: "var(--chart-1)",
-  },
-  "ethereum-l2s": {
-    label: "Ethereum (L2s)",
-    color: "var(--chart-2)",
-  },
-  "alt-2nd": {
-    label: "2nd largest ecosystem",
-    color: "var(--chart-3)",
-  },
-  "alt-3rd": {
-    label: "3rd largest ecosystem",
-    color: "var(--chart-4)",
-  },
-  "alt-rest": {
-    label: "Remainder of market",
-    color: "var(--chart-5)",
-  },
-} satisfies ChartConfig
 
 /**
  * Renders a custom label for a pie chart slice, consisting of a small connector line
@@ -228,8 +203,35 @@ const StablecoinMarketSharePieChart = ({
   chartData,
 }: StablecoinMarketsharePieChartProps) => {
   const locale = useLocale()
+  const tCharts = useTranslations("dataHub.charts")
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
   const [activated, setActivated] = useState(false)
+
+  const chartConfig = {
+    marketShare: {
+      label: tCharts("marketShare"),
+    },
+    ethereum: {
+      label: tCharts("ethMainnet"),
+      color: "var(--chart-1)",
+    },
+    "ethereum-l2s": {
+      label: tCharts("ethL2s"),
+      color: "var(--chart-2)",
+    },
+    "alt-2nd": {
+      label: tCharts("secondLargest"),
+      color: "var(--chart-3)",
+    },
+    "alt-3rd": {
+      label: tCharts("thirdLargest"),
+      color: "var(--chart-4)",
+    },
+    "alt-rest": {
+      label: tCharts("remainder"),
+      color: "var(--chart-5)",
+    },
+  } satisfies ChartConfig
 
   const colorLookup = chartConfig as Record<
     string,

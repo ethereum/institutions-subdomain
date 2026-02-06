@@ -501,6 +501,22 @@
         "description": "以太坊L2网络的总锁定价值"
       }
     },
+    "charts": {
+      "mainnet": "Mainnet",
+      "layer2": "Layer 2",
+      "layer2Tvl": "Layer 2 TVL",
+      "stablecoinTvlWithL2": "Stablecoin TVL (Mainnet and L2s)",
+      "stablecoinTvlMainnetOnly": "Stablecoin TVL (Mainnet)",
+      "rwaTitle": "Value of Real-World Assets (RWAs)",
+      "hideL2Data": "Hide layer 2 data",
+      "showL2Data": "Show layer 2 data",
+      "marketShare": "Percent market share",
+      "ethMainnet": "Ethereum (Mainnet)",
+      "ethL2s": "Ethereum (L2s)",
+      "secondLargest": "2nd largest ecosystem",
+      "thirdLargest": "3rd largest ecosystem",
+      "remainder": "Remainder of market"
+    },
     "metadata": {
       "title": "以太坊网络实时数据 | 机构链上数据中心",
       "description": "获取链上经济的实时情报。探索主网活动、L2扩容、DeFi市场、代币化资产等精选指标。"
