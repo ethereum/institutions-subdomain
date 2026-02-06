@@ -66,20 +66,24 @@ export default async function Page({ params }: Props) {
   const metrics: Metric[] = [
     {
       label: t("overview.stablecoinsL1"),
-      value: formatLargeCurrency(locale,
+      value: formatLargeCurrency(
+        locale,
         stablecoinAssetMarketShareData.data.assetValue.mainnet
       ),
-      lastUpdated: formatDateMonthDayYear(locale,
+      lastUpdated: formatDateMonthDayYear(
+        locale,
         stablecoinAssetMarketShareData.lastUpdated
       ),
       ...stablecoinAssetMarketShareData.sourceInfo,
     },
     {
       label: t("overview.stablecoinsL2"),
-      value: formatLargeCurrency(locale,
+      value: formatLargeCurrency(
+        locale,
         stablecoinAssetMarketShareData.data.assetValue.layer2
       ),
-      lastUpdated: formatDateMonthDayYear(locale,
+      lastUpdated: formatDateMonthDayYear(
+        locale,
         stablecoinAssetMarketShareData.lastUpdated
       ),
       ...stablecoinAssetMarketShareData.sourceInfo,
@@ -154,72 +158,105 @@ export default async function Page({ params }: Props) {
   const cashEquivalents: AssetDetails[] = [
     {
       header: "BUIDL",
-      valuation: formatLargeCurrency(locale, assetValueByAssetIdsData.data.BUIDL),
+      valuation: formatLargeCurrency(
+        locale,
+        assetValueByAssetIdsData.data.BUIDL
+      ),
       description: t("cards.buidlDesc", { brand: "BlackRock" }),
       issuer: "BlackRock & Securitize",
       metricHref: "https://app.rwa.xyz/assets/BUIDL",
       visitHref: "https://securitize.io/blackrock/buidl",
       ...assetValueByAssetIdsData.sourceInfo,
-      lastUpdated: formatDateMonthDayYear(locale, assetValueByAssetIdsData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        assetValueByAssetIdsData.lastUpdated
+      ),
     },
     {
       header: "USTB",
-      valuation: formatLargeCurrency(locale, assetValueByAssetIdsData.data.USTB),
+      valuation: formatLargeCurrency(
+        locale,
+        assetValueByAssetIdsData.data.USTB
+      ),
       description: t("cards.ustbDesc", { brand: "Superstate" }),
       issuer: "Superstate",
       metricHref: "https://app.rwa.xyz/assets/USTB",
       visitHref: "https://superstate.com/assets/ustb",
       ...assetValueByAssetIdsData.sourceInfo,
-      lastUpdated: formatDateMonthDayYear(locale, assetValueByAssetIdsData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        assetValueByAssetIdsData.lastUpdated
+      ),
     },
     {
       header: "OUSG",
-      valuation: formatLargeCurrency(locale, assetValueByAssetIdsData.data.OUSG),
+      valuation: formatLargeCurrency(
+        locale,
+        assetValueByAssetIdsData.data.OUSG
+      ),
       description: t("cards.ousgDesc", { brand: "Ondo" }),
       issuer: "Ondo",
       metricHref: "https://app.rwa.xyz/assets/OUSG",
       visitHref: "https://ondo.finance/ousg",
       ...assetValueByAssetIdsData.sourceInfo,
-      lastUpdated: formatDateMonthDayYear(locale, assetValueByAssetIdsData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        assetValueByAssetIdsData.lastUpdated
+      ),
     },
   ]
 
   const creditPlatforms: AssetDetails[] = [
     {
       header: "Centrifuge",
-      valuation: formatLargeCurrency(locale, protocolsValueBySlugData.data.centrifuge),
+      valuation: formatLargeCurrency(
+        locale,
+        protocolsValueBySlugData.data.centrifuge
+      ),
       description: t("rwas.activeLoans"),
       metricHref: "https://app.rwa.xyz/platforms/centrifuge",
       visitHref: "https://centrifuge.io/",
       ...protocolsValueBySlugData.sourceInfo,
-      lastUpdated: formatDateMonthDayYear(locale, protocolsValueBySlugData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        protocolsValueBySlugData.lastUpdated
+      ),
     },
     {
       header: "Maple Finance",
-      valuation: formatLargeCurrency(locale, protocolsValueBySlugData.data.maple),
+      valuation: formatLargeCurrency(
+        locale,
+        protocolsValueBySlugData.data.maple
+      ),
       description: t("rwas.activeLoans"),
       metricHref: "https://app.rwa.xyz/platforms/maple",
       visitHref: "https://maple.finance/",
       ...protocolsValueBySlugData.sourceInfo,
-      lastUpdated: formatDateMonthDayYear(locale, protocolsValueBySlugData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        protocolsValueBySlugData.lastUpdated
+      ),
     },
     {
       header: "Midas mF-ONE",
-      valuation: formatLargeCurrency(locale, assetValueByAssetIdsData.data.mF_ONE),
+      valuation: formatLargeCurrency(
+        locale,
+        assetValueByAssetIdsData.data.mF_ONE
+      ),
       description: t("rwas.activeLoans"),
       metricHref: "https://app.rwa.xyz/assets/mF-ONE",
       visitHref: "https://midas.app/mfone",
       ...assetValueByAssetIdsData.sourceInfo,
-      lastUpdated: formatDateMonthDayYear(locale, assetValueByAssetIdsData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        assetValueByAssetIdsData.lastUpdated
+      ),
     },
   ]
 
   return (
     <main className="row-start-2 flex flex-col items-center sm:items-start">
-      <Hero
-        heading={t("hero.heading")}
-        shape="badge-dollar-sign"
-      >
+      <Hero heading={t("hero.heading")} shape="badge-dollar-sign">
         {t("hero.description")}
       </Hero>
       <article className="max-w-8xl mx-auto w-full space-y-20 px-4 py-10 sm:px-10 sm:py-20 md:space-y-40">
@@ -228,9 +265,7 @@ export default async function Page({ params }: Props) {
           className="flex items-center gap-8 border p-8 max-lg:flex-col"
         >
           <h2 className="sr-only">{t("overview.srHeading")}</h2>
-          <p className="flex-1 font-medium">
-            {t("overview.description")}
-          </p>
+          <p className="flex-1 font-medium">{t("overview.description")}</p>
           <div className="flex w-full flex-1 gap-4 max-sm:flex-col">
             {metrics.map(({ label, value, ...sourceInfo }, idx) => {
               const { source, sourceHref } = sourceInfo
@@ -325,11 +360,13 @@ export default async function Page({ params }: Props) {
             <p className="text-muted-foreground font-medium">
               {t("stablecoins.marketCap")}{" "}
               <InlineText className="text-foreground font-bold">
-                {formatLargeCurrency(locale,
+                {formatLargeCurrency(
+                  locale,
                   stablecoinAssetMarketShareData.data.assetValue.mainnet
                 )}
                 <SourceInfoTooltip
-                  lastUpdated={formatDateMonthDayYear(locale,
+                  lastUpdated={formatDateMonthDayYear(
+                    locale,
                     stablecoinAssetMarketShareData.lastUpdated
                   )}
                   {...stablecoinAssetMarketShareData.sourceInfo}
@@ -364,11 +401,13 @@ export default async function Page({ params }: Props) {
             <p className="text-muted-foreground font-medium">
               {t("rwas.totalSector")}{" "}
               <InlineText className="text-foreground font-bold">
-                {formatLargeCurrency(locale,
+                {formatLargeCurrency(
+                  locale,
                   rwaAssetMarketShareData.data.assetValue.mainnet
                 )}
                 <SourceInfoTooltip
-                  lastUpdated={formatDateMonthDayYear(locale,
+                  lastUpdated={formatDateMonthDayYear(
+                    locale,
                     rwaAssetMarketShareData.lastUpdated
                   )}
                   {...rwaAssetMarketShareData.sourceInfo}
@@ -383,14 +422,16 @@ export default async function Page({ params }: Props) {
                 {t("rwas.treasuries")}
               </h3>
               <p className="text-big font-bold tracking-[0.055rem]">
-                {formatLargeCurrency(locale,
+                {formatLargeCurrency(
+                  locale,
                   tokenizedTreasuriesData.data.totalTreasuries
                 )}
               </p>
               <InlineText className="text-muted font-medium">
                 {t("rwas.treasuriesSector")}
                 <SourceInfoTooltip
-                  lastUpdated={formatDateMonthDayYear(locale,
+                  lastUpdated={formatDateMonthDayYear(
+                    locale,
                     tokenizedTreasuriesData.lastUpdated
                   )}
                   {...tokenizedTreasuriesData.sourceInfo}
@@ -450,14 +491,16 @@ export default async function Page({ params }: Props) {
                 {t("rwas.privateCredit")}
               </h3>
               <p className="text-big font-bold tracking-[0.055rem]">
-                {formatLargeCurrency(locale,
+                {formatLargeCurrency(
+                  locale,
                   protocolsValueTotal.data.totalPrivateCredit
                 )}
               </p>
               <InlineText className="text-muted font-medium">
                 {t("rwas.activeLoans")}
                 <SourceInfoTooltip
-                  lastUpdated={formatDateMonthDayYear(locale,
+                  lastUpdated={formatDateMonthDayYear(
+                    locale,
                     protocolsValueTotal.lastUpdated
                   )}
                   {...protocolsValueTotal.sourceInfo}
@@ -534,7 +577,7 @@ export default async function Page({ params }: Props) {
 
               <hr className="my-6" />
 
-              <div className="grid gap-x-3 gap-y-2 py-6">
+              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
                   <h4 className="text-h6">{t("why.l1.finality")}</h4>
@@ -543,7 +586,7 @@ export default async function Page({ params }: Props) {
                   {t("why.l1.finalityDesc")}
                 </div>
               </div>
-              <div className="grid gap-x-3 gap-y-2 py-6">
+              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
                   <h4 className="text-h6">{t("why.l1.security")}</h4>
@@ -552,7 +595,7 @@ export default async function Page({ params }: Props) {
                   {t("why.l1.securityDesc")}
                 </div>
               </div>
-              <div className="grid gap-x-3 gap-y-2 py-6">
+              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
                   <h4 className="text-h6">{t("why.l1.riskGating")}</h4>
@@ -572,7 +615,7 @@ export default async function Page({ params }: Props) {
 
               <hr className="my-6" />
 
-              <div className="grid gap-x-3 gap-y-2 py-6">
+              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
                   <h4 className="text-h6">{t("why.l2.throughput")}</h4>
@@ -581,7 +624,7 @@ export default async function Page({ params }: Props) {
                   {t("why.l2.throughputDesc")}
                 </div>
               </div>
-              <div className="grid gap-x-3 gap-y-2 py-6">
+              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
                   <h4 className="text-h6">{t("why.l2.configurable")}</h4>
@@ -590,7 +633,7 @@ export default async function Page({ params }: Props) {
                   {t("why.l2.configurableDesc")}
                 </div>
               </div>
-              <div className="grid gap-x-3 gap-y-2 py-6">
+              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
                   <h4 className="text-h6">{t("why.l2.specialization")}</h4>

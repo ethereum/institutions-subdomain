@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/card"
 import Link from "@/components/ui/link"
 
+import { cn } from "@/lib/utils"
 import { formatDateMonthDayYear } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
 import {
@@ -56,8 +57,14 @@ export default async function Page({ params }: Props) {
           {t("metrics.defiTvl")} <span title="Total Value Locked">TVL</span>
         </>
       ),
-      value: formatLargeCurrency(locale, defiTvlAllCurrentData.data.mainnetDefiTvl),
-      lastUpdated: formatDateMonthDayYear(locale, defiTvlAllCurrentData.lastUpdated),
+      value: formatLargeCurrency(
+        locale,
+        defiTvlAllCurrentData.data.mainnetDefiTvl
+      ),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        defiTvlAllCurrentData.lastUpdated
+      ),
       ...defiTvlAllCurrentData.sourceInfo,
     },
     {
@@ -66,15 +73,26 @@ export default async function Page({ params }: Props) {
           {t("metrics.shareGlobal")} <span title="Total Value Locked">TVL</span>
         </>
       ),
-      value: formatPercent(locale, defiTvlAllCurrentData.data.mainnetDefiMarketshare),
-      lastUpdated: formatDateMonthDayYear(locale, defiTvlAllCurrentData.lastUpdated),
+      value: formatPercent(
+        locale,
+        defiTvlAllCurrentData.data.mainnetDefiMarketshare
+      ),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        defiTvlAllCurrentData.lastUpdated
+      ),
       ...defiTvlAllCurrentData.sourceInfo,
     },
     {
-      value: formatLargeCurrency(locale, dexVolume.data.trailing12moAvgDexVolume),
+      value: formatLargeCurrency(
+        locale,
+        dexVolume.data.trailing12moAvgDexVolume
+      ),
       label: (
         <>
-          {t("metrics.dexVolume")} <span title="Decentralized Exchange">DEX</span> {t("metrics.dexVolumeSuffix")}
+          {t("metrics.dexVolume")}{" "}
+          <span title="Decentralized Exchange">DEX</span>{" "}
+          {t("metrics.dexVolumeSuffix")}
         </>
       ),
       lastUpdated: formatDateMonthDayYear(locale, dexVolume.lastUpdated),
@@ -86,8 +104,14 @@ export default async function Page({ params }: Props) {
           <span title="Total Value Locked">TVL</span> {t("metrics.tvlVsNext")}
         </>
       ),
-      value: formatMultiplier(locale, defiTvlAllCurrentData.data.runnerUpMultiplier),
-      lastUpdated: formatDateMonthDayYear(locale, defiTvlAllCurrentData.lastUpdated),
+      value: formatMultiplier(
+        locale,
+        defiTvlAllCurrentData.data.runnerUpMultiplier
+      ),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        defiTvlAllCurrentData.lastUpdated
+      ),
       ...defiTvlAllCurrentData.sourceInfo,
     },
   ]
@@ -127,17 +151,16 @@ export default async function Page({ params }: Props) {
   return (
     <main className="row-start-2 flex flex-col items-center sm:items-start">
       <Hero heading={t("hero.heading")} shape="coins">
-        <p>
-          {t("hero.description1")}
-        </p>
-        <p>
-          {t("hero.description2")}
-        </p>
+        <p>{t("hero.description1")}</p>
+        <p>{t("hero.description2")}</p>
       </Hero>
       <article className="max-w-8xl mx-auto w-full space-y-10 px-4 py-20 sm:px-10 sm:py-20 md:space-y-40">
         <section
           id="metrics"
-          className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-12 xl:grid-cols-4"
+          className={cn(
+            "grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4",
+            locale === "en" ? "md:gap-12" : "md:gap-4"
+          )}
         >
           <h2 className="sr-only">{t("metrics.srHeading")}</h2>
           {metrics.map(
@@ -168,9 +191,7 @@ export default async function Page({ params }: Props) {
                       source
                     )}
                     {lastUpdated && (
-                      <SourceInfoTooltip
-                        lastUpdated={lastUpdated}
-                      />
+                      <SourceInfoTooltip lastUpdated={lastUpdated} />
                     )}
                   </CardSource>
                 )}

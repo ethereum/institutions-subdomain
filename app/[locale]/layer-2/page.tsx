@@ -20,6 +20,7 @@ import {
 import { InlineText } from "@/components/ui/inline-text"
 import Link from "@/components/ui/link"
 
+import { cn } from "@/lib/utils"
 import { formatDateMonthDayYear } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
 import {
@@ -89,35 +90,49 @@ export default async function Page({ params }: Props) {
     {
       label: <span title="Total Value Locked">{t("metrics.tvlAcross")}</span>,
       value: formatLargeCurrency(locale, l2ScalingSummaryData.data.totalTvl),
-      lastUpdated: formatDateMonthDayYear(locale, l2ScalingSummaryData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        l2ScalingSummaryData.lastUpdated
+      ),
       ...l2ScalingSummaryData.sourceInfo,
     },
     {
       label: t("metrics.avgTxCost"),
-      value: formatCurrency(locale,
+      value: formatCurrency(
+        locale,
         l2MedianTxCostData.data.latestWeightedMedianTxCostUsd,
         {
           minimumSignificantDigits: 3,
           maximumSignificantDigits: 3,
         }
       ),
-      lastUpdated: formatDateMonthDayYear(locale, l2MedianTxCostData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        l2MedianTxCostData.lastUpdated
+      ),
       ...l2MedianTxCostData.sourceInfo,
     },
     {
       label: (
         <>
-          {t("metrics.avgUops")} <span title="User Operations Per Second">UOPS</span>
+          {t("metrics.avgUops")}{" "}
+          <span title="User Operations Per Second">UOPS</span>
         </>
       ),
       value: formatLargeNumber(locale, l2ScalingActivityData.data.uops),
-      lastUpdated: formatDateMonthDayYear(locale, l2ScalingActivityData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        l2ScalingActivityData.lastUpdated
+      ),
       ...l2ScalingActivityData.sourceInfo,
     },
     {
       label: t("metrics.numberOfL2s"),
       value: l2ScalingSummaryData.data.allProjectsCount,
-      lastUpdated: formatDateMonthDayYear(locale, l2ScalingSummaryData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        l2ScalingSummaryData.lastUpdated
+      ),
       ...l2ScalingSummaryData.sourceInfo,
     },
   ]
@@ -246,14 +261,16 @@ export default async function Page({ params }: Props) {
       imgSrc: celo,
       ctaLabel: (
         <>
-          {formatLargeCurrency(locale,
+          {formatLargeCurrency(
+            locale,
             celoMonthlyStablecoinVolumeData.data.celoMonthlyStablecoinVolume
           )}
           <br />
           {t("caseStudies.celo.ctaLabel")}
         </>
       ),
-      lastUpdated: formatDateMonthDayYear(locale,
+      lastUpdated: formatDateMonthDayYear(
+        locale,
         celoMonthlyStablecoinVolumeData.lastUpdated
       ),
       ...celoMonthlyStablecoinVolumeData.sourceInfo,
@@ -265,12 +282,18 @@ export default async function Page({ params }: Props) {
       imgSrc: worldChain,
       ctaLabel: (
         <>
-          {formatLargeNumber(locale, worldChainTxCountData.data.worldChainTxCount)}
+          {formatLargeNumber(
+            locale,
+            worldChainTxCountData.data.worldChainTxCount
+          )}
           <br />
           {t("caseStudies.world.ctaLabel")}
         </>
       ),
-      lastUpdated: formatDateMonthDayYear(locale, worldChainTxCountData.lastUpdated),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        worldChainTxCountData.lastUpdated
+      ),
       ...worldChainTxCountData.sourceInfo,
     },
   ]
@@ -278,15 +301,16 @@ export default async function Page({ params }: Props) {
   return (
     <main className="row-start-2 flex flex-col items-center sm:items-start">
       <Hero heading={t("hero.heading")} shape="layers-2">
-        <p>
-          {t("hero.description1")}
-        </p>
-        <p>
-          {t("hero.description2")}
-        </p>
+        <p>{t("hero.description1")}</p>
+        <p>{t("hero.description2")}</p>
       </Hero>
       <article className="max-w-8xl mx-auto w-full space-y-20 px-4 py-10 sm:px-10 sm:py-20 md:space-y-40">
-        <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-12 xl:grid-cols-4">
+        <section
+          className={cn(
+            "grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4",
+            locale === "en" ? "md:gap-12" : "md:gap-4"
+          )}
+        >
           <h2 className="sr-only">{t("metrics.srHeading")}</h2>
           {metrics.map(
             ({ label, value, source, sourceHref, lastUpdated }, idx) => (
@@ -314,9 +338,7 @@ export default async function Page({ params }: Props) {
                       source
                     )}
                     {lastUpdated && (
-                      <SourceInfoTooltip
-                        lastUpdated={lastUpdated}
-                      />
+                      <SourceInfoTooltip lastUpdated={lastUpdated} />
                     )}
                   </CardSource>
                 )}
@@ -336,7 +358,7 @@ export default async function Page({ params }: Props) {
 
               <hr className="my-6" />
 
-              <div className="grid gap-x-3 gap-y-2 py-6">
+              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
                   <h4 className="text-h6">{t("role.l1.finality")}</h4>
@@ -345,7 +367,7 @@ export default async function Page({ params }: Props) {
                   {t("role.l1.finalityDesc")}
                 </div>
               </div>
-              <div className="grid gap-x-3 gap-y-2 py-6">
+              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
                   <h4 className="text-h6">{t("role.l1.security")}</h4>
@@ -354,7 +376,7 @@ export default async function Page({ params }: Props) {
                   {t("role.l1.securityDesc")}
                 </div>
               </div>
-              <div className="grid gap-x-3 gap-y-2 py-6">
+              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
                   <h4 className="text-h6">{t("role.l1.riskGating")}</h4>
@@ -374,7 +396,7 @@ export default async function Page({ params }: Props) {
 
               <hr className="my-6" />
 
-              <div className="grid gap-x-3 gap-y-2 py-6">
+              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
                   <h4 className="text-h6">{t("role.l2.throughput")}</h4>
@@ -383,7 +405,7 @@ export default async function Page({ params }: Props) {
                   {t("role.l2.throughputDesc")}
                 </div>
               </div>
-              <div className="grid gap-x-3 gap-y-2 py-6">
+              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
                   <h4 className="text-h6">{t("role.l2.configurable")}</h4>
@@ -392,7 +414,7 @@ export default async function Page({ params }: Props) {
                   {t("role.l2.configurableDesc")}
                 </div>
               </div>
-              <div className="grid gap-x-3 gap-y-2 py-6">
+              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
                   <h4 className="text-h6">{t("role.l2.specialization")}</h4>
@@ -409,7 +431,8 @@ export default async function Page({ params }: Props) {
           <h2 className="text-h3-mobile sm:text-h3">{t("benefits.heading")}</h2>
 
           <L2BenefitsPanel
-            validatorsCount={formatLargeNumber(locale,
+            validatorsCount={formatLargeNumber(
+              locale,
               beaconChainData.data.validatorsCount,
               {},
               2
@@ -520,7 +543,9 @@ export default async function Page({ params }: Props) {
           </div>
 
           <div className="space-y-2">
-            <h3 className="text-h4-mobile sm:text-h4">{t("networksSection.heading")}</h3>
+            <h3 className="text-h4-mobile sm:text-h4">
+              {t("networksSection.heading")}
+            </h3>
             <p className="text-muted-foreground font-medium">
               {t("networksSection.description")}
             </p>
@@ -550,7 +575,9 @@ export default async function Page({ params }: Props) {
         </section>
 
         <section id="cases" className="space-y-8">
-          <h2 className="text-h3-mobile sm:text-h3">{t("caseStudiesSection.heading")}</h2>
+          <h2 className="text-h3-mobile sm:text-h3">
+            {t("caseStudiesSection.heading")}
+          </h2>
           <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,260px),1fr))] gap-4">
             {caseStudies.map(
               ({
@@ -594,7 +621,9 @@ export default async function Page({ params }: Props) {
         </section>
 
         <section id="enterprise" className="space-y-8">
-          <h2 className="text-h3-mobile sm:text-h3">{t("enterprise.heading")}</h2>
+          <h2 className="text-h3-mobile sm:text-h3">
+            {t("enterprise.heading")}
+          </h2>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <Card className="p-10">
@@ -602,37 +631,45 @@ export default async function Page({ params }: Props) {
 
               <hr className="my-6" />
 
-              <div className="grid gap-x-3 gap-y-2 py-6">
+              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">{t("enterprise.existing.immediateAccess")}</h4>
+                  <h4 className="text-h6">
+                    {t("enterprise.existing.immediateAccess")}
+                  </h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
                   {t("enterprise.existing.immediateAccessDesc")}
                 </div>
               </div>
-              <div className="grid gap-x-3 gap-y-2 py-6">
+              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">{t("enterprise.existing.lowerCosts")}</h4>
+                  <h4 className="text-h6">
+                    {t("enterprise.existing.lowerCosts")}
+                  </h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
                   {t("enterprise.existing.lowerCostsDesc")}
                 </div>
               </div>
-              <div className="grid gap-x-3 gap-y-2 py-6">
+              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">{t("enterprise.existing.regulatoryAlignment")}</h4>
+                  <h4 className="text-h6">
+                    {t("enterprise.existing.regulatoryAlignment")}
+                  </h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
                   {t("enterprise.existing.regulatoryAlignmentDesc")}
                 </div>
               </div>
-              <div className="grid gap-x-3 gap-y-2 py-6">
+              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">{t("enterprise.existing.productionSecurity")}</h4>
+                  <h4 className="text-h6">
+                    {t("enterprise.existing.productionSecurity")}
+                  </h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
                   {t("enterprise.existing.productionSecurityDesc")}
@@ -645,37 +682,45 @@ export default async function Page({ params }: Props) {
 
               <hr className="my-6" />
 
-              <div className="grid gap-x-3 gap-y-2 py-6">
+              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">{t("enterprise.custom.tailoredEnvironments")}</h4>
+                  <h4 className="text-h6">
+                    {t("enterprise.custom.tailoredEnvironments")}
+                  </h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
                   {t("enterprise.custom.tailoredEnvironmentsDesc")}
                 </div>
               </div>
-              <div className="grid gap-x-3 gap-y-2 py-6">
+              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">{t("enterprise.custom.customFeatures")}</h4>
+                  <h4 className="text-h6">
+                    {t("enterprise.custom.customFeatures")}
+                  </h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
                   {t("enterprise.custom.customFeaturesDesc")}
                 </div>
               </div>
-              <div className="grid gap-x-3 gap-y-2 py-6">
+              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">{t("enterprise.custom.sharedSecurity")}</h4>
+                  <h4 className="text-h6">
+                    {t("enterprise.custom.sharedSecurity")}
+                  </h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
                   {t("enterprise.custom.sharedSecurityDesc")}
                 </div>
               </div>
-              <div className="grid gap-x-3 gap-y-2 py-6">
+              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">{t("enterprise.custom.fasterTimeToMarket")}</h4>
+                  <h4 className="text-h6">
+                    {t("enterprise.custom.fasterTimeToMarket")}
+                  </h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
                   {t("enterprise.custom.fasterTimeToMarketDesc")}
