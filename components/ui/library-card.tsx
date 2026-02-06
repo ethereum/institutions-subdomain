@@ -25,7 +25,10 @@ function LibraryCardHeader({
   return (
     <div
       data-slot="card-header"
-      className={cn("h-52 overflow-hidden", className)}
+      className={cn(
+        "from-primary/5 dark:from-primary/20 to-primary/10 h-52 overflow-hidden bg-gradient-to-b",
+        className
+      )}
       {...props}
     />
   )
