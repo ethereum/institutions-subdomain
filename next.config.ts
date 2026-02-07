@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   /* config options here */
 }
 
-export default withSentryConfig(nextConfig, {
-  silent: !process.env.CI,
-})
+// Only load Sentry on Netlify production builds
+export default process.env.CONTEXT === "production"
+  ? withSentryConfig(nextConfig, {
+      silent: !process.env.CI,
+    })
+  : nextConfig
