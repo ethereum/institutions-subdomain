@@ -1,5 +1,3 @@
-import { LinkProps } from "@/components/ui/link"
-
 import type { NetworkNameId, SourceInfo } from "./types"
 
 /**
@@ -54,29 +52,18 @@ export const SOURCE = {
  * Site navigation
  */
 
-export const DA_NAV_ITEM_LINKS: LinkProps[] = [
-  {
-    children: "RWAs & Stablecoins",
-    href: "/rwa",
-  },
-  {
-    children: "Decentralized Finance",
-    href: "/defi",
-  },
-  {
-    children: "Compliant Privacy",
-    href: "/privacy",
-  },
-  {
-    children: "L2 Ecosystem",
-    href: "/layer-2",
-  },
-]
+// Navigation structure using translation keys for i18n support
+export const DA_NAV_ITEMS = [
+  { href: "/rwa", translationKey: "rwa" },
+  { href: "/defi", translationKey: "defi" },
+  { href: "/privacy", translationKey: "privacy" },
+  { href: "/layer-2", translationKey: "layer2" },
+] as const
 
-export const NAV_ITEM_LINKS: LinkProps[] = [
-  { children: "Live Data", href: "/data-hub" },
-  { children: "Library", href: "/library" },
-]
+export const NAV_ITEMS = [
+  { href: "/data-hub", translationKey: "dataHub" },
+  { href: "/library", translationKey: "library" },
+] as const
 
 /**
  * RWA.xyz API usage

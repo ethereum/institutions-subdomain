@@ -1,19 +1,23 @@
-import { Fragment } from "react";
-import { X } from "lucide-react";
-import localFont from "next/font/local";
-import { notFound } from "next/navigation";
-import type { Metadata } from "next/types";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
+import { Fragment } from "react"
+import { X } from "lucide-react"
+import localFont from "next/font/local"
+import { notFound } from "next/navigation"
+import type { Metadata } from "next/types"
+import { NextIntlClientProvider } from "next-intl"
+import {
+  getMessages,
+  getTranslations,
+  setRequestLocale,
+} from "next-intl/server"
 
-import EnterpriseContactForm from "@/components/ContactForm";
-import DigitalAssetsDropdown from "@/components/DigitalAssetsDropdown";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
-import EthereumOrgLogo from "@/components/svg/ethereum-org-logo";
-import Farcaster from "@/components/svg/farcaster";
-import LinkedIn from "@/components/svg/linked-in";
-import Twitter from "@/components/svg/twitter";
-import { Button } from "@/components/ui/button";
+import EnterpriseContactForm from "@/components/ContactForm"
+import DigitalAssetsDropdown from "@/components/DigitalAssetsDropdown"
+import LanguageSwitcher from "@/components/LanguageSwitcher"
+import EthereumOrgLogo from "@/components/svg/ethereum-org-logo"
+import Farcaster from "@/components/svg/farcaster"
+import LinkedIn from "@/components/svg/linked-in"
+import Twitter from "@/components/svg/twitter"
+import { Button } from "@/components/ui/button"
 import {
   Drawer,
   DrawerClose,
@@ -21,14 +25,16 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer";
-import Link, { LinkProps } from "@/components/ui/link";
+} from "@/components/ui/drawer"
+import Link, { LinkProps } from "@/components/ui/link"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
-import "../globals.css";
+import { DA_NAV_ITEMS, NAV_ITEMS } from "@/lib/constants"
 
-import { routing } from "@/i18n/routing";
+import "../globals.css"
+
+import { routing } from "@/i18n/routing"
 
 const satoshi = localFont({
   src: [
@@ -63,7 +69,7 @@ const satoshi = localFont({
       style: "italic",
     },
   ],
-});
+})
 
 const SOCIAL_LINKS: LinkProps[] = [
   {
@@ -81,36 +87,47 @@ const SOCIAL_LINKS: LinkProps[] = [
     children: <Farcaster />,
     "aria-label": "Farcaster",
   },
-];
+]
 
 // External links are built inside the component using translations
 
 type Props = {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-};
+  children: React.ReactNode
+  params: Promise<{ locale: string }>
+}
 
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
+  return routing.locales.map((locale) => ({ locale }))
 }
 
 export default async function RootLayout({ children, params }: Props) {
-  const { locale } = await params;
+  const { locale } = await params
 
   // Ensure the locale is valid
   if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
-    notFound();
+    notFound()
   }
 
   // Enable static rendering
-  setRequestLocale(locale);
+  setRequestLocale(locale)
 
   // Get messages for the locale
-  const messages = await getMessages();
-  const t = await getTranslations("common");
-  const tNav = await getTranslations("nav");
-  const tFooter = await getTranslations("footer");
-  const tLayout = await getTranslations("layout");
+  const messages = await getMessages()
+  const t = await getTranslations("common")
+  const tNav = await getTranslations("nav")
+  const tFooter = await getTranslations("footer")
+  const tLayout = await getTranslations("layout")
+
+  // Build navigation links with translations
+  const daNavLinks: LinkProps[] = DA_NAV_ITEMS.map((item) => ({
+    href: item.href,
+    children: tNav(item.translationKey),
+  }))
+
+  const navLinks: LinkProps[] = NAV_ITEMS.map((item) => ({
+    href: item.href,
+    children: tNav(item.translationKey),
+  }))
 
   return (
     <html lang={locale}>
@@ -140,20 +157,18 @@ export default async function RootLayout({ children, params }: Props) {
               <nav className="flex items-center gap-4 max-md:hidden">
                 <DigitalAssetsDropdown
                   label={tNav("digitalAssets")}
-                  links={[
-                    { href: "/rwa", children: tNav("rwa") },
-                    { href: "/defi", children: tNav("defi") },
-                    { href: "/privacy", children: tNav("privacy") },
-                    { href: "/layer-2", children: tNav("layer2") },
-                  ]}
+                  links={daNavLinks}
                 />
 
-                <Link href="/data-hub" className="css-primary-conditional">
-                  {tNav("dataHub")}
-                </Link>
-                <Link href="/library" className="css-primary-conditional">
-                  {tNav("library")}
-                </Link>
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="css-primary-conditional"
+                  >
+                    {link.children}
+                  </Link>
+                ))}
                 <LanguageSwitcher />
               </nav>
 
@@ -168,9 +183,7 @@ export default async function RootLayout({ children, params }: Props) {
                 </DrawerTrigger>
                 <DrawerContent className="!w-sm max-w-screen">
                   <DrawerHeader>
-                    <DrawerTitle className="sr-only">
-                      {t("menu")}
-                    </DrawerTitle>
+                    <DrawerTitle className="sr-only">{t("menu")}</DrawerTitle>
                     <DrawerClose asChild>
                       <Button variant="ghost" size="icon" className="ms-auto">
                         <X className="size-10" />
@@ -179,26 +192,17 @@ export default async function RootLayout({ children, params }: Props) {
                   </DrawerHeader>
                   <div className="[&_hr]:border-chart-2 flex flex-col gap-y-6 overflow-y-auto p-10 pb-26">
                     <p className="text-chart-2">{tNav("digitalAssets")}</p>
-                    {[
-                      { href: "/rwa", children: tNav("rwa") },
-                      { href: "/defi", children: tNav("defi") },
-                      { href: "/privacy", children: tNav("privacy") },
-                      { href: "/layer-2", children: tNav("layer2") },
-                      { href: "/data-hub", children: tNav("dataHub") },
-                      { href: "/library", children: tNav("library") },
-                    ].map(
-                      (props, idx) => (
-                        <Fragment key={idx}>
-                          <DrawerClose asChild>
-                            <Link
-                              className="text-primary-foreground hover:text-primary-foreground/70 block text-2xl font-medium tracking-[0.03rem]"
-                              {...props}
-                            />
-                          </DrawerClose>
-                          <hr className="last:hidden" />
-                        </Fragment>
-                      )
-                    )}
+                    {[...daNavLinks, ...navLinks].map((props, idx) => (
+                      <Fragment key={idx}>
+                        <DrawerClose>
+                          <Link
+                            className="text-primary-foreground hover:text-primary-foreground/70 block text-2xl font-medium tracking-[0.03rem]"
+                            {...props}
+                          />
+                        </DrawerClose>
+                        <hr className="last:hidden" />
+                      </Fragment>
+                    ))}
                     <hr />
                     <LanguageSwitcher className="text-primary-foreground text-xl" />
                   </div>
@@ -212,9 +216,7 @@ export default async function RootLayout({ children, params }: Props) {
               <div className="mx-auto grid max-w-3xl grid-cols-1 gap-10 md:grid-cols-2">
                 <div className="space-y-4">
                   <h3 className="text-h4">{t("getInTouch")}</h3>
-                  <p>
-                    {t("getInTouchDescription")}
-                  </p>
+                  <p>{t("getInTouchDescription")}</p>
                 </div>
                 <EnterpriseContactForm />
               </div>
@@ -227,14 +229,7 @@ export default async function RootLayout({ children, params }: Props) {
                   ))}
                 </div>
                 <nav className="*:text-muted-foreground *:hover:text-foreground flex items-center gap-x-6 gap-y-1.5 text-nowrap *:block *:text-sm *:tracking-[0.0175rem] max-xl:flex-col sm:ms-auto sm:max-xl:items-end">
-                  {[
-                    { href: "/rwa", children: tNav("rwa") },
-                    { href: "/defi", children: tNav("defi") },
-                    { href: "/privacy", children: tNav("privacy") },
-                    { href: "/layer-2", children: tNav("layer2") },
-                    { href: "/data-hub", children: tNav("dataHub") },
-                    { href: "/library", children: tNav("library") },
-                  ].map((props) => (
+                  {[...daNavLinks, ...navLinks].map((props) => (
                     <Link key={props.href} {...props} />
                   ))}
                 </nav>
@@ -242,11 +237,26 @@ export default async function RootLayout({ children, params }: Props) {
               <div className="text-muted-foreground space-y-3 text-xs font-medium *:tracking-[0.0175rem]">
                 <nav className="mx-auto flex justify-center gap-4 max-sm:flex-col max-sm:items-center">
                   {[
-                    { href: "https://ethereum.org/privacy-policy/", children: tFooter("privacyPolicy") },
-                    { href: "https://ethereum.org/terms-of-use/", children: tFooter("termsOfUse") },
-                    { href: "https://ethereum.org/cookie-policy/", children: tFooter("cookiePolicy") },
-                    { href: "https://ethereum.foundation/", children: tFooter("ethereumFoundation") },
-                    { href: "https://ethereum.org/", children: tFooter("ethereumOrg") },
+                    {
+                      href: "https://ethereum.org/privacy-policy/",
+                      children: tFooter("privacyPolicy"),
+                    },
+                    {
+                      href: "https://ethereum.org/terms-of-use/",
+                      children: tFooter("termsOfUse"),
+                    },
+                    {
+                      href: "https://ethereum.org/cookie-policy/",
+                      children: tFooter("cookiePolicy"),
+                    },
+                    {
+                      href: "https://ethereum.foundation/",
+                      children: tFooter("ethereumFoundation"),
+                    },
+                    {
+                      href: "https://ethereum.org/",
+                      children: tFooter("ethereumOrg"),
+                    },
                   ].map((props) => (
                     <Link
                       key={props.href}
@@ -265,15 +275,15 @@ export default async function RootLayout({ children, params }: Props) {
         </NextIntlClientProvider>
       </body>
     </html>
-  );
+  )
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "layout" });
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: "layout" })
 
   return {
     title: t("metadata.title"),
     description: t("metadata.description"),
-  };
+  }
 }
