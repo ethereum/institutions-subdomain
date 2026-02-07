@@ -1,5 +1,3 @@
-import { Fragment } from "react"
-import { X } from "lucide-react"
 import localFont from "next/font/local"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next/types"
@@ -13,19 +11,11 @@ import {
 import EnterpriseContactForm from "@/components/ContactForm"
 import DigitalAssetsDropdown from "@/components/DigitalAssetsDropdown"
 import LanguageSwitcher from "@/components/LanguageSwitcher"
+import MobileNav from "@/components/MobileNav"
 import EthereumOrgLogo from "@/components/svg/ethereum-org-logo"
 import Farcaster from "@/components/svg/farcaster"
 import LinkedIn from "@/components/svg/linked-in"
 import Twitter from "@/components/svg/twitter"
-import { Button } from "@/components/ui/button"
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer"
 import Link, { LinkProps } from "@/components/ui/link"
 
 import { cn } from "@/lib/utils"
@@ -154,60 +144,32 @@ export default async function RootLayout({ children, params }: Props) {
                   {t("institutions")}
                 </span>
               </Link>
-              <nav className="flex items-center gap-4 max-md:hidden">
-                <DigitalAssetsDropdown
-                  label={tNav("digitalAssets")}
-                  links={daNavLinks}
-                />
+              <div className="flex items-center gap-4">
+                <nav className="flex items-center gap-4 max-md:hidden">
+                  <DigitalAssetsDropdown
+                    label={tNav("digitalAssets")}
+                    links={daNavLinks}
+                  />
 
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="css-primary-conditional"
-                  >
-                    {link.children}
-                  </Link>
-                ))}
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="css-primary-conditional"
+                    >
+                      {link.children}
+                    </Link>
+                  ))}
+                </nav>
                 <LanguageSwitcher />
-              </nav>
-
-              <Drawer direction="right">
-                <DrawerTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    className="group-has-[.css-primary-invert]/body:text-primary-foreground hover:group-has-[.css-primary-invert]/body:text-primary-foreground/70 text-lg font-medium md:hidden"
-                  >
-                    {t("menu")}
-                  </Button>
-                </DrawerTrigger>
-                <DrawerContent className="!w-sm max-w-screen">
-                  <DrawerHeader>
-                    <DrawerTitle className="sr-only">{t("menu")}</DrawerTitle>
-                    <DrawerClose asChild>
-                      <Button variant="ghost" size="icon" className="ms-auto">
-                        <X className="size-10" />
-                      </Button>
-                    </DrawerClose>
-                  </DrawerHeader>
-                  <div className="[&_hr]:border-chart-2 flex flex-col gap-y-6 overflow-y-auto p-10 pb-26">
-                    <p className="text-chart-2">{tNav("digitalAssets")}</p>
-                    {[...daNavLinks, ...navLinks].map((props, idx) => (
-                      <Fragment key={idx}>
-                        <DrawerClose>
-                          <Link
-                            className="text-primary-foreground hover:text-primary-foreground/70 block text-2xl font-medium tracking-[0.03rem]"
-                            {...props}
-                          />
-                        </DrawerClose>
-                        <hr className="last:hidden" />
-                      </Fragment>
-                    ))}
-                    <hr />
-                    <LanguageSwitcher className="text-primary-foreground text-xl" />
-                  </div>
-                </DrawerContent>
-              </Drawer>
+                {/* <LanguageSwitcher className="text-primary-foreground text-xl" /> */}
+                <MobileNav
+                  daNavLinks={daNavLinks}
+                  navLinks={navLinks}
+                  menuLabel={t("menu")}
+                  digitalAssetsLabel={tNav("digitalAssets")}
+                />
+              </div>
             </div>
           </header>
           {children}
