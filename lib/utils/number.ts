@@ -1,6 +1,53 @@
 import { NumberParts } from "../types"
 
 /**
+ * Short compact suffixes by locale, keyed by the raw Intl compact part.
+ * Keeps formatted output concise across locales to prevent layout overflow.
+ */
+const COMPACT_SUFFIX_MAP: Record<string, Record<string, string>> = {
+  es: {
+    "mil M": "MM",
+    "mil\u00A0M": "MM", // non-breaking space variant
+  },
+}
+
+/**
+ * Formats a number using `formatToParts()` and replaces long compact suffixes
+ * with shorter locale-specific alternatives.
+ */
+const formatCompact = (
+  locale: string,
+  value: number,
+  options: Intl.NumberFormatOptions
+): string => {
+  const parts = Intl.NumberFormat(locale, options).formatToParts(value)
+  const localeMap = COMPACT_SUFFIX_MAP[locale.split("-")[0]]
+
+  if (!localeMap) return parts.map((p) => p.value).join("")
+
+  // Collect all compact parts into a single string for lookup
+  const compactParts = parts.filter((p) => p.type === "compact")
+  if (compactParts.length === 0) return parts.map((p) => p.value).join("")
+
+  const compactStr = compactParts.map((p) => p.value).join("")
+  const replacement = localeMap[compactStr]
+
+  if (replacement === undefined) return parts.map((p) => p.value).join("")
+
+  let firstCompactReplaced = false
+  return parts
+    .map((p) => {
+      if (p.type !== "compact") return p.value
+      if (!firstCompactReplaced) {
+        firstCompactReplaced = true
+        return replacement
+      }
+      return ""
+    })
+    .join("")
+}
+
+/**
  * Formats a number as a percentage string with configurable significant digits and optional sign.
  *
  * @param locale - The locale to use for formatting (e.g., "en", "zh", "es").
@@ -80,6 +127,7 @@ export const formatCurrency = (
   Intl.NumberFormat(locale, {
     style: "currency",
     currency: "USD",
+    currencyDisplay: "narrowSymbol",
     ...options,
   }).format(value)
 
@@ -100,13 +148,14 @@ export const formatLargeCurrency = (
   value: number,
   sigDigits: number = 3
 ) =>
-  Intl.NumberFormat(locale, {
+  formatCompact(locale, value, {
     style: "currency",
     currency: "USD",
     notation: "compact",
+    currencyDisplay: "narrowSymbol",
     minimumSignificantDigits: sigDigits,
     maximumSignificantDigits: sigDigits,
-  }).format(value)
+  })
 
 /**
  * Formats a number according to the specified locale and formatting options.
@@ -139,7 +188,7 @@ export const formatLargeNumber = (
   options?: Partial<Intl.NumberFormatOptions>,
   sigDigits?: number
 ) =>
-  formatNumber(locale, value, {
+  formatCompact(locale, value, {
     notation: "compact",
     minimumSignificantDigits: sigDigits || 3,
     maximumSignificantDigits: sigDigits || 3,
@@ -165,13 +214,30 @@ export const getValueParts = (input: string | number): NumberParts => {
     return { prefix: "", value: input, suffix: "", fractionDigits }
   }
 
-  const stringValueRegExp = /^([^\d\.]*)([\d\.\,]*)([^\d\.]*)$/
+  // Match: optional non-digit prefix, digits with separators (.,), optional non-digit suffix
+  const stringValueRegExp = /^([^\d]*)([\d.,]+)(.*)$/
   const match = input.match(stringValueRegExp) ?? []
 
-  const [, prefix, strValue, suffix] = match
-  const clean = strValue.replace(/,/g, "")
+  const [, prefix = "", strValue = "", suffix = ""] = match
+
+  // Detect if comma is decimal separator (e.g., "77,7") vs thousands (e.g., "1,234")
+  // If the last separator is a comma and has 1-2 digits after it, it's a decimal comma
+  const lastCommaIdx = strValue.lastIndexOf(",")
+  const lastDotIdx = strValue.lastIndexOf(".")
+  let clean: string
+  let fractionDigits: number
+
+  if (lastCommaIdx > lastDotIdx && strValue.length - lastCommaIdx - 1 <= 2) {
+    // Comma is the decimal separator (e.g., "77,7" or "1.234,56")
+    clean = strValue.replace(/\./g, "").replace(",", ".")
+    fractionDigits = strValue.length - lastCommaIdx - 1
+  } else {
+    // Period is the decimal separator (e.g., "77.7" or "1,234.56")
+    clean = strValue.replace(/,/g, "")
+    fractionDigits = lastDotIdx >= 0 ? strValue.length - lastDotIdx - 1 : 0
+  }
+
   const value = +clean
-  const fractionDigits = clean.split(".")[1]?.length ?? 0
 
   return { prefix, value, suffix, fractionDigits }
 }
