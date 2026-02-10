@@ -8,6 +8,7 @@ export const routing = defineRouting({
   defaultLocale: "en",
   localePrefix: "as-needed",
   localeDetection: false, // Only change locale when user explicitly selects
+  alternateLinks: false, // Handled by getMetadata() alternates.languages
   localeCookie: {
     name: "NEXT_LOCALE",
     maxAge: 31536000, // 1 year
