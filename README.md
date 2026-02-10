@@ -52,7 +52,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### External library items
 
-File: `app/library/data.ts`
+File: `app/[locale]/library/data.ts`
 
 Additions to the library can be made within this list:
 
@@ -74,7 +74,7 @@ Required fields:
 #### `date` value
 
 - Date is also used to automatically sort the library items
-- **Must be a valid date format** (match pattern of existing items to avoid parsing issues)
+- **Must be ISO format** (e.g., `"2025-10-22"`). Dates are formatted with the user's locale at render time
 
 #### `imgSrc` value
 
@@ -96,7 +96,7 @@ import a16zCrypto from "@/public/images/library/a16z-crypto-1.png"
   {
     title: "a16zcrypto - State of Crypto ",
     href: "https://stateofcrypto.a16zcrypto.com/",
-    date: "October 22, 2025",
+    date: "2025-10-22",
     imgSrc: a16zCrypto,
   },
 ```
@@ -107,16 +107,24 @@ All posts are added as individual markdown files, each containing metadata in th
 
 #### File Structure
 
-Content should be placed in the following directories: `/public/posts/`
+Each post lives in its own directory under `/public/posts/`, with locale-specific markdown files inside:
 
-#### File Naming
+```
+public/posts/
+  fusaka-upgrade-overview/
+    en.md        # English (required)
+    zh.md        # Chinese (optional, falls back to en.md)
+    es.md        # Spanish (optional, falls back to en.md)
+```
 
-Name your file using a kebab-case slug that describes the content, for example:
+#### Directory Naming
 
-- `enterprise-team-update.md`
-- `ethereum-leading-the-way.md`
+Name the directory using a kebab-case slug that describes the content, for example:
 
-The filename (without extension) will be used in the URL path for the post when published. Lowercase is not required, but encouraged for consistency. Avoid special characters and spaces in the filename.
+- `enterprise-team-update/`
+- `ethereum-leading-the-way/`
+
+The directory name will be used in the URL path for the post when published. Lowercase is not required, but encouraged for consistency. Avoid special characters and spaces.
 
 #### Front Matter Requirements
 
