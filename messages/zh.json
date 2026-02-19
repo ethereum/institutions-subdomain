@@ -62,7 +62,7 @@
     },
     "numbers": {
       "heading": "以太坊：链上经济的坚实骨干",
-      "uptimeLabel": "全天候无间断稳定运行",
+      "uptimeLabel": "不间断的运行时间与网络活性",
       "genesisSource": "创世区块 {date}",
       "networkSecurityLabel": "全网安全保障总价值 ({ethAmount} ETH)",
       "stablecoinTvlLabel": "稳定币总锁仓量 (TVL)",
@@ -97,7 +97,7 @@
       }
     },
     "leader": {
-      "heading": "以太坊：在关键领域持续引领",
+      "heading": "以太坊在关键领域保持领先",
       "resilience": {
         "label": "卓越韧性",
         "description": "自创世以来，以太坊始终保持 {uptime} 的不间断运行与网络活性。历经 15 次以上的重大网络升级，保持零宕机记录。"
@@ -108,7 +108,7 @@
       },
       "neutrality": {
         "label": "可信中立",
-        "description": "没有单点故障、没有中心化协调器、没有暂停按钮、没有交易对手风险。从容应对地缘政治、监管及基础设施层面的多重风险。"
+        "description": "无单点故障，无中心协调器，无暂停按钮，无交易对手风险。能够抵御地缘政治、监管及基础设施层面的风险。"
       },
       "decentralization": {
         "label": "高度去中心化",
@@ -187,7 +187,7 @@
         "card2": "区块级访问列表支持在区块内并行执行交易与并行计算状态根，显著缩短区块处理时间"
       },
       "terabyteScale": {
-        "title": "TB 级远景规划",
+        "title": "TB 级愿景",
         "card1Heading": "2-5 年中期目标：",
         "card1Item1": "L1 达到 10 亿 Gas/秒：实现 1 万 TPS，雄心勃勃的垂直扩容",
         "card1Item2": "L2 达到 1 Teragas/秒：实现 1000 万 TPS，广阔的水平扩容",
@@ -561,7 +561,7 @@
     "hero": {
       "heading": "以太坊 Layer 2",
       "description1": "Layer 2（L2）是构建在以太坊之上的可扩容执行层。Rollup 作为 L2 的主要类型，将交易打包后将数据发布回以太坊主网，从而继承以太坊的安全性与去中心化。",
-      "description2": "L2 适用于代币化、支付与合规应用链等场景，可提供定制化的执行环境、优化的业务轨道以及更快、更低成本的执行，同时依赖以太坊实现最终确定性。"
+      "description2": "L2 适用于代币化、支付与合规应用链等场景，可提供定制化环境、优化的业务轨道以及更快、更低成本的执行，同时依赖以太坊实现最终确定性。"
     },
     "metrics": {
       "srHeading": "Layer 2 生态概览",
@@ -709,7 +709,7 @@
         "ctaLabel": "月度稳定币交易量"
       },
       "world": {
-        "description": "World Chain L2 扩容 Proof of Human",
+        "description": "World Chain L2 扩容 Proof of Human（人格证明）",
         "ctaLabel": "日交易量"
       }
     },
