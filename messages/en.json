@@ -387,9 +387,7 @@
       "composable": "Composable primitives",
       "composableDesc": "Open-source building blocks and protocols act as 'money legos' that developers can combine to build sophisticated products",
       "permissionless": "Permissionless innovation",
-      "permissionlessDesc": "Anyone can build or access new DeFi instruments, unlocking a dynamic landscape of innovation without gatekeepers",
-      "onchainYield": "Onchain yield",
-      "onchainYieldDesc": "Access familiar instruments, like T-bills and short-duration products"
+      "permissionlessDesc": "Anyone can build or access new DeFi instruments, unlocking a dynamic landscape of innovation without gatekeepers"
     },
     "innovation": {
       "heading": "DeFi Powers Enterprise Innovation",
@@ -429,6 +427,7 @@
             "balancer": "A DeFi protocol that acts as an automated portfolio manager and liquidity provider, allowing users to create or invest in customizable liquidity pools.",
             "cowSwap": "A DEX aggregator built around frequent batch auctions to provide MEV protection, find optimal liquidity, and minimize fees, matching trades peer-to-peer and sending unfilled orders to underlying AMMs.",
             "curve": "A DEX and AMM focused on efficient trading for stablecoins and volatile tokens, using a unique AMM formula to minimize slippage for similarly-priced assets.",
+            "fluid": "A DeFi protocol that combines AMM trading with lending and borrowing on a unified liquidity layer, enabling capital-efficient swaps with deep, shared liquidity.",
             "uniswap": "A DEX protocol that enables permissionless peer-to-peer trading, through a smart contract-based AMM system that allows anyone to create custom pairs and supply liquidity."
           }
         },
@@ -443,7 +442,8 @@
             "maple": "A decentralized credit market that provides undercollateralized loans to institutional borrowers, and allows lenders to earn yield by supplying liquidity to these curated loans.",
             "moonwell": "An open lending and borrowing protocol designed to simplify the onchain user experience, featuring single-sided liquidity pools and overcollateralized borrowing across markets.",
             "morpho": "A decentralized protocol for overcollateralized, vault-based lending and borrowing, aiming to improve the capital efficiency of lending pools through isolated markets, risk curators, and portfolio allocators.",
-            "sky": "A DeFi protocol (created by the MakerDAO community) that offers a suite of tools for trading, converting, staking, and earning yield from digital assets, including the USDS stablecoin."
+            "sky": "A DeFi protocol (created by the MakerDAO community) that offers a suite of tools for trading, converting, staking, and earning yield from digital assets, including the USDS stablecoin.",
+            "spark": "A decentralized lending protocol offering competitive rates for borrowing and supplying major digital assets, with a focus on stablecoin markets and institutional-grade lending products."
           }
         },
         "rwa-yield": {
