@@ -48,13 +48,15 @@
   },
   "nav": {
     "home": "Home",
-    "rwa": "RWAs & Stablecoins",
-    "defi": "Decentralized Finance",
+    "whyEthereum": "Why Ethereum",
+    "useCases": "Use Cases",
+    "rwa": "Tokenization & Stablecoins",
+    "defi": "Onchain Finance",
     "privacy": "Compliant Privacy",
-    "layer2": "L2 Ecosystem",
-    "dataHub": "Live Data",
-    "library": "Library",
-    "digitalAssets": "Digital Assets"
+    "layer2": "Ethereum L2s",
+    "solutionProviders": "Solution Providers",
+    "dataHub": "Data Portal",
+    "library": "Library"
   },
   "home": {
     "hero": {

@@ -9,7 +9,7 @@ import {
 } from "next-intl/server"
 
 import EnterpriseContactForm from "@/components/ContactForm"
-import DigitalAssetsDropdown from "@/components/DigitalAssetsDropdown"
+import UseCasesDropdown from "@/components/UseCasesDropdown"
 import LanguageSwitcher from "@/components/LanguageSwitcher"
 import MobileNav from "@/components/MobileNav"
 import EthereumOrgLogo from "@/components/svg/ethereum-org-logo"
@@ -20,7 +20,7 @@ import Link, { LinkProps } from "@/components/ui/link"
 
 import { cn } from "@/lib/utils"
 
-import { DA_NAV_ITEMS, NAV_ITEMS } from "@/lib/constants"
+import { USE_CASE_NAV_ITEMS, TOP_NAV_ITEMS, NAV_ITEMS } from "@/lib/constants"
 
 import "../globals.css"
 
@@ -109,7 +109,12 @@ export default async function RootLayout({ children, params }: Props) {
   const tLayout = await getTranslations("layout")
 
   // Build navigation links with translations
-  const daNavLinks: LinkProps[] = DA_NAV_ITEMS.map((item) => ({
+  const topNavLinks: LinkProps[] = TOP_NAV_ITEMS.map((item) => ({
+    href: item.href,
+    children: tNav(item.translationKey),
+  }))
+
+  const useCaseLinks: LinkProps[] = USE_CASE_NAV_ITEMS.map((item) => ({
     href: item.href,
     children: tNav(item.translationKey),
   }))
@@ -146,9 +151,18 @@ export default async function RootLayout({ children, params }: Props) {
               </Link>
               <div className="flex items-center gap-4">
                 <nav className="flex items-center gap-4 max-md:hidden">
-                  <DigitalAssetsDropdown
-                    label={tNav("digitalAssets")}
-                    links={daNavLinks}
+                  {topNavLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="css-primary-conditional"
+                    >
+                      {link.children}
+                    </Link>
+                  ))}
+                  <UseCasesDropdown
+                    label={tNav("useCases")}
+                    links={useCaseLinks}
                   />
 
                   {navLinks.map((link) => (
@@ -164,10 +178,11 @@ export default async function RootLayout({ children, params }: Props) {
                 <LanguageSwitcher />
                 {/* <LanguageSwitcher className="text-primary-foreground text-xl" /> */}
                 <MobileNav
-                  daNavLinks={daNavLinks}
+                  topNavLinks={topNavLinks}
+                  useCaseLinks={useCaseLinks}
                   navLinks={navLinks}
                   menuLabel={t("menu")}
-                  digitalAssetsLabel={tNav("digitalAssets")}
+                  useCasesLabel={tNav("useCases")}
                 />
               </div>
             </div>
@@ -191,7 +206,7 @@ export default async function RootLayout({ children, params }: Props) {
                   ))}
                 </div>
                 <nav className="*:text-muted-foreground *:hover:text-foreground flex items-center gap-x-6 gap-y-1.5 text-nowrap *:block *:text-sm *:tracking-[0.0175rem] max-xl:flex-col sm:ms-auto sm:max-xl:items-end">
-                  {[...daNavLinks, ...navLinks].map((props) => (
+                  {[...topNavLinks, ...useCaseLinks, ...navLinks].map((props) => (
                     <Link key={props.href} {...props} />
                   ))}
                 </nav>
