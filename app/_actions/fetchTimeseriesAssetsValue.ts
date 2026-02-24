@@ -155,7 +155,14 @@ export const fetchTimeseriesAssetsValue = async (
       name: error instanceof Error ? error.name : undefined,
       message: error instanceof Error ? error.message : String(error),
     })
-    throw error
+    return {
+      data: {
+        mainnet: { series: [], currentValue: 0 },
+        layer2: { series: [], currentValue: 0 },
+      },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.RWA,
+    }
   }
 }
 

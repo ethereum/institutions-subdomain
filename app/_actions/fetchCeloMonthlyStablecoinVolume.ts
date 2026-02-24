@@ -106,7 +106,11 @@ export const fetchCeloMonthlyStablecoinVolume = async (): Promise<
       message: error instanceof Error ? error.message : String(error),
       url,
     })
-    throw error
+    return {
+      data: { celoMonthlyStablecoinVolume: 0 },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.RWA,
+    }
   }
 }
 
