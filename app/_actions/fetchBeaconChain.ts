@@ -55,7 +55,14 @@ export const fetchBeaconChain = async (): Promise<
       message: error instanceof Error ? error.message : String(error),
       url,
     })
-    throw error
+    return {
+      data: {
+        validatorsCount: 0,
+        totalStakedEther: 0,
+      },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.BEACONCHAIN,
+    }
   }
 }
 
