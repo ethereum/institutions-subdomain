@@ -645,6 +645,20 @@
           "item2": "Users and developers benefit from a consistent experience, using the same wallets, tools, and code across Ethereum's L1 and L2 ecosystem",
           "item3": "Tokens and NFTs maintain a canonical L1 source-of-truth, making them fungible across different rollups"
         }
+      },
+      "customization": {
+        "title": "Customization",
+        "configurableEnvironments": {
+          "heading": "Configurable Environments",
+          "item1": "L2s can implement custom gas tokens, fee structures, and execution environments while inheriting Ethereum security",
+          "item2": "Deploy permissioned or public rollups tailored to specific enterprise needs, without sacrificing interoperability",
+          "item3": "Choose from multiple proving systems (optimistic, ZK, hybrid) based on your security and performance requirements"
+        },
+        "compliance": {
+          "heading": "Built-in Compliance",
+          "item1": "Implement KYC/AML checks, allowlisting, and transfer restrictions at the L2 level while settling to public L1",
+          "item2": "Configure privacy features, data retention policies, and access controls specific to your regulatory environment"
+        }
       }
     },
     "trust": {
@@ -711,6 +725,18 @@
       "world": {
         "description": "World Chain L2 to scale Proof of Human",
         "ctaLabel": "Daily Transactions"
+      },
+      "sony": {
+        "description": "Soneium L2 for consumer entertainment and Web3",
+        "ctaLabel": "Users onboarded"
+      },
+      "antGroup": {
+        "description": "Jovay L2 for institutional digital assets in APAC",
+        "ctaLabel": "Institutional partners"
+      },
+      "robinhood": {
+        "description": "Robinhood Chain L2 for real-world asset trading",
+        "ctaLabel": "First RWA-Optimized L2"
       }
     },
     "enterprise": {

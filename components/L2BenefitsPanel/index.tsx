@@ -107,6 +107,26 @@ export function L2BenefitsPanel({ validatorsCount }: L2BenefitsPanelProps) {
         },
       ],
     },
+    {
+      title: t("customization.title"),
+      cards: [
+        {
+          heading: t("customization.configurableEnvironments.heading"),
+          items: [
+            t("customization.configurableEnvironments.item1"),
+            t("customization.configurableEnvironments.item2"),
+            t("customization.configurableEnvironments.item3"),
+          ],
+        },
+        {
+          heading: t("customization.compliance.heading"),
+          items: [
+            t("customization.compliance.item1"),
+            t("customization.compliance.item2"),
+          ],
+        },
+      ],
+    },
   ]
 
   return (
