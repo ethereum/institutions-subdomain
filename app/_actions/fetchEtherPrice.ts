@@ -42,7 +42,11 @@ export const fetchEtherPrice = async (): Promise<
       message: error instanceof Error ? error.message : String(error),
       url,
     })
-    throw error
+    return {
+      data: { usd: 0 },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.COINGECKO,
+    }
   }
 }
 

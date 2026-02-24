@@ -100,7 +100,11 @@ export const fetchProtocolsValueTotal = async (): Promise<
       message: error instanceof Error ? error.message : String(error),
       url,
     })
-    throw error
+    return {
+      data: { totalPrivateCredit: 0 },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.RWA,
+    }
   }
 }
 
