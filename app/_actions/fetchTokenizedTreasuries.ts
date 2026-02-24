@@ -110,7 +110,11 @@ export const fetchTokenizedTreasuries = async (): Promise<
       message: error instanceof Error ? error.message : String(error),
       url,
     })
-    throw error
+    return {
+      data: { totalTreasuries: 0 },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.RWA,
+    }
   }
 }
 

@@ -48,7 +48,11 @@ export const fetchBaseTvl = async (): Promise<DataTimestamped<BaseTvlData>> => {
       message: error instanceof Error ? error.message : String(error),
       url,
     })
-    throw error
+    return {
+      data: { baseTvl: 0 },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.GROWTHEPIE,
+    }
   }
 }
 
