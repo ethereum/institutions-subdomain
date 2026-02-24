@@ -208,7 +208,27 @@ export const fetchAssetMarketShare = async (
       name: error instanceof Error ? error.name : undefined,
       message: error instanceof Error ? error.message : String(error),
     })
-    throw error
+    return {
+      data: {
+        assetValue: {
+          mainnet: 0,
+          layer2: 0,
+          altNetwork2nd: 0,
+          altNetwork3rd: 0,
+          altNetworksRest: 0,
+        },
+        marketShare: {
+          mainnet: 0,
+          layer2: 0,
+          altNetwork2nd: 0,
+          altNetwork3rd: 0,
+          altNetworksRest: 0,
+        },
+        assetValueSumAll: 0,
+      },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.RWA,
+    }
   }
 }
 
