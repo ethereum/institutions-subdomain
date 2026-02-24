@@ -125,7 +125,11 @@ export const fetchProtocolsValueBySlug = async (): Promise<
       message: error instanceof Error ? error.message : String(error),
       url: url,
     })
-    throw error
+    return {
+      data: { centrifuge: 0, maple: 0 },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.RWA,
+    }
   }
 }
 
