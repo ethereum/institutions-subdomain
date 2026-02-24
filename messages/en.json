@@ -742,5 +742,40 @@
       "title": "Ethereum's Layer 2 Ecosystem | Scalable Enterprise Solutions",
       "description": "Layer 2s offer faster, cheaper execution, ideal for payments, appchains, and tokenization. Learn how L2s help institutions scale without sacrificing security."
     }
+  },
+  "solutionProviders": {
+    "hero": {
+      "heading": "Global Solution Providers",
+      "description": "The Ethereum ecosystem includes hundreds of companies providing infrastructure, tooling, advisory, and compliance services to institutions building onchain."
+    },
+    "filters": {
+      "allCategories": "All categories",
+      "allRegions": "All regions",
+      "showing": "Showing {count} providers"
+    },
+    "categories": {
+      "Infrastructure & Nodes": "Infrastructure & Nodes",
+      "Custody & Wallets": "Custody & Wallets",
+      "DeFi & Trading": "DeFi & Trading",
+      "Tokenization & RWA": "Tokenization & RWA",
+      "Staking": "Staking",
+      "Security & Auditing": "Security & Auditing",
+      "Data & Analytics": "Data & Analytics",
+      "Compliance & Legal": "Compliance & Legal",
+      "Consulting & Advisory": "Consulting & Advisory",
+      "Developer Tools": "Developer Tools"
+    },
+    "regions": {
+      "Americas": "Americas",
+      "Europe": "Europe",
+      "APAC": "APAC",
+      "MENA": "MENA",
+      "Global": "Global",
+      "Decentralized": "Decentralized"
+    },
+    "metadata": {
+      "title": "Global Solution Providers | Ethereum Institutional Ecosystem",
+      "description": "Find infrastructure, tooling, advisory, and compliance service providers in the Ethereum ecosystem for institutional needs."
+    }
   }
 }
