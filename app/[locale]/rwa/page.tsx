@@ -23,8 +23,7 @@ import fetchProtocolsValueTotal from "@/app/_actions/fetchProtocolsValueTotal"
 import fetchTokenizedTreasuries from "@/app/_actions/fetchTokenizedTreasuries"
 import { type Locale, routing } from "@/i18n/routing"
 import buildings from "@/public/images/banners/buildings.png"
-import dai from "@/public/images/logos/tokens/dai.svg"
-import fdusd from "@/public/images/logos/tokens/fdusd.svg"
+import buidlUsd from "@/public/images/logos/tokens/buidl-usd.svg"
 import pyusd from "@/public/images/logos/tokens/pyusd.svg"
 import usdc from "@/public/images/logos/tokens/usdc.svg"
 import usde from "@/public/images/logos/tokens/usde.svg"
@@ -115,12 +114,6 @@ export default async function Page({ params }: Props) {
       href: "https://ethena.fi/",
     },
     {
-      ticker: "DAI",
-      issuer: "MakerDAO",
-      imgSrc: dai,
-      href: "https://makerdao.com/",
-    },
-    {
       ticker: "USDS",
       issuer: "Sky",
       imgSrc: usds,
@@ -139,10 +132,10 @@ export default async function Page({ params }: Props) {
       href: "https://usdtb.money/",
     },
     {
-      ticker: "FDUSD",
-      issuer: "First Digital",
-      imgSrc: fdusd,
-      href: "https://firstdigitallabs.com/fdusd",
+      ticker: "BUIDL USD",
+      issuer: "BlackRock & Securitize",
+      imgSrc: buidlUsd,
+      href: "https://securitize.io/blackrock/buidl",
     },
   ]
 
@@ -340,6 +333,18 @@ export default async function Page({ params }: Props) {
                   {t("infrastructure.yieldDesc")}
                 </p>
               </li>
+              <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
+                {t("infrastructure.networkEffects")}
+                <p className="text-muted-foreground mt-1 text-base font-medium">
+                  {t("infrastructure.networkEffectsDesc")}
+                </p>
+              </li>
+              <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
+                {t("infrastructure.costSavings")}
+                <p className="text-muted-foreground mt-1 text-base font-medium">
+                  {t("infrastructure.costSavingsDesc")}
+                </p>
+              </li>
             </ul>
           </div>
           <div className="relative min-h-80 flex-1">
@@ -351,6 +356,64 @@ export default async function Page({ params }: Props) {
               className="object-cover object-center"
               sizes="(max-width: 1024px) 100vw, 536px"
             />
+          </div>
+        </section>
+
+        <section id="comparison" className="space-y-12">
+          <h2 className="text-center">{t("comparison.heading")}</h2>
+          <div className="overflow-x-auto -mx-4 px-4">
+            <table className="w-full min-w-[700px] border-collapse text-sm">
+              <thead>
+                <tr>
+                  <th className="border-b p-3 text-left font-medium" />
+                  <th className="bg-secondary-foreground text-secondary border-b p-3 text-left font-bold">
+                    {t("comparison.ethereum")}
+                  </th>
+                  <th className="border-b p-3 text-left font-medium">
+                    {t("comparison.l1Alt")}
+                  </th>
+                  <th className="border-b p-3 text-left font-medium">
+                    {t("comparison.privateDlt")}
+                  </th>
+                  <th className="border-b p-3 text-left font-medium">
+                    {t("comparison.traditional")}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {(
+                  [
+                    "settlementFinality",
+                    "resilience",
+                    "security",
+                    "devBase",
+                    "liquidity",
+                    "auditability",
+                    "neutrality",
+                    "geoRisk",
+                    "composability",
+                  ] as const
+                ).map((row) => (
+                  <tr key={row} className="border-b last:border-b-0">
+                    <td className="p-3 font-medium">
+                      {t(`comparison.${row}`)}
+                    </td>
+                    <td className="bg-secondary-foreground/5 p-3 font-semibold">
+                      {t(`comparison.ethereum_${row}`)}
+                    </td>
+                    <td className="text-muted-foreground p-3">
+                      {t(`comparison.l1Alt_${row}`)}
+                    </td>
+                    <td className="text-muted-foreground p-3">
+                      {t(`comparison.privateDlt_${row}`)}
+                    </td>
+                    <td className="text-muted-foreground p-3">
+                      {t(`comparison.traditional_${row}`)}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </section>
 
@@ -392,6 +455,67 @@ export default async function Page({ params }: Props) {
                 </p>
               </Link>
             ))}
+          </div>
+        </section>
+
+        <section id="category-breakdown" className="space-y-8">
+          <div className="space-y-2">
+            <h2>{t("categoryBreakdown.heading")}</h2>
+            <p className="text-muted-foreground font-medium">
+              {t("categoryBreakdown.description")}
+            </p>
+          </div>
+          <div className="overflow-x-auto -mx-4 px-4">
+            <table className="w-full min-w-[600px] border-collapse">
+              <thead>
+                <tr>
+                  <th className="border-b p-3 text-left font-medium">
+                    {t("categoryBreakdown.category")}
+                  </th>
+                  <th className="border-b p-3 text-left font-medium">
+                    {t("categoryBreakdown.tvlEth")}
+                  </th>
+                  <th className="border-b p-3 text-left font-medium">
+                    {t("categoryBreakdown.tvlTotal")}
+                  </th>
+                  <th className="border-b p-3 text-left font-medium">
+                    {t("categoryBreakdown.ethShare")}
+                  </th>
+                  <th className="border-b p-3 text-left font-medium">
+                    {t("categoryBreakdown.examples")}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {(
+                  [
+                    "treasuries",
+                    "credit",
+                    "commodities",
+                    "equities",
+                    "realEstate",
+                  ] as const
+                ).map((cat) => (
+                  <tr key={cat} className="border-b last:border-b-0">
+                    <td className="p-3 font-semibold">
+                      {t(`categoryBreakdown.${cat}`)}
+                    </td>
+                    <td className="p-3">
+                      {t(`categoryBreakdown.${cat}Tvl`)}
+                    </td>
+                    <td className="p-3">
+                      {t(`categoryBreakdown.${cat}Total`)}
+                    </td>
+                    <td className="p-3 font-semibold">
+                      {t(`categoryBreakdown.${cat}Share`)}
+                    </td>
+                    <td className="text-muted-foreground p-3">
+                      {t(`categoryBreakdown.${cat}Examples`)}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </section>
 
@@ -555,6 +679,37 @@ export default async function Page({ params }: Props) {
               )
             )}
           </div>
+        </section>
+
+        <section id="l2-section" className="space-y-8">
+          <div className="space-y-2">
+            <h2 className="sm:text-h3 text-h3-mobile tracking-[0.055rem]">
+              {t("l2Section.heading")}
+            </h2>
+            <p className="text-muted-foreground font-medium">
+              {t("l2Section.description")}
+            </p>
+          </div>
+          <ul className="max-w-prose space-y-4 font-medium">
+            <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
+              {t("l2Section.throughput")}
+              <p className="text-muted-foreground mt-1 text-base font-medium">
+                {t("l2Section.throughputDesc")}
+              </p>
+            </li>
+            <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
+              {t("l2Section.configurable")}
+              <p className="text-muted-foreground mt-1 text-base font-medium">
+                {t("l2Section.configurableDesc")}
+              </p>
+            </li>
+            <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
+              {t("l2Section.specialization")}
+              <p className="text-muted-foreground mt-1 text-base font-medium">
+                {t("l2Section.specializationDesc")}
+              </p>
+            </li>
+          </ul>
         </section>
 
         <section id="why-ethereum" className="space-y-16">
