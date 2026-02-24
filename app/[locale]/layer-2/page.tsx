@@ -47,12 +47,13 @@ import celo from "@/public/images/logos/networks/celo.png"
 import ink from "@/public/images/logos/networks/ink.webp"
 import linea from "@/public/images/logos/networks/linea.png"
 import optimism from "@/public/images/logos/networks/optimism.png"
-import polygon from "@/public/images/logos/networks/polygon.png"
 import scroll from "@/public/images/logos/networks/scroll.png"
 import starknet from "@/public/images/logos/networks/starknet.png"
 import unichain from "@/public/images/logos/networks/unichain.png"
 import worldChain from "@/public/images/logos/networks/world-chain.png"
 import zksync from "@/public/images/logos/networks/zksync.png"
+import robinhood from "@/public/images/logos/institutions/robinhood.png"
+import sony from "@/public/images/logos/institutions/sony.png"
 
 type CardItem = {
   heading: string
@@ -149,12 +150,6 @@ export default async function Page({ params }: Props) {
       description: t("frameworks.optimism"),
       href: "https://www.optimism.io/",
       imgSrc: optimism,
-    },
-    {
-      heading: "Polygon",
-      description: t("frameworks.polygon"),
-      href: "https://polygon.technology/",
-      imgSrc: polygon,
     },
     {
       heading: "ZKSync",
@@ -295,6 +290,51 @@ export default async function Page({ params }: Props) {
         worldChainTxCountData.lastUpdated
       ),
       ...worldChainTxCountData.sourceInfo,
+    },
+    {
+      heading: "Sony (Soneium)",
+      description: t("caseStudies.sony.description"),
+      href: "https://soneium.org/",
+      imgSrc: sony,
+      ctaLabel: (
+        <>
+          500K+
+          <br />
+          {t("caseStudies.sony.ctaLabel")}
+        </>
+      ),
+      lastUpdated: formatDateMonthDayYear(locale, new Date("2025-01-01")),
+      source: "Soneium",
+      sourceHref: "https://soneium.org/",
+    },
+    {
+      // TODO: Replace placeholder logo with Ant Group / Jovay logo asset
+      heading: "Ant Group (Jovay)",
+      description: t("caseStudies.antGroup.description"),
+      href: "https://www.antgroup.com/",
+      imgSrc: ey,
+      ctaLabel: (
+        <>
+          {t("caseStudies.antGroup.ctaLabel")}
+        </>
+      ),
+      lastUpdated: formatDateMonthDayYear(locale, new Date("2025-01-01")),
+      source: "Ant Group",
+      sourceHref: "https://www.antgroup.com/",
+    },
+    {
+      heading: "Robinhood",
+      description: t("caseStudies.robinhood.description"),
+      href: "https://robinhood.com/",
+      imgSrc: robinhood,
+      ctaLabel: (
+        <>
+          {t("caseStudies.robinhood.ctaLabel")}
+        </>
+      ),
+      lastUpdated: formatDateMonthDayYear(locale, new Date("2025-05-01")),
+      source: "Robinhood",
+      sourceHref: "https://robinhood.com/",
     },
   ]
 
@@ -519,7 +559,7 @@ export default async function Page({ params }: Props) {
               {t("frameworksSection.description")}
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {frameworks.map(({ heading, description, imgSrc, href }) => (
               <Link
                 key={heading}
