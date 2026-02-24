@@ -15,6 +15,7 @@ export function ScalingPanel() {
 
   const items: {
     title: string
+    badge?: string
     cards: {
       content: ReactNode
       href: string
@@ -22,66 +23,60 @@ export function ScalingPanel() {
     }[]
   }[] = [
     {
-      title: t("immediateAcceleration.title"),
+      title: t("pectra.title"),
       cards: [
         {
-          content: t("immediateAcceleration.card1"),
-          href: "https://blog.ethereum.org/2025/08/05/protocol-update-001",
+          content: t("pectra.card1"),
+          href: "https://blog.ethereum.org/2025/03/06/pectra",
         },
         {
-          content: t("immediateAcceleration.card2"),
+          content: t("pectra.card2"),
+          href: "https://blog.ethereum.org/2025/03/06/pectra",
+        },
+        {
+          content: t("pectra.card3"),
+          href: "https://blog.ethereum.org/2025/03/06/pectra",
+        },
+      ],
+    },
+    {
+      title: t("fusaka.title"),
+      cards: [
+        {
+          content: t("fusaka.card1"),
           href: "https://blog.ethereum.org/2025/08/22/protocol-update-002",
         },
         {
-          content: t("immediateAcceleration.card3"),
-          href: "https://blog.ethereum.org/2025/08/05/protocol-update-001",
-        },
-      ],
-    },
-    {
-      title: t("alternativeProvider.title"),
-      cards: [
-        {
-          content: t("alternativeProvider.card1"),
-          href: "https://blog.eigencloud.xyz/eigenda-v2-core-architecture/",
-        },
-        {
-          content: t("alternativeProvider.card2"),
-          href: "https://www.zksync.io/airbender",
-        },
-      ],
-    },
-    {
-      title: t("activeDevelopment.title"),
-      cards: [
-        {
-          content: t("activeDevelopment.card1"),
+          content: t("fusaka.card2"),
           href: "https://blog.ethereum.org/2025/08/22/protocol-update-002",
         },
+      ],
+    },
+    {
+      title: t("postQuantum.title"),
+      badge: t("coming"),
+      cards: [
         {
-          content: t("activeDevelopment.card2"),
-          href: "https://blog.ethereum.org/2025/08/05/protocol-update-001",
+          content: t("postQuantum.card1"),
+          href: "https://blog.ethereum.org/2025/07/31/lean-ethereum",
+        },
+        {
+          content: t("postQuantum.card2"),
+          href: "https://blog.ethereum.org/2025/07/31/lean-ethereum",
         },
       ],
     },
     {
-      title: t("terabyteScale.title"),
+      title: t("glamsterdam.title"),
+      badge: t("coming"),
       cards: [
         {
-          content: (
-            <>
-              <span className="mb-6 block">{t("terabyteScale.card1Heading")}</span>
-              <ul className="ms-6 list-disc">
-                <li>{t("terabyteScale.card1Item1")}</li>
-                <li>{t("terabyteScale.card1Item2")}</li>
-              </ul>
-            </>
-          ),
-          href: "https://blog.ethereum.org/2025/07/31/lean-ethereum",
+          content: t("glamsterdam.card1"),
+          href: "https://blog.ethereum.org/2025/08/05/protocol-update-001",
         },
         {
-          content: t("terabyteScale.card2"),
-          href: "https://blog.ethereum.org/2025/07/31/lean-ethereum",
+          content: t("glamsterdam.card2"),
+          href: "https://blog.ethereum.org/2025/08/05/protocol-update-001",
         },
       ],
     },
@@ -90,17 +85,22 @@ export function ScalingPanel() {
   return (
     <div className="flex min-h-90 gap-10 border p-8 max-lg:flex-col max-sm:max-w-[calc(100vw-32px)] sm:max-lg:max-w-[calc(100vw-96px)]">
       <div className="flex gap-3 max-lg:overflow-x-auto max-lg:pb-4 sm:gap-8 lg:flex-col">
-        {items.map(({ title }, index) => (
+        {items.map(({ title, badge }, index) => (
           <Fragment key={index}>
             <button
               onClick={() => setActiveIndex(index)}
               className={cn(
-                "text-h5 text-secondary-foreground hover:text-secondary-foreground/80 text-start font-bold tracking-[0.03rem] text-nowrap",
+                "text-h5 text-secondary-foreground hover:text-secondary-foreground/80 flex items-center gap-2 text-start font-bold tracking-[0.03rem] text-nowrap",
                 activeIndex === index &&
                   "text-foreground hover:text-foreground cursor-auto"
               )}
             >
               {title}
+              {badge && (
+                <span className="bg-secondary-foreground text-secondary rounded-full px-2 py-0.5 text-xs font-medium">
+                  {badge}
+                </span>
+              )}
             </button>
             <hr className={cn(index === items.length - 1 && "hidden")} />
           </Fragment>

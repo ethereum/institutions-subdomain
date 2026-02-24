@@ -64,20 +64,16 @@ import { getTimeSinceGenesis } from "@/app/_actions/getTimeSinceGenesis"
 import { type Locale, routing } from "@/i18n/routing"
 import blackRock from "@/public/images/logos/institutions/black-rock.png"
 import blackRockSvg from "@/public/images/logos/institutions/black-rock.svg"
-import citi from "@/public/images/logos/institutions/citi.png"
 import coinbase from "@/public/images/logos/institutions/coinbase.png"
 import coinbaseSvg from "@/public/images/logos/institutions/coinbase.svg"
 import etoro from "@/public/images/logos/institutions/etoro.png"
-import etoroSvg from "@/public/images/logos/institutions/etoro.svg"
 import fidelity from "@/public/images/logos/institutions/fidelity.png"
 import jpMorgan from "@/public/images/logos/institutions/jp-morgan.svg"
 import mastercard from "@/public/images/logos/institutions/mastercard.png"
 import robinhood from "@/public/images/logos/institutions/robinhood.png"
-import sony from "@/public/images/logos/institutions/sony.png"
 import standardChartered from "@/public/images/logos/institutions/standard-chartered.svg"
 import swift from "@/public/images/logos/institutions/swift.png"
 import ubs from "@/public/images/logos/institutions/ubs.png"
-import visaSvg from "@/public/images/logos/institutions/visa.svg"
 import geoffreyKendrick from "@/public/images/profiles/geoffrey-kendrick.jpeg"
 import robertMitchnick from "@/public/images/profiles/robert-mitchnick.png"
 import tomZschach from "@/public/images/profiles/tom-zschach.png"
@@ -85,7 +81,6 @@ import vladTenev from "@/public/images/profiles/vlad-tenev.png"
 
 const logos: { src: StaticImageData; alt: string; className?: string }[] = [
   { src: blackRock, alt: "BlackRock logo", className: "py-1 translate-y-0.5" },
-  { src: citi, alt: "Citi logo", className: "-translate-y-px" },
   { src: coinbase, alt: "Coinbase logo", className: "py-0.5" },
   { src: etoro, alt: "eToro logo", className: "py-0.5" },
   {
@@ -96,7 +91,6 @@ const logos: { src: StaticImageData; alt: string; className?: string }[] = [
   { src: jpMorgan, alt: "JPMorgan logo", className: "py-0.5 translate-y-1.5" },
   { src: mastercard, alt: "Mastercard logo", className: "translate-y-[3px]" },
   { src: robinhood, alt: "Robinhood logo", className: "translate-y-1" },
-  { src: sony, alt: "Sony logo", className: "py-[5px] translate-y-[3px]" },
   {
     src: standardChartered,
     alt: "Standard Chartered logo",
@@ -168,7 +162,6 @@ export default async function Home({ params }: Props) {
     ethPrice,
     defiTvlAllCurrentData,
     dexVolume,
-    rwaAssetMarketShareData,
     stablecoinAssetMarketShareData,
     securitizeAumData,
     baseTvlData,
@@ -177,7 +170,6 @@ export default async function Home({ params }: Props) {
     fetchEtherPrice(),
     fetchDefiTvlAllCurrent(),
     fetchDexVolume(),
-    fetchAssetMarketShare("RWAS"),
     fetchAssetMarketShare("STABLECOINS"),
     fetchSecuritizeAum(),
     fetchBaseTvl(),
@@ -306,23 +298,16 @@ export default async function Home({ params }: Props) {
       ...baseTvlData.sourceInfo,
     },
     {
-      name: "Visa",
-      imgSrc: visaSvg,
-      label: t("platforms.visa.label"),
-      value: t("platforms.visa.value"),
-      lastUpdated: formatDateMonthDayYear(locale, "2025-10-17T00:00:00Z"),
-      source: "Yahoo! Finance",
-      sourceHref:
-        "https://finance.yahoo.com/news/visa-v-shares-updates-goldman-185036058.html",
+      name: "Fidelity",
+      imgSrc: fidelity,
+      label: t("platforms.fidelity.label"),
+      value: t("platforms.fidelity.value"),
     },
     {
-      name: "eToro",
-      imgSrc: etoroSvg,
-      label: t("platforms.etoro.label"),
-      value: t("platforms.etoro.value"),
-      lastUpdated: formatDateMonthDayYear(locale, "2025-10-17T00:00:00Z"),
-      source: "eToro",
-      sourceHref: "https://go.etoro.com/en/unlocked/withoutboundaries",
+      name: "JPMorgan",
+      imgSrc: jpMorgan,
+      label: t("platforms.jpmorgan.label"),
+      value: t("platforms.jpmorgan.value"),
     },
   ]
 
@@ -334,20 +319,25 @@ export default async function Home({ params }: Props) {
         shape="eth-glyph"
         className="css-primary-invert"
         beneath={
-          <InfiniteSlider
-            speedOnHover={16}
-            gap={56}
-            className="overflow-visible"
-          >
-            {logos.map(({ src, alt, className }) => (
-              <Image
-                key={alt}
-                src={src}
-                alt={alt}
-                className={cn("h-6 w-auto grayscale", className)}
-              />
-            ))}
-          </InfiniteSlider>
+          <>
+            <p className="text-muted-foreground mx-auto max-w-3xl px-4 text-center text-xl font-medium">
+              {t("hero.tagline")}
+            </p>
+            <InfiniteSlider
+              speedOnHover={16}
+              gap={56}
+              className="overflow-visible"
+            >
+              {logos.map(({ src, alt, className }) => (
+                <Image
+                  key={alt}
+                  src={src}
+                  alt={alt}
+                  className={cn("h-6 w-auto grayscale", className)}
+                />
+              ))}
+            </InfiniteSlider>
+          </>
         }
       />
       <article className="max-w-8xl mx-auto w-full space-y-20 px-4 py-10 sm:px-10 sm:py-20 md:space-y-40">
@@ -361,6 +351,12 @@ export default async function Home({ params }: Props) {
               className="css-secondary w-fit text-lg"
             >
               {tCommon("liveData")}
+            </LinkWithArrow>
+            <LinkWithArrow
+              href="#digital-assets"
+              className="css-secondary w-fit text-lg"
+            >
+              {t("numbers.useCasesLink")}
             </LinkWithArrow>
           </div>
           <div className="grid grid-cols-[auto_auto] gap-14 max-sm:grid-cols-2">
@@ -474,6 +470,9 @@ export default async function Home({ params }: Props) {
               <h2 className="text-h3-mobile sm:text-h3 max-lg:mx-auto max-lg:text-center lg:w-md lg:max-w-md">
                 {t("leader.heading")}
               </h2>
+              <p className="text-muted-foreground max-w-md font-medium max-lg:text-center">
+                {t("leader.intro")}
+              </p>
             </div>
             <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-14">
               <CardContent>
@@ -488,10 +487,10 @@ export default async function Home({ params }: Props) {
               </CardContent>
               <CardContent>
                 <CardLabel variant="large">
-                  {t("leader.flexibility.label")}
+                  {t("leader.settlement.label")}
                 </CardLabel>
                 <div className="text-muted-foreground font-medium">
-                  {t("leader.flexibility.description")}
+                  {t("leader.settlement.description")}
                 </div>
               </CardContent>
               <CardContent>
@@ -500,25 +499,6 @@ export default async function Home({ params }: Props) {
                 </CardLabel>
                 <div className="text-muted-foreground font-medium">
                   {t("leader.neutrality.description")}
-                </div>
-              </CardContent>
-              <CardContent>
-                <CardLabel variant="large">
-                  {t("leader.decentralization.label")}
-                </CardLabel>
-                <div className="text-muted-foreground font-medium">
-                  {t.rich("leader.decentralization.description", {
-                    validatorCount: formatLargeNumber(
-                      locale,
-                      beaconChainData.data.validatorsCount,
-                      {},
-                      2
-                    ),
-                    securityValue: formatLargeCurrency(
-                      locale,
-                      beaconChainData.data.totalStakedEther * ethPrice.data.usd
-                    ),
-                  })}
                 </div>
               </CardContent>
               <CardContent>
@@ -536,23 +516,60 @@ export default async function Home({ params }: Props) {
               </CardContent>
               <CardContent>
                 <CardLabel variant="large">
-                  {t("leader.tokenization.label")}
+                  {t("leader.programmability.label")}
                 </CardLabel>
                 <div className="text-muted-foreground font-medium">
-                  {t.rich("leader.tokenization.description", {
-                    rwaMarketShare: formatPercent(
-                      locale,
-                      rwaAssetMarketShareData.data.marketShare.mainnet +
-                        rwaAssetMarketShareData.data.marketShare.layer2
-                    ),
-                    stablecoinTvl: formatLargeCurrency(
-                      locale,
-                      stablecoinAssetMarketShareData.data.assetValue.mainnet +
-                        stablecoinAssetMarketShareData.data.assetValue.layer2
-                    ),
-                  })}
+                  {t("leader.programmability.description")}
                 </div>
               </CardContent>
+              <CardContent>
+                <CardLabel variant="large">
+                  {t("leader.composability.label")}
+                </CardLabel>
+                <div className="text-muted-foreground font-medium">
+                  {t("leader.composability.description")}
+                </div>
+              </CardContent>
+            </div>
+          </section>
+
+          <hr className="border-muted m-10 md:my-20" />
+
+          <section id="comparison" className="space-y-12">
+            <h2 className="text-center">{t("comparison.heading")}</h2>
+            <div className="overflow-x-auto -mx-4 px-4">
+              <table className="w-full min-w-[640px] border-collapse">
+                <thead>
+                  <tr className="border-b border-muted">
+                    <th className="py-4 px-4 text-left font-medium text-muted-foreground"></th>
+                    <th className="py-4 px-4 text-left font-bold">{t("comparison.ethereum")}</th>
+                    <th className="py-4 px-4 text-left font-medium text-muted-foreground">{t("comparison.l1Alt")}</th>
+                    <th className="py-4 px-4 text-left font-medium text-muted-foreground">{t("comparison.privateDlt")}</th>
+                    <th className="py-4 px-4 text-left font-medium text-muted-foreground">{t("comparison.traditional")}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(["settlement", "audit", "neutrality", "composability"] as const).map((dimension) => (
+                    <tr key={dimension} className="border-b border-muted">
+                      <td className="py-4 px-4 font-medium">
+                        {t(`comparison.${dimension === "settlement" ? "settlementFinality" : dimension === "audit" ? "auditability" : dimension}`)}
+                      </td>
+                      <td className="py-4 px-4 font-medium">
+                        {t(`comparison.ethereum_${dimension}`)}
+                      </td>
+                      <td className="py-4 px-4 text-muted-foreground">
+                        {t(`comparison.l1Alt_${dimension}`)}
+                      </td>
+                      <td className="py-4 px-4 text-muted-foreground">
+                        {t(`comparison.privateDlt_${dimension}`)}
+                      </td>
+                      <td className="py-4 px-4 text-muted-foreground">
+                        {t(`comparison.traditional_${dimension}`)}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </section>
 
@@ -729,6 +746,24 @@ export default async function Home({ params }: Props) {
           >
             {tCommon("viewAllResources")}
           </LinkWithArrow>
+        </section>
+
+        <section id="cta" className="space-y-8 text-center">
+          <h2>{t("cta.heading")}</h2>
+          <p className="text-muted-foreground mx-auto max-w-2xl text-xl">
+            {t("cta.description")}
+          </p>
+          <div className="flex justify-center gap-4 max-sm:flex-col max-sm:items-center">
+            <a
+              href="#contact"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-10 items-center justify-center px-6 font-medium transition-all"
+            >
+              {t("cta.getStarted")}
+            </a>
+            <LinkWithArrow href="/library" className="css-secondary">
+              {t("cta.resources")}
+            </LinkWithArrow>
+          </div>
         </section>
       </article>
     </main>
