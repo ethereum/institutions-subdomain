@@ -282,17 +282,112 @@
       "description1": "On Ethereum, you can keep counterparties, data, and business logic confidential while settling against the deepest onchain liquidity.",
       "description2": "Privacy isn't a sidechain or a silo. It's a set of open standards you compose on L1 or L2 to meet regulatory, risk, and audit needs."
     },
-    "direct": {
-      "heading": "A Privacy Strike Team for Institutions",
-      "description": "The Ethereum Foundation pairs its cryptographic research team (PSE) of 50+ leading privacy researchers with its Institutional Privacy Task Force (IPTF) to deliver institutional-grade privacy on public rails",
-      "neutralStacks": "Neutral Privacy Stacks",
-      "neutralStacksDesc": "Avoid vendor lock-in with privacy stacks that map to institutional use cases. IPTF advises, designs, and ships vendor-neutral privacy solutions on Ethereum.",
-      "compliance": "Advancing Compliance",
-      "complianceDesc": "Co-design policy proofs that satisfy enterprise audit standards and regulation. PSE works to advance onchain privacy solutions and auditability for real-world adoption.",
-      "pilots": "Production-Ready Pilots",
-      "pilotsDesc": "Stand up pilots that settle publicly and compose with existing liquidity, while keeping specific counterparties, amounts, and logic confidential.",
-      "education": "Institutional Education",
-      "educationDesc": "We engage directly to identify privacy needs and onchain solutions, publishing guidance and reports to share learnings and accelerate safe, compliant adoption."
+    "stats": {
+      "teams": "750+",
+      "teamsLabel": "Teams building on Ethereum privacy",
+      "years": "7+",
+      "yearsLabel": "Years of privacy R&D",
+      "researchers": "50+",
+      "researchersLabel": "Privacy researchers at EF",
+      "value": "$400B+",
+      "valueLabel": "Assets secured on Ethereum"
+    },
+    "solutions": {
+      "heading": "Privacy Solutions on Ethereum",
+      "description": "From enterprise-grade privacy platforms to programmable cryptographic tools, Ethereum offers the broadest privacy toolkit of any blockchain.",
+      "prividium": {
+        "heading": "Prividium",
+        "badge": "ENTERPRISE-GRADE",
+        "description": "Enterprise-grade privacy platform delivering institutional compliance and confidentiality on Ethereum. Purpose-built for regulated financial institutions requiring privacy with auditability."
+      },
+      "aztec": {
+        "heading": "Aztec Network",
+        "badge": "PROGRAMMABLE PRIVACY",
+        "description": "Privacy-first zkRollup with encrypted state and selective disclosure. Building the first programmable private smart contract platform on Ethereum."
+      },
+      "privacyPools": {
+        "heading": "Privacy Pools",
+        "badge": "COMPLIANCE-FIRST",
+        "description": "Compliance-first privacy protocol enabling users to prove the legitimacy of funds without revealing transaction history. Designed to separate privacy from illicit finance."
+      },
+      "railgun": {
+        "heading": "Railgun",
+        "badge": "SHIELDED TRANSACTIONS",
+        "description": "Mature onchain ZK privacy system for private balances and private DeFi interactions on Ethereum and major L2s. Battle-tested with years of production usage."
+      },
+      "emerging": {
+        "heading": "Emerging Approaches",
+        "description": "The privacy landscape on Ethereum continues to evolve:",
+        "fhenix": "Fhenix — FHE-powered confidential smart contracts",
+        "zama": "Zama — Encrypted computation tools for smart contracts",
+        "shutter": "Shutter — Encrypted mempool protection against MEV",
+        "renegade": "Renegade — Dark pool exchange with MPC-based privacy",
+        "nightfall": "EY Nightfall/Starlight — Enterprise privacy tools by Ernst & Young",
+        "miden": "Miden — ZK-based execution environment for private transactions"
+      }
+    },
+    "compliance": {
+      "heading": "Compliance Without Exposure",
+      "description": "Ethereum's privacy solutions enable selective disclosure — proving compliance without revealing underlying data.",
+      "selective": "Selective Disclosure",
+      "selectiveDesc": "Prove KYC status, accreditation, or sanctions compliance without exposing personal data. Regulators see what they need; counterparties see nothing more.",
+      "zkIdentity": "Zero-Knowledge Identity",
+      "zkIdentityDesc": "Cryptographic attestations replace document sharing. Verify identity properties without creating data liabilities.",
+      "auditTrails": "Programmable Audit Trails",
+      "auditTrailsDesc": "Smart contracts can enforce disclosure rules automatically. Compliance becomes code, not process."
+    },
+    "whyMatters": {
+      "heading": "Why This Matters",
+      "resilience": "Resilience",
+      "resilienceDesc": "Privacy infrastructure that can't be shut down by any single entity. No central point of failure means no central point of censorship.",
+      "censorship": "Censorship Resistance",
+      "censorshipDesc": "Transactions process based on cryptographic validity, not operator discretion. No entity can selectively freeze or block compliant users.",
+      "economics": "Economics",
+      "economicsDesc": "Reducing information leakage protects trading strategies, pricing power, and competitive positions. Privacy has direct economic value.",
+      "noCounterparty": "No Infrastructure Counterparty Risk",
+      "noCounterpartyDesc": "Unlike private chains where the operator can see all data, Ethereum's privacy is cryptographic — even infrastructure providers can't access protected information."
+    },
+    "trustVsCrypto": {
+      "heading": "Trust-Based vs. Cryptographic Privacy",
+      "trustHeading": "Trust-Based Privacy",
+      "trustQuote": "\"I promise not to look at your data.\"",
+      "trustDesc": "Private chains, consortium blockchains, and permissioned networks rely on operator promises. The consortium operator can see all transactions, and confidentiality depends entirely on their policies and integrity.",
+      "cryptoHeading": "Cryptographic Privacy",
+      "cryptoQuote": "\"I mathematically cannot access your data.\"",
+      "cryptoDesc": "Zero-knowledge proofs, homomorphic encryption, and cryptographic protocols make privacy a mathematical guarantee, not a policy commitment. No trust required.",
+      "tableAccess": "Data Access",
+      "tableTrustAccess": "Operator can see everything",
+      "tableCryptoAccess": "Mathematically impossible to access",
+      "tableGuarantee": "Privacy Guarantee",
+      "tableTrustGuarantee": "Policy-based",
+      "tableCryptoGuarantee": "Cryptographic proof",
+      "tableVendor": "Vendor Lock-in",
+      "tableTrustVendor": "High — single operator",
+      "tableCryptoVendor": "None — open standards",
+      "tableAudit": "Auditability",
+      "tableTrustAudit": "Operator-controlled",
+      "tableCryptoAudit": "Selective, cryptographic"
+    },
+    "privateChains": {
+      "heading": "Problems with Private Chains",
+      "description": "Institutions evaluating private or consortium blockchains should consider these structural risks:",
+      "vendorDependency": "Single-Vendor Dependency",
+      "vendorDependencyDesc": "Your settlement infrastructure depends on a single company's continued operation, solvency, and good faith. What happens when the vendor pivots, gets acquired, or fails?",
+      "talent": "Limited Developer Talent",
+      "talentDesc": "Private chain ecosystems attract a fraction of the developer talent that Ethereum commands. Fewer developers means fewer tools, slower innovation, and higher hiring costs.",
+      "fragility": "Production Fragility",
+      "fragilityDesc": "Private chains lack the battle-testing of public networks. Ethereum processes billions in value daily; most private chains process a fraction of that in their entire lifetime.",
+      "instability": "Platform Instability",
+      "instabilityDesc": "Vendor roadmaps change. Features get deprecated. APIs break. When your settlement layer is another company's product, you inherit their technical debt.",
+      "complexity": "Architectural Complexity",
+      "complexityDesc": "Running a private blockchain adds infrastructure that must be maintained, upgraded, and secured — often duplicating capabilities that exist on public networks.",
+      "auditability": "Auditability Gaps",
+      "auditabilityDesc": "The operator of a private chain controls what is visible and to whom. True independent auditability requires the kind of transparency that only public networks provide.",
+      "interop": "Interoperability Limitations",
+      "interopDesc": "Private chains are islands. Moving assets between private chains, or accessing public liquidity, requires bridging infrastructure that adds cost, risk, and complexity.",
+      "innovation": "Innovation Ceiling",
+      "innovationDesc": "The composability and open innovation of public networks cannot be replicated in closed systems. Private chains miss the network effects that drive Ethereum's ecosystem growth.",
+      "closing": "Every intermediary you add to your settlement stack is a dependency you must trust, monitor, and manage. Cryptographic privacy on public infrastructure eliminates these dependencies."
     },
     "buildingBlocks": {
       "heading": "Privacy Building Blocks on Ethereum",
@@ -313,39 +408,20 @@
         "description": "Confidential rollups settle on Ethereum while keeping counterparties, amounts, and logic private via ZK, FHE or TEEs. Get L1 security, liquidity, and auditability, plus access to selective disclosure."
       }
     },
-    "why": {
-      "heading": "Why Ethereum for Privacy",
-      "auditReady": "Credibly Neutral, Audit-Ready",
-      "auditReadyDesc": "Prove compliance without exposing raw data. Unlock verification of KYC-checks, legitimate sources of funds, and transaction limits, with selective disclosure for regulators and auditors.",
-      "composability": "Composability with Liquidity",
-      "composabilityDesc": "Private flows can still plug into the liquidity on Ethereum and its L2s. Privacy is composable with stablecoin and real-world asset (RWA) rails, DEX liquidity, institutional custody, and more.",
-      "noLockIn": "No Vendor Lock In",
-      "noLockInDesc": "Launch on Ethereum mainnet for maximum composability, or launch on Ethereum's L2s for lower settlement costs, with access to the same privacy tooling and vendor-neutral standards.",
-      "security": "Security at Scale",
-      "securityDesc": "Privacy features inherit Ethereum's decentralization and resilience. Build future-proof products and services on a global foundation designed for maximum security and permanent availability."
-    },
-    "solutions": {
-      "heading": "Privacy Solutions in Production",
-      "chainlink": {
-        "heading": "Chainlink ACE",
-        "description": "The Automated Compliance Engine provides policy enforcement and verifiable entity identity to automate KYC/AML and transfer rules directly in smart contracts."
-      },
-      "railgun": {
-        "heading": "Railgun",
-        "description": "Onchain ZK privacy system for private balances and private DeFi interactions on Ethereum and major L2s."
-      },
-      "aztec": {
-        "heading": "Aztec Network",
-        "description": "Privacy-first zkRollup with encrypted state and selective disclosure; building private smart contracts on Ethereum."
-      },
-      "zama": {
-        "heading": "Zama",
-        "description": "Tools to build smart contracts that compute on encrypted data, so balances and logic stay confidential."
-      }
+    "efCommitment": {
+      "heading": "EF Privacy Commitment",
+      "description": "The Ethereum Foundation's Privacy & Scaling Explorations team (PSE) leads a community of 50+ researchers advancing privacy technology on Ethereum.",
+      "iptf": "Institutional Privacy Task Force (IPTF)",
+      "iptfDesc": "The IPTF pairs PSE's cryptographic research with institutional needs, delivering vendor-neutral privacy solutions designed for regulated environments.",
+      "research": "Active Research Areas",
+      "researchItem1": "Zero-knowledge proof systems for institutional workflows",
+      "researchItem2": "Fully homomorphic encryption applications",
+      "researchItem3": "Compliance-preserving privacy protocols",
+      "researchItem4": "Post-quantum cryptographic primitives"
     },
     "metadata": {
-      "title": "Blockchain Privacy & Compliance for Institutions | Ethereum",
-      "description": "Settle onchain while protecting sensitive business data. Explore Ethereum's privacy features and tooling for institutional regulatory, risk, and audit needs."
+      "title": "Privacy & Compliance for Institutions | Ethereum",
+      "description": "Settle onchain while protecting sensitive business data. Explore Ethereum's privacy features, from ZK proofs to FHE, for institutional regulatory, risk, and audit needs."
     }
   },
   "library": {
