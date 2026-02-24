@@ -22,7 +22,10 @@ export type BeaconChainData = {
 export const fetchBeaconChain = async (): Promise<
   DataTimestamped<BeaconChainData>
 > => {
-  const url = "https://beaconcha.in/api/v1/epoch/latest"
+  const apiKey = process.env.BEACONCHAIN_API_KEY
+  const url = apiKey
+    ? `https://beaconcha.in/api/v1/epoch/latest?apikey=${apiKey}`
+    : "https://beaconcha.in/api/v1/epoch/latest"
 
   try {
     const response = await fetch(url, {
