@@ -27,6 +27,7 @@ import polymarket from "@/public/images/logos/apps/polymarket.png"
 import rocketPool from "@/public/images/logos/apps/rocket-pool.png"
 import securitize from "@/public/images/logos/apps/securitize.png"
 import sky from "@/public/images/logos/apps/sky.png"
+import spark from "@/public/images/logos/apps/spark.png"
 import stakewise from "@/public/images/logos/apps/stakewise.png"
 import symbiotic from "@/public/images/logos/apps/symbiotic.png"
 import synthetix from "@/public/images/logos/apps/synthetix.png"
@@ -73,6 +74,12 @@ export const getDefiEcosystem = (
         description: t("categories.dex.platforms.curve"),
         imgSrc: curve,
         href: "https://www.curve.finance/",
+      },
+      {
+        name: "Fluid",
+        description: t("categories.dex.platforms.fluid"),
+        imgSrc: fluid,
+        href: "https://fluid.io/",
       },
       {
         name: "Uniswap",
@@ -133,6 +140,12 @@ export const getDefiEcosystem = (
         description: t("categories.lending-borrowing.platforms.sky"),
         imgSrc: sky,
         href: "https://sky.money/",
+      },
+      {
+        name: "Spark",
+        description: t("categories.lending-borrowing.platforms.spark"),
+        imgSrc: spark,
+        href: "https://spark.fi/",
       },
     ],
   },

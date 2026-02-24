@@ -236,12 +236,6 @@ export default async function Page({ params }: Props) {
                   {t("primitives.permissionlessDesc")}
                 </p>
               </li>
-              <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                {t("primitives.onchainYield")}
-                <p className="text-muted-foreground mt-1 text-base font-medium">
-                  {t("primitives.onchainYieldDesc")}
-                </p>
-              </li>
             </ul>
           </div>
           <div className="relative min-h-80 flex-1">
