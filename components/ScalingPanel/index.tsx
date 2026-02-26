@@ -48,11 +48,8 @@ export function ScalingPanel() {
       badge: t("coming"),
       cards: [
         {
+          cardTitle: t("postQuantum.card1Title"),
           content: t("postQuantum.card1"),
-          href: "https://blog.ethereum.org/2025/07/31/lean-ethereum",
-        },
-        {
-          content: t("postQuantum.card2"),
           href: "https://blog.ethereum.org/2025/07/31/lean-ethereum",
         },
       ],
@@ -62,11 +59,8 @@ export function ScalingPanel() {
       badge: t("coming"),
       cards: [
         {
+          cardTitle: t("glamsterdam.card1Title"),
           content: t("glamsterdam.card1"),
-          href: "https://blog.ethereum.org/2025/08/05/protocol-update-001",
-        },
-        {
-          content: t("glamsterdam.card2"),
           href: "https://blog.ethereum.org/2025/08/05/protocol-update-001",
         },
       ],

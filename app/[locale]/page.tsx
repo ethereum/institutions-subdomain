@@ -321,7 +321,11 @@ export default async function Home({ params }: Props) {
             </InfiniteSlider>
           </>
         }
-      />
+      >
+        <p className="text-primary-foreground/75 text-xl max-w-md max-md:text-center">
+          {t("hero.tagline")}
+        </p>
+      </Hero>
       <article className="max-w-8xl mx-auto w-full space-y-20 px-4 py-10 sm:px-10 sm:py-20 md:space-y-40">
         <section id="numbers" className="flex gap-20 max-lg:flex-col">
           <div className="flex flex-col gap-y-10 max-lg:items-center">
@@ -446,13 +450,13 @@ export default async function Home({ params }: Props) {
         <div>
           <section
             id="leader"
-            className="flex gap-10 max-lg:flex-col md:gap-20"
+            className="space-y-12"
           >
-            <div className="flex flex-col gap-y-10 max-lg:items-center">
-              <h2 className="text-h3-mobile sm:text-h3 max-lg:mx-auto max-lg:text-center lg:w-md lg:max-w-md">
+            <div className="space-y-4 text-center">
+              <h2>
                 {t("leader.heading")}
               </h2>
-              <p className="text-muted-foreground max-w-md font-medium max-lg:text-center">
+              <p className="text-muted-foreground mx-auto max-w-4xl text-xl font-medium">
                 {t("leader.intro")}
               </p>
             </div>

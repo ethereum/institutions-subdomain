@@ -52,6 +52,9 @@
     "defi": "Decentralized Finance",
     "privacy": "Compliant Privacy",
     "layer2": "L2 Ecosystem",
+    "whyEthereum": "Why Ethereum",
+    "useCases": "Use Cases",
+    "dataPortal": "Data Portal",
     "dataHub": "Live Data",
     "library": "Library",
     "digitalAssets": "Digital Assets"
@@ -62,7 +65,7 @@
       "tagline": "Production-grade, open settlement network for tokenized assets, stablecoins, and financial infrastructure."
     },
     "numbers": {
-      "heading": "Production-grade, open settlement network for tokenized assets, stablecoins, and financial infrastructure.",
+      "heading": "Ethereum by the Numbers",
       "uptimeLabel": "Uninterrupted uptime and liveness",
       "genesisSource": "Genesis {date}",
       "networkSecurityLabel": "Total value securing the network ({ethAmount} ETH)",
@@ -100,7 +103,7 @@
     },
     "leader": {
       "heading": "Why Institutions Choose Ethereum",
-      "intro": "",
+      "intro": "Ethereum is an open, globally distributed settlement network designed to support programmable financial activity. Unlike proprietary or permissioned systems, Ethereum operates as a neutral base layer with no single operator, while enabling institutions to build compliance-aware applications on top.",
       "resilience": {
         "label": "Operational Resilience",
         "description": "Ethereum has maintained 10 years of uninterrupted uptime since its launch. Zero downtime through 15+ successful network upgrades. A diverse infrastructure set and open client ecosystem reduce single-operator and infrastructure concentration risk."
@@ -213,13 +216,13 @@
       },
       "postQuantum": {
         "title": "Post-Quantum",
-        "card1": "Quantum-resistant cryptographic signatures protect institutional assets against future quantum computing threats",
-        "card2": "Lattice-based and hash-based signature schemes being researched for integration into the protocol"
+        "card1Title": "Quantum-resistant security",
+        "card1": "Ethereum has been preparing for the quantum computing threat since 2018, longer than any other blockchain ecosystem. The EF has committed $20M+ to formal verification and cryptographic research, with AI breakthroughs accelerating timelines by 100x. A dedicated post-quantum team was formed in early 2026, with 10 client teams now building quantum-resistant implementations. The full transition is targeted for 2028, well ahead of the estimated mid-2030s quantum threat, with zero fund loss and zero downtime."
       },
       "glamsterdam": {
         "title": "Glamsterdam",
-        "card1": "Raising mainnet gas limit to increase L1 throughput and reduce transaction costs",
-        "card2": "Block-Level Access Lists enable parallel transaction execution, accelerating block processing times"
+        "card1Title": "Execution layer optimisation",
+        "card1": "Glamsterdam is an upcoming upgrade focused on further optimising the Ethereum execution layer and network performance. For enterprises, this signals Ethereum's continued commitment to improving the base layer infrastructure that underpins institutional applications, DeFi protocols, and tokenised asset platforms."
       }
     },
     "cta": {
@@ -230,7 +233,7 @@
     },
     "library": {
       "heading": "Library",
-      "subheading": "Latest updates relevant for institutions"
+      "subheading": "Explore the latest insights, reports, and analysis, from across the institutional landscape."
     },
     "metadata": {
       "title": "Ethereum for Institutions | The Institutional Liquidity Layer",

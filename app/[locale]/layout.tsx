@@ -146,11 +146,6 @@ export default async function RootLayout({ children, params }: Props) {
               </Link>
               <div className="flex items-center gap-4">
                 <nav className="flex items-center gap-4 max-md:hidden">
-                  <DigitalAssetsDropdown
-                    label={tNav("digitalAssets")}
-                    links={daNavLinks}
-                  />
-
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}
