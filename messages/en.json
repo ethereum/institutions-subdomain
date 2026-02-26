@@ -48,7 +48,7 @@
   },
   "nav": {
     "home": "Home",
-    "rwa": "RWAs & Stablecoins",
+    "rwa": "Tokenization",
     "defi": "Decentralized Finance",
     "privacy": "Compliant Privacy",
     "layer2": "L2 Ecosystem",
@@ -62,7 +62,7 @@
       "tagline": "Production-grade, open settlement network for tokenized assets, stablecoins, and financial infrastructure."
     },
     "numbers": {
-      "heading": "Ethereum by the Numbers",
+      "heading": "Production-grade, open settlement network for tokenized assets, stablecoins, and financial infrastructure.",
       "uptimeLabel": "Uninterrupted uptime and liveness",
       "genesisSource": "Genesis {date}",
       "networkSecurityLabel": "Total value securing the network ({ethAmount} ETH)",
@@ -78,13 +78,13 @@
       "heading": "Institutional Use Cases",
       "subheading": "Explore Ethereum's digital asset landscape, from tokens to technologies",
       "rwa": {
-        "label": "RWAs & Stablecoins",
-        "description": "Real-world assets tokenize offchain assets, like real estate, commodities, or bonds, while stablecoins design for steady value, often pegged to assets like USD.",
-        "link": "More on RWAs"
+        "label": "Tokenization",
+        "description": "Tokenize assets, like real estate, commodities, or bonds, while stablecoins designed for steady value, often pegged to assets like USD or gold.",
+        "link": "More on Tokenization"
       },
       "defi": {
         "label": "Decentralized Finance",
-        "description": "Open financial systems built on smart contracts instead of banks. DeFi lets anyone lend, borrow, trade, and earn yield directly from their wallet.",
+        "description": "Open financial systems built on Ethereum. DeFi lets anyone lend, borrow, trade, and earn yield, on their assets globally and creates utility for tokenized assets.",
         "link": "More on DeFi"
       },
       "privacy": {
@@ -94,36 +94,36 @@
       },
       "layer2": {
         "label": "L2 Ecosystem",
-        "description": "Layer 2 networks scale Ethereum by processing transactions faster and cheaper.",
+        "description": "Layer 2s are customized blockchains that are built on top of Ethereum. Deployments can be open, or built for custom requirements e.g. speed, brand, privacy, cost, and more.",
         "link": "More on L2s"
       }
     },
     "leader": {
       "heading": "Why Institutions Choose Ethereum",
-      "intro": "Ethereum provides the core properties that institutional settlement infrastructure requires",
+      "intro": "",
       "resilience": {
         "label": "Operational Resilience",
-        "description": "Ethereum has maintained {uptime} of uninterrupted uptime and liveness since its launch. Zero downtime through 15+ successful network upgrades. No single point of failure, no central coordinator, no pause button."
+        "description": "Ethereum has maintained 10 years of uninterrupted uptime since its launch. Zero downtime through 15+ successful network upgrades. A diverse infrastructure set and open client ecosystem reduce single-operator and infrastructure concentration risk."
       },
       "settlement": {
         "label": "Global Settlement",
-        "description": "24/7 finality for high-value transactions. Assets settle on a global, neutral ledger accessible to any institution, anywhere."
+        "description": "Ethereum settles value continuously across jurisdictions, with transparent, guaranteed finality and publicly verifiable execution."
       },
       "neutrality": {
-        "label": "Credible Neutrality",
-        "description": "No single entity controls the network. Governance-free, vendor-neutral infrastructure that eliminates counterparty risk and resists geopolitical capture."
+        "label": "Neutrality",
+        "description": "No single point of failure, no central coordinator, no pause button, no counterparty risk. Resilient to geopolitical, regulatory, and infrastructure-level risks."
       },
       "liquidity": {
-        "label": "Liquidity & Utility",
-        "description": "{dexVolume}+ in daily DEX volume. The deepest liquidity of any onchain environment, supporting institutional-grade trading, lending, and settlement."
+        "label": "Liquidity and Utility",
+        "description": "The leading platform for asset tokenization, with 67% of all tokenized assets deployed. Ethereum's DeFi ecosystem benefits from 10 years of network effects with its DeFi ecosystem being 8x larger than that of the next largest ecosystem."
       },
       "programmability": {
         "label": "Programmability",
-        "description": "Smart contracts automate settlement, enforce compliance, and enable 24/7 operations. Programmable money eliminates manual reconciliation."
+        "description": "Smart contracts enable automated issuance, transfer controls, lifecycle management, and conditional settlement. L2 ecosystems and apps can be highly customized to the needs and requirements of financial institutions."
       },
       "composability": {
         "label": "Composable Ecosystem",
-        "description": "Open standards mean every protocol, token, and application on Ethereum can interoperate. Build once, connect everywhere."
+        "description": "Ethereum supports an ecosystem of wallets, custodians, auditors, data providers, and scaling solutions used globally in production by institutions today."
       }
     },
     "comparison": {
@@ -203,14 +203,13 @@
       "coming": "Coming",
       "pectra": {
         "title": "Pectra",
-        "card1": "Account abstraction (EIP-7702) enables smart contract wallets for institutions, with programmable transaction rules and multi-sig controls",
-        "card2": "Validator staking cap raised from 32 ETH to 2,048 ETH, reducing operational overhead for large staking operations",
-        "card3": "Improved blob throughput increases Layer 2 data availability, reducing costs for rollup-based settlement"
+        "card1Title": "Staking upgrades",
+        "card1": "Pectra introduced key improvements to Ethereum's staking infrastructure, including raising the validator cap from 32 to 2,048 ETH and enabling more flexible staking operations. For enterprises and institutional stakers, this means simpler validator management, lower operational overhead, and a more efficient staking experience at scale."
       },
       "fusaka": {
         "title": "Fusaka",
-        "card1": "PeerDAS data availability sampling dramatically scales blob capacity, multiplying L2 throughput",
-        "card2": "EOF (EVM Object Format) modernizes the execution layer for more efficient and safer smart contracts"
+        "card1Title": "Reduced fees, higher scalability",
+        "card1": "Fusaka focused on dramatically reducing transaction costs and increasing network throughput through data scaling improvements. For businesses building on Ethereum, this translates to cheaper, faster transactions, making enterprise-grade applications and high-volume use cases significantly more viable."
       },
       "postQuantum": {
         "title": "Post-Quantum",
