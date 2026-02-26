@@ -65,7 +65,7 @@
       "tagline": "Production-grade, open settlement network for tokenized assets, stablecoins, and financial infrastructure."
     },
     "numbers": {
-      "heading": "Ethereum by the Numbers",
+      "heading": "Key Statistics",
       "uptimeLabel": "Uninterrupted uptime and liveness",
       "genesisSource": "Genesis {date}",
       "networkSecurityLabel": "Total value securing the network ({ethAmount} ETH)",
