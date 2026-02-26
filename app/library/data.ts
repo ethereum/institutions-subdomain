@@ -20,6 +20,7 @@ import galaxy from "@/public/images/library/galaxy-1.png"
 import goldmanSachs from "@/public/images/library/goldman-sachs-1.png"
 import mergeMadrid from "@/public/images/library/merge-madrid-1.jpg"
 import nextFinSummit from "@/public/images/library/nextfin-summit-1.png"
+import redstone from "@/public/images/library/redstone-1.png"
 
 type LibraryItem = {
   title: string
@@ -29,6 +30,12 @@ type LibraryItem = {
 }
 
 const externalLibraryItems: LibraryItem[] = [
+  {
+    title: "RedStone - Case Study: How Securitize and RedStone Enable DeFi-Ready RWAs on Ethereum",
+    href: "https://blog.redstone.finance/2026/02/26/case-study-how-securitize-and-redstone-enable-defi-ready-rwas-on-ethereum/",
+    date: "February 26, 2026",
+    imgSrc: redstone,
+  },
   {
     title: "Citi - Stablecoins 2030 Web3 to Wall Street",
     href: "https://www.citigroup.com/rcs/citigpa/storage/public/GPS_Report_Stablecoins_2030.pdf",
