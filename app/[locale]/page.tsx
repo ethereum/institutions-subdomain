@@ -249,21 +249,6 @@ export default async function Home({ params }: Props) {
       ),
       ...defiTvlAllCurrentData.sourceInfo,
     },
-    {
-      value: formatLargeCurrency(
-        locale,
-        dexVolume.data.trailing12moAvgDexVolume
-      ),
-      label: (
-        <>
-          {t("numbers.dexVolumeLabel")}
-          <br />
-          {t("numbers.dexVolumeSubLabel")}
-        </>
-      ),
-      lastUpdated: formatDateMonthDayYear(locale, dexVolume.lastUpdated),
-      ...dexVolume.sourceInfo,
-    },
   ]
 
   const platforms: ({
@@ -320,9 +305,6 @@ export default async function Home({ params }: Props) {
         className="css-primary-invert"
         beneath={
           <>
-            <p className="text-muted-foreground mx-auto max-w-3xl px-4 text-center text-xl font-medium">
-              {t("hero.tagline")}
-            </p>
             <InfiniteSlider
               speedOnHover={16}
               gap={56}
@@ -339,7 +321,11 @@ export default async function Home({ params }: Props) {
             </InfiniteSlider>
           </>
         }
-      />
+      >
+        <p className="text-primary-foreground/75 text-xl max-w-md max-md:text-center">
+          {t("hero.tagline")}
+        </p>
+      </Hero>
       <article className="max-w-8xl mx-auto w-full space-y-20 px-4 py-10 sm:px-10 sm:py-20 md:space-y-40">
         <section id="numbers" className="flex gap-20 max-lg:flex-col">
           <div className="flex flex-col gap-y-10 max-lg:items-center">
@@ -464,13 +450,13 @@ export default async function Home({ params }: Props) {
         <div>
           <section
             id="leader"
-            className="flex gap-10 max-lg:flex-col md:gap-20"
+            className="space-y-12"
           >
-            <div className="flex flex-col gap-y-10 max-lg:items-center">
-              <h2 className="text-h3-mobile sm:text-h3 max-lg:mx-auto max-lg:text-center lg:w-md lg:max-w-md">
+            <div className="space-y-4 text-center">
+              <h2>
                 {t("leader.heading")}
               </h2>
-              <p className="text-muted-foreground max-w-md font-medium max-lg:text-center">
+              <p className="text-muted-foreground mx-auto max-w-4xl text-xl font-medium">
                 {t("leader.intro")}
               </p>
             </div>
@@ -480,9 +466,7 @@ export default async function Home({ params }: Props) {
                   {t("leader.resilience.label")}
                 </CardLabel>
                 <div className="text-muted-foreground font-medium">
-                  {t.rich("leader.resilience.description", {
-                    uptime: formatDuration(locale, uptime),
-                  })}
+                  {t("leader.resilience.description")}
                 </div>
               </CardContent>
               <CardContent>
@@ -506,12 +490,7 @@ export default async function Home({ params }: Props) {
                   {t("leader.liquidity.label")}
                 </CardLabel>
                 <div className="text-muted-foreground font-medium">
-                  {t.rich("leader.liquidity.description", {
-                    dexVolume: formatLargeCurrency(
-                      locale,
-                      dexVolume.data.trailing12moAvgDexVolume
-                    ),
-                  })}
+                  {t("leader.liquidity.description")}
                 </div>
               </CardContent>
               <CardContent>
@@ -537,39 +516,94 @@ export default async function Home({ params }: Props) {
 
           <section id="comparison" className="space-y-12">
             <h2 className="text-center">{t("comparison.heading")}</h2>
-            <div className="overflow-x-auto -mx-4 px-4">
-              <table className="w-full min-w-[640px] border-collapse">
-                <thead>
-                  <tr className="border-b border-muted">
-                    <th className="py-4 px-4 text-left font-medium text-muted-foreground"></th>
-                    <th className="py-4 px-4 text-left font-bold">{t("comparison.ethereum")}</th>
-                    <th className="py-4 px-4 text-left font-medium text-muted-foreground">{t("comparison.l1Alt")}</th>
-                    <th className="py-4 px-4 text-left font-medium text-muted-foreground">{t("comparison.privateDlt")}</th>
-                    <th className="py-4 px-4 text-left font-medium text-muted-foreground">{t("comparison.traditional")}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {(["settlement", "audit", "neutrality", "composability"] as const).map((dimension) => (
-                    <tr key={dimension} className="border-b border-muted">
-                      <td className="py-4 px-4 font-medium">
-                        {t(`comparison.${dimension === "settlement" ? "settlementFinality" : dimension === "audit" ? "auditability" : dimension}`)}
-                      </td>
-                      <td className="py-4 px-4 font-medium">
-                        {t(`comparison.ethereum_${dimension}`)}
-                      </td>
-                      <td className="py-4 px-4 text-muted-foreground">
-                        {t(`comparison.l1Alt_${dimension}`)}
-                      </td>
-                      <td className="py-4 px-4 text-muted-foreground">
-                        {t(`comparison.privateDlt_${dimension}`)}
-                      </td>
-                      <td className="py-4 px-4 text-muted-foreground">
-                        {t(`comparison.traditional_${dimension}`)}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+
+            {/* Desktop: CSS Grid with card cells */}
+            <div className="hidden md:block">
+              {/* Column headers (slightly darker) */}
+              <div className="grid grid-cols-[200px_repeat(4,1fr)] gap-x-px bg-white">
+                <div className="bg-white px-4 py-4" />
+                <div className="bg-secondary-foreground px-4 py-4">
+                  <span className="text-white font-bold">
+                    {t("comparison.ethereum")}
+                  </span>
+                </div>
+                {(["l1Alt", "privateDlt", "traditional"] as const).map(
+                  (col) => (
+                    <div
+                      key={col}
+                      className="bg-[#ECECEC] px-4 py-4"
+                    >
+                      <span className="font-bold text-foreground">
+                        {t(`comparison.${col}`)}
+                      </span>
+                    </div>
+                  )
+                )}
+              </div>
+
+              {/* Data rows (lighter) */}
+              {(["settlement", "audit", "neutrality", "composability"] as const).map((dimension) => (
+                <div
+                  key={dimension}
+                  className="grid grid-cols-[200px_repeat(4,1fr)] gap-x-px bg-white"
+                >
+                  <div className="flex items-center bg-white px-4 py-4">
+                    <span className="font-bold text-foreground">
+                      {t(`comparison.${dimension === "settlement" ? "settlementFinality" : dimension === "audit" ? "auditability" : dimension}`)}
+                    </span>
+                  </div>
+                  <div className="bg-secondary-foreground/10 px-4 py-4">
+                    <p className="font-medium text-foreground">
+                      {t(`comparison.ethereum_${dimension}`)}
+                    </p>
+                  </div>
+                  {(["l1Alt", "privateDlt", "traditional"] as const).map(
+                    (col) => (
+                      <div key={col} className="bg-[#F3F3F3] px-4 py-4">
+                        <p className="text-muted-foreground">
+                          {t(`comparison.${col}_${dimension}`)}
+                        </p>
+                      </div>
+                    )
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Mobile: Stacked cards per dimension */}
+            <div className="space-y-3 md:hidden">
+              {(["settlement", "audit", "neutrality", "composability"] as const).map((dimension) => (
+                <div
+                  key={dimension}
+                  className="rounded-lg border border-white/[0.06] bg-white/[0.03] p-5"
+                >
+                  <h3 className="mb-4 font-bold">
+                    {t(`comparison.${dimension === "settlement" ? "settlementFinality" : dimension === "audit" ? "auditability" : dimension}`)}
+                  </h3>
+                  <div className="mb-5 bg-secondary-foreground rounded-sm pl-4 py-3 pr-4">
+                    <div className="mb-1 text-xs font-medium text-secondary/70">
+                      {t("comparison.ethereum")}
+                    </div>
+                    <div className="text-secondary font-medium">
+                      {t(`comparison.ethereum_${dimension}`)}
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    {(["l1Alt", "privateDlt", "traditional"] as const).map(
+                      (col) => (
+                        <div key={col}>
+                          <div className="mb-0.5 text-xs text-gray-600">
+                            {t(`comparison.${col}`)}
+                          </div>
+                          <div className="text-muted-foreground">
+                            {t(`comparison.${col}_${dimension}`)}
+                          </div>
+                        </div>
+                      )
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </section>
 
@@ -748,23 +782,6 @@ export default async function Home({ params }: Props) {
           </LinkWithArrow>
         </section>
 
-        <section id="cta" className="space-y-8 text-center">
-          <h2>{t("cta.heading")}</h2>
-          <p className="text-muted-foreground mx-auto max-w-2xl text-xl">
-            {t("cta.description")}
-          </p>
-          <div className="flex justify-center gap-4 max-sm:flex-col max-sm:items-center">
-            <a
-              href="#contact"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-10 items-center justify-center px-6 font-medium transition-all"
-            >
-              {t("cta.getStarted")}
-            </a>
-            <LinkWithArrow href="/library" className="css-secondary">
-              {t("cta.resources")}
-            </LinkWithArrow>
-          </div>
-        </section>
       </article>
     </main>
   )

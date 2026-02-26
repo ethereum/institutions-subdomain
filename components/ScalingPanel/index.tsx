@@ -17,6 +17,7 @@ export function ScalingPanel() {
     title: string
     badge?: string
     cards: {
+      cardTitle?: string
       content: ReactNode
       href: string
       ctaLabel?: string
@@ -26,15 +27,8 @@ export function ScalingPanel() {
       title: t("pectra.title"),
       cards: [
         {
+          cardTitle: t("pectra.card1Title"),
           content: t("pectra.card1"),
-          href: "https://blog.ethereum.org/2025/03/06/pectra",
-        },
-        {
-          content: t("pectra.card2"),
-          href: "https://blog.ethereum.org/2025/03/06/pectra",
-        },
-        {
-          content: t("pectra.card3"),
           href: "https://blog.ethereum.org/2025/03/06/pectra",
         },
       ],
@@ -43,11 +37,8 @@ export function ScalingPanel() {
       title: t("fusaka.title"),
       cards: [
         {
+          cardTitle: t("fusaka.card1Title"),
           content: t("fusaka.card1"),
-          href: "https://blog.ethereum.org/2025/08/22/protocol-update-002",
-        },
-        {
-          content: t("fusaka.card2"),
           href: "https://blog.ethereum.org/2025/08/22/protocol-update-002",
         },
       ],
@@ -57,11 +48,8 @@ export function ScalingPanel() {
       badge: t("coming"),
       cards: [
         {
+          cardTitle: t("postQuantum.card1Title"),
           content: t("postQuantum.card1"),
-          href: "https://blog.ethereum.org/2025/07/31/lean-ethereum",
-        },
-        {
-          content: t("postQuantum.card2"),
           href: "https://blog.ethereum.org/2025/07/31/lean-ethereum",
         },
       ],
@@ -71,11 +59,8 @@ export function ScalingPanel() {
       badge: t("coming"),
       cards: [
         {
+          cardTitle: t("glamsterdam.card1Title"),
           content: t("glamsterdam.card1"),
-          href: "https://blog.ethereum.org/2025/08/05/protocol-update-001",
-        },
-        {
-          content: t("glamsterdam.card2"),
           href: "https://blog.ethereum.org/2025/08/05/protocol-update-001",
         },
       ],
@@ -118,13 +103,20 @@ export function ScalingPanel() {
         >
           {items.map(({ cards }, index) => (
             <div key={index} className="flex gap-8 max-lg:flex-col">
-              {cards.map(({ content, href }, index) => (
+              {cards.map(({ cardTitle, content, href }, index) => (
                 <div
                   key={index}
                   className="bg-secondary-foreground flex flex-1 flex-col justify-between gap-y-8 p-8"
                 >
-                  <div className="text-secondary text-xl font-bold tracking-[0.025rem]">
-                    {content}
+                  <div>
+                    {cardTitle && (
+                      <div className="text-secondary mb-3 text-2xl font-bold tracking-[0.025rem]">
+                        {cardTitle}
+                      </div>
+                    )}
+                    <div className={cn("text-secondary tracking-[0.025rem]", cardTitle ? "text-base font-medium" : "text-xl font-bold")}>
+                      {content}
+                    </div>
                   </div>
                   <LinkWithArrow
                     href={href}

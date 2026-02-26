@@ -48,10 +48,13 @@
   },
   "nav": {
     "home": "Home",
-    "rwa": "RWAs & Stablecoins",
+    "rwa": "Tokenization",
     "defi": "Decentralized Finance",
     "privacy": "Compliant Privacy",
     "layer2": "L2 Ecosystem",
+    "whyEthereum": "Why Ethereum",
+    "useCases": "Use Cases",
+    "dataPortal": "Data Portal",
     "dataHub": "Live Data",
     "library": "Library",
     "digitalAssets": "Digital Assets"
@@ -62,7 +65,7 @@
       "tagline": "Production-grade, open settlement network for tokenized assets, stablecoins, and financial infrastructure."
     },
     "numbers": {
-      "heading": "Ethereum by the Numbers",
+      "heading": "Key Statistics",
       "uptimeLabel": "Uninterrupted uptime and liveness",
       "genesisSource": "Genesis {date}",
       "networkSecurityLabel": "Total value securing the network ({ethAmount} ETH)",
@@ -78,13 +81,13 @@
       "heading": "Institutional Use Cases",
       "subheading": "Explore Ethereum's digital asset landscape, from tokens to technologies",
       "rwa": {
-        "label": "RWAs & Stablecoins",
-        "description": "Real-world assets tokenize offchain assets, like real estate, commodities, or bonds, while stablecoins design for steady value, often pegged to assets like USD.",
-        "link": "More on RWAs"
+        "label": "Tokenization",
+        "description": "Tokenize assets, like real estate, commodities, or bonds, while stablecoins designed for steady value, often pegged to assets like USD or gold.",
+        "link": "More on Tokenization"
       },
       "defi": {
         "label": "Decentralized Finance",
-        "description": "Open financial systems built on smart contracts instead of banks. DeFi lets anyone lend, borrow, trade, and earn yield directly from their wallet.",
+        "description": "Open financial systems built on Ethereum. DeFi lets anyone lend, borrow, trade, and earn yield, on their assets globally and creates utility for tokenized assets.",
         "link": "More on DeFi"
       },
       "privacy": {
@@ -94,36 +97,36 @@
       },
       "layer2": {
         "label": "L2 Ecosystem",
-        "description": "Layer 2 networks scale Ethereum by processing transactions faster and cheaper.",
+        "description": "Layer 2s are customized blockchains that are built on top of Ethereum. Deployments can be open, or built for custom requirements e.g. speed, brand, privacy, cost, and more.",
         "link": "More on L2s"
       }
     },
     "leader": {
       "heading": "Why Institutions Choose Ethereum",
-      "intro": "Ethereum provides the core properties that institutional settlement infrastructure requires",
+      "intro": "Ethereum is an open, globally distributed settlement network designed to support programmable financial activity. Unlike proprietary or permissioned systems, Ethereum operates as a neutral base layer with no single operator, while enabling institutions to build compliance-aware applications on top.",
       "resilience": {
         "label": "Operational Resilience",
-        "description": "Ethereum has maintained {uptime} of uninterrupted uptime and liveness since its launch. Zero downtime through 15+ successful network upgrades. No single point of failure, no central coordinator, no pause button."
+        "description": "Ethereum has maintained 10 years of uninterrupted uptime since its launch. Zero downtime through 15+ successful network upgrades. A diverse infrastructure set and open client ecosystem reduce single-operator and infrastructure concentration risk."
       },
       "settlement": {
         "label": "Global Settlement",
-        "description": "24/7 finality for high-value transactions. Assets settle on a global, neutral ledger accessible to any institution, anywhere."
+        "description": "Ethereum settles value continuously across jurisdictions, with transparent, guaranteed finality and publicly verifiable execution."
       },
       "neutrality": {
-        "label": "Credible Neutrality",
-        "description": "No single entity controls the network. Governance-free, vendor-neutral infrastructure that eliminates counterparty risk and resists geopolitical capture."
+        "label": "Neutrality",
+        "description": "No single point of failure, no central coordinator, no pause button, no counterparty risk. Resilient to geopolitical, regulatory, and infrastructure-level risks."
       },
       "liquidity": {
-        "label": "Liquidity & Utility",
-        "description": "{dexVolume}+ in daily DEX volume. The deepest liquidity of any onchain environment, supporting institutional-grade trading, lending, and settlement."
+        "label": "Liquidity and Utility",
+        "description": "The leading platform for asset tokenization, with 67% of all tokenized assets deployed. Ethereum's DeFi ecosystem benefits from 10 years of network effects with its DeFi ecosystem being 8x larger than that of the next largest ecosystem."
       },
       "programmability": {
         "label": "Programmability",
-        "description": "Smart contracts automate settlement, enforce compliance, and enable 24/7 operations. Programmable money eliminates manual reconciliation."
+        "description": "Smart contracts enable automated issuance, transfer controls, lifecycle management, and conditional settlement. L2 ecosystems and apps can be highly customized to the needs and requirements of financial institutions."
       },
       "composability": {
         "label": "Composable Ecosystem",
-        "description": "Open standards mean every protocol, token, and application on Ethereum can interoperate. Build once, connect everywhere."
+        "description": "Ethereum supports an ecosystem of wallets, custodians, auditors, data providers, and scaling solutions used globally in production by institutions today."
       }
     },
     "comparison": {
@@ -203,24 +206,23 @@
       "coming": "Coming",
       "pectra": {
         "title": "Pectra",
-        "card1": "Account abstraction (EIP-7702) enables smart contract wallets for institutions, with programmable transaction rules and multi-sig controls",
-        "card2": "Validator staking cap raised from 32 ETH to 2,048 ETH, reducing operational overhead for large staking operations",
-        "card3": "Improved blob throughput increases Layer 2 data availability, reducing costs for rollup-based settlement"
+        "card1Title": "Staking upgrades",
+        "card1": "Pectra introduced key improvements to Ethereum's staking infrastructure, including raising the validator cap from 32 to 2,048 ETH and enabling more flexible staking operations. For enterprises and institutional stakers, this means simpler validator management, lower operational overhead, and a more efficient staking experience at scale."
       },
       "fusaka": {
         "title": "Fusaka",
-        "card1": "PeerDAS data availability sampling dramatically scales blob capacity, multiplying L2 throughput",
-        "card2": "EOF (EVM Object Format) modernizes the execution layer for more efficient and safer smart contracts"
+        "card1Title": "Reduced fees, higher scalability",
+        "card1": "Fusaka focused on dramatically reducing transaction costs and increasing network throughput through data scaling improvements. For businesses building on Ethereum, this translates to cheaper, faster transactions, making enterprise-grade applications and high-volume use cases significantly more viable."
       },
       "postQuantum": {
         "title": "Post-Quantum",
-        "card1": "Quantum-resistant cryptographic signatures protect institutional assets against future quantum computing threats",
-        "card2": "Lattice-based and hash-based signature schemes being researched for integration into the protocol"
+        "card1Title": "Quantum-resistant security",
+        "card1": "Ethereum has been preparing for the quantum computing threat since 2018, longer than any other blockchain ecosystem. The EF has committed $20M+ to formal verification and cryptographic research, with AI breakthroughs accelerating timelines by 100x. A dedicated post-quantum team was formed in early 2026, with 10 client teams now building quantum-resistant implementations. The full transition is targeted for 2028, well ahead of the estimated mid-2030s quantum threat, with zero fund loss and zero downtime."
       },
       "glamsterdam": {
         "title": "Glamsterdam",
-        "card1": "Raising mainnet gas limit to increase L1 throughput and reduce transaction costs",
-        "card2": "Block-Level Access Lists enable parallel transaction execution, accelerating block processing times"
+        "card1Title": "Execution layer optimisation",
+        "card1": "Glamsterdam is an upcoming upgrade focused on further optimising the Ethereum execution layer and network performance. For enterprises, this signals Ethereum's continued commitment to improving the base layer infrastructure that underpins institutional applications, DeFi protocols, and tokenised asset platforms."
       }
     },
     "cta": {
@@ -231,7 +233,7 @@
     },
     "library": {
       "heading": "Library",
-      "subheading": "Latest updates relevant for institutions"
+      "subheading": "Explore the latest insights, reports, and analysis, from across the institutional landscape."
     },
     "metadata": {
       "title": "Ethereum for Institutions | The Institutional Liquidity Layer",
