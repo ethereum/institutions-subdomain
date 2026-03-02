@@ -15,44 +15,72 @@ export const getTimeSince = (value: DateArg): number => {
   return Date.now() - new Date(value).getTime()
 }
 
+const COMPACT_UNITS: Record<string, humanizeDuration.UnitTranslationOptions> = {
+  en: {
+    y: () => "Yrs",
+    mo: () => "Mos",
+    w: () => "Wks",
+    d: () => "Days",
+    h: () => "Hrs",
+    m: () => "Mins",
+    s: () => "Secs",
+    ms: () => "Ms",
+  },
+  es: {
+    y: (n) => (n === 1 ? "Año" : "Años"),
+    mo: (n) => (n === 1 ? "Mes" : "Meses"),
+    w: () => "Sem",
+    d: (n) => (n === 1 ? "Día" : "Días"),
+    h: () => "Hrs",
+    m: () => "Mins",
+    s: () => "Segs",
+    ms: () => "Ms",
+  },
+}
+
 /**
- * Formats a duration given in milliseconds into a human-readable string using custom unit labels.
+ * Formats a duration given in milliseconds into a human-readable string using locale-aware unit labels.
  *
+ * For "en" and "es", compact custom labels are used (e.g., "Yrs", "Años").
+ * For "zh", the built-in zh_CN language is used (e.g., "年").
+ *
+ * @param locale - The locale to use for formatting (e.g., "en", "zh", "es").
  * @param ms - The duration in milliseconds to format.
- * @param options - Optional configuration for customizing the output, including language and unit labels.
- * @returns A formatted string representing the duration with custom units (e.g., "Yrs", "Mos", "Wks").
- *
- * @example
- * ```typescript
- * formatDuration(31536000000); // "1 Yrs"
- * formatDuration(2592000000, { units: ["mo"] }); // "1 Mos"
- * ```
+ * @param options - Optional configuration for customizing the output, including unit labels.
+ * @returns A formatted string representing the duration.
  */
 export const formatDuration = (
+  locale: string,
   ms: number,
   options?: Partial<HumanizerOptions>
 ) => {
-  const customFormatted = humanizeDuration.humanizer({
+  const compactUnits = COMPACT_UNITS[locale]
+
+  // zh uses the built-in zh_CN language (compact by nature)
+  if (!compactUnits) {
+    const humanizer = humanizeDuration.humanizer({
+      units: ["y"],
+      maxDecimalPoints: 0,
+      language: "zh_CN",
+      ...options,
+    })
+    return humanizer(ms)
+  }
+
+  const humanizer = humanizeDuration.humanizer({
     units: ["y"],
     maxDecimalPoints: 0,
     language: "customUnits",
     languages: {
       customUnits: {
-        y: () => "Yrs",
-        mo: () => "Mos",
-        w: () => "Wks",
-        d: () => "Days",
-        h: () => "Hrs",
-        m: () => "Mins",
-        s: () => "Secs",
-        ms: () => "Ms",
+        ...compactUnits,
         ...options?.languages?.customUnits,
       },
       ...options?.languages,
     },
     ...options,
   })
-  return customFormatted(ms)
+  return humanizer(ms)
 }
 
 /**

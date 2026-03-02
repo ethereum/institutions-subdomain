@@ -15,15 +15,17 @@ export const isValidDate = (value?: DateArg): boolean => {
 /**
  * Formats a given date as a string with the month (short format) and year.
  *
+ * @param locale - The locale to use for formatting (e.g., "en", "zh", "es").
  * @param date - The date to format. Can be a number (timestamp), string, or Date object.
  * @param options - Optional `Intl.DateTimeFormatOptions` to customize the formatting.
  * @returns The formatted date string in "MMM YYYY" format (e.g., "Jan 2024").
  */
 export const formatDateMonthYear = (
+  locale: string,
   date: number | string | Date,
   options?: Intl.DateTimeFormatOptions
 ) =>
-  Intl.DateTimeFormat("en-US", {
+  Intl.DateTimeFormat(locale, {
     month: "short",
     year: "numeric",
     ...options,
@@ -33,15 +35,17 @@ export const formatDateMonthYear = (
 /**
  * Formats a given date as a string in "Month Day, Year" format.
  *
+ * @param locale - The locale to use for formatting (e.g., "en", "zh", "es").
  * @param date - The date to format. Can be a number (timestamp), string, or Date object.
  * @param options - Optional formatting options to customize the output.
  * @returns The formatted date string.
  */
 export const formatDateMonthDayYear = (
+  locale: string,
   date: number | string | Date,
   options?: Intl.DateTimeFormatOptions
 ) =>
-  formatDateMonthYear(date, {
+  formatDateMonthYear(locale, date, {
     day: "numeric",
     ...options,
   })
@@ -52,15 +56,17 @@ export const formatDateMonthDayYear = (
  * This function delegates to `formatDateMonthDayYear`, overriding the `month` option to `"long"`.
  * Additional formatting options can be provided via the `options` parameter.
  *
+ * @param locale - The locale to use for formatting (e.g., "en", "zh", "es").
  * @param date - The date to format. Can be a number (timestamp), string, or `Date` object.
  * @param options - Optional `Intl.DateTimeFormatOptions` to customize the output format.
  * @returns The formatted date string.
  */
 export const formatDateFull = (
+  locale: string,
   date: number | string | Date,
   options?: Intl.DateTimeFormatOptions
 ) =>
-  formatDateMonthDayYear(date, {
+  formatDateMonthDayYear(locale, date, {
     month: "long",
     ...options,
   })

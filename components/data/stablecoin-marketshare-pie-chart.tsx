@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useLocale, useTranslations } from "next-intl"
 import {
   Cell,
   Pie,
@@ -43,31 +44,6 @@ type PieSliceProps = Partial<SectorProps> & {
   payload?: PieSlicePayload
 }
 
-const chartConfig = {
-  marketShare: {
-    label: "Percent market share",
-  },
-  ethereum: {
-    label: "Ethereum (Mainnet)",
-    color: "var(--chart-1)",
-  },
-  "ethereum-l2s": {
-    label: "Ethereum (L2s)",
-    color: "var(--chart-2)",
-  },
-  "alt-2nd": {
-    label: "2nd largest ecosystem",
-    color: "var(--chart-3)",
-  },
-  "alt-3rd": {
-    label: "3rd largest ecosystem",
-    color: "var(--chart-4)",
-  },
-  "alt-rest": {
-    label: "Remainder of market",
-    color: "var(--chart-5)",
-  },
-} satisfies ChartConfig
 
 /**
  * Renders a custom label for a pie chart slice, consisting of a small connector line
@@ -90,7 +66,8 @@ const RenderedLabel = ({
   percent,
   value,
   payload,
-}: PieLabelRenderProps & { payload?: PieSlicePayload }) => {
+  locale,
+}: PieLabelRenderProps & { payload?: PieSlicePayload; locale: string }) => {
   const cxNum = typeof cx === "number" ? cx : Number(cx) || 0
   const cyNum = typeof cy === "number" ? cy : Number(cy) || 0
   const midAngleNum =
@@ -122,7 +99,7 @@ const RenderedLabel = ({
         fill="#333"
         fontSize={12}
       >
-        {formatPercent(Number(value ?? percent ?? 0))}
+        {formatPercent(locale, Number(value ?? percent ?? 0))}
       </text>
     </g>
   )
@@ -163,7 +140,8 @@ const RenderedActiveShape = ({
   fill,
   percent,
   value,
-}: PieSliceProps) => {
+  locale,
+}: PieSliceProps & { locale: string }) => {
   const RADIAN = Math.PI / 180
   const sin = Math.sin(-RADIAN * (midAngle ?? 0))
   const cos = Math.cos(-RADIAN * (midAngle ?? 0))
@@ -211,7 +189,7 @@ const RenderedActiveShape = ({
         fill="#111"
         fontWeight={600}
       >
-        {formatPercent(Number(value ?? percent ?? 0))}
+        {formatPercent(locale, Number(value ?? percent ?? 0))}
       </text>
     </g>
   )
@@ -224,8 +202,36 @@ type StablecoinMarketsharePieChartProps = {
 const StablecoinMarketSharePieChart = ({
   chartData,
 }: StablecoinMarketsharePieChartProps) => {
+  const locale = useLocale()
+  const tCharts = useTranslations("dataHub.charts")
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
   const [activated, setActivated] = useState(false)
+
+  const chartConfig = {
+    marketShare: {
+      label: tCharts("marketShare"),
+    },
+    ethereum: {
+      label: tCharts("ethMainnet"),
+      color: "var(--chart-1)",
+    },
+    "ethereum-l2s": {
+      label: tCharts("ethL2s"),
+      color: "var(--chart-2)",
+    },
+    "alt-2nd": {
+      label: tCharts("secondLargest"),
+      color: "var(--chart-3)",
+    },
+    "alt-3rd": {
+      label: tCharts("thirdLargest"),
+      color: "var(--chart-4)",
+    },
+    "alt-rest": {
+      label: tCharts("remainder"),
+      color: "var(--chart-5)",
+    },
+  } satisfies ChartConfig
 
   const colorLookup = chartConfig as Record<
     string,
@@ -247,7 +253,7 @@ const StablecoinMarketSharePieChart = ({
         margin={{ left: 0, right: 0, top: 24, bottom: 32 }}
       >
         <ChartTooltip
-          formatter={(value: unknown) => formatPercent(Number(value))}
+          formatter={(value: unknown) => formatPercent(locale, Number(value))}
           // ((props: TooltipContentProps<TValue, TName>) => ReactNode)
           // content={(props: TooltipProps<number, string> | undefined) => {
           content={(props: TooltipContentProps<number, string>) => {
@@ -286,12 +292,14 @@ const StablecoinMarketSharePieChart = ({
               (d) => String(d.network) === String(key)
             )
             if (idx === activeIndex) return null
-            return <RenderedLabel {...props} />
+            return <RenderedLabel {...props} locale={locale} />
           }}
           nameKey="network"
           startAngle={startAngle}
           endAngle={endAngle}
-          activeShape={RenderedActiveShape}
+          activeShape={(props: PieSliceProps) => (
+            <RenderedActiveShape {...props} locale={locale} />
+          )}
           // remove Pie-level mouse handlers (we'll attach handlers to Cells)
           isAnimationActive={!activated} // disable animation after activated so labels/slices switch immediately
           animationDuration={activated ? 0 : 2000}

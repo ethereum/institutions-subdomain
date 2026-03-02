@@ -1,5 +1,6 @@
 import * as React from "react"
 import Image, { type ImageProps } from "next/image"
+import { useLocale } from "next-intl"
 import { Slot } from "@radix-ui/react-slot"
 
 import { isValidDate } from "@/lib/utils/date"
@@ -24,7 +25,10 @@ function LibraryCardHeader({
   return (
     <div
       data-slot="card-header"
-      className={cn("h-52 overflow-hidden", className)}
+      className={cn(
+        "from-primary/5 dark:from-primary/20 to-primary/10 h-52 overflow-hidden bg-gradient-to-b",
+        className
+      )}
       {...props}
     />
   )
@@ -89,8 +93,9 @@ function LibraryCardDate({
   children,
   ...props
 }: React.ComponentProps<"div">) {
+  const locale = useLocale()
   const date = isValidDate(children as string)
-    ? new Intl.DateTimeFormat("en-US", {
+    ? new Intl.DateTimeFormat(locale, {
         month: "long",
         day: "numeric",
         year: "numeric",

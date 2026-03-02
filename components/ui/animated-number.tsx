@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 import { useInView } from "motion/react"
 import { motion, SpringOptions, useSpring, useTransform } from "motion/react"
+import { useLocale } from "next-intl"
 
 import { NumberParts } from "@/lib/types"
 
@@ -24,10 +25,11 @@ export function AnimatedNumber({
   as = "span",
   fractionDigits = 0,
 }: AnimatedNumberProps) {
+  const locale = useLocale()
   const MotionComponent = motion.create(as)
 
   const spring = useSpring(value, springOptions)
-  const formatter = new Intl.NumberFormat("en-US", {
+  const formatter = new Intl.NumberFormat(locale, {
     minimumFractionDigits: fractionDigits,
     maximumFractionDigits: fractionDigits,
   })
@@ -62,6 +64,7 @@ export function AnimatedNumberInView({
   className?: string
   springOptions?: Partial<SpringOptions>
 }) {
+  const locale = useLocale()
   const [targetValue, setTargetValue] = useState(0)
   const ref = useRef(null)
   const isInView = useInView(ref)
@@ -103,7 +106,7 @@ export function AnimatedNumberInView({
   const options = { bounce: 0, duration: 2000, ...springOptions }
 
   // Format the final value to reserve its width
-  const finalFormatter = new Intl.NumberFormat("en-US", {
+  const finalFormatter = new Intl.NumberFormat(locale, {
     minimumFractionDigits: parts.fractionDigits,
     maximumFractionDigits: parts.fractionDigits,
   })

@@ -1,5 +1,8 @@
+"use client"
+
 import { ReactNode } from "react"
 import { Info } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 import type { LastUpdated, SourceInfo } from "@/lib/types"
 
@@ -15,14 +18,17 @@ type InfoTooltipProps = {
   ariaLabel?: string
 }
 
-const InfoTooltip = ({ children, className, ariaLabel }: InfoTooltipProps) => (
-  <TooltipPopover content={<div className={className}>{children}</div>}>
-    <Info
-      aria-label={ariaLabel || "More information"}
-      className="size-[0.875em] translate-y-[0.06125em]"
-    />
-  </TooltipPopover>
-)
+const InfoTooltip = ({ children, className, ariaLabel }: InfoTooltipProps) => {
+  const t = useTranslations("common")
+  return (
+    <TooltipPopover content={<div className={className}>{children}</div>}>
+      <Info
+        aria-label={ariaLabel || t("moreInfo")}
+        className="size-[0.875em] translate-y-[0.06125em]"
+      />
+    </TooltipPopover>
+  )
+}
 
 const SourceInfoTooltip = ({
   source,
@@ -32,27 +38,30 @@ const SourceInfoTooltip = ({
   className,
 }: SourceInfo &
   LastUpdated &
-  Omit<InfoTooltipProps, "children"> & { children?: string }) => (
-  <InlineTextIcon className={className}>
-    <InfoTooltip ariaLabel="Source information">
-      {children}
-      {source && (
-        <p className={cn("text-nowrap", children && "mt-2")}>
-          Source:{" "}
-          {sourceHref ? (
-            <Link inline href={sourceHref}>
-              {source}
-            </Link>
-          ) : (
-            source
-          )}
-        </p>
-      )}
-      {lastUpdated && (
-        <p className="text-nowrap">Last updated: {lastUpdated}</p>
-      )}
-    </InfoTooltip>
-  </InlineTextIcon>
-)
+  Omit<InfoTooltipProps, "children"> & { children?: string }) => {
+  const t = useTranslations("common")
+  return (
+    <InlineTextIcon className={className}>
+      <InfoTooltip ariaLabel={t("sourceInfo")}>
+        {children}
+        {source && (
+          <p className={cn("text-nowrap", children && "mt-2")}>
+            {t("source")}:{" "}
+            {sourceHref ? (
+              <Link inline href={sourceHref}>
+                {source}
+              </Link>
+            ) : (
+              source
+            )}
+          </p>
+        )}
+        {lastUpdated && (
+          <p className="text-nowrap">{t("lastUpdated")}: {lastUpdated}</p>
+        )}
+      </InfoTooltip>
+    </InlineTextIcon>
+  )
+}
 
 export { InfoTooltip, SourceInfoTooltip }
