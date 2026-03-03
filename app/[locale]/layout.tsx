@@ -1,3 +1,4 @@
+import { Playfair_Display } from "next/font/google"
 import localFont from "next/font/local"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next/types"
@@ -25,6 +26,12 @@ import { DA_NAV_ITEMS, NAV_ITEMS } from "@/lib/constants"
 import "../globals.css"
 
 import { routing } from "@/i18n/routing"
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  weight: ["400", "700"],
+})
 
 const satoshi = localFont({
   src: [
@@ -124,6 +131,7 @@ export default async function RootLayout({ children, params }: Props) {
       <body
         className={cn(
           satoshi.className,
+          playfairDisplay.variable,
           "grid min-h-screen grid-rows-[auto_1fr_auto] items-center justify-items-center",
           "group/body antialiased"
         )}

@@ -39,6 +39,7 @@
   --breakpoint-xs: 30rem; /* 480px */
 
   --font-sans: var(--font-satoshi);
+  --font-serif: var(--font-serif);
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
   --color-chart-3: var(--chart-3);
@@ -183,7 +184,7 @@
   h4,
   h5,
   h6 {
-    @apply leading-normal font-bold;
+    @apply font-serif leading-normal font-bold;
   }
   h1 {
     @apply text-h1-mobile sm:text-h1 tracking-[0.07rem];
