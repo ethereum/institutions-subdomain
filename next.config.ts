@@ -1,6 +1,6 @@
 import type { NextConfig } from "next"
-import { withSentryConfig } from "@sentry/nextjs"
 import createNextIntlPlugin from "next-intl/plugin"
+import { withSentryConfig } from "@sentry/nextjs"
 
 const withNextIntl = createNextIntlPlugin("./i18n/request.ts")
 
@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
   /* config options here */
 }
 
-export default withSentryConfig(withNextIntl(nextConfig), {
-  silent: !process.env.CI,
-})
+// Only load Sentry on Netlify production builds
+export default process.env.CONTEXT === "production"
+  ? withSentryConfig(withNextIntl(nextConfig), {
+      silent: !process.env.CI,
+    })
+  : withNextIntl(nextConfig)
