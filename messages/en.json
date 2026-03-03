@@ -201,28 +201,44 @@
     },
     "scaling": {
       "heading": "Ethereum is Constantly Evolving",
-      "description": "Ethereum's active R&D roadmap delivers continuous upgrades, each bringing performance, security, and usability improvements relevant to institutional adoption.",
-      "learnMore": "Learn more",
+      "description": "",
+      "learnMore": "Learn More",
       "coming": "Coming",
       "pectra": {
-        "title": "Pectra",
-        "card1Title": "Staking upgrades",
-        "card1": "Pectra introduced key improvements to Ethereum's staking infrastructure, including raising the validator cap from 32 to 2,048 ETH and enabling more flexible staking operations. For enterprises and institutional stakers, this means simpler validator management, lower operational overhead, and a more efficient staking experience at scale."
+        "title": "Impact: Pectra Upgrade",
+        "card1Title": "Staking\nUpgrades",
+        "card1": "Pectra raised the validator cap from 32 to 2,048 ETH, allowing for consolidated node management.",
+        "card2Title": "Operational Efficiency",
+        "card2": "Manage more capital with fewer nodes, significantly reducing hardware and maintenance overhead.",
+        "card3Title": "Enterprise Flexibility",
+        "card3": "High-capacity staking operations are now more streamlined for large-scale institutional participants."
       },
       "fusaka": {
-        "title": "Fusaka",
-        "card1Title": "Reduced fees, higher scalability",
-        "card1": "Fusaka focused on dramatically reducing transaction costs and increasing network throughput through data scaling improvements. For businesses building on Ethereum, this translates to cheaper, faster transactions, making enterprise-grade applications and high-volume use cases significantly more viable."
+        "title": "Impact: Fusaka Upgrade",
+        "card1Title": "Reduced Fee Structures",
+        "card1": "Fusaka targeted a dramatic reduction in transaction costs for the entire network.",
+        "card2Title": "Data Scaling & Throughput",
+        "card2": "Enhanced data scaling allows for higher transaction volume without sacrificing security or speed.",
+        "card3Title": "Enterprise Viability",
+        "card3": "High-volume use cases and global applications are now more economically viable at scale."
       },
       "postQuantum": {
-        "title": "Post-Quantum",
-        "card1Title": "Quantum-resistant security",
-        "card1": "Ethereum has been preparing for the quantum computing threat since 2018, longer than any other blockchain ecosystem. The EF has committed $20M+ to formal verification and cryptographic research, with AI breakthroughs accelerating timelines by 100x. A dedicated post-quantum team was formed in early 2026, with 10 client teams now building quantum-resistant implementations. The full transition is targeted for 2028, well ahead of the estimated mid-2030s quantum threat, with zero fund loss and zero downtime."
+        "title": "Post-Quantum Resistance",
+        "card1Title": "Early-Mover Defense",
+        "card1": "Ethereum has been neutralizing the quantum threat since 2018, longer than any other ecosystem.",
+        "card2Title": "Future-Proof Security",
+        "card2": "AI-driven breakthroughs and a dedicated 2026 team have accelerated resistance implementations.",
+        "card3Title": "Zero-Risk Transition",
+        "card3": "Targeted for 2028, ensuring zero fund loss and zero downtime well ahead of the 2030s threat."
       },
       "glamsterdam": {
-        "title": "Glamsterdam",
-        "card1Title": "Execution layer optimisation",
-        "card1": "Glamsterdam is an upcoming upgrade focused on further optimising the Ethereum execution layer and network performance. For enterprises, this signals Ethereum's continued commitment to improving the base layer infrastructure that underpins institutional applications, DeFi protocols, and tokenised asset platforms."
+        "title": "Glamsterdam Upgrade",
+        "card1Title": "Optimizing Execution",
+        "card1": "Glamsterdam focuses on optimizing the execution layer for more efficient smart contract processing.",
+        "card2Title": "Network Performance",
+        "card2": "Further performance upgrades ensure Ethereum remains the premier layer for institutional DeFi.",
+        "card3Title": "Protocol Reliability",
+        "card3": "Continued commitment to the base layer provides a stable foundation for tokenized asset platforms."
       }
     },
     "cta": {

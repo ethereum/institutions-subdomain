@@ -108,37 +108,37 @@ const getTestimonials = (
   content: string[]
   imgSrc: StaticImageData
 }[] => [
-  {
-    name: "Geoffrey Kendrick",
-    role: `${t("testimonials.kendrick.role")} @ Standard Chartered`,
-    content: [
-      t("testimonials.kendrick.quote1"),
-      t("testimonials.kendrick.quote2"),
-    ],
-    imgSrc: geoffreyKendrick,
-  },
-  {
-    name: "Tom Zschach",
-    role: `${t("testimonials.zschach.role")} @ SWIFT`,
-    content: [
-      t("testimonials.zschach.quote1"),
-      t("testimonials.zschach.quote2"),
-    ],
-    imgSrc: tomZschach,
-  },
-  {
-    name: "Robert Mitchnick",
-    role: `${t("testimonials.mitchnick.role")} @ BlackRock`,
-    content: [t("testimonials.mitchnick.quote1")],
-    imgSrc: robertMitchnick,
-  },
-  {
-    name: "Vlad Tenev",
-    role: `${t("testimonials.tenev.role")} @ Robinhood`,
-    content: [t("testimonials.tenev.quote1"), t("testimonials.tenev.quote2")],
-    imgSrc: vladTenev,
-  },
-]
+    {
+      name: "Geoffrey Kendrick",
+      role: `${t("testimonials.kendrick.role")} @ Standard Chartered`,
+      content: [
+        t("testimonials.kendrick.quote1"),
+        t("testimonials.kendrick.quote2"),
+      ],
+      imgSrc: geoffreyKendrick,
+    },
+    {
+      name: "Tom Zschach",
+      role: `${t("testimonials.zschach.role")} @ SWIFT`,
+      content: [
+        t("testimonials.zschach.quote1"),
+        t("testimonials.zschach.quote2"),
+      ],
+      imgSrc: tomZschach,
+    },
+    {
+      name: "Robert Mitchnick",
+      role: `${t("testimonials.mitchnick.role")} @ BlackRock`,
+      content: [t("testimonials.mitchnick.quote1")],
+      imgSrc: robertMitchnick,
+    },
+    {
+      name: "Vlad Tenev",
+      role: `${t("testimonials.tenev.role")} @ Robinhood`,
+      content: [t("testimonials.tenev.quote1"), t("testimonials.tenev.quote2")],
+      imgSrc: vladTenev,
+    },
+  ]
 
 type Props = {
   params: Promise<{ locale: Locale }>
@@ -237,7 +237,7 @@ export default async function Home({ params }: Props) {
               percent: formatPercent(
                 locale,
                 defiTvlAllCurrentData.data.mainnetDefiMarketshare +
-                  defiTvlAllCurrentData.data.layer2DefiMarketshare
+                defiTvlAllCurrentData.data.layer2DefiMarketshare
               ),
             })}
           </span>
@@ -256,45 +256,45 @@ export default async function Home({ params }: Props) {
     imgSrc: StaticImageData
     className?: string
   } & Metric)[] = [
-    {
-      name: "BlackRock",
-      imgSrc: blackRockSvg,
-      label: t("platforms.blackrock.label"),
-      value: t("platforms.blackrock.value", {
-        amount: formatLargeCurrency(
+      {
+        name: "BlackRock",
+        imgSrc: blackRockSvg,
+        label: t("platforms.blackrock.label"),
+        value: t("platforms.blackrock.value", {
+          amount: formatLargeCurrency(
+            locale,
+            securitizeAumData.data.currentValue
+          ),
+        }),
+        lastUpdated: formatDateMonthDayYear(
           locale,
-          securitizeAumData.data.currentValue
+          securitizeAumData.lastUpdated
         ),
-      }),
-      lastUpdated: formatDateMonthDayYear(
-        locale,
-        securitizeAumData.lastUpdated
-      ),
-      ...securitizeAumData.sourceInfo,
-    },
-    {
-      name: "Coinbase",
-      imgSrc: coinbaseSvg,
-      label: t("platforms.coinbase.label"),
-      value: t("platforms.coinbase.value", {
-        amount: formatLargeCurrency(locale, baseTvlData.data.baseTvl),
-      }),
-      lastUpdated: formatDateMonthDayYear(locale, baseTvlData.lastUpdated),
-      ...baseTvlData.sourceInfo,
-    },
-    {
-      name: "Fidelity",
-      imgSrc: fidelity,
-      label: t("platforms.fidelity.label"),
-      value: t("platforms.fidelity.value"),
-    },
-    {
-      name: "JPMorgan",
-      imgSrc: jpMorgan,
-      label: t("platforms.jpmorgan.label"),
-      value: t("platforms.jpmorgan.value"),
-    },
-  ]
+        ...securitizeAumData.sourceInfo,
+      },
+      {
+        name: "Coinbase",
+        imgSrc: coinbaseSvg,
+        label: t("platforms.coinbase.label"),
+        value: t("platforms.coinbase.value", {
+          amount: formatLargeCurrency(locale, baseTvlData.data.baseTvl),
+        }),
+        lastUpdated: formatDateMonthDayYear(locale, baseTvlData.lastUpdated),
+        ...baseTvlData.sourceInfo,
+      },
+      {
+        name: "Fidelity",
+        imgSrc: fidelity,
+        label: t("platforms.fidelity.label"),
+        value: t("platforms.fidelity.value"),
+      },
+      {
+        name: "JPMorgan",
+        imgSrc: jpMorgan,
+        label: t("platforms.jpmorgan.label"),
+        value: t("platforms.jpmorgan.value"),
+      },
+    ]
 
   return (
     <main className="row-start-2 flex flex-col items-center sm:items-start">
@@ -745,7 +745,7 @@ export default async function Home({ params }: Props) {
         <section id="scaling" className="space-y-12 md:space-y-20">
           <div className="flex flex-col items-center gap-y-2 text-center">
             <h2>{t("scaling.heading")}</h2>
-            <div className="md:max-w-3xl">{t("scaling.description")}</div>
+            {t("scaling.description") && <div className="md:max-w-3xl">{t("scaling.description")}</div>}
           </div>
           <ScalingPanel />
         </section>

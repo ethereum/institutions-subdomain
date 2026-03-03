@@ -16,56 +16,87 @@ export function ScalingPanel() {
   const items: {
     title: string
     badge?: string
+    href?: string
     cards: {
       cardTitle?: string
       content: ReactNode
-      href: string
-      ctaLabel?: string
     }[]
   }[] = [
-    {
-      title: t("pectra.title"),
-      cards: [
-        {
-          cardTitle: t("pectra.card1Title"),
-          content: t("pectra.card1"),
-          href: "https://blog.ethereum.org/2025/03/06/pectra",
-        },
-      ],
-    },
-    {
-      title: t("fusaka.title"),
-      cards: [
-        {
-          cardTitle: t("fusaka.card1Title"),
-          content: t("fusaka.card1"),
-          href: "https://blog.ethereum.org/2025/08/22/protocol-update-002",
-        },
-      ],
-    },
-    {
-      title: t("postQuantum.title"),
-      badge: t("coming"),
-      cards: [
-        {
-          cardTitle: t("postQuantum.card1Title"),
-          content: t("postQuantum.card1"),
-          href: "https://blog.ethereum.org/2025/07/31/lean-ethereum",
-        },
-      ],
-    },
-    {
-      title: t("glamsterdam.title"),
-      badge: t("coming"),
-      cards: [
-        {
-          cardTitle: t("glamsterdam.card1Title"),
-          content: t("glamsterdam.card1"),
-          href: "https://blog.ethereum.org/2025/08/05/protocol-update-001",
-        },
-      ],
-    },
-  ]
+      {
+        title: t("pectra.title"),
+        href: "https://blog.ethereum.org/2025/04/23/pectra-mainnet",
+        cards: [
+          {
+            cardTitle: t("pectra.card1Title"),
+            content: t("pectra.card1"),
+          },
+          {
+            cardTitle: t("pectra.card2Title"),
+            content: t("pectra.card2"),
+          },
+          {
+            cardTitle: t("pectra.card3Title"),
+            content: t("pectra.card3"),
+          },
+        ],
+      },
+      {
+        title: t("fusaka.title"),
+        href: "https://blog.ethereum.org/2025/11/06/fusaka-mainnet-announcement",
+        cards: [
+          {
+            cardTitle: t("fusaka.card1Title"),
+            content: t("fusaka.card1"),
+          },
+          {
+            cardTitle: t("fusaka.card2Title"),
+            content: t("fusaka.card2"),
+          },
+          {
+            cardTitle: t("fusaka.card3Title"),
+            content: t("fusaka.card3"),
+          },
+        ],
+      },
+      {
+        title: t("postQuantum.title"),
+        badge: t("coming"),
+        href: "https://leanroadmap.org/#research-tracks",
+        cards: [
+          {
+            cardTitle: t("postQuantum.card1Title"),
+            content: t("postQuantum.card1"),
+          },
+          {
+            cardTitle: t("postQuantum.card2Title"),
+            content: t("postQuantum.card2"),
+          },
+          {
+            cardTitle: t("postQuantum.card3Title"),
+            content: t("postQuantum.card3"),
+          },
+        ],
+      },
+      {
+        title: t("glamsterdam.title"),
+        badge: t("coming"),
+        href: "https://forkcast.org/upgrade/glamsterdam/",
+        cards: [
+          {
+            cardTitle: t("glamsterdam.card1Title"),
+            content: t("glamsterdam.card1"),
+          },
+          {
+            cardTitle: t("glamsterdam.card2Title"),
+            content: t("glamsterdam.card2"),
+          },
+          {
+            cardTitle: t("glamsterdam.card3Title"),
+            content: t("glamsterdam.card3"),
+          },
+        ],
+      },
+    ]
 
   return (
     <div className="flex min-h-90 gap-10 border p-8 max-lg:flex-col max-sm:max-w-[calc(100vw-32px)] sm:max-lg:max-w-[calc(100vw-96px)]">
@@ -77,7 +108,7 @@ export function ScalingPanel() {
               className={cn(
                 "text-h5 text-secondary-foreground hover:text-secondary-foreground/80 flex items-center gap-2 text-start font-bold tracking-[0.03rem] text-nowrap",
                 activeIndex === index &&
-                  "text-foreground hover:text-foreground cursor-auto"
+                "text-foreground hover:text-foreground cursor-auto"
               )}
             >
               {title}
@@ -101,16 +132,16 @@ export function ScalingPanel() {
             exit: { opacity: 0, y: 50, filter: "blur(4px)" },
           }}
         >
-          {items.map(({ cards }, index) => (
-            <div key={index} className="flex gap-8 max-lg:flex-col">
-              {cards.map(({ cardTitle, content, href }, index) => (
-                <div
-                  key={index}
-                  className="bg-secondary-foreground flex flex-1 flex-col justify-between gap-y-8 p-8"
-                >
-                  <div>
+          {items.map(({ cards, href }, index) => (
+            <div key={index} className="space-y-8">
+              <div className="flex gap-8 max-lg:flex-col">
+                {cards.map(({ cardTitle, content }, index) => (
+                  <div
+                    key={index}
+                    className="bg-secondary-foreground flex flex-1 flex-col gap-y-8 p-8"
+                  >
                     {cardTitle && (
-                      <div className="text-secondary mb-3 text-2xl font-bold tracking-[0.025rem]">
+                      <div className="text-secondary whitespace-pre-line text-2xl font-bold tracking-[0.025rem]">
                         {cardTitle}
                       </div>
                     )}
@@ -118,14 +149,16 @@ export function ScalingPanel() {
                       {content}
                     </div>
                   </div>
-                  <LinkWithArrow
-                    href={href}
-                    className="!text-secondary hover:!text-secondary/80 text-normal font-medium"
-                  >
-                    {t("learnMore")}
-                  </LinkWithArrow>
-                </div>
-              ))}
+                ))}
+              </div>
+              {href && (
+                <LinkWithArrow
+                  href={href}
+                  className="css-secondary ms-auto me-5"
+                >
+                  {t("learnMore")}
+                </LinkWithArrow>
+              )}
             </div>
           ))}
         </TransitionPanel>
