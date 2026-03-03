@@ -112,7 +112,7 @@
       },
       "decentralization": {
         "label": "Descentralización",
-        "description": "Asegurada por más de {validatorCount} validadores distribuidos en geografías e implementaciones de clientes. Con más de {securityValue} en seguridad económica, Ethereum es la plataforma de contratos inteligentes más costosa de atacar."
+        "description": "Más de {securityValue} en seguridad económica distribuida en geografías e implementaciones de clientes hace de Ethereum la plataforma de contratos inteligentes más costosa de atacar."
       },
       "liquidity": {
         "label": "Liquidez profunda",
@@ -605,7 +605,7 @@
         },
         "sharedSecurity": {
           "heading": "Seguridad compartida",
-          "item1": "Las L2 aprovechan la seguridad de los más de <link>{validatorsCount} validadores</link> de Ethereum, pagando solo tarifas basadas en el uso.",
+          "item1": "Las L2 aprovechan <link>más de {securityValue} en seguridad económica</link>, pagando solo tarifas basadas en el uso.",
           "item2": "Todos los rollups liquidan en Ethereum, creando una capa compartida y descentralizada de seguridad y disponibilidad de datos"
         }
       },
