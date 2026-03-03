@@ -30,7 +30,7 @@ import { routing } from "@/i18n/routing"
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-serif",
-  weight: ["400", "700"],
+  weight: ["400", "500"],
 })
 
 const satoshi = localFont({

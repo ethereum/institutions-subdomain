@@ -184,7 +184,7 @@
   h4,
   h5,
   h6 {
-    @apply font-serif leading-normal font-bold;
+    @apply font-serif leading-normal font-medium;
   }
   h1 {
     @apply text-h1-mobile sm:text-h1 tracking-[0.07rem];
