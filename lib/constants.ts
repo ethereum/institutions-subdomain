@@ -22,10 +22,6 @@ export const SOURCE = {
     source: "rwa.xyz",
     sourceHref: "https://www.rwa.xyz",
   },
-  BEACONCHAIN: {
-    source: "beaconcha.in",
-    sourceHref: "https://beaconcha.in",
-  },
   LLAMA: {
     source: "defillama.com",
     sourceHref: "https://defillama.com/",
