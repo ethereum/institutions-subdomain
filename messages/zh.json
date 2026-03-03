@@ -112,7 +112,7 @@
       },
       "decentralization": {
         "label": "高度去中心化",
-        "description": "由分布在全球各地、采用多种客户端的 {validatorCount}+ 名验证者共同守护。高达 {securityValue}+ 的经济安全性，使以太坊成为攻击成本最高的智能合约平台。"
+        "description": "高达 {securityValue}+ 的经济安全性分布在全球各地、采用多种客户端，使以太坊成为攻击成本最高的智能合约平台。"
       },
       "liquidity": {
         "label": "深厚流动性",
@@ -605,7 +605,7 @@
         },
         "sharedSecurity": {
           "heading": "共享安全",
-          "item1": "L2 接入以太坊 <link>{validatorsCount} 名验证者</link>的安全保障，仅需按使用量支付费用。",
+          "item1": "L2 接入以太坊 <link>{securityValue}+ 经济安全保障</link>，仅需按使用量支付费用。",
           "item2": "所有 Rollup 均在以太坊结算，形成共享的、去中心化的安全与数据可用性层。"
         }
       },

@@ -112,7 +112,7 @@
       },
       "decentralization": {
         "label": "Decentralization",
-        "description": "Secured by {validatorCount}+ validators distributed across geographies and client implementations. {securityValue}+ in economic security makes Ethereum the most expensive smart contract platform to attack."
+        "description": "{securityValue}+ in economic security distributed across geographies and client implementations makes Ethereum the most expensive smart contract platform to attack."
       },
       "liquidity": {
         "label": "Deep Liquidity",
@@ -605,7 +605,7 @@
         },
         "sharedSecurity": {
           "heading": "Shared Security",
-          "item1": "L2s tap into the security of Ethereum's <link>{validatorsCount} validators</link>, paying only usage-based fees.",
+          "item1": "L2s tap into <link>{securityValue}+ in economic security</link>, paying only usage-based fees.",
           "item2": "Rollups all settle on Ethereum, creating a shared, decentralized security and data availability layer"
         }
       },

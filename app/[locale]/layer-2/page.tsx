@@ -32,6 +32,7 @@ import {
 import fetchBaseTvl from "@/app/_actions/fetchBaseTvl"
 import fetchBeaconChain from "@/app/_actions/fetchBeaconChain"
 import fetchCeloMonthlyStablecoinVolume from "@/app/_actions/fetchCeloMonthlyStablecoinVolume"
+import fetchEtherPrice from "@/app/_actions/fetchEtherPrice"
 import fetchL2MedianTxCost from "@/app/_actions/fetchL2MedianTxCost"
 import fetchL2ScalingActivity from "@/app/_actions/fetchL2ScalingActivity"
 import fetchL2ScalingSummary from "@/app/_actions/fetchL2ScalingSummary"
@@ -81,6 +82,7 @@ export default async function Page({ params }: Props) {
   const l2ScalingActivityData = await fetchL2ScalingActivity()
   const l2MedianTxCostData = await fetchL2MedianTxCost()
   const beaconChainData = await fetchBeaconChain()
+  const ethPrice = await fetchEtherPrice()
   const baseTvlData = await fetchBaseTvl()
   const worldChainTxCountData = await fetchWorldChainTxCount()
   const celoMonthlyStablecoinVolumeData =
@@ -431,11 +433,9 @@ export default async function Page({ params }: Props) {
           <h2 className="text-h3-mobile sm:text-h3">{t("benefits.heading")}</h2>
 
           <L2BenefitsPanel
-            validatorsCount={formatLargeNumber(
+            securityValue={formatLargeCurrency(
               locale,
-              beaconChainData.data.validatorsCount,
-              {},
-              2
+              beaconChainData.data.totalStakedEther * ethPrice.data.usd
             )}
           />
         </section>

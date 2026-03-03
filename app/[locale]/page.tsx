@@ -508,12 +508,6 @@ export default async function Home({ params }: Props) {
                 </CardLabel>
                 <div className="text-muted-foreground font-medium">
                   {t.rich("leader.decentralization.description", {
-                    validatorCount: formatLargeNumber(
-                      locale,
-                      beaconChainData.data.validatorsCount,
-                      {},
-                      2
-                    ),
                     securityValue: formatLargeCurrency(
                       locale,
                       beaconChainData.data.totalStakedEther * ethPrice.data.usd
