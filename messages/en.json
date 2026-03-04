@@ -745,95 +745,88 @@
   },
   "whyEthereum": {
     "hero": {
-      "heading": "Why Ethereum"
+      "heading": "Why Ethereum",
+      "description1": "Global financial markets continue to rely on outdated, costly, and fragmented settlement systems that introduce operational risk, capital inefficiency, and reconciliation overhead.",
+      "description2": "Cross-border transactions remain slow and opaque, while legacy infrastructure limits programmability, transparency, and real-time auditability."
     },
     "problem": {
-      "heading": "The Institutional Problem",
-      "description": "Today's financial settlement infrastructure was designed for a pre-internet era. Institutions face increasing pressure to modernize, but legacy systems create fundamental constraints.",
       "pressures": {
-        "heading": "Institutions face increasing pressure to:",
-        "item1": "Reduce settlement times from T+2/T+3 to near-instant",
-        "item2": "Eliminate reconciliation costs across fragmented systems",
-        "item3": "Enable 24/7 operations in a global market",
-        "item4": "Provide transparent, auditable records for regulators",
-        "item5": "Access programmable, composable financial primitives"
+        "heading": "Pressure Drivers of",
+        "subheading": "Institutional Change",
+        "efficiency": "Settlement Efficiency",
+        "efficiencyDesc": "Firms are under pressure to compress settlement windows and reduce the capital trapped in counterparty risk buffers.",
+        "transparency": "Transparency and Auditability",
+        "transparencyDesc": "Regulators and risk teams increasingly expect real-time, verifiable records over batch-processed reconciliation.",
+        "digitalAssets": "Digital Asset Readiness",
+        "digitalAssetsDesc": "Client demand for tokenized funds, on-chain treasuries, and digital securities requires infrastructure that supports these products within existing regulatory frameworks.",
+        "openInfra": "Open Infrastructure",
+        "openInfraDesc": "Institutions are seeking neutral, standards-based settlement layers that avoid proprietary lock-in and enable interoperability across providers."
       },
-      "problems": {
-        "heading": "Current Infrastructure Limitations",
+      "limitations": {
+        "heading": "Current",
+        "subheading": "Settlement Infrastructure Limitations",
         "fragmented": "Fragmented Settlement",
-        "fragmentedDesc": "Multiple intermediaries, each maintaining separate ledgers, creating reconciliation overhead and operational risk.",
+        "fragmentedDesc": "Settlement remains siloed across counterparties, internal operations, and jurisdictions, requiring manual coordination at every boundary.",
         "delay": "Settlement Delay",
-        "delayDesc": "T+2 and T+3 settlement windows expose institutions to counterparty risk and capital inefficiency.",
-        "reconciliation": "Reconciliation Costs",
-        "reconciliationDesc": "Post-trade processing consumes significant resources across custodians, clearinghouses, and back offices.",
+        "delayDesc": "T+2 and T+3 cycles lock up capital, amplify counterparty exposure, and introduce systemic risk during volatile markets.",
+        "reconciliation": "Reconciliation Overhead",
+        "reconciliationDesc": "Maintaining consistent records across participants demands costly reconciliation and audit processes that scale poorly.",
         "programmability": "Limited Programmability",
-        "programmabilityDesc": "Legacy systems cannot natively support programmable settlement, conditional logic, or automated compliance.",
+        "programmabilityDesc": "Legacy rails offer minimal support for conditional logic, automated compliance, or composable financial products.",
         "opacity": "Counterparty Opacity",
-        "opacityDesc": "Limited real-time visibility into counterparty positions, collateral status, and settlement states."
+        "opacityDesc": "Participants lack real-time visibility into counterparty positions and settlement status, forcing reliance on trust and periodic reporting."
       }
     },
     "features": {
       "heading": "Why Institutions Choose Ethereum",
-      "description": "Ethereum provides the core properties that institutional settlement infrastructure requires.",
+      "description": "Ethereum is an open, globally distributed settlement network designed to support programmable financial activity. Unlike proprietary or permissioned systems, Ethereum operates as a neutral base layer with no single operator, while enabling institutions to build compliance-aware applications on top.",
       "resilience": {
         "label": "Operational Resilience",
-        "description": "{uptime} of uninterrupted uptime since launch. Zero downtime through 15+ successful network upgrades. No single point of failure, no central coordinator, no pause button."
+        "description": "Ethereum has maintained {uptime} of uninterrupted uptime since its launch. Zero downtime through 15+ successful network upgrades. A diverse infrastructure set and open client ecosystem reduce single-operator and infrastructure concentration risk."
       },
       "settlement": {
         "label": "Global Settlement",
-        "description": "24/7 finality for high-value transactions. Assets settle on a global, neutral ledger accessible to any institution, anywhere. No business hours, no holiday schedules, no cutoff times."
+        "description": "Ethereum settles value continuously across jurisdictions, with transparent finality and publicly verifiable execution."
       },
       "collateral": {
         "label": "Collateral Mobility",
-        "description": "Move collateral across protocols and counterparties instantly. Programmable collateral management enables real-time margin calls, automated rebalancing, and cross-protocol capital efficiency."
+        "description": "Collateral mobility: you want to be confident that collateral moves when you need it to. Ethereum has enabled this for over 10 years."
       },
       "neutrality": {
-        "label": "Credible Neutrality",
-        "description": "No single entity controls the network. Governance-free, vendor-neutral infrastructure that eliminates counterparty risk and resists geopolitical capture. Critical infrastructure should have no owner."
+        "label": "Neutrality",
+        "description": "No single point of failure, no central coordinator, no pause button, no counterparty risk. Resilient to geopolitical, regulatory, and infrastructure-level risks."
       },
       "liquidity": {
-        "label": "Liquidity & Utility",
-        "description": "The deepest liquidity of any onchain environment. Stablecoins, tokenized assets, and DeFi protocols create a self-reinforcing ecosystem of financial utility."
+        "label": "Liquidity and Utility",
+        "description": "The leading platform for asset tokenization, with 67% of all onchain tokenized assets deployed. Ethereum's DeFi ecosystem benefits from 10 years of network effects with its DeFi ecosystem being 8x larger than that of the next largest ecosystem."
       },
       "programmability": {
         "label": "Programmability",
-        "description": "Smart contracts automate settlement, enforce compliance rules, and enable 24/7 operations. Programmable money eliminates manual reconciliation and reduces operational risk."
+        "description": "Smart contracts enable automated issuance, transfer controls, lifecycle management, and conditional settlement. Layer 2 ecosystems and apps can be highly customized to needs and requirements of financial institutions."
       },
       "composability": {
         "label": "Composable Ecosystem",
-        "description": "Open standards mean every protocol, token, and application on Ethereum can interoperate. Build once, connect everywhere. Your infrastructure is not an island."
+        "description": "Ethereum supports an ecosystem of wallets, custodians, auditors, data providers, and scaling solutions used by institutions today."
       }
     },
     "risk": {
-      "heading": "Ethereum for Risk Management",
-      "description": "A credible assessment of risks and how Ethereum addresses them.",
-      "regulatory": {
-        "label": "Regulatory Risk",
-        "description": "Regulatory frameworks for digital assets are evolving. Ethereum's programmability supports compliance-by-design: KYC checks, transfer restrictions, and audit trails can be embedded directly in smart contracts."
-      },
-      "fees": {
-        "label": "Transaction Fees",
-        "description": "Ethereum L1 fees fluctuate with demand. Layer 2 networks provide low-cost execution while inheriting L1 security, making Ethereum viable for high-frequency and low-value transactions."
-      },
-      "privacy": {
-        "label": "Privacy",
-        "description": "Public blockchain transparency requires careful data management. Zero-knowledge proofs, encrypted computation, and privacy-focused L2s enable confidential transactions while maintaining auditability."
-      },
-      "smartContract": {
-        "label": "Smart Contract Risk",
-        "description": "Code vulnerabilities exist in any software system. Ethereum's mature ecosystem offers battle-tested protocols, formal verification tools, comprehensive audit infrastructure, and insurance markets."
-      },
+      "heading": "Ethereum For Risk Management",
+      "description": "Ethereum is not a turnkey solution and there are considerations that institutions must evaluate carefully.",
+      "item1": "Regulatory treatment varies by jurisdiction",
+      "item2": "Transaction fees can fluctuate under network demand",
+      "item3": "Public transaction visibility requires privacy-preserving design choices",
+      "item4": "Smart contract risk requires rigorous audit and control processes",
       "mitigation": {
         "heading": "Mitigation Approaches",
-        "item1": "Deploy on audited, battle-tested protocols with established track records",
-        "item2": "Use Layer 2 networks for cost-effective execution with L1 security guarantees",
-        "item3": "Implement privacy solutions for confidential institutional workflows",
-        "item4": "Leverage Ethereum's programmability for automated compliance and risk controls",
-        "item5": "Build on open standards to avoid vendor lock-in and maintain operational flexibility",
-        "item6": "Engage with the Ethereum Foundation's institutional support programs",
-        "item7": "Participate in industry working groups shaping regulatory frameworks"
+        "item1": "KYC/AML at the application layer",
+        "item2": "Use of Layer 2 networks and transaction batching",
+        "item3": "Privacy-preserving transaction architectures",
+        "item4": "Permissioned vs public chains via Layer 2 customization",
+        "item5": "Privacy, data protection, and controls",
+        "item6": "Institutional custody and key management solutions",
+        "item7": "Legal structuring aligned with local regulatory guidance"
       },
-      "closing": "Ethereum is designed to work alongside existing infrastructure, not replace it overnight. Institutions can adopt incrementally, starting with specific use cases and expanding as confidence and regulatory clarity grow."
+      "closing": "Ethereum adoption typically occurs alongside existing infrastructure, not as a wholesale replacement."
     },
     "metadata": {
       "title": "Why Ethereum for Institutions | The Case for Ethereum",
