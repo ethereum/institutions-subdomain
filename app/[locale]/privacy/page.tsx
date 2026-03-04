@@ -435,7 +435,7 @@ export default async function Page({ params }: Props) {
               <h2 className="text-h3-mobile sm:text-h3 max-w-2xl tracking-[0.055rem]">
                 {t("efCommitment.heading")}
               </h2>
-              <p className="text-foreground text-xl font-medium">
+              <p className="text-secondary-foreground text-xl font-medium">
                 {t("efCommitment.description")}
               </p>
             </div>
