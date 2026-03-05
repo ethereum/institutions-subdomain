@@ -454,7 +454,7 @@ export default async function Page({ params }: Props) {
           <div className="relative flex-1">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://iptf.ethereum.org/assets/images/diamant-eth.png"
+              src="/images/eth-diamond.svg"
               alt=""
               className="absolute inset-0 size-full animate-[levitate_3s_ease-in-out_infinite] object-contain object-center"
             />
