@@ -1,4 +1,3 @@
-import { Check } from "lucide-react"
 import Image, { StaticImageData } from "next/image"
 import type { Metadata } from "next/types"
 import { getTranslations, setRequestLocale } from "next-intl/server"
@@ -21,9 +20,12 @@ import fetchAssetValueByAssetIds from "@/app/_actions/fetchAssetValueByAssetIds"
 import fetchProtocolsValueBySlug from "@/app/_actions/fetchProtocolsValueBySlug"
 import fetchProtocolsValueTotal from "@/app/_actions/fetchProtocolsValueTotal"
 import fetchTokenizedTreasuries from "@/app/_actions/fetchTokenizedTreasuries"
+import fetchTotalValueSecured from "@/app/_actions/fetchTotalValueSecured"
 import { type Locale, routing } from "@/i18n/routing"
 import buildings from "@/public/images/banners/buildings.png"
 import buidlUsd from "@/public/images/logos/tokens/buidl-usd.svg"
+import eurc from "@/public/images/logos/tokens/eurc.svg"
+import fidd from "@/public/images/logos/tokens/fidd.svg"
 import pyusd from "@/public/images/logos/tokens/pyusd.svg"
 import usdc from "@/public/images/logos/tokens/usdc.svg"
 import usde from "@/public/images/logos/tokens/usde.svg"
@@ -53,6 +55,7 @@ export default async function Page({ params }: Props) {
     tokenizedTreasuriesData,
     assetValueByAssetIdsData,
     protocolsValueBySlugData,
+    totalValueSecuredData,
   ] = await Promise.all([
     fetchAssetMarketShare("STABLECOINS"),
     fetchAssetMarketShare("RWAS"),
@@ -60,6 +63,7 @@ export default async function Page({ params }: Props) {
     fetchTokenizedTreasuries(),
     fetchAssetValueByAssetIds(),
     fetchProtocolsValueBySlug(),
+    fetchTotalValueSecured(),
   ])
 
   const metrics: Metric[] = [
@@ -87,6 +91,25 @@ export default async function Page({ params }: Props) {
       ),
       ...stablecoinAssetMarketShareData.sourceInfo,
     },
+    {
+      label: t("overview.commoditiesShare"),
+      value: "70%",
+      lastUpdated: "",
+      source: "",
+      sourceHref: "",
+    },
+    {
+      label: t("overview.valueSecured"),
+      value: formatLargeCurrency(
+        locale,
+        totalValueSecuredData.data.sum
+      ),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        totalValueSecuredData.lastUpdated
+      ),
+      ...totalValueSecuredData.sourceInfo,
+    },
   ]
 
   const stablecoins: {
@@ -95,6 +118,12 @@ export default async function Page({ params }: Props) {
     imgSrc: StaticImageData
     href: string
   }[] = [
+    {
+      ticker: "FIDD",
+      issuer: "Fidelity",
+      imgSrc: fidd,
+      href: "https://www.fidelitydigitalassets.com/stablecoin",
+    },
     {
       ticker: "USDT",
       issuer: "Tether",
@@ -126,8 +155,14 @@ export default async function Page({ params }: Props) {
       href: "https://www.paypal.com/us/digital-wallet/manage-money/crypto/pyusd",
     },
     {
+      ticker: "EURC",
+      issuer: "Circle",
+      imgSrc: eurc,
+      href: "https://www.circle.com/eurc",
+    },
+    {
       ticker: "USDtb",
-      issuer: "Ethena, Blackrock, & Securitize",
+      issuer: "Ethena",
       imgSrc: usdtb,
       href: "https://usdtb.money/",
     },
@@ -182,15 +217,31 @@ export default async function Page({ params }: Props) {
       ),
     },
     {
-      header: "OUSG",
+      header: "MONY",
       valuation: formatLargeCurrency(
         locale,
-        assetValueByAssetIdsData.data.OUSG
+        assetValueByAssetIdsData.data.MONY
       ),
-      description: t("cards.ousgDesc", { brand: "Ondo" }),
-      issuer: "Ondo",
-      metricHref: "https://app.rwa.xyz/assets/OUSG",
-      visitHref: "https://ondo.finance/ousg",
+      description: t("cards.monyDesc", { brand: "JPMorgan" }),
+      issuer: "JPMorgan",
+      metricHref: "https://app.rwa.xyz/assets/MONY",
+      visitHref: "https://www.jpmorgan.com/kinexys/digital-assets",
+      ...assetValueByAssetIdsData.sourceInfo,
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        assetValueByAssetIdsData.lastUpdated
+      ),
+    },
+    {
+      header: "FDIT",
+      valuation: formatLargeCurrency(
+        locale,
+        assetValueByAssetIdsData.data.FDIT
+      ),
+      description: t("cards.fditDesc", { brand: "Fidelity" }),
+      issuer: "Fidelity",
+      metricHref: "https://app.rwa.xyz/assets/FDIT",
+      visitHref: "https://institutional.fidelity.com/app/funds-and-products/9053/fidelity-treasury-digital-fund-onchain-class-fyoxx.html",
       ...assetValueByAssetIdsData.sourceInfo,
       lastUpdated: formatDateMonthDayYear(
         locale,
@@ -199,7 +250,43 @@ export default async function Page({ params }: Props) {
     },
   ]
 
+  const categoryExamples: Record<string, { name: string; href: string }[]> = {
+    treasuries: [
+      { name: "BlackRock BUIDL", href: "https://securitize.io/blackrock/buidl" },
+      { name: "Ondo", href: "https://ondo.finance/" },
+      { name: "Franklin Templeton", href: "https://digitalassets.franklintempleton.com/benji/" },
+    ],
+    credit: [
+      { name: "Centrifuge", href: "https://centrifuge.io/" },
+      { name: "Maple", href: "https://maple.finance/" },
+      { name: "Securitize", href: "https://securitize.io/" },
+    ],
+    commodities: [
+      { name: "Tether Gold", href: "https://gold.tether.to/" },
+      { name: "Paxos Gold", href: "https://paxos.com/paxgold/" },
+    ],
+    equities: [
+      { name: "Ondo", href: "https://ondo.finance/" },
+      { name: "Backed", href: "https://backed.fi/" },
+    ],
+    realEstate: [],
+  }
+
   const creditPlatforms: AssetDetails[] = [
+    {
+      header: "Aave",
+      valuation: "",
+      description: t("rwas.activeLoans"),
+      metricHref: "https://defillama.com/protocol/aave",
+      visitHref: "https://aave.com/",
+    },
+    {
+      header: "Morpho",
+      valuation: "",
+      description: t("rwas.activeLoans"),
+      metricHref: "https://defillama.com/protocol/morpho",
+      visitHref: "https://morpho.org/",
+    },
     {
       header: "Centrifuge",
       valuation: formatLargeCurrency(
@@ -250,20 +337,17 @@ export default async function Page({ params }: Props) {
   return (
     <main className="row-start-2 flex flex-col items-center sm:items-start">
       <Hero heading={t("hero.heading")} shape="badge-dollar-sign">
-        {t("hero.description")}
+        <p>{t("hero.description1")}</p>
+        <p>{t("hero.description2")}</p>
       </Hero>
       <article className="max-w-8xl mx-auto w-full space-y-20 px-4 py-10 sm:px-10 sm:py-20 md:space-y-40">
-        <section
-          id="overview"
-          className="flex items-center gap-8 border p-8 max-lg:flex-col"
-        >
+        <section id="overview">
           <h2 className="sr-only">{t("overview.srHeading")}</h2>
-          <p className="flex-1 font-medium">{t("overview.description")}</p>
-          <div className="flex w-full flex-1 gap-4 max-sm:flex-col">
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             {metrics.map(({ label, value, ...sourceInfo }, idx) => {
               const { source, sourceHref } = sourceInfo
               return (
-                <Card key={idx} className="flex-1 space-y-2 py-8">
+                <Card key={idx} className="space-y-2 py-8">
                   <CardLabel className="text-base font-medium tracking-normal">
                     {label}
                   </CardLabel>
@@ -275,7 +359,7 @@ export default async function Page({ params }: Props) {
                     {sourceHref ? (
                       <Link
                         href={sourceHref}
-                        className="text-muted-foreground hover:text-foreground"
+                        className="css-secondary"
                         inline
                       >
                         {source}
@@ -361,59 +445,138 @@ export default async function Page({ params }: Props) {
 
         <section id="comparison" className="space-y-12">
           <h2 className="text-center">{t("comparison.heading")}</h2>
-          <div className="overflow-x-auto -mx-4 px-4">
-            <table className="w-full min-w-[700px] border-collapse text-sm">
-              <thead>
-                <tr>
-                  <th className="border-b p-3 text-left font-medium" />
-                  <th className="bg-secondary-foreground text-secondary border-b p-3 text-left font-bold">
+
+          {/* Desktop: CSS Grid table */}
+          <div className="hidden md:block">
+            {/* Column headers */}
+            <div className="grid grid-cols-[200px_repeat(4,1fr)] gap-x-px bg-white">
+              <div className="bg-[#F3F3F3] px-4 py-4">
+                <span className="text-foreground font-bold">
+                  {t("comparison.functions")}
+                </span>
+              </div>
+              <div className="bg-secondary-foreground px-4 py-4">
+                <span className="font-bold text-white">
+                  {t("comparison.ethereum")}
+                </span>
+              </div>
+              <div className="bg-[#ECECEC] px-4 py-4">
+                <span className="text-foreground font-bold">
+                  {t("comparison.l1Alt")}
+                </span>
+              </div>
+              <div className="bg-[#ECECEC] px-4 py-4">
+                <span className="text-foreground font-bold">
+                  {t("comparison.privateDlt")}
+                </span>
+              </div>
+              <div className="bg-[#ECECEC] px-4 py-4">
+                <span className="text-foreground font-bold">
+                  {t("comparison.traditional")}
+                </span>
+              </div>
+            </div>
+
+            {/* Data rows */}
+            {(
+              [
+                "settlement",
+                "resilience",
+                "security",
+                "devBase",
+                "liquidity",
+                "auditability",
+                "neutrality",
+                "geoRisk",
+                "composability",
+              ] as const
+            ).map((row) => (
+              <div
+                key={row}
+                className="grid grid-cols-[200px_repeat(4,1fr)] gap-x-px border-t bg-white"
+              >
+                <div className="flex items-center bg-[#F3F3F3] px-4 py-4">
+                  <span className="text-foreground font-bold">
+                    {t(`comparison.${row}`)}
+                  </span>
+                </div>
+                <div className="bg-secondary-foreground/10 px-4 py-4">
+                  <p className="text-foreground font-medium">
+                    {t(`comparison.ethereum_${row}`)}
+                  </p>
+                </div>
+                <div className="bg-white px-4 py-4">
+                  <p className="text-muted-foreground font-medium">
+                    {t(`comparison.l1Alt_${row}`)}
+                  </p>
+                </div>
+                <div className="bg-white px-4 py-4">
+                  <p className="text-muted-foreground font-medium">
+                    {t(`comparison.privateDlt_${row}`)}
+                  </p>
+                </div>
+                <div className="bg-white px-4 py-4">
+                  <p className="text-muted-foreground font-medium">
+                    {t(`comparison.traditional_${row}`)}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile: Stacked cards per dimension */}
+          <div className="space-y-3 md:hidden">
+            {(
+              [
+                "settlement",
+                "resilience",
+                "security",
+                "devBase",
+                "liquidity",
+                "auditability",
+                "neutrality",
+                "geoRisk",
+                "composability",
+              ] as const
+            ).map((row) => (
+              <div key={row} className="bg-card p-5">
+                <p className="text-sm font-bold">
+                  {t(`comparison.${row}`)}
+                </p>
+                <div className="mt-3 bg-secondary-foreground/10 px-4 py-3">
+                  <p className="mb-0.5 text-xs font-bold uppercase tracking-widest text-secondary-foreground">
                     {t("comparison.ethereum")}
-                  </th>
-                  <th className="border-b p-3 text-left font-medium">
+                  </p>
+                  <p className="text-foreground text-sm font-medium">
+                    {t(`comparison.ethereum_${row}`)}
+                  </p>
+                </div>
+                <div className="mt-3">
+                  <p className="text-muted-foreground mb-0.5 text-xs font-bold uppercase tracking-widest">
                     {t("comparison.l1Alt")}
-                  </th>
-                  <th className="border-b p-3 text-left font-medium">
+                  </p>
+                  <p className="text-muted-foreground text-sm">
+                    {t(`comparison.l1Alt_${row}`)}
+                  </p>
+                </div>
+                <div className="mt-3">
+                  <p className="text-muted-foreground mb-0.5 text-xs font-bold uppercase tracking-widest">
                     {t("comparison.privateDlt")}
-                  </th>
-                  <th className="border-b p-3 text-left font-medium">
+                  </p>
+                  <p className="text-muted-foreground text-sm">
+                    {t(`comparison.privateDlt_${row}`)}
+                  </p>
+                </div>
+                <div className="mt-3">
+                  <p className="text-muted-foreground mb-0.5 text-xs font-bold uppercase tracking-widest">
                     {t("comparison.traditional")}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {(
-                  [
-                    "settlementFinality",
-                    "resilience",
-                    "security",
-                    "devBase",
-                    "liquidity",
-                    "auditability",
-                    "neutrality",
-                    "geoRisk",
-                    "composability",
-                  ] as const
-                ).map((row) => (
-                  <tr key={row} className="border-b last:border-b-0">
-                    <td className="p-3 font-medium">
-                      {t(`comparison.${row}`)}
-                    </td>
-                    <td className="bg-secondary-foreground/5 p-3 font-semibold">
-                      {t(`comparison.ethereum_${row}`)}
-                    </td>
-                    <td className="text-muted-foreground p-3">
-                      {t(`comparison.l1Alt_${row}`)}
-                    </td>
-                    <td className="text-muted-foreground p-3">
-                      {t(`comparison.privateDlt_${row}`)}
-                    </td>
-                    <td className="text-muted-foreground p-3">
-                      {t(`comparison.traditional_${row}`)}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                  </p>
+                  <p className="text-muted-foreground text-sm">
+                    {t(`comparison.traditional_${row}`)}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -465,57 +628,156 @@ export default async function Page({ params }: Props) {
               {t("categoryBreakdown.description")}
             </p>
           </div>
-          <div className="overflow-x-auto -mx-4 px-4">
-            <table className="w-full min-w-[600px] border-collapse">
-              <thead>
-                <tr>
-                  <th className="border-b p-3 text-left font-medium">
-                    {t("categoryBreakdown.category")}
-                  </th>
-                  <th className="border-b p-3 text-left font-medium">
+
+          {/* Desktop: CSS Grid table */}
+          <div className="hidden md:block">
+            {/* Column headers */}
+            <div className="grid grid-cols-[160px_repeat(4,1fr)] gap-x-px bg-white">
+              <div className="bg-[#F3F3F3] px-4 py-4">
+                <span className="text-foreground font-bold">
+                  {t("categoryBreakdown.category")}
+                </span>
+              </div>
+              <div className="bg-[#ECECEC] px-4 py-4">
+                <span className="text-foreground font-bold">
+                  {t("categoryBreakdown.tvlEth")}
+                </span>
+              </div>
+              <div className="bg-[#ECECEC] px-4 py-4">
+                <span className="text-foreground font-bold">
+                  {t("categoryBreakdown.tvlTotal")}
+                </span>
+              </div>
+              <div className="bg-secondary-foreground px-4 py-4">
+                <span className="font-bold text-white">
+                  {t("categoryBreakdown.ethShare")}
+                </span>
+              </div>
+              <div className="bg-[#ECECEC] px-4 py-4">
+                <span className="text-foreground font-bold">
+                  {t("categoryBreakdown.examples")}
+                </span>
+              </div>
+            </div>
+
+            {/* Data rows */}
+            {(
+              [
+                "treasuries",
+                "credit",
+                "commodities",
+                "equities",
+                "realEstate",
+              ] as const
+            ).map((cat) => (
+              <div
+                key={cat}
+                className="grid grid-cols-[160px_repeat(4,1fr)] gap-x-px border-t bg-white"
+              >
+                <div className="flex items-center bg-[#F3F3F3] px-4 py-4">
+                  <span className="text-foreground font-bold">
+                    {t(`categoryBreakdown.${cat}`)}
+                  </span>
+                </div>
+                <div className="bg-white px-4 py-4">
+                  <p className="text-foreground font-medium">
+                    {t(`categoryBreakdown.${cat}Tvl`)}
+                  </p>
+                </div>
+                <div className="bg-white px-4 py-4">
+                  <p className="text-muted-foreground font-medium">
+                    {t(`categoryBreakdown.${cat}Total`)}
+                  </p>
+                </div>
+                <div className="bg-secondary-foreground/10 px-4 py-4">
+                  <p className="text-foreground font-semibold">
+                    {t(`categoryBreakdown.${cat}Share`)}
+                  </p>
+                </div>
+                <div className="bg-white px-4 py-4">
+                  <p className="text-muted-foreground font-medium">
+                    {categoryExamples[cat]?.length > 0
+                      ? categoryExamples[cat].map((example, i) => (
+                          <span key={example.name}>
+                            {i > 0 && ", "}
+                            <Link
+                              href={example.href}
+                              inline
+                              className="css-secondary"
+                            >
+                              {example.name}
+                            </Link>
+                          </span>
+                        ))
+                      : t(`categoryBreakdown.${cat}Examples`)}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile: Stacked cards per category */}
+          <div className="space-y-3 md:hidden">
+            {(
+              [
+                "treasuries",
+                "credit",
+                "commodities",
+                "equities",
+                "realEstate",
+              ] as const
+            ).map((cat) => (
+              <div key={cat} className="bg-card p-5">
+                <p className="text-sm font-bold">
+                  {t(`categoryBreakdown.${cat}`)}
+                </p>
+                <div className="mt-3">
+                  <p className="text-muted-foreground mb-0.5 text-xs font-bold uppercase tracking-widest">
                     {t("categoryBreakdown.tvlEth")}
-                  </th>
-                  <th className="border-b p-3 text-left font-medium">
+                  </p>
+                  <p className="text-foreground text-sm font-medium">
+                    {t(`categoryBreakdown.${cat}Tvl`)}
+                  </p>
+                </div>
+                <div className="mt-3">
+                  <p className="text-muted-foreground mb-0.5 text-xs font-bold uppercase tracking-widest">
                     {t("categoryBreakdown.tvlTotal")}
-                  </th>
-                  <th className="border-b p-3 text-left font-medium">
+                  </p>
+                  <p className="text-muted-foreground text-sm">
+                    {t(`categoryBreakdown.${cat}Total`)}
+                  </p>
+                </div>
+                <div className="mt-3 bg-secondary-foreground/10 px-4 py-3">
+                  <p className="mb-0.5 text-xs font-bold uppercase tracking-widest text-secondary-foreground">
                     {t("categoryBreakdown.ethShare")}
-                  </th>
-                  <th className="border-b p-3 text-left font-medium">
+                  </p>
+                  <p className="text-foreground text-sm font-semibold">
+                    {t(`categoryBreakdown.${cat}Share`)}
+                  </p>
+                </div>
+                <div className="mt-3">
+                  <p className="text-muted-foreground mb-0.5 text-xs font-bold uppercase tracking-widest">
                     {t("categoryBreakdown.examples")}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {(
-                  [
-                    "treasuries",
-                    "credit",
-                    "commodities",
-                    "equities",
-                    "realEstate",
-                  ] as const
-                ).map((cat) => (
-                  <tr key={cat} className="border-b last:border-b-0">
-                    <td className="p-3 font-semibold">
-                      {t(`categoryBreakdown.${cat}`)}
-                    </td>
-                    <td className="p-3">
-                      {t(`categoryBreakdown.${cat}Tvl`)}
-                    </td>
-                    <td className="p-3">
-                      {t(`categoryBreakdown.${cat}Total`)}
-                    </td>
-                    <td className="p-3 font-semibold">
-                      {t(`categoryBreakdown.${cat}Share`)}
-                    </td>
-                    <td className="text-muted-foreground p-3">
-                      {t(`categoryBreakdown.${cat}Examples`)}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                  </p>
+                  <p className="text-muted-foreground text-sm">
+                    {categoryExamples[cat]?.length > 0
+                      ? categoryExamples[cat].map((example, i) => (
+                          <span key={example.name}>
+                            {i > 0 && ", "}
+                            <Link
+                              href={example.href}
+                              inline
+                              className="css-secondary"
+                            >
+                              {example.name}
+                            </Link>
+                          </span>
+                        ))
+                      : t(`categoryBreakdown.${cat}Examples`)}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -540,7 +802,8 @@ export default async function Page({ params }: Props) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 grid-rows-8 gap-4 sm:grid-cols-2 sm:grid-rows-4 lg:grid-cols-4 lg:grid-rows-2">
+          {/* Tokenized Treasuries & Cash-Equivalents */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
             <div className="bg-secondary-foreground text-secondary space-y-2 p-8">
               <h3 className="text-xl font-bold tracking-[0.025rem]">
                 {t("rwas.treasuries")}
@@ -581,16 +844,18 @@ export default async function Page({ params }: Props) {
                     <h4 className="text-h5 font-bold tracking-[0.03rem]">
                       {header}
                     </h4>
-                    <InlineText>
-                      <Link
-                        href={metricHref}
-                        inline
-                        className="css-secondary font-bold tracking-[0.055rem]"
-                      >
-                        {valuation}
-                      </Link>
-                      <SourceInfoTooltip {...tooltipProps} />
-                    </InlineText>
+                    {valuation && (
+                      <InlineText>
+                        <Link
+                          href={metricHref}
+                          inline
+                          className="css-secondary font-bold tracking-[0.055rem]"
+                        >
+                          {valuation}
+                        </Link>
+                        <SourceInfoTooltip {...tooltipProps} />
+                      </InlineText>
+                    )}
                     <p className="text-muted-foreground font-medium">
                       {description}
                     </p>
@@ -609,7 +874,10 @@ export default async function Page({ params }: Props) {
                 </Card>
               )
             )}
+          </div>
 
+          {/* Private Credit & Structured Credit */}
+          <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <div className="bg-secondary-foreground text-secondary space-y-2 p-8">
               <h3 className="text-xl font-bold tracking-[0.025rem]">
                 {t("rwas.privateCredit")}
@@ -650,16 +918,18 @@ export default async function Page({ params }: Props) {
                     <h4 className="text-h5 font-bold tracking-[0.03rem]">
                       {header}
                     </h4>
-                    <InlineText>
-                      <Link
-                        href={metricHref}
-                        inline
-                        className="css-secondary font-bold tracking-[0.055rem]"
-                      >
-                        {valuation}
-                      </Link>
-                      <SourceInfoTooltip {...tooltipProps} />
-                    </InlineText>
+                    {valuation && (
+                      <InlineText>
+                        <Link
+                          href={metricHref}
+                          inline
+                          className="css-secondary font-bold tracking-[0.055rem]"
+                        >
+                          {valuation}
+                        </Link>
+                        <SourceInfoTooltip {...tooltipProps} />
+                      </InlineText>
+                    )}
                     <p className="text-muted-foreground font-medium">
                       {description}
                     </p>
@@ -681,123 +951,61 @@ export default async function Page({ params }: Props) {
           </div>
         </section>
 
-        <section id="l2-section" className="space-y-8">
-          <div className="space-y-2">
+        <section id="why-ethereum" className="bg-primary text-primary-foreground -mx-4 px-4 py-16 sm:-mx-10 sm:px-10 md:py-24">
+          <div className="max-w-8xl mx-auto grid grid-cols-1 gap-x-32 gap-y-8 md:grid-cols-2 md:items-center">
+            <h2 className="text-h3-mobile sm:text-h2 tracking-[0.055rem]">
+              {t("why.heading")}
+            </h2>
+            <div className="space-y-6 text-lg font-medium leading-relaxed text-white/85">
+              <p className="text-2xl font-bold text-white">
+                {t("why.tagline")}
+              </p>
+              <p>
+                {t("why.desc1")}
+              </p>
+              <p>
+                {t("why.desc2")}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="l2-section"
+          className="flex gap-x-32 gap-y-14 max-lg:flex-col"
+        >
+          <div className="flex-1 space-y-7">
             <h2 className="sm:text-h3 text-h3-mobile tracking-[0.055rem]">
               {t("l2Section.heading")}
             </h2>
             <p className="text-muted-foreground font-medium">
               {t("l2Section.description")}
             </p>
+            <LinkWithArrow href="/layer-2" className="css-secondary block">
+              {t("l2Section.cta")}
+            </LinkWithArrow>
           </div>
-          <ul className="max-w-prose space-y-4 font-medium">
-            <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-              {t("l2Section.throughput")}
-              <p className="text-muted-foreground mt-1 text-base font-medium">
-                {t("l2Section.throughputDesc")}
-              </p>
-            </li>
-            <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-              {t("l2Section.configurable")}
-              <p className="text-muted-foreground mt-1 text-base font-medium">
-                {t("l2Section.configurableDesc")}
-              </p>
-            </li>
-            <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-              {t("l2Section.specialization")}
-              <p className="text-muted-foreground mt-1 text-base font-medium">
-                {t("l2Section.specializationDesc")}
-              </p>
-            </li>
-          </ul>
-        </section>
-
-        <section id="why-ethereum" className="space-y-16">
-          <div className="flex flex-col items-center gap-y-8 text-center">
-            <h2 className="text-h3-mobile sm:text-h3 max-w-3xl leading-tight">
-              {t("why.heading")}
-            </h2>
-            <p className="text-muted-foreground max-w-4xl font-medium">
-              {t("why.description")}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            <Card className="p-10">
-              <h3 className="text-h4">
-                {t("why.l1.heading")}
-                <br />
-                {t("why.l1.subheading")}
-              </h3>
-
-              <hr className="my-6" />
-
-              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
-                <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
-                  <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">{t("why.l1.finality")}</h4>
-                </div>
-                <div className="text-muted-foreground col-start-2 font-medium">
-                  {t("why.l1.finalityDesc")}
-                </div>
-              </div>
-              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
-                <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
-                  <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">{t("why.l1.security")}</h4>
-                </div>
-                <div className="text-muted-foreground col-start-2 font-medium">
-                  {t("why.l1.securityDesc")}
-                </div>
-              </div>
-              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
-                <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
-                  <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">{t("why.l1.riskGating")}</h4>
-                </div>
-                <div className="text-muted-foreground col-start-2 font-medium">
-                  {t("why.l1.riskGatingDesc")}
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-10">
-              <h3 className="text-h4">
-                {t("why.l2.heading")}
-                <br />
-                {t("why.l2.subheading")}
-              </h3>
-
-              <hr className="my-6" />
-
-              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
-                <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
-                  <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">{t("why.l2.throughput")}</h4>
-                </div>
-                <div className="text-muted-foreground col-start-2 font-medium">
-                  {t("why.l2.throughputDesc")}
-                </div>
-              </div>
-              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
-                <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
-                  <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">{t("why.l2.configurable")}</h4>
-                </div>
-                <div className="text-muted-foreground col-start-2 font-medium">
-                  {t("why.l2.configurableDesc")}
-                </div>
-              </div>
-              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
-                <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
-                  <Check className="text-secondary-foreground" />
-                  <h4 className="text-h6">{t("why.l2.specialization")}</h4>
-                </div>
-                <div className="text-muted-foreground col-start-2 font-medium">
-                  {t("why.l2.specializationDesc")}
-                </div>
-              </div>
-            </Card>
+          <div className="flex-1">
+            <ul className="space-y-4 font-medium">
+              <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
+                {t("l2Section.throughput")}
+                <p className="text-muted-foreground mt-1 text-base font-medium">
+                  {t("l2Section.throughputDesc")}
+                </p>
+              </li>
+              <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
+                {t("l2Section.configurable")}
+                <p className="text-muted-foreground mt-1 text-base font-medium">
+                  {t("l2Section.configurableDesc")}
+                </p>
+              </li>
+              <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
+                {t("l2Section.specialization")}
+                <p className="text-muted-foreground mt-1 text-base font-medium">
+                  {t("l2Section.specializationDesc")}
+                </p>
+              </li>
+            </ul>
           </div>
         </section>
       </article>
