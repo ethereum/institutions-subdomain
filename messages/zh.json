@@ -29,9 +29,13 @@
     }
   },
   "contactForm": {
-    "namePlaceholder": "您的姓名",
-    "emailPlaceholder": "您的电子邮件",
-    "messagePlaceholder": "留言内容",
+    "firstNamePlaceholder": "名",
+    "lastNamePlaceholder": "姓",
+    "emailPlaceholder": "工作邮箱",
+    "companyPlaceholder": "公司名称",
+    "jobTitlePlaceholder": "职位",
+    "countryPlaceholder": "国家 / 地区",
+    "messagePlaceholder": "我们能为您提供什么帮助？",
     "send": "发送 →",
     "sending": "正在发送请求...",
     "successTitle": "感谢您的联络！",

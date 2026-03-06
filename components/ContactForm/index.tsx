@@ -18,6 +18,20 @@ import { ENTERPRISE_EMAIL } from "@/lib/constants"
 
 import Link from "../ui/link"
 
+/*
+ * Submits to HubSpot Forms API (v3) instead of our own /api/contact.
+ * Portal ID: 147481544
+ * Form GUID: 46696f5b-47a4-4ee5-ac76-8597d4155e79
+ *
+ * HubSpot field internal names (from the form definition):
+ *   firstname, lastname, email, company, jobtitle, country,
+ *   inbound_form_request_text
+ */
+const HUBSPOT_PORTAL_ID = "147481544"
+const HUBSPOT_FORM_ID = "46696f5b-47a4-4ee5-ac76-8597d4155e79"
+// EU region endpoint -- must match the portal's data hosting region
+const HUBSPOT_SUBMIT_URL = `https://api-eu1.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_ID}`
+
 // Consumer email domains to block
 const CONSUMER_DOMAINS = [
   "gmail.com",
@@ -51,15 +65,18 @@ const MAX_INPUT_LENGTH = 2 ** 6 // 64
 const MAX_MESSAGE_LENGTH = 2 ** 12 // 4,096
 
 type FormState = {
-  name: string
+  firstName: string
+  lastName: string
   email: string
+  company: string
+  jobTitle: string
+  country: string
   message: string
 }
 
 type FormErrors = {
-  name?: React.ReactNode
-  email?: React.ReactNode
-  message?: React.ReactNode
+  [K in keyof FormState]?: React.ReactNode
+} & {
   general?: React.ReactNode
 }
 
@@ -71,8 +88,12 @@ const EnterpriseContactForm = () => {
   const prevPathname = useRef(pathname)
 
   const [formData, setFormData] = useState<FormState>({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
+    company: "",
+    jobTitle: "",
+    country: "",
     message: "",
   })
 
@@ -80,7 +101,7 @@ const EnterpriseContactForm = () => {
   const [submissionState, setSubmissionState] =
     useState<SubmissionState>("idle")
 
-  // Reset form errors and submission state on page transition—keep any progress
+  // Reset form errors and submission state on page transition--keep any progress
   useEffect(() => {
     if (prevPathname.current !== pathname) {
       setErrors({})
@@ -105,33 +126,21 @@ const EnterpriseContactForm = () => {
     (field: keyof FormState) =>
     (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const value = e.target.value
-
-      if (field === "name") {
-        const nameError = validateName(value)
-        if (nameError) setErrors((prev) => ({ ...prev, name: nameError }))
-        return
-      }
-      if (field === "email") {
-        const emailError = validateEmail(value)
-        if (emailError) setErrors((prev) => ({ ...prev, email: emailError }))
-        return
-      }
-      if (field === "message") {
-        const messageError = validateMessage(value)
-        if (messageError)
-          setErrors((prev) => ({ ...prev, message: messageError }))
-        return
+      const validator = fieldValidators[field]
+      if (validator) {
+        const error = validator(value)
+        if (error) setErrors((prev) => ({ ...prev, [field]: error }))
       }
     }
 
-  const validateName = (name: string): React.ReactNode | undefined => {
-    const sanitized = sanitizeInput(name)
-
+  const validateRequired = (
+    value: string,
+    maxLength = MAX_INPUT_LENGTH
+  ): React.ReactNode | undefined => {
+    const sanitized = sanitizeInput(value)
     if (!sanitized) return t("errors.required")
-
-    if (sanitized.length > MAX_INPUT_LENGTH)
-      return t("errors.nameTooLong", { max: MAX_MESSAGE_LENGTH })
-
+    if (sanitized.length > maxLength)
+      return t("errors.nameTooLong", { max: maxLength })
     return undefined
   }
 
@@ -141,7 +150,7 @@ const EnterpriseContactForm = () => {
     if (!sanitized) return t("errors.required")
 
     if (sanitized.length > MAX_INPUT_LENGTH)
-      return t("errors.emailTooLong", { max: MAX_MESSAGE_LENGTH })
+      return t("errors.emailTooLong", { max: MAX_INPUT_LENGTH })
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(sanitized)) return t("errors.invalidEmail")
@@ -155,28 +164,33 @@ const EnterpriseContactForm = () => {
 
   const validateMessage = (
     message: string
-  ): React.ReactNode | string | undefined => {
+  ): React.ReactNode | undefined => {
     const sanitized = sanitizeInput(message)
-
     if (!sanitized) return t("errors.required")
-
     if (sanitized.length > MAX_MESSAGE_LENGTH)
       return t("errors.messageTooLong", { max: MAX_MESSAGE_LENGTH })
-
     return undefined
+  }
+
+  const fieldValidators: Partial<
+    Record<keyof FormState, (value: string) => React.ReactNode | undefined>
+  > = {
+    firstName: (v) => validateRequired(v),
+    lastName: (v) => validateRequired(v),
+    email: validateEmail,
+    company: (v) => validateRequired(v),
+    jobTitle: (v) => validateRequired(v),
+    country: (v) => validateRequired(v),
+    message: validateMessage,
   }
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {}
 
-    const nameError = validateName(formData.name)
-    if (nameError) newErrors.name = nameError
-
-    const emailError = validateEmail(formData.email)
-    if (emailError) newErrors.email = emailError
-
-    const messageError = validateMessage(formData.message)
-    if (messageError) newErrors.message = messageError
+    for (const [field, validator] of Object.entries(fieldValidators)) {
+      const error = validator!(formData[field as keyof FormState])
+      if (error) newErrors[field as keyof FormState] = error
+    }
 
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
@@ -192,18 +206,27 @@ const EnterpriseContactForm = () => {
     posthog.capture("contact_form_attempt")
 
     try {
-      const sanitizedData = {
-        name: sanitizeInput(formData.name),
-        email: sanitizeInput(formData.email),
-        message: sanitizeInput(formData.message),
-      }
-
-      const response = await fetch("/api/contact", {
+      const response = await fetch(HUBSPOT_SUBMIT_URL, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(sanitizedData),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fields: [
+            { name: "firstname", value: sanitizeInput(formData.firstName) },
+            { name: "lastname", value: sanitizeInput(formData.lastName) },
+            { name: "email", value: sanitizeInput(formData.email) },
+            { name: "company", value: sanitizeInput(formData.company) },
+            { name: "jobtitle", value: sanitizeInput(formData.jobTitle) },
+            { name: "country", value: sanitizeInput(formData.country) },
+            {
+              name: "inbound_form_request_text",
+              value: sanitizeInput(formData.message),
+            },
+          ],
+          context: {
+            pageUri: window.location.href,
+            pageName: document.title,
+          },
+        }),
       })
 
       if (!response.ok) throw new Error(`Server error: ${response.status}`)
@@ -232,15 +255,19 @@ const EnterpriseContactForm = () => {
 
   const getCharacterCountClasses = (currentLength: number, maxLength: number) =>
     cn(
-      currentLength >= Math.floor(maxLength * 0.9) && "flex", // Show char count when within 10% remaining to limit
-      currentLength > maxLength - 64 && "text-warning-border", // Warning color within 64 chars (border version for proper contrast ratio),
-      currentLength > maxLength && "text-destructive [&_svg]:inline" // Error color over limit
+      currentLength >= Math.floor(maxLength * 0.9) && "flex",
+      currentLength > maxLength - 64 && "text-warning-border",
+      currentLength > maxLength && "text-destructive [&_svg]:inline"
     )
 
   const isDisabled =
     submissionState === "submitting" ||
+    !formData.firstName ||
+    !formData.lastName ||
     !formData.email ||
-    !formData.name ||
+    !formData.company ||
+    !formData.jobTitle ||
+    !formData.country ||
     !formData.message
 
   if (submissionState === "success")
@@ -256,43 +283,54 @@ const EnterpriseContactForm = () => {
       </div>
     )
 
+  const renderField = (
+    field: keyof FormState,
+    placeholder: string,
+    props?: Partial<React.ComponentProps<typeof Input>>
+  ) => (
+    <>
+      <Input
+        name={field}
+        type={props?.type ?? "text"}
+        autoComplete={props?.autoComplete}
+        className="w-full"
+        placeholder={placeholder}
+        value={formData[field]}
+        onChange={handleInputChange(field)}
+        onBlur={handleBlur(field)}
+        hasError={!!errors[field]}
+        disabled={submissionState === "submitting"}
+      />
+      {errors[field] && (
+        <p className="text-destructive text-sm" role="alert">
+          {errors[field]}
+        </p>
+      )}
+    </>
+  )
+
   return (
     <div className="w-full max-w-[440px] space-y-6">
       <div className="space-y-2">
-        <Input
-          name="name"
-          autoComplete="name"
-          type="text"
-          className="w-full"
-          placeholder={t("namePlaceholder")}
-          value={formData.name}
-          onChange={handleInputChange("name")}
-          onBlur={handleBlur("name")}
-          hasError={!!errors.name}
-          disabled={submissionState === "submitting"}
-        />
-        {errors.name && (
-          <p className="text-destructive text-sm" role="alert">
-            {errors.name}
-          </p>
-        )}
-        <Input
-          name="email"
-          autoComplete="email"
-          type="email"
-          className="w-full"
-          placeholder={t("emailPlaceholder")}
-          value={formData.email}
-          onChange={handleInputChange("email")}
-          onBlur={handleBlur("email")}
-          hasError={!!errors.email}
-          disabled={submissionState === "submitting"}
-        />
-        {errors.email && (
-          <p className="text-destructive text-sm" role="alert">
-            {errors.email}
-          </p>
-        )}
+        {renderField("firstName", t("firstNamePlaceholder"), {
+          autoComplete: "given-name",
+        })}
+        {renderField("lastName", t("lastNamePlaceholder"), {
+          autoComplete: "family-name",
+        })}
+        {renderField("email", t("emailPlaceholder"), {
+          type: "email",
+          autoComplete: "email",
+        })}
+        {renderField("company", t("companyPlaceholder"), {
+          autoComplete: "organization",
+        })}
+        {renderField("jobTitle", t("jobTitlePlaceholder"), {
+          autoComplete: "organization-title",
+        })}
+        {renderField("country", t("countryPlaceholder"), {
+          autoComplete: "country-name",
+        })}
       </div>
 
       <div className="space-y-2">

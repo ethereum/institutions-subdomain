@@ -29,9 +29,13 @@
     }
   },
   "contactForm": {
-    "namePlaceholder": "Your name",
-    "emailPlaceholder": "Your e-mail",
-    "messagePlaceholder": "Message",
+    "firstNamePlaceholder": "First name",
+    "lastNamePlaceholder": "Last name",
+    "emailPlaceholder": "Work email",
+    "companyPlaceholder": "Company name",
+    "jobTitlePlaceholder": "Job title",
+    "countryPlaceholder": "Country / Region",
+    "messagePlaceholder": "How can we help you?",
     "send": "Send →",
     "sending": "Beaming request",
     "successTitle": "Thanks for reaching out!",

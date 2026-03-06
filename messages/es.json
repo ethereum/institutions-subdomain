@@ -29,9 +29,13 @@
     }
   },
   "contactForm": {
-    "namePlaceholder": "Su nombre",
-    "emailPlaceholder": "Su correo electrónico",
-    "messagePlaceholder": "Mensaje",
+    "firstNamePlaceholder": "Nombre",
+    "lastNamePlaceholder": "Apellido",
+    "emailPlaceholder": "Correo de trabajo",
+    "companyPlaceholder": "Nombre de la empresa",
+    "jobTitlePlaceholder": "Cargo",
+    "countryPlaceholder": "Pais / Region",
+    "messagePlaceholder": "Como podemos ayudarle?",
     "send": "Enviar →",
     "sending": "Transmitiendo solicitud",
     "successTitle": "¡Gracias por contactarnos!",
