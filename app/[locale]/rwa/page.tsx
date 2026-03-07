@@ -23,7 +23,15 @@ import fetchTokenizedTreasuries from "@/app/_actions/fetchTokenizedTreasuries"
 import fetchTotalValueSecured from "@/app/_actions/fetchTotalValueSecured"
 import { type Locale, routing } from "@/i18n/routing"
 import buildings from "@/public/images/banners/buildings.png"
+import aaveLogo from "@/public/images/logos/apps/aave.png"
+import centrifugeLogo from "@/public/images/logos/apps/centrifuge.png"
+import mapleLogo from "@/public/images/logos/apps/maple.png"
+import morphoLogo from "@/public/images/logos/apps/morpho.png"
 import buidlUsd from "@/public/images/logos/tokens/buidl-usd.svg"
+import fditStar from "@/public/images/logos/tokens/fdit-star.svg"
+import kinexysLogo from "@/public/images/logos/tokens/kinexys.svg"
+import mfoneLogo from "@/public/images/logos/tokens/mfone.svg"
+import superstateLogo from "@/public/images/logos/tokens/superstate.svg"
 import eurc from "@/public/images/logos/tokens/eurc.svg"
 import fidd from "@/public/images/logos/tokens/fidd.svg"
 import pyusd from "@/public/images/logos/tokens/pyusd.svg"
@@ -179,6 +187,7 @@ export default async function Page({ params }: Props) {
     valuation: string
     description: string
     issuer?: string
+    imgSrc?: StaticImageData
     metricHref: string
     visitHref: string
   } & Partial<LastUpdated & SourceInfo>
@@ -191,6 +200,7 @@ export default async function Page({ params }: Props) {
         assetValueByAssetIdsData.data.BUIDL
       ),
       description: t("cards.buidlDesc", { brand: "BlackRock" }),
+      imgSrc: buidlUsd,
       issuer: "BlackRock & Securitize",
       metricHref: "https://app.rwa.xyz/assets/BUIDL",
       visitHref: "https://securitize.io/blackrock/buidl",
@@ -207,6 +217,7 @@ export default async function Page({ params }: Props) {
         assetValueByAssetIdsData.data.USTB
       ),
       description: t("cards.ustbDesc", { brand: "Superstate" }),
+      imgSrc: superstateLogo,
       issuer: "Superstate",
       metricHref: "https://app.rwa.xyz/assets/USTB",
       visitHref: "https://superstate.com/assets/ustb",
@@ -223,6 +234,7 @@ export default async function Page({ params }: Props) {
         assetValueByAssetIdsData.data.MONY
       ),
       description: t("cards.monyDesc", { brand: "JPMorgan" }),
+      imgSrc: kinexysLogo,
       issuer: "JPMorgan",
       metricHref: "https://app.rwa.xyz/assets/MONY",
       visitHref: "https://www.jpmorgan.com/kinexys/digital-assets",
@@ -239,6 +251,7 @@ export default async function Page({ params }: Props) {
         assetValueByAssetIdsData.data.FDIT
       ),
       description: t("cards.fditDesc", { brand: "Fidelity" }),
+      imgSrc: fditStar,
       issuer: "Fidelity",
       metricHref: "https://app.rwa.xyz/assets/FDIT",
       visitHref: "https://institutional.fidelity.com/app/funds-and-products/9053/fidelity-treasury-digital-fund-onchain-class-fyoxx.html",
@@ -276,6 +289,7 @@ export default async function Page({ params }: Props) {
     {
       header: "Aave",
       valuation: "",
+      imgSrc: aaveLogo,
       description: t("rwas.activeLoans"),
       metricHref: "https://defillama.com/protocol/aave",
       visitHref: "https://aave.com/",
@@ -283,12 +297,14 @@ export default async function Page({ params }: Props) {
     {
       header: "Morpho",
       valuation: "",
+      imgSrc: morphoLogo,
       description: t("rwas.activeLoans"),
       metricHref: "https://defillama.com/protocol/morpho",
       visitHref: "https://morpho.org/",
     },
     {
       header: "Centrifuge",
+      imgSrc: centrifugeLogo,
       valuation: formatLargeCurrency(
         locale,
         protocolsValueBySlugData.data.centrifuge
@@ -304,6 +320,7 @@ export default async function Page({ params }: Props) {
     },
     {
       header: "Maple Finance",
+      imgSrc: mapleLogo,
       valuation: formatLargeCurrency(
         locale,
         protocolsValueBySlugData.data.maple
@@ -319,6 +336,7 @@ export default async function Page({ params }: Props) {
     },
     {
       header: "Midas mF-ONE",
+      imgSrc: mfoneLogo,
       valuation: formatLargeCurrency(
         locale,
         assetValueByAssetIdsData.data.mF_ONE
@@ -832,6 +850,7 @@ export default async function Page({ params }: Props) {
                 valuation,
                 description,
                 issuer,
+                imgSrc,
                 metricHref,
                 visitHref,
                 ...tooltipProps
@@ -841,6 +860,14 @@ export default async function Page({ params }: Props) {
                   key={header}
                 >
                   <div className="space-y-2">
+                    {imgSrc && (
+                      <Image
+                        src={imgSrc}
+                        alt=""
+                        sizes="40px"
+                        className="mb-2 size-10"
+                      />
+                    )}
                     <h4 className="text-h5 font-bold tracking-[0.03rem]">
                       {header}
                     </h4>
@@ -906,6 +933,7 @@ export default async function Page({ params }: Props) {
                 valuation,
                 description,
                 issuer,
+                imgSrc,
                 metricHref,
                 visitHref,
                 ...tooltipProps
@@ -915,6 +943,14 @@ export default async function Page({ params }: Props) {
                   key={header}
                 >
                   <div className="space-y-2">
+                    {imgSrc && (
+                      <Image
+                        src={imgSrc}
+                        alt=""
+                        sizes="40px"
+                        className="mb-2 size-10"
+                      />
+                    )}
                     <h4 className="text-h5 font-bold tracking-[0.03rem]">
                       {header}
                     </h4>
