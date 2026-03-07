@@ -1,6 +1,6 @@
 "use client"
 
-import { useLocale, useTranslations } from "next-intl"
+import { useLocale } from "next-intl"
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
 import type { DataTimestamped } from "@/lib/types"
@@ -22,7 +22,6 @@ type L2UopsAreaChartProps = {
 }
 const L2UopsAreaChart = ({ chartData }: L2UopsAreaChartProps) => {
   const locale = useLocale()
-  const tCharts = useTranslations("dataHub.charts")
 
   const chartConfig = {
     uops: {

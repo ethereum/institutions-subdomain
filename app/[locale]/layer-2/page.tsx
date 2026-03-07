@@ -23,7 +23,6 @@ import {
 import { InlineText } from "@/components/ui/inline-text"
 import Link from "@/components/ui/link"
 
-import { cn } from "@/lib/utils"
 import { formatDateMonthDayYear } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
 import {
@@ -42,6 +41,8 @@ import blackGlyphBanner from "@/public/images/banners/black-glyph-banner.png"
 import coinbase from "@/public/images/logos/apps/coinbase.png"
 import deutscheBank from "@/public/images/logos/apps/deutsche-bank.png"
 import ey from "@/public/images/logos/apps/ey.png"
+import robinhood from "@/public/images/logos/institutions/robinhood.png"
+import soneium from "@/public/images/logos/institutions/soneium.png"
 import arbitrum from "@/public/images/logos/networks/arbitrum.png"
 import base from "@/public/images/logos/networks/base.png"
 import celo from "@/public/images/logos/networks/celo.png"
@@ -53,8 +54,6 @@ import starknet from "@/public/images/logos/networks/starknet.png"
 import unichain from "@/public/images/logos/networks/unichain.png"
 import worldChain from "@/public/images/logos/networks/world-chain.png"
 import zksync from "@/public/images/logos/networks/zksync.png"
-import robinhood from "@/public/images/logos/institutions/robinhood.png"
-import soneium from "@/public/images/logos/institutions/soneium.png"
 
 type CardItem = {
   heading: string
