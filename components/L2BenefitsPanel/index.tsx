@@ -118,13 +118,6 @@ export function L2BenefitsPanel({ validatorsCount }: L2BenefitsPanelProps) {
             t("customization.configurableEnvironments.item3"),
           ],
         },
-        {
-          heading: t("customization.compliance.heading"),
-          items: [
-            t("customization.compliance.item1"),
-            t("customization.compliance.item2"),
-          ],
-        },
       ],
     },
   ]
@@ -148,7 +141,7 @@ export function L2BenefitsPanel({ validatorsCount }: L2BenefitsPanelProps) {
           </Fragment>
         ))}
       </div>
-      <div className="overflow-hidden">
+      <div className="min-w-0 flex-1 overflow-hidden">
         <TransitionPanel
           activeIndex={activeIndex}
           transition={{ duration: 0.2, ease: "easeInOut" }}

@@ -560,8 +560,8 @@
   "layer2": {
     "hero": {
       "heading": "Ethereum L2s",
-      "description1": "Layer 2s (L2s) are scalable execution layers built on top of Ethereum. Rollups, a primary category of L2, bundle transactions and post data back to Ethereum mainnet, allowing them to inherit Ethereum's security and decentralization.",
-      "description2": "Ideal for tokenization, payments, and compliant appchains, L2s can offer custom environments, optimized rails, and faster, cheaper execution, while relying on Ethereum for finality."
+      "description1": "Layer 2s (L2s) are scalable and customizable layers built on top of Ethereum. Rollups, a primary category of L2, bundle transactions and post data back to Ethereum mainnet, allowing them to inherit Ethereum's security and resilience.",
+      "description2": "Suitable for tokenization, payments, and compliant appchains, L2s can offer custom environments, optimized rails and execution, while relying on Ethereum for finality and security."
     },
     "metrics": {
       "srHeading": "Layer 2 Ecosystem Overview",
@@ -573,24 +573,18 @@
     "role": {
       "heading": "The Role of L2s",
       "l1": {
-        "heading": "Ethereum L1",
-        "subheading": "The Settlement & Liquidity Layer",
-        "finality": "Finality & Credible Neutrality",
-        "finalityDesc": "High-value settlement, state roots for rollups, and durable records institutions can audit and attest against",
-        "security": "Security",
-        "securityDesc": "Assets can be stored in an environment that is built to withstand major catastrophes and geopolitical tensions",
-        "riskGating": "Risk Gating",
-        "riskGatingDesc": "Keep complex or experimental logic off L1; use it for final settlement, collateral custody, and proofs"
+        "heading": "Why L2s Exist",
+        "description": "Ethereum L1 is highly secure and single-operator independent, but its challenges include:",
+        "item1": "Customization of environments",
+        "item2": "Higher gas fees during congestion",
+        "item3": "Much data is public",
+        "closing": "While Ethereum's network upgrades are rapidly scaling L1 capacity today, L2s offer an immediate solution"
       },
       "l2": {
-        "heading": "Ethereum's L2s",
-        "subheading": "The Execution and Scaling Layer",
-        "throughput": "Throughput & UX",
-        "throughputDesc": "Rollups process transactions off-chain, inherit L1 security, and deliver low fees suitable for payments, market-making, and high-frequency flows",
-        "configurable": "Configurable",
-        "configurableDesc": "L2s can add compliance features, like allowlisting or KYC'd pools, while remaining non-custodial and settling to L1",
-        "specialization": "Specialization",
-        "specializationDesc": "Multiple L2s let institutions segregate workloads, such as retail payments vs. treasury ops, without fragmenting trust, because settlement reconciles on L1"
+        "heading": "How L2s Work",
+        "description": "L2s offer fast, low cost transaction execution, while Ethereum acts as the ultimate source of truth for settlement:",
+        "item1": "Users send transaction processing to the L2 network, instead of directly on Ethereum",
+        "item2": "The L2 batches and/or compresses transactions, and executes them off-chain, and in turn send the data back to the L1 as a source of truth and global consensus"
       }
     },
     "benefits": {
@@ -599,108 +593,99 @@
         "title": "Inherit Ethereum's Decentralization",
         "noBootstrapping": {
           "heading": "No Bootstrapping",
-          "item1": "Skip the costly process of building and paying a new validator set",
-          "item2": "New chains must build decentralization from scratch, a slow, capital-intensive process that can lead to fragile and centralized chains",
-          "item3": "L2s inherit Ethereum's unmatched decentralization, saving resources and accessing deep economic security"
+          "item1": "Skip the costly process of building and paying a new validator set to economically secure a chain.",
+          "item2": "New chains must build decentralisation from scratch, a slow, capital-intensive process that can lead to fragile and centralised chains.",
+          "item3": "L2s inherit Ethereum's unmatched decentralisation, saving vital resources, and accessing deep economic security."
         },
         "sharedSecurity": {
           "heading": "Shared Security",
           "item1": "L2s tap into the security of Ethereum's <link>{validatorsCount} validators</link>, paying only usage-based fees.",
-          "item2": "Rollups all settle on Ethereum, creating a shared, decentralized security and data availability layer"
+          "item2": "Rollups all settle on Ethereum, creating a shared, decentralized security, and data availability layer."
         }
       },
       "cheaperSecurity": {
         "title": "Cheaper Security Costs",
         "noInflation": {
           "heading": "No Inflation Burden",
-          "item1": "Alternative L1s pay for security and usage via high native token inflation rates",
-          "item2": "L2s pay usage-based fees in ETH, removing the need for a native-L2 token to facilitate economic security",
-          "item3": "Because L2s don't need to use a native token to pay for security, they can choose to use a native token for other strategic functions, like governance, incentives, or fees",
-          "item4": "High levels of profitability e.g. 95% margins on Base"
+          "item1": "Alternative L1s pay for security and usage via high native token inflation rates.",
+          "item2": "L2s pay usage-based fees in ETH when sending transaction data back to the L1, removing the need for a native-L2 token to facilitate economic security.",
+          "item3": "Because L2s don't need to use a native token to pay for security, they can choose to use a native token for other strategic functions, like governance, incentives, or transaction fees on the L2.",
+          "item4": "High levels of profitability (e.g. 90%+ margins on Base)"
         }
       },
       "enhancedPerformance": {
         "title": "Enhanced Performance",
         "highPerformance": {
           "heading": "High-Performance Validation",
-          "item1": "By separating execution from consensus and inheriting Ethereum's finality, rollups enable high performance without sacrificing user safety or decentralization"
+          "item1": "By separating execution from consensus and inheriting Ethereum's finality, rollups enable high performance without sacrificing user safety."
         },
         "fasterCheaper": {
           "heading": "Faster & Cheaper",
-          "item1": "Rollups can parallelize execution and proving—they don't need to wait for thousands of nodes to sync",
-          "item2": "One proof replaces millions of redundant re-computations across nodes, greatly reducing validation costs"
+          "item1": "Rollups can parallelize execution and proving. They don't need to wait for thousands of nodes to sync.",
+          "item2": "One proof replaces millions of redundant re-computations across nodes, greatly reducing validation costs."
         },
         "saferValidation": {
           "heading": "Safer Validation",
-          "item1": "Rollups inherit Ethereum's censorship resistance and finality",
-          "item2": "Assets are held in Ethereum contracts, and updates are enforced via fraud or validity proofs",
-          "item3": "Even if the L2 sequencer misbehaves, users can force transaction inclusion and securely exit via Ethereum L1"
+          "item1": "Rollups inherit Ethereum's censorship resistance and finality.",
+          "item2": "Assets are held in Ethereum contracts, and updates are enforced via fraud or validity proofs.",
+          "item3": "Even if the L2 sequencer misbehaves, users can force transaction inclusion and securely exit via Ethereum L1, enabling a fail safe and extra layer of security."
         }
       },
       "interoperability": {
         "title": "Interoperability",
         "sharedStandards": {
           "heading": "Shared Standards",
-          "item1": "L2s leverage Ethereum's established EVM, token standards, and core assets like ETH",
-          "item2": "Users and developers benefit from a consistent experience, using the same wallets, tools, and code across Ethereum's L1 and L2 ecosystem",
-          "item3": "Tokens and NFTs maintain a canonical L1 source-of-truth, making them fungible across different rollups"
+          "item1": "L2s leverage Ethereum's established EVM, token standards, and core assets like ETH.",
+          "item2": "Users and developers benefit from a consistent experience, using the same wallets, tools, and code across Ethereum's L1 and L2 ecosystem.",
+          "item3": "Tokens maintain a canonical L1 source-of-truth, making them fungible across different rollups."
         }
       },
       "customization": {
         "title": "Customization",
         "configurableEnvironments": {
-          "heading": "Configurable Environments",
-          "item1": "L2s can implement custom gas tokens, fee structures, and execution environments while inheriting Ethereum security",
-          "item2": "Deploy permissioned or public rollups tailored to specific enterprise needs, without sacrificing interoperability",
-          "item3": "Choose from multiple proving systems (optimistic, ZK, hybrid) based on your security and performance requirements"
-        },
-        "compliance": {
-          "heading": "Built-in Compliance",
-          "item1": "Implement KYC/AML checks, allowlisting, and transfer restrictions at the L2 level while settling to public L1",
-          "item2": "Configure privacy features, data retention policies, and access controls specific to your regulatory environment"
+          "heading": "Customization",
+          "item1": "Customize compliance logic",
+          "item2": "Branding (e.g Base, Robinhood Chain)",
+          "item3": "Throughput"
         }
       }
     },
     "trust": {
       "heading": "Ethereum as the Trust Layer",
-      "description": "In a rollup, transactions are executed off-chain but the data is published to Ethereum L1",
+      "description": "Rollups are the most secure form of L2, where transactions are executed off-chain but the data is published to Ethereum L1:",
       "transparency": "Transparency",
       "transparencyDesc": "Every user can see the rollup state on the L1",
       "dataAvailability": "Data availability",
-      "dataAvailabilityDesc": "Even if the L2 sequencer disappears or censors users, the entire history of transactions is accessible and immutable on Ethereum",
+      "dataAvailabilityDesc": "Even if the rollup sequencer disappears or censors users, the entire history of transactions is accessible and immutable on Ethereum",
       "exitWindow": "Exit window",
-      "exitWindowDesc": "Anyone can directly withdraw their assets from the L2 to the L1 by interacting with the L1 smart contract",
+      "exitWindowDesc": "Anyone can directly withdraw their assets from the rollup to the L1 by interacting with the L1 smart contract",
       "recoverability": "Recoverability",
-      "recoverabilityDesc": "Data availability on the L1 makes user funds recoverable even if the L2 fails; this feature, referred to as the \"escape hatch,\" keeps rollups' trust minimized rather than reliant on the L2 operator",
+      "recoverabilityDesc": "Data availability on the L1 makes user funds recoverable even if the rollup fails, referred to as the \"escape hatch\". This is what keeps rollups trust minimised rather than reliant on the rollup operator.",
       "issuance": {
         "heading": "Issuance on L1 (Bridging to L2)",
-        "description": "Assets should be issued on the L1 and bridged to the L2",
+        "description": "Assets should be issued on the L1 and bridged to the L2:",
         "anchors": "Anchors assets to Ethereum's most secure, neutral and resilient layer",
         "guarantees": "Guarantees asset redeemability (escape hatch)",
-        "maximizes": "Maximizes interoperability and composability across Ethereum ecosystem"
+        "maximizes": "Maximises interoperability and composability across Ethereum ecosystem"
       }
     },
     "frameworksSection": {
       "heading": "Simplified Deployment and Flexibility",
-      "description": "Choose from robust, audited frameworks to launch your blockchain in weeks, not years"
+      "description": "Launch your own L2 or deploy on an existing L2."
     },
     "frameworks": {
-      "arbitrum": "A suite of Ethereum scaling solutions that make it easy to build and use decentralized applications.",
-      "optimism": "The OP Stack is a standardized development stack to spin up a L2. The Superchain is a network of interoperable OP Stack chains.",
+      "arbitrum": "Arbitrum One delivers strong security, fast confirmations, and low fees with straightforward deployment and a bustling DeFi ecosystem. Optionally allowing for teams to launch here first, then migrate to their own custom Arbitrum chain later.\nArbitrum offers a purpose-built stack for customizable chains, with full support for Solidity and Rust and access to liquidity from the parent chain, like Ethereum or Arbitrum One.",
+      "optimism": "Optimism inherits Ethereum's data availability and settlement guarantees as an optimistic rollup, with EVM equivalence ensuring existing contracts and tooling work out of the box. Teams can deploy directly on OP Mainnet for immediate access to established liquidity and users, or launch a dedicated OP Stack chain for greater control over throughput, fees, and governance.",
       "polygon": "Polygon protocols and scaling technologies are used to build and deploy apps, or launch ZK rollups and validiums as L2s.",
-      "zksync": "A scaling and privacy engine for Ethereum with a network of interoperable chains, secured by ZK privacy technology."
-    },
-    "networksSection": {
-      "heading": "Deploy on Proven L2s",
-      "description": "Build on secure and scalable networks without the operational overhead of launching and maintaining your own chain"
+      "zksync": "ZKsync provides cryptographic settlement guarantees through proofs, with every transaction batch mathematically verified before posting to Ethereum. Teams can deploy on ZKsync chains for access to L1 liquidity and ecosystem tooling, or launch a dedicated chain for greater sovereignty over performance, governance, and fees.\nFor institutions requiring privacy and compliance, ZKsync offers Prividiums, an Ethereum secured blockchain platform purpose built for organisations that demand privacy, compliance, and full control of their data."
     },
     "networks": {
-      "linea": "Linea is a general purpose, EVM equivalent L2, built by Consensys. Allowing use of existing Ethereum tooling and smart contracts with minimal changes.",
-      "starknet": "Starknet is a validity rollup (ZK-Rollup) L2 enabling provable computation using STARK proofs. Focused on high-throughput apps and low-cost transactions, combined with Ethereum's security.",
-      "base": "Base is a secure, low-cost L2 built on Optimism's OP Stack, offering seamless Ethereum compatibility. It enables fast, scalable transactions while keeping assets and apps fully onchain.",
-      "ink": "Ink is a L2 built by Kraken, focused on bridging centralized finance with onchain applications. Offers accessible DeFi to exchange users, combining L2 scalability with a CEX-native experience.",
-      "unichain": "Unichain is a DeFi-centered L2 built for high-throughput transactions and cross-chain liquidity. Providing a unified environment for financial protocols, combining capital efficiency with rollup security.",
-      "scroll": "Scroll is a zkEVM-based Layer 2 built for Ethereum compatibility. It enables native deployment of existing smart contracts while maintaining full EVM equivalence and trustless proofs anchored to L1."
+      "linea": "General purpose, EVM equivalent L2, built by Consensys.",
+      "starknet": "Validity rollup (ZK-Rollup) L2 using STARK proofs. High-throughput, low-cost.",
+      "base": "Secure, low-cost L2 built on OP Stack by Coinbase.",
+      "ink": "L2 built by Kraken, bridging CeFi with onchain apps.",
+      "unichain": "DeFi-centered L2 for high-throughput and cross-chain liquidity.",
+      "scroll": "zkEVM-based L2 for full Ethereum compatibility."
     },
     "caseStudiesSection": {
       "heading": "Case Studies"
@@ -727,15 +712,15 @@
         "ctaLabel": "Daily Transactions"
       },
       "sony": {
-        "description": "Soneium L2 for consumer entertainment and Web3",
+        "description": "Soneium Public Permissioned L2",
         "ctaLabel": "Users onboarded"
       },
       "antGroup": {
-        "description": "Jovay L2 for institutional digital assets in APAC",
+        "description": "Jovay L2 for Tokenization",
         "ctaLabel": "Institutional partners"
       },
       "robinhood": {
-        "description": "Robinhood Chain L2 for real-world asset trading",
+        "description": "Public chain for asset tokenization",
         "ctaLabel": "First RWA-Optimized L2"
       }
     },
@@ -744,24 +729,24 @@
       "existing": {
         "heading": "Use an Existing L2",
         "immediateAccess": "Immediate Access",
-        "immediateAccessDesc": "Tap into mature ecosystems with large developer communities and liquidity networks",
+        "immediateAccessDesc": "Tap into mature ecosystems with large developer communities and liquidity networks.",
         "lowerCosts": "Lower Integration Costs",
-        "lowerCostsDesc": "Inherit Ethereum's decentralisation and security—no need to bootstrap infrastructure",
+        "lowerCostsDesc": "Inherit Ethereum's decentralisation and security — no need to bootstrap infrastructure.",
         "regulatoryAlignment": "Regulatory Alignment",
-        "regulatoryAlignmentDesc": "Many L2s are already building compliance modules suited for financial institutions",
+        "regulatoryAlignmentDesc": "Many L2s are already building compliance modules suited for financial institutions.",
         "productionSecurity": "Production Security",
-        "productionSecurityDesc": "Build on live and battle-tested L2 chains, with billions of dollars in value secured"
+        "productionSecurityDesc": "Build on live and battle-tested L2 chains, with billions of dollars in value secured."
       },
       "custom": {
         "heading": "Launch a Custom L2",
         "tailoredEnvironments": "Tailored Environments",
-        "tailoredEnvironmentsDesc": "Deploy a private or public rollup using existing stacks, tailored to your specific enterprise needs",
+        "tailoredEnvironmentsDesc": "Deploy a private or public rollup using existing stacks, tailored to your specific enterprise needs.",
         "customFeatures": "Custom Features",
-        "customFeaturesDesc": "Implement permissioned access, privacy layers, compliance hooks, or internal system integration",
+        "customFeaturesDesc": "Implement permissioned access, privacy layers, compliance hooks, or internal system integration.",
         "sharedSecurity": "Shared Security",
-        "sharedSecurityDesc": "Even private rollups settle to Ethereum, benefiting from its validator set without the cost of building one",
+        "sharedSecurityDesc": "Even private rollups settle to Ethereum, benefiting from its validator set without the cost of building one.",
         "fasterTimeToMarket": "Faster Time to Market",
-        "fasterTimeToMarketDesc": "Build using audited, battle-tested rollup frameworks to deploy in weeks, not years"
+        "fasterTimeToMarketDesc": "Build using audited, battle-tested rollup frameworks to deploy in weeks, not years."
       }
     },
     "metadata": {
