@@ -18,7 +18,9 @@ type JSONData = {
   }
 }
 
-export type L2ScalingActivityData = { uops: number }
+export type L2ScalingActivitySeries = { date: string; uops: number }[]
+
+export type L2ScalingActivityData = { uops: number; series: L2ScalingActivitySeries }
 
 export const fetchL2ScalingActivity = async (): Promise<
   DataTimestamped<L2ScalingActivityData>
@@ -46,9 +48,15 @@ export const fetchL2ScalingActivity = async (): Promise<
 
     const [timestamp, , uopsCount] = chartData[chartData.length - 1]
 
+    const series: L2ScalingActivitySeries = chartData.map(([ts, , uops]) => ({
+      date: new Date(ts * 1e3).toISOString(),
+      uops,
+    }))
+
     return {
       data: {
         uops: uopsCount,
+        series,
       },
       lastUpdated: new Date(timestamp * 1e3).getTime() || Date.now(),
       sourceInfo: SOURCE.L2BEAT,
@@ -60,7 +68,7 @@ export const fetchL2ScalingActivity = async (): Promise<
       url,
     })
     return {
-      data: { uops: 0 },
+      data: { uops: 0, series: [] },
       lastUpdated: Date.now(),
       sourceInfo: SOURCE.L2BEAT,
     }
