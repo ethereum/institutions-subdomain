@@ -23,7 +23,12 @@ export const fetchTokenizedTreasuries = async (): Promise<
   const apiKey = process.env.RWA_API_KEY || ""
 
   if (!apiKey) {
-    throw new Error(`No API key available for ${url.toString()}`)
+    console.warn(`No API key available for ${url.toString()}`)
+    return {
+      data: { totalTreasuries: 0 },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.RWA,
+    }
   }
 
   const myQuery = {
