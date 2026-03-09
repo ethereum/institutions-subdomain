@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect, useMemo, useRef, useState } from "react"
+import HCaptcha from "@hcaptcha/react-hcaptcha"
 import { HeartHandshake, TriangleAlert } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { useTranslations } from "next-intl"
@@ -18,21 +19,7 @@ import { ENTERPRISE_EMAIL } from "@/lib/constants"
 
 import Link from "../ui/link"
 
-/*
- * Submits to HubSpot Forms API (v3) instead of our own /api/contact.
- * Portal ID: 147481544
- * Form GUID: 46696f5b-47a4-4ee5-ac76-8597d4155e79
- *
- * HubSpot field internal names (from the form definition):
- *   firstname, lastname, email, company, jobtitle, country,
- *   inbound_form_request_text
- */
-const HUBSPOT_PORTAL_ID = "147481544"
-const HUBSPOT_FORM_ID = "46696f5b-47a4-4ee5-ac76-8597d4155e79"
-// EU region endpoint -- must match the portal's data hosting region
-const HUBSPOT_SUBMIT_URL = `https://api-eu1.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_ID}`
-
-// Consumer email domains to block
+// Consumer email domains to block (client-side for UX; also enforced server-side)
 const CONSUMER_DOMAINS = [
   "gmail.com",
   "yahoo.com",
@@ -86,6 +73,7 @@ const EnterpriseContactForm = () => {
   const t = useTranslations("contactForm")
   const pathname = usePathname()
   const prevPathname = useRef(pathname)
+  const captchaRef = useRef<HCaptcha>(null)
 
   const [formData, setFormData] = useState<FormState>({
     firstName: "",
@@ -98,6 +86,7 @@ const EnterpriseContactForm = () => {
   })
 
   const [errors, setErrors] = useState<FormErrors>({})
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null)
   const [submissionState, setSubmissionState] =
     useState<SubmissionState>("idle")
 
@@ -204,34 +193,26 @@ const EnterpriseContactForm = () => {
 
   const handleSubmit = async () => {
     if (!validateForm()) return
+    if (!captchaToken) return
 
     setSubmissionState("submitting")
     setErrors({})
 
-    // Track form submission attempt
     posthog.capture("contact_form_attempt")
 
     try {
-      const response = await fetch(HUBSPOT_SUBMIT_URL, {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          fields: [
-            { name: "firstname", value: sanitizeInput(formData.firstName) },
-            { name: "lastname", value: sanitizeInput(formData.lastName) },
-            { name: "email", value: sanitizeInput(formData.email) },
-            { name: "company", value: sanitizeInput(formData.company) },
-            { name: "jobtitle", value: sanitizeInput(formData.jobTitle) },
-            { name: "country", value: sanitizeInput(formData.country) },
-            {
-              name: "inbound_form_request_text",
-              value: sanitizeInput(formData.message),
-            },
-          ],
-          context: {
-            pageUri: window.location.href,
-            pageName: document.title,
-          },
+          firstName: sanitizeInput(formData.firstName),
+          lastName: sanitizeInput(formData.lastName),
+          email: sanitizeInput(formData.email),
+          company: sanitizeInput(formData.company),
+          jobTitle: sanitizeInput(formData.jobTitle),
+          country: sanitizeInput(formData.country),
+          message: sanitizeInput(formData.message),
+          captchaToken,
         }),
       })
 
@@ -257,6 +238,9 @@ const EnterpriseContactForm = () => {
           </>
         ),
       })
+    } finally {
+      setCaptchaToken(null)
+      captchaRef.current?.resetCaptcha()
     }
   }
 
@@ -269,6 +253,7 @@ const EnterpriseContactForm = () => {
 
   const isDisabled =
     submissionState === "submitting" ||
+    !captchaToken ||
     !formData.firstName ||
     !formData.lastName ||
     !formData.email ||
@@ -379,6 +364,15 @@ const EnterpriseContactForm = () => {
           </p>
         </div>
       )}
+
+      <HCaptcha
+        sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY!}
+        size="compact"
+        ref={captchaRef}
+        onVerify={setCaptchaToken}
+        onExpire={() => setCaptchaToken(null)}
+        reCaptchaCompat={false}
+      />
 
       <Button
         onClick={handleSubmit}

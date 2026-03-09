@@ -1,89 +1,73 @@
 import { NextRequest, NextResponse } from "next/server"
-import { SendRawEmailCommand, SESClient } from "@aws-sdk/client-ses"
 
 import { sanitizeInput } from "@/lib/utils/sanitize"
 
 import PostHogClient from "@/lib/posthog-server"
 
-const ENTERPRISE_EMAIL = "enterprise@ethereum.org"
-const SES_FROM_EMAIL = "enterprise-contact@ethereum.org"
+const HCAPTCHA_SECRET = process.env.HCAPTCHA_SECRET!
+const HCAPTCHA_VERIFY_URL = "https://api.hcaptcha.com/siteverify"
 
-// Configure SES client
-const sesClient = new SESClient({
-  region: process.env.SES_REGION || "us-east-2",
-  credentials: {
-    accessKeyId: process.env.SES_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.SES_SECRET_ACCESS_KEY!,
-  },
-})
+const HUBSPOT_PORTAL_ID = "147481544"
+const HUBSPOT_FORM_ID = "46696f5b-47a4-4ee5-ac76-8597d4155e79"
+// EU region endpoint -- must match the portal's data hosting region
+const HUBSPOT_SUBMIT_URL = `https://api-eu1.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_ID}`
+
+// Consumer email domains to block
+const CONSUMER_DOMAINS = [
+  "gmail.com",
+  "yahoo.com",
+  "hotmail.com",
+  "outlook.com",
+  "icloud.com",
+  "protonmail.com",
+  "proton.me",
+  "pm.me",
+  "aol.com",
+  "mail.com",
+  "yandex.com",
+  "tutanota.com",
+  "fastmail.com",
+  "zoho.com",
+  "gmx.com",
+  "live.com",
+  "msn.com",
+  "me.com",
+  "mac.com",
+  "rocketmail.com",
+  "yahoo.co.uk",
+  "googlemail.com",
+  "mailinator.com",
+  "10minutemail.com",
+  "guerrillamail.com",
+]
+
+const MAX_INPUT_LENGTH = 2 ** 6 // 64
+const MAX_MESSAGE_LENGTH = 2 ** 12 // 4,096
 
 function validateEmail(email: string): boolean {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   return emailRegex.test(email)
 }
 
-function createRawEmail(
-  fromEmail: string,
-  toEmail: string,
-  replyToEmail: string,
-  subject: string,
-  textBody: string
-): string {
-  const boundary = `----=_Part_${Date.now()}_${Math.random().toString(36)}`
-
-  return [
-    `From: ${fromEmail}`,
-    `To: ${toEmail}`,
-    `Reply-To: ${replyToEmail}`,
-    `Subject: ${subject}`,
-    `MIME-Version: 1.0`,
-    `Content-Type: multipart/alternative; boundary="${boundary}"`,
-    ``,
-    `--${boundary}`,
-    `Content-Type: text/plain; charset=UTF-8`,
-    `Content-Transfer-Encoding: 7bit`,
-    ``,
-    textBody,
-    ``,
-    `--${boundary}--`,
-  ].join("\r\n")
+function isConsumerEmail(email: string): boolean {
+  const domain = email.toLowerCase().split("@")[1]
+  return CONSUMER_DOMAINS.includes(domain)
 }
 
-async function sendEmail(
-  name: string,
-  userEmail: string,
-  message: string
-): Promise<void> {
-  const subject = "Enterprise Inquiry from institutions.ethereum.org"
-  const textBody = `
-New enterprise inquiry received:
-
-From: ${name}<${userEmail}>
-Timestamp: ${new Date().toISOString()}
-
-Message:
-${message}
-
----
-This message was sent via the enterprise contact form on institution.ethereum.org.
-Reply to this email to respond directly to the sender.
-  `.trim()
-
-  const rawEmail = createRawEmail(
-    SES_FROM_EMAIL,
-    ENTERPRISE_EMAIL,
-    userEmail,
-    subject,
-    textBody
-  )
-
-  const command = new SendRawEmailCommand({
-    RawMessage: {
-      Data: new TextEncoder().encode(rawEmail),
-    },
+async function verifyCaptcha(token: string): Promise<boolean> {
+  const params = new URLSearchParams({
+    secret: HCAPTCHA_SECRET,
+    response: token,
   })
 
-  await sesClient.send(command)
+  const res = await fetch(HCAPTCHA_VERIFY_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: params.toString(),
+  })
+
+  const data = await res.json()
+  return data.success === true
 }
 
 export async function POST(request: NextRequest) {
@@ -91,91 +75,173 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json()
-    const { name, email, message } = body
+    const {
+      firstName,
+      lastName,
+      email,
+      company,
+      jobTitle,
+      country,
+      message,
+      captchaToken,
+    } = body
 
-    // Validate input
-    if (!email || !message) {
+    // Verify hCaptcha token
+    if (!captchaToken) {
       posthog.capture({
         distinctId: "anonymous",
         event: "contact_form_error",
-        properties: {
-          error: "missing_required_fields",
-        },
+        properties: { error: "missing_captcha" },
       })
       await posthog.shutdown()
-
       return NextResponse.json(
-        { error: "Email and message are required" },
+        { error: "CAPTCHA verification required" },
         { status: 400 }
       )
     }
 
-    // Sanitize inputs
-    const sanitizedName = sanitizeInput(name)
-    const sanitizedEmail = sanitizeInput(email)
-    const sanitizedMessage = sanitizeInput(message)
-
-    // Validate email format
-    if (!validateEmail(sanitizedEmail)) {
+    const captchaValid = await verifyCaptcha(captchaToken)
+    if (!captchaValid) {
       posthog.capture({
         distinctId: "anonymous",
         event: "contact_form_error",
-        properties: {
-          error: "invalid_email_format",
-        },
+        properties: { error: "captcha_failed" },
       })
       await posthog.shutdown()
+      return NextResponse.json(
+        { error: "CAPTCHA verification failed" },
+        { status: 400 }
+      )
+    }
 
+    // Validate required fields
+    if (!email || !firstName || !lastName || !message) {
+      posthog.capture({
+        distinctId: "anonymous",
+        event: "contact_form_error",
+        properties: { error: "missing_required_fields" },
+      })
+      await posthog.shutdown()
+      return NextResponse.json(
+        { error: "Required fields missing" },
+        { status: 400 }
+      )
+    }
+
+    // Sanitize all inputs
+    const sanitized = {
+      firstName: sanitizeInput(firstName),
+      lastName: sanitizeInput(lastName),
+      email: sanitizeInput(email),
+      company: sanitizeInput(company || ""),
+      jobTitle: sanitizeInput(jobTitle || ""),
+      country: sanitizeInput(country || ""),
+      message: sanitizeInput(message),
+    }
+
+    // Validate email format
+    if (!validateEmail(sanitized.email)) {
+      posthog.capture({
+        distinctId: "anonymous",
+        event: "contact_form_error",
+        properties: { error: "invalid_email_format" },
+      })
+      await posthog.shutdown()
       return NextResponse.json(
         { error: "Invalid email format" },
         { status: 400 }
       )
     }
 
-    // Send email via AWS SES
-    try {
-      await sendEmail(sanitizedName, sanitizedEmail, sanitizedMessage)
-
-      // Track successful submission
+    // Enforce business email requirement
+    if (isConsumerEmail(sanitized.email)) {
       posthog.capture({
-        distinctId: sanitizedEmail,
-        event: "contact_form_submitted",
-        properties: {
-          name: sanitizedName,
-        },
-      })
-      await posthog.shutdown()
-
-      return NextResponse.json(
-        { message: "Message sent successfully" },
-        { status: 200 }
-      )
-    } catch (emailError) {
-      console.error("AWS SES email sending failed:", emailError)
-
-      posthog.capture({
-        distinctId: sanitizedEmail,
+        distinctId: "anonymous",
         event: "contact_form_error",
-        properties: {
-          error: "email_send_failed",
-        },
+        properties: { error: "consumer_email_blocked" },
       })
       await posthog.shutdown()
-
       return NextResponse.json(
-        { error: "Failed to send message. Please try again later." },
-        { status: 500 }
+        { error: "Business email required" },
+        { status: 400 }
       )
     }
+
+    // Validate lengths
+    if (
+      sanitized.firstName.length > MAX_INPUT_LENGTH ||
+      sanitized.lastName.length > MAX_INPUT_LENGTH ||
+      sanitized.email.length > MAX_INPUT_LENGTH ||
+      sanitized.company.length > MAX_INPUT_LENGTH ||
+      sanitized.jobTitle.length > MAX_INPUT_LENGTH ||
+      sanitized.country.length > MAX_INPUT_LENGTH
+    ) {
+      await posthog.shutdown()
+      return NextResponse.json(
+        { error: "Field exceeds maximum length" },
+        { status: 400 }
+      )
+    }
+
+    if (sanitized.message.length > MAX_MESSAGE_LENGTH) {
+      await posthog.shutdown()
+      return NextResponse.json(
+        { error: "Message exceeds maximum length" },
+        { status: 400 }
+      )
+    }
+
+    // Submit to HubSpot Forms API
+    const hubspotRes = await fetch(HUBSPOT_SUBMIT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        fields: [
+          { name: "firstname", value: sanitized.firstName },
+          { name: "lastname", value: sanitized.lastName },
+          { name: "email", value: sanitized.email },
+          { name: "company", value: sanitized.company },
+          { name: "jobtitle", value: sanitized.jobTitle },
+          { name: "country", value: sanitized.country },
+          {
+            name: "inbound_form_request_text",
+            value: sanitized.message,
+          },
+        ],
+      }),
+    })
+
+    if (!hubspotRes.ok) {
+      console.error("HubSpot submission failed:", hubspotRes.status)
+      posthog.capture({
+        distinctId: sanitized.email,
+        event: "contact_form_error",
+        properties: { error: "hubspot_submission_failed" },
+      })
+      await posthog.shutdown()
+      return NextResponse.json(
+        { error: "Failed to submit. Please try again later." },
+        { status: 502 }
+      )
+    }
+
+    posthog.capture({
+      distinctId: sanitized.email,
+      event: "contact_form_submitted",
+    })
+    await posthog.shutdown()
+
+    return NextResponse.json(
+      { message: "Message sent successfully" },
+      { status: 200 }
+    )
   } catch (error) {
-    console.error("Enterprise contact form error:", error)
+    console.error("Contact form error:", error)
 
     posthog.capture({
       distinctId: "anonymous",
       event: "contact_form_error",
-      properties: {
-        error: "internal_server_error",
-      },
+      properties: { error: "internal_server_error" },
     })
     await posthog.shutdown()
 
