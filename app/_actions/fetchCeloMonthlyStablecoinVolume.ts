@@ -19,7 +19,7 @@ export type CeloMonthlyStablecoinVolumeData = {
 export const fetchCeloMonthlyStablecoinVolume = async (): Promise<
   DataTimestamped<CeloMonthlyStablecoinVolumeData>
 > => {
-  const url = new URL("https://api.rwa.xyz/v3/assets/aggregates/timeseries")
+  const url = new URL("https://api.rwa.xyz/v4/tokens/aggregates/timeseries")
 
   const apiKey = process.env.RWA_API_KEY || ""
 
@@ -46,17 +46,17 @@ export const fetchCeloMonthlyStablecoinVolume = async (): Promise<
       operator: "and",
       filters: [
         {
-          field: "measureID",
+          field: "measure_id",
           operator: "equals",
           value: 1003, // Monthly transfer volume
         },
         {
-          field: "assetClassID",
+          field: "asset_class_id",
           operator: "equals",
           value: RWA_API_STABLECOINS_GROUP_ID,
         },
         {
-          field: "networkID",
+          field: "network_id",
           operator: "equals",
           value: celoNetworkId,
         },
@@ -74,7 +74,7 @@ export const fetchCeloMonthlyStablecoinVolume = async (): Promise<
       },
       next: {
         revalidate: every("week"),
-        tags: ["rwa:v3:assets:aggregates:timeseries:celo"],
+        tags: ["rwa:v4:tokens:aggregates:timeseries:celo"],
       },
     })
 

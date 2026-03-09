@@ -18,7 +18,7 @@ export type TokenizedTreasuriesData = {
 export const fetchTokenizedTreasuries = async (): Promise<
   DataTimestamped<TokenizedTreasuriesData>
 > => {
-  const url = new URL("https://api.rwa.xyz/v3/assets/aggregates/timeseries")
+  const url = new URL("https://api.rwa.xyz/v4/tokens/aggregates/timeseries")
 
   const apiKey = process.env.RWA_API_KEY || ""
 
@@ -36,7 +36,7 @@ export const fetchTokenizedTreasuries = async (): Promise<
       operator: "and",
       filters: [
         {
-          field: "assetClassID",
+          field: "asset_class_id",
           operator: "equals",
           value: 27,
         },
@@ -46,12 +46,12 @@ export const fetchTokenizedTreasuries = async (): Promise<
           value: dateNDaysAgo(),
         },
         {
-          field: "isInvestable",
+          field: "is_investable",
           operator: "equals",
           value: true,
         },
         {
-          field: "measureID",
+          field: "measure_id",
           operator: "equals",
           value: RWA_API_MEASURE_ID_BY_CATEGORY.RWAS,
         },
@@ -78,7 +78,7 @@ export const fetchTokenizedTreasuries = async (): Promise<
       },
       next: {
         revalidate: every("day"),
-        tags: ["rwa:v3:assets:aggregates:timeseries"],
+        tags: ["rwa:v4:tokens:aggregates:timeseries"],
       },
     })
 
