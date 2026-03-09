@@ -11,6 +11,35 @@ export const MAINNET_GENESIS = "2015-07-30T15:26:13Z"
 
 export const ENTERPRISE_EMAIL = "enterprise@ethereum.org"
 
+// Consumer email domains to block (enforced client-side for UX, server-side for security)
+export const CONSUMER_DOMAINS = [
+  "gmail.com",
+  "yahoo.com",
+  "hotmail.com",
+  "outlook.com",
+  "icloud.com",
+  "protonmail.com",
+  "proton.me",
+  "pm.me",
+  "aol.com",
+  "mail.com",
+  "yandex.com",
+  "tutanota.com",
+  "fastmail.com",
+  "zoho.com",
+  "gmx.com",
+  "live.com",
+  "msn.com",
+  "me.com",
+  "mac.com",
+  "rocketmail.com",
+  "yahoo.co.uk",
+  "googlemail.com",
+  "mailinator.com",
+  "10minutemail.com",
+  "guerrillamail.com",
+]
+
 export const DEFAULT_OG_IMAGE = "/images/og/home.png"
 
 /**

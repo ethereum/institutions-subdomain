@@ -1,45 +1,17 @@
 import { NextRequest, NextResponse } from "next/server"
 
 import { sanitizeInput } from "@/lib/utils/sanitize"
+import { CONSUMER_DOMAINS } from "@/lib/constants"
 
 import PostHogClient from "@/lib/posthog-server"
 
-const HCAPTCHA_SECRET = process.env.HCAPTCHA_SECRET!
+const HCAPTCHA_SECRET = process.env.HCAPTCHA_SECRET
 const HCAPTCHA_VERIFY_URL = "https://api.hcaptcha.com/siteverify"
 
 const HUBSPOT_PORTAL_ID = "147481544"
 const HUBSPOT_FORM_ID = "46696f5b-47a4-4ee5-ac76-8597d4155e79"
 // EU region endpoint -- must match the portal's data hosting region
 const HUBSPOT_SUBMIT_URL = `https://api-eu1.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_ID}`
-
-// Consumer email domains to block
-const CONSUMER_DOMAINS = [
-  "gmail.com",
-  "yahoo.com",
-  "hotmail.com",
-  "outlook.com",
-  "icloud.com",
-  "protonmail.com",
-  "proton.me",
-  "pm.me",
-  "aol.com",
-  "mail.com",
-  "yandex.com",
-  "tutanota.com",
-  "fastmail.com",
-  "zoho.com",
-  "gmx.com",
-  "live.com",
-  "msn.com",
-  "me.com",
-  "mac.com",
-  "rocketmail.com",
-  "yahoo.co.uk",
-  "googlemail.com",
-  "mailinator.com",
-  "10minutemail.com",
-  "guerrillamail.com",
-]
 
 const MAX_INPUT_LENGTH = 2 ** 6 // 64
 const MAX_MESSAGE_LENGTH = 2 ** 12 // 4,096
@@ -54,9 +26,9 @@ function isConsumerEmail(email: string): boolean {
   return CONSUMER_DOMAINS.includes(domain)
 }
 
-async function verifyCaptcha(token: string): Promise<boolean> {
+async function verifyCaptcha(token: string, secret: string): Promise<boolean> {
   const params = new URLSearchParams({
-    secret: HCAPTCHA_SECRET,
+    secret,
     response: token,
   })
 
@@ -72,6 +44,20 @@ async function verifyCaptcha(token: string): Promise<boolean> {
 
 export async function POST(request: NextRequest) {
   const posthog = PostHogClient()
+
+  if (!HCAPTCHA_SECRET) {
+    console.error("HCAPTCHA_SECRET is not configured")
+    posthog.capture({
+      distinctId: "anonymous",
+      event: "contact_form_error",
+      properties: { error: "captcha_not_configured" },
+    })
+    await posthog.shutdown()
+    return NextResponse.json(
+      { error: "Service temporarily unavailable" },
+      { status: 503 }
+    )
+  }
 
   try {
     const body = await request.json()
@@ -100,7 +86,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const captchaValid = await verifyCaptcha(captchaToken)
+    const captchaValid = await verifyCaptcha(captchaToken, HCAPTCHA_SECRET)
     if (!captchaValid) {
       posthog.capture({
         distinctId: "anonymous",

@@ -15,38 +15,9 @@ import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
 import { sanitizeInput } from "@/lib/utils/sanitize"
 
-import { ENTERPRISE_EMAIL } from "@/lib/constants"
+import { CONSUMER_DOMAINS, ENTERPRISE_EMAIL } from "@/lib/constants"
 
 import Link from "../ui/link"
-
-// Consumer email domains to block (client-side for UX; also enforced server-side)
-const CONSUMER_DOMAINS = [
-  "gmail.com",
-  "yahoo.com",
-  "hotmail.com",
-  "outlook.com",
-  "icloud.com",
-  "protonmail.com",
-  "proton.me",
-  "pm.me",
-  "aol.com",
-  "mail.com",
-  "yandex.com",
-  "tutanota.com",
-  "fastmail.com",
-  "zoho.com",
-  "gmx.com",
-  "live.com",
-  "msn.com",
-  "me.com",
-  "mac.com",
-  "rocketmail.com",
-  "yahoo.co.uk",
-  "googlemail.com",
-  "mailinator.com",
-  "10minutemail.com",
-  "guerrillamail.com",
-]
 
 const MAX_INPUT_LENGTH = 2 ** 6 // 64
 const MAX_MESSAGE_LENGTH = 2 ** 12 // 4,096
@@ -368,6 +339,7 @@ const EnterpriseContactForm = () => {
       <HCaptcha
         sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY!}
         size="compact"
+        theme="dark"
         ref={captchaRef}
         onVerify={setCaptchaToken}
         onExpire={() => setCaptchaToken(null)}
