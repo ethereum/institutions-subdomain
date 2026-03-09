@@ -231,6 +231,7 @@ const EnterpriseContactForm = () => {
 
       if (!response.ok) throw new Error(`Server error: ${response.status}`)
 
+      posthog.capture("contact_form_submitted")
       setSubmissionState("success")
     } catch (error) {
       console.error("Form submission error:", error)
