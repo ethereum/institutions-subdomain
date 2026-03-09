@@ -746,15 +746,20 @@
   "solutionProviders": {
     "hero": {
       "heading": "Global Solution Providers",
-      "description": "The Ethereum ecosystem includes hundreds of companies providing infrastructure, tooling, advisory, and compliance services to institutions building onchain."
+      "description": "Connect with a curated network of solution providers that specialize in building in the Ethereum ecosystem. From tokenization platforms to infrastructure and compliance, find established, regional teams to support your onchain strategy."
     },
     "filters": {
       "allCategories": "All categories",
       "allRegions": "All regions",
-      "showing": "Showing {count} providers"
+      "showing": "Showing {count} providers",
+      "searchPlaceholder": "Search providers by name, category, or description...",
+      "clearAll": "Clear all",
+      "noResults": "No providers match your current filters.",
+      "browse": "Browse",
+      "in": "in"
     },
     "categories": {
-      "Infrastructure & Nodes": "Infrastructure & Nodes",
+      "Infrastructure": "Infrastructure",
       "Custody & Wallets": "Custody & Wallets",
       "DeFi & Trading": "DeFi & Trading",
       "Tokenization & RWA": "Tokenization & RWA",
@@ -770,8 +775,7 @@
       "Europe": "Europe",
       "APAC": "APAC",
       "MENA": "MENA",
-      "Global": "Global",
-      "Decentralized": "Decentralized"
+      "Global": "Global"
     },
     "metadata": {
       "title": "Global Solution Providers | Ethereum Institutional Ecosystem",

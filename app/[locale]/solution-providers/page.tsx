@@ -33,7 +33,7 @@ export default async function Page({ params }: Props) {
       <Hero heading={t("hero.heading")} shape="handshake">
         <p>{t("hero.description")}</p>
       </Hero>
-      <article className="max-w-8xl mx-auto w-full space-y-10 px-4 py-20 sm:px-10 sm:py-20 md:space-y-40">
+      <article className="max-w-8xl mx-auto w-full px-4 py-12 sm:px-10 sm:py-16">
         <section id="providers">
           <ProviderGrid providers={sortedProviders} />
         </section>
