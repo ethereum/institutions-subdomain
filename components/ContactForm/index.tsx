@@ -140,7 +140,7 @@ const EnterpriseContactForm = () => {
     const sanitized = sanitizeInput(value)
     if (!sanitized) return t("errors.required")
     if (sanitized.length > maxLength)
-      return t("errors.nameTooLong", { max: maxLength })
+      return t("errors.fieldTooLong", { max: maxLength })
     return undefined
   }
 

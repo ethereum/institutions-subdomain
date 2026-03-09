@@ -42,7 +42,7 @@
     "successMessage": "Hemos recibido su mensaje y alguien de nuestro equipo para empresas se pondrá en contacto con usted en unos pocos días hábiles.",
     "errors": {
       "required": "Obligatorio",
-      "nameTooLong": "El nombre es demasiado largo (máximo {max} caracteres)",
+      "fieldTooLong": "Demasiado largo ({max} caracteres como máximo)",
       "emailTooLong": "El correo electrónico es demasiado largo (máximo {max} caracteres)",
       "invalidEmail": "Por favor, introduzca una dirección de correo electrónico válida",
       "businessEmailRequired": "Por favor, use una dirección de correo electrónico empresarial, institucional u organizacional (p. ej., no use @gmail).",

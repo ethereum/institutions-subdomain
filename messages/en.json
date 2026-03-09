@@ -42,7 +42,7 @@
     "successMessage": "We've received your message and someone from our enterprise team will get back to you within a few business days.",
     "errors": {
       "required": "Required",
-      "nameTooLong": "Name is too long (maximum {max} characters)",
+      "fieldTooLong": "Too long (maximum {max} characters)",
       "emailTooLong": "Email is too long (maximum {max} characters)",
       "invalidEmail": "Please enter a valid email address",
       "businessEmailRequired": "Please use a business, institutional, or organizational email address (e.g., no @gmail).",
