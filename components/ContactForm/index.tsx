@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useMemo, useRef, useState } from "react"
 import { HeartHandshake, TriangleAlert } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { useTranslations } from "next-intl"
@@ -172,17 +172,23 @@ const EnterpriseContactForm = () => {
     return undefined
   }
 
-  const fieldValidators: Partial<
-    Record<keyof FormState, (value: string) => React.ReactNode | undefined>
-  > = {
-    firstName: (v) => validateRequired(v),
-    lastName: (v) => validateRequired(v),
-    email: validateEmail,
-    company: (v) => validateRequired(v),
-    jobTitle: (v) => validateRequired(v),
-    country: (v) => validateRequired(v),
-    message: validateMessage,
-  }
+  const fieldValidators = useMemo<
+    Partial<
+      Record<keyof FormState, (value: string) => React.ReactNode | undefined>
+    >
+  >(
+    () => ({
+      firstName: (v) => validateRequired(v),
+      lastName: (v) => validateRequired(v),
+      email: validateEmail,
+      company: (v) => validateRequired(v),
+      jobTitle: (v) => validateRequired(v),
+      country: (v) => validateRequired(v),
+      message: validateMessage,
+    }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [t]
+  )
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {}
