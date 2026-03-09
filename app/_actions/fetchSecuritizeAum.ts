@@ -54,9 +54,9 @@ export const fetchSecuritizeAum = async (): Promise<
           value: RWA_API_MEASURE_ID_BY_CATEGORY.RWAS,
         },
         {
-          field: "protocol_id",
+          field: "protocol_name",
           operator: "equals",
-          value: 10,
+          value: "Securitize",
         },
         getRwaApiEthereumNetworksFilter(["mainnet", "layer-2"]),
       ],

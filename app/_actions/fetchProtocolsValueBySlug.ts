@@ -14,9 +14,9 @@ import { every } from "@/lib/utils/time"
 import { SOURCE } from "@/lib/constants"
 
 const RWA_XYZ_PROTOCOLS = {
-  centrifuge: 2,
-  maple: 3,
-} as const satisfies Record<string, number>
+  centrifuge: "Centrifuge",
+  maple: "Maple",
+} as const satisfies Record<string, string>
 
 type JSONData = RwaApiTimeseriesResponse
 
@@ -62,10 +62,10 @@ export const fetchProtocolsValueBySlug = async (): Promise<
         },
         {
           operator: "or",
-          filters: Object.values(RWA_XYZ_PROTOCOLS).map((id) => ({
-            field: "protocol_id",
+          filters: Object.values(RWA_XYZ_PROTOCOLS).map((name) => ({
+            field: "protocol_name",
             operator: "equals",
-            value: id,
+            value: name,
           })),
         },
         getRwaApiEthereumNetworksFilter(["mainnet", "layer-2"]),
@@ -102,11 +102,11 @@ export const fetchProtocolsValueBySlug = async (): Promise<
 
     const json: JSONData = await response.json()
 
-    // Build reverse mapping from protocol ID to key
-    const idToKey = Object.entries(RWA_XYZ_PROTOCOLS).reduce<
-      Record<number, keyof typeof RWA_XYZ_PROTOCOLS>
-    >((acc, [key, id]) => {
-      acc[id] = key as keyof typeof RWA_XYZ_PROTOCOLS
+    // Build reverse mapping from protocol name to key
+    const nameToKey = Object.entries(RWA_XYZ_PROTOCOLS).reduce<
+      Record<string, keyof typeof RWA_XYZ_PROTOCOLS>
+    >((acc, [key, name]) => {
+      acc[name] = key as keyof typeof RWA_XYZ_PROTOCOLS
       return acc
     }, {})
 
@@ -115,7 +115,7 @@ export const fetchProtocolsValueBySlug = async (): Promise<
     const data = Object.keys(RWA_XYZ_PROTOCOLS).reduce((acc, key) => {
       const protocolKey = key as keyof typeof RWA_XYZ_PROTOCOLS
       const result = json.results.find(
-        (r) => idToKey[r.group.id] === protocolKey
+        (r) => r.group.name && nameToKey[r.group.name] === protocolKey
       )
       if (result && result.points.length > 0) {
         const lastPoint = result.points[result.points.length - 1]

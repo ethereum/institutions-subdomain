@@ -31,7 +31,7 @@ export const fetchCeloMonthlyStablecoinVolume = async (): Promise<
 
   const myQuery = {
     aggregate: {
-      groupBy: "assetClass",
+      groupBy: "asset_class",
       aggregateFunction: "sum",
     },
     sort: {
