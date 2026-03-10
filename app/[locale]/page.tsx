@@ -93,7 +93,7 @@ const logos: { src: StaticImageData; alt: string; className?: string }[] = [
     className: "translate-y-[3px]",
   },
   { src: jpMorganLight, alt: "JPMorgan logo", className: "py-0.5 translate-y-1.5" },
-  { src: morganStanleyLight, alt: "Morgan Stanley logo", className: "scale-75" },
+  { src: morganStanleyLight, alt: "Morgan Stanley logo", className: "!h-[18px]" },
   { src: mastercard, alt: "Mastercard logo", className: "translate-y-[3px]" },
   { src: robinhood, alt: "Robinhood logo", className: "translate-y-1" },
   {
