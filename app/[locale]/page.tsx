@@ -337,12 +337,6 @@ export default async function Home({ params }: Props) {
             >
               {tCommon("liveData")}
             </LinkWithArrow>
-            <LinkWithArrow
-              href="#digital-assets"
-              className="css-secondary w-fit text-lg"
-            >
-              {t("numbers.useCasesLink")}
-            </LinkWithArrow>
           </div>
           <div className="grid grid-cols-[auto_auto] gap-14 max-sm:grid-cols-2">
             {metrics.map(({ label, ...props }, idx) => (
