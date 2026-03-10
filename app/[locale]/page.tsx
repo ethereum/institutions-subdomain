@@ -454,14 +454,14 @@ export default async function Home({ params }: Props) {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-12">
               {(
                 [
-                  { key: "resilience", span: "lg:col-span-4" },
-                  { key: "settlement", span: "lg:col-span-2" },
-                  { key: "neutrality", span: "lg:col-span-2" },
-                  { key: "liquidity", span: "lg:col-span-2" },
-                  { key: "programmability", span: "lg:col-span-2" },
+                  { key: "resilience", span: "lg:col-span-5" },
+                  { key: "settlement", span: "lg:col-span-4" },
+                  { key: "neutrality", span: "lg:col-span-3" },
+                  { key: "liquidity", span: "lg:col-span-3" },
+                  { key: "programmability", span: "lg:col-span-5" },
                   { key: "composability", span: "lg:col-span-4" },
                 ] as const
               ).map(({ key, span }) => (
