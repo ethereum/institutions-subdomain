@@ -87,7 +87,7 @@ const logos: { src: StaticImageData; alt: string; className?: string }[] = [
   {
     src: fidelity,
     alt: "Fidelity logo",
-    className: "brightness-75 translate-y-[3px]",
+    className: "translate-y-[3px]",
   },
   { src: jpMorgan, alt: "JPMorgan logo", className: "py-0.5 translate-y-1.5" },
   { src: mastercard, alt: "Mastercard logo", className: "translate-y-[3px]" },
@@ -256,6 +256,7 @@ export default async function Home({ params }: Props) {
     name: string
     imgSrc: StaticImageData
     className?: string
+    imgClassName?: string
   } & Metric)[] = [
     {
       name: "BlackRock",
@@ -286,6 +287,7 @@ export default async function Home({ params }: Props) {
     {
       name: "Fidelity",
       imgSrc: fidelity,
+      imgClassName: "invert",
       label: t("platforms.fidelity.label"),
       value: t("platforms.fidelity.value"),
     },
@@ -557,12 +559,12 @@ export default async function Home({ params }: Props) {
             </div>
             <div className="grid w-full grid-cols-2 gap-x-8 gap-y-8 sm:gap-y-14">
               {platforms.map(
-                ({ name, imgSrc, label, value, className, ...sourceInfo }) => (
+                ({ name, imgSrc, label, value, className, imgClassName, ...sourceInfo }) => (
                   <div key={name} className={cn("space-y-2", className)}>
                     <h3 className="text-h5 text-foreground sr-only tracking-[0.03rem]">
                       {name}
                     </h3>
-                    <Image src={imgSrc} alt={`${name} logo`} className="h-10" />
+                    <Image src={imgSrc} alt={`${name} logo`} className={cn("h-10", imgClassName)} />
                     <p className="text-muted-foreground">{label}</p>
                     <InlineText className="text-muted-foreground font-bold">
                       {value}
