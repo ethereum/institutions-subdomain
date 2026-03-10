@@ -529,7 +529,7 @@ export default async function Home({ params }: Props) {
                     <h3 className="text-h5 text-foreground sr-only tracking-[0.03rem]">
                       {name}
                     </h3>
-                    <Image src={imgSrc} alt={`${name} logo`} className={cn("h-10 w-auto", imgClassName)} />
+                    <Image src={imgSrc} alt={`${name} logo`} className={cn("h-7 w-auto", imgClassName)} />
                     <p className="text-muted-foreground">{label}</p>
                     <InlineText className="text-muted-foreground font-bold">
                       {value}
