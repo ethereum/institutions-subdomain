@@ -366,30 +366,28 @@
   "defi": {
     "hero": {
       "heading": "The Home of Decentralized Finance",
-      "description1": "Ethereum introduced the world to decentralized finance (DeFi): open financial systems built on smart contracts.",
-      "description2": "100% uptime, battle-tested and secure infrastructure, and the deepest liquidity layer of any blockchain—Ethereum is for DeFi."
+      "description1": "Ethereum introduced the world to decentralized finance (DeFi): open financial systems built on programmable smart contracts.",
+      "description2": "100% uptime, battle-tested and secure infrastructure, and the deepest liquidity layer of any blockchain — Ethereum is for DeFi."
     },
     "metrics": {
       "srHeading": "DeFi Ecosystem Overview",
-      "defiTvl": "DeFi",
-      "shareGlobal": "Share of Global DeFi",
+      "defiTvl": "DeFi Total Value Locked",
+      "shareGlobal": "Of All Global DeFi",
       "dexVolume": "24h",
       "dexVolumeSuffix": "Volume (12-month avg)",
       "tvlVsNext": "vs. Next-Largest Ecosystem"
     },
     "primitives": {
       "heading": "Ethereum is the Platform for DeFi Primitives",
-      "description": "Ethereum's battle-tested, always-on infrastructure secures the largest pool of digital assets and liquidity, powered by the most developers and the broadest blockchain ecosystem. Ethereum doesn't lock users into a single chain, fostering a unified, global ecosystem where innovation and liquidity compound.",
+      "description": "Ethereum's battle-tested, always-on infrastructure secures by far the largest pool of digital assets and liquidity, powered by the most developers and the broadest blockchain ecosystem. Ethereum doesn't lock users into a single blockchain operating environment, fostering a unified, global ecosystem where innovation and liquidity compound.",
       "openStandards": "Open standards",
-      "openStandardsDesc": "Ethereum's shared EVM, token, and smart contract standards provide interoperability across the entire DeFi ecosystem",
+      "openStandardsDesc": "Ethereum's shared EVM, token, and smart contract standards provide interoperability across the entire Ethereum DeFi ecosystem",
       "deepLiquidity": "Deep liquidity",
-      "deepLiquidityDesc": "Ethereum has the deepest DeFi liquidity of any blockchain, hosting a single, efficient, global marketplace for digital assets",
+      "deepLiquidityDesc": "Ethereum has the deepest DeFi liquidity of any blockchain, hosting an efficient global marketplace for digital assets",
       "composable": "Composable primitives",
-      "composableDesc": "Open-source building blocks and protocols act as 'money legos' that developers can combine to build sophisticated products",
+      "composableDesc": "Open-source building blocks and protocols act as 'money legos' that developers can combine to build sophisticated product which is not currently possible on traditional rails",
       "permissionless": "Permissionless innovation",
-      "permissionlessDesc": "Anyone can build or access new DeFi instruments, unlocking a dynamic landscape of innovation without gatekeepers",
-      "onchainYield": "Onchain yield",
-      "onchainYieldDesc": "Access familiar instruments, like T-bills and short-duration products"
+      "permissionlessDesc": "Anyone can build or access DeFi instruments, unlocking a global dynamic landscape of innovation without gatekeepers"
     },
     "innovation": {
       "heading": "DeFi Powers Enterprise Innovation",
@@ -422,13 +420,14 @@
       "categories": {
         "dex": {
           "heading": "Decentralized Exchanges (DEXs)",
-          "subtext": "Explore onchain platforms where users can trade tokens anytime, 24/7",
+          "subtext": "Swap digital assets through smart contract-based liquidity pools and automated market makers (AMMs)",
           "platforms": {
             "oneInch": "A DEX aggregator that sources liquidity from across DEXs and networks to find the best possible swapping routes and rates.",
             "aerodrome": "A decentralized exchange on the Base L2 that combines an AMM with a governance and protocol reward model designed to align incentives.",
             "balancer": "A DeFi protocol that acts as an automated portfolio manager and liquidity provider, allowing users to create or invest in customizable liquidity pools.",
             "cowSwap": "A DEX aggregator built around frequent batch auctions to provide MEV protection, find optimal liquidity, and minimize fees, matching trades peer-to-peer and sending unfilled orders to underlying AMMs.",
             "curve": "A DEX and AMM focused on efficient trading for stablecoins and volatile tokens, using a unique AMM formula to minimize slippage for similarly-priced assets.",
+            "fluid": "A DeFi protocol that combines AMM trading with lending and borrowing on a unified liquidity layer, enabling capital-efficient swaps with deep, shared liquidity.",
             "uniswap": "A DEX protocol that enables permissionless peer-to-peer trading, through a smart contract-based AMM system that allows anyone to create custom pairs and supply liquidity."
           }
         },
@@ -443,11 +442,12 @@
             "maple": "A decentralized credit market that provides undercollateralized loans to institutional borrowers, and allows lenders to earn yield by supplying liquidity to these curated loans.",
             "moonwell": "An open lending and borrowing protocol designed to simplify the onchain user experience, featuring single-sided liquidity pools and overcollateralized borrowing across markets.",
             "morpho": "A decentralized protocol for overcollateralized, vault-based lending and borrowing, aiming to improve the capital efficiency of lending pools through isolated markets, risk curators, and portfolio allocators.",
-            "sky": "A DeFi protocol (created by the MakerDAO community) that offers a suite of tools for trading, converting, staking, and earning yield from digital assets, including the USDS stablecoin."
+            "sky": "A DeFi protocol (created by the MakerDAO community) that offers a suite of tools for trading, converting, staking, and earning yield from digital assets, including the USDS stablecoin.",
+            "spark": "A decentralized lending protocol offering competitive rates for borrowing and supplying major digital assets, with a focus on stablecoin markets and institutional-grade lending products."
           }
         },
         "rwa-yield": {
-          "heading": "Real-World Assets (RWA) & Onchain Yield",
+          "heading": "Tokenized Assets & Onchain Yield",
           "subtext": "Tokenized offchain assets, like T-Bills, commodities, or real estate, and onchain comparables to familiar yield instruments",
           "platforms": {
             "centrifuge": "An asset-agnostic lending protocol that aims to make credit more accessible to businesses, allowing them to tokenize real-world assets and use them as onchain collateral.",
@@ -466,7 +466,7 @@
         },
         "staking": {
           "heading": "Staking & Restaking",
-          "subtext": "Stake ETH through a staking network to help secure Ethereum and earn rewards, or restake LSTs to help secure other protocols",
+          "subtext": "Stake ETH through a staking network to help secure Ethereum and earn rewards, or restake Liquid Staking Tokens (LSTs) to help secure other protocols and earn additional rewards",
           "platforms": {
             "etherFi": "A restaking platform to earn additional rewards on stablecoins, liquid staking tokens, and other digital assets, with deposits represented by a liquid restaking token that can be used across DeFi, and automated strategy vaults.",
             "eigenCloud": "A platform built on EigenLayer restaking that provides verifiable computing for AI and other complex applications, leveraging Ethereum's security through restaked ETH and restaked liquid staking tokens.",
