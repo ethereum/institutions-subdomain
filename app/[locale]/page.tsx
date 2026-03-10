@@ -453,55 +453,70 @@ export default async function Home({ params }: Props) {
                 {t("leader.intro")}
               </p>
             </div>
-            <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-14">
-              <CardContent>
-                <CardLabel variant="large">
-                  {t("leader.resilience.label")}
-                </CardLabel>
-                <div className="text-muted-foreground font-medium">
-                  {t("leader.resilience.description")}
+
+            {/* Bento grid: 2 featured + 4 standard */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
+              {/* Featured: Operational Resilience */}
+              <div className="bg-card flex flex-col justify-between p-8 lg:col-span-3">
+                <div className="flex items-start gap-6">
+                  <div className="size-20 shrink-0 overflow-hidden">
+                    <MaskedParallelsIcon
+                      className="text-secondary-foreground"
+                      maskShape={<LockFill className="size-full text-white" />}
+                    />
+                  </div>
+                  <div className="space-y-3">
+                    <h3 className="text-h5 text-foreground tracking-[0.03rem]">
+                      {t("leader.resilience.label")}
+                    </h3>
+                    <p className="text-muted-foreground font-medium">
+                      {t("leader.resilience.description")}
+                    </p>
+                  </div>
                 </div>
-              </CardContent>
-              <CardContent>
-                <CardLabel variant="large">
-                  {t("leader.settlement.label")}
-                </CardLabel>
-                <div className="text-muted-foreground font-medium">
-                  {t("leader.settlement.description")}
+              </div>
+
+              {/* Featured: Global Settlement */}
+              <div className="bg-card flex flex-col justify-between p-8 lg:col-span-3">
+                <div className="flex items-start gap-6">
+                  <div className="size-20 shrink-0 overflow-hidden">
+                    <MaskedParallelsIcon
+                      className="text-secondary-foreground"
+                      maskShape={<CircleRing className="size-full text-white" />}
+                    />
+                  </div>
+                  <div className="space-y-3">
+                    <h3 className="text-h5 text-foreground tracking-[0.03rem]">
+                      {t("leader.settlement.label")}
+                    </h3>
+                    <p className="text-muted-foreground font-medium">
+                      {t("leader.settlement.description")}
+                    </p>
+                  </div>
                 </div>
-              </CardContent>
-              <CardContent>
-                <CardLabel variant="large">
-                  {t("leader.neutrality.label")}
-                </CardLabel>
-                <div className="text-muted-foreground font-medium">
-                  {t("leader.neutrality.description")}
+              </div>
+
+              {/* Standard cards */}
+              {(
+                [
+                  { key: "neutrality" },
+                  { key: "liquidity" },
+                  { key: "programmability" },
+                  { key: "composability" },
+                ] as const
+              ).map(({ key }) => (
+                <div
+                  key={key}
+                  className="border-secondary-foreground/20 space-y-3 border-l-2 p-6 pl-6 lg:col-span-3"
+                >
+                  <h3 className="text-h6 text-foreground font-bold">
+                    {t(`leader.${key}.label`)}
+                  </h3>
+                  <p className="text-muted-foreground font-medium">
+                    {t(`leader.${key}.description`)}
+                  </p>
                 </div>
-              </CardContent>
-              <CardContent>
-                <CardLabel variant="large">
-                  {t("leader.liquidity.label")}
-                </CardLabel>
-                <div className="text-muted-foreground font-medium">
-                  {t("leader.liquidity.description")}
-                </div>
-              </CardContent>
-              <CardContent>
-                <CardLabel variant="large">
-                  {t("leader.programmability.label")}
-                </CardLabel>
-                <div className="text-muted-foreground font-medium">
-                  {t("leader.programmability.description")}
-                </div>
-              </CardContent>
-              <CardContent>
-                <CardLabel variant="large">
-                  {t("leader.composability.label")}
-                </CardLabel>
-                <div className="text-muted-foreground font-medium">
-                  {t("leader.composability.description")}
-                </div>
-              </CardContent>
+              ))}
             </div>
           </section>
 
