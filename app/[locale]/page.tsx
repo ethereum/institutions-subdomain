@@ -87,9 +87,9 @@ const logos: { src: StaticImageData; alt: string; className?: string }[] = [
   {
     src: fidelity,
     alt: "Fidelity logo",
-    className: "translate-y-[3px]",
+    className: "brightness-0 invert translate-y-[3px]",
   },
-  { src: jpMorgan, alt: "JPMorgan logo", className: "py-0.5 translate-y-1.5" },
+  { src: jpMorgan, alt: "JPMorgan logo", className: "brightness-0 invert py-0.5 translate-y-1.5" },
   { src: mastercard, alt: "Mastercard logo", className: "translate-y-[3px]" },
   { src: robinhood, alt: "Robinhood logo", className: "translate-y-1" },
   {
