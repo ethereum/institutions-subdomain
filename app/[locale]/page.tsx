@@ -84,25 +84,17 @@ import tomZschach from "@/public/images/profiles/tom-zschach.png"
 import vladTenev from "@/public/images/profiles/vlad-tenev.png"
 
 const logos: { src: StaticImageData; alt: string; className?: string }[] = [
-  { src: blackRock, alt: "BlackRock logo", className: "py-1 translate-y-0.5" },
-  { src: coinbase, alt: "Coinbase logo", className: "py-0.5" },
-  { src: etoro, alt: "eToro logo", className: "py-0.5" },
-  {
-    src: fidelityLight,
-    alt: "Fidelity logo",
-    className: "translate-y-[3px]",
-  },
-  { src: jpMorganLight, alt: "JPMorgan logo", className: "py-0.5 translate-y-1.5" },
-  { src: morganStanleyLight, alt: "Morgan Stanley logo", className: "!h-[18px]" },
-  { src: mastercard, alt: "Mastercard logo", className: "translate-y-[3px]" },
-  { src: robinhood, alt: "Robinhood logo", className: "translate-y-1" },
-  {
-    src: standardChartered,
-    alt: "Standard Chartered logo",
-    className: "scale-120 mx-4 translate-y-1",
-  },
-  { src: swift, alt: "Swift logo", className: "translate-y-[3px]" },
-  { src: ubs, alt: "UBS logo", className: "translate-y-[3px]" },
+  { src: blackRock, alt: "BlackRock logo" },
+  { src: coinbase, alt: "Coinbase logo" },
+  { src: etoro, alt: "eToro logo" },
+  { src: fidelityLight, alt: "Fidelity logo" },
+  { src: jpMorganLight, alt: "JPMorgan logo" },
+  { src: morganStanleyLight, alt: "Morgan Stanley logo", className: "h-[18px]" },
+  { src: mastercard, alt: "Mastercard logo" },
+  { src: robinhood, alt: "Robinhood logo" },
+  { src: standardChartered, alt: "Standard Chartered logo" },
+  { src: swift, alt: "Swift logo" },
+  { src: ubs, alt: "UBS logo" },
 ]
 
 const getTestimonials = (
@@ -317,12 +309,13 @@ export default async function Home({ params }: Props) {
               className="overflow-visible"
             >
               {logos.map(({ src, alt, className }) => (
-                <Image
-                  key={alt}
-                  src={src}
-                  alt={alt}
-                  className={cn("h-6 w-auto grayscale", className)}
-                />
+                <div key={alt} className="flex h-6 items-center">
+                  <Image
+                    src={src}
+                    alt={alt}
+                    className={cn("h-6 w-auto grayscale", className)}
+                  />
+                </div>
               ))}
             </InfiniteSlider>
           </>
