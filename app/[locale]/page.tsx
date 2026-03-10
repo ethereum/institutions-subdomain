@@ -161,7 +161,7 @@ export default async function Home({ params }: Props) {
     beaconChainData,
     ethPrice,
     defiTvlAllCurrentData,
-    dexVolume,
+    _,
     stablecoinAssetMarketShareData,
     securitizeAumData,
     baseTvlData,
