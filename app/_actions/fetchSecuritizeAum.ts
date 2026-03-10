@@ -28,6 +28,7 @@ export const fetchSecuritizeAum = async (): Promise<
   const apiKey = process.env.RWA_API_KEY || ""
 
   if (!apiKey) {
+    console.warn(`No API key available for ${url.toString()}`)
     return {
       data: { series: [], currentValue: 0 },
       lastUpdated: Date.now(),

@@ -56,9 +56,22 @@ const fetchMarketShareData = async (category: AssetCategory) => {
   const apiKey = process.env.RWA_API_KEY || ""
 
   if (!apiKey) {
+    console.warn(`No API key available for ${url.toString()}`)
     return {
-      assetValue: { mainnet: 0, layer2: 0, altNetwork2nd: 0, altNetwork3rd: 0, altNetworksRest: 0 },
-      marketShare: { mainnet: 0, layer2: 0, altNetwork2nd: 0, altNetwork3rd: 0, altNetworksRest: 0 },
+      assetValue: {
+        mainnet: 0,
+        layer2: 0,
+        altNetwork2nd: 0,
+        altNetwork3rd: 0,
+        altNetworksRest: 0,
+      },
+      marketShare: {
+        mainnet: 0,
+        layer2: 0,
+        altNetwork2nd: 0,
+        altNetwork3rd: 0,
+        altNetworksRest: 0,
+      },
       assetValueSumAll: 0,
     }
   }
