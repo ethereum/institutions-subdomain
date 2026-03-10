@@ -48,11 +48,14 @@
   },
   "nav": {
     "home": "首页",
-    "rwa": "RWA 与稳定币",
-    "defi": "去中心化金融 (DeFi)",
+    "whyEthereum": "为什么选择以太坊",
+    "useCases": "用例",
+    "rwa": "代币化与稳定币",
+    "defi": "链上金融",
     "privacy": "合规隐私",
-    "layer2": "Layer 2 生态",
-    "dataHub": "实时数据",
+    "layer2": "以太坊 L2",
+    "solutionProviders": "解决方案提供商",
+    "dataHub": "数据门户",
     "library": "资源库",
     "digitalAssets": "数字资产"
   },

@@ -48,11 +48,14 @@
   },
   "nav": {
     "home": "Inicio",
-    "rwa": "RWA y monedas estables",
-    "defi": "Finanzas descentralizadas",
+    "whyEthereum": "Por qué Ethereum",
+    "useCases": "Casos de uso",
+    "rwa": "Tokenización y stablecoins",
+    "defi": "Finanzas onchain",
     "privacy": "Privacidad compatible",
-    "layer2": "Ecosistema L2",
-    "dataHub": "Datos en tiempo real",
+    "layer2": "Ethereum L2s",
+    "solutionProviders": "Proveedores de soluciones",
+    "dataHub": "Portal de datos",
     "library": "Biblioteca",
     "digitalAssets": "Activos digitales"
   },

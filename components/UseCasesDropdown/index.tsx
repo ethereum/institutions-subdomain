@@ -13,13 +13,13 @@ import {
 } from "../ui/dropdown-menu"
 import Link, { LinkProps } from "../ui/link"
 
-type DigitalAssetsDropdownProps = {
+type UseCasesDropdownProps = {
   className?: string
   label: string
   links: LinkProps[]
 }
 
-const DigitalAssetsDropdown = ({ className, label, links }: DigitalAssetsDropdownProps) => {
+const UseCasesDropdown = ({ className, label, links }: UseCasesDropdownProps) => {
   const [open, setOpen] = useState(false)
 
   return (
@@ -48,4 +48,4 @@ const DigitalAssetsDropdown = ({ className, label, links }: DigitalAssetsDropdow
   )
 }
 
-export default DigitalAssetsDropdown
+export default UseCasesDropdown
