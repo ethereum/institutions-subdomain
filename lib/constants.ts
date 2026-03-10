@@ -53,15 +53,22 @@ export const SOURCE = {
  */
 
 // Navigation structure using translation keys for i18n support
-export const DA_NAV_ITEMS = [
+export const USE_CASE_NAV_ITEMS = [
   { href: "/rwa", translationKey: "rwa" },
   { href: "/defi", translationKey: "defi" },
   { href: "/privacy", translationKey: "privacy" },
   { href: "/layer-2", translationKey: "layer2" },
+  { href: "/solution-providers", translationKey: "solutionProviders" },
+] as const
+
+export const TOP_NAV_ITEMS = [
+  { href: "/why-ethereum", translationKey: "whyEthereum" },
 ] as const
 
 export const NAV_ITEMS = [
-  { href: "/data-hub", translationKey: "dataHub" },
+  { href: "/why-ethereum", translationKey: "whyEthereum" },
+  { href: "/#digital-assets", translationKey: "useCases" },
+  { href: "/data-hub", translationKey: "dataPortal" },
   { href: "/library", translationKey: "library" },
 ] as const
 

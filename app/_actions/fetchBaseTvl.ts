@@ -14,7 +14,11 @@ export const fetchBaseTvl = async (): Promise<DataTimestamped<BaseTvlData>> => {
   // Call internal trimmed endpoint and let Next cache the small response.
   const secret = process.env.INTERNAL_API_SECRET || ""
 
-  if (!secret) throw new Error("Internal API secret not found")
+  if (!secret) return {
+    data: { baseTvl: 0 },
+    lastUpdated: Date.now(),
+    sourceInfo: SOURCE.GROWTHEPIE,
+  }
 
   const internalUrl = new URL("/api/growthepie-v1-export-tvl/base", SITE_ORIGIN)
 

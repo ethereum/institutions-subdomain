@@ -42,7 +42,11 @@ const fetchTimeseriesData = async (category: AssetCategory) => {
   const apiKey = process.env.RWA_API_KEY || ""
 
   if (!apiKey) {
-    throw new Error(`No API key available for ${url.toString()}`)
+    console.warn(`No API key available for ${url.toString()}`)
+    return {
+      mainnet: { series: [], currentValue: 0 },
+      layer2: { series: [], currentValue: 0 },
+    }
   }
 
   const myQuery = {
