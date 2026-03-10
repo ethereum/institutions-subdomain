@@ -480,6 +480,8 @@ export default async function Home({ params }: Props) {
             </div>
           </section>
 
+          <div className="m-10 md:my-20" />
+
           <section id="comparison" className="space-y-12">
             <h2 className="text-center">{t("comparison.heading")}</h2>
 
