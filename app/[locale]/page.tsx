@@ -454,27 +454,21 @@ export default async function Home({ params }: Props) {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
               {(
                 [
-                  { key: "resilience", icon: <LockFill className="size-full text-white" /> },
-                  { key: "settlement", icon: <CircleRing className="size-full text-white" /> },
-                  { key: "neutrality", icon: <Layers2Fill className="size-full text-white" /> },
-                  { key: "liquidity", icon: <BadgeDollarSignFillInvert className="size-full text-white" /> },
-                  { key: "programmability", icon: <LockFill className="size-full text-white" /> },
-                  { key: "composability", icon: <CircleRing className="size-full text-white" /> },
+                  { key: "resilience", span: "lg:col-span-4" },
+                  { key: "settlement", span: "lg:col-span-2" },
+                  { key: "neutrality", span: "lg:col-span-2" },
+                  { key: "liquidity", span: "lg:col-span-2" },
+                  { key: "programmability", span: "lg:col-span-2" },
+                  { key: "composability", span: "lg:col-span-4" },
                 ] as const
-              ).map(({ key, icon }) => (
+              ).map(({ key, span }) => (
                 <div
                   key={key}
-                  className="bg-card space-y-4 p-8"
+                  className={cn("bg-card space-y-3 p-8", span)}
                 >
-                  <div className="size-37 shrink-0 overflow-hidden p-2.5">
-                    <MaskedParallelsIcon
-                      className="text-secondary-foreground"
-                      maskShape={icon}
-                    />
-                  </div>
                   <h3 className="text-h5 text-foreground tracking-[0.03rem]">
                     {t(`leader.${key}.label`)}
                   </h3>
