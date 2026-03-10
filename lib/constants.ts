@@ -58,7 +58,6 @@ export const USE_CASE_NAV_ITEMS = [
   { href: "/defi", translationKey: "defi" },
   { href: "/privacy", translationKey: "privacy" },
   { href: "/layer-2", translationKey: "layer2" },
-  { href: "/solution-providers", translationKey: "solutionProviders" },
 ] as const
 
 export const TOP_NAV_ITEMS = [
@@ -66,6 +65,7 @@ export const TOP_NAV_ITEMS = [
 ] as const
 
 export const NAV_ITEMS = [
+  { href: "/solution-providers", translationKey: "solutionProviders" },
   { href: "/data-hub", translationKey: "dataHub" },
   { href: "/library", translationKey: "library" },
 ] as const
