@@ -69,7 +69,9 @@ import coinbase from "@/public/images/logos/institutions/coinbase.png"
 import coinbaseSvg from "@/public/images/logos/institutions/coinbase.svg"
 import etoro from "@/public/images/logos/institutions/etoro.png"
 import fidelity from "@/public/images/logos/institutions/fidelity.png"
+import fidelityLight from "@/public/images/logos/institutions/fidelity-light.png"
 import jpMorgan from "@/public/images/logos/institutions/jp-morgan.svg"
+import jpMorganLight from "@/public/images/logos/institutions/jp-morgan-light.svg"
 import mastercard from "@/public/images/logos/institutions/mastercard.png"
 import robinhood from "@/public/images/logos/institutions/robinhood.png"
 import standardChartered from "@/public/images/logos/institutions/standard-chartered.svg"
@@ -85,11 +87,11 @@ const logos: { src: StaticImageData; alt: string; className?: string }[] = [
   { src: coinbase, alt: "Coinbase logo", className: "py-0.5" },
   { src: etoro, alt: "eToro logo", className: "py-0.5" },
   {
-    src: fidelity,
+    src: fidelityLight,
     alt: "Fidelity logo",
-    className: "brightness-0 invert opacity-25 translate-y-[3px]",
+    className: "translate-y-[3px]",
   },
-  { src: jpMorgan, alt: "JPMorgan logo", className: "brightness-0 invert opacity-25 py-0.5 translate-y-1.5" },
+  { src: jpMorganLight, alt: "JPMorgan logo", className: "py-0.5 translate-y-1.5" },
   { src: mastercard, alt: "Mastercard logo", className: "translate-y-[3px]" },
   { src: robinhood, alt: "Robinhood logo", className: "translate-y-1" },
   {
