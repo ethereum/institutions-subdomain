@@ -73,6 +73,7 @@ import fidelityLight from "@/public/images/logos/institutions/fidelity-light.png
 import jpMorgan from "@/public/images/logos/institutions/jp-morgan.svg"
 import jpMorganLight from "@/public/images/logos/institutions/jp-morgan-light.svg"
 import mastercard from "@/public/images/logos/institutions/mastercard.png"
+import morganStanleyLight from "@/public/images/logos/institutions/morgan-stanley-light.svg"
 import robinhood from "@/public/images/logos/institutions/robinhood.png"
 import standardChartered from "@/public/images/logos/institutions/standard-chartered.svg"
 import swift from "@/public/images/logos/institutions/swift.png"
@@ -92,6 +93,7 @@ const logos: { src: StaticImageData; alt: string; className?: string }[] = [
     className: "translate-y-[3px]",
   },
   { src: jpMorganLight, alt: "JPMorgan logo", className: "py-0.5 translate-y-1.5" },
+  { src: morganStanleyLight, alt: "Morgan Stanley logo" },
   { src: mastercard, alt: "Mastercard logo", className: "translate-y-[3px]" },
   { src: robinhood, alt: "Robinhood logo", className: "translate-y-1" },
   {
