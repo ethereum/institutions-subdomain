@@ -454,62 +454,28 @@ export default async function Home({ params }: Props) {
               </p>
             </div>
 
-            {/* Bento grid: 2 featured + 4 standard */}
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
-              {/* Featured: Operational Resilience */}
-              <div className="bg-card flex flex-col justify-between p-8 lg:col-span-3">
-                <div className="flex items-start gap-6">
-                  <div className="size-20 shrink-0 overflow-hidden">
-                    <MaskedParallelsIcon
-                      className="text-secondary-foreground"
-                      maskShape={<LockFill className="size-full text-white" />}
-                    />
-                  </div>
-                  <div className="space-y-3">
-                    <h3 className="text-h5 text-foreground tracking-[0.03rem]">
-                      {t("leader.resilience.label")}
-                    </h3>
-                    <p className="text-muted-foreground font-medium">
-                      {t("leader.resilience.description")}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Featured: Global Settlement */}
-              <div className="bg-card flex flex-col justify-between p-8 lg:col-span-3">
-                <div className="flex items-start gap-6">
-                  <div className="size-20 shrink-0 overflow-hidden">
-                    <MaskedParallelsIcon
-                      className="text-secondary-foreground"
-                      maskShape={<CircleRing className="size-full text-white" />}
-                    />
-                  </div>
-                  <div className="space-y-3">
-                    <h3 className="text-h5 text-foreground tracking-[0.03rem]">
-                      {t("leader.settlement.label")}
-                    </h3>
-                    <p className="text-muted-foreground font-medium">
-                      {t("leader.settlement.description")}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Standard cards */}
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               {(
                 [
-                  { key: "neutrality" },
-                  { key: "liquidity" },
-                  { key: "programmability" },
-                  { key: "composability" },
+                  { key: "resilience", icon: <LockFill className="size-full text-white" /> },
+                  { key: "settlement", icon: <CircleRing className="size-full text-white" /> },
+                  { key: "neutrality", icon: <Layers2Fill className="size-full text-white" /> },
+                  { key: "liquidity", icon: <BadgeDollarSignFillInvert className="size-full text-white" /> },
+                  { key: "programmability", icon: <LockFill className="size-full text-white" /> },
+                  { key: "composability", icon: <CircleRing className="size-full text-white" /> },
                 ] as const
-              ).map(({ key }) => (
+              ).map(({ key, icon }) => (
                 <div
                   key={key}
-                  className="border-secondary-foreground/20 space-y-3 border-l-2 p-6 pl-6 lg:col-span-3"
+                  className="bg-card space-y-4 p-8"
                 >
-                  <h3 className="text-h6 text-foreground font-bold">
+                  <div className="size-37 shrink-0 overflow-hidden p-2.5">
+                    <MaskedParallelsIcon
+                      className="text-secondary-foreground"
+                      maskShape={icon}
+                    />
+                  </div>
+                  <h3 className="text-h5 text-foreground tracking-[0.03rem]">
                     {t(`leader.${key}.label`)}
                   </h3>
                   <p className="text-muted-foreground font-medium">
