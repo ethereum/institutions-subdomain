@@ -7,23 +7,23 @@ import MaskedParallelsIcon from "@/components/MaskedParallelsIcon"
 import BinaryLock from "@/components/svg/binary-lock"
 import LayersLock from "@/components/svg/layers-lock"
 import TargetCheck from "@/components/svg/target-check"
+import { ComparisonTable } from "@/components/ui/comparison-table"
 import Link, { LinkWithArrow } from "@/components/ui/link"
 
 import { getMetadata } from "@/lib/utils/metadata"
 
 import { type Locale, routing } from "@/i18n/routing"
 import blurWalking from "@/public/images/banners/blur-walking.png"
+import eyLogo from "@/public/images/logos/apps/ey.png"
+import fhenixLogo from "@/public/images/logos/apps/fhenix.png"
+import midenLogo from "@/public/images/logos/apps/miden.png"
+import privacyPoolsLogo from "@/public/images/logos/apps/privacy-pools.png"
+import railgunLogo from "@/public/images/logos/apps/railgun.png"
+import renegadeLogo from "@/public/images/logos/apps/renegade.png"
+import shutterLogo from "@/public/images/logos/apps/shutter.png"
+import zamaLogo from "@/public/images/logos/apps/zama.png"
 import aztecLogo from "@/public/images/logos/networks/aztec.png"
 import zksyncLogo from "@/public/images/logos/networks/zksync.png"
-import railgunLogo from "@/public/images/logos/apps/railgun.png"
-import eyLogo from "@/public/images/logos/apps/ey.png"
-import deutscheBankLogo from "@/public/images/logos/apps/deutsche-bank.png"
-import zamaLogo from "@/public/images/logos/apps/zama.png"
-import privacyPoolsLogo from "@/public/images/logos/apps/privacy-pools.png"
-import midenLogo from "@/public/images/logos/apps/miden.png"
-import fhenixLogo from "@/public/images/logos/apps/fhenix.png"
-import shutterLogo from "@/public/images/logos/apps/shutter.png"
-import renegadeLogo from "@/public/images/logos/apps/renegade.png"
 
 type Props = {
   params: Promise<{ locale: Locale }>
@@ -319,77 +319,19 @@ export default async function Page({ params }: Props) {
             </p>
           </div>
 
-          {/* Desktop: CSS Grid table */}
-          <div className="hidden md:block">
-            {/* Column headers */}
-            <div className="grid grid-cols-[200px_repeat(2,1fr)] gap-x-px bg-white">
-              <div className="bg-[#F3F3F3] px-4 py-4" />
-              <div className="bg-[#ECECEC] px-4 py-4">
-                <span className="text-foreground font-bold">
-                  {t("trustVsCrypto.trustHeading")}
-                </span>
-              </div>
-              <div className="bg-secondary-foreground px-4 py-4">
-                <span className="font-bold text-white">
-                  {t("trustVsCrypto.cryptoHeading")}
-                </span>
-              </div>
-            </div>
-
-            {/* Data rows */}
-            {(["Guarantee", "Mechanism", "Incentives", "Vendor", "Regulatory"] as const).map((key) => (
-              <div
-                key={key}
-                className="grid grid-cols-[200px_repeat(2,1fr)] gap-x-px border-t bg-white"
-              >
-                <div className="flex items-center bg-[#F3F3F3] px-4 py-4">
-                  <span className="text-foreground font-bold">
-                    {t(`trustVsCrypto.table${key}`)}
-                  </span>
-                </div>
-                <div className="bg-white px-4 py-4">
-                  <p className="text-muted-foreground font-medium">
-                    {t(`trustVsCrypto.tableTrust${key}`)}
-                  </p>
-                </div>
-                <div className="bg-secondary-foreground/10 px-4 py-4">
-                  <p className="text-foreground font-medium">
-                    {t(`trustVsCrypto.tableCrypto${key}`)}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Mobile: Stacked cards per dimension */}
-          <div className="space-y-3 md:hidden">
-            {(["Guarantee", "Mechanism", "Incentives", "Vendor", "Regulatory"] as const).map((key) => (
-              <div
-                key={key}
-                className="bg-card p-5"
-              >
-                <p className="text-sm font-bold">
-                  {t(`trustVsCrypto.table${key}`)}
-                </p>
-                <div className="mt-3 bg-secondary-foreground/10 px-4 py-3">
-                  <p className="mb-0.5 text-xs font-bold uppercase tracking-widest text-secondary-foreground">
-                    {t("trustVsCrypto.cryptoHeading")}
-                  </p>
-                  <p className="text-sm font-medium text-foreground">
-                    {t(`trustVsCrypto.tableCrypto${key}`)}
-                  </p>
-                </div>
-                <div className="mt-3">
-                  <p className="mb-0.5 text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                    {t("trustVsCrypto.trustHeading")}
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    {t(`trustVsCrypto.tableTrust${key}`)}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ComparisonTable
+            columns={[
+              { key: "trust", label: t("trustVsCrypto.trustHeading") },
+              { key: "crypto", label: t("trustVsCrypto.cryptoHeading"), highlighted: true },
+            ]}
+            rows={(["Guarantee", "Mechanism", "Incentives", "Vendor", "Regulatory"] as const).map((key) => ({
+              label: t(`trustVsCrypto.table${key}`),
+              cells: {
+                trust: t(`trustVsCrypto.tableTrust${key}`),
+                crypto: t(`trustVsCrypto.tableCrypto${key}`),
+              },
+            }))}
+          />
 
           <p className="text-muted-foreground max-w-3xl border-l-4 pl-4 font-medium italic">
             {t("trustVsCrypto.closing")}

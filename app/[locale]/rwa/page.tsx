@@ -8,6 +8,7 @@ import Hero from "@/components/Hero"
 import { SourceInfoTooltip } from "@/components/InfoTooltip"
 import { AnimatedNumberInView } from "@/components/ui/animated-number"
 import { Card, CardLabel, CardSource } from "@/components/ui/card"
+import { ComparisonTable } from "@/components/ui/comparison-table"
 import { InlineText } from "@/components/ui/inline-text"
 import Link, { LinkWithArrow } from "@/components/ui/link"
 
@@ -28,13 +29,13 @@ import centrifugeLogo from "@/public/images/logos/apps/centrifuge.png"
 import mapleLogo from "@/public/images/logos/apps/maple.png"
 import morphoLogo from "@/public/images/logos/apps/morpho.png"
 import buidlUsd from "@/public/images/logos/tokens/buidl-usd.svg"
+import eurc from "@/public/images/logos/tokens/eurc.svg"
 import fditStar from "@/public/images/logos/tokens/fdit-star.svg"
+import fidd from "@/public/images/logos/tokens/fidd.svg"
 import kinexysLogo from "@/public/images/logos/tokens/kinexys.svg"
 import mfoneLogo from "@/public/images/logos/tokens/mfone.svg"
-import superstateLogo from "@/public/images/logos/tokens/superstate.svg"
-import eurc from "@/public/images/logos/tokens/eurc.svg"
-import fidd from "@/public/images/logos/tokens/fidd.svg"
 import pyusd from "@/public/images/logos/tokens/pyusd.svg"
+import superstateLogo from "@/public/images/logos/tokens/superstate.svg"
 import usdc from "@/public/images/logos/tokens/usdc.svg"
 import usde from "@/public/images/logos/tokens/usde.svg"
 import usds from "@/public/images/logos/tokens/usds.svg"
@@ -464,39 +465,15 @@ export default async function Page({ params }: Props) {
         <section id="comparison" className="space-y-12">
           <h2 className="text-center">{t("comparison.heading")}</h2>
 
-          {/* Desktop: CSS Grid table */}
-          <div className="hidden md:block">
-            {/* Column headers */}
-            <div className="grid grid-cols-[200px_repeat(4,1fr)] gap-x-px bg-white">
-              <div className="bg-[#F3F3F3] px-4 py-4">
-                <span className="text-foreground font-bold">
-                  {t("comparison.functions")}
-                </span>
-              </div>
-              <div className="bg-secondary-foreground px-4 py-4">
-                <span className="font-bold text-white">
-                  {t("comparison.ethereum")}
-                </span>
-              </div>
-              <div className="bg-[#ECECEC] px-4 py-4">
-                <span className="text-foreground font-bold">
-                  {t("comparison.l1Alt")}
-                </span>
-              </div>
-              <div className="bg-[#ECECEC] px-4 py-4">
-                <span className="text-foreground font-bold">
-                  {t("comparison.privateDlt")}
-                </span>
-              </div>
-              <div className="bg-[#ECECEC] px-4 py-4">
-                <span className="text-foreground font-bold">
-                  {t("comparison.traditional")}
-                </span>
-              </div>
-            </div>
-
-            {/* Data rows */}
-            {(
+          <ComparisonTable
+            labelHeader={t("comparison.functions")}
+            columns={[
+              { key: "ethereum", label: t("comparison.ethereum"), highlighted: true },
+              { key: "l1Alt", label: t("comparison.l1Alt") },
+              { key: "privateDlt", label: t("comparison.privateDlt") },
+              { key: "traditional", label: t("comparison.traditional") },
+            ]}
+            rows={(
               [
                 "settlement",
                 "resilience",
@@ -508,94 +485,16 @@ export default async function Page({ params }: Props) {
                 "geoRisk",
                 "composability",
               ] as const
-            ).map((row) => (
-              <div
-                key={row}
-                className="grid grid-cols-[200px_repeat(4,1fr)] gap-x-px border-t bg-white"
-              >
-                <div className="flex items-center bg-[#F3F3F3] px-4 py-4">
-                  <span className="text-foreground font-bold">
-                    {t(`comparison.${row}`)}
-                  </span>
-                </div>
-                <div className="bg-secondary-foreground/10 px-4 py-4">
-                  <p className="text-foreground font-medium">
-                    {t(`comparison.ethereum_${row}`)}
-                  </p>
-                </div>
-                <div className="bg-white px-4 py-4">
-                  <p className="text-muted-foreground font-medium">
-                    {t(`comparison.l1Alt_${row}`)}
-                  </p>
-                </div>
-                <div className="bg-white px-4 py-4">
-                  <p className="text-muted-foreground font-medium">
-                    {t(`comparison.privateDlt_${row}`)}
-                  </p>
-                </div>
-                <div className="bg-white px-4 py-4">
-                  <p className="text-muted-foreground font-medium">
-                    {t(`comparison.traditional_${row}`)}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Mobile: Stacked cards per dimension */}
-          <div className="space-y-3 md:hidden">
-            {(
-              [
-                "settlement",
-                "resilience",
-                "security",
-                "devBase",
-                "liquidity",
-                "auditability",
-                "neutrality",
-                "geoRisk",
-                "composability",
-              ] as const
-            ).map((row) => (
-              <div key={row} className="bg-card p-5">
-                <p className="text-sm font-bold">
-                  {t(`comparison.${row}`)}
-                </p>
-                <div className="mt-3 bg-secondary-foreground/10 px-4 py-3">
-                  <p className="mb-0.5 text-xs font-bold uppercase tracking-widest text-secondary-foreground">
-                    {t("comparison.ethereum")}
-                  </p>
-                  <p className="text-foreground text-sm font-medium">
-                    {t(`comparison.ethereum_${row}`)}
-                  </p>
-                </div>
-                <div className="mt-3">
-                  <p className="text-muted-foreground mb-0.5 text-xs font-bold uppercase tracking-widest">
-                    {t("comparison.l1Alt")}
-                  </p>
-                  <p className="text-muted-foreground text-sm">
-                    {t(`comparison.l1Alt_${row}`)}
-                  </p>
-                </div>
-                <div className="mt-3">
-                  <p className="text-muted-foreground mb-0.5 text-xs font-bold uppercase tracking-widest">
-                    {t("comparison.privateDlt")}
-                  </p>
-                  <p className="text-muted-foreground text-sm">
-                    {t(`comparison.privateDlt_${row}`)}
-                  </p>
-                </div>
-                <div className="mt-3">
-                  <p className="text-muted-foreground mb-0.5 text-xs font-bold uppercase tracking-widest">
-                    {t("comparison.traditional")}
-                  </p>
-                  <p className="text-muted-foreground text-sm">
-                    {t(`comparison.traditional_${row}`)}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+            ).map((row) => ({
+              label: t(`comparison.${row}`),
+              cells: {
+                ethereum: t(`comparison.ethereum_${row}`),
+                l1Alt: t(`comparison.l1Alt_${row}`),
+                privateDlt: t(`comparison.privateDlt_${row}`),
+                traditional: t(`comparison.traditional_${row}`),
+              },
+            }))}
+          />
         </section>
 
         <section id="stablecoins" className="space-y-8">
@@ -647,39 +546,16 @@ export default async function Page({ params }: Props) {
             </p>
           </div>
 
-          {/* Desktop: CSS Grid table */}
-          <div className="hidden md:block">
-            {/* Column headers */}
-            <div className="grid grid-cols-[160px_repeat(4,1fr)] gap-x-px bg-white">
-              <div className="bg-[#F3F3F3] px-4 py-4">
-                <span className="text-foreground font-bold">
-                  {t("categoryBreakdown.category")}
-                </span>
-              </div>
-              <div className="bg-[#ECECEC] px-4 py-4">
-                <span className="text-foreground font-bold">
-                  {t("categoryBreakdown.tvlEth")}
-                </span>
-              </div>
-              <div className="bg-[#ECECEC] px-4 py-4">
-                <span className="text-foreground font-bold">
-                  {t("categoryBreakdown.tvlTotal")}
-                </span>
-              </div>
-              <div className="bg-secondary-foreground px-4 py-4">
-                <span className="font-bold text-white">
-                  {t("categoryBreakdown.ethShare")}
-                </span>
-              </div>
-              <div className="bg-[#ECECEC] px-4 py-4">
-                <span className="text-foreground font-bold">
-                  {t("categoryBreakdown.examples")}
-                </span>
-              </div>
-            </div>
-
-            {/* Data rows */}
-            {(
+          <ComparisonTable
+            labelHeader={t("categoryBreakdown.category")}
+            labelWidth="160px"
+            columns={[
+              { key: "tvlEth", label: t("categoryBreakdown.tvlEth") },
+              { key: "tvlTotal", label: t("categoryBreakdown.tvlTotal") },
+              { key: "ethShare", label: t("categoryBreakdown.ethShare"), highlighted: true },
+              { key: "examples", label: t("categoryBreakdown.examples") },
+            ]}
+            rows={(
               [
                 "treasuries",
                 "credit",
@@ -687,116 +563,29 @@ export default async function Page({ params }: Props) {
                 "equities",
                 "realEstate",
               ] as const
-            ).map((cat) => (
-              <div
-                key={cat}
-                className="grid grid-cols-[160px_repeat(4,1fr)] gap-x-px border-t bg-white"
-              >
-                <div className="flex items-center bg-[#F3F3F3] px-4 py-4">
-                  <span className="text-foreground font-bold">
-                    {t(`categoryBreakdown.${cat}`)}
-                  </span>
-                </div>
-                <div className="bg-white px-4 py-4">
-                  <p className="text-foreground font-medium">
-                    {t(`categoryBreakdown.${cat}Tvl`)}
-                  </p>
-                </div>
-                <div className="bg-white px-4 py-4">
-                  <p className="text-muted-foreground font-medium">
-                    {t(`categoryBreakdown.${cat}Total`)}
-                  </p>
-                </div>
-                <div className="bg-secondary-foreground/10 px-4 py-4">
-                  <p className="text-foreground font-semibold">
-                    {t(`categoryBreakdown.${cat}Share`)}
-                  </p>
-                </div>
-                <div className="bg-white px-4 py-4">
-                  <p className="text-muted-foreground font-medium">
-                    {categoryExamples[cat]?.length > 0
-                      ? categoryExamples[cat].map((example, i) => (
-                          <span key={example.name}>
-                            {i > 0 && ", "}
-                            <Link
-                              href={example.href}
-                              inline
-                              className="css-secondary"
-                            >
-                              {example.name}
-                            </Link>
-                          </span>
-                        ))
-                      : t(`categoryBreakdown.${cat}Examples`)}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Mobile: Stacked cards per category */}
-          <div className="space-y-3 md:hidden">
-            {(
-              [
-                "treasuries",
-                "credit",
-                "commodities",
-                "equities",
-                "realEstate",
-              ] as const
-            ).map((cat) => (
-              <div key={cat} className="bg-card p-5">
-                <p className="text-sm font-bold">
-                  {t(`categoryBreakdown.${cat}`)}
-                </p>
-                <div className="mt-3">
-                  <p className="text-muted-foreground mb-0.5 text-xs font-bold uppercase tracking-widest">
-                    {t("categoryBreakdown.tvlEth")}
-                  </p>
-                  <p className="text-foreground text-sm font-medium">
-                    {t(`categoryBreakdown.${cat}Tvl`)}
-                  </p>
-                </div>
-                <div className="mt-3">
-                  <p className="text-muted-foreground mb-0.5 text-xs font-bold uppercase tracking-widest">
-                    {t("categoryBreakdown.tvlTotal")}
-                  </p>
-                  <p className="text-muted-foreground text-sm">
-                    {t(`categoryBreakdown.${cat}Total`)}
-                  </p>
-                </div>
-                <div className="mt-3 bg-secondary-foreground/10 px-4 py-3">
-                  <p className="mb-0.5 text-xs font-bold uppercase tracking-widest text-secondary-foreground">
-                    {t("categoryBreakdown.ethShare")}
-                  </p>
-                  <p className="text-foreground text-sm font-semibold">
-                    {t(`categoryBreakdown.${cat}Share`)}
-                  </p>
-                </div>
-                <div className="mt-3">
-                  <p className="text-muted-foreground mb-0.5 text-xs font-bold uppercase tracking-widest">
-                    {t("categoryBreakdown.examples")}
-                  </p>
-                  <p className="text-muted-foreground text-sm">
-                    {categoryExamples[cat]?.length > 0
-                      ? categoryExamples[cat].map((example, i) => (
-                          <span key={example.name}>
-                            {i > 0 && ", "}
-                            <Link
-                              href={example.href}
-                              inline
-                              className="css-secondary"
-                            >
-                              {example.name}
-                            </Link>
-                          </span>
-                        ))
-                      : t(`categoryBreakdown.${cat}Examples`)}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+            ).map((cat) => ({
+              label: t(`categoryBreakdown.${cat}`),
+              cells: {
+                tvlEth: t(`categoryBreakdown.${cat}Tvl`),
+                tvlTotal: t(`categoryBreakdown.${cat}Total`),
+                ethShare: t(`categoryBreakdown.${cat}Share`),
+                examples: categoryExamples[cat]?.length > 0
+                  ? categoryExamples[cat].map((example, i) => (
+                      <span key={example.name}>
+                        {i > 0 && ", "}
+                        <Link
+                          href={example.href}
+                          inline
+                          className="css-secondary"
+                        >
+                          {example.name}
+                        </Link>
+                      </span>
+                    ))
+                  : t(`categoryBreakdown.${cat}Examples`),
+              },
+            }))}
+          />
         </section>
 
         <section id="rwas" className="space-y-8">

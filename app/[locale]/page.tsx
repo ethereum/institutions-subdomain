@@ -27,6 +27,7 @@ import {
   CarouselItem,
   CarouselNavigation,
 } from "@/components/ui/carousel"
+import { ComparisonTable } from "@/components/ui/comparison-table"
 import { InfiniteSlider } from "@/components/ui/infinite-slider"
 import { InlineText } from "@/components/ui/inline-text"
 import {
@@ -517,94 +518,30 @@ export default async function Home({ params }: Props) {
           <section id="comparison" className="space-y-12">
             <h2 className="text-center">{t("comparison.heading")}</h2>
 
-            {/* Desktop: CSS Grid with card cells */}
-            <div className="hidden md:block">
-              {/* Column headers (slightly darker) */}
-              <div className="grid grid-cols-[200px_repeat(4,1fr)] gap-x-px bg-white">
-                <div className="bg-white px-4 py-4" />
-                <div className="bg-secondary-foreground px-4 py-4">
-                  <span className="text-white font-bold">
-                    {t("comparison.ethereum")}
-                  </span>
-                </div>
-                {(["l1Alt", "privateDlt", "traditional"] as const).map(
-                  (col) => (
-                    <div
-                      key={col}
-                      className="bg-[#ECECEC] px-4 py-4"
-                    >
-                      <span className="font-bold text-foreground">
-                        {t(`comparison.${col}`)}
-                      </span>
-                    </div>
-                  )
-                )}
-              </div>
-
-              {/* Data rows (lighter) */}
-              {(["settlement", "audit", "neutrality", "composability"] as const).map((dimension) => (
-                <div
-                  key={dimension}
-                  className="grid grid-cols-[200px_repeat(4,1fr)] gap-x-px bg-white"
-                >
-                  <div className="flex items-center bg-white px-4 py-4">
-                    <span className="font-bold text-foreground">
-                      {t(`comparison.${dimension === "settlement" ? "settlementFinality" : dimension === "audit" ? "auditability" : dimension}`)}
-                    </span>
-                  </div>
-                  <div className="bg-secondary-foreground/10 px-4 py-4">
-                    <p className="font-medium text-foreground">
-                      {t(`comparison.ethereum_${dimension}`)}
-                    </p>
-                  </div>
-                  {(["l1Alt", "privateDlt", "traditional"] as const).map(
-                    (col) => (
-                      <div key={col} className="bg-[#F3F3F3] px-4 py-4">
-                        <p className="text-muted-foreground">
-                          {t(`comparison.${col}_${dimension}`)}
-                        </p>
-                      </div>
-                    )
-                  )}
-                </div>
-              ))}
-            </div>
-
-            {/* Mobile: Stacked cards per dimension */}
-            <div className="space-y-3 md:hidden">
-              {(["settlement", "audit", "neutrality", "composability"] as const).map((dimension) => (
-                <div
-                  key={dimension}
-                  className="rounded-lg border border-white/[0.06] bg-white/[0.03] p-5"
-                >
-                  <h3 className="mb-4 font-bold">
-                    {t(`comparison.${dimension === "settlement" ? "settlementFinality" : dimension === "audit" ? "auditability" : dimension}`)}
-                  </h3>
-                  <div className="mb-5 bg-secondary-foreground rounded-sm pl-4 py-3 pr-4">
-                    <div className="mb-1 text-xs font-medium text-secondary/70">
-                      {t("comparison.ethereum")}
-                    </div>
-                    <div className="text-secondary font-medium">
-                      {t(`comparison.ethereum_${dimension}`)}
-                    </div>
-                  </div>
-                  <div className="space-y-3">
-                    {(["l1Alt", "privateDlt", "traditional"] as const).map(
-                      (col) => (
-                        <div key={col}>
-                          <div className="mb-0.5 text-xs text-gray-600">
-                            {t(`comparison.${col}`)}
-                          </div>
-                          <div className="text-muted-foreground">
-                            {t(`comparison.${col}_${dimension}`)}
-                          </div>
-                        </div>
-                      )
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
+            <ComparisonTable
+              columns={[
+                { key: "ethereum", label: t("comparison.ethereum"), highlighted: true },
+                { key: "l1Alt", label: t("comparison.l1Alt") },
+                { key: "privateDlt", label: t("comparison.privateDlt") },
+                { key: "traditional", label: t("comparison.traditional") },
+              ]}
+              rows={(
+                [
+                  { key: "settlement", label: "settlementFinality" },
+                  { key: "audit", label: "auditability" },
+                  { key: "neutrality", label: "neutrality" },
+                  { key: "composability", label: "composability" },
+                ] as const
+              ).map(({ key, label }) => ({
+                label: t(`comparison.${label}`),
+                cells: {
+                  ethereum: t(`comparison.ethereum_${key}`),
+                  l1Alt: t(`comparison.l1Alt_${key}`),
+                  privateDlt: t(`comparison.privateDlt_${key}`),
+                  traditional: t(`comparison.traditional_${key}`),
+                },
+              }))}
+            />
           </section>
 
           <hr className="border-muted m-10 md:my-20" />
