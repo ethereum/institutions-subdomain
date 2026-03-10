@@ -61,7 +61,9 @@ export const DA_NAV_ITEMS = [
 ] as const
 
 export const NAV_ITEMS = [
-  { href: "/data-hub", translationKey: "dataHub" },
+  { href: "/why-ethereum", translationKey: "whyEthereum" },
+  { href: "/#digital-assets", translationKey: "useCases" },
+  { href: "/data-hub", translationKey: "dataPortal" },
   { href: "/library", translationKey: "library" },
 ] as const
 

@@ -48,20 +48,24 @@
   },
   "nav": {
     "home": "Home",
-    "rwa": "RWAs & Stablecoins",
+    "rwa": "Tokenization",
     "defi": "Decentralized Finance",
     "privacy": "Compliant Privacy",
     "layer2": "L2 Ecosystem",
+    "whyEthereum": "Why Ethereum",
+    "useCases": "Use Cases",
+    "dataPortal": "Data Portal",
     "dataHub": "Live Data",
     "library": "Library",
     "digitalAssets": "Digital Assets"
   },
   "home": {
     "hero": {
-      "heading": "The Institutional Liquidity Layer"
+      "heading": "Ethereum for Institutions",
+      "tagline": "Production-grade, open settlement network for tokenized assets, stablecoins, and financial infrastructure."
     },
     "numbers": {
-      "heading": "Ethereum is the Backbone of the Onchain Economy",
+      "heading": "Key Statistics",
       "uptimeLabel": "Uninterrupted uptime and liveness",
       "genesisSource": "Genesis {date}",
       "networkSecurityLabel": "Total value securing the network ({ethAmount} ETH)",
@@ -70,19 +74,20 @@
       "defiTvlLabel": "DeFi TVL",
       "defiMarketShare": "{percent}+ of all blockchains",
       "dexVolumeLabel": "24-Hour DEX volume",
-      "dexVolumeSubLabel": "(12-month avg)"
+      "dexVolumeSubLabel": "(12-month avg)",
+      "useCasesLink": "Explore Institutional Use Cases"
     },
     "useCases": {
       "heading": "Institutional Use Cases",
       "subheading": "Explore Ethereum's digital asset landscape, from tokens to technologies",
       "rwa": {
-        "label": "RWAs & Stablecoins",
-        "description": "Real-world assets tokenize offchain assets, like real estate, commodities, or bonds, while stablecoins design for steady value, often pegged to assets like USD.",
-        "link": "More on RWAs"
+        "label": "Tokenization",
+        "description": "Tokenize assets, like real estate, commodities, or bonds, while stablecoins designed for steady value, often pegged to assets like USD or gold.",
+        "link": "More on Tokenization"
       },
       "defi": {
         "label": "Decentralized Finance",
-        "description": "Open financial systems built on smart contracts instead of banks. DeFi lets anyone lend, borrow, trade, and earn yield directly from their wallet.",
+        "description": "Open financial systems built on Ethereum. DeFi lets anyone lend, borrow, trade, and earn yield, on their assets globally and creates utility for tokenized assets.",
         "link": "More on DeFi"
       },
       "privacy": {
@@ -92,36 +97,64 @@
       },
       "layer2": {
         "label": "L2 Ecosystem",
-        "description": "Layer 2 networks scale Ethereum by processing transactions faster and cheaper.",
+        "description": "Layer 2s are customized blockchains that are built on top of Ethereum. Deployments can be open, or built for custom requirements e.g. speed, brand, privacy, cost, and more.",
         "link": "More on L2s"
       }
     },
     "leader": {
-      "heading": "Ethereum Leads Where It Matters",
+      "heading": "Why Institutions Choose Ethereum",
+      "intro": "Ethereum is an open, globally distributed settlement network designed to support programmable financial activity. Unlike proprietary or permissioned systems, Ethereum operates as a neutral base layer with no single operator, while enabling institutions to build compliance-aware applications on top.",
       "resilience": {
-        "label": "Resilience",
-        "description": "Ethereum has maintained {uptime} of uninterrupted uptime and liveness since its launch. Zero downtime through 15+ successful network upgrades."
+        "label": "Operational Resilience",
+        "description": "Ethereum has maintained 10 years of uninterrupted uptime since its launch. Zero downtime through 15+ successful network upgrades. A diverse infrastructure set and open client ecosystem reduce single-operator and infrastructure concentration risk."
       },
-      "flexibility": {
-        "label": "Flexibility",
-        "description": "Open source, with complete freedom from lock-in to any single vendor, stack, or architecture. Institutions retain full optionality for their onchain products as business requirements change."
+      "settlement": {
+        "label": "Global Settlement",
+        "description": "Ethereum settles value continuously across jurisdictions, with transparent, guaranteed finality and publicly verifiable execution."
       },
       "neutrality": {
-        "label": "Credible Neutrality",
+        "label": "Neutrality",
         "description": "No single point of failure, no central coordinator, no pause button, no counterparty risk. Resilient to geopolitical, regulatory, and infrastructure-level risks."
       },
-      "decentralization": {
-        "label": "Decentralization",
-        "description": "Secured by {validatorCount}+ validators distributed across geographies and client implementations. {securityValue}+ in economic security makes Ethereum the most expensive smart contract platform to attack."
-      },
       "liquidity": {
-        "label": "Deep Liquidity",
-        "description": "{dexVolume}+ in daily DEX volume, the deepest liquidity of any onchain environment. Ethereum is the chosen liquidity layer for institutions to build leading next-gen products."
+        "label": "Liquidity and Utility",
+        "description": "The leading platform for asset tokenization, with 67% of all tokenized assets deployed. Ethereum's DeFi ecosystem benefits from 10 years of network effects with its DeFi ecosystem being 8x larger than that of the next largest ecosystem."
       },
-      "tokenization": {
-        "label": "Tokenization",
-        "description": "The leading platform for asset tokenization, with {rwaMarketShare} of all onchain RWAs deployed on Ethereum and its L2s, and {stablecoinTvl} in stablecoin TVL."
+      "programmability": {
+        "label": "Programmability",
+        "description": "Smart contracts enable automated issuance, transfer controls, lifecycle management, and conditional settlement. L2 ecosystems and apps can be highly customized to the needs and requirements of financial institutions."
+      },
+      "composability": {
+        "label": "Composable Ecosystem",
+        "description": "Ethereum supports an ecosystem of wallets, custodians, auditors, data providers, and scaling solutions used globally in production by institutions today."
       }
+    },
+    "comparison": {
+      "heading": "How Ethereum Compares",
+      "ethereum": "Ethereum",
+      "l1Alt": "L1 Alternatives",
+      "privateDlt": "Private DLT",
+      "traditional": "Traditional Rails",
+      "settlementFinality": "Settlement Finality",
+      "auditability": "Auditability",
+      "neutrality": "Neutrality",
+      "composability": "Composability",
+      "ethereum_settlement": "Minutes, 24/7, global",
+      "l1Alt_settlement": "Seconds, but limited security budget",
+      "privateDlt_settlement": "Operator-dependent",
+      "traditional_settlement": "T+1 to T+3, business hours",
+      "ethereum_audit": "Full onchain transparency",
+      "l1Alt_audit": "Varies by chain",
+      "privateDlt_audit": "Operator-controlled access",
+      "traditional_audit": "Periodic, offline",
+      "ethereum_neutrality": "No single controlling entity",
+      "l1Alt_neutrality": "Often VC/foundation-controlled",
+      "privateDlt_neutrality": "Single vendor dependency",
+      "traditional_neutrality": "Jurisdiction-bound intermediaries",
+      "ethereum_composability": "Global, permissionless",
+      "l1Alt_composability": "Siloed ecosystems",
+      "privateDlt_composability": "Closed networks",
+      "traditional_composability": "Fragmented systems"
     },
     "platforms": {
       "heading": "Market-Proven Platform",
@@ -134,13 +167,13 @@
         "label": "Base Layer 2 Ecosystem",
         "value": "{amount} TVL"
       },
-      "visa": {
-        "label": "Stablecoin Payment Settlement",
-        "value": "$1B+ Annual Stablecoin Volume"
+      "fidelity": {
+        "label": "FIDD Stablecoin",
+        "value": "First institutional stablecoin on Ethereum"
       },
-      "etoro": {
-        "label": "Stock Tokenization Platform",
-        "value": "100 Stocks Trade 24/5"
+      "jpmorgan": {
+        "label": "Tokenized Money Market Fund",
+        "value": "First onchain money market fund"
       }
     },
     "testimonials": {
@@ -167,36 +200,40 @@
       }
     },
     "scaling": {
-      "heading": "Ethereum is Scaling",
-      "description": "Ethereum's performance isn't static. The network's active R&D roadmap sets the stage for an infinitely-scalable ecosystem, while Ethereum-based providers globally push throughput boundaries today.",
+      "heading": "Ethereum is Constantly Evolving",
+      "description": "Ethereum's active R&D roadmap delivers continuous upgrades, each bringing performance, security, and usability improvements relevant to institutional adoption.",
       "learnMore": "Learn more",
-      "immediateAcceleration": {
-        "title": "Immediate Acceleration",
-        "card1": "Raising mainnet gas limit to 100M/block rapidly increases mainnet TPS",
-        "card2": "PeerDAS data availability sampling scales blob capacity, multiplying L2 TPS",
-        "card3": "History expiry prunes storage to keep node performance comfortable at scale"
+      "coming": "Coming",
+      "pectra": {
+        "title": "Pectra",
+        "card1Title": "Staking upgrades",
+        "card1": "Pectra introduced key improvements to Ethereum's staking infrastructure, including raising the validator cap from 32 to 2,048 ETH and enabling more flexible staking operations. For enterprises and institutional stakers, this means simpler validator management, lower operational overhead, and a more efficient staking experience at scale."
       },
-      "alternativeProvider": {
-        "title": "Alternative Provider Innovation",
-        "card1": "Eigen DA throughput reaches 100MB/second, allowing Ethereum rollups to operate at 12.8x Visa's peak throughput and enabling >800K ERC-20 transfers per second",
-        "card2": "ZKSync's Airbender reaches up to 6x faster proving throughput than competitors, proving Ethereum blocks in real-time with 8 nvidia 5090 GPUs, and unlocking real-time clearing for latency-sensitive finance"
+      "fusaka": {
+        "title": "Fusaka",
+        "card1Title": "Reduced fees, higher scalability",
+        "card1": "Fusaka focused on dramatically reducing transaction costs and increasing network throughput through data scaling improvements. For businesses building on Ethereum, this translates to cheaper, faster transactions, making enterprise-grade applications and high-volume use cases significantly more viable."
       },
-      "activeDevelopment": {
-        "title": "Active Development",
-        "card1": "PeerDAS data availability sampling sets the stage to 8x today's mainnet throughput",
-        "card2": "Block-Level Access Lists enable parallel transaction execution within blocks and parallel state root computation, accelerating block processing times"
+      "postQuantum": {
+        "title": "Post-Quantum",
+        "card1Title": "Quantum-resistant security",
+        "card1": "Ethereum has been preparing for the quantum computing threat since 2018, longer than any other blockchain ecosystem. The EF has committed $20M+ to formal verification and cryptographic research, with AI breakthroughs accelerating timelines by 100x. A dedicated post-quantum team was formed in early 2026, with 10 client teams now building quantum-resistant implementations. The full transition is targeted for 2028, well ahead of the estimated mid-2030s quantum threat, with zero fund loss and zero downtime."
       },
-      "terabyteScale": {
-        "title": "Terabyte-Scale Vision",
-        "card1Heading": "2-5 year targets propose",
-        "card1Item1": "1 gigagas/sec on L1: 10K TPS, ambitious vertical scale",
-        "card1Item2": "1 teragas/sec on L2: 10M TPS, sprawling horizontal scale",
-        "card2": "Lean Ethereum proposal targets finality in seconds, post-quantum blob storage, and execution performance boosts"
+      "glamsterdam": {
+        "title": "Glamsterdam",
+        "card1Title": "Execution layer optimisation",
+        "card1": "Glamsterdam is an upcoming upgrade focused on further optimising the Ethereum execution layer and network performance. For enterprises, this signals Ethereum's continued commitment to improving the base layer infrastructure that underpins institutional applications, DeFi protocols, and tokenised asset platforms."
       }
+    },
+    "cta": {
+      "heading": "Get In Touch",
+      "description": "We will answer your questions, help identify potential paths forward, provide technical support, and connect you with relevant industry leaders.",
+      "getStarted": "Get Started",
+      "resources": "Docs, guides, solutions providers"
     },
     "library": {
       "heading": "Library",
-      "subheading": "Latest updates relevant for institutions"
+      "subheading": "Explore the latest insights, reports, and analysis, from across the institutional landscape."
     },
     "metadata": {
       "title": "Ethereum for Institutions | The Institutional Liquidity Layer",

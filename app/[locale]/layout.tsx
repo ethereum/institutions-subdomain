@@ -146,11 +146,6 @@ export default async function RootLayout({ children, params }: Props) {
               </Link>
               <div className="flex items-center gap-4">
                 <nav className="flex items-center gap-4 max-md:hidden">
-                  <DigitalAssetsDropdown
-                    label={tNav("digitalAssets")}
-                    links={daNavLinks}
-                  />
-
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}
@@ -174,7 +169,7 @@ export default async function RootLayout({ children, params }: Props) {
           </header>
           {children}
           <footer className="row-start-3">
-            <div className="bg-primary text-primary-foreground w-screen px-4 py-20 sm:px-10">
+            <div id="contact" className="bg-primary text-primary-foreground w-screen px-4 py-20 sm:px-10">
               <div className="mx-auto grid max-w-3xl grid-cols-1 gap-10 md:grid-cols-2">
                 <div className="space-y-4">
                   <h3 className="text-h4">{t("getInTouch")}</h3>
