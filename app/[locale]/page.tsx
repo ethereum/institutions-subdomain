@@ -287,7 +287,6 @@ export default async function Home({ params }: Props) {
     {
       name: "Fidelity",
       imgSrc: fidelity,
-      imgClassName: "invert",
       label: t("platforms.fidelity.label"),
       value: t("platforms.fidelity.value"),
     },
