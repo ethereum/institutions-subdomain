@@ -238,7 +238,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenized Credit Fund",
     region: ["Americas"],
     url: "https://apollo.com",
-    description: "On-chain credit fund via Securitize on Ethereum, institutional private credit tokenization",
+    description: "Onchain credit fund via Securitize on Ethereum, institutional private credit tokenization",
   },
   {
     name: "Aquanow",
@@ -654,7 +654,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Risk & Simulation",
     region: ["Americas", "MENA"],
     url: "https://chaoslabs.xyz",
-    description: "On-chain risk management, oracle infrastructure & economic security",
+    description: "Onchain risk management, oracle infrastructure & economic security",
   },
   {
     name: "Chorus One",
@@ -718,7 +718,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Identity",
     region: ["Americas"],
     url: "https://clique.social",
-    description: "On-chain identity infrastructure, institutional attestation & proof of identity solutions",
+    description: "Onchain identity infrastructure, institutional attestation & proof of identity solutions",
   },
   {
     name: "CME Group (ETH Futures)",
@@ -742,7 +742,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "On-Chain / Market Data",
     region: ["Americas"],
     url: "https://coinmetrics.io",
-    description: "Institutional crypto data & network analytics, ATLAS on-chain data feeds",
+    description: "Institutional crypto data & network analytics, ATLAS onchain data feeds",
   },
   {
     name: "Coinbase",
@@ -926,7 +926,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Credit Assessment",
     region: ["Americas"],
     url: "https://credora.io",
-    description: "Real-time credit assessment for on-chain & off-chain counterparties",
+    description: "Real-time credit assessment for onchain & off-chain counterparties",
   },
   {
     name: "Crédit Agricole (CACEIS)",
@@ -1022,7 +1022,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "On-Chain Options",
     region: ["Global"],
     url: "https://derive.xyz",
-    description: "On-chain options protocol for ETH & crypto, institutional-grade derivatives on Ethereum",
+    description: "Onchain options protocol for ETH & crypto, institutional-grade derivatives on Ethereum",
   },
   {
     name: "Deutsche Bank (Project DAMA 2)",
@@ -1142,7 +1142,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "On-Chain Asset Mgmt",
     region: ["Global"],
     url: "https://enzyme.finance",
-    description: "On-chain asset management infrastructure for DAOs & funds",
+    description: "Onchain asset management infrastructure for DAOs & funds",
   },
   {
     name: "Erigon",
@@ -1462,7 +1462,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "ZKML / Verifiable AI",
     region: ["Global"],
     url: "https://gizatech.xyz",
-    description: "Verifiable machine learning using ZK proofs on-chain",
+    description: "Verifiable machine learning using ZK proofs onchain",
   },
   {
     name: "Glassnode",
@@ -1470,7 +1470,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "On-Chain Metrics",
     region: ["Europe"],
     url: "https://glassnode.com",
-    description: "On-chain market intelligence for institutional investors",
+    description: "Onchain market intelligence for institutional investors",
   },
   {
     name: "GMX",
@@ -1526,7 +1526,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "L2 Analytics",
     region: ["Global"],
     url: "https://growthepie.xyz",
-    description: "Ethereum L2 ecosystem analytics, on-chain activity metrics & L2 comparison data",
+    description: "Ethereum L2 ecosystem analytics, onchain activity metrics & L2 comparison data",
   },
   {
     name: "GSR",
@@ -1550,7 +1550,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenized PE Fund",
     region: ["Americas"],
     url: "https://hamiltonlane.com",
-    description: "Tokenized private equity fund on Ethereum (via Securitize), on-chain institutional PE access",
+    description: "Tokenized private equity fund on Ethereum (via Securitize), onchain institutional PE access",
   },
   {
     name: "Hardhat (Nomic Foundation)",
@@ -1582,7 +1582,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Role-Based Access",
     region: ["Global"],
     url: "https://hatsprotocol.xyz",
-    description: "On-chain roles & permissions protocol for DAO governance & organizational structure",
+    description: "Onchain roles & permissions protocol for DAO governance & organizational structure",
   },
   {
     name: "Hedgey Finance",
@@ -1590,7 +1590,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Token Vesting / Treasury",
     region: ["Global"],
     url: "https://hedgey.finance",
-    description: "Token vesting, lockups & treasury management on-chain",
+    description: "Token vesting, lockups & treasury management onchain",
   },
   {
     name: "Hex Trust",
@@ -1670,7 +1670,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "On-Chain Analytics",
     region: ["Americas"],
     url: "https://intotheblock.com",
-    description: "Institutional crypto analytics, on-chain indicators & DeFi intelligence",
+    description: "Institutional crypto analytics, onchain indicators & DeFi intelligence",
   },
   {
     name: "JPMorgan Kinexys (Onyx)",
@@ -1814,7 +1814,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenized Fund Infrastructure",
     region: ["MENA"],
     url: "https://libre.capital",
-    description: "Institutional tokenized fund infrastructure, on-chain fund administration",
+    description: "Institutional tokenized fund infrastructure, onchain fund administration",
   },
   {
     name: "Lido",
@@ -1870,7 +1870,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "DAO Governance / Treasury Advisory",
     region: ["Global"],
     url: "https://llama.xyz",
-    description: "On-chain governance & treasury management advisory for major Ethereum protocols",
+    description: "Onchain governance & treasury management advisory for major Ethereum protocols",
   },
   {
     name: "Lodestar (ChainSafe)",
@@ -1942,7 +1942,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Payment Network",
     region: ["Americas"],
     url: "https://mastercard.com",
-    description: "Crypto Credential for on-chain identity verification, Multi-Token Network for Ethereum-based settlement",
+    description: "Crypto Credential for onchain identity verification, Multi-Token Network for Ethereum-based settlement",
   },
   {
     name: "Matter Labs",
@@ -2054,7 +2054,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "On-Chain Intelligence",
     region: ["APAC"],
     url: "https://nansen.ai",
-    description: "Wallet labeling, smart money tracking, on-chain intelligence",
+    description: "Wallet labeling, smart money tracking, onchain intelligence",
   },
   {
     name: "Nayms",
@@ -2246,7 +2246,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "DeFi Analytics",
     region: ["Americas"],
     url: "https://parsec.finance",
-    description: "Professional DeFi analytics, portfolio tracking & on-chain monitoring dashboards",
+    description: "Professional DeFi analytics, portfolio tracking & onchain monitoring dashboards",
   },
   {
     name: "Paxos",
@@ -2398,7 +2398,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "On-Chain Identity / KYC",
     region: ["Americas"],
     url: "https://quadrata.com",
-    description: "On-chain passport & identity compliance layer",
+    description: "Onchain passport & identity compliance layer",
   },
   {
     name: "Quantstamp",
@@ -2422,7 +2422,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "On-Chain Privacy",
     region: ["Global"],
     url: "https://railgun.org",
-    description: "On-chain privacy system for DeFi transactions on Ethereum",
+    description: "Onchain privacy system for DeFi transactions on Ethereum",
   },
   {
     name: "RE7 Labs",
@@ -2478,7 +2478,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "AI Infrastructure",
     region: ["Americas"],
     url: "https://ritual.net",
-    description: "AI infrastructure network, on-chain AI model execution",
+    description: "AI infrastructure network, onchain AI model execution",
   },
   {
     name: "Robinhood Chain",
@@ -2702,7 +2702,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "On-Chain AI",
     region: ["Americas"],
     url: "https://spectral.finance",
-    description: "On-chain AI agent creation & deployment platform",
+    description: "Onchain AI agent creation & deployment platform",
   },
   {
     name: "Spiko",
@@ -2910,7 +2910,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Governance Platform",
     region: ["Americas"],
     url: "https://tally.xyz",
-    description: "On-chain governance platform for DAOs & protocols",
+    description: "Onchain governance platform for DAOs & protocols",
   },
   {
     name: "Talos",
@@ -3006,7 +3006,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Financial Data",
     region: ["Europe"],
     url: "https://tokenterminal.com",
-    description: "On-chain financial data & analytics for protocols & investors",
+    description: "Onchain financial data & analytics for protocols & investors",
   },
   {
     name: "Tokeny",
@@ -3118,7 +3118,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "On-Chain Attestation Registry",
     region: ["Global"],
     url: "https://ver.ax",
-    description: "On-chain attestation registry on Linea/Ethereum, composable identity & compliance proofs",
+    description: "Onchain attestation registry on Linea/Ethereum, composable identity & compliance proofs",
   },
   {
     name: "Visa (USDC Settlement)",
