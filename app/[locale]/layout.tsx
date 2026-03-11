@@ -1,3 +1,4 @@
+import { Playfair_Display } from "next/font/google"
 import localFont from "next/font/local"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next/types"
@@ -9,7 +10,6 @@ import {
 } from "next-intl/server"
 
 import EnterpriseContactForm from "@/components/ContactForm"
-import UseCasesDropdown from "@/components/UseCasesDropdown"
 import LanguageSwitcher from "@/components/LanguageSwitcher"
 import MobileNav from "@/components/MobileNav"
 import EthereumOrgLogo from "@/components/svg/ethereum-org-logo"
@@ -17,14 +17,21 @@ import Farcaster from "@/components/svg/farcaster"
 import LinkedIn from "@/components/svg/linked-in"
 import Twitter from "@/components/svg/twitter"
 import Link, { LinkProps } from "@/components/ui/link"
+import UseCasesDropdown from "@/components/UseCasesDropdown"
 
 import { cn } from "@/lib/utils"
 
-import { USE_CASE_NAV_ITEMS, TOP_NAV_ITEMS, NAV_ITEMS } from "@/lib/constants"
+import { NAV_ITEMS,TOP_NAV_ITEMS, USE_CASE_NAV_ITEMS } from "@/lib/constants"
 
 import "../globals.css"
 
 import { routing } from "@/i18n/routing"
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  weight: ["400", "500"],
+})
 
 const satoshi = localFont({
   src: [
@@ -129,6 +136,7 @@ export default async function RootLayout({ children, params }: Props) {
       <body
         className={cn(
           satoshi.className,
+          playfairDisplay.variable,
           "grid min-h-screen grid-rows-[auto_1fr_auto] items-center justify-items-center",
           "group/body antialiased"
         )}
