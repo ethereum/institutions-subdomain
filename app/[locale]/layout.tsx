@@ -39,7 +39,7 @@ const montserrat = Montserrat({
   weight: ["400", "500", "600", "700"],
 })
 
-const satoshi = localFont({
+const _satoshi = localFont({
   src: [
     {
       path: "../fonts/Satoshi-Regular.woff2",
