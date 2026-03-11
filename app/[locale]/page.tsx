@@ -447,7 +447,9 @@ export default async function Home({ params }: Props) {
           >
             <div className="space-y-4 text-center">
               <h2>
-                {t("leader.heading")}
+                {t("leader.headingLine1")}
+                <br />
+                {t("leader.headingLine2")}
               </h2>
               <p className="text-muted-foreground mx-auto max-w-4xl text-xl font-medium">
                 {t("leader.intro")}

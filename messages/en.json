@@ -103,8 +103,9 @@
       }
     },
     "leader": {
-      "heading": "Why Institutions Choose Ethereum",
-      "intro": "Ethereum is an open, globally distributed settlement network designed to support programmable financial activity. Unlike proprietary or permissioned systems, Ethereum operates as a neutral base layer with no single operator, while enabling institutions to build compliance-aware applications on top.",
+      "headingLine1": "Why Institutions Choose",
+      "headingLine2": "Ethereum",
+      "intro": "Ethereum is an open, globally distributed settlement network that supports programmable financial activity. Unlike proprietary or permissioned systems, Ethereum is a neutral base layer, with no single operator, that institutions can build compliance-aware applications on.",
       "resilience": {
         "label": "Operational Resilience",
         "description": "Ethereum has maintained 10 years of uninterrupted uptime, including liveness through 15+ successful network upgrades. A diverse infrastructure set and open client ecosystem reduce infrastructure and single-operator risks."
