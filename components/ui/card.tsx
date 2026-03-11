@@ -109,7 +109,7 @@ function CardFooter({ className, ...props }: ComponentProps<"div">) {
   )
 }
 
-const cardLabelVariants = cva("font-sans", {
+const cardLabelVariants = cva("", {
   variants: {
     variant: {
       default: "text-muted-foreground font-medium",
