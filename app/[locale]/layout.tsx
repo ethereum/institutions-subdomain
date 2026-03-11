@@ -1,5 +1,4 @@
 import { Montserrat, Playfair_Display } from "next/font/google"
-import localFont from "next/font/local"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next/types"
 import { NextIntlClientProvider } from "next-intl"
@@ -39,40 +38,7 @@ const montserrat = Montserrat({
   weight: ["400", "500", "600", "700"],
 })
 
-const _satoshi = localFont({
-  src: [
-    {
-      path: "../fonts/Satoshi-Regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../fonts/Satoshi-Italic.woff2",
-      weight: "400",
-      style: "italic",
-    },
-    {
-      path: "../fonts/Satoshi-Medium.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../fonts/Satoshi-MediumItalic.woff2",
-      weight: "500",
-      style: "italic",
-    },
-    {
-      path: "../fonts/Satoshi-Bold.woff2",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../fonts/Satoshi-BoldItalic.woff2",
-      weight: "700",
-      style: "italic",
-    },
-  ],
-})
+
 
 const SOCIAL_LINKS: LinkProps[] = [
   {

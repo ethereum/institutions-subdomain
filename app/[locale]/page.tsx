@@ -57,7 +57,6 @@ import { getLibraryItems } from "./library/data"
 import fetchAssetMarketShare from "@/app/_actions/fetchAssetMarketShare"
 import fetchBaseTvl from "@/app/_actions/fetchBaseTvl"
 import fetchBeaconChain from "@/app/_actions/fetchBeaconChain"
-import fetchDexVolume from "@/app/_actions/fetchDexVolume"
 import fetchEtherPrice from "@/app/_actions/fetchEtherPrice"
 import fetchSecuritizeAum from "@/app/_actions/fetchSecuritizeAum"
 import fetchDefiTvlAllCurrent from "@/app/_actions/fetchTvlDefiAllCurrent"
@@ -158,7 +157,6 @@ export default async function Home({ params }: Props) {
     beaconChainData,
     ethPrice,
     defiTvlAllCurrentData,
-    _,
     stablecoinAssetMarketShareData,
     securitizeAumData,
     baseTvlData,
@@ -166,7 +164,6 @@ export default async function Home({ params }: Props) {
     fetchBeaconChain(),
     fetchEtherPrice(),
     fetchDefiTvlAllCurrent(),
-    fetchDexVolume(),
     fetchAssetMarketShare("STABLECOINS"),
     fetchSecuritizeAum(),
     fetchBaseTvl(),
