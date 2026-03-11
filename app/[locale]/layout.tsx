@@ -1,4 +1,4 @@
-import { Playfair_Display } from "next/font/google"
+import { Montserrat, Playfair_Display } from "next/font/google"
 import localFont from "next/font/local"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next/types"
@@ -31,6 +31,12 @@ const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-serif",
   weight: ["400", "500"],
+})
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+  weight: ["400", "500", "600", "700"],
 })
 
 const satoshi = localFont({
@@ -135,7 +141,7 @@ export default async function RootLayout({ children, params }: Props) {
     <html lang={locale}>
       <body
         className={cn(
-          satoshi.className,
+          montserrat.className,
           playfairDisplay.variable,
           "grid min-h-screen grid-rows-[auto_1fr_auto] items-center justify-items-center",
           "group/body antialiased"
