@@ -38,7 +38,7 @@ export const fetchAssetValueByAssetIds = async (): Promise<
   if (!apiKey) {
     console.warn(`No API key available for ${url.toString()}`)
     return {
-      data: { BUIDL: 0, USTB: 0, OUSG: 0, mF_ONE: 0 },
+      data: { BUIDL: 0, USTB: 0, MONY: 0, FDIT: 0, mF_ONE: 0 },
       lastUpdated: Date.now(),
       sourceInfo: SOURCE.RWA,
     }
