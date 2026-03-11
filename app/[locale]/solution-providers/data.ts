@@ -166,7 +166,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Liquid Staking",
     region: ["Americas", "Europe"],
     url: "https://alluvial.finance",
-    description: "Enterprise liquid staking standard, parent of Liquid Collective (LsETH), institutional staking protocol",
+    description: "Enterprise liquid staking standard, development company supporting Liquid Collective (LsETH), institutional staking protocol",
   },
   {
     name: "AltLayer",
@@ -1094,14 +1094,14 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Data Availability Layer",
     region: ["Americas"],
     url: "https://eigenlayer.xyz",
-    description: "EigenLayer-based data availability layer for Ethereum rollups, high-throughput DA",
+    description: "EigenCloud-based data availability layer for Ethereum rollups, high-throughput DA",
   },
   {
-    name: "EigenLayer",
+    name: "EigenCloud",
     macroCategory: "Staking",
     subCategory: "Restaking Protocol",
     region: ["Americas"],
-    url: "https://eigenlayer.xyz",
+    url: "https://www.eigencloud.xyz",
     description: "Restaking protocol enabling ETH stakers to secure additional services (AVS)",
   },
   {
@@ -1190,7 +1190,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Attestation Protocol",
     region: ["Global"],
     url: "https://attest.org",
-    description: "On-chain attestation protocol for identity & credentials",
+    description: "Onchain attestation protocol for identity & credentials",
   },
   {
     name: "Ethereum Foundation",
@@ -1334,7 +1334,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "On-Chain Analytics",
     region: ["Americas"],
     url: "https://flipsidecrypto.xyz",
-    description: "Community-powered on-chain analytics, structured blockchain data for institutions",
+    description: "Community-powered onchain analytics, structured blockchain data for institutions",
   },
   {
     name: "Fluid (Instadapp)",
@@ -1430,7 +1430,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Smart Contract Automation / RaaS",
     region: ["Europe"],
     url: "https://gelato.network",
-    description: "Smart contract automation, gasless transactions, Relay, VRFs & rollup-as-a-service deployment",
+    description: "Smart contract automation, gasless transactions, relay, VRFs & rollup-as-a-service deployment",
   },
   {
     name: "Gemini",
@@ -1486,7 +1486,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "On-Chain Payments",
     region: ["Europe"],
     url: "https://gnosispay.com",
-    description: "Visa-compatible on-chain payment card linked to Ethereum",
+    description: "Visa-compatible onchain payment card linked to Ethereum",
   },
   {
     name: "Goldman Sachs (GS DAP)",
@@ -1574,7 +1574,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenized Fund",
     region: ["Americas"],
     url: "https://hashnote.com",
-    description: "On-chain institutional fund (USYC), regulated investment manager",
+    description: "Onchain institutional fund (USYC), regulated investment manager",
   },
   {
     name: "Hats Protocol",
@@ -1822,7 +1822,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Liquid Staking Protocol",
     region: ["Global"],
     url: "https://lido.fi",
-    description: "Largest liquid staking protocol on Ethereum, stETH",
+    description: "Largest liquid staking protocol on Ethereum (stETH)",
   },
   {
     name: "Lighthouse (Sigma Prime)",
@@ -1918,7 +1918,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Lending",
     region: ["APAC", "Americas"],
     url: "https://maple.finance",
-    description: "Institutional on-chain lending & credit marketplace",
+    description: "Institutional onchain lending & credit marketplace",
   },
   {
     name: "Mara Holdings (MARA)",
@@ -2062,7 +2062,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Insurance Marketplace",
     region: ["Americas"],
     url: "https://nayms.com",
-    description: "On-chain insurance marketplace for digital asset risk",
+    description: "Onchain insurance marketplace for digital asset risk",
   },
   {
     name: "Nethermind",
@@ -2846,7 +2846,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenized Fund",
     region: ["Americas"],
     url: "https://superstate.co",
-    description: "On-chain fund management, tokenized treasury fund (USTB)",
+    description: "Onchain fund management, tokenized treasury fund (USTB)",
   },
   {
     name: "Supra Oracles",

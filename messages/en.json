@@ -83,12 +83,12 @@
       "subheading": "Explore Ethereum's digital asset landscape, from tokens to technologies",
       "rwa": {
         "label": "Tokenization",
-        "description": "Tokenize assets, like real estate, commodities, or bonds, while stablecoins designed for steady value, often pegged to assets like USD or gold.",
+        "description": "Tokenize assets, like real estate, commodities, or bonds, while stablecoins are designed for steady value, often pegged to assets like USD or gold.",
         "link": "More on Tokenization"
       },
       "defi": {
         "label": "Decentralized Finance",
-        "description": "Open financial systems built on Ethereum. DeFi lets anyone lend, borrow, trade, and earn yield, on their assets globally and creates utility for tokenized assets.",
+        "description": "Open financial systems built on Ethereum. DeFi lets anyone lend, borrow, trade, and earn yield on their assets globally, and creates utility for tokenized assets.",
         "link": "More on DeFi"
       },
       "privacy": {
@@ -97,8 +97,8 @@
         "link": "More on Privacy"
       },
       "layer2": {
-        "label": "L2 Ecosystem",
-        "description": "Layer 2s are customized blockchains that are built on top of Ethereum. Deployments can be open, or built for custom requirements e.g. speed, brand, privacy, cost, and more.",
+        "label": "Custom Environments",
+        "description": "Layer 2s are customized blockchains built on top of Ethereum. Deployments can be open, or built for requirements like speed, brand, privacy, cost, and more.",
         "link": "More on L2s"
       }
     },
@@ -107,7 +107,7 @@
       "intro": "Ethereum is an open, globally distributed settlement network designed to support programmable financial activity. Unlike proprietary or permissioned systems, Ethereum operates as a neutral base layer with no single operator, while enabling institutions to build compliance-aware applications on top.",
       "resilience": {
         "label": "Operational Resilience",
-        "description": "Ethereum has maintained 10 years of uninterrupted uptime since its launch. Zero downtime through 15+ successful network upgrades. A diverse infrastructure set and open client ecosystem reduce single-operator and infrastructure concentration risk."
+        "description": "Ethereum has maintained 10 years of uninterrupted uptime, including liveness through 15+ successful network upgrades. A diverse infrastructure set and open client ecosystem reduce infrastructure and single-operator risks."
       },
       "settlement": {
         "label": "Global Settlement",
@@ -141,21 +141,21 @@
       "neutrality": "Neutrality",
       "composability": "Composability",
       "ethereum_settlement": "Minutes, 24/7, global",
-      "l1Alt_settlement": "Seconds, but limited security budget",
+      "l1Alt_settlement": "Seconds, but limited security",
       "privateDlt_settlement": "Operator-dependent",
       "traditional_settlement": "T+1 to T+3, business hours",
-      "ethereum_audit": "Full onchain transparency",
-      "l1Alt_audit": "Varies by chain",
-      "privateDlt_audit": "Operator-controlled access",
-      "traditional_audit": "Periodic, offline",
-      "ethereum_neutrality": "No single controlling entity",
-      "l1Alt_neutrality": "Often VC/foundation-controlled",
-      "privateDlt_neutrality": "Single vendor dependency",
-      "traditional_neutrality": "Jurisdiction-bound intermediaries",
-      "ethereum_composability": "Global, permissionless",
-      "l1Alt_composability": "Siloed ecosystems",
-      "privateDlt_composability": "Closed networks",
-      "traditional_composability": "Fragmented systems"
+      "ethereum_audit": "Public & verifiable",
+      "l1Alt_audit": "Public & verifiable",
+      "privateDlt_audit": "Limited",
+      "traditional_audit": "Fragmented",
+      "ethereum_neutrality": "No single operator",
+      "l1Alt_neutrality": "Often operator-controlled",
+      "privateDlt_neutrality": "Vendor-controlled",
+      "traditional_neutrality": "Jurisdiction-bound",
+      "ethereum_composability": "High",
+      "l1Alt_composability": "Limited",
+      "privateDlt_composability": "Low",
+      "traditional_composability": "Very low"
     },
     "platforms": {
       "heading": "Market-Proven Platform",
@@ -264,9 +264,9 @@
       "depth": "Depth",
       "depthDesc": "Ethereum hosts by far the deepest liquidity of any onchain environment",
       "networkEffects": "Network Effects",
-      "networkEffectsDesc": "Composability with DeFi Protocols",
+      "networkEffectsDesc": "Composability with DeFi protocols",
       "costSavings": "Cost Savings",
-      "costSavingsDesc": "Better Collateral Management",
+      "costSavingsDesc": "Better collateral Management",
       "scale": "Scale",
       "scaleDesc": "Ethereum's Layer 2s add low-fee rails for retail and high-frequency flows",
       "settlement": "Cash-like settlement",
@@ -450,7 +450,7 @@
       "description": "Privacy is not a sidechain or a silo. It is a set of open standards, composable on L1 or L2, designed to meet regulatory, risk, and audit requirements. The Ethereum ecosystem offers multiple approaches to institutional privacy, each addressing different use cases.",
       "prividium": {
         "approach": "Enterprise Prividium",
-        "description": "Prividium architecture with off-chain data availability and on-chain proofs. Sub-second ZK finality with built-in KYC/SSO. Selective disclosure enables compliance proofs without revealing underlying transaction data.",
+        "description": "Prividium architecture with off-chain data availability and onchain proofs. Sub-second ZK finality with built-in KYC/SSO. Selective disclosure enables compliance proofs without revealing underlying transaction data.",
         "example": "zkSync Prividium (Deutsche Bank's Project DAMA)"
       },
       "programmablePrivacy": {
@@ -479,9 +479,9 @@
       "selectiveDisclosure": "Selective Disclosure",
       "selectiveDisclosureDesc": "Prove specific facts like eligibility, policy compliance, or solvency without publishing full transaction details. When deeper review is required, view keys / audit keys can enable scoped access for authorized parties.",
       "privacyCredentials": "Privacy-Preserving Credentials",
-      "privacyCredentialsDesc": "zkID and attestations support KYC-style eligibility checks without exposing personal information on-chain. Verify identity properties without creating data liabilities.",
+      "privacyCredentialsDesc": "zkID and attestations support KYC-style eligibility checks without exposing personal information onchain. Verify identity properties without creating data liabilities.",
       "composablePrimitives": "Composable Across Architectures",
-      "composablePrimitivesDesc": "These primitives plug into multiple architectures from prividiums to private smart contracts so institutions can meet regulatory requirements while protecting counterparties and market-sensitive data."
+      "composablePrimitivesDesc": "These primitives plug into multiple architectures, from prividiums to private smart contracts, so institutions can meet regulatory requirements while protecting counterparties and market-sensitive data."
     },
     "whyMatters": {
       "heading": "Why This Matters Beyond Features",
@@ -494,7 +494,7 @@
       "economics": "Economics",
       "economicsDesc": "Transparent utility pricing with no lock-in. SaaS licensing for private chains scales with vendor leverage. Over a decade, the cost differential compounds significantly in Ethereum's favour.",
       "interoperability": "Interoperability",
-      "interoperabilityDesc": "Privacy solutions on Ethereum compose with the full DeFi stack \u2014 ~$55B in TVL, 1,700+ protocols, and the deepest onchain liquidity globally. Private chains offer none of this. Your assets are only as useful as one vendor's ecosystem allows."
+      "interoperabilityDesc": "Privacy solutions on Ethereum compose with the full DeFi stack: ~$55B in TVL, 1,700+ protocols, and the deepest onchain liquidity globally. Private chains offer none of this. Your assets are only as useful as one vendor's ecosystem allows."
     },
     "trustVsCrypto": {
       "heading": "Trust-Based Privacy vs Cryptographic Privacy",
@@ -520,9 +520,9 @@
     },
     "privateChains": {
       "heading": "The Problem with Private Chains",
-      "description": "Permissioned blockchains were pitched as the enterprise answer to public chain concerns. After a decade of deployments, the results tell a different story. Institutions evaluating private infrastructure should consider the risks that have surfaced in production.",
+      "description": "Permissioned blockchains were pitched as the enterprise answer to the privacy concerns of using public chains. After a decade of deployments, the results tell a different story. Institutions evaluating private blockchain infrastructure should consider the risks that have surfaced in production.",
       "vendorDependency": "Single-Vendor Dependency",
-      "vendorDependencyDesc": "Private chains are built and maintained by a single company. If they pivot strategy, get acquired, or fail \u2014 your settlement layer is at risk. This is vendor lock-in at the most critical layer of your technology stack.",
+      "vendorDependencyDesc": "Private chains are built and maintained by a single company. If they pivot strategy, get acquired, or fail, your settlement layer is at risk. This is vendor lock-in at the most critical layer of your technology stack.",
       "noInterop": "No Interoperability or Utility",
       "noInteropDesc": "Assets minted on a private chain exist in a gated ecosystem. No access to DeFi liquidity, no composability with other protocols, no secondary market, no utility.",
       "talent": "Limited Developer Talent & Poor Tooling",
@@ -537,11 +537,11 @@
       "offChainPrivacyDesc": "On private chains, privacy often leans on off-chain components for core operations, breaking the expectation that a distributed application can operate independently on-ledger. This is not true cryptographic privacy; it is architectural complexity disguised as a feature.",
       "missingAbstractions": "Missing Native Abstractions",
       "missingAbstractionsDesc": "Enterprises are forced to design custom patterns separating mutable data (with changing IDs) from stable business logic just to anchor references. Native abstractions \u2014 equivalent to EVM proxy patterns \u2014 simply do not exist, pushing complexity onto application developers.",
-      "closing": "Private chains recreate the same intermediary risk that blockchain was designed to eliminate. Slightly better plumbing is not a paradigm shift."
+      "closing": "Private chains recreate the same intermediary risk that blockchain technology was designed to eliminate. Slightly better plumbing is not a paradigm shift."
     },
     "efCommitment": {
       "heading": "The Ethereum Foundation's Privacy Commitment",
-      "description": "Privacy is a tier one priority for the Ethereum Foundation. Since 2015, the EF has had a dedicated Privacy team composing of a 50-person team of leading cryptographic researchers and developers.",
+      "description": "Privacy is a tier-one priority for the Ethereum Foundation. Since 2015, the EF has had a dedicated 50-person Privacy team composed of leading cryptographic researchers and developers.",
       "iptfTitle": "Institutional Privacy Task Force (IPTF)",
       "iptfDesc": "Coordinates research across private payments, selective disclosure, zero-knowledge identity, and privacy-preserving applications on L2. The team ensures solutions meet regulatory and compliance requirements, turning institutional feedback into technical specifications and POCs on Ethereum."
     },
@@ -617,7 +617,7 @@
       "heading": "Ethereum's DeFi Ecosystem",
       "description": "A small selection of DeFi applications that run on Ethereum and its Layer 2 networks",
       "show": "Show",
-      "allCategories": "All categories",
+      "allCategories": "All Categories",
       "visitAriaLabel": "Visit {name}",
       "categories": {
         "dex": {
@@ -780,13 +780,13 @@
         "item1": "Customization of environments",
         "item2": "Higher gas fees during congestion",
         "item3": "Much data is public",
-        "closing": "While Ethereum's network upgrades are rapidly scaling L1 capacity today, L2s offer an immediate solution"
+        "closing": "While Ethereum's network upgrades are rapidly scaling L1 capacity today, L2s offer an immediate solution."
       },
       "l2": {
         "heading": "How L2s Work",
-        "description": "L2s offer fast, low cost transaction execution, while Ethereum acts as the ultimate source of truth for settlement:",
+        "description": "L2s offer fast, low-cost transaction execution, while Ethereum acts as the ultimate source of truth for settlement:",
         "item1": "Users send transaction processing to the L2 network, instead of directly on Ethereum",
-        "item2": "The L2 batches and/or compresses transactions, and executes them off-chain, and in turn send the data back to the L1 as a source of truth and global consensus"
+        "item2": "The L2 batches and/or compresses transactions, executes them off-chain, and in turn sends the data back to the L1 as a source of truth and global consensus"
       }
     },
     "benefits": {
@@ -795,23 +795,23 @@
         "title": "Inherit Ethereum's Decentralization",
         "noBootstrapping": {
           "heading": "No Bootstrapping",
-          "item1": "Skip the costly process of building and paying a new validator set to economically secure a chain.",
-          "item2": "New chains must build decentralisation from scratch, a slow, capital-intensive process that can lead to fragile and centralised chains.",
-          "item3": "L2s inherit Ethereum's unmatched decentralisation, saving vital resources, and accessing deep economic security."
+          "item1": "Skip the costly process of building and paying a new validator set to economically secure a chain",
+          "item2": "New chains must build decentralization from scratch, a slow, capital-intensive process that can lead to fragile and centralized chains",
+          "item3": "L2s inherit Ethereum's unmatched decentralization, saving vital resources, and accessing deep economic security"
         },
         "sharedSecurity": {
           "heading": "Shared Security",
-          "item1": "L2s tap into the security of Ethereum's <link>{validatorsCount} validators</link>, paying only usage-based fees.",
-          "item2": "Rollups all settle on Ethereum, creating a shared, decentralized security, and data availability layer."
+          "item1": "L2s tap into the security of Ethereum's <link>{validatorsCount} validators</link>, paying only usage-based fees",
+          "item2": "Rollups all settle on Ethereum, creating a shared, decentralized security and data availability layer"
         }
       },
       "cheaperSecurity": {
         "title": "Cheaper Security Costs",
         "noInflation": {
           "heading": "No Inflation Burden",
-          "item1": "Alternative L1s pay for security and usage via high native token inflation rates.",
-          "item2": "L2s pay usage-based fees in ETH when sending transaction data back to the L1, removing the need for a native-L2 token to facilitate economic security.",
-          "item3": "Because L2s don't need to use a native token to pay for security, they can choose to use a native token for other strategic functions, like governance, incentives, or transaction fees on the L2.",
+          "item1": "Alternative L1s pay for security and usage via high native token inflation rates",
+          "item2": "L2s pay usage-based fees in ETH when sending transaction data back to the L1, removing the need for a native-L2 token to facilitate economic security",
+          "item3": "Because L2s don't need to use a native token to pay for security, they can choose to use a native token for other strategic functions, like governance, incentives, or transaction fees on the L2",
           "item4": "High levels of profitability (e.g. 90%+ margins on Base)"
         }
       },
@@ -819,42 +819,42 @@
         "title": "Enhanced Performance",
         "highPerformance": {
           "heading": "High-Performance Validation",
-          "item1": "By separating execution from consensus and inheriting Ethereum's finality, rollups enable high performance without sacrificing user safety."
+          "item1": "By separating execution from consensus and inheriting Ethereum's finality, rollups enable high performance without sacrificing user safety"
         },
         "fasterCheaper": {
           "heading": "Faster & Cheaper",
-          "item1": "Rollups can parallelize execution and proving. They don't need to wait for thousands of nodes to sync.",
-          "item2": "One proof replaces millions of redundant re-computations across nodes, greatly reducing validation costs."
+          "item1": "Rollups can parallelize execution and proving—they don't need to wait for thousands of nodes to sync",
+          "item2": "One proof replaces millions of redundant re-computations across nodes, greatly reducing validation costs"
         },
         "saferValidation": {
           "heading": "Safer Validation",
-          "item1": "Rollups inherit Ethereum's censorship resistance and finality.",
-          "item2": "Assets are held in Ethereum contracts, and updates are enforced via fraud or validity proofs.",
-          "item3": "Even if the L2 sequencer misbehaves, users can force transaction inclusion and securely exit via Ethereum L1, enabling a fail safe and extra layer of security."
+          "item1": "Rollups inherit Ethereum's censorship resistance and finality",
+          "item2": "Assets are held in Ethereum contracts, and updates are enforced via fraud or validity proofs",
+          "item3": "Even if the L2 sequencer misbehaves, users can force transaction inclusion and securely exit via Ethereum L1, enabling a fail safe and extra layer of security"
         }
       },
       "interoperability": {
         "title": "Interoperability",
         "sharedStandards": {
           "heading": "Shared Standards",
-          "item1": "L2s leverage Ethereum's established EVM, token standards, and core assets like ETH.",
-          "item2": "Users and developers benefit from a consistent experience, using the same wallets, tools, and code across Ethereum's L1 and L2 ecosystem.",
-          "item3": "Tokens maintain a canonical L1 source-of-truth, making them fungible across different rollups."
+          "item1": "L2s leverage Ethereum's established EVM, token standards, and core assets like ETH",
+          "item2": "Users and developers benefit from a consistent experience, using the same wallets, tools, and code across Ethereum's L1 and L2 ecosystem",
+          "item3": "Tokens maintain a canonical L1 source-of-truth, making them fungible across different rollups"
         }
       },
       "customization": {
         "title": "Customization",
         "configurableEnvironments": {
-          "heading": "Customization",
-          "item1": "Customize compliance logic",
-          "item2": "Branding (e.g Base, Robinhood Chain)",
-          "item3": "Throughput"
+          "heading": "Customizable Environments",
+          "item1": "Institutions can design rollups with custom built-in compliance logic, embedding specific identity verification protocols, permissioned access, or privacy controls directly into the L2 architecture",
+          "item2": "Launch dedicated L2 ecosystems to maintain a unique brand identity and control the end-to-end user experience onchain, as demonstrated by L2 networks like Base and Robinhood Chain",
+          "item3": "L2 parameters can be optimized for throughput, such as guaranteeing dedicated block space, high transaction speeds, and predictable fees tailored to high-volume enterprise applications"
         }
       }
     },
     "trust": {
       "heading": "Ethereum as the Trust Layer",
-      "description": "Rollups are the most secure form of L2, where transactions are executed off-chain but the data is published to Ethereum L1:",
+      "description": "Rollups are the most secure form of L2, where transactions are executed off-chain but the data is published to Ethereum L1",
       "transparency": "Transparency",
       "transparencyDesc": "Every user can see the rollup state on the L1",
       "dataAvailability": "Data availability",
@@ -862,7 +862,7 @@
       "exitWindow": "Exit window",
       "exitWindowDesc": "Anyone can directly withdraw their assets from the rollup to the L1 by interacting with the L1 smart contract",
       "recoverability": "Recoverability",
-      "recoverabilityDesc": "Data availability on the L1 makes user funds recoverable even if the rollup fails, referred to as the \"escape hatch\". This is what keeps rollups trust minimised rather than reliant on the rollup operator.",
+      "recoverabilityDesc": "Referred to as the \"escape hatch\", data availability on the L1 makes user funds recoverable even if the rollup fails, making rollups trust-minimized rather than reliant on the rollup operator",
       "issuance": {
         "heading": "Issuance on L1 (Bridging to L2)",
         "description": "Assets should be issued on the L1 and bridged to the L2:",
@@ -971,7 +971,7 @@
         "transparency": "Transparency and Auditability",
         "transparencyDesc": "Regulators and risk teams increasingly expect real-time, verifiable records over batch-processed reconciliation.",
         "digitalAssets": "Digital Asset Readiness",
-        "digitalAssetsDesc": "Client demand for tokenized funds, on-chain treasuries, and digital securities requires infrastructure that supports these products within existing regulatory frameworks.",
+        "digitalAssetsDesc": "Client demand for tokenized funds, onchain treasuries, and digital securities requires infrastructure that supports these products within existing regulatory frameworks.",
         "openInfra": "Open Infrastructure",
         "openInfraDesc": "Institutions are seeking neutral, standards-based settlement layers that avoid proprietary lock-in and enable interoperability across providers."
       },
@@ -995,7 +995,7 @@
       "description": "Ethereum is an open, globally distributed settlement network designed to support programmable financial activity. Unlike proprietary or permissioned systems, Ethereum operates as a neutral base layer with no single operator, while enabling institutions to build compliance-aware applications on top.",
       "resilience": {
         "label": "Operational Resilience",
-        "description": "Ethereum has maintained {uptime} of uninterrupted uptime since its launch. Zero downtime through 15+ successful network upgrades. A diverse infrastructure set and open client ecosystem reduce single-operator and infrastructure concentration risk."
+        "description": "{uptime} of uninterrupted uptime and liveness, including through 15+ network upgrades. Diverse infrastructure and an open client ecosystem reduce infrastructure concentration and  single-operator risks."
       },
       "settlement": {
         "label": "Global Settlement",
@@ -1003,7 +1003,7 @@
       },
       "collateral": {
         "label": "Collateral Mobility",
-        "description": "Collateral mobility: you want to be confident that collateral moves when you need it to. Ethereum has enabled this for over 10 years."
+        "description": "Reliable collateral movement whenever you need it through Ethereum's always-on collateral markets, proven for over a decade."
       },
       "neutrality": {
         "label": "Neutrality",
@@ -1011,20 +1011,20 @@
       },
       "liquidity": {
         "label": "Liquidity and Utility",
-        "description": "The leading platform for asset tokenization, with 67% of all onchain tokenized assets deployed. Ethereum's DeFi ecosystem benefits from 10 years of network effects with its DeFi ecosystem being 8x larger than that of the next largest ecosystem."
+        "description": "The leading platform for asset tokenization with 67% of all tokenized assets deployed. Benefitting from 10 years of network effects, Ethereum's DeFi ecosystem is 8x larger than the next largest."
       },
       "programmability": {
         "label": "Programmability",
-        "description": "Smart contracts enable automated issuance, transfer controls, lifecycle management, and conditional settlement. Layer 2 ecosystems and apps can be highly customized to needs and requirements of financial institutions."
+        "description": "Smart contracts enable automated issuance, transfer controls, lifecycle management, and conditional settlement. Apps and Layer 2 networks can be customized to the exact requirements of financial institutions."
       },
       "composability": {
         "label": "Composable Ecosystem",
-        "description": "Ethereum supports an ecosystem of wallets, custodians, auditors, data providers, and scaling solutions used by institutions today."
+        "description": "Ethereum's ecosystem of institutional-grade wallets, custodians, auditors, data providers, and scaling solutions support billions in institutional capital."
       }
     },
     "risk": {
       "heading": "Ethereum For Risk Management",
-      "description": "Ethereum is not a turnkey solution and there are considerations that institutions must evaluate carefully.",
+      "description": "Ethereum is a powerful foundation, but not a turnkey solution. Successful adoption typically occurs alongside existing infrastructure, not as a wholesale replacement, and requires careful evaluation.",
       "item1": "Regulatory treatment varies by jurisdiction",
       "item2": "Transaction fees can fluctuate under network demand",
       "item3": "Public transaction visibility requires privacy-preserving design choices",
@@ -1039,7 +1039,7 @@
         "item6": "Institutional custody and key management solutions",
         "item7": "Legal structuring aligned with local regulatory guidance"
       },
-      "closing": "Ethereum adoption typically occurs alongside existing infrastructure, not as a wholesale replacement."
+      "closing": "Modernizing settlement infrastructure is a deliberate process. Institutions can adopt incrementally, starting with specific use cases and expanding as confidence and regulatory clarity grow."
     },
     "metadata": {
       "title": "Why Ethereum for Institutions | The Case for Ethereum",
@@ -1052,8 +1052,8 @@
       "description": "Connect with a curated network of solution providers that specialize in building in the Ethereum ecosystem. From tokenization platforms to infrastructure and compliance, find established, regional teams to support your onchain strategy."
     },
     "filters": {
-      "allCategories": "All categories",
-      "allRegions": "All regions",
+      "allCategories": "All Categories",
+      "allRegions": "All Regions",
       "showing": "Showing {count} providers",
       "searchPlaceholder": "Search providers by name, category, or description...",
       "clearAll": "Clear all",
