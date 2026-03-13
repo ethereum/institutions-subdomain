@@ -39,7 +39,7 @@ const externalLibraryItems: LibraryItem[] = [
     imgSrc: redstone,
   },
   {
-    title: "IPTF  - Public Rails vs Private Ledgers",
+    title: "IPTF - Public Rails vs Private Ledgers",
     href: "https://iptf.ethereum.org/public-rails-vs-private-ledgers/",
     date: "2026-01-30",
     imgSrc: iptfPublicRails,
