@@ -13,19 +13,22 @@ import { every } from "@/lib/utils/time"
 
 import { SOURCE } from "@/lib/constants"
 
-const RWA_XYZ_PROTOCOL_SLUGS = ["centrifuge", "maple"] as const
+const RWA_XYZ_PROTOCOLS = {
+  centrifuge: "Centrifuge",
+  maple: "Maple",
+} as const satisfies Record<string, string>
 
 type JSONData = RwaApiTimeseriesResponse
 
 export type ProtocolsValueBySlugData = Record<
-  (typeof RWA_XYZ_PROTOCOL_SLUGS)[number],
+  keyof typeof RWA_XYZ_PROTOCOLS,
   number
 >
 
 export const fetchProtocolsValueBySlug = async (): Promise<
   DataTimestamped<ProtocolsValueBySlugData>
 > => {
-  const url = new URL("https://api.rwa.xyz/v3/protocols/timeseries")
+  const url = new URL("https://api.rwa.xyz/v4/tokens/aggregates/timeseries")
 
   const apiKey = process.env.RWA_API_KEY || ""
 
@@ -43,21 +46,26 @@ export const fetchProtocolsValueBySlug = async (): Promise<
       operator: "and",
       filters: [
         {
+          field: "measure_id",
+          operator: "equals",
+          value: 63,
+        },
+        {
+          field: "asset_class_id",
+          operator: "equals",
+          value: 33,
+        },
+        {
           field: "date",
           operator: "onOrAfter",
           value: dateNDaysAgo(),
         },
         {
-          field: "measureSlug",
-          operator: "equals",
-          value: "outstanding_capital_dollar",
-        },
-        {
           operator: "or",
-          filters: RWA_XYZ_PROTOCOL_SLUGS.map((slug) => ({
-            field: "protocolSlug",
+          filters: Object.values(RWA_XYZ_PROTOCOLS).map((name) => ({
+            field: "protocol_name",
             operator: "equals",
-            value: slug,
+            value: name,
           })),
         },
         getRwaApiEthereumNetworksFilter(["mainnet", "layer-2"]),
@@ -83,7 +91,7 @@ export const fetchProtocolsValueBySlug = async (): Promise<
       },
       next: {
         revalidate: every("day"),
-        tags: ["rwa:v3:protocols:timeseries:by-slug"],
+        tags: ["rwa:v4:tokens:aggregates:timeseries:by-slug"],
       },
     })
 
@@ -94,19 +102,28 @@ export const fetchProtocolsValueBySlug = async (): Promise<
 
     const json: JSONData = await response.json()
 
+    // Build reverse mapping from protocol name to key
+    const nameToKey = Object.entries(RWA_XYZ_PROTOCOLS).reduce<
+      Record<string, keyof typeof RWA_XYZ_PROTOCOLS>
+    >((acc, [key, name]) => {
+      acc[name] = key as keyof typeof RWA_XYZ_PROTOCOLS
+      return acc
+    }, {})
+
     let lastUpdated: string | null = null
 
-    const data = RWA_XYZ_PROTOCOL_SLUGS.reduce((acc, key) => {
-      const result = json.results.find((r) =>
-        r.group.name?.toLowerCase().includes(key)
+    const data = Object.keys(RWA_XYZ_PROTOCOLS).reduce((acc, key) => {
+      const protocolKey = key as keyof typeof RWA_XYZ_PROTOCOLS
+      const result = json.results.find(
+        (r) => r.group.name && nameToKey[r.group.name] === protocolKey
       )
       if (result && result.points.length > 0) {
         const lastPoint = result.points[result.points.length - 1]
         const lastDate = lastPoint[0]
         if (!lastUpdated || lastDate > lastUpdated) lastUpdated = lastDate
-        acc[key] = lastPoint[1]
+        acc[protocolKey] = lastPoint[1]
       } else {
-        acc[key] = 0
+        acc[protocolKey] = 0
       }
       return acc
     }, {} as ProtocolsValueBySlugData)
