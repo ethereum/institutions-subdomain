@@ -415,7 +415,7 @@
         "heading": "Ethereum's L2s",
         "subheading": "The Execution and Scaling Layer",
         "throughput": "Throughput & UX",
-        "throughputDesc": "Rollups process transactions off-chain, inherit L1 security, and deliver low fees suitable for payments, market-making, and high-frequency flows",
+        "throughputDesc": "Rollups process transactions offchain, inherit L1 security, and deliver low fees suitable for payments, market-making, and high-frequency flows",
         "configurable": "Configurable",
         "configurableDesc": "L2s can add compliance features, like allowlisting or KYC'd pools, while remaining non-custodial and settling to L1",
         "specialization": "Specialization",
@@ -426,11 +426,11 @@
       "heading": "Ethereum's L2s: The Execution & Scale Layer",
       "description": "Layer 2 networks extend Ethereum's tokenization capabilities with specialized execution environments.",
       "throughput": "Throughput & UX",
-      "throughputDesc": "Rollups process transactions off-chain, inherit Ethereum's security, and deliver low fees suitable for payments, market-making, and high-frequency flows.",
+      "throughputDesc": "Rollups process transactions offchain, inherit Ethereum's security, and deliver low fees suitable for payments, market-making, and high-frequency flows",
       "configurable": "Configurable Perimeters",
-      "configurableDesc": "L2s can add compliance features, like allowlisting or KYC'd pools, customizable currency for transactions while remaining non-custodial and settling to L1.",
+      "configurableDesc": "L2s can add compliance features, like allowlisting or KYC'd pools, customizable currency for transactions while remaining non-custodial and settling to L1",
       "specialization": "Specialization",
-      "specializationDesc": "Multiple L2s let institutions segregate workloads, such as retail payments vs. treasury ops, without fragmenting trust, because settlement reconciles on L1.",
+      "specializationDesc": "Multiple L2s let institutions segregate workloads, such as retail payments vs. treasury ops, without fragmenting trust, because settlement reconciles on L1",
       "cta": "Explore Layer 2"
     },
     "metadata": {
@@ -459,7 +459,7 @@
       "description": "Privacy is not a sidechain or a silo. It is a set of open standards, composable on L1 or L2, designed to meet regulatory, risk, and audit requirements. The Ethereum ecosystem offers multiple approaches to institutional privacy, each addressing different use cases.",
       "prividium": {
         "approach": "Enterprise Prividium",
-        "description": "Prividium architecture with off-chain data availability and onchain proofs. Sub-second ZK finality with built-in KYC/SSO. Selective disclosure enables compliance proofs without revealing underlying transaction data.",
+        "description": "Prividium architecture with offchain data availability and onchain proofs. Sub-second ZK finality with built-in KYC/SSO. Selective disclosure enables compliance proofs without revealing underlying transaction data.",
         "example": "zkSync Prividium (Deutsche Bank's Project DAMA)"
       },
       "programmablePrivacy": {
@@ -542,8 +542,8 @@
       "instabilityDesc": "Runtime migrations, architecture pivots, and strategy shifts disrupt enterprise deployments. Institutions need infrastructure they can underwrite for a decade. Private chains have not demonstrated that stability.",
       "auditability": "Auditability Gaps",
       "auditabilityDesc": "Archived contracts not accessible on-ledger. Separate storage infrastructure required for complete audit trails, creating compliance risk for regulated institutions that need full transaction history on demand.",
-      "offChainPrivacy": "Privacy That Depends on Off-Chain Components",
-      "offChainPrivacyDesc": "On private chains, privacy often leans on off-chain components for core operations, breaking the expectation that a distributed application can operate independently on-ledger. This is not true cryptographic privacy; it is architectural complexity disguised as a feature.",
+      "offChainPrivacy": "Privacy That Depends on Offchain Components",
+      "offChainPrivacyDesc": "On private chains, privacy often leans on offchain components for core operations, breaking the expectation that a distributed application can operate independently on-ledger. This is not true cryptographic privacy; it is architectural complexity disguised as a feature.",
       "missingAbstractions": "Missing Native Abstractions",
       "missingAbstractionsDesc": "Enterprises are forced to design custom patterns separating mutable data (with changing IDs) from stable business logic just to anchor references. Native abstractions \u2014 equivalent to EVM proxy patterns \u2014 simply do not exist, pushing complexity onto application developers.",
       "closing": "Private chains recreate the same intermediary risk that blockchain technology was designed to eliminate. Slightly better plumbing is not a paradigm shift."
@@ -578,7 +578,7 @@
     "hero": {
       "heading": "The Home of Decentralized Finance",
       "description1": "Ethereum introduced the world to decentralized finance (DeFi): open financial systems built on programmable smart contracts.",
-      "description2": "100% uptime, battle-tested and secure infrastructure, and the deepest liquidity layer of any blockchain — Ethereum is for DeFi."
+      "description2": "100% uptime, battle-tested and secure infrastructure, and the deepest liquidity layer of any blockchain—Ethereum is for DeFi."
     },
     "metrics": {
       "srHeading": "DeFi Ecosystem Overview",
@@ -795,7 +795,7 @@
         "heading": "How L2s Work",
         "description": "L2s offer fast, low-cost transaction execution, while Ethereum acts as the ultimate source of truth for settlement:",
         "item1": "Users send transaction processing to the L2 network, instead of directly on Ethereum",
-        "item2": "The L2 batches and/or compresses transactions, executes them off-chain, and in turn sends the data back to the L1 as a source of truth and global consensus"
+        "item2": "The L2 batches and/or compresses transactions, executes them offchain, and in turn sends the data back to the L1 as a source of truth and global consensus"
       }
     },
     "benefits": {
@@ -863,7 +863,7 @@
     },
     "trust": {
       "heading": "Ethereum as the Trust Layer",
-      "description": "Rollups are the most secure form of L2, where transactions are executed off-chain but the data is published to Ethereum L1",
+      "description": "Rollups are the most secure form of L2, where transactions are executed offchain but the data is published to Ethereum L1",
       "transparency": "Transparency",
       "transparencyDesc": "Every user can see the rollup state on the L1",
       "dataAvailability": "Data availability",
@@ -942,7 +942,7 @@
         "immediateAccess": "Immediate Access",
         "immediateAccessDesc": "Tap into mature ecosystems with large developer communities and liquidity networks.",
         "lowerCosts": "Lower Integration Costs",
-        "lowerCostsDesc": "Inherit Ethereum's decentralisation and security — no need to bootstrap infrastructure.",
+        "lowerCostsDesc": "Inherit Ethereum's decentralisation and security—no need to bootstrap infrastructure.",
         "regulatoryAlignment": "Regulatory Alignment",
         "regulatoryAlignmentDesc": "Many L2s are already building compliance modules suited for financial institutions.",
         "productionSecurity": "Production Security",

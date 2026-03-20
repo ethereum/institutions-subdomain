@@ -296,7 +296,7 @@ export const solutionProviders: SolutionProvider[] = [
   {
     name: "Arkham Intelligence",
     macroCategory: "Data & Analytics",
-    subCategory: "On-Chain Intelligence",
+    subCategory: "Onchain Intelligence",
     region: ["Americas"],
     url: "https://arkhamintelligence.com",
     description:
@@ -784,7 +784,7 @@ export const solutionProviders: SolutionProvider[] = [
   {
     name: "Coin Metrics",
     macroCategory: "Data & Analytics",
-    subCategory: "On-Chain / Market Data",
+    subCategory: "Onchain / Market Data",
     region: ["Americas"],
     url: "https://coinmetrics.io",
     description:
@@ -986,7 +986,7 @@ export const solutionProviders: SolutionProvider[] = [
     region: ["Americas"],
     url: "https://credora.io",
     description:
-      "Real-time credit assessment for onchain & off-chain counterparties",
+      "Real-time credit assessment for onchain & offchain counterparties",
   },
   {
     name: "Crédit Agricole (CACEIS)",
@@ -1082,7 +1082,7 @@ export const solutionProviders: SolutionProvider[] = [
   {
     name: "Derive (formerly Lyra)",
     macroCategory: "DeFi & Trading",
-    subCategory: "On-Chain Options",
+    subCategory: "Onchain Options",
     region: ["Global"],
     url: "https://derive.xyz",
     description:
@@ -1126,7 +1126,7 @@ export const solutionProviders: SolutionProvider[] = [
   {
     name: "Dune Analytics",
     macroCategory: "Data & Analytics",
-    subCategory: "On-Chain Analytics",
+    subCategory: "Onchain Analytics",
     region: ["Europe"],
     url: "https://dune.com",
     description: "Community-driven blockchain data analytics platform",
@@ -1211,7 +1211,7 @@ export const solutionProviders: SolutionProvider[] = [
   {
     name: "Enzyme Finance",
     macroCategory: "Tokenization & RWA",
-    subCategory: "On-Chain Asset Mgmt",
+    subCategory: "Onchain Asset Mgmt",
     region: ["Global"],
     url: "https://enzyme.finance",
     description: "Onchain asset management infrastructure for DAOs & funds",
@@ -1416,7 +1416,7 @@ export const solutionProviders: SolutionProvider[] = [
   {
     name: "Flipside Crypto",
     macroCategory: "Data & Analytics",
-    subCategory: "On-Chain Analytics",
+    subCategory: "Onchain Analytics",
     region: ["Americas"],
     url: "https://flipsidecrypto.xyz",
     description:
@@ -1562,7 +1562,7 @@ export const solutionProviders: SolutionProvider[] = [
   {
     name: "Glassnode",
     macroCategory: "Data & Analytics",
-    subCategory: "On-Chain Metrics",
+    subCategory: "Onchain Metrics",
     region: ["Europe"],
     url: "https://glassnode.com",
     description: "Onchain market intelligence for institutional investors",
@@ -1579,7 +1579,7 @@ export const solutionProviders: SolutionProvider[] = [
   {
     name: "Gnosis Pay",
     macroCategory: "Tokenization & RWA",
-    subCategory: "On-Chain Payments",
+    subCategory: "Onchain Payments",
     region: ["Europe"],
     url: "https://gnosispay.com",
     description: "Visa-compatible onchain payment card linked to Ethereum",
@@ -1779,7 +1779,7 @@ export const solutionProviders: SolutionProvider[] = [
   {
     name: "IntoTheBlock",
     macroCategory: "Data & Analytics",
-    subCategory: "On-Chain Analytics",
+    subCategory: "Onchain Analytics",
     region: ["Americas"],
     url: "https://intotheblock.com",
     description:
@@ -1823,7 +1823,7 @@ export const solutionProviders: SolutionProvider[] = [
   {
     name: "Karpatkey (kpk)",
     macroCategory: "Tokenization & RWA",
-    subCategory: "On-Chain Treasury Management",
+    subCategory: "Onchain Treasury Management",
     region: ["Global"],
     url: "https://kpk.io",
     description:
@@ -2184,7 +2184,7 @@ export const solutionProviders: SolutionProvider[] = [
   {
     name: "Nansen",
     macroCategory: "Data & Analytics",
-    subCategory: "On-Chain Intelligence",
+    subCategory: "Onchain Intelligence",
     region: ["APAC"],
     url: "https://nansen.ai",
     description: "Wallet labeling, smart money tracking, onchain intelligence",
@@ -2548,7 +2548,7 @@ export const solutionProviders: SolutionProvider[] = [
   {
     name: "Quadrata",
     macroCategory: "Compliance & Legal",
-    subCategory: "On-Chain Identity / KYC",
+    subCategory: "Onchain Identity / KYC",
     region: ["Americas"],
     url: "https://quadrata.com",
     description: "Onchain passport & identity compliance layer",
@@ -2572,7 +2572,7 @@ export const solutionProviders: SolutionProvider[] = [
   {
     name: "Railgun",
     macroCategory: "Infrastructure",
-    subCategory: "On-Chain Privacy",
+    subCategory: "Onchain Privacy",
     region: ["Global"],
     url: "https://railgun.org",
     description: "Onchain privacy system for DeFi transactions on Ethereum",
@@ -2809,10 +2809,10 @@ export const solutionProviders: SolutionProvider[] = [
   {
     name: "Snapshot",
     macroCategory: "Consulting & Advisory",
-    subCategory: "Off-Chain Voting",
+    subCategory: "Offchain Voting",
     region: ["Global"],
     url: "https://snapshot.org",
-    description: "Gasless off-chain governance voting for DAOs",
+    description: "Gasless offchain governance voting for DAOs",
   },
   {
     name: "SNZ",
@@ -2867,7 +2867,7 @@ export const solutionProviders: SolutionProvider[] = [
   {
     name: "Spectral",
     macroCategory: "Data & Analytics",
-    subCategory: "On-Chain AI",
+    subCategory: "Onchain AI",
     region: ["Americas"],
     url: "https://spectral.finance",
     description: "Onchain AI agent creation & deployment platform",
@@ -3307,7 +3307,7 @@ export const solutionProviders: SolutionProvider[] = [
   {
     name: "Verax",
     macroCategory: "Compliance & Legal",
-    subCategory: "On-Chain Attestation Registry",
+    subCategory: "Onchain Attestation Registry",
     region: ["Global"],
     url: "https://ver.ax",
     description:
