@@ -30,7 +30,7 @@ type AssetValueByAssetIdsData = Record<
 export const fetchAssetValueByAssetIds = async (): Promise<
   DataTimestamped<AssetValueByAssetIdsData>
 > => {
-  const url = new URL("https://api.rwa.xyz/v3/assets/aggregates/timeseries")
+  const url = new URL("https://api.rwa.xyz/v4/tokens/aggregates/timeseries")
 
   const apiKey = process.env.RWA_API_KEY || ""
 
@@ -53,14 +53,14 @@ export const fetchAssetValueByAssetIds = async (): Promise<
           value: dateNDaysAgo(),
         },
         {
-          field: "measureID",
+          field: "measure_id",
           operator: "equals",
           value: RWA_API_MEASURE_ID_BY_CATEGORY.RWAS,
         },
         {
           operator: "or",
           filters: Object.values(RWA_XYZ_TREASURIES_ASSET_IDS).map((id) => ({
-            field: "assetID",
+            field: "asset_id",
             operator: "equals",
             value: id,
           })),
@@ -88,7 +88,7 @@ export const fetchAssetValueByAssetIds = async (): Promise<
       },
       next: {
         revalidate: every("day"),
-        tags: ["rwa:v3:assets:aggregates:timeseries:by-asset-ids"],
+        tags: ["rwa:v4:tokens:aggregates:timeseries:by-asset-ids"],
       },
     })
 

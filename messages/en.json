@@ -242,8 +242,8 @@
       "totalSector": "Total RWA sector on Ethereum L1:",
       "treasuries": "Tokenized Treasuries & Cash-Equivalents",
       "treasuriesSector": "sector on Ethereum + L2s",
-      "privateCredit": "Private Credit & Structured Credit",
-      "activeLoans": "Active loans on Ethereum + L2s"
+      "privateCredit": "Tokenized Real-World Assets",
+      "activeLoans": "Total value on Ethereum + L2s"
     },
     "cards": {
       "by": "By {issuer}",
