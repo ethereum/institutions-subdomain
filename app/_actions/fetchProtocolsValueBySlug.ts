@@ -51,11 +51,6 @@ export const fetchProtocolsValueBySlug = async (): Promise<
           value: 63,
         },
         {
-          field: "asset_class_id",
-          operator: "equals",
-          value: 33,
-        },
-        {
           field: "date",
           operator: "onOrAfter",
           value: dateNDaysAgo(),

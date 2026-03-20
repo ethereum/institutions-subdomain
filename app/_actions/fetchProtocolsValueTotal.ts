@@ -36,11 +36,6 @@ export const fetchProtocolsValueTotal = async (): Promise<
           value: 63,
         },
         {
-          field: "asset_class_id",
-          operator: "equals",
-          value: 33,
-        },
-        {
           field: "date",
           operator: "onOrAfter",
           value: dateNDaysAgo(),
@@ -86,7 +81,16 @@ export const fetchProtocolsValueTotal = async (): Promise<
 
     const { results } = json
 
+    if (!results.length) {
+      return {
+        data: { totalPrivateCredit: 0 },
+        lastUpdated: Date.now(),
+        sourceInfo: SOURCE.RWA,
+      }
+    }
+
     const totalPrivateCredit = results.reduce((sum, { points }) => {
+      if (!points?.length) return sum
       const [, value] = points[points.length - 1]
       return sum + value
     }, 0)

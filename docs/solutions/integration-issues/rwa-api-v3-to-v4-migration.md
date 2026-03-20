@@ -149,20 +149,24 @@ Confirmed working protocol names: `"Securitize"`, `"Centrifuge"`, `"Maple"`
 | `fetchProtocolsValueTotal.ts` | URL + `measure_id`/`asset_class_id` replaces `measureSlug` |
 | `fetchProtocolsValueBySlug.ts` | URL + `protocol_name` filter + ID-based measure |
 
-## Known Issue
+## Resolved: asset_class_id: 33 removed (2026-03-19)
 
-Centrifuge shows $0 under `asset_class_id: 33` (Private Credit). Their asset class breakdown (as of 2026-03-09):
+The `asset_class_id: 33` (Private Credit) filter was returning **empty results** on v4 as of 2026-03-19, causing a build failure on Netlify (`Cannot read properties of undefined (reading 'points')` during static page generation of `/en/rwa`).
 
-| Asset Class ID | Name | Value |
+Confirmed via curl that `measure_id: 63` alone returns data, but combining it with `asset_class_id: 33` returns `"results": []`. Per RWA.xyz, private credit is no longer available as an isolated category in v4 -- it is lumped with other asset classes.
+
+**Resolution**: Removed `asset_class_id: 33` filter from both `fetchProtocolsValueTotal.ts` and `fetchProtocolsValueBySlug.ts`. Added an empty-results guard in `fetchProtocolsValueTotal` to prevent future crashes if the API returns no data.
+
+Since the data now represents all tokenized asset classes (not just private credit), the UI labels were updated across all locales:
+
+| Key | Old (en) | New (en) |
 |---|---|---|
-| 27 | US Treasury Debt | $566M |
-| 34 | Public Equity | ~$111K |
-| 43 | Institutional Alternative Funds | $794M |
+| `rwas.privateCredit` | Private Credit & Structured Credit | Tokenized Real-World Assets |
+| `rwas.activeLoans` | Active loans on Ethereum + L2s | Total value on Ethereum + L2s |
 
-Pending team decision on whether to:
-- Remove `asset_class_id` filter for protocol queries (shows full platform value)
-- Query multiple asset classes for Centrifuge
-- Recategorize Centrifuge in the UI
+### Previous known issue (now resolved)
+
+Centrifuge previously showed $0 under `asset_class_id: 33` because their tokens are classified under asset classes 27, 34, and 43 -- not 33. Removing the filter resolves this as well.
 
 ## Prevention Strategies
 
