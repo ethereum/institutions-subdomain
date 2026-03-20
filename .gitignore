@@ -48,3 +48,6 @@ sitemap*.xml
 
 # robots.txt
 robots.txt
+
+# worktrees
+/.worktree/

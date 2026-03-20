@@ -7,28 +7,23 @@ import { every } from "@/lib/utils/time"
 import { SOURCE } from "@/lib/constants"
 
 type JSONData = {
-  data: {
-    validatorscount: number
-    eligibleether: number // in gwei
-    ts: string // timestamp, e.g., "2025-10-14T19:47:35Z"
-  }
+  beaconBalancesSum: string // in Gwei, as string to handle large integers
 }
 
 export type BeaconChainData = {
-  validatorsCount: number
   totalStakedEther: number
 }
 
 export const fetchBeaconChain = async (): Promise<
   DataTimestamped<BeaconChainData>
 > => {
-  const url = "https://beaconcha.in/api/v1/epoch/latest"
+  const url = "https://ultrasound.money/api/v2/fees/supply-parts"
 
   try {
     const response = await fetch(url, {
       next: {
-        revalidate: every("minute", 5),
-        tags: ["beaconchain:v1:epoch:latest"],
+        revalidate: every("hour"),
+        tags: ["ultrasound:v2:fees:supply-parts"],
       },
     })
 
@@ -39,15 +34,12 @@ export const fetchBeaconChain = async (): Promise<
 
     const json: JSONData = await response.json()
 
-    const { validatorscount, eligibleether: eligibleGwei, ts } = json.data
-
     return {
       data: {
-        validatorsCount: validatorscount,
-        totalStakedEther: eligibleGwei * 1e-9,
+        totalStakedEther: Number(json.beaconBalancesSum) * 1e-9,
       },
-      lastUpdated: new Date(ts).getTime() || Date.now(),
-      sourceInfo: SOURCE.BEACONCHAIN,
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.ULTRASOUND,
     }
   } catch (error: unknown) {
     console.error("fetchBeaconChain failed", {
