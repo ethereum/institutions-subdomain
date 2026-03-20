@@ -81,21 +81,33 @@ import tomZschach from "@/public/images/profiles/tom-zschach.png"
 import vladTenev from "@/public/images/profiles/vlad-tenev.png"
 
 const logos: { src: StaticImageData; alt: string; className?: string }[] = [
-  { src: blackRock, alt: "BlackRock logo" },
-  { src: coinbase, alt: "Coinbase logo" },
-  { src: etoro, alt: "eToro logo" },
-  { src: fidelity, alt: "Fidelity logo", className: "invert" },
-  { src: jpMorgan, alt: "JPMorgan logo", className: "invert" },
+  { src: blackRock, alt: "BlackRock logo", className: "py-1 translate-y-0.5" },
+  { src: coinbase, alt: "Coinbase logo", className: "py-0.5" },
+  { src: etoro, alt: "eToro logo", className: "py-0.5" },
+  {
+    src: fidelity,
+    alt: "Fidelity logo",
+    className: "invert translate-y-[3px]",
+  },
+  {
+    src: jpMorgan,
+    alt: "JPMorgan logo",
+    className: "py-0.5 translate-y-1.5 invert",
+  },
   {
     src: morganStanley,
     alt: "Morgan Stanley logo",
-    className: "h-[18px] invert",
+    className: "h-[18px] invert opacity-80",
   },
-  { src: mastercard, alt: "Mastercard logo" },
-  { src: robinhood, alt: "Robinhood logo" },
-  { src: standardChartered, alt: "Standard Chartered logo" },
-  { src: swift, alt: "Swift logo" },
-  { src: ubs, alt: "UBS logo" },
+  { src: mastercard, alt: "Mastercard logo", className: "translate-y-[3px]" },
+  { src: robinhood, alt: "Robinhood logo", className: "translate-y-1" },
+  {
+    src: standardChartered,
+    alt: "Standard Chartered logo",
+    className: "scale-120 mx-4 translate-y-1",
+  },
+  { src: swift, alt: "Swift logo", className: "translate-y-[3px]" },
+  { src: ubs, alt: "UBS logo", className: "translate-y-[3px]" },
 ]
 
 const getTestimonials = (
