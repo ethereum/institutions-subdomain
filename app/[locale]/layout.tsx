@@ -185,7 +185,7 @@ export default async function RootLayout({ children, params }: Props) {
                     <Link key={props.href} {...props} />
                   ))}
                 </div>
-                <nav className="*:text-muted-foreground *:hover:text-foreground flex items-center gap-x-6 gap-y-1.5 text-nowrap *:block *:text-sm *:tracking-[0.0175rem] max-xl:flex-col sm:ms-auto sm:max-xl:items-end">
+                <nav className="*:text-muted-foreground *:hover:text-foreground flex items-center gap-x-6 gap-y-1.5 text-nowrap *:block *:text-sm *:tracking-[0.0175rem] max-2xl:flex-col sm:ms-auto sm:max-2xl:items-end">
                   {[...topNavLinks, ...useCaseLinks, ...navLinks].map(
                     (props) => (
                       <Link key={props.href} {...props} />
