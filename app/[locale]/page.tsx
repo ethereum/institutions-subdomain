@@ -322,9 +322,7 @@ export default async function Home({ params }: Props) {
           </>
         }
       >
-        <p className="text-primary-foreground/75 max-w-md text-xl max-md:text-center">
-          {t("hero.tagline")}
-        </p>
+        <p className="text-muted max-w-md text-xl">{t("hero.tagline")}</p>
       </Hero>
       <article className="max-w-8xl mx-auto w-full space-y-20 px-4 py-10 sm:px-10 sm:py-20 md:space-y-40">
         <section id="numbers" className="flex gap-20 max-lg:flex-col">

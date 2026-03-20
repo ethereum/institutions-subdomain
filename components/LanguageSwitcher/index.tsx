@@ -43,7 +43,7 @@ const LanguageSwitcher = ({ className }: LanguageSwitcherProps) => {
         )}
       >
         <Globe className="size-4" />
-        <span className="max-sm:sr-only">{localeNames[locale]}</span>
+        <span className="max-sm:sr-only md:max-lg:sr-only">{localeNames[locale]}</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         {locales.map((loc) => (

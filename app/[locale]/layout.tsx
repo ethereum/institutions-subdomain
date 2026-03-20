@@ -113,7 +113,7 @@ export default async function RootLayout({ children, params }: Props) {
       >
         <NextIntlClientProvider messages={messages}>
           <header className="group-has-[.css-primary-invert]/body:bg-primary w-full max-w-screen">
-            <div className="max-w-8xl mx-auto flex justify-between p-4 pb-10 sm:p-10">
+            <div className="max-w-8xl mx-auto flex justify-between p-4 pb-10 sm:p-10 gap-x-6">
               <Link
                 href="/"
                 aria-label={tLayout("goHome")}
