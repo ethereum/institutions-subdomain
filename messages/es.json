@@ -75,9 +75,7 @@
       "stablecoinTvlLabel": "TVL de monedas estables",
       "stablecoinMarketShare": "{percent}+ del suministro global",
       "defiTvlLabel": "TVL de DeFi",
-      "defiMarketShare": "{percent}+ de todas las cadenas de bloques",
-      "dexVolumeLabel": "Volumen de DEX en 24 horas",
-      "dexVolumeSubLabel": "(promedio de 12 meses)"
+      "defiMarketShare": "{percent}+ de todas las cadenas de bloques"
     },
     "useCases": {
       "heading": "Casos de uso institucional",
@@ -217,7 +215,6 @@
     },
     "overview": {
       "srHeading": "Resumen de activos del mundo real y monedas estables",
-      "description": "Las instituciones tokenizan acciones, ofrecen liquidación 24/7, despliegan efectivo programable, lanzan rieles de pago y más, en el ecosistema líquido, abierto y resiliente de Ethereum y sus L2",
       "stablecoinsL1": "Monedas estables en Ethereum L1",
       "stablecoinsL2": "Monedas estables en Ethereum L2"
     },
@@ -251,32 +248,10 @@
     "cards": {
       "by": "Por {issuer}",
       "buidlDesc": "Fondo de Liquidez Digital Institucional en USD de {brand}",
-      "ustbDesc": "Fondo de Valores del Gobierno de EE. UU. de Corta Duración de {brand}",
-      "ousgDesc": "Fondo de Bonos del Gobierno de EE. UU. a Corto Plazo de {brand}"
+      "ustbDesc": "Fondo de Valores del Gobierno de EE. UU. de Corta Duración de {brand}"
     },
     "why": {
-      "heading": "Por qué Ethereum para la infraestructura del mercado financiero",
-      "description": "Liquidación creíble, alcance global. Ethereum combina una capa de liquidación L1 máximamente neutral con entornos de ejecución L2 que ofrecen escala y eficiencia de costos, para que las instituciones puedan mover valor similar al efectivo y activos de corta duración con auditabilidad y controles programáticos.",
-      "l1": {
-        "heading": "Ethereum L1",
-        "subheading": "La capa de liquidación y liquidez",
-        "finality": "Finalidad y neutralidad creíble",
-        "finalityDesc": "Liquidación de alto valor, raíces de estado para rollups y registros duraderos que las instituciones pueden auditar y atestar",
-        "security": "Seguridad",
-        "securityDesc": "Los activos pueden almacenarse en un entorno diseñado para resistir grandes catástrofes y tensiones geopolíticas",
-        "riskGating": "Limitación de riesgos",
-        "riskGatingDesc": "Mantenga la lógica compleja o experimental fuera de la L1; úsela para la liquidación final, la custodia de garantías y las pruebas"
-      },
-      "l2": {
-        "heading": "L2 de Ethereum",
-        "subheading": "La capa de ejecución y escalabilidad",
-        "throughput": "Rendimiento y experiencia de usuario",
-        "throughputDesc": "Los rollups procesan transacciones fuera de cadena, heredan la seguridad de la L1 y ofrecen tarifas bajas adecuadas para pagos, creación de mercado y flujos de alta frecuencia",
-        "configurable": "Configurable",
-        "configurableDesc": "Las L2 pueden añadir funciones de cumplimiento, como listas de permitidos o grupos con KYC, manteniendo su carácter no custodio y liquidando en la L1",
-        "specialization": "Especialización",
-        "specializationDesc": "Múltiples L2 permiten a las instituciones segregar las cargas de trabajo, como los pagos minoristas frente a las operaciones de tesorería, sin fragmentar la confianza, porque la liquidación se concilia en la L1"
-      }
+      "heading": "Por qué Ethereum para la infraestructura del mercado financiero"
     },
     "metadata": {
       "title": "Monedas estables y tokenización de activos | RWA en Ethereum",
@@ -573,9 +548,7 @@
     "metrics": {
       "srHeading": "Resumen del ecosistema de capa 2",
       "tvlAcross": "TVL en todas las L2",
-      "avgTxCost": "Costo promedio diario por transacción",
-      "avgUops": "Promedio",
-      "numberOfL2s": "Número de L2"
+      "avgUops": "Promedio"
     },
     "role": {
       "heading": "El papel de las L2",
@@ -680,7 +653,6 @@
     "frameworks": {
       "arbitrum": "Un conjunto de soluciones de escalado de Ethereum que facilitan la creación y el uso de aplicaciones descentralizadas.",
       "optimism": "El OP Stack es una pila de desarrollo estandarizada para poner en marcha una L2. La Superchain es una red de cadenas interoperables basadas en el OP Stack.",
-      "polygon": "Los protocolos y las tecnologías de escalado de Polygon se utilizan para crear y desplegar aplicaciones, o lanzar rollups ZK y validiums como L2.",
       "zksync": "Un motor de escalado y privacidad para Ethereum con una red de cadenas interoperables, asegurado por tecnología de privacidad ZK."
     },
     "networksSection": {

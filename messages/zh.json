@@ -75,9 +75,7 @@
       "stablecoinTvlLabel": "稳定币总锁仓量 (TVL)",
       "stablecoinMarketShare": "占全球供应量的 {percent}+",
       "defiTvlLabel": "DeFi 总锁仓量 (TVL)",
-      "defiMarketShare": "占所有区块链的 {percent}+",
-      "dexVolumeLabel": "24 小时 DEX 交易量",
-      "dexVolumeSubLabel": "（12 个月平均值）"
+      "defiMarketShare": "占所有区块链的 {percent}+"
     },
     "useCases": {
       "heading": "机构应用案例",
@@ -217,7 +215,6 @@
     },
     "overview": {
       "srHeading": "RWA 与稳定币概览",
-      "description": "依托以太坊及其 L2 构建的流动、开放且高韧性的生态系统，机构正在开展股票代币化、提供 24/7 全天候结算、部署可编程现金及打造支付轨道等业务。",
       "stablecoinsL1": "部署于以太坊 L1 的稳定币",
       "stablecoinsL2": "部署于以太坊 L2 的稳定币"
     },
@@ -251,32 +248,10 @@
     "cards": {
       "by": "发行方：{issuer}",
       "buidlDesc": "{brand} 美元机构数字流动性基金",
-      "ustbDesc": "{brand} 短久期美国政府证券基金",
-      "ousgDesc": "{brand} 短期美国政府债券基金"
+      "ustbDesc": "{brand} 短久期美国政府证券基金"
     },
     "why": {
-      "heading": "为何选择以太坊作为金融市场基础设施",
-      "description": "可信结算，全球覆盖。以太坊将高度中立的 L1 结算层与兼具规模和成本效益的 L2 执行环境相结合，使机构能够在保持可审计性与程序化管控的同时，流转类现金资产与短久期产品。",
-      "l1": {
-        "heading": "以太坊 L1",
-        "subheading": "结算与流动性层",
-        "finality": "最终确定性与可信中立",
-        "finalityDesc": "为高价值结算与 Rollup 状态根提供保障，生成机构可审计、可验证的持久链上记录。",
-        "security": "安全性",
-        "securityDesc": "资产可存储于一个能够抵御重大灾难与地缘政治风险的环境中。",
-        "riskGating": "风险隔离",
-        "riskGatingDesc": "将复杂或实验性的业务逻辑隔离出 L1；使主网专注于最终结算、抵押品托管与密码学证明。"
-      },
-      "l2": {
-        "heading": "以太坊 L2",
-        "subheading": "执行与扩容层",
-        "throughput": "吞吐量与用户体验",
-        "throughputDesc": "Rollup 在链下处理交易，继承 L1 安全性，并提供适合支付、做市及高频资金流转的低费率。",
-        "configurable": "灵活可配",
-        "configurableDesc": "L2 可嵌入合规功能（如白名单或 KYC 资金池），在保持非托管特性的同时，最终结算至 L1。",
-        "specialization": "业务专精",
-        "specializationDesc": "多样化的 L2 支持机构将不同工作负载（如零售支付与资金管理）进行隔离；由于最终对账在 L1 完成，信任基础不会割裂。"
-      }
+      "heading": "为何选择以太坊作为金融市场基础设施"
     },
     "metadata": {
       "title": "稳定币与资产代币化 | 以太坊 RWA 生态",
@@ -573,9 +548,7 @@
     "metrics": {
       "srHeading": "Layer 2 生态概览",
       "tvlAcross": "各 L2 总锁仓量 (TVL)",
-      "avgTxCost": "日均交易成本",
-      "avgUops": "均值",
-      "numberOfL2s": "L2 网络数量"
+      "avgUops": "均值"
     },
     "role": {
       "heading": "L2 的角色",
@@ -680,7 +653,6 @@
     "frameworks": {
       "arbitrum": "一套以太坊扩容解决方案，让构建与使用去中心化应用变得简单。",
       "optimism": "OP Stack 是一套标准化的开发框架，用于快速启动 L2。Superchain 是由互操作的 OP Stack 链组成的网络。",
-      "polygon": "Polygon 的协议与扩容技术用于构建和部署应用，或启动 ZK Rollup 和 Validium 作为 L2。",
       "zksync": "以太坊的扩容与隐私引擎，通过 ZK 隐私技术构建安全且互操作的链网络。"
     },
     "networksSection": {
