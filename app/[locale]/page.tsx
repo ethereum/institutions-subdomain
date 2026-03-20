@@ -68,11 +68,9 @@ import coinbase from "@/public/images/logos/institutions/coinbase.png"
 import coinbaseSvg from "@/public/images/logos/institutions/coinbase.svg"
 import etoro from "@/public/images/logos/institutions/etoro.png"
 import fidelity from "@/public/images/logos/institutions/fidelity.png"
-import fidelityLight from "@/public/images/logos/institutions/fidelity-light.png"
 import jpMorgan from "@/public/images/logos/institutions/jp-morgan.svg"
-import jpMorganLight from "@/public/images/logos/institutions/jp-morgan-light.svg"
 import mastercard from "@/public/images/logos/institutions/mastercard.png"
-import morganStanleyLight from "@/public/images/logos/institutions/morgan-stanley-light.svg"
+import morganStanley from "@/public/images/logos/institutions/morgan-stanley.svg"
 import robinhood from "@/public/images/logos/institutions/robinhood.png"
 import standardChartered from "@/public/images/logos/institutions/standard-chartered.svg"
 import swift from "@/public/images/logos/institutions/swift.png"
@@ -86,12 +84,12 @@ const logos: { src: StaticImageData; alt: string; className?: string }[] = [
   { src: blackRock, alt: "BlackRock logo" },
   { src: coinbase, alt: "Coinbase logo" },
   { src: etoro, alt: "eToro logo" },
-  { src: fidelityLight, alt: "Fidelity logo" },
-  { src: jpMorganLight, alt: "JPMorgan logo" },
+  { src: fidelity, alt: "Fidelity logo", className: "invert" },
+  { src: jpMorgan, alt: "JPMorgan logo", className: "invert" },
   {
-    src: morganStanleyLight,
+    src: morganStanley,
     alt: "Morgan Stanley logo",
-    className: "h-[18px]",
+    className: "h-[18px] invert",
   },
   { src: mastercard, alt: "Mastercard logo" },
   { src: robinhood, alt: "Robinhood logo" },
