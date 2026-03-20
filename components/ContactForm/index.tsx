@@ -1,11 +1,11 @@
 "use client"
 
 import React, { useEffect, useMemo, useRef, useState } from "react"
-import HCaptcha from "@hcaptcha/react-hcaptcha"
 import { HeartHandshake, TriangleAlert } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { useTranslations } from "next-intl"
 import posthog from "posthog-js"
+import HCaptcha from "@hcaptcha/react-hcaptcha"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -122,9 +122,7 @@ const EnterpriseContactForm = () => {
     return undefined
   }
 
-  const validateMessage = (
-    message: string
-  ): React.ReactNode | undefined => {
+  const validateMessage = (message: string): React.ReactNode | undefined => {
     const sanitized = sanitizeInput(message)
     if (!sanitized) return t("errors.required")
     if (sanitized.length > MAX_MESSAGE_LENGTH)
@@ -240,9 +238,7 @@ const EnterpriseContactForm = () => {
           <HeartHandshake className="text-primary-foreground size-8" />
           <h4 className="text-xl font-semibold">{t("successTitle")}</h4>
         </div>
-        <p className="text-body-medium">
-          {t("successMessage")}
-        </p>
+        <p className="text-body-medium">{t("successMessage")}</p>
       </div>
     )
 
@@ -338,7 +334,6 @@ const EnterpriseContactForm = () => {
 
       <HCaptcha
         sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY!}
-        size="compact"
         theme="dark"
         ref={captchaRef}
         onVerify={setCaptchaToken}
