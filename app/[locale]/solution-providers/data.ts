@@ -10,12 +10,7 @@ export type MacroCategory =
   | "Consulting & Advisory"
   | "Developer Tools"
 
-export type Region =
-  | "Americas"
-  | "Europe"
-  | "APAC"
-  | "MENA"
-  | "Global"
+export type Region = "Americas" | "Europe" | "APAC" | "MENA" | "Global"
 
 export interface SolutionProvider {
   name: string
@@ -70,7 +65,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Crypto VC",
     region: ["Americas"],
     url: "https://a16zcrypto.com",
-    description: "Leading crypto venture fund, major Ethereum ecosystem investor",
+    description:
+      "Leading crypto venture fund, major Ethereum ecosystem investor",
   },
   {
     name: "Aave",
@@ -78,7 +74,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Lending / Borrowing",
     region: ["Global"],
     url: "https://aave.com",
-    description: "Leading decentralized lending protocol, Aave Arc for institutions",
+    description:
+      "Leading decentralized lending protocol, Aave Arc for institutions",
   },
   {
     name: "Aave Grants DAO",
@@ -86,7 +83,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Protocol Grants",
     region: ["Global"],
     url: "https://aavegrants.org",
-    description: "Community-led grants program funding Aave & Ethereum ecosystem development",
+    description:
+      "Community-led grants program funding Aave & Ethereum ecosystem development",
   },
   {
     name: "ABN AMRO",
@@ -94,7 +92,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenized Bonds",
     region: ["Europe"],
     url: "https://abnamro.com",
-    description: "Issued digital bond on Ethereum public network, exploring institutional blockchain settlement",
+    description:
+      "Issued digital bond on Ethereum public network, exploring institutional blockchain settlement",
   },
   {
     name: "Accenture Blockchain",
@@ -118,7 +117,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Stablecoin Issuer",
     region: ["Americas"],
     url: "https://agora.finance",
-    description: "Institutional-grade USD stablecoin (AUSD) on Ethereum backed by VanEck, DragonFly",
+    description:
+      "Institutional-grade USD stablecoin (AUSD) on Ethereum backed by VanEck, DragonFly",
   },
   {
     name: "Alchemy",
@@ -126,7 +126,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Node / Developer Platform",
     region: ["Americas"],
     url: "https://alchemy.com",
-    description: "Web3 development platform, node infrastructure, enhanced APIs",
+    description:
+      "Web3 development platform, node infrastructure, enhanced APIs",
   },
   {
     name: "Alchemy (Account Kit)",
@@ -134,7 +135,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "AA Infrastructure",
     region: ["Americas"],
     url: "https://accountkit.alchemy.com",
-    description: "Account Kit SDK for embedded smart accounts, gasless transactions & session keys",
+    description:
+      "Account Kit SDK for embedded smart accounts, gasless transactions & session keys",
   },
   {
     name: "Allen & Overy (A&O Shearman)",
@@ -150,7 +152,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Web3 Accelerator",
     region: ["Americas"],
     url: "https://alliance.xyz",
-    description: "Leading Web3 accelerator for crypto-native startups, strong Ethereum ecosystem focus",
+    description:
+      "Leading Web3 accelerator for crypto-native startups, strong Ethereum ecosystem focus",
   },
   {
     name: "Allnodes",
@@ -166,7 +169,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Liquid Staking",
     region: ["Americas", "Europe"],
     url: "https://alluvial.finance",
-    description: "Enterprise liquid staking standard, development company supporting Liquid Collective (LsETH), institutional staking protocol",
+    description:
+      "Enterprise liquid staking standard, development company supporting Liquid Collective (LsETH), institutional staking protocol",
   },
   {
     name: "AltLayer",
@@ -174,7 +178,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Rollups-as-a-Service",
     region: ["APAC"],
     url: "https://altlayer.io",
-    description: "Rollups-as-a-Service platform, restaked rollups with EigenLayer integration, multi-stack L2 deployment",
+    description:
+      "Rollups-as-a-Service platform, restaked rollups with EigenLayer integration, multi-stack L2 deployment",
   },
   {
     name: "Amber Group",
@@ -190,7 +195,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Data Platform",
     region: ["Americas"],
     url: "https://amberdata.io",
-    description: "Institutional digital asset data infrastructure, DeFi & market analytics APIs",
+    description:
+      "Institutional digital asset data infrastructure, DeFi & market analytics APIs",
   },
   {
     name: "Anchorage Digital",
@@ -198,7 +204,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Qualified Custodian / Bank",
     region: ["Americas"],
     url: "https://anchorage.com",
-    description: "Federally chartered digital asset bank, institutional custody & staking",
+    description:
+      "Federally chartered digital asset bank, institutional custody & staking",
   },
   {
     name: "Anchorage Digital Bank",
@@ -206,7 +213,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Federally Chartered Crypto Bank",
     region: ["Americas"],
     url: "https://anchorage.com",
-    description: "OCC-chartered digital asset bank, institutional custody, staking, trading & governance",
+    description:
+      "OCC-chartered digital asset bank, institutional custody, staking, trading & governance",
   },
   {
     name: "Anoma / Namada",
@@ -214,7 +222,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Intent-Centric Architecture",
     region: ["Global"],
     url: "https://anoma.net",
-    description: "Intent-centric protocol architecture, privacy-focused settlement layer",
+    description:
+      "Intent-centric protocol architecture, privacy-focused settlement layer",
   },
   {
     name: "Aon (Digital Assets)",
@@ -222,7 +231,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Traditional Insurance",
     region: ["Global"],
     url: "https://aon.com",
-    description: "Traditional insurance broker with digital asset risk practice",
+    description:
+      "Traditional insurance broker with digital asset risk practice",
   },
   {
     name: "API3",
@@ -238,7 +248,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenized Credit Fund",
     region: ["Americas"],
     url: "https://apollo.com",
-    description: "Onchain credit fund via Securitize on Ethereum, institutional private credit tokenization",
+    description:
+      "Onchain credit fund via Securitize on Ethereum, institutional private credit tokenization",
   },
   {
     name: "Aquanow",
@@ -246,7 +257,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Digital Asset Infrastructure",
     region: ["Americas"],
     url: "https://aquanow.com",
-    description: "Institutional digital asset infrastructure, liquidity, trading & payment solutions for financial institutions",
+    description:
+      "Institutional digital asset infrastructure, liquidity, trading & payment solutions for financial institutions",
   },
   {
     name: "Aragon",
@@ -270,7 +282,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Grants / Ecosystem",
     region: ["Americas"],
     url: "https://arbitrum.foundation",
-    description: "Arbitrum ecosystem grants, incentive programs & L2 ecosystem development",
+    description:
+      "Arbitrum ecosystem grants, incentive programs & L2 ecosystem development",
   },
   {
     name: "Archax",
@@ -286,7 +299,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "On-Chain Intelligence",
     region: ["Americas"],
     url: "https://arkhamintelligence.com",
-    description: "Entity-level blockchain intelligence & deanonymization platform",
+    description:
+      "Entity-level blockchain intelligence & deanonymization platform",
   },
   {
     name: "Autonolas / Olas",
@@ -302,7 +316,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Data Availability Layer",
     region: ["Global"],
     url: "https://availproject.org",
-    description: "Modular data availability layer designed for Ethereum rollup scalability",
+    description:
+      "Modular data availability layer designed for Ethereum rollup scalability",
   },
   {
     name: "Axelar",
@@ -326,7 +341,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "DeFi Risk / Backstop",
     region: ["Global"],
     url: "https://bprotocol.org",
-    description: "DeFi risk management & backstop liquidity protocol, vault curation on Morpho",
+    description:
+      "DeFi risk management & backstop liquidity protocol, vault curation on Morpho",
   },
   {
     name: "B2C2",
@@ -350,7 +366,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Blockchain Banking",
     region: ["Europe"],
     url: "https://bankfrick.li",
-    description: "Regulated bank offering blockchain banking, tokenization & digital asset custody",
+    description:
+      "Regulated bank offering blockchain banking, tokenization & digital asset custody",
   },
   {
     name: "Bankless",
@@ -374,7 +391,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenized Products",
     region: ["Europe"],
     url: "https://bbva.com",
-    description: "BBVA tokenized structured products & digital asset services in Switzerland",
+    description:
+      "BBVA tokenized structured products & digital asset services in Switzerland",
   },
   {
     name: "BCB Group",
@@ -382,7 +400,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Crypto Payments & Banking",
     region: ["Europe"],
     url: "https://bcbgroup.com",
-    description: "Regulated crypto payments & banking infrastructure for institutions (BLINC network)",
+    description:
+      "Regulated crypto payments & banking infrastructure for institutions (BLINC network)",
   },
   {
     name: "BCG (Boston Consulting Group)",
@@ -398,7 +417,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Execution Client",
     region: ["Global"],
     url: "https://besu.hyperledger.org",
-    description: "Enterprise-grade Ethereum client, permissioned & public networks",
+    description:
+      "Enterprise-grade Ethereum client, permissioned & public networks",
   },
   {
     name: "Biconomy",
@@ -414,7 +434,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "ETH Treasury / Mining",
     region: ["Americas"],
     url: "https://bit-digital.com",
-    description: "Nasdaq-listed digital asset company with significant ETH treasury & staking operations",
+    description:
+      "Nasdaq-listed digital asset company with significant ETH treasury & staking operations",
   },
   {
     name: "BitGo",
@@ -422,7 +443,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Qualified Custodian",
     region: ["Americas"],
     url: "https://bitgo.com",
-    description: "Qualified custodian for digital assets, multi-sig wallets, institutional trading",
+    description:
+      "Qualified custodian for digital assets, multi-sig wallets, institutional trading",
   },
   {
     name: "BitMine Immersion (BMNR)",
@@ -430,7 +452,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "ETH Treasury Company",
     region: ["Americas"],
     url: "https://bitmineimmersion.com",
-    description: "World's #1 ETH treasury, 4.3M+ ETH ($10B+), NYSE-listed, institutional ETH accumulation & staking (MAVAN)",
+    description:
+      "World's #1 ETH treasury, 4.3M+ ETH ($10B+), NYSE-listed, institutional ETH accumulation & staking (MAVAN)",
   },
   {
     name: "Bitstamp",
@@ -462,7 +485,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenized Fund / ETF",
     region: ["Americas"],
     url: "https://blackrock.com",
-    description: "BUIDL tokenized treasury fund on Ethereum, iShares ETH ETF (ETHA)",
+    description:
+      "BUIDL tokenized treasury fund on Ethereum, iShares ETH ETF (ETHA)",
   },
   {
     name: "Blast",
@@ -478,7 +502,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Risk Analytics",
     region: ["Europe"],
     url: "https://blockanalitica.com",
-    description: "DeFi risk analytics, risk curator for MakerDAO & Morpho vaults",
+    description:
+      "DeFi risk analytics, risk curator for MakerDAO & Morpho vaults",
   },
   {
     name: "Blockdaemon",
@@ -486,7 +511,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Node Infrastructure",
     region: ["Americas"],
     url: "https://blockdaemon.com",
-    description: "Institutional blockchain infrastructure, multi-cloud node hosting",
+    description:
+      "Institutional blockchain infrastructure, multi-cloud node hosting",
   },
   {
     name: "Blocknative",
@@ -494,7 +520,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Mempool / Transaction Infra",
     region: ["Americas"],
     url: "https://blocknative.com",
-    description: "Mempool monitoring, transaction simulation, gas estimation & block building infrastructure",
+    description:
+      "Mempool monitoring, transaction simulation, gas estimation & block building infrastructure",
   },
   {
     name: "Blockworks Research",
@@ -502,7 +529,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Research",
     region: ["Americas"],
     url: "https://blockworksresearch.com",
-    description: "Institutional-grade DeFi & protocol research, governance analytics platform",
+    description:
+      "Institutional-grade DeFi & protocol research, governance analytics platform",
   },
   {
     name: "bloXroute",
@@ -518,7 +546,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Custody / Tokenization",
     region: ["Americas"],
     url: "https://bnymellon.com",
-    description: "Oldest US bank, digital asset custody & tokenization platform for institutional clients",
+    description:
+      "Oldest US bank, digital asset custody & tokenization platform for institutional clients",
   },
   {
     name: "BNY Mellon (Digital Assets)",
@@ -526,7 +555,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Custody / Settlement",
     region: ["Americas"],
     url: "https://bnymellon.com",
-    description: "World's largest custodian, digital asset custody platform for Ethereum & Bitcoin",
+    description:
+      "World's largest custodian, digital asset custody platform for Ethereum & Bitcoin",
   },
   {
     name: "BNY Mellon Digital Custody",
@@ -534,7 +564,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Qualified Custodian",
     region: ["Americas"],
     url: "https://bnymellon.com",
-    description: "World's largest custodian bank, digital asset custody platform for Bitcoin & Ethereum",
+    description:
+      "World's largest custodian bank, digital asset custody platform for Bitcoin & Ethereum",
   },
   {
     name: "Cactus Custody",
@@ -542,7 +573,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Licensed Custodian",
     region: ["APAC"],
     url: "https://cactuscustody.com",
-    description: "Licensed Hong Kong Trust Company, institutional digital asset custody",
+    description:
+      "Licensed Hong Kong Trust Company, institutional digital asset custody",
   },
   {
     name: "Caldera",
@@ -550,7 +582,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Rollups-as-a-Service",
     region: ["Americas"],
     url: "https://caldera.xyz",
-    description: "High-performance rollup deployment platform, managed L2 infrastructure for teams & enterprises",
+    description:
+      "High-performance rollup deployment platform, managed L2 infrastructure for teams & enterprises",
   },
   {
     name: "CCData (CryptoCompare)",
@@ -558,7 +591,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Market Data / Indices",
     region: ["Europe"],
     url: "https://ccdata.io",
-    description: "Institutional crypto market data, indices & benchmarks used by ETF providers & regulators",
+    description:
+      "Institutional crypto market data, indices & benchmarks used by ETF providers & regulators",
   },
   {
     name: "Celestia",
@@ -566,7 +600,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Modular DA Layer",
     region: ["Global"],
     url: "https://celestia.org",
-    description: "Modular data availability layer used by Ethereum L2s for scalable DA",
+    description:
+      "Modular data availability layer used by Ethereum L2s for scalable DA",
   },
   {
     name: "Centrifuge",
@@ -574,7 +609,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Real World Asset Protocol",
     region: ["Americas", "Europe"],
     url: "https://centrifuge.io",
-    description: "DeFi protocol for tokenizing real-world assets, MakerDAO RWA partner",
+    description:
+      "DeFi protocol for tokenizing real-world assets, MakerDAO RWA partner",
   },
   {
     name: "Certora",
@@ -590,7 +626,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Regulated Benchmarks",
     region: ["Europe"],
     url: "https://cfbenchmarks.com",
-    description: "FCA-regulated crypto benchmark administrator, powers CME & major ETF pricing",
+    description:
+      "FCA-regulated crypto benchmark administrator, powers CME & major ETF pricing",
   },
   {
     name: "Chainalysis",
@@ -622,7 +659,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Slashing Insurance",
     region: ["Europe"],
     url: "https://chainproof.co",
-    description: "Specialized Ethereum slashing insurance for institutional staking operations",
+    description:
+      "Specialized Ethereum slashing insurance for institutional staking operations",
   },
   {
     name: "ChainSafe Systems",
@@ -638,7 +676,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Smart Contract Audits",
     region: ["Europe"],
     url: "https://chainsecurity.com",
-    description: "Smart contract auditing, formal verification (spun from ETH Zurich)",
+    description:
+      "Smart contract auditing, formal verification (spun from ETH Zurich)",
   },
   {
     name: "Chainstack",
@@ -654,7 +693,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Risk & Simulation",
     region: ["Americas", "MENA"],
     url: "https://chaoslabs.xyz",
-    description: "Onchain risk management, oracle infrastructure & economic security",
+    description:
+      "Onchain risk management, oracle infrastructure & economic security",
   },
   {
     name: "Chorus One",
@@ -686,7 +726,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenized Deposits / Settlements",
     region: ["Americas"],
     url: "https://citi.com",
-    description: "Citi Token Services for institutional cross-border payments & smart contract trade finance",
+    description:
+      "Citi Token Services for institutional cross-border payments & smart contract trade finance",
   },
   {
     name: "Clearpool",
@@ -694,7 +735,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Credit",
     region: ["APAC"],
     url: "https://clearpool.finance",
-    description: "Institutional unsecured credit marketplace, permissionless & permissioned lending pools",
+    description:
+      "Institutional unsecured credit marketplace, permissionless & permissioned lending pools",
   },
   {
     name: "Clearstream (Deutsche Börse)",
@@ -702,7 +744,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Digital Securities Services",
     region: ["Europe"],
     url: "https://clearstream.com",
-    description: "Post-trade services with D7 digital securities platform for tokenized issuance & settlement",
+    description:
+      "Post-trade services with D7 digital securities platform for tokenized issuance & settlement",
   },
   {
     name: "Clifford Chance",
@@ -718,7 +761,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Identity",
     region: ["Americas"],
     url: "https://clique.social",
-    description: "Onchain identity infrastructure, institutional attestation & proof of identity solutions",
+    description:
+      "Onchain identity infrastructure, institutional attestation & proof of identity solutions",
   },
   {
     name: "CME Group (ETH Futures)",
@@ -726,7 +770,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Regulated Futures Exchange",
     region: ["Americas"],
     url: "https://cmegroup.com",
-    description: "Regulated ETH futures & options, primary venue for institutional Ethereum derivatives",
+    description:
+      "Regulated ETH futures & options, primary venue for institutional Ethereum derivatives",
   },
   {
     name: "Code4rena",
@@ -742,7 +787,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "On-Chain / Market Data",
     region: ["Americas"],
     url: "https://coinmetrics.io",
-    description: "Institutional crypto data & network analytics, ATLAS onchain data feeds",
+    description:
+      "Institutional crypto data & network analytics, ATLAS onchain data feeds",
   },
   {
     name: "Coinbase",
@@ -758,7 +804,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Qualified Custodian",
     region: ["Americas"],
     url: "https://custody.coinbase.com",
-    description: "Institutional custody arm of Coinbase, supports ETH & ERC-20 tokens",
+    description:
+      "Institutional custody arm of Coinbase, supports ETH & ERC-20 tokens",
   },
   {
     name: "Coinbase Identity Verification",
@@ -782,7 +829,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Smart Wallet",
     region: ["Americas"],
     url: "https://coinbase.com",
-    description: "Coinbase smart wallet with passkey-based authentication & gas sponsorship",
+    description:
+      "Coinbase smart wallet with passkey-based authentication & gas sponsorship",
   },
   {
     name: "CoinDesk",
@@ -790,7 +838,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Crypto Media / Events",
     region: ["Americas"],
     url: "https://coindesk.com",
-    description: "Major crypto news & events (Consensus), institutional crypto coverage",
+    description:
+      "Major crypto news & events (Consensus), institutional crypto coverage",
   },
   {
     name: "Coinfirm (Lukka)",
@@ -806,7 +855,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Market Data Aggregator",
     region: ["APAC"],
     url: "https://coingecko.com",
-    description: "Comprehensive crypto market data aggregator, institutional API & treasury tracking",
+    description:
+      "Comprehensive crypto market data aggregator, institutional API & treasury tracking",
   },
   {
     name: "CoinShares",
@@ -814,7 +864,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "European Crypto ETP",
     region: ["Americas", "Europe"],
     url: "https://coinshares.com",
-    description: "Europe's largest digital asset investment company, Ethereum ETPs & research",
+    description:
+      "Europe's largest digital asset investment company, Ethereum ETPs & research",
   },
   {
     name: "Coinshift",
@@ -830,7 +881,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "MEV / Proposer Infrastructure",
     region: ["Global"],
     url: "https://commit-boost.com",
-    description: "Open-source proposer commitment infrastructure, MEV tooling for Ethereum validators",
+    description:
+      "Open-source proposer commitment infrastructure, MEV tooling for Ethereum validators",
   },
   {
     name: "Compound",
@@ -846,7 +898,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Rollup Deployment",
     region: ["Americas"],
     url: "https://conduit.xyz",
-    description: "Managed rollup infrastructure, one-click L2 deployment on OP Stack, Arbitrum Orbit & more",
+    description:
+      "Managed rollup infrastructure, one-click L2 deployment on OP Stack, Arbitrum Orbit & more",
   },
   {
     name: "Connext (Everclear)",
@@ -854,7 +907,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Cross-Chain Liquidity",
     region: ["Global"],
     url: "https://everclear.org",
-    description: "Cross-chain liquidity settlement protocol (formerly Connext), institutional bridging",
+    description:
+      "Cross-chain liquidity settlement protocol (formerly Connext), institutional bridging",
   },
   {
     name: "ConsenSys",
@@ -862,7 +916,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Web3 Consulting / Infra",
     region: ["Americas"],
     url: "https://consensys.io",
-    description: "Ethereum ecosystem leader: MetaMask, Infura, Linea, enterprise consulting",
+    description:
+      "Ethereum ecosystem leader: MetaMask, Infura, Linea, enterprise consulting",
   },
   {
     name: "ConsenSys Academy",
@@ -878,7 +933,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Smart Contract Audits",
     region: ["Americas"],
     url: "https://consensys.io/diligence",
-    description: "ConsenSys security auditing team for Ethereum smart contracts",
+    description:
+      "ConsenSys security auditing team for Ethereum smart contracts",
   },
   {
     name: "Consensys Mesh",
@@ -886,7 +942,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Venture Studio / Incubator",
     region: ["Americas"],
     url: "https://mesh.xyz",
-    description: "ConsenSys venture studio, incubating Ethereum ecosystem companies & infrastructure",
+    description:
+      "ConsenSys venture studio, incubating Ethereum ecosystem companies & infrastructure",
   },
   {
     name: "Consensys Staking",
@@ -894,7 +951,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Staking",
     region: ["Americas"],
     url: "https://consensys.io/staking",
-    description: "ConsenSys institutional staking with SOC2 Type II certification",
+    description:
+      "ConsenSys institutional staking with SOC2 Type II certification",
   },
   {
     name: "Cooley",
@@ -918,7 +976,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Intent-Based Trading",
     region: ["Europe"],
     url: "https://cow.fi",
-    description: "Intent-based trading protocol, batch auctions & MEV protection for Ethereum traders",
+    description:
+      "Intent-based trading protocol, batch auctions & MEV protection for Ethereum traders",
   },
   {
     name: "Credora",
@@ -926,7 +985,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Credit Assessment",
     region: ["Americas"],
     url: "https://credora.io",
-    description: "Real-time credit assessment for onchain & off-chain counterparties",
+    description:
+      "Real-time credit assessment for onchain & off-chain counterparties",
   },
   {
     name: "Crédit Agricole (CACEIS)",
@@ -934,7 +994,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Custody / Fund Services",
     region: ["Europe"],
     url: "https://caceis.com",
-    description: "Major European fund administrator exploring blockchain custody & tokenized fund servicing",
+    description:
+      "Major European fund administrator exploring blockchain custody & tokenized fund servicing",
   },
   {
     name: "Cumberland (DRW)",
@@ -966,7 +1027,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Law Firm",
     region: ["Americas"],
     url: "https://davispolk.com",
-    description: "Top-tier securities & crypto regulatory advisory, stablecoin legal frameworks",
+    description:
+      "Top-tier securities & crypto regulatory advisory, stablecoin legal frameworks",
   },
   {
     name: "Debevoise & Plimpton",
@@ -1014,7 +1076,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Crypto Research",
     region: ["Americas"],
     url: "https://delphidigital.io",
-    description: "Institutional crypto research & consulting, protocol analysis & DeFi strategy",
+    description:
+      "Institutional crypto research & consulting, protocol analysis & DeFi strategy",
   },
   {
     name: "Derive (formerly Lyra)",
@@ -1022,7 +1085,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "On-Chain Options",
     region: ["Global"],
     url: "https://derive.xyz",
-    description: "Onchain options protocol for ETH & crypto, institutional-grade derivatives on Ethereum",
+    description:
+      "Onchain options protocol for ETH & crypto, institutional-grade derivatives on Ethereum",
   },
   {
     name: "Deutsche Bank (Project DAMA 2)",
@@ -1030,7 +1094,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "L2 Exploration",
     region: ["Europe"],
     url: "https://db.com",
-    description: "Exploring Ethereum L2 (ZKsync-based) for tokenized assets & institutional use cases",
+    description:
+      "Exploring Ethereum L2 (ZKsync-based) for tokenized assets & institutional use cases",
   },
   {
     name: "Devcon / Devconnect",
@@ -1046,7 +1111,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Law Firm",
     region: ["Global"],
     url: "https://dlapiper.com",
-    description: "Global law firm with leading digital assets & blockchain practice",
+    description:
+      "Global law firm with leading digital assets & blockchain practice",
   },
   {
     name: "DTCC (Digital Asset Pilots)",
@@ -1054,7 +1120,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Post-Trade Infrastructure",
     region: ["Americas"],
     url: "https://dtcc.com",
-    description: "Central clearing & settlement piloting blockchain integration",
+    description:
+      "Central clearing & settlement piloting blockchain integration",
   },
   {
     name: "Dune Analytics",
@@ -1078,7 +1145,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Perpetual DEX",
     region: ["Global"],
     url: "https://dydx.exchange",
-    description: "Leading decentralized perpetuals exchange, Ethereum ecosystem-aligned",
+    description:
+      "Leading decentralized perpetuals exchange, Ethereum ecosystem-aligned",
   },
   {
     name: "EDXM",
@@ -1086,7 +1154,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Exchange",
     region: ["Americas"],
     url: "https://edxmarkets.com",
-    description: "Institutional crypto exchange backed by Citadel, Fidelity & Schwab",
+    description:
+      "Institutional crypto exchange backed by Citadel, Fidelity & Schwab",
   },
   {
     name: "EigenDA",
@@ -1094,7 +1163,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Data Availability Layer",
     region: ["Americas"],
     url: "https://eigenlayer.xyz",
-    description: "EigenCloud-based data availability layer for Ethereum rollups, high-throughput DA",
+    description:
+      "EigenCloud-based data availability layer for Ethereum rollups, high-throughput DA",
   },
   {
     name: "EigenCloud",
@@ -1102,7 +1172,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Restaking Protocol",
     region: ["Americas"],
     url: "https://www.eigencloud.xyz",
-    description: "Restaking protocol enabling ETH stakers to secure additional services (AVS)",
+    description:
+      "Restaking protocol enabling ETH stakers to secure additional services (AVS)",
   },
   {
     name: "Electric Capital",
@@ -1134,7 +1205,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Industry Membership Body",
     region: ["Global"],
     url: "https://entethalliance.org",
-    description: "Global standards org for enterprise Ethereum adoption, 250+ member companies, working groups & specifications",
+    description:
+      "Global standards org for enterprise Ethereum adoption, 250+ member companies, working groups & specifications",
   },
   {
     name: "Enzyme Finance",
@@ -1158,7 +1230,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Synthetic Dollar",
     region: ["Global"],
     url: "https://ethena.fi",
-    description: "Synthetic dollar protocol (USDe) with institutional-grade yield",
+    description:
+      "Synthetic dollar protocol (USDe) with institutional-grade yield",
   },
   {
     name: "Ethena (USDe)",
@@ -1166,7 +1239,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Synthetic Dollar",
     region: ["Global"],
     url: "https://ethena.fi",
-    description: "Synthetic dollar protocol (USDe) with delta-hedged institutional yield, EEA member",
+    description:
+      "Synthetic dollar protocol (USDe) with delta-hedged institutional yield, EEA member",
   },
   {
     name: "Ether Capital",
@@ -1174,7 +1248,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "ETH Treasury Company",
     region: ["Americas"],
     url: "https://ethcap.co",
-    description: "Canadian public company (NEO: ETHC) focused on Ethereum treasury & staking yield strategy",
+    description:
+      "Canadian public company (NEO: ETHC) focused on Ethereum treasury & staking yield strategy",
   },
   {
     name: "Etherealize",
@@ -1206,7 +1281,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Liquid Staking / Restaking",
     region: ["Global"],
     url: "https://ether.fi",
-    description: "Non-custodial liquid staking & restaking with NFT validator receipts",
+    description:
+      "Non-custodial liquid staking & restaking with NFT validator receipts",
   },
   {
     name: "EtherFi Cash",
@@ -1214,7 +1290,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "DeFi / Payments",
     region: ["Global"],
     url: "https://cash.ether.fi",
-    description: "DeFi-native spending card, restaking yield for real-world payments on Ethereum",
+    description:
+      "DeFi-native spending card, restaking yield for real-world payments on Ethereum",
   },
   {
     name: "Etherisc",
@@ -1246,7 +1323,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Post-Trade / DLT Settlement",
     region: ["Europe"],
     url: "https://euroclear.com",
-    description: "Global post-trade services exploring DLT-based settlement for tokenized securities",
+    description:
+      "Global post-trade services exploring DLT-based settlement for tokenized securities",
   },
   {
     name: "EY Blockchain (OpsChain)",
@@ -1254,7 +1332,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Big 4 Consulting",
     region: ["Global"],
     url: "https://ey.com",
-    description: "Enterprise blockchain solutions, Nightfall privacy protocol, tokenization",
+    description:
+      "Enterprise blockchain solutions, Nightfall privacy protocol, tokenization",
   },
   {
     name: "EY Nightfall",
@@ -1270,7 +1349,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Prime Broker / Trading",
     region: ["Americas"],
     url: "https://falconx.io",
-    description: "Institutional crypto prime broker with trading, credit & settlement",
+    description:
+      "Institutional crypto prime broker with trading, credit & settlement",
   },
   {
     name: "Fidelity Digital Assets",
@@ -1286,7 +1366,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Staking",
     region: ["Americas"],
     url: "https://figment.io",
-    description: "Institutional staking infrastructure provider, validator operations",
+    description:
+      "Institutional staking infrastructure provider, validator operations",
   },
   {
     name: "Finality Capital Partners",
@@ -1294,7 +1375,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Staking / Investment",
     region: ["Europe"],
     url: "https://finalitycap.com",
-    description: "PoS-focused investment firm, institutional staking & protocol investment",
+    description:
+      "PoS-focused investment firm, institutional staking & protocol investment",
   },
   {
     name: "Finery Markets",
@@ -1302,7 +1384,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Trading",
     region: ["Europe"],
     url: "https://finerymarkets.com",
-    description: "Non-custodial electronic OTC trading platform for institutions",
+    description:
+      "Non-custodial electronic OTC trading platform for institutions",
   },
   {
     name: "Finoa",
@@ -1318,7 +1401,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "MPC Custody / Infrastructure",
     region: ["Americas", "MENA"],
     url: "https://fireblocks.com",
-    description: "Institutional digital asset custody & transfer platform, MPC-based wallet infrastructure",
+    description:
+      "Institutional digital asset custody & transfer platform, MPC-based wallet infrastructure",
   },
   {
     name: "Flashbots",
@@ -1326,7 +1410,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "MEV Infrastructure",
     region: ["Americas"],
     url: "https://flashbots.net",
-    description: "MEV protection, block building & transaction ordering infrastructure",
+    description:
+      "MEV protection, block building & transaction ordering infrastructure",
   },
   {
     name: "Flipside Crypto",
@@ -1334,7 +1419,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "On-Chain Analytics",
     region: ["Americas"],
     url: "https://flipsidecrypto.xyz",
-    description: "Community-powered onchain analytics, structured blockchain data for institutions",
+    description:
+      "Community-powered onchain analytics, structured blockchain data for institutions",
   },
   {
     name: "Fluid (Instadapp)",
@@ -1342,7 +1428,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Lending / DEX",
     region: ["Global"],
     url: "https://fluid.instadapp.io",
-    description: "Unified liquidity layer combining lending & DEX, institutional-grade DeFi protocol",
+    description:
+      "Unified liquidity layer combining lending & DEX, institutional-grade DeFi protocol",
   },
   {
     name: "Fnality International",
@@ -1366,7 +1453,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Threat Detection",
     region: ["Global"],
     url: "https://forta.org",
-    description: "Decentralized real-time threat detection network for smart contracts & transactions",
+    description:
+      "Decentralized real-time threat detection network for smart contracts & transactions",
   },
   {
     name: "Foundry (Paradigm)",
@@ -1382,7 +1470,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Crypto VC / Investment",
     region: ["APAC"],
     url: "https://fracton.ventures",
-    description: "Japan-based Web3 venture firm, Ethereum ecosystem investor & ecosystem builder",
+    description:
+      "Japan-based Web3 venture firm, Ethereum ecosystem investor & ecosystem builder",
   },
   {
     name: "Franklin Templeton",
@@ -1398,7 +1487,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Optimistic Rollup (OP Stack)",
     region: ["Global"],
     url: "https://frax.com",
-    description: "Frax ecosystem L2, frxETH liquid staking & modular DeFi infrastructure",
+    description:
+      "Frax ecosystem L2, frxETH liquid staking & modular DeFi infrastructure",
   },
   {
     name: "Gateway.fm",
@@ -1406,7 +1496,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Node / RPC / Rollup Infra",
     region: ["Europe", "Global"],
     url: "https://gateway.fm",
-    description: "Enterprise-grade blockchain infra, Top-15 ETH validator, rollup deployment (Presto), co-developed Polygon zkEVM",
+    description:
+      "Enterprise-grade blockchain infra, Top-15 ETH validator, rollup deployment (Presto), co-developed Polygon zkEVM",
   },
   {
     name: "Gauntlet",
@@ -1414,7 +1505,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Risk Modeling / Simulation",
     region: ["Americas"],
     url: "https://gauntlet.xyz",
-    description: "DeFi risk management platform, economic modeling & parameter optimization",
+    description:
+      "DeFi risk management platform, economic modeling & parameter optimization",
   },
   {
     name: "Gearbox Protocol",
@@ -1422,7 +1514,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Leveraged DeFi",
     region: ["Global"],
     url: "https://gearbox.fi",
-    description: "Composable leverage protocol enabling institutional strategies across DeFi with credit accounts",
+    description:
+      "Composable leverage protocol enabling institutional strategies across DeFi with credit accounts",
   },
   {
     name: "Gelato Network",
@@ -1430,7 +1523,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Smart Contract Automation / RaaS",
     region: ["Europe"],
     url: "https://gelato.network",
-    description: "Smart contract automation, gasless transactions, relay, VRFs & rollup-as-a-service deployment",
+    description:
+      "Smart contract automation, gasless transactions, relay, VRFs & rollup-as-a-service deployment",
   },
   {
     name: "Gemini",
@@ -1454,7 +1548,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Public Goods Funding",
     region: ["Global"],
     url: "https://gitcoin.co",
-    description: "Leading Ethereum public goods funding platform, quadratic funding rounds for ecosystem projects",
+    description:
+      "Leading Ethereum public goods funding platform, quadratic funding rounds for ecosystem projects",
   },
   {
     name: "Giza",
@@ -1478,7 +1573,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Perpetual DEX (Arbitrum)",
     region: ["Global"],
     url: "https://gmx.io",
-    description: "Decentralized perpetuals & spot exchange on Arbitrum, major Ethereum L2 derivatives venue",
+    description:
+      "Decentralized perpetuals & spot exchange on Arbitrum, major Ethereum L2 derivatives venue",
   },
   {
     name: "Gnosis Pay",
@@ -1494,7 +1590,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenization Platform",
     region: ["Americas"],
     url: "https://goldmansachs.com",
-    description: "Digital Asset Platform (GS DAP) for tokenized bond issuance on private Ethereum-based infrastructure",
+    description:
+      "Digital Asset Platform (GS DAP) for tokenized bond issuance on private Ethereum-based infrastructure",
   },
   {
     name: "Goodwin Procter",
@@ -1502,7 +1599,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Law Firm",
     region: ["Americas"],
     url: "https://goodwinlaw.com",
-    description: "Digital assets & blockchain legal practice, token issuance & DeFi advisory",
+    description:
+      "Digital assets & blockchain legal practice, token issuance & DeFi advisory",
   },
   {
     name: "Grayscale",
@@ -1510,7 +1608,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Crypto Investment Products",
     region: ["Americas"],
     url: "https://grayscale.com",
-    description: "Ethereum Trust (ETHE), institutional crypto investment vehicles",
+    description:
+      "Ethereum Trust (ETHE), institutional crypto investment vehicles",
   },
   {
     name: "Grayscale Research",
@@ -1518,7 +1617,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Research",
     region: ["Americas"],
     url: "https://grayscale.com/research",
-    description: "Institutional crypto research arm of Grayscale, market commentary & sector analysis",
+    description:
+      "Institutional crypto research arm of Grayscale, market commentary & sector analysis",
   },
   {
     name: "GrowThePie",
@@ -1526,7 +1626,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "L2 Analytics",
     region: ["Global"],
     url: "https://growthepie.xyz",
-    description: "Ethereum L2 ecosystem analytics, onchain activity metrics & L2 comparison data",
+    description:
+      "Ethereum L2 ecosystem analytics, onchain activity metrics & L2 comparison data",
   },
   {
     name: "GSR",
@@ -1550,7 +1651,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenized PE Fund",
     region: ["Americas"],
     url: "https://hamiltonlane.com",
-    description: "Tokenized private equity fund on Ethereum (via Securitize), onchain institutional PE access",
+    description:
+      "Tokenized private equity fund on Ethereum (via Securitize), onchain institutional PE access",
   },
   {
     name: "Hardhat (Nomic Foundation)",
@@ -1566,7 +1668,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Crypto ETF Provider",
     region: ["Americas"],
     url: "https://hashdex.com",
-    description: "Crypto ETF/ETP provider, Nasdaq Crypto Index, Ethereum investment products",
+    description:
+      "Crypto ETF/ETP provider, Nasdaq Crypto Index, Ethereum investment products",
   },
   {
     name: "Hashnote",
@@ -1574,7 +1677,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenized Fund",
     region: ["Americas"],
     url: "https://hashnote.com",
-    description: "Onchain institutional fund (USYC), regulated investment manager",
+    description:
+      "Onchain institutional fund (USYC), regulated investment manager",
   },
   {
     name: "Hats Protocol",
@@ -1582,7 +1686,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Role-Based Access",
     region: ["Global"],
     url: "https://hatsprotocol.xyz",
-    description: "Onchain roles & permissions protocol for DAO governance & organizational structure",
+    description:
+      "Onchain roles & permissions protocol for DAO governance & organizational structure",
   },
   {
     name: "Hedgey Finance",
@@ -1598,7 +1703,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Licensed Custodian",
     region: ["APAC"],
     url: "https://hextrust.com",
-    description: "Licensed institutional digital asset custodian, staking & DeFi access",
+    description:
+      "Licensed institutional digital asset custodian, staking & DeFi access",
   },
   {
     name: "Hexagate",
@@ -1606,7 +1712,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Security / Risk Platform",
     region: ["MENA"],
     url: "https://hexagate.com",
-    description: "Real-time Web3 security platform, pre-transaction threat detection (acquired by Chainalysis)",
+    description:
+      "Real-time Web3 security platform, pre-transaction threat detection (acquired by Chainalysis)",
   },
   {
     name: "Hidden Road",
@@ -1614,7 +1721,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Prime Broker / Credit",
     region: ["Americas"],
     url: "https://hiddenroad.com",
-    description: "Institutional prime brokerage, credit, and clearing (acquired by Ripple)",
+    description:
+      "Institutional prime brokerage, credit, and clearing (acquired by Ripple)",
   },
   {
     name: "HQLAx",
@@ -1622,7 +1730,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Collateral Management",
     region: ["Europe"],
     url: "https://hqlax.com",
-    description: "Distributed ledger for collateral transfers & securities lending",
+    description:
+      "Distributed ledger for collateral transfers & securities lending",
   },
   {
     name: "HSBC Orion",
@@ -1638,7 +1747,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Permissionless Messaging",
     region: ["Global"],
     url: "https://hyperlane.xyz",
-    description: "Permissionless interoperability protocol for cross-chain messaging & bridging",
+    description:
+      "Permissionless interoperability protocol for cross-chain messaging & bridging",
   },
   {
     name: "Hypernative",
@@ -1646,7 +1756,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Proactive Security Platform",
     region: ["Americas", "MENA"],
     url: "https://hypernative.io",
-    description: "Real-time Web3 security monitoring, threat detection & prevention for institutions and protocols",
+    description:
+      "Real-time Web3 security monitoring, threat detection & prevention for institutions and protocols",
   },
   {
     name: "Immunefi",
@@ -1662,7 +1773,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "RPC / API Provider",
     region: ["Americas"],
     url: "https://infura.io",
-    description: "Leading Ethereum API & node infrastructure, powers MetaMask & major dApps",
+    description:
+      "Leading Ethereum API & node infrastructure, powers MetaMask & major dApps",
   },
   {
     name: "IntoTheBlock",
@@ -1670,7 +1782,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "On-Chain Analytics",
     region: ["Americas"],
     url: "https://intotheblock.com",
-    description: "Institutional crypto analytics, onchain indicators & DeFi intelligence",
+    description:
+      "Institutional crypto analytics, onchain indicators & DeFi intelligence",
   },
   {
     name: "JPMorgan Kinexys (Onyx)",
@@ -1678,7 +1791,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Blockchain Payments",
     region: ["Americas"],
     url: "https://jpmorgan.com/kinexys",
-    description: "JPMorgan's blockchain payment platform, programmable payments & institutional DeFi pilots on Ethereum",
+    description:
+      "JPMorgan's blockchain payment platform, programmable payments & institutional DeFi pilots on Ethereum",
   },
   {
     name: "Jump Crypto",
@@ -1694,7 +1808,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Risk Curation",
     region: ["Global"],
     url: "https://k3.capital",
-    description: "DeFi risk curator, Morpho vault management & institutional yield strategies",
+    description:
+      "DeFi risk curator, Morpho vault management & institutional yield strategies",
   },
   {
     name: "Kaiko",
@@ -1702,7 +1817,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Market Data",
     region: ["Europe"],
     url: "https://kaiko.com",
-    description: "Institutional-grade crypto market data provider, used by central banks, regulators & funds",
+    description:
+      "Institutional-grade crypto market data provider, used by central banks, regulators & funds",
   },
   {
     name: "Karpatkey (kpk)",
@@ -1710,7 +1826,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "On-Chain Treasury Management",
     region: ["Global"],
     url: "https://kpk.io",
-    description: "Largest active DAO treasury manager, $1.8B+ AUM, manages Aave, ENS, Lido, Uniswap treasuries, non-custodial",
+    description:
+      "Largest active DAO treasury manager, $1.8B+ AUM, manages Aave, ENS, Lido, Uniswap treasuries, non-custodial",
   },
   {
     name: "Kiln",
@@ -1718,7 +1835,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Staking",
     region: ["Europe"],
     url: "https://kiln.fi",
-    description: "Enterprise-grade staking infrastructure, white-label staking platform",
+    description:
+      "Enterprise-grade staking infrastructure, white-label staking platform",
   },
   {
     name: "KKR",
@@ -1726,7 +1844,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenized PE Fund",
     region: ["Americas"],
     url: "https://kkr.com",
-    description: "Tokenized private equity fund on Ethereum (via Securitize), institutional alternative assets",
+    description:
+      "Tokenized private equity fund on Ethereum (via Securitize), institutional alternative assets",
   },
   {
     name: "Komainu",
@@ -1758,7 +1877,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Crypto VC / ZK Focus",
     region: ["APAC", "Americas"],
     url: "https://l2iterative.com",
-    description: "VC focused on zero-knowledge proofs, modular chains & Ethereum L2 infrastructure",
+    description:
+      "VC focused on zero-knowledge proofs, modular chains & Ethereum L2 infrastructure",
   },
   {
     name: "L2Beat",
@@ -1766,7 +1886,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "L2 Risk & Data",
     region: ["Global"],
     url: "https://l2beat.com",
-    description: "Leading Layer 2 risk assessment & data analytics platform, tracks TVL, risk & stage of every L2",
+    description:
+      "Leading Layer 2 risk assessment & data analytics platform, tracks TVL, risk & stage of every L2",
   },
   {
     name: "Labyrs",
@@ -1774,7 +1895,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Blockchain Development Agency",
     region: ["APAC"],
     url: "https://labyrs.com",
-    description: "Ethereum-focused blockchain development agency, smart contract engineering & dApp development",
+    description:
+      "Ethereum-focused blockchain development agency, smart contract engineering & dApp development",
   },
   {
     name: "Latham & Watkins",
@@ -1814,7 +1936,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenized Fund Infrastructure",
     region: ["MENA"],
     url: "https://libre.capital",
-    description: "Institutional tokenized fund infrastructure, onchain fund administration",
+    description:
+      "Institutional tokenized fund infrastructure, onchain fund administration",
   },
   {
     name: "Lido",
@@ -1854,7 +1977,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Web3 Infra Consulting",
     region: ["Global"],
     url: "https://lionscraft.io",
-    description: "Web3 venture & innovation studio, validator ops standards (ValOS), DUCK risk framework for node operators, institutional staking education",
+    description:
+      "Web3 venture & innovation studio, validator ops standards (ValOS), DUCK risk framework for node operators, institutional staking education",
   },
   {
     name: "Liquid Collective",
@@ -1862,7 +1986,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Liquid Staking",
     region: ["Americas"],
     url: "https://liquidcollective.io",
-    description: "Enterprise liquid staking standard built for institutions (LsETH)",
+    description:
+      "Enterprise liquid staking standard built for institutions (LsETH)",
   },
   {
     name: "Llama",
@@ -1870,7 +1995,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "DAO Governance / Treasury Advisory",
     region: ["Global"],
     url: "https://llama.xyz",
-    description: "Onchain governance & treasury management advisory for major Ethereum protocols",
+    description:
+      "Onchain governance & treasury management advisory for major Ethereum protocols",
   },
   {
     name: "Lodestar (ChainSafe)",
@@ -1886,7 +2012,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Staking",
     region: ["Europe"],
     url: "https://luganodes.com",
-    description: "Institutional staking infrastructure, backed by Lugano's Plan B initiative",
+    description:
+      "Institutional staking infrastructure, backed by Lugano's Plan B initiative",
   },
   {
     name: "Lukka",
@@ -1926,7 +2053,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Crypto Treasury",
     region: ["Americas"],
     url: "https://mara.com",
-    description: "Major crypto miner & treasury company with ETH holdings alongside BTC",
+    description:
+      "Major crypto miner & treasury company with ETH holdings alongside BTC",
   },
   {
     name: "Marsh (Digital Assets)",
@@ -1942,7 +2070,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Payment Network",
     region: ["Americas"],
     url: "https://mastercard.com",
-    description: "Crypto Credential for onchain identity verification, Multi-Token Network for Ethereum-based settlement",
+    description:
+      "Crypto Credential for onchain identity verification, Multi-Token Network for Ethereum-based settlement",
   },
   {
     name: "Matter Labs",
@@ -1982,7 +2111,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Wallet",
     region: ["Americas"],
     url: "https://metamask.io/institutions",
-    description: "Institutional version of MetaMask with custody integrations & compliance",
+    description:
+      "Institutional version of MetaMask with custody integrations & compliance",
   },
   {
     name: "MEV Capital",
@@ -1990,7 +2120,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Risk Curation / Yield",
     region: ["Europe"],
     url: "https://mevcapital.com",
-    description: "DeFi risk management & vault curation firm, ~$1B+ AUM, largest stablecoin vaults on Morpho",
+    description:
+      "DeFi risk management & vault curation firm, ~$1B+ AUM, largest stablecoin vaults on Morpho",
   },
   {
     name: "Midas",
@@ -2006,7 +2137,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Optimistic Rollup (OP Stack)",
     region: ["Global"],
     url: "https://mode.network",
-    description: "Ethereum L2 focused on DeFi, AI & institutional yield strategies",
+    description:
+      "Ethereum L2 focused on DeFi, AI & institutional yield strategies",
   },
   {
     name: "Morpheus",
@@ -2046,7 +2178,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Index / Research",
     region: ["Americas"],
     url: "https://msci.com",
-    description: "Traditional index giant expanding into digital asset classification & research",
+    description:
+      "Traditional index giant expanding into digital asset classification & research",
   },
   {
     name: "Nansen",
@@ -2078,7 +2211,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "DeFi Insurance",
     region: ["Global"],
     url: "https://nexusmutual.io",
-    description: "Decentralized smart contract cover & protocol insurance on Ethereum",
+    description:
+      "Decentralized smart contract cover & protocol insurance on Ethereum",
   },
   {
     name: "Nocturne",
@@ -2086,7 +2220,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Private Accounts",
     region: ["Americas"],
     url: "https://nocturne.xyz",
-    description: "Private account infrastructure for Ethereum, zero-knowledge stealth addresses",
+    description:
+      "Private account infrastructure for Ethereum, zero-knowledge stealth addresses",
   },
   {
     name: "Nomura (Laser Digital)",
@@ -2094,7 +2229,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Digital Asset Subsidiary",
     region: ["APAC", "Europe"],
     url: "https://laserdigital.com",
-    description: "Nomura's digital asset subsidiary, institutional trading, DeFi investment & Ethereum ecosystem VC",
+    description:
+      "Nomura's digital asset subsidiary, institutional trading, DeFi investment & Ethereum ecosystem VC",
   },
   {
     name: "Northern Trust",
@@ -2102,7 +2238,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Custody / Tokenization",
     region: ["Americas"],
     url: "https://northerntrust.com",
-    description: "Institutional custodian with digital asset custody & tokenization capabilities",
+    description:
+      "Institutional custodian with digital asset custody & tokenization capabilities",
   },
   {
     name: "Northern Trust (Digital Assets)",
@@ -2110,7 +2247,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Custody / Administration",
     region: ["Americas"],
     url: "https://northerntrust.com",
-    description: "Institutional digital asset custody, fund administration & Zodia Custody co-founder",
+    description:
+      "Institutional digital asset custody, fund administration & Zodia Custody co-founder",
   },
   {
     name: "Notabene",
@@ -2126,7 +2264,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "DVT (Distributed Validators)",
     region: ["Global"],
     url: "https://obol.org",
-    description: "Distributed validator technology, fault-tolerant staking clusters",
+    description:
+      "Distributed validator technology, fault-tolerant staking clusters",
   },
   {
     name: "Offchain Labs",
@@ -2142,7 +2281,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Financial Services Consulting",
     region: ["Global"],
     url: "https://oliverwyman.com",
-    description: "Digital assets & DeFi risk advisory for financial institutions",
+    description:
+      "Digital assets & DeFi risk advisory for financial institutions",
   },
   {
     name: "Ondo Finance",
@@ -2150,7 +2290,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenized Treasuries",
     region: ["Americas"],
     url: "https://ondo.finance",
-    description: "Tokenized US Treasuries & institutional-grade financial products (USDY, OUSG)",
+    description:
+      "Tokenized US Treasuries & institutional-grade financial products (USDY, OUSG)",
   },
   {
     name: "OP Labs",
@@ -2166,7 +2307,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenized T-Bills",
     region: ["APAC"],
     url: "https://openeden.com",
-    description: "Tokenized US Treasury bills on Ethereum, institutional-grade yield product (TBILL)",
+    description:
+      "Tokenized US Treasury bills on Ethereum, institutional-grade yield product (TBILL)",
   },
   {
     name: "OpenZeppelin",
@@ -2174,7 +2316,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Smart Contract Security",
     region: ["Global"],
     url: "https://openzeppelin.com",
-    description: "Industry-standard Solidity libraries, smart contract audits, Defender platform",
+    description:
+      "Industry-standard Solidity libraries, smart contract audits, Defender platform",
   },
   {
     name: "Optimism (OP Labs)",
@@ -2190,7 +2333,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Grants / Public Goods",
     region: ["Americas"],
     url: "https://optimism.io",
-    description: "Retroactive public goods funding, OP Stack ecosystem grants & governance",
+    description:
+      "Retroactive public goods funding, OP Stack ecosystem grants & governance",
   },
   {
     name: "Optimism RetroPGF",
@@ -2198,7 +2342,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Public Goods Funding",
     region: ["Global"],
     url: "https://optimism.io/retropgf",
-    description: "Retroactive public goods funding for Ethereum ecosystem builders via OP Collective",
+    description:
+      "Retroactive public goods funding for Ethereum ecosystem builders via OP Collective",
   },
   {
     name: "OSL",
@@ -2214,7 +2359,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Staking",
     region: ["Global"],
     url: "https://p2p.org",
-    description: "Non-custodial institutional staking, validator infrastructure",
+    description:
+      "Non-custodial institutional staking, validator infrastructure",
   },
   {
     name: "Pacific Meta",
@@ -2222,7 +2368,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Web3 Market Entry (APAC)",
     region: ["APAC"],
     url: "https://pacific-meta.co.jp",
-    description: "Web3 market entry support for the Japanese & APAC market, Ethereum ecosystem promotion & localization",
+    description:
+      "Web3 market entry support for the Japanese & APAC market, Ethereum ecosystem promotion & localization",
   },
   {
     name: "Pantera Capital",
@@ -2238,7 +2385,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Crypto VC / Research",
     region: ["Americas"],
     url: "https://paradigm.xyz",
-    description: "Crypto-native investment fund & open-source research (Reth, Foundry)",
+    description:
+      "Crypto-native investment fund & open-source research (Reth, Foundry)",
   },
   {
     name: "Parsec Finance",
@@ -2246,7 +2394,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "DeFi Analytics",
     region: ["Americas"],
     url: "https://parsec.finance",
-    description: "Professional DeFi analytics, portfolio tracking & onchain monitoring dashboards",
+    description:
+      "Professional DeFi analytics, portfolio tracking & onchain monitoring dashboards",
   },
   {
     name: "Paxos",
@@ -2262,7 +2411,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Stablecoin Infrastructure",
     region: ["Americas"],
     url: "https://paxos.com",
-    description: "Regulated stablecoin issuer (USDP), infrastructure for PayPal's PYUSD, institutional settlement",
+    description:
+      "Regulated stablecoin issuer (USDP), infrastructure for PayPal's PYUSD, institutional settlement",
   },
   {
     name: "PayPal (PYUSD on Ethereum)",
@@ -2270,7 +2420,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Stablecoin / Payments",
     region: ["Americas"],
     url: "https://paypal.com",
-    description: "PYUSD stablecoin natively on Ethereum, consumer & merchant crypto payment rails",
+    description:
+      "PYUSD stablecoin natively on Ethereum, consumer & merchant crypto payment rails",
   },
   {
     name: "PayPal (PYUSD)",
@@ -2278,7 +2429,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Stablecoin / Payments",
     region: ["Americas"],
     url: "https://paypal.com",
-    description: "PayPal USD stablecoin on Ethereum, merchant crypto payments & transfers",
+    description:
+      "PayPal USD stablecoin on Ethereum, merchant crypto payments & transfers",
   },
   {
     name: "Pendle Finance",
@@ -2358,7 +2510,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Core Dev Funding",
     region: ["Global"],
     url: "https://protocol-guild.readthedocs.io",
-    description: "Collective funding mechanism for Ethereum core protocol contributors & researchers",
+    description:
+      "Collective funding mechanism for Ethereum core protocol contributors & researchers",
   },
   {
     name: "Protofire",
@@ -2470,7 +2623,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Structured Vaults / Options",
     region: ["Global"],
     url: "https://aevo.xyz",
-    description: "Decentralized options exchange & structured product vaults, institutional trading",
+    description:
+      "Decentralized options exchange & structured product vaults, institutional trading",
   },
   {
     name: "Ritual",
@@ -2486,7 +2640,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Optimistic Rollup (Arbitrum)",
     region: ["Americas"],
     url: "https://robinhood.com",
-    description: "Financial-grade Ethereum L2 for tokenized real-world & digital assets",
+    description:
+      "Financial-grade Ethereum L2 for tokenized real-world & digital assets",
   },
   {
     name: "Robinhood Crypto",
@@ -2494,7 +2649,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Retail / Institutional Exchange",
     region: ["Americas"],
     url: "https://robinhood.com",
-    description: "Major US brokerage with crypto trading, ETH staking & Robinhood Chain L2 on Ethereum",
+    description:
+      "Major US brokerage with crypto trading, ETH staking & Robinhood Chain L2 on Ethereum",
   },
   {
     name: "Rocket Pool",
@@ -2502,7 +2658,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Decentralized Staking",
     region: ["Global"],
     url: "https://rocketpool.net",
-    description: "Decentralized ETH staking protocol with permissionless node operators",
+    description:
+      "Decentralized ETH staking protocol with permissionless node operators",
   },
   {
     name: "Runtime Verification",
@@ -2534,7 +2691,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Token Streaming",
     region: ["Global"],
     url: "https://sablier.com",
-    description: "Token streaming protocol for vesting, payroll & distributions",
+    description:
+      "Token streaming protocol for vesting, payroll & distributions",
   },
   {
     name: "Safe (formerly Gnosis Safe)",
@@ -2550,7 +2708,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Smart Account",
     region: ["Europe"],
     url: "https://safe.global",
-    description: "Leading smart account infrastructure, multi-sig & modular accounts",
+    description:
+      "Leading smart account infrastructure, multi-sig & modular accounts",
   },
   {
     name: "Sardine",
@@ -2558,7 +2717,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Fraud & Compliance",
     region: ["Americas"],
     url: "https://sardine.ai",
-    description: "Fraud prevention, compliance & risk platform for crypto companies & institutions",
+    description:
+      "Fraud prevention, compliance & risk platform for crypto companies & institutions",
   },
   {
     name: "Scroll",
@@ -2582,7 +2742,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Regulated Crypto Bank",
     region: ["Europe"],
     url: "https://seba.swiss",
-    description: "FINMA-licensed crypto bank, institutional custody, trading, tokenization & DeFi access",
+    description:
+      "FINMA-licensed crypto bank, institutional custody, trading, tokenization & DeFi access",
   },
   {
     name: "Securitize",
@@ -2590,7 +2751,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenization Platform",
     region: ["Americas"],
     url: "https://securitize.io",
-    description: "SEC-registered transfer agent, tokenization of RWAs, BlackRock BUIDL partner",
+    description:
+      "SEC-registered transfer agent, tokenization of RWAs, BlackRock BUIDL partner",
   },
   {
     name: "Sensei Node",
@@ -2598,7 +2760,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Node Infrastructure",
     region: ["Americas"],
     url: "https://senseinode.com",
-    description: "Institutional node infrastructure & staking provider, LATAM-focused Ethereum validator operations",
+    description:
+      "Institutional node infrastructure & staking provider, LATAM-focused Ethereum validator operations",
   },
   {
     name: "SharpLink Gaming (SBET)",
@@ -2606,7 +2769,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "ETH Treasury Company",
     region: ["Americas"],
     url: "https://sharplink.com",
-    description: "Nasdaq-listed ETH treasury company, 860K+ ETH, led by Ethereum co-founder Joe Lubin as Chairman",
+    description:
+      "Nasdaq-listed ETH treasury company, 860K+ ETH, led by Ethereum co-founder Joe Lubin as Chairman",
   },
   {
     name: "Sherlock",
@@ -2630,7 +2794,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Regulated Exchange & CSD",
     region: ["Europe"],
     url: "https://sdx.com",
-    description: "Swiss regulated digital exchange, CSD & tokenization infrastructure for institutional securities",
+    description:
+      "Swiss regulated digital exchange, CSD & tokenization infrastructure for institutional securities",
   },
   {
     name: "Sky (MakerDAO) Spark",
@@ -2638,7 +2803,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Lending / Stablecoin Ecosystem",
     region: ["Global"],
     url: "https://spark.fi",
-    description: "Sky/MakerDAO lending arm, Spark Liquidity Layer, institutional DeFi access",
+    description:
+      "Sky/MakerDAO lending arm, Spark Liquidity Layer, institutional DeFi access",
   },
   {
     name: "Snapshot",
@@ -2654,7 +2820,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Crypto VC / Investment",
     region: ["APAC"],
     url: "https://snzholding.com",
-    description: "Web3 investment firm focused on infrastructure & Ethereum ecosystem projects",
+    description:
+      "Web3 investment firm focused on infrastructure & Ethereum ecosystem projects",
   },
   {
     name: "Société Générale FORGE",
@@ -2662,7 +2829,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenized Bonds / Stablecoins",
     region: ["Europe"],
     url: "https://sgforge.com",
-    description: "Tokenized bonds, EUR CoinVertible stablecoin on Ethereum, MiCA-licensed",
+    description:
+      "Tokenized bonds, EUR CoinVertible stablecoin on Ethereum, MiCA-licensed",
   },
   {
     name: "Solidus Labs",
@@ -2710,7 +2878,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenized Money Market Funds",
     region: ["Europe"],
     url: "https://spiko.finance",
-    description: "EU-regulated tokenized money market funds on Ethereum, AMF-approved",
+    description:
+      "EU-regulated tokenized money market funds on Ethereum, AMF-approved",
   },
   {
     name: "Spire Labs",
@@ -2718,7 +2887,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenization Infra",
     region: ["Americas"],
     url: "https://spirelabs.xyz",
-    description: "Based rollup infrastructure for institutional tokenization use cases",
+    description:
+      "Based rollup infrastructure for institutional tokenization use cases",
   },
   {
     name: "Spruce / SpruceID",
@@ -2750,7 +2920,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Staking",
     region: ["Global"],
     url: "https://stake.fish",
-    description: "Institutional staking provider by f2pool, one of the largest Ethereum validator operators",
+    description:
+      "Institutional staking provider by f2pool, one of the largest Ethereum validator operators",
   },
   {
     name: "Staking Rewards",
@@ -2758,7 +2929,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Staking Data",
     region: ["Europe"],
     url: "https://stakingrewards.com",
-    description: "Staking data aggregator, yield comparison & validator analytics",
+    description:
+      "Staking data aggregator, yield comparison & validator analytics",
   },
   {
     name: "Standard Chartered (via Zodia / Libeara)",
@@ -2766,7 +2938,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Custody / Tokenization",
     region: ["Europe"],
     url: "https://sc.com",
-    description: "Institutional crypto custody (Zodia) & tokenized fund offerings (Libeara) on Ethereum",
+    description:
+      "Institutional crypto custody (Zodia) & tokenized fund offerings (Libeara) on Ethereum",
   },
   {
     name: "Standard Chartered (Zodia / Libeara)",
@@ -2774,7 +2947,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Banking / Tokenization",
     region: ["APAC", "Europe"],
     url: "https://sc.com",
-    description: "StanChart digital assets via Zodia Custody, Zodia Markets & Libeara tokenization platform",
+    description:
+      "StanChart digital assets via Zodia Custody, Zodia Markets & Libeara tokenization platform",
   },
   {
     name: "Stargate Finance",
@@ -2806,7 +2980,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Custody / Tokenization",
     region: ["Americas"],
     url: "https://statestreet.com",
-    description: "Institutional custodian with digital asset custody & tokenization initiatives on Ethereum",
+    description:
+      "Institutional custodian with digital asset custody & tokenization initiatives on Ethereum",
   },
   {
     name: "Steakhouse Financial",
@@ -2814,7 +2989,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Risk Curation / Advisory",
     region: ["Global"],
     url: "https://steakhouse.financial",
-    description: "DeFi risk curation, vault management & institutional DeFi advisory",
+    description:
+      "DeFi risk curation, vault management & institutional DeFi advisory",
   },
   {
     name: "Stripe (Crypto)",
@@ -2822,7 +2998,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Payment Processing",
     region: ["Americas"],
     url: "https://stripe.com",
-    description: "Crypto payment integration, USDC payouts on Ethereum, stablecoin-native payment infrastructure",
+    description:
+      "Crypto payment integration, USDC payouts on Ethereum, stablecoin-native payment infrastructure",
   },
   {
     name: "Stripe (USDC / Bridge)",
@@ -2830,7 +3007,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Crypto Payments",
     region: ["Americas"],
     url: "https://stripe.com",
-    description: "USDC payment rails on Ethereum via Bridge acquisition, crypto onramp for merchants",
+    description:
+      "USDC payment rails on Ethereum via Bridge acquisition, crypto onramp for merchants",
   },
   {
     name: "Superfluid",
@@ -2838,7 +3016,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Streaming Payments",
     region: ["Global"],
     url: "https://superfluid.finance",
-    description: "Real-time token streaming protocol for payroll & subscriptions",
+    description:
+      "Real-time token streaming protocol for payroll & subscriptions",
   },
   {
     name: "Superstate",
@@ -2854,7 +3033,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Oracle / IntraLayer",
     region: ["Americas", "Global"],
     url: "https://supra.com",
-    description: "High-throughput oracle network with DORA protocol for institutional data feeds",
+    description:
+      "High-throughput oracle network with DORA protocol for institutional data feeds",
   },
   {
     name: "Swarm",
@@ -2870,7 +3050,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "TradFi Interoperability",
     region: ["Global"],
     url: "https://swift.com",
-    description: "Institutional messaging network piloting tokenized asset transfers on Ethereum",
+    description:
+      "Institutional messaging network piloting tokenized asset transfers on Ethereum",
   },
   {
     name: "Sygnum Bank",
@@ -2878,7 +3059,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Regulated Crypto Bank",
     region: ["APAC", "Europe"],
     url: "https://sygnum.com",
-    description: "FINMA-licensed digital asset bank, tokenization partner for institutional clients",
+    description:
+      "FINMA-licensed digital asset bank, tokenization partner for institutional clients",
   },
   {
     name: "Symbiotic",
@@ -2886,7 +3068,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Restaking Protocol",
     region: ["Global"],
     url: "https://symbiotic.fi",
-    description: "Permissionless shared security protocol, restaking infrastructure",
+    description:
+      "Permissionless shared security protocol, restaking infrastructure",
   },
   {
     name: "Synthetix",
@@ -2894,7 +3077,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Synthetic Assets",
     region: ["Global"],
     url: "https://synthetix.io",
-    description: "Synthetic asset protocol on Ethereum, derivatives liquidity layer for DeFi",
+    description:
+      "Synthetic asset protocol on Ethereum, derivatives liquidity layer for DeFi",
   },
   {
     name: "Taiko",
@@ -2918,7 +3102,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Trading Infrastructure",
     region: ["Americas"],
     url: "https://talos.com",
-    description: "Institutional-grade trading technology, OMS/EMS for digital assets",
+    description:
+      "Institutional-grade trading technology, OMS/EMS for digital assets",
   },
   {
     name: "Tangany",
@@ -2934,7 +3119,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Custody & Tokenization",
     region: ["Europe"],
     url: "https://taurushq.com",
-    description: "Enterprise custody, tokenization & node infrastructure for banks",
+    description:
+      "Enterprise custody, tokenization & node infrastructure for banks",
   },
   {
     name: "TaxBit",
@@ -2966,7 +3152,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "DevOps / Debugging",
     region: ["Europe"],
     url: "https://tenderly.co",
-    description: "Web3 development platform, transaction simulation, monitoring",
+    description:
+      "Web3 development platform, transaction simulation, monitoring",
   },
   {
     name: "Tether (USDT)",
@@ -3038,7 +3225,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Staking",
     region: ["Europe"],
     url: "https://twinstake.io",
-    description: "Institutional staking backed by Deutsche Telekom, enterprise-grade validator operations",
+    description:
+      "Institutional staking backed by Deutsche Telekom, enterprise-grade validator operations",
   },
   {
     name: "UBS (Tokenization)",
@@ -3046,7 +3234,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Tokenized Fund / Bonds",
     region: ["Europe"],
     url: "https://ubs.com",
-    description: "Tokenized fund (UBS uMINT) on Ethereum, institutional blockchain bond pilots",
+    description:
+      "Tokenized fund (UBS uMINT) on Ethereum, institutional blockchain bond pilots",
   },
   {
     name: "ultrasound.money",
@@ -3070,7 +3259,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Grants & Ecosystem",
     region: ["Americas"],
     url: "https://uniswapfoundation.mirror.xyz",
-    description: "Protocol grants, research funding & ecosystem development for Uniswap / Ethereum DeFi",
+    description:
+      "Protocol grants, research funding & ecosystem development for Uniswap / Ethereum DeFi",
   },
   {
     name: "UniswapX",
@@ -3078,7 +3268,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Intent-Based Routing",
     region: ["Global"],
     url: "https://uniswap.org",
-    description: "Intent-based trading system by Uniswap, cross-chain swaps with MEV protection",
+    description:
+      "Intent-based trading system by Uniswap, cross-chain swaps with MEV protection",
   },
   {
     name: "Unslashed Finance",
@@ -3094,7 +3285,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "RWA-Backed Stablecoin",
     region: ["Europe"],
     url: "https://usual.money",
-    description: "RWA-backed decentralized stablecoin protocol (USD0), institutional yield distribution",
+    description:
+      "RWA-backed decentralized stablecoin protocol (USD0), institutional yield distribution",
   },
   {
     name: "Utopia Labs",
@@ -3118,7 +3310,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "On-Chain Attestation Registry",
     region: ["Global"],
     url: "https://ver.ax",
-    description: "Onchain attestation registry on Linea/Ethereum, composable identity & compliance proofs",
+    description:
+      "Onchain attestation registry on Linea/Ethereum, composable identity & compliance proofs",
   },
   {
     name: "Visa (USDC Settlement)",
@@ -3126,7 +3319,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Payment Network",
     region: ["Americas"],
     url: "https://visa.com",
-    description: "USDC settlement on Ethereum for institutional payment flows, stablecoin rails exploration",
+    description:
+      "USDC settlement on Ethereum for institutional payment flows, stablecoin rails exploration",
   },
   {
     name: "Warden Finance",
@@ -3142,7 +3336,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Law Firm",
     region: ["Americas", "Global"],
     url: "https://willkie.com",
-    description: "Leading digital assets & DeFi regulatory practice, SEC enforcement defense",
+    description:
+      "Leading digital assets & DeFi regulatory practice, SEC enforcement defense",
   },
   {
     name: "Wintermute",
@@ -3158,7 +3353,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Crypto ETP Issuer",
     region: ["Americas", "Europe"],
     url: "https://wisdomtree.com",
-    description: "Digital asset ETP provider, tokenized fund products & Ethereum ETPs",
+    description:
+      "Digital asset ETP provider, tokenized fund products & Ethereum ETPs",
   },
   {
     name: "Wonderland (formerly DeFi Wonderland)",
@@ -3166,7 +3362,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "DeFi Engineering",
     region: ["Global"],
     url: "https://defi.sucks",
-    description: "Core DeFi engineering team, smart contract development for major Ethereum protocols",
+    description:
+      "Core DeFi engineering team, smart contract development for major Ethereum protocols",
   },
   {
     name: "Worldcoin (World ID)",
@@ -3190,7 +3387,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Security / Education",
     region: ["Global"],
     url: "https://yaudit.dev",
-    description: "Smart contract auditing collective, security fellowship program",
+    description:
+      "Smart contract auditing collective, security fellowship program",
   },
   {
     name: "ZeroDev",
@@ -3206,7 +3404,8 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "ZK Rollup (Security-Focused)",
     region: ["Global"],
     url: "https://zircuit.com",
-    description: "AI-powered security-first ZK rollup, sequencer-level threat detection for Ethereum L2",
+    description:
+      "AI-powered security-first ZK rollup, sequencer-level threat detection for Ethereum L2",
   },
   {
     name: "zkSync (Matter Labs)",
@@ -3222,6 +3421,7 @@ export const solutionProviders: SolutionProvider[] = [
     subCategory: "Institutional Custodian",
     region: ["Europe"],
     url: "https://zodia.io",
-    description: "Standard Chartered & Northern Trust backed institutional custodian",
+    description:
+      "Standard Chartered & Northern Trust backed institutional custodian",
   },
 ]

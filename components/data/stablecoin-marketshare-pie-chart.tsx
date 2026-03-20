@@ -44,7 +44,6 @@ type PieSliceProps = Partial<SectorProps> & {
   payload?: PieSlicePayload
 }
 
-
 /**
  * Renders a custom label for a pie chart slice, consisting of a small connector line
  * and a short value label. Intended for non-hovered slices.

@@ -57,7 +57,9 @@ const SourceInfoTooltip = ({
           </p>
         )}
         {lastUpdated && (
-          <p className="text-nowrap">{t("lastUpdated")}: {lastUpdated}</p>
+          <p className="text-nowrap">
+            {t("lastUpdated")}: {lastUpdated}
+          </p>
         )}
       </InfoTooltip>
     </InlineTextIcon>

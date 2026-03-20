@@ -65,21 +65,34 @@ export default async function Page({ params }: Props) {
       key: "programmablePrivacy",
       examples: [
         { name: "Aztec", href: "https://aztec.network/", logo: aztecLogo },
-        { name: "EY Nightfall", href: "https://blockchain.ey.com/technology", logo: eyLogo },
+        {
+          name: "EY Nightfall",
+          href: "https://blockchain.ey.com/technology",
+          logo: eyLogo,
+        },
         { name: "Miden", href: "https://miden.xyz/", logo: midenLogo },
       ],
     },
     {
       key: "compliancePools",
       examples: [
-        { name: "Privacy Pools", href: "https://privacypools.com/", logo: privacyPoolsLogo, note: "co-authored by Vitalik Buterin; live on mainnet" },
+        {
+          name: "Privacy Pools",
+          href: "https://privacypools.com/",
+          logo: privacyPoolsLogo,
+          note: "co-authored by Vitalik Buterin; live on mainnet",
+        },
       ],
     },
     {
       key: "shieldedTx",
       examples: [
         { name: "Railgun", href: "https://railgun.org/", logo: railgunLogo },
-        { name: "EY Starlight", href: "https://blockchain.ey.com/technology", logo: eyLogo },
+        {
+          name: "EY Starlight",
+          href: "https://blockchain.ey.com/technology",
+          logo: eyLogo,
+        },
       ],
     },
     {
@@ -87,7 +100,11 @@ export default async function Page({ params }: Props) {
       examples: [
         { name: "Fhenix", href: "https://www.fhenix.io/", logo: fhenixLogo },
         { name: "Zama", href: "https://www.zama.org/", logo: zamaLogo },
-        { name: "Shutter", href: "https://www.shutter.network/", logo: shutterLogo },
+        {
+          name: "Shutter",
+          href: "https://www.shutter.network/",
+          logo: shutterLogo,
+        },
         { name: "Renegade", href: "https://renegade.fi/", logo: renegadeLogo },
         { name: "Miden", href: "https://miden.xyz/", logo: midenLogo },
       ],
@@ -158,7 +175,7 @@ export default async function Page({ params }: Props) {
                   key === "prividium" || key === "programmablePrivacy"
                     ? "bg-card lg:col-span-3"
                     : key === "emerging"
-                      ? "border border-border lg:col-span-2"
+                      ? "border-border border lg:col-span-2"
                       : "bg-card lg:col-span-2"
                 }`}
               >
@@ -171,7 +188,7 @@ export default async function Page({ params }: Props) {
                   </p>
                 </div>
                 <div className="mt-6 space-y-3 border-t pt-4">
-                  <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest">
+                  <p className="text-muted-foreground text-xs font-bold tracking-widest uppercase">
                     Examples
                   </p>
                   <div className="flex flex-wrap gap-4">
@@ -231,20 +248,17 @@ export default async function Page({ params }: Props) {
                 },
               ] as const
             ).map(({ heading, desc, icon }) => (
-              <div
-                key={heading}
-                className="bg-card space-y-4 p-8"
-              >
+              <div key={heading} className="bg-card space-y-4 p-8">
                 <div className="size-37 shrink-0 overflow-hidden p-2.5">
                   <MaskedParallelsIcon
                     className="text-secondary-foreground"
                     maskShape={icon}
                   />
                 </div>
-                <h3 className="text-h5 text-foreground tracking-[0.03rem]">{t(heading)}</h3>
-                <p className="text-muted-foreground font-medium">
-                  {t(desc)}
-                </p>
+                <h3 className="text-h5 text-foreground tracking-[0.03rem]">
+                  {t(heading)}
+                </h3>
+                <p className="text-muted-foreground font-medium">{t(desc)}</p>
               </div>
             ))}
           </div>
@@ -322,9 +336,21 @@ export default async function Page({ params }: Props) {
           <ComparisonTable
             columns={[
               { key: "trust", label: t("trustVsCrypto.trustHeading") },
-              { key: "crypto", label: t("trustVsCrypto.cryptoHeading"), highlighted: true },
+              {
+                key: "crypto",
+                label: t("trustVsCrypto.cryptoHeading"),
+                highlighted: true,
+              },
             ]}
-            rows={(["Guarantee", "Mechanism", "Incentives", "Vendor", "Regulatory"] as const).map((key) => ({
+            rows={(
+              [
+                "Guarantee",
+                "Mechanism",
+                "Incentives",
+                "Vendor",
+                "Regulatory",
+              ] as const
+            ).map((key) => ({
               label: t(`trustVsCrypto.table${key}`),
               cells: {
                 trust: t(`trustVsCrypto.tableTrust${key}`),
@@ -388,7 +414,10 @@ export default async function Page({ params }: Props) {
               <p className="text-muted-foreground mt-2 font-medium">
                 {t("efCommitment.iptfDesc")}
               </p>
-              <LinkWithArrow href="https://iptf.ethereum.org/" className="mt-6 text-secondary-foreground">
+              <LinkWithArrow
+                href="https://iptf.ethereum.org/"
+                className="text-secondary-foreground mt-6"
+              >
                 Visit IPTF
               </LinkWithArrow>
             </div>

@@ -109,10 +109,7 @@ export default async function Page({ params }: Props) {
     },
     {
       label: t("overview.valueSecured"),
-      value: formatLargeCurrency(
-        locale,
-        totalValueSecuredData.data.sum
-      ),
+      value: formatLargeCurrency(locale, totalValueSecuredData.data.sum),
       lastUpdated: formatDateMonthDayYear(
         locale,
         totalValueSecuredData.lastUpdated
@@ -255,7 +252,8 @@ export default async function Page({ params }: Props) {
       imgSrc: fditStar,
       issuer: "Fidelity",
       metricHref: "https://app.rwa.xyz/assets/FDIT",
-      visitHref: "https://institutional.fidelity.com/app/funds-and-products/9053/fidelity-treasury-digital-fund-onchain-class-fyoxx.html",
+      visitHref:
+        "https://institutional.fidelity.com/app/funds-and-products/9053/fidelity-treasury-digital-fund-onchain-class-fyoxx.html",
       ...assetValueByAssetIdsData.sourceInfo,
       lastUpdated: formatDateMonthDayYear(
         locale,
@@ -266,9 +264,15 @@ export default async function Page({ params }: Props) {
 
   const categoryExamples: Record<string, { name: string; href: string }[]> = {
     treasuries: [
-      { name: "BlackRock BUIDL", href: "https://securitize.io/blackrock/buidl" },
+      {
+        name: "BlackRock BUIDL",
+        href: "https://securitize.io/blackrock/buidl",
+      },
       { name: "Ondo", href: "https://ondo.finance/" },
-      { name: "Franklin Templeton", href: "https://digitalassets.franklintempleton.com/benji/" },
+      {
+        name: "Franklin Templeton",
+        href: "https://digitalassets.franklintempleton.com/benji/",
+      },
     ],
     credit: [
       { name: "Centrifuge", href: "https://centrifuge.io/" },
@@ -376,11 +380,7 @@ export default async function Page({ params }: Props) {
                   <CardSource>
                     {tCommon("source")}:{" "}
                     {sourceHref ? (
-                      <Link
-                        href={sourceHref}
-                        className="css-secondary"
-                        inline
-                      >
+                      <Link href={sourceHref} className="css-secondary" inline>
                         {source}
                       </Link>
                     ) : (
@@ -468,7 +468,11 @@ export default async function Page({ params }: Props) {
           <ComparisonTable
             labelHeader={t("comparison.functions")}
             columns={[
-              { key: "ethereum", label: t("comparison.ethereum"), highlighted: true },
+              {
+                key: "ethereum",
+                label: t("comparison.ethereum"),
+                highlighted: true,
+              },
               { key: "l1Alt", label: t("comparison.l1Alt") },
               { key: "privateDlt", label: t("comparison.privateDlt") },
               { key: "traditional", label: t("comparison.traditional") },
@@ -552,7 +556,11 @@ export default async function Page({ params }: Props) {
             columns={[
               { key: "tvlEth", label: t("categoryBreakdown.tvlEth") },
               { key: "tvlTotal", label: t("categoryBreakdown.tvlTotal") },
-              { key: "ethShare", label: t("categoryBreakdown.ethShare"), highlighted: true },
+              {
+                key: "ethShare",
+                label: t("categoryBreakdown.ethShare"),
+                highlighted: true,
+              },
               { key: "examples", label: t("categoryBreakdown.examples") },
             ]}
             rows={(
@@ -569,20 +577,21 @@ export default async function Page({ params }: Props) {
                 tvlEth: t(`categoryBreakdown.${cat}Tvl`),
                 tvlTotal: t(`categoryBreakdown.${cat}Total`),
                 ethShare: t(`categoryBreakdown.${cat}Share`),
-                examples: categoryExamples[cat]?.length > 0
-                  ? categoryExamples[cat].map((example, i) => (
-                      <span key={example.name}>
-                        {i > 0 && ", "}
-                        <Link
-                          href={example.href}
-                          inline
-                          className="css-secondary"
-                        >
-                          {example.name}
-                        </Link>
-                      </span>
-                    ))
-                  : t(`categoryBreakdown.${cat}Examples`),
+                examples:
+                  categoryExamples[cat]?.length > 0
+                    ? categoryExamples[cat].map((example, i) => (
+                        <span key={example.name}>
+                          {i > 0 && ", "}
+                          <Link
+                            href={example.href}
+                            inline
+                            className="css-secondary"
+                          >
+                            {example.name}
+                          </Link>
+                        </span>
+                      ))
+                    : t(`categoryBreakdown.${cat}Examples`),
               },
             }))}
           />
@@ -776,21 +785,20 @@ export default async function Page({ params }: Props) {
           </div>
         </section>
 
-        <section id="why-ethereum" className="bg-primary text-primary-foreground -mx-4 px-4 py-16 sm:-mx-10 sm:px-10 md:py-24">
+        <section
+          id="why-ethereum"
+          className="bg-primary text-primary-foreground -mx-4 px-4 py-16 sm:-mx-10 sm:px-10 md:py-24"
+        >
           <div className="max-w-8xl mx-auto grid grid-cols-1 gap-x-32 gap-y-8 md:grid-cols-2 md:items-center">
             <h2 className="text-h3-mobile sm:text-h2 tracking-[0.055rem]">
               {t("why.heading")}
             </h2>
-            <div className="space-y-6 text-lg font-medium leading-relaxed text-white/85">
+            <div className="space-y-6 text-lg leading-relaxed font-medium text-white/85">
               <p className="text-2xl font-bold text-white">
                 {t("why.tagline")}
               </p>
-              <p>
-                {t("why.desc1")}
-              </p>
-              <p>
-                {t("why.desc2")}
-              </p>
+              <p>{t("why.desc1")}</p>
+              <p>{t("why.desc2")}</p>
             </div>
           </div>
         </section>

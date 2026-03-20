@@ -114,7 +114,14 @@ export function ScalingPanel() {
                         {cardTitle}
                       </div>
                     )}
-                    <div className={cn("text-secondary tracking-[0.025rem]", cardTitle ? "text-base font-medium" : "text-xl font-bold")}>
+                    <div
+                      className={cn(
+                        "text-secondary tracking-[0.025rem]",
+                        cardTitle
+                          ? "text-base font-medium"
+                          : "text-xl font-bold"
+                      )}
+                    >
                       {content}
                     </div>
                   </div>

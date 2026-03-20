@@ -19,7 +19,11 @@ type UseCasesDropdownProps = {
   links: LinkProps[]
 }
 
-const UseCasesDropdown = ({ className, label, links }: UseCasesDropdownProps) => {
+const UseCasesDropdown = ({
+  className,
+  label,
+  links,
+}: UseCasesDropdownProps) => {
   const [open, setOpen] = useState(false)
 
   return (

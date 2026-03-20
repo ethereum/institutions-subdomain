@@ -42,9 +42,7 @@ const RwaChartCard = ({
     <Card variant="flex-column">
       <CardHeader className="flex gap-2 !px-0 max-sm:flex-col sm:items-center">
         <CardContent className="flex-1 gap-4">
-          <CardTitle className="text-xl">
-            {tCharts("rwaTitle")}
-          </CardTitle>
+          <CardTitle className="text-xl">{tCharts("rwaTitle")}</CardTitle>
           <CardDescription className="font-medium">
             <Button variant="link" onClick={toggleShowL2}>
               {showL2 ? tCharts("hideL2Data") : tCharts("showL2Data")}

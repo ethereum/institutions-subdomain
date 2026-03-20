@@ -43,7 +43,9 @@ const StablecoinChartCard = ({
       <CardHeader className="flex gap-2 !px-0 max-sm:flex-col sm:items-center">
         <CardContent className="flex-1 gap-4">
           <CardTitle className="text-xl">
-            {showL2 ? tCharts("stablecoinTvlWithL2") : tCharts("stablecoinTvlMainnetOnly")}
+            {showL2
+              ? tCharts("stablecoinTvlWithL2")
+              : tCharts("stablecoinTvlMainnetOnly")}
           </CardTitle>
           <CardDescription className="font-medium">
             <Button variant="link" onClick={toggleShowL2}>

@@ -20,7 +20,7 @@ import UseCasesDropdown from "@/components/UseCasesDropdown"
 
 import { cn } from "@/lib/utils"
 
-import { NAV_ITEMS,TOP_NAV_ITEMS, USE_CASE_NAV_ITEMS } from "@/lib/constants"
+import { NAV_ITEMS, TOP_NAV_ITEMS, USE_CASE_NAV_ITEMS } from "@/lib/constants"
 
 import "../globals.css"
 
@@ -37,8 +37,6 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
   weight: ["400", "500", "600", "700"],
 })
-
-
 
 const SOCIAL_LINKS: LinkProps[] = [
   {
@@ -168,7 +166,10 @@ export default async function RootLayout({ children, params }: Props) {
           </header>
           {children}
           <footer className="row-start-3">
-            <div id="contact" className="bg-primary text-primary-foreground w-screen px-4 py-20 sm:px-10">
+            <div
+              id="contact"
+              className="bg-primary text-primary-foreground w-screen px-4 py-20 sm:px-10"
+            >
               <div className="mx-auto grid max-w-3xl grid-cols-1 gap-10 md:grid-cols-2">
                 <div className="space-y-4">
                   <h3 className="text-h4">{t("getInTouch")}</h3>
@@ -185,9 +186,11 @@ export default async function RootLayout({ children, params }: Props) {
                   ))}
                 </div>
                 <nav className="*:text-muted-foreground *:hover:text-foreground flex items-center gap-x-6 gap-y-1.5 text-nowrap *:block *:text-sm *:tracking-[0.0175rem] max-xl:flex-col sm:ms-auto sm:max-xl:items-end">
-                  {[...topNavLinks, ...useCaseLinks, ...navLinks].map((props) => (
-                    <Link key={props.href} {...props} />
-                  ))}
+                  {[...topNavLinks, ...useCaseLinks, ...navLinks].map(
+                    (props) => (
+                      <Link key={props.href} {...props} />
+                    )
+                  )}
                 </nav>
               </div>
               <div className="text-muted-foreground space-y-3 text-xs font-medium *:tracking-[0.0175rem]">

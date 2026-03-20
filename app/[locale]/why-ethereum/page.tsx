@@ -1,3 +1,4 @@
+import { Metadata } from "next"
 import {
   ArrowLeftRight,
   Blocks,
@@ -10,7 +11,6 @@ import {
   ShieldCheck,
 } from "lucide-react"
 import Image from "next/image"
-import { Metadata } from "next"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import Hero from "@/components/Hero"
@@ -49,14 +49,28 @@ export default async function WhyEthereum({ params }: Props) {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <Card className="p-10">
               <h3 className="text-h4 tracking-[0.04rem]">
-                {t("problem.limitations.heading")} {t("problem.limitations.subheading")}
+                {t("problem.limitations.heading")}{" "}
+                {t("problem.limitations.subheading")}
               </h3>
               <hr className="my-6" />
-              {(["fragmented", "delay", "reconciliation", "programmability", "opacity"] as const).map((key) => (
-                <div key={key} className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
+              {(
+                [
+                  "fragmented",
+                  "delay",
+                  "reconciliation",
+                  "programmability",
+                  "opacity",
+                ] as const
+              ).map((key) => (
+                <div
+                  key={key}
+                  className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6"
+                >
                   <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                     <CircleAlert className="text-red-900" />
-                    <h4 className="text-h6">{t(`problem.limitations.${key}`)}</h4>
+                    <h4 className="text-h6">
+                      {t(`problem.limitations.${key}`)}
+                    </h4>
                   </div>
                   <div className="text-muted-foreground col-start-2 font-medium">
                     {t(`problem.limitations.${key}Desc`)}
@@ -67,11 +81,22 @@ export default async function WhyEthereum({ params }: Props) {
 
             <Card className="p-10">
               <h3 className="text-h4 tracking-[0.04rem]">
-                {t("problem.pressures.heading")} {t("problem.pressures.subheading")}
+                {t("problem.pressures.heading")}{" "}
+                {t("problem.pressures.subheading")}
               </h3>
               <hr className="my-6" />
-              {(["efficiency", "transparency", "digitalAssets", "openInfra"] as const).map((key) => (
-                <div key={key} className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
+              {(
+                [
+                  "efficiency",
+                  "transparency",
+                  "digitalAssets",
+                  "openInfra",
+                ] as const
+              ).map((key) => (
+                <div
+                  key={key}
+                  className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6"
+                >
                   <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                     <Check className="text-secondary-foreground" />
                     <h4 className="text-h6">{t(`problem.pressures.${key}`)}</h4>
@@ -97,15 +122,17 @@ export default async function WhyEthereum({ params }: Props) {
           </div>
 
           <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-14">
-            {([
-              { key: "resilience", icon: ShieldCheck },
-              { key: "settlement", icon: Globe },
-              { key: "collateral", icon: ArrowLeftRight },
-              { key: "neutrality", icon: Scale },
-              { key: "liquidity", icon: CircleDollarSign },
-              { key: "programmability", icon: Code },
-              { key: "composability", icon: Blocks },
-            ] as const).map(({ key, icon: Icon }) => (
+            {(
+              [
+                { key: "resilience", icon: ShieldCheck },
+                { key: "settlement", icon: Globe },
+                { key: "collateral", icon: ArrowLeftRight },
+                { key: "neutrality", icon: Scale },
+                { key: "liquidity", icon: CircleDollarSign },
+                { key: "programmability", icon: Code },
+                { key: "composability", icon: Blocks },
+              ] as const
+            ).map(({ key, icon: Icon }) => (
               <CardContent key={key}>
                 <Icon className="text-secondary-foreground size-8" />
                 <CardLabel variant="large">
@@ -137,7 +164,10 @@ export default async function WhyEthereum({ params }: Props) {
 
             <ul className="max-w-prose space-y-3">
               {([1, 2, 3, 4] as const).map((i) => (
-                <li key={i} className="text-muted-foreground ms-6 list-disc font-medium">
+                <li
+                  key={i}
+                  className="text-muted-foreground ms-6 list-disc font-medium"
+                >
                   {t(`risk.item${i}`)}
                 </li>
               ))}
@@ -149,7 +179,10 @@ export default async function WhyEthereum({ params }: Props) {
               </h3>
               <ul className="max-w-prose space-y-3">
                 {([1, 2, 3, 4, 5, 6, 7] as const).map((i) => (
-                  <li key={i} className="text-muted-foreground ms-6 list-disc font-medium">
+                  <li
+                    key={i}
+                    className="text-muted-foreground ms-6 list-disc font-medium"
+                  >
                     {t(`risk.mitigation.item${i}`)}
                   </li>
                 ))}

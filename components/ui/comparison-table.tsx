@@ -39,7 +39,7 @@ export function ComparisonTable({
         >
           <div className="bg-[#F3F3F3] px-4 py-4">
             {labelHeader && (
-              <span className="font-bold text-foreground">{labelHeader}</span>
+              <span className="text-foreground font-bold">{labelHeader}</span>
             )}
           </div>
           {columns.map((col) => (
@@ -47,9 +47,7 @@ export function ComparisonTable({
               key={col.key}
               className={cn(
                 "px-4 py-4",
-                col.highlighted
-                  ? "bg-secondary-foreground"
-                  : "bg-[#ECECEC]"
+                col.highlighted ? "bg-secondary-foreground" : "bg-[#ECECEC]"
               )}
             >
               <span
@@ -72,16 +70,14 @@ export function ComparisonTable({
             style={{ display: "grid", gridTemplateColumns: gridTemplate }}
           >
             <div className="flex items-center bg-[#F3F3F3] px-4 py-4">
-              <span className="font-bold text-foreground">{row.label}</span>
+              <span className="text-foreground font-bold">{row.label}</span>
             </div>
             {columns.map((col) => (
               <div
                 key={col.key}
                 className={cn(
                   "px-4 py-4",
-                  col.highlighted
-                    ? "bg-secondary-foreground/10"
-                    : "bg-white"
+                  col.highlighted ? "bg-secondary-foreground/10" : "bg-white"
                 )}
               >
                 <p
@@ -110,21 +106,21 @@ export function ComparisonTable({
             <div key={i} className="bg-card p-5">
               <p className="text-sm font-bold">{row.label}</p>
               {highlighted && (
-                <div className="mt-3 bg-secondary-foreground/10 px-4 py-3">
-                  <p className="mb-0.5 text-xs font-bold uppercase tracking-widest text-secondary-foreground">
+                <div className="bg-secondary-foreground/10 mt-3 px-4 py-3">
+                  <p className="text-secondary-foreground mb-0.5 text-xs font-bold tracking-widest uppercase">
                     {highlighted.label}
                   </p>
-                  <p className="text-sm font-medium text-foreground">
+                  <p className="text-foreground text-sm font-medium">
                     {row.cells[highlighted.key]}
                   </p>
                 </div>
               )}
               {rest.map((col) => (
                 <div key={col.key} className="mt-3">
-                  <p className="mb-0.5 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                  <p className="text-muted-foreground mb-0.5 text-xs font-bold tracking-widest uppercase">
                     {col.label}
                   </p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     {row.cells[col.key]}
                   </p>
                 </div>

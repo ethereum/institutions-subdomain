@@ -13,7 +13,7 @@ import {
 } from "../ui/dropdown-menu"
 
 import { usePathname, useRouter } from "@/i18n/navigation"
-import { type Locale,locales } from "@/i18n/routing"
+import { type Locale, locales } from "@/i18n/routing"
 
 const localeNames: Record<Locale, string> = {
   en: "English",
@@ -38,7 +38,7 @@ const LanguageSwitcher = ({ className }: LanguageSwitcherProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger
         className={cn(
-          "css-primary-conditional flex items-center gap-1.5 !cursor-pointer font-medium",
+          "css-primary-conditional flex !cursor-pointer items-center gap-1.5 font-medium",
           className
         )}
       >
@@ -50,10 +50,7 @@ const LanguageSwitcher = ({ className }: LanguageSwitcherProps) => {
           <DropdownMenuItem
             key={loc}
             onClick={() => handleLocaleChange(loc)}
-            className={cn(
-              "cursor-pointer",
-              loc === locale && "bg-accent"
-            )}
+            className={cn("cursor-pointer", loc === locale && "bg-accent")}
           >
             {localeNames[loc]}
           </DropdownMenuItem>

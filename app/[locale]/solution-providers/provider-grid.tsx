@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useMemo, useState } from "react"
 import { ChevronDown, ExternalLink, X } from "lucide-react"
 import { useTranslations } from "next-intl"
 
@@ -15,11 +15,7 @@ import {
   type SolutionProvider,
 } from "./data"
 
-export function ProviderGrid({
-  providers,
-}: {
-  providers: SolutionProvider[]
-}) {
+export function ProviderGrid({ providers }: { providers: SolutionProvider[] }) {
   const [categoryFilter, setCategoryFilter] = useState<MacroCategory | "all">(
     "all"
   )
@@ -33,10 +29,7 @@ export function ProviderGrid({
   }, [providers, regionFilter])
 
   const grouped = useMemo(() => {
-    const cats =
-      categoryFilter === "all"
-        ? MACRO_CATEGORIES
-        : [categoryFilter]
+    const cats = categoryFilter === "all" ? MACRO_CATEGORIES : [categoryFilter]
 
     return cats
       .map((cat) => ({
@@ -89,8 +82,8 @@ export function ProviderGrid({
           onClick={() => setCategoryFilter("all")}
           className={
             categoryFilter === "all"
-              ? "bg-secondary-foreground text-white hover:bg-secondary-foreground/90 border border-secondary-foreground"
-              : "border border-border text-foreground hover:text-secondary-foreground"
+              ? "bg-secondary-foreground hover:bg-secondary-foreground/90 border-secondary-foreground border text-white"
+              : "border-border text-foreground hover:text-secondary-foreground border"
           }
         >
           {t("filters.allCategories")}
@@ -106,8 +99,8 @@ export function ProviderGrid({
             }
             className={
               categoryFilter === cat
-                ? "bg-secondary-foreground text-white hover:bg-secondary-foreground/90 border border-secondary-foreground"
-                : "border border-border text-foreground hover:text-secondary-foreground"
+                ? "bg-secondary-foreground hover:bg-secondary-foreground/90 border-secondary-foreground border text-white"
+                : "border-border text-foreground hover:text-secondary-foreground border"
             }
           >
             {t(`categories.${cat}`)}
@@ -197,11 +190,10 @@ export function ProviderGrid({
       {grouped.map(({ category, providers: catProviders }) => (
         <div key={category} className="space-y-4">
           <div>
-            <h3 className="text-h5">
-              {t(`categories.${category}`)}
-            </h3>
+            <h3 className="text-h5">{t(`categories.${category}`)}</h3>
             <p className="text-muted-foreground font-medium">
-              {catProviders.length} {catProviders.length === 1 ? "provider" : "providers"}
+              {catProviders.length}{" "}
+              {catProviders.length === 1 ? "provider" : "providers"}
             </p>
           </div>
 

@@ -20,7 +20,10 @@ type JSONData = {
 
 export type L2ScalingActivitySeries = { date: string; uops: number }[]
 
-export type L2ScalingActivityData = { uops: number; series: L2ScalingActivitySeries }
+export type L2ScalingActivityData = {
+  uops: number
+  series: L2ScalingActivitySeries
+}
 
 export const fetchL2ScalingActivity = async (): Promise<
   DataTimestamped<L2ScalingActivityData>
