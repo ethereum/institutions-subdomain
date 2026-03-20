@@ -25,14 +25,12 @@ import Link from "@/components/ui/link"
 
 import { formatDateMonthDayYear } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
-import {
-  formatLargeCurrency,
-  formatLargeNumber,
-} from "@/lib/utils/number"
+import { formatLargeCurrency, formatLargeNumber } from "@/lib/utils/number"
 
 import fetchBaseTvl from "@/app/_actions/fetchBaseTvl"
 import fetchBeaconChain from "@/app/_actions/fetchBeaconChain"
 import fetchCeloMonthlyStablecoinVolume from "@/app/_actions/fetchCeloMonthlyStablecoinVolume"
+import fetchEtherPrice from "@/app/_actions/fetchEtherPrice"
 import fetchL2ScalingActivity from "@/app/_actions/fetchL2ScalingActivity"
 import fetchL2ScalingSummary from "@/app/_actions/fetchL2ScalingSummary"
 import fetchWorldChainTxCount from "@/app/_actions/fetchWorldChainTxCount"
@@ -81,11 +79,11 @@ export default async function Page({ params }: Props) {
   const l2ScalingSummaryData = await fetchL2ScalingSummary()
   const l2ScalingActivityData = await fetchL2ScalingActivity()
   const beaconChainData = await fetchBeaconChain()
+  const ethPrice = await fetchEtherPrice()
   const baseTvlData = await fetchBaseTvl()
   const worldChainTxCountData = await fetchWorldChainTxCount()
   const celoMonthlyStablecoinVolumeData =
     await fetchCeloMonthlyStablecoinVolume()
-
 
   const frameworks: CardItem[] = [
     {
@@ -262,11 +260,7 @@ export default async function Page({ params }: Props) {
       description: t("caseStudies.antGroup.description"),
       href: "https://www.antgroup.com/",
       imgSrc: ey,
-      ctaLabel: (
-        <>
-          {t("caseStudies.antGroup.ctaLabel")}
-        </>
-      ),
+      ctaLabel: <>{t("caseStudies.antGroup.ctaLabel")}</>,
       lastUpdated: formatDateMonthDayYear(locale, new Date("2025-01-01")),
       source: "Ant Group",
       sourceHref: "https://www.antgroup.com/",
@@ -276,11 +270,7 @@ export default async function Page({ params }: Props) {
       description: t("caseStudies.robinhood.description"),
       href: "https://docs.robinhood.com/chain/",
       imgSrc: robinhood,
-      ctaLabel: (
-        <>
-          {t("caseStudies.robinhood.ctaLabel")}
-        </>
-      ),
+      ctaLabel: <>{t("caseStudies.robinhood.ctaLabel")}</>,
       lastUpdated: formatDateMonthDayYear(locale, new Date("2025-05-01")),
       source: "Robinhood",
       sourceHref: "https://robinhood.com/",
@@ -303,7 +293,10 @@ export default async function Page({ params }: Props) {
               </CardLabel>
               <CardValue asChild>
                 <AnimatedNumberInView>
-                  {formatLargeCurrency(locale, l2ScalingSummaryData.data.totalTvl)}
+                  {formatLargeCurrency(
+                    locale,
+                    l2ScalingSummaryData.data.totalTvl
+                  )}
                 </AnimatedNumberInView>
               </CardValue>
             </CardContent>
@@ -352,7 +345,10 @@ export default async function Page({ params }: Props) {
                 <CardSource>
                   {tCommon("source")}:{" "}
                   {l2ScalingActivityData.sourceInfo.sourceHref && (
-                    <Link inline href={l2ScalingActivityData.sourceInfo.sourceHref}>
+                    <Link
+                      inline
+                      href={l2ScalingActivityData.sourceInfo.sourceHref}
+                    >
                       {l2ScalingActivityData.sourceInfo.source}
                     </Link>
                   )}
@@ -428,11 +424,9 @@ export default async function Page({ params }: Props) {
           <h2 className="text-h3-mobile sm:text-h3">{t("benefits.heading")}</h2>
 
           <L2BenefitsPanel
-            validatorsCount={formatLargeNumber(
+            securityValue={formatLargeCurrency(
               locale,
-              beaconChainData.data.validatorsCount,
-              {},
-              2
+              beaconChainData.data.totalStakedEther * ethPrice.data.usd
             )}
           />
         </section>
@@ -525,9 +519,17 @@ export default async function Page({ params }: Props) {
                 aria-label={tCommon("visitAriaLabel", { name: heading })}
               >
                 <div className="space-y-2">
-                  <Image src={imgSrc} alt="" width={48} height={48} className="size-12 object-contain" />
+                  <Image
+                    src={imgSrc}
+                    alt=""
+                    width={48}
+                    height={48}
+                    className="size-12 object-contain"
+                  />
                   <h3 className="text-h5">{heading}</h3>
-                  <p className="font-medium whitespace-pre-line">{description}</p>
+                  <p className="font-medium whitespace-pre-line">
+                    {description}
+                  </p>
                 </div>
                 <p className="text-secondary-foreground mt-12 font-bold lg:mt-16">
                   {tCommon("visit")}{" "}
@@ -548,9 +550,17 @@ export default async function Page({ params }: Props) {
                 aria-label={tCommon("visitAriaLabel", { name: heading })}
               >
                 <div className="space-y-2">
-                  <Image src={imgSrc} alt="" width={48} height={48} className="size-12 object-contain" />
+                  <Image
+                    src={imgSrc}
+                    alt=""
+                    width={48}
+                    height={48}
+                    className="size-12 object-contain"
+                  />
                   <h3 className="text-h6 font-bold">{heading}</h3>
-                  <p className="text-muted-foreground text-sm font-medium">{description}</p>
+                  <p className="text-muted-foreground text-sm font-medium">
+                    {description}
+                  </p>
                 </div>
                 <p className="text-secondary-foreground mt-4 font-bold">
                   {tCommon("visit")}{" "}

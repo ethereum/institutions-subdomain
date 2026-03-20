@@ -10,9 +10,9 @@ import { cn } from "@/lib/utils"
 import Link from "../ui/link"
 
 type L2BenefitsPanelProps = {
-  validatorsCount: string
+  securityValue: string
 }
-export function L2BenefitsPanel({ validatorsCount }: L2BenefitsPanelProps) {
+export function L2BenefitsPanel({ securityValue }: L2BenefitsPanelProps) {
   const t = useTranslations("layer2.benefits")
   const [activeIndex, setActiveIndex] = useState(0)
 
@@ -38,7 +38,7 @@ export function L2BenefitsPanel({ validatorsCount }: L2BenefitsPanelProps) {
           heading: t("inheritDecentralization.sharedSecurity.heading"),
           items: [
             t.rich("inheritDecentralization.sharedSecurity.item1", {
-              validatorsCount,
+              securityValue,
               link: (chunks) => (
                 <Link
                   href="https://explorer.rated.network/network?network=mainnet&timeWindow=1d&rewardsMetric=average&geoDistType=all&hostDistType=all&soloProDist=stake"
@@ -73,9 +73,7 @@ export function L2BenefitsPanel({ validatorsCount }: L2BenefitsPanelProps) {
       cards: [
         {
           heading: t("enhancedPerformance.highPerformance.heading"),
-          items: [
-            t("enhancedPerformance.highPerformance.item1"),
-          ],
+          items: [t("enhancedPerformance.highPerformance.item1")],
         },
         {
           heading: t("enhancedPerformance.fasterCheaper.heading"),

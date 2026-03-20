@@ -31,65 +31,57 @@ type AssetValueByAssetIdsData = Record<
 export const fetchAssetValueByAssetIds = async (): Promise<
   DataTimestamped<AssetValueByAssetIdsData>
 > => {
-  const url = new URL("https://api.rwa.xyz/v3/assets/aggregates/timeseries")
+  const url = new URL("https://api.rwa.xyz/v4/tokens/aggregates/timeseries")
 
   const apiKey = process.env.RWA_API_KEY || ""
 
   if (!apiKey) {
-    console.warn(`No API key available for ${url.toString()}`)
-    return {
-      data: { BUIDL: 0, USTB: 0, MONY: 0, FDIT: 0, mF_ONE: 0 },
-      lastUpdated: Date.now(),
-      sourceInfo: SOURCE.RWA,
-    }
+    throw new Error(`No API key available for ${url.toString()}`)
   }
 
-  try {
-    if (!apiKey) {
-      throw new Error(`No API key available for ${url.toString()}`)
-    }
-
-    const myQuery = {
-      aggregate: {
-        groupBy: "asset",
-        aggregateFunction: "sum",
-        interval: "day",
-      },
-      filter: {
-        operator: "and",
-        filters: [
-          {
-            field: "date",
-            operator: "onOrAfter",
-            value: dateNDaysAgo(),
-          },
-          {
-            field: "measureID",
+  const myQuery = {
+    aggregate: {
+      groupBy: "asset",
+      aggregateFunction: "sum",
+      interval: "day",
+    },
+    filter: {
+      operator: "and",
+      filters: [
+        {
+          field: "date",
+          operator: "onOrAfter",
+          value: dateNDaysAgo(),
+        },
+        {
+          field: "measure_id",
+          operator: "equals",
+          value: RWA_API_MEASURE_ID_BY_CATEGORY.RWAS,
+        },
+        {
+          operator: "or",
+          filters: Object.values(RWA_XYZ_TREASURIES_ASSET_IDS).map((id) => ({
+            field: "asset_id",
             operator: "equals",
-            value: RWA_API_MEASURE_ID_BY_CATEGORY.RWAS,
-          },
-          {
-            operator: "or",
-            filters: Object.values(RWA_XYZ_TREASURIES_ASSET_IDS).map((id) => ({
-              field: "assetID",
-              operator: "equals",
-              value: id,
-            })),
-          },
-          getRwaApiEthereumNetworksFilter(["mainnet", "layer-2"]),
-        ],
-      },
-      sort: {
-        direction: "asc",
-        field: "date",
-      },
-      pagination: {
-        page: 1,
-        perPage: 25,
-      },
-    }
+            value: id,
+          })),
+        },
+        getRwaApiEthereumNetworksFilter(["mainnet", "layer-2"]),
+      ],
+    },
+    sort: {
+      direction: "asc",
+      field: "date",
+    },
+    pagination: {
+      page: 1,
+      perPage: 25,
+    },
+  }
 
-    url.searchParams.set("query", JSON.stringify(myQuery))
+  url.searchParams.set("query", JSON.stringify(myQuery))
+
+  try {
     const response = await fetchWithRetry(url.toString(), {
       headers: {
         Authorization: `Bearer ${apiKey}`,
@@ -97,7 +89,7 @@ export const fetchAssetValueByAssetIds = async (): Promise<
       },
       next: {
         revalidate: every("day"),
-        tags: ["rwa:v3:assets:aggregates:timeseries:by-asset-ids"],
+        tags: ["rwa:v4:tokens:aggregates:timeseries:by-asset-ids"],
       },
     })
 
@@ -158,11 +150,7 @@ export const fetchAssetValueByAssetIds = async (): Promise<
       message: error instanceof Error ? error.message : String(error),
       url: url,
     })
-    return {
-      data: { BUIDL: 2_800_000_000, USTB: 780_000_000, MONY: 500_000_000, FDIT: 400_000_000, mF_ONE: 340_000_000 },
-      lastUpdated: Date.now(),
-      sourceInfo: SOURCE.RWA,
-    }
+    throw error
   }
 }
 

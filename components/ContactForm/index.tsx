@@ -1,10 +1,11 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useMemo, useRef, useState } from "react"
 import { HeartHandshake, TriangleAlert } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { useTranslations } from "next-intl"
 import posthog from "posthog-js"
+import HCaptcha from "@hcaptcha/react-hcaptcha"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -14,52 +15,26 @@ import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
 import { sanitizeInput } from "@/lib/utils/sanitize"
 
-import { ENTERPRISE_EMAIL } from "@/lib/constants"
+import { CONSUMER_DOMAINS, ENTERPRISE_EMAIL } from "@/lib/constants"
 
 import Link from "../ui/link"
-
-// Consumer email domains to block
-const CONSUMER_DOMAINS = [
-  "gmail.com",
-  "yahoo.com",
-  "hotmail.com",
-  "outlook.com",
-  "icloud.com",
-  "protonmail.com",
-  "proton.me",
-  "pm.me",
-  "aol.com",
-  "mail.com",
-  "yandex.com",
-  "tutanota.com",
-  "fastmail.com",
-  "zoho.com",
-  "gmx.com",
-  "live.com",
-  "msn.com",
-  "me.com",
-  "mac.com",
-  "rocketmail.com",
-  "yahoo.co.uk",
-  "googlemail.com",
-  "mailinator.com",
-  "10minutemail.com",
-  "guerrillamail.com",
-]
 
 const MAX_INPUT_LENGTH = 2 ** 6 // 64
 const MAX_MESSAGE_LENGTH = 2 ** 12 // 4,096
 
 type FormState = {
-  name: string
+  firstName: string
+  lastName: string
   email: string
+  company: string
+  jobTitle: string
+  country: string
   message: string
 }
 
 type FormErrors = {
-  name?: React.ReactNode
-  email?: React.ReactNode
-  message?: React.ReactNode
+  [K in keyof FormState]?: React.ReactNode
+} & {
   general?: React.ReactNode
 }
 
@@ -69,18 +44,24 @@ const EnterpriseContactForm = () => {
   const t = useTranslations("contactForm")
   const pathname = usePathname()
   const prevPathname = useRef(pathname)
+  const captchaRef = useRef<HCaptcha>(null)
 
   const [formData, setFormData] = useState<FormState>({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
+    company: "",
+    jobTitle: "",
+    country: "",
     message: "",
   })
 
   const [errors, setErrors] = useState<FormErrors>({})
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null)
   const [submissionState, setSubmissionState] =
     useState<SubmissionState>("idle")
 
-  // Reset form errors and submission state on page transition—keep any progress
+  // Reset form errors and submission state on page transition--keep any progress
   useEffect(() => {
     if (prevPathname.current !== pathname) {
       setErrors({})
@@ -105,33 +86,21 @@ const EnterpriseContactForm = () => {
     (field: keyof FormState) =>
     (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const value = e.target.value
-
-      if (field === "name") {
-        const nameError = validateName(value)
-        if (nameError) setErrors((prev) => ({ ...prev, name: nameError }))
-        return
-      }
-      if (field === "email") {
-        const emailError = validateEmail(value)
-        if (emailError) setErrors((prev) => ({ ...prev, email: emailError }))
-        return
-      }
-      if (field === "message") {
-        const messageError = validateMessage(value)
-        if (messageError)
-          setErrors((prev) => ({ ...prev, message: messageError }))
-        return
+      const validator = fieldValidators[field]
+      if (validator) {
+        const error = validator(value)
+        if (error) setErrors((prev) => ({ ...prev, [field]: error }))
       }
     }
 
-  const validateName = (name: string): React.ReactNode | undefined => {
-    const sanitized = sanitizeInput(name)
-
+  const validateRequired = (
+    value: string,
+    maxLength = MAX_INPUT_LENGTH
+  ): React.ReactNode | undefined => {
+    const sanitized = sanitizeInput(value)
     if (!sanitized) return t("errors.required")
-
-    if (sanitized.length > MAX_INPUT_LENGTH)
-      return t("errors.nameTooLong", { max: MAX_MESSAGE_LENGTH })
-
+    if (sanitized.length > maxLength)
+      return t("errors.fieldTooLong", { max: maxLength })
     return undefined
   }
 
@@ -141,7 +110,7 @@ const EnterpriseContactForm = () => {
     if (!sanitized) return t("errors.required")
 
     if (sanitized.length > MAX_INPUT_LENGTH)
-      return t("errors.emailTooLong", { max: MAX_MESSAGE_LENGTH })
+      return t("errors.emailTooLong", { max: MAX_INPUT_LENGTH })
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(sanitized)) return t("errors.invalidEmail")
@@ -153,30 +122,39 @@ const EnterpriseContactForm = () => {
     return undefined
   }
 
-  const validateMessage = (
-    message: string
-  ): React.ReactNode | string | undefined => {
+  const validateMessage = (message: string): React.ReactNode | undefined => {
     const sanitized = sanitizeInput(message)
-
     if (!sanitized) return t("errors.required")
-
     if (sanitized.length > MAX_MESSAGE_LENGTH)
       return t("errors.messageTooLong", { max: MAX_MESSAGE_LENGTH })
-
     return undefined
   }
+
+  const fieldValidators = useMemo<
+    Partial<
+      Record<keyof FormState, (value: string) => React.ReactNode | undefined>
+    >
+  >(
+    () => ({
+      firstName: (v) => validateRequired(v),
+      lastName: (v) => validateRequired(v),
+      email: validateEmail,
+      company: (v) => validateRequired(v),
+      jobTitle: (v) => validateRequired(v),
+      country: (v) => validateRequired(v),
+      message: validateMessage,
+    }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [t]
+  )
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {}
 
-    const nameError = validateName(formData.name)
-    if (nameError) newErrors.name = nameError
-
-    const emailError = validateEmail(formData.email)
-    if (emailError) newErrors.email = emailError
-
-    const messageError = validateMessage(formData.message)
-    if (messageError) newErrors.message = messageError
+    for (const [field, validator] of Object.entries(fieldValidators)) {
+      const error = validator!(formData[field as keyof FormState])
+      if (error) newErrors[field as keyof FormState] = error
+    }
 
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
@@ -184,30 +162,32 @@ const EnterpriseContactForm = () => {
 
   const handleSubmit = async () => {
     if (!validateForm()) return
+    if (!captchaToken) return
 
     setSubmissionState("submitting")
     setErrors({})
 
-    // Track form submission attempt
     posthog.capture("contact_form_attempt")
 
     try {
-      const sanitizedData = {
-        name: sanitizeInput(formData.name),
-        email: sanitizeInput(formData.email),
-        message: sanitizeInput(formData.message),
-      }
-
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(sanitizedData),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: sanitizeInput(formData.firstName),
+          lastName: sanitizeInput(formData.lastName),
+          email: sanitizeInput(formData.email),
+          company: sanitizeInput(formData.company),
+          jobTitle: sanitizeInput(formData.jobTitle),
+          country: sanitizeInput(formData.country),
+          message: sanitizeInput(formData.message),
+          captchaToken,
+        }),
       })
 
       if (!response.ok) throw new Error(`Server error: ${response.status}`)
 
+      posthog.capture("contact_form_submitted")
       setSubmissionState("success")
     } catch (error) {
       console.error("Form submission error:", error)
@@ -227,20 +207,28 @@ const EnterpriseContactForm = () => {
           </>
         ),
       })
+    } finally {
+      setCaptchaToken(null)
+      captchaRef.current?.resetCaptcha()
     }
   }
 
   const getCharacterCountClasses = (currentLength: number, maxLength: number) =>
     cn(
-      currentLength >= Math.floor(maxLength * 0.9) && "flex", // Show char count when within 10% remaining to limit
-      currentLength > maxLength - 64 && "text-warning-border", // Warning color within 64 chars (border version for proper contrast ratio),
-      currentLength > maxLength && "text-destructive [&_svg]:inline" // Error color over limit
+      currentLength >= Math.floor(maxLength * 0.9) && "flex",
+      currentLength > maxLength - 64 && "text-warning-border",
+      currentLength > maxLength && "text-destructive [&_svg]:inline"
     )
 
   const isDisabled =
     submissionState === "submitting" ||
+    !captchaToken ||
+    !formData.firstName ||
+    !formData.lastName ||
     !formData.email ||
-    !formData.name ||
+    !formData.company ||
+    !formData.jobTitle ||
+    !formData.country ||
     !formData.message
 
   if (submissionState === "success")
@@ -250,49 +238,58 @@ const EnterpriseContactForm = () => {
           <HeartHandshake className="text-primary-foreground size-8" />
           <h4 className="text-xl font-semibold">{t("successTitle")}</h4>
         </div>
-        <p className="text-body-medium">
-          {t("successMessage")}
-        </p>
+        <p className="text-body-medium">{t("successMessage")}</p>
       </div>
     )
+
+  const renderField = (
+    field: keyof FormState,
+    placeholder: string,
+    props?: Partial<React.ComponentProps<typeof Input>>
+  ) => (
+    <>
+      <Input
+        name={field}
+        type={props?.type ?? "text"}
+        autoComplete={props?.autoComplete}
+        className="w-full"
+        placeholder={placeholder}
+        value={formData[field]}
+        onChange={handleInputChange(field)}
+        onBlur={handleBlur(field)}
+        hasError={!!errors[field]}
+        disabled={submissionState === "submitting"}
+      />
+      {errors[field] && (
+        <p className="text-destructive text-sm" role="alert">
+          {errors[field]}
+        </p>
+      )}
+    </>
+  )
 
   return (
     <div className="w-full max-w-[440px] space-y-6">
       <div className="space-y-2">
-        <Input
-          name="name"
-          autoComplete="name"
-          type="text"
-          className="w-full"
-          placeholder={t("namePlaceholder")}
-          value={formData.name}
-          onChange={handleInputChange("name")}
-          onBlur={handleBlur("name")}
-          hasError={!!errors.name}
-          disabled={submissionState === "submitting"}
-        />
-        {errors.name && (
-          <p className="text-destructive text-sm" role="alert">
-            {errors.name}
-          </p>
-        )}
-        <Input
-          name="email"
-          autoComplete="email"
-          type="email"
-          className="w-full"
-          placeholder={t("emailPlaceholder")}
-          value={formData.email}
-          onChange={handleInputChange("email")}
-          onBlur={handleBlur("email")}
-          hasError={!!errors.email}
-          disabled={submissionState === "submitting"}
-        />
-        {errors.email && (
-          <p className="text-destructive text-sm" role="alert">
-            {errors.email}
-          </p>
-        )}
+        {renderField("firstName", t("firstNamePlaceholder"), {
+          autoComplete: "given-name",
+        })}
+        {renderField("lastName", t("lastNamePlaceholder"), {
+          autoComplete: "family-name",
+        })}
+        {renderField("email", t("emailPlaceholder"), {
+          type: "email",
+          autoComplete: "email",
+        })}
+        {renderField("company", t("companyPlaceholder"), {
+          autoComplete: "organization",
+        })}
+        {renderField("jobTitle", t("jobTitlePlaceholder"), {
+          autoComplete: "organization-title",
+        })}
+        {renderField("country", t("countryPlaceholder"), {
+          autoComplete: "country-name",
+        })}
       </div>
 
       <div className="space-y-2">
@@ -334,6 +331,15 @@ const EnterpriseContactForm = () => {
           </p>
         </div>
       )}
+
+      <HCaptcha
+        sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY!}
+        theme="dark"
+        ref={captchaRef}
+        onVerify={setCaptchaToken}
+        onExpire={() => setCaptchaToken(null)}
+        reCaptchaCompat={false}
+      />
 
       <Button
         onClick={handleSubmit}

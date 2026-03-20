@@ -23,7 +23,7 @@ export type SecuritizeAumData = DataSeriesWithCurrent
 export const fetchSecuritizeAum = async (): Promise<
   DataTimestamped<SecuritizeAumData>
 > => {
-  const url = new URL("https://api.rwa.xyz/v3/assets/aggregates/timeseries")
+  const url = new URL("https://api.rwa.xyz/v4/tokens/aggregates/timeseries")
 
   const apiKey = process.env.RWA_API_KEY || ""
 
@@ -54,14 +54,14 @@ export const fetchSecuritizeAum = async (): Promise<
       operator: "and",
       filters: [
         {
-          field: "measureID",
+          field: "measure_id",
           operator: "equals",
           value: RWA_API_MEASURE_ID_BY_CATEGORY.RWAS,
         },
         {
-          field: "protcolID",
+          field: "protocol_name",
           operator: "equals",
-          value: 10,
+          value: "Securitize",
         },
         getRwaApiEthereumNetworksFilter(["mainnet", "layer-2"]),
       ],
@@ -78,7 +78,7 @@ export const fetchSecuritizeAum = async (): Promise<
       },
       next: {
         revalidate: every("day"),
-        tags: ["rwa:v3:assets:aggregates:timeseries:securitize"],
+        tags: ["rwa:v4:tokens:aggregates:timeseries:securitize"],
       },
     })
 

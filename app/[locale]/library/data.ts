@@ -18,8 +18,10 @@ import fidelity1 from "@/public/images/library/fidelity-1.jpg"
 import fidelity2 from "@/public/images/library/fidelity-2.png"
 import galaxy from "@/public/images/library/galaxy-1.png"
 import goldmanSachs from "@/public/images/library/goldman-sachs-1.png"
+import iptfPublicRails from "@/public/images/library/iptfpublicrails.jpg"
 import mergeMadrid from "@/public/images/library/merge-madrid-1.jpg"
 import nextFinSummit from "@/public/images/library/nextfin-summit-1.png"
+import redstone from "@/public/images/library/redstone-1.png"
 
 type LibraryItem = {
   title: string
@@ -29,6 +31,19 @@ type LibraryItem = {
 }
 
 const externalLibraryItems: LibraryItem[] = [
+  {
+    title:
+      "RedStone - Case Study: How Securitize and RedStone Enable DeFi-Ready RWAs on Ethereum",
+    href: "https://blog.redstone.finance/2026/02/26/case-study-how-securitize-and-redstone-enable-defi-ready-rwas-on-ethereum/",
+    date: "2026-02-26",
+    imgSrc: redstone,
+  },
+  {
+    title: "IPTF - Public Rails vs Private Ledgers",
+    href: "https://iptf.ethereum.org/public-rails-vs-private-ledgers/",
+    date: "2026-01-30",
+    imgSrc: iptfPublicRails,
+  },
   {
     title: "Citi - Stablecoins 2030 Web3 to Wall Street",
     href: "https://www.citigroup.com/rcs/citigpa/storage/public/GPS_Report_Stablecoins_2030.pdf",
@@ -129,10 +144,7 @@ const getInternalLibraryItems = (locale: string): LibraryItem[] =>
   })
 
 export const getLibraryItems = (locale: string): LibraryItem[] =>
-  [
-    ...externalLibraryItems,
-    ...getInternalLibraryItems(locale),
-  ].sort((a, b) => {
+  [...externalLibraryItems, ...getInternalLibraryItems(locale)].sort((a, b) => {
     if (!isValidDate(a.date)) return -1
     if (!isValidDate(b.date)) return 1
     return new Date(b.date).getTime() - new Date(a.date).getTime()

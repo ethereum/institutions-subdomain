@@ -88,7 +88,11 @@ const logos: { src: StaticImageData; alt: string; className?: string }[] = [
   { src: etoro, alt: "eToro logo" },
   { src: fidelityLight, alt: "Fidelity logo" },
   { src: jpMorganLight, alt: "JPMorgan logo" },
-  { src: morganStanleyLight, alt: "Morgan Stanley logo", className: "h-[18px]" },
+  {
+    src: morganStanleyLight,
+    alt: "Morgan Stanley logo",
+    className: "h-[18px]",
+  },
   { src: mastercard, alt: "Mastercard logo" },
   { src: robinhood, alt: "Robinhood logo" },
   { src: standardChartered, alt: "Standard Chartered logo" },
@@ -318,7 +322,7 @@ export default async function Home({ params }: Props) {
           </>
         }
       >
-        <p className="text-primary-foreground/75 text-xl max-w-md max-md:text-center">
+        <p className="text-primary-foreground/75 max-w-md text-xl max-md:text-center">
           {t("hero.tagline")}
         </p>
       </Hero>
@@ -438,10 +442,7 @@ export default async function Home({ params }: Props) {
         </section>
 
         <div>
-          <section
-            id="leader"
-            className="space-y-12"
-          >
+          <section id="leader" className="space-y-12">
             <div className="space-y-4 text-center">
               <h2>
                 {t("leader.headingLine1")}
@@ -464,10 +465,7 @@ export default async function Home({ params }: Props) {
                   { key: "composability", span: "lg:col-span-4" },
                 ] as const
               ).map(({ key, span }) => (
-                <div
-                  key={key}
-                  className={cn("bg-card space-y-3 p-8", span)}
-                >
+                <div key={key} className={cn("bg-card space-y-3 p-8", span)}>
                   <h3 className="text-h5 text-foreground tracking-[0.03rem]">
                     {t(`leader.${key}.label`)}
                   </h3>
@@ -486,7 +484,11 @@ export default async function Home({ params }: Props) {
 
             <ComparisonTable
               columns={[
-                { key: "ethereum", label: t("comparison.ethereum"), highlighted: true },
+                {
+                  key: "ethereum",
+                  label: t("comparison.ethereum"),
+                  highlighted: true,
+                },
                 { key: "l1Alt", label: t("comparison.l1Alt") },
                 { key: "privateDlt", label: t("comparison.privateDlt") },
                 { key: "traditional", label: t("comparison.traditional") },
@@ -523,12 +525,24 @@ export default async function Home({ params }: Props) {
             </div>
             <div className="grid w-full grid-cols-2 gap-x-8 gap-y-8 sm:gap-y-14">
               {platforms.map(
-                ({ name, imgSrc, label, value, className, imgClassName, ...sourceInfo }) => (
+                ({
+                  name,
+                  imgSrc,
+                  label,
+                  value,
+                  className,
+                  imgClassName,
+                  ...sourceInfo
+                }) => (
                   <div key={name} className={cn("space-y-2", className)}>
                     <h3 className="text-h5 text-foreground sr-only tracking-[0.03rem]">
                       {name}
                     </h3>
-                    <Image src={imgSrc} alt={`${name} logo`} className={cn("h-7 w-auto", imgClassName)} />
+                    <Image
+                      src={imgSrc}
+                      alt={`${name} logo`}
+                      className={cn("h-7 w-auto", imgClassName)}
+                    />
                     <p className="text-muted-foreground">{label}</p>
                     <InlineText className="text-muted-foreground font-bold">
                       {value}
@@ -684,7 +698,6 @@ export default async function Home({ params }: Props) {
             {tCommon("viewAllResources")}
           </LinkWithArrow>
         </section>
-
       </article>
     </main>
   )

@@ -18,7 +18,7 @@ export type ProtocolsValueTotalData = {
 export const fetchProtocolsValueTotal = async (): Promise<
   DataTimestamped<ProtocolsValueTotalData>
 > => {
-  const url = new URL("https://api.rwa.xyz/v3/protocols/timeseries")
+  const url = new URL("https://api.rwa.xyz/v4/tokens/aggregates/timeseries")
 
   const apiKey = process.env.RWA_API_KEY || ""
 
@@ -36,9 +36,9 @@ export const fetchProtocolsValueTotal = async (): Promise<
       operator: "and",
       filters: [
         {
-          field: "measureSlug",
+          field: "measure_id",
           operator: "equals",
-          value: "outstanding_capital_dollar",
+          value: 63,
         },
         {
           field: "date",
@@ -73,7 +73,7 @@ export const fetchProtocolsValueTotal = async (): Promise<
       },
       next: {
         revalidate: every("day"),
-        tags: ["rwa:v3:protocols:timeseries:total-value"],
+        tags: ["rwa:v4:tokens:aggregates:timeseries:total-value"],
       },
     })
 
@@ -86,7 +86,16 @@ export const fetchProtocolsValueTotal = async (): Promise<
 
     const { results } = json
 
+    if (!results.length) {
+      return {
+        data: { totalPrivateCredit: 0 },
+        lastUpdated: Date.now(),
+        sourceInfo: SOURCE.RWA,
+      }
+    }
+
     const totalPrivateCredit = results.reduce((sum, { points }) => {
+      if (!points?.length) return sum
       const [, value] = points[points.length - 1]
       return sum + value
     }, 0)
