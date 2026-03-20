@@ -108,7 +108,7 @@ export const getRwaApiEthereumNetworksFilter = (
   if (!networks.length) return
 
   const COMMON_FIELD_OPERATOR = {
-    field: "networkID",
+    field: "network_id",
     operator: "equals",
   }
 

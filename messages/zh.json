@@ -242,8 +242,8 @@
       "totalSector": "以太坊 L1 RWA 板块总规模：",
       "treasuries": "代币化国债与现金等价物",
       "treasuriesSector": "以太坊 + L2 板块规模",
-      "privateCredit": "私募信贷与结构化信贷",
-      "activeLoans": "以太坊 + L2 活跃贷款规模"
+      "privateCredit": "代币化现实世界资产",
+      "activeLoans": "以太坊 + L2 总价值"
     },
     "cards": {
       "by": "发行方：{issuer}",
