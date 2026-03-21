@@ -1,12 +1,13 @@
 "use client"
 
 import { CornerUpRight } from "lucide-react"
-import { usePathname } from "next/navigation"
 import { useTranslations } from "next-intl"
 
 import Link from "@/components/ui/link"
 
 import { cn } from "@/lib/utils"
+
+import { usePathname } from "@/i18n/navigation"
 
 const ParentPathLink = ({ className }: { className?: string }) => {
   const pathname = usePathname()

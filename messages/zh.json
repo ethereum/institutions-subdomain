@@ -133,7 +133,7 @@
       },
       "liquidity": {
         "label": "深厚流动性",
-        "description": "日均 DEX 交易量超 {dexVolume}，汇聚链上最深厚的流动性。以太坊已成为机构构建下一代领先产品的首选流动性层。"
+        "description": "资产代币化的领先平台，{tokenizationShare}的代币化资产部署于此。以太坊的DeFi生态系统受益于{yearsOfNetworkEffects}的网络效应，其DeFi生态系统规模是第二大生态系统的{defiMultiplier}。"
       },
       "tokenization": {
         "label": "资产代币化",

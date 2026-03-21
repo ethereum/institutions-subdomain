@@ -133,7 +133,7 @@
       },
       "liquidity": {
         "label": "Liquidez profunda",
-        "description": "Más de {dexVolume} en volumen diario de DEX, la liquidez más profunda de cualquier entorno en cadena. Ethereum es la capa de liquidez elegida por las instituciones para crear productos de vanguardia de próxima generación."
+        "description": "La plataforma líder para la tokenización de activos, con {tokenizationShare} de todos los activos tokenizados desplegados. El ecosistema DeFi de Ethereum se beneficia de {yearsOfNetworkEffects} de efectos de red, siendo su ecosistema DeFi {defiMultiplier} más grande que el siguiente ecosistema más grande."
       },
       "tokenization": {
         "label": "Tokenización",
