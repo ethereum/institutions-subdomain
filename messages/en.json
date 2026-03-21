@@ -119,7 +119,7 @@
       "intro": "Ethereum is an open, globally distributed settlement network that supports programmable financial activity. Unlike proprietary or permissioned systems, Ethereum is a neutral base layer, with no single operator, that institutions can build compliance-aware applications on.",
       "resilience": {
         "label": "Operational Resilience",
-        "description": "Ethereum has maintained 10 years of uninterrupted uptime, including liveness through 15+ successful network upgrades. A diverse infrastructure set and open client ecosystem reduce infrastructure and single-operator risks."
+        "description": "{uptime} of uninterrupted uptime, including liveness through 15+ successful network upgrades. A diverse infrastructure set and open client ecosystem reduce infrastructure and single-operator risks."
       },
       "settlement": {
         "label": "Global Settlement",
@@ -135,7 +135,7 @@
       },
       "liquidity": {
         "label": "Liquidity and Utility",
-        "description": "The leading platform for asset tokenization, with 67% of all tokenized assets deployed. Ethereum's DeFi ecosystem benefits from 10 years of network effects with its DeFi ecosystem being 8x larger than that of the next largest ecosystem."
+        "description": "The leading platform for asset tokenization, with {tokenizationShare} of all tokenized assets deployed. Ethereum's DeFi ecosystem benefits from {yearsOfNetworkEffects} of network effects with its DeFi ecosystem being {defiMultiplier} larger than that of the next largest ecosystem."
       },
       "programmability": {
         "label": "Programmability",
@@ -303,11 +303,11 @@
       "l1-alt_settlement": "Seconds",
       "private-dlt_settlement": "Operator-dependent",
       "traditional_settlement": "Days",
-      "ethereum_resilience": "10.5 years",
+      "ethereum_resilience": "{uptime}",
       "l1-alt_resilience": "Multiple downtimes",
       "private-dlt_resilience": "2 years or less",
       "traditional_resilience": "Incumbent",
-      "ethereum_security": "12 clients, 10+ yrs uptime",
+      "ethereum_security": "12 clients, {uptimeYears} uptime",
       "l1-alt_security": "Single client, downtimes",
       "private-dlt_security": "Vendor-dependent",
       "traditional_security": "Jurisdiction-bound",
@@ -360,7 +360,7 @@
       "heading": "Tokenized Assets on Ethereum",
       "total-sector": "Total tokenized asset sector on Ethereum L1:",
       "treasuries": "Tokenized Treasuries & Cash-Equivalents",
-      "treasuries-sector": "$5.49B sector",
+      "treasuries-sector": "Sector on Ethereum + L2s",
       "private-credit": "Tokenized Real-World Assets",
       "active-loans": "Total value on Ethereum + L2s"
     },
@@ -457,7 +457,7 @@
       "economics": "Economics",
       "economics-desc": "Transparent utility pricing with no lock-in. SaaS licensing for private chains scales with vendor leverage. Over a decade, the cost differential compounds significantly in Ethereum's favour.",
       "interoperability": "Interoperability",
-      "interoperability-desc": "Privacy solutions on Ethereum compose with the full DeFi stack: ~$55B in TVL, 1,700+ protocols, and the deepest onchain liquidity globally. Private chains offer none of this. Your assets are only as useful as one vendor's ecosystem allows."
+      "interoperability-desc": "Privacy solutions on Ethereum compose with the full DeFi stack: {defiTvl} in TVL, 1,700+ protocols, and the deepest onchain liquidity globally. Private chains offer none of this. Your assets are only as useful as one vendor's ecosystem allows."
     },
     "trust-vs-crypto": {
       "heading": "Trust-Based Privacy vs Cryptographic Privacy",
@@ -976,7 +976,7 @@
       },
       "liquidity": {
         "label": "Liquidity and Utility",
-        "description": "The leading platform for asset tokenization with 67% of all tokenized assets deployed. Benefitting from 10 years of network effects, Ethereum's DeFi ecosystem is 8x larger than the next largest."
+        "description": "The leading platform for asset tokenization with {tokenizationShare} of all tokenized assets deployed. Benefitting from {yearsOfNetworkEffects} of network effects, Ethereum's DeFi ecosystem is {defiMultiplier} larger than the next largest."
       },
       "programmability": {
         "label": "Programmability",

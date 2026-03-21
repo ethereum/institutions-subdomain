@@ -19,6 +19,7 @@ import {
   formatLargeCurrencyRange,
   formatPercentRange,
 } from "@/lib/utils/number"
+import { formatDuration } from "@/lib/utils/time"
 
 import fetchAssetMarketShare from "@/app/_actions/fetchAssetMarketShare"
 import fetchAssetValueByAssetIds from "@/app/_actions/fetchAssetValueByAssetIds"
@@ -26,6 +27,7 @@ import fetchProtocolsValueBySlug from "@/app/_actions/fetchProtocolsValueBySlug"
 import fetchProtocolsValueTotal from "@/app/_actions/fetchProtocolsValueTotal"
 import fetchTokenizedTreasuries from "@/app/_actions/fetchTokenizedTreasuries"
 import fetchTotalValueSecured from "@/app/_actions/fetchTotalValueSecured"
+import { getTimeSinceGenesis } from "@/app/_actions/getTimeSinceGenesis"
 import { type Locale, routing } from "@/i18n/routing"
 import buildings from "@/public/images/banners/buildings.png"
 import aaveLogo from "@/public/images/logos/apps/aave.png"
@@ -60,6 +62,8 @@ export default async function Page({ params }: Props) {
 
   const t = await getTranslations("rwa")
   const tCommon = await getTranslations("common")
+  const uptime = getTimeSinceGenesis()
+  const uptimeYears = formatDuration(locale, uptime) + "+"
 
   const [
     stablecoinAssetMarketShareData,
@@ -521,8 +525,16 @@ export default async function Page({ params }: Props) {
               { key: "privateDlt", label: t("comparison.private-dlt") },
               { key: "traditional", label: t("comparison.traditional") },
             ]}
-            rows={(
-              [
+            rows={(() => {
+              const comparisonVars: Record<string, Record<string, string>> = {
+                resilience: {
+                  uptime: formatDuration(locale, uptime, {
+                    maxDecimalPoints: 1,
+                  }),
+                },
+                security: { uptimeYears },
+              }
+              return [
                 "settlement",
                 "resilience",
                 "security",
@@ -532,16 +544,19 @@ export default async function Page({ params }: Props) {
                 "neutrality",
                 "geo-risk",
                 "composability",
-              ] as const
-            ).map((row) => ({
-              label: t(`comparison.${row}`),
-              cells: {
-                ethereum: t(`comparison.ethereum_${row}`),
-                l1Alt: t(`comparison.l1-alt_${row}`),
-                privateDlt: t(`comparison.private-dlt_${row}`),
-                traditional: t(`comparison.traditional_${row}`),
-              },
-            }))}
+              ].map((row) => ({
+                label: t(`comparison.${row}`),
+                cells: {
+                  ethereum: t(
+                    `comparison.ethereum_${row}`,
+                    comparisonVars[row]
+                  ),
+                  l1Alt: t(`comparison.l1-alt_${row}`),
+                  privateDlt: t(`comparison.private-dlt_${row}`),
+                  traditional: t(`comparison.traditional_${row}`),
+                },
+              }))
+            })()}
           />
         </section>
 

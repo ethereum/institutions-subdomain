@@ -18,6 +18,7 @@ import { getMetadata } from "@/lib/utils/metadata"
 import { formatLargeCurrency } from "@/lib/utils/number"
 
 import fetchTotalValueSecured from "@/app/_actions/fetchTotalValueSecured"
+import fetchDefiTvlAllCurrent from "@/app/_actions/fetchTvlDefiAllCurrent"
 import { type Locale, routing } from "@/i18n/routing"
 import blurWalking from "@/public/images/banners/blur-walking.png"
 import eyLogo from "@/public/images/logos/apps/ey.png"
@@ -46,7 +47,10 @@ export default async function Page({ params }: Props) {
   const t = await getTranslations("privacy")
   const tCommon = await getTranslations("common")
 
-  const totalValueSecuredData = await fetchTotalValueSecured()
+  const [totalValueSecuredData, defiTvlAllCurrentData] = await Promise.all([
+    fetchTotalValueSecured(),
+    fetchDefiTvlAllCurrent(),
+  ])
 
   const privacyResearchStart = 2019
   const privacyRdYears = new Date().getFullYear() - privacyResearchStart
@@ -325,7 +329,12 @@ export default async function Page({ params }: Props) {
                 >
                   {t(heading)}
                   <p className="text-muted-foreground mt-1 text-base font-medium">
-                    {t(desc)}
+                    {t(desc, desc === "why-matters.interoperability-desc" ? {
+                      defiTvl: formatLargeCurrency(
+                        locale,
+                        defiTvlAllCurrentData.data.mainnetDefiTvl
+                      ),
+                    } : undefined)}
                   </p>
                 </li>
               ))}

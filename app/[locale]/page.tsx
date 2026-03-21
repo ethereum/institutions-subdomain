@@ -46,6 +46,7 @@ import { getMetadata } from "@/lib/utils/metadata"
 import {
   formatLargeCurrency,
   formatLargeNumber,
+  formatMultiplier,
   formatPercent,
 } from "@/lib/utils/number"
 import { formatDuration } from "@/lib/utils/time"
@@ -172,6 +173,7 @@ export default async function Home({ params }: Props) {
     ethPrice,
     defiTvlAllCurrentData,
     stablecoinAssetMarketShareData,
+    rwaAssetMarketShareData,
     securitizeAumData,
     baseTvlData,
   ] = await Promise.all([
@@ -179,6 +181,7 @@ export default async function Home({ params }: Props) {
     fetchEtherPrice(),
     fetchDefiTvlAllCurrent(),
     fetchAssetMarketShare("STABLECOINS"),
+    fetchAssetMarketShare("RWAS"),
     fetchSecuritizeAum(),
     fetchBaseTvl(),
   ])
@@ -304,6 +307,37 @@ export default async function Home({ params }: Props) {
       value: t("platforms.jpmorgan.value"),
     },
   ]
+
+  // Tokenized assets market share (mainnet + L2)
+  const tokenizationShare = formatPercent(
+    locale,
+    rwaAssetMarketShareData.data.marketShare.mainnet +
+      rwaAssetMarketShareData.data.marketShare.layer2,
+    false,
+    2
+  )
+
+  // Years of network effects (from genesis)
+  const yearsOfNetworkEffects = formatDuration(locale, uptime) + "+"
+
+  // DeFi multiplier vs next largest
+  const defiMultiplier = formatMultiplier(
+    locale,
+    defiTvlAllCurrentData.data.runnerUpMultiplier,
+    2
+  )
+
+  // Variables for leader description interpolation
+  const leaderDescriptionVars: Record<string, Record<string, string>> = {
+    resilience: {
+      uptime: formatDuration(locale, uptime, { maxDecimalPoints: 1 }),
+    },
+    liquidity: {
+      tokenizationShare,
+      yearsOfNetworkEffects,
+      defiMultiplier,
+    },
+  }
 
   return (
     <main className="row-start-2 flex flex-col items-center sm:items-start">
@@ -478,7 +512,10 @@ export default async function Home({ params }: Props) {
                     {t(`leader.${key}.label`)}
                   </h3>
                   <p className="text-muted-foreground font-medium">
-                    {t(`leader.${key}.description`)}
+                    {t(
+                      `leader.${key}.description`,
+                      leaderDescriptionVars[key]
+                    )}
                   </p>
                 </div>
               ))}

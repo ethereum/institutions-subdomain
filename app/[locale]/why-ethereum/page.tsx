@@ -17,8 +17,11 @@ import Hero from "@/components/Hero"
 import { Card, CardContent, CardLabel } from "@/components/ui/card"
 
 import { getMetadata } from "@/lib/utils/metadata"
+import { formatMultiplier, formatPercent } from "@/lib/utils/number"
 import { formatDuration } from "@/lib/utils/time"
 
+import fetchAssetMarketShare from "@/app/_actions/fetchAssetMarketShare"
+import fetchDefiTvlAllCurrent from "@/app/_actions/fetchTvlDefiAllCurrent"
 import { getTimeSinceGenesis } from "@/app/_actions/getTimeSinceGenesis"
 import { type Locale, routing } from "@/i18n/routing"
 import curvedBuilding from "@/public/images/banners/curved-building-bw.jpg"
@@ -36,6 +39,32 @@ export default async function WhyEthereum({ params }: Props) {
   setRequestLocale(locale)
   const t = await getTranslations("why-ethereum")
   const uptime = getTimeSinceGenesis()
+
+  const [defiTvlAllCurrentData, rwaAssetMarketShareData] = await Promise.all([
+    fetchDefiTvlAllCurrent(),
+    fetchAssetMarketShare("RWAS"),
+  ])
+
+  const featureDescriptionVars: Record<string, Record<string, string>> = {
+    resilience: {
+      uptime: formatDuration(locale, uptime),
+    },
+    liquidity: {
+      tokenizationShare: formatPercent(
+        locale,
+        rwaAssetMarketShareData.data.marketShare.mainnet +
+          rwaAssetMarketShareData.data.marketShare.layer2,
+        false,
+        2
+      ),
+      yearsOfNetworkEffects: formatDuration(locale, uptime) + "+",
+      defiMultiplier: formatMultiplier(
+        locale,
+        defiTvlAllCurrentData.data.runnerUpMultiplier,
+        2
+      ),
+    },
+  }
 
   return (
     <main className="row-start-2 flex flex-col items-center sm:items-start">
@@ -139,11 +168,7 @@ export default async function WhyEthereum({ params }: Props) {
                   {t(`features.${key}.label`)}
                 </CardLabel>
                 <div className="text-muted-foreground font-medium">
-                  {key === "resilience"
-                    ? t.rich(`features.${key}.description`, {
-                        uptime: formatDuration(locale, uptime),
-                      })
-                    : t(`features.${key}.description`)}
+                  {t(`features.${key}.description`, featureDescriptionVars[key])}
                 </div>
               </CardContent>
             ))}
