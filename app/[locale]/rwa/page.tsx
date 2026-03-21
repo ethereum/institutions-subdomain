@@ -14,7 +14,11 @@ import Link, { LinkWithArrow } from "@/components/ui/link"
 
 import { formatDateMonthDayYear } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
-import { formatLargeCurrency } from "@/lib/utils/number"
+import {
+  formatLargeCurrency,
+  formatLargeCurrencyRange,
+  formatPercentRange,
+} from "@/lib/utils/number"
 
 import fetchAssetMarketShare from "@/app/_actions/fetchAssetMarketShare"
 import fetchAssetValueByAssetIds from "@/app/_actions/fetchAssetValueByAssetIds"
@@ -262,33 +266,73 @@ export default async function Page({ params }: Props) {
     },
   ]
 
-  const categoryExamples: Record<string, { name: string; href: string }[]> = {
-    treasuries: [
-      {
-        name: "BlackRock BUIDL",
-        href: "https://securitize.io/blackrock/buidl",
-      },
-      { name: "Ondo", href: "https://ondo.finance/" },
-      {
-        name: "Franklin Templeton",
-        href: "https://digitalassets.franklintempleton.com/benji/",
-      },
-    ],
-    credit: [
-      { name: "Centrifuge", href: "https://centrifuge.io/" },
-      { name: "Maple", href: "https://maple.finance/" },
-      { name: "Securitize", href: "https://securitize.io/" },
-    ],
-    commodities: [
-      { name: "Tether Gold", href: "https://gold.tether.to/" },
-      { name: "Paxos Gold", href: "https://paxos.com/paxgold/" },
-    ],
-    equities: [
-      { name: "Ondo", href: "https://ondo.finance/" },
-      { name: "Backed", href: "https://backed.fi/" },
-    ],
-    "real-estate": [],
-  }
+  const categoryBreakdownData: {
+    labelKey: string
+    tvlEth: [number, number]
+    tvlTotal: [number, number]
+    ethShare: [number, number]
+    examples: { name: string; href?: string }[]
+  }[] = [
+    {
+      labelKey: "treasuries",
+      tvlEth: [8.8e9, 9.5e9],
+      tvlTotal: [9.1e9, 9.75e9],
+      ethShare: [0.93, 0.97],
+      examples: [
+        {
+          name: "BlackRock BUIDL",
+          href: "https://securitize.io/blackrock/buidl",
+        },
+        { name: "Ondo", href: "https://ondo.finance/" },
+        {
+          name: "Franklin Templeton",
+          href: "https://digitalassets.franklintempleton.com/benji/",
+        },
+      ],
+    },
+    {
+      labelKey: "credit",
+      tvlEth: [2.0e9, 2.8e9],
+      tvlTotal: [3.0e9, 3.7e9],
+      ethShare: [0.7, 0.85],
+      examples: [
+        { name: "Centrifuge", href: "https://centrifuge.io/" },
+        { name: "Maple", href: "https://maple.finance/" },
+        { name: "Securitize", href: "https://securitize.io/" },
+      ],
+    },
+    {
+      labelKey: "commodities",
+      tvlEth: [3.0e9, 3.5e9],
+      tvlTotal: [3.7e9, 4.0e9],
+      ethShare: [0.8, 0.95],
+      examples: [
+        { name: "Tether Gold", href: "https://gold.tether.to/" },
+        { name: "Paxos Gold", href: "https://paxos.com/paxgold/" },
+      ],
+    },
+    {
+      labelKey: "equities",
+      tvlEth: [0.8e9, 1.0e9],
+      tvlTotal: [1.0e9, 1.3e9],
+      ethShare: [0.75, 0.9],
+      examples: [
+        { name: "Ondo", href: "https://ondo.finance/" },
+        { name: "Backed", href: "https://backed.fi/" },
+      ],
+    },
+    {
+      labelKey: "real-estate",
+      tvlEth: [0.15e9, 0.22e9],
+      tvlTotal: [0.24e9, 0.3e9],
+      ethShare: [0.6, 0.8],
+      examples: [
+        {
+          name: t("category-breakdown.examples-tokenizes-properties"),
+        },
+      ],
+    },
+  ]
 
   const creditPlatforms: AssetDetails[] = [
     {
@@ -563,37 +607,32 @@ export default async function Page({ params }: Props) {
               },
               { key: "examples", label: t("category-breakdown.examples") },
             ]}
-            rows={(
-              [
-                "treasuries",
-                "credit",
-                "commodities",
-                "equities",
-                "real-estate",
-              ] as const
-            ).map((cat) => ({
-              label: t(`category-breakdown.${cat}`),
-              cells: {
-                tvlEth: t(`category-breakdown.${cat}-tvl`),
-                tvlTotal: t(`category-breakdown.${cat}-total`),
-                ethShare: t(`category-breakdown.${cat}-share`),
-                examples:
-                  categoryExamples[cat]?.length > 0
-                    ? categoryExamples[cat].map((example, i) => (
-                        <span key={example.name}>
-                          {i > 0 && ", "}
-                          <Link
-                            href={example.href}
-                            inline
-                            className="css-secondary"
-                          >
-                            {example.name}
-                          </Link>
-                        </span>
-                      ))
-                    : t(`category-breakdown.${cat}-examples`),
-              },
-            }))}
+            rows={categoryBreakdownData.map(
+              ({ labelKey, tvlEth, tvlTotal, ethShare, examples }) => ({
+                label: t(`category-breakdown.${labelKey}`),
+                cells: {
+                  tvlEth: formatLargeCurrencyRange(locale, ...tvlEth),
+                  tvlTotal: formatLargeCurrencyRange(locale, ...tvlTotal),
+                  ethShare: `~${formatPercentRange(locale, ...ethShare)}`,
+                  examples: examples.map((example, i) => (
+                    <span key={example.name}>
+                      {i > 0 && ", "}
+                      {example.href ? (
+                        <Link
+                          href={example.href}
+                          inline
+                          className="css-secondary"
+                        >
+                          {example.name}
+                        </Link>
+                      ) : (
+                        example.name
+                      )}
+                    </span>
+                  )),
+                },
+              })
+            )}
           />
         </section>
 
