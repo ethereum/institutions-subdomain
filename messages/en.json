@@ -400,13 +400,9 @@
       "description2": "No trust assumptions. No vendor lock-in. No counterparty risk at the infrastructure layer."
     },
     "stats": {
-      "teams": "750+",
       "teams-label": "Teams building on privacy",
-      "years": "7+",
       "years-label": "Years of privacy R&D",
-      "researchers": "50+",
       "researchers-label": "Dedicated privacy researchers at EF",
-      "value": "$400B+",
       "value-label": "Value secured on Ethereum"
     },
     "solutions": {

@@ -2,6 +2,9 @@ import Image, { type StaticImageData } from "next/image"
 import type { Metadata } from "next/types"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 
+import type { Metric } from "@/lib/types"
+
+import BigNumber from "@/components/BigNumber"
 import Hero from "@/components/Hero"
 import MaskedParallelsIcon from "@/components/MaskedParallelsIcon"
 import BinaryLock from "@/components/svg/binary-lock"
@@ -10,8 +13,11 @@ import TargetCheck from "@/components/svg/target-check"
 import { ComparisonTable } from "@/components/ui/comparison-table"
 import Link, { LinkWithArrow } from "@/components/ui/link"
 
+import { formatDateMonthDayYear } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
+import { formatLargeCurrency } from "@/lib/utils/number"
 
+import fetchTotalValueSecured from "@/app/_actions/fetchTotalValueSecured"
 import { type Locale, routing } from "@/i18n/routing"
 import blurWalking from "@/public/images/banners/blur-walking.png"
 import eyLogo from "@/public/images/logos/apps/ey.png"
@@ -39,6 +45,35 @@ export default async function Page({ params }: Props) {
 
   const t = await getTranslations("privacy")
   const tCommon = await getTranslations("common")
+
+  const totalValueSecuredData = await fetchTotalValueSecured()
+
+  const privacyResearchStart = 2019
+  const privacyRdYears = new Date().getFullYear() - privacyResearchStart
+
+  const stats: Metric[] = [
+    {
+      value: Intl.NumberFormat(locale).format(750) + "+",
+      label: t("stats.teams-label"),
+    },
+    {
+      value: Intl.NumberFormat(locale).format(privacyRdYears) + "+",
+      label: t("stats.years-label"),
+    },
+    {
+      value: Intl.NumberFormat(locale).format(50) + "+",
+      label: t("stats.researchers-label"),
+    },
+    {
+      value: formatLargeCurrency(locale, totalValueSecuredData.data.sum),
+      label: t("stats.value-label"),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        totalValueSecuredData.lastUpdated
+      ),
+      ...totalValueSecuredData.sourceInfo,
+    },
+  ]
 
   type ExampleLink = {
     name: string
@@ -134,25 +169,10 @@ export default async function Page({ params }: Props) {
       <article className="max-w-8xl mx-auto w-full space-y-20 px-4 py-10 sm:px-10 sm:py-20 md:space-y-40">
         {/* 2. Stats Bar */}
         <section id="stats" className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          {(
-            [
-              { value: "stats.teams", label: "stats.teams-label" },
-              { value: "stats.years", label: "stats.years-label" },
-              { value: "stats.researchers", label: "stats.researchers-label" },
-              { value: "stats.value", label: "stats.value-label" },
-            ] as const
-          ).map(({ value, label }) => (
-            <div
-              key={value}
-              className="bg-card flex flex-col items-center justify-center p-6 text-center"
-            >
-              <p className="text-foreground text-4xl font-bold tracking-tight sm:text-5xl">
-                {t(value)}
-              </p>
-              <p className="text-muted-foreground mt-2 text-sm font-medium">
-                {t(label)}
-              </p>
-            </div>
+          {stats.map(({ label, ...props }, idx) => (
+            <BigNumber key={idx} className="bg-card p-6 [&>span]:text-sm" {...props}>
+              {label}
+            </BigNumber>
           ))}
         </section>
 
