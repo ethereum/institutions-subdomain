@@ -543,10 +543,6 @@
       "description1": "Reports, articles, and analyses from across the institutional landscape, along with thought leadership and updates from the Ethereum Foundation's Enterprise Acceleration team.",
       "description2": "Explore market trends, technical developments, and strategic opportunities for institutions building in the onchain economy."
     },
-    "not-found": {
-      "title": "Ethereum Institutional Resources",
-      "description": "Oops! Post not found"
-    },
     "metadata": {
       "title": "Research & Insights | Ethereum Institutional Resources",
       "description": "Explore a curated library for businesses adopting Ethereum, with reports, analysis, market trends, and the latest institutional insights."
