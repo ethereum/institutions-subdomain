@@ -1,1541 +1,1541 @@
 {
   "solutionProviders": {
     "hero": {
-      "heading": "Global Solution Providers",
-      "description": "Connect with a curated network of solution providers that specialize in building in the Ethereum ecosystem. From tokenization platforms to infrastructure and compliance, find established, regional teams to support your onchain strategy."
+      "heading": "Proveedores Globales de Soluciones",
+      "description": "Conéctese con una red seleccionada de proveedores de soluciones que se especializan en el desarrollo dentro del ecosistema de Ethereum. Desde plataformas de tokenización hasta infraestructura y cumplimiento normativo, encuentre equipos regionales establecidos para respaldar su estrategia on-chain."
     },
     "filters": {
-      "all-categories": "All Categories",
-      "all-regions": "All Regions",
-      "clear-all": "Clear all",
-      "no-results": "No providers match your current filters."
+      "all-categories": "Todas las categorías",
+      "all-regions": "Todas las regiones",
+      "clear-all": "Borrar todo",
+      "no-results": "Ningún proveedor coincide con sus filtros actuales."
     },
     "categories": {
-      "infrastructure": "Infrastructure",
-      "custody-and-wallets": "Custody & Wallets",
-      "defi-and-trading": "DeFi & Trading",
-      "tokenization-and-rwa": "Tokenization & RWA",
+      "infrastructure": "Infraestructura",
+      "custody-and-wallets": "Custodia y Billeteras",
+      "defi-and-trading": "DeFi y Trading",
+      "tokenization-and-rwa": "Tokenización y RWA",
       "staking": "Staking",
-      "security-and-auditing": "Security & Auditing",
-      "data-and-analytics": "Data & Analytics",
-      "compliance-and-legal": "Compliance & Legal",
-      "consulting-and-advisory": "Consulting & Advisory",
-      "developer-tools": "Developer Tools"
+      "security-and-auditing": "Seguridad y Auditoría",
+      "data-and-analytics": "Datos y Análisis",
+      "compliance-and-legal": "Cumplimiento y Legal",
+      "consulting-and-advisory": "Consultoría y Asesoramiento",
+      "developer-tools": "Herramientas para Desarrolladores"
     },
     "regions": {
-      "americas": "Americas",
-      "europe": "Europe",
+      "americas": "Américas",
+      "europe": "Europa",
       "apac": "APAC",
       "mena": "MENA",
       "global": "Global"
     },
     "metadata": {
-      "title": "Global Solution Providers | Ethereum Institutional Ecosystem",
-      "description": "Find infrastructure, tooling, advisory, and compliance service providers in the Ethereum ecosystem for institutional needs."
+      "title": "Proveedores Globales de Soluciones | Ecosistema Institucional de Ethereum",
+      "description": "Encuentre proveedores de servicios de infraestructura, herramientas, asesoramiento y cumplimiento normativo en el ecosistema de Ethereum para necesidades institucionales."
     },
-    "provider-singular": "provider",
-    "provider-plural": "providers",
+    "provider-singular": "proveedor",
+    "provider-plural": "proveedores",
     "providers": {
       "one-inch": {
-        "description": "DEX aggregator for optimal trade execution"
+        "description": "Agregador de DEX para una ejecución óptima de operaciones"
       },
       "twenty-one-shares": {
-        "description": "Crypto ETP issuer, Ethereum staking products"
+        "description": "Emisor de ETP de criptomonedas, productos de staking de Ethereum"
       },
       "a16z-crypto": {
-        "description": "Leading crypto venture fund, major Ethereum ecosystem investor"
+        "description": "Fondo de capital de riesgo líder en criptomonedas, importante inversor en el ecosistema de Ethereum"
       },
       "aave": {
-        "description": "Leading decentralized lending protocol, Aave Arc for institutions"
+        "description": "Protocolo de préstamos descentralizado líder, Aave Arc para instituciones"
       },
       "aave-grants-dao": {
-        "description": "Community-led grants program funding Aave & Ethereum ecosystem development"
+        "description": "Programa de subvenciones liderado por la comunidad que financia el desarrollo de los ecosistemas de Aave y Ethereum"
       },
       "abn-amro": {
-        "description": "Issued digital bond on Ethereum public network, exploring institutional blockchain settlement"
+        "description": "Emitió un bono digital en la red pública de Ethereum, explorando la liquidación institucional en blockchain"
       },
       "accenture-blockchain": {
-        "description": "Enterprise blockchain strategy & implementation"
+        "description": "Estrategia e implementación de blockchain empresarial"
       },
       "across-protocol": {
-        "description": "Intent-based cross-chain bridge, optimistic verification"
+        "description": "Puente cross-chain basado en intenciones, verificación optimista"
       },
       "agora": {
-        "description": "Institutional-grade USD stablecoin (AUSD) on Ethereum backed by VanEck, DragonFly"
+        "description": "Stablecoin de USD de grado institucional (AUSD) en Ethereum respaldada por VanEck, DragonFly"
       },
       "alchemy": {
-        "description": "Web3 development platform, node infrastructure, enhanced APIs"
+        "description": "Plataforma de desarrollo Web3, infraestructura de nodos, APIs mejoradas"
       },
       "alchemy-account-kit": {
-        "description": "Account Kit SDK for embedded smart accounts, gasless transactions & session keys"
+        "description": "SDK de Account Kit para cuentas inteligentes integradas, transacciones sin gas y claves de sesión"
       },
       "allen-and-overy": {
-        "description": "Digital assets, tokenization & regulatory advisory"
+        "description": "Activos digitales, tokenización y asesoramiento regulatorio"
       },
       "alliance-dao": {
-        "description": "Leading Web3 accelerator for crypto-native startups, strong Ethereum ecosystem focus"
+        "description": "Aceleradora Web3 líder para startups cripto-nativas, fuerte enfoque en el ecosistema de Ethereum"
       },
       "allnodes": {
-        "description": "Non-custodial staking & node hosting platform"
+        "description": "Plataforma de staking sin custodia y alojamiento de nodos"
       },
       "alluvial": {
-        "description": "Enterprise liquid staking standard, development company supporting Liquid Collective (LsETH), institutional staking protocol"
+        "description": "Estándar de liquid staking empresarial, empresa de desarrollo que apoya a Liquid Collective (LsETH), protocolo de staking institucional"
       },
       "altlayer": {
-        "description": "Rollups-as-a-Service platform, restaked rollups with EigenLayer integration, multi-stack L2 deployment"
+        "description": "Plataforma Rollups-as-a-Service, rollups con restaking con integración de EigenLayer, despliegue de L2 multi-stack"
       },
       "amber-group": {
-        "description": "Digital asset liquidity, market making & wealth management"
+        "description": "Liquidez de activos digitales, creación de mercado y gestión de patrimonio"
       },
       "amberdata": {
-        "description": "Institutional digital asset data infrastructure, DeFi & market analytics APIs"
+        "description": "Infraestructura de datos de activos digitales institucionales, APIs de análisis de mercado y DeFi"
       },
       "anchorage-digital": {
-        "description": "Federally chartered digital asset bank, institutional custody & staking"
+        "description": "Banco de activos digitales con licencia federal, custodia y staking institucional"
       },
       "anchorage-digital-bank": {
-        "description": "OCC-chartered digital asset bank, institutional custody, staking, trading & governance"
+        "description": "Banco de activos digitales con licencia de la OCC, custodia, staking, trading y gobernanza institucional"
       },
       "anoma-namada": {
-        "description": "Intent-centric protocol architecture, privacy-focused settlement layer"
+        "description": "Arquitectura de protocolo centrada en intenciones, capa de liquidación enfocada en la privacidad"
       },
       "aon": {
-        "description": "Traditional insurance broker with digital asset risk practice"
+        "description": "Corredor de seguros tradicional con práctica en riesgos de activos digitales"
       },
       "api3": {
-        "description": "First-party oracle solutions, dAPI data feeds"
+        "description": "Soluciones de oráculos de primera parte, fuentes de datos dAPI"
       },
       "apollo-global": {
-        "description": "Onchain credit fund via Securitize on Ethereum, institutional private credit tokenization"
+        "description": "Fondo de crédito on-chain a través de Securitize en Ethereum, tokenización de crédito privado institucional"
       },
       "aquanow": {
-        "description": "Institutional digital asset infrastructure, liquidity, trading & payment solutions for financial institutions"
+        "description": "Infraestructura de activos digitales institucionales, liquidez, trading y soluciones de pago para instituciones financieras"
       },
       "aragon": {
-        "description": "DAO creation & management infrastructure"
+        "description": "Infraestructura para la creación y gestión de DAOs"
       },
       "arbitrum": {
-        "description": "Leading Ethereum L2, Arbitrum One & Nova, Orbit chains"
+        "description": "L2 líder de Ethereum, Arbitrum One y Nova, cadenas Orbit"
       },
       "arbitrum-foundation": {
-        "description": "Arbitrum ecosystem grants, incentive programs & L2 ecosystem development"
+        "description": "Subvenciones del ecosistema Arbitrum, programas de incentivos y desarrollo del ecosistema L2"
       },
       "archax": {
-        "description": "FCA-regulated digital securities exchange"
+        "description": "Bolsa de valores digitales regulada por la FCA"
       },
       "arkham-intelligence": {
-        "description": "Entity-level blockchain intelligence & deanonymization platform"
+        "description": "Plataforma de inteligencia blockchain a nivel de entidad y desanonimización"
       },
       "autonolas-olas": {
-        "description": "Decentralized autonomous AI agent framework on Ethereum"
+        "description": "Marco de agentes de IA autónomos descentralizados en Ethereum"
       },
       "avail": {
-        "description": "Modular data availability layer designed for Ethereum rollup scalability"
+        "description": "Capa modular de disponibilidad de datos diseñada para la escalabilidad de rollups de Ethereum"
       },
       "axelar": {
-        "description": "Full-stack interoperability, cross-chain function calls"
+        "description": "Interoperabilidad full-stack, llamadas a funciones cross-chain"
       },
       "aztec-network": {
-        "description": "Privacy-first L2 using ZK-SNARKs, encrypted smart contracts"
+        "description": "L2 enfocada en la privacidad utilizando ZK-SNARKs, contratos inteligentes cifrados"
       },
       "b-protocol": {
-        "description": "DeFi risk management & backstop liquidity protocol, vault curation on Morpho"
+        "description": "Gestión de riesgos DeFi y protocolo de liquidez de respaldo, curación de bóvedas en Morpho"
       },
       "b2c2": {
-        "description": "Institutional OTC liquidity provider and prime services"
+        "description": "Proveedor institucional de liquidez OTC y servicios prime"
       },
       "backed-finance": {
-        "description": "Tokenized securities on Ethereum (bIB01, bCSPX)"
+        "description": "Valores tokenizados en Ethereum (bIB01, bCSPX)"
       },
       "bank-frick": {
-        "description": "Regulated bank offering blockchain banking, tokenization & digital asset custody"
+        "description": "Banco regulado que ofrece banca blockchain, tokenización y custodia de activos digitales"
       },
       "bankless": {
-        "description": "Crypto media, research & institutional newsletter"
+        "description": "Medios de criptomonedas, investigación y boletín institucional"
       },
       "base": {
-        "description": "Coinbase-incubated Ethereum L2, built on OP Stack"
+        "description": "L2 de Ethereum incubada por Coinbase, construida sobre OP Stack"
       },
       "bbva": {
-        "description": "BBVA tokenized structured products & digital asset services in Switzerland"
+        "description": "Productos estructurados tokenizados y servicios de activos digitales de BBVA en Suiza"
       },
       "bcb-group": {
-        "description": "Regulated crypto payments & banking infrastructure for institutions (BLINC network)"
+        "description": "Infraestructura regulada de pagos y banca cripto para instituciones (red BLINC)"
       },
       "bcg": {
-        "description": "Digital assets & blockchain strategy advisory"
+        "description": "Asesoramiento en estrategia de activos digitales y blockchain"
       },
       "besu": {
-        "description": "Enterprise-grade Ethereum client, permissioned & public networks"
+        "description": "Cliente de Ethereum de grado empresarial, redes permisionadas y públicas"
       },
       "biconomy": {
-        "description": "Account abstraction SDK, smart accounts & paymaster service"
+        "description": "SDK de abstracción de cuentas, cuentas inteligentes y servicio de paymaster"
       },
       "bit-digital": {
-        "description": "Nasdaq-listed digital asset company with significant ETH treasury & staking operations"
+        "description": "Empresa de activos digitales listada en Nasdaq con una importante tesorería de ETH y operaciones de staking"
       },
       "bitgo": {
-        "description": "Qualified custodian for digital assets, multi-sig wallets, institutional trading"
+        "description": "Custodio calificado para activos digitales, billeteras multifirma, trading institucional"
       },
       "bitmine-immersion": {
-        "description": "World's #1 ETH treasury, 4.3M+ ETH ($10B+), NYSE-listed, institutional ETH accumulation & staking (MAVAN)"
+        "description": "Tesorería de ETH N.º 1 del mundo, más de 4.3M de ETH (más de $10B), listada en NYSE, acumulación y staking institucional de ETH (MAVAN)"
       },
       "bitstamp": {
-        "description": "One of longest-running exchanges, institutional trading"
+        "description": "Uno de los exchanges más antiguos, trading institucional"
       },
       "bitwave": {
-        "description": "Enterprise digital asset accounting, tax & ERP integration"
+        "description": "Contabilidad, impuestos e integración ERP de activos digitales empresariales"
       },
       "bitwise": {
-        "description": "Crypto index funds & Ethereum ETF products"
+        "description": "Fondos de índice de criptomonedas y productos ETF de Ethereum"
       },
       "blackrock": {
-        "description": "BUIDL tokenized treasury fund on Ethereum, iShares ETH ETF (ETHA)"
+        "description": "Fondo de tesorería tokenizado BUIDL en Ethereum, ETF de iShares ETH (ETHA)"
       },
       "blast": {
-        "description": "L2 with native yield for ETH & stablecoins"
+        "description": "L2 con rendimiento nativo para ETH y stablecoins"
       },
       "block-analitica": {
-        "description": "DeFi risk analytics, risk curator for MakerDAO & Morpho vaults"
+        "description": "Análisis de riesgos DeFi, curador de riesgos para bóvedas de MakerDAO y Morpho"
       },
       "blockdaemon": {
-        "description": "Institutional blockchain infrastructure, multi-cloud node hosting"
+        "description": "Infraestructura blockchain institucional, alojamiento de nodos multinube"
       },
       "blocknative": {
-        "description": "Mempool monitoring, transaction simulation, gas estimation & block building infrastructure"
+        "description": "Monitoreo de mempool, simulación de transacciones, estimación de gas e infraestructura de construcción de bloques"
       },
       "blockworks-research": {
-        "description": "Institutional-grade DeFi & protocol research, governance analytics platform"
+        "description": "Investigación de protocolos y DeFi de grado institucional, plataforma de análisis de gobernanza"
       },
       "bloxroute": {
-        "description": "BDN for transaction propagation & MEV protection"
+        "description": "BDN para propagación de transacciones y protección MEV"
       },
       "bny-mellon": {
-        "description": "Oldest US bank, digital asset custody & tokenization platform for institutional clients"
+        "description": "Banco más antiguo de EE. UU., plataforma de custodia y tokenización de activos digitales para clientes institucionales"
       },
       "bny-mellon-digital-assets": {
-        "description": "World's largest custodian, digital asset custody platform for Ethereum & Bitcoin"
+        "description": "El custodio más grande del mundo, plataforma de custodia de activos digitales para Ethereum y Bitcoin"
       },
       "bny-mellon-digital-custody": {
-        "description": "World's largest custodian bank, digital asset custody platform for Bitcoin & Ethereum"
+        "description": "El banco custodio más grande del mundo, plataforma de custodia de activos digitales para Bitcoin y Ethereum"
       },
       "cactus-custody": {
-        "description": "Licensed Hong Kong Trust Company, institutional digital asset custody"
+        "description": "Compañía fiduciaria con licencia de Hong Kong, custodia institucional de activos digitales"
       },
       "caldera": {
-        "description": "High-performance rollup deployment platform, managed L2 infrastructure for teams & enterprises"
+        "description": "Plataforma de despliegue de rollups de alto rendimiento, infraestructura L2 gestionada para equipos y empresas"
       },
       "ccdata": {
-        "description": "Institutional crypto market data, indices & benchmarks used by ETF providers & regulators"
+        "description": "Datos de mercado de criptomonedas institucionales, índices y benchmarks utilizados por proveedores de ETF y reguladores"
       },
       "celestia": {
-        "description": "Modular data availability layer used by Ethereum L2s for scalable DA"
+        "description": "Capa modular de disponibilidad de datos utilizada por las L2 de Ethereum para DA escalable"
       },
       "centrifuge": {
-        "description": "DeFi protocol for tokenizing real-world assets, MakerDAO RWA partner"
+        "description": "Protocolo DeFi para tokenizar activos del mundo real, socio RWA de MakerDAO"
       },
       "certora": {
-        "description": "Formal verification platform for smart contract correctness"
+        "description": "Plataforma de verificación formal para la validación de contratos inteligentes"
       },
       "cf-benchmarks": {
-        "description": "FCA-regulated crypto benchmark administrator, powers CME & major ETF pricing"
+        "description": "Administrador de benchmarks de criptomonedas regulado por la FCA, impulsa la fijación de precios de CME y los principales ETF"
       },
       "chainalysis": {
-        "description": "AML/KYC compliance, transaction monitoring, investigations"
+        "description": "Cumplimiento AML/KYC, monitoreo de transacciones, investigaciones"
       },
       "chainlink": {
-        "description": "Industry-leading oracle network, CCIP cross-chain protocol"
+        "description": "Red de oráculos líder en la industria, protocolo cross-chain CCIP"
       },
       "chainlink-ccip": {
-        "description": "Institutional-grade cross-chain messaging & token transfers"
+        "description": "Mensajería cross-chain y transferencias de tokens de grado institucional"
       },
       "chainproof": {
-        "description": "Specialized Ethereum slashing insurance for institutional staking operations"
+        "description": "Seguro especializado contra slashing de Ethereum para operaciones de staking institucionales"
       },
       "chainsafe-systems": {
-        "description": "Lodestar client, Web3 gaming, protocol engineering"
+        "description": "Cliente Lodestar, juegos Web3, ingeniería de protocolos"
       },
       "chainsecurity": {
-        "description": "Smart contract auditing, formal verification (spun from ETH Zurich)"
+        "description": "Auditoría de contratos inteligentes, verificación formal (surgido de ETH Zurich)"
       },
       "chainstack": {
-        "description": "Managed node infrastructure, elastic APIs for Web3"
+        "description": "Infraestructura de nodos gestionada, APIs elásticas para Web3"
       },
       "chaos-labs": {
-        "description": "Onchain risk management, oracle infrastructure & economic security"
+        "description": "Gestión de riesgos on-chain, infraestructura de oráculos y seguridad económica"
       },
       "chorus-one": {
-        "description": "Institutional staking, MEV optimization, restaking research"
+        "description": "Staking institucional, optimización MEV, investigación de restaking"
       },
       "chronicle": {
-        "description": "Ethereum-native oracle, originally built for MakerDAO"
+        "description": "Oráculo nativo de Ethereum, construido originalmente para MakerDAO"
       },
       "circle": {
-        "description": "USDC stablecoin issuer, cross-chain transfer protocol (CCTP)"
+        "description": "Emisor de la stablecoin USDC, protocolo de transferencia cross-chain (CCTP)"
       },
       "citi": {
-        "description": "Citi Token Services for institutional cross-border payments & smart contract trade finance"
+        "description": "Citi Token Services para pagos transfronterizos institucionales y financiación comercial con contratos inteligentes"
       },
       "clearpool": {
-        "description": "Institutional unsecured credit marketplace, permissionless & permissioned lending pools"
+        "description": "Mercado institucional de crédito sin garantía, pools de préstamos permisionados y no permisionados"
       },
       "clearstream": {
-        "description": "Post-trade services with D7 digital securities platform for tokenized issuance & settlement"
+        "description": "Servicios post-negociación con la plataforma de valores digitales D7 para emisión y liquidación tokenizadas"
       },
       "clifford-chance": {
-        "description": "Digital assets regulatory & transactional advisory"
+        "description": "Asesoramiento regulatorio y transaccional de activos digitales"
       },
       "clique": {
-        "description": "Onchain identity infrastructure, institutional attestation & proof of identity solutions"
+        "description": "Infraestructura de identidad on-chain, soluciones de atestación y prueba de identidad institucionales"
       },
       "cme-group": {
-        "description": "Regulated ETH futures & options, primary venue for institutional Ethereum derivatives"
+        "description": "Futuros y opciones de ETH regulados, principal mercado para derivados institucionales de Ethereum"
       },
       "code4rena": {
-        "description": "Competitive audit platform for smart contracts"
+        "description": "Plataforma de auditoría competitiva para contratos inteligentes"
       },
       "coin-metrics": {
-        "description": "Institutional crypto data & network analytics, ATLAS onchain data feeds"
+        "description": "Datos cripto institucionales y análisis de red, fuentes de datos on-chain ATLAS"
       },
       "coinbase": {
-        "description": "Largest US-listed crypto exchange, institutional services"
+        "description": "El exchange de criptomonedas cotizado en bolsa más grande de EE. UU., servicios institucionales"
       },
       "coinbase-custody-prime": {
-        "description": "Institutional custody arm of Coinbase, supports ETH & ERC-20 tokens"
+        "description": "Brazo de custodia institucional de Coinbase, admite tokens ETH y ERC-20"
       },
       "coinbase-identity-verification": {
-        "description": "Identity verification services for Web3"
+        "description": "Servicios de verificación de identidad para Web3"
       },
       "coinbase-prime": {
-        "description": "Institutional treasury services, staking, lending, reporting"
+        "description": "Servicios de tesorería institucional, staking, préstamos, informes"
       },
       "coinbase-smart-wallet": {
-        "description": "Coinbase smart wallet with passkey-based authentication & gas sponsorship"
+        "description": "Billetera inteligente de Coinbase con autenticación basada en passkey y patrocinio de gas"
       },
       "coindesk": {
-        "description": "Major crypto news & events (Consensus), institutional crypto coverage"
+        "description": "Principales noticias y eventos cripto (Consensus), cobertura cripto institucional"
       },
       "coinfirm": {
-        "description": "AML platform, regulatory compliance & blockchain analytics"
+        "description": "Plataforma AML, cumplimiento regulatorio y análisis blockchain"
       },
       "coingecko": {
-        "description": "Comprehensive crypto market data aggregator, institutional API & treasury tracking"
+        "description": "Agregador integral de datos del mercado cripto, API institucional y seguimiento de tesorería"
       },
       "coinshares": {
-        "description": "Europe's largest digital asset investment company, Ethereum ETPs & research"
+        "description": "La compañía de inversión en activos digitales más grande de Europa, ETPs de Ethereum e investigación"
       },
       "coinshift": {
-        "description": "Multi-sig treasury management for DAOs & institutions"
+        "description": "Gestión de tesorería multifirma para DAOs e instituciones"
       },
       "commit-boost": {
-        "description": "Open-source proposer commitment infrastructure, MEV tooling for Ethereum validators"
+        "description": "Infraestructura de compromiso de proponente de código abierto, herramientas MEV para validadores de Ethereum"
       },
       "compound": {
-        "description": "Algorithmic lending protocol, institutional DeFi pioneer"
+        "description": "Protocolo de préstamos algorítmicos, pionero institucional de DeFi"
       },
       "conduit": {
-        "description": "Managed rollup infrastructure, one-click L2 deployment on OP Stack, Arbitrum Orbit & more"
+        "description": "Infraestructura de rollup gestionada, despliegue de L2 con un clic en OP Stack, Arbitrum Orbit y más"
       },
       "connext": {
-        "description": "Cross-chain liquidity settlement protocol (formerly Connext), institutional bridging"
+        "description": "Protocolo de liquidación de liquidez cross-chain (anteriormente Connext), puente institucional"
       },
       "consensys": {
-        "description": "Ethereum ecosystem leader: MetaMask, Infura, Linea, enterprise consulting"
+        "description": "Líder del ecosistema Ethereum: MetaMask, Infura, Linea, consultoría empresarial"
       },
       "consensys-academy": {
-        "description": "Ethereum developer & enterprise education programs"
+        "description": "Programas de educación para desarrolladores y empresas de Ethereum"
       },
       "consensys-diligence": {
-        "description": "ConsenSys security auditing team for Ethereum smart contracts"
+        "description": "Equipo de auditoría de seguridad de ConsenSys para contratos inteligentes de Ethereum"
       },
       "consensys-mesh": {
-        "description": "ConsenSys venture studio, incubating Ethereum ecosystem companies & infrastructure"
+        "description": "Estudio de capital de riesgo de ConsenSys, incubando empresas e infraestructura del ecosistema Ethereum"
       },
       "consensys-staking": {
-        "description": "ConsenSys institutional staking with SOC2 Type II certification"
+        "description": "Staking institucional de ConsenSys con certificación SOC2 Tipo II"
       },
       "cooley": {
-        "description": "Crypto & fintech legal advisory, token issuance"
+        "description": "Asesoramiento legal en cripto y fintech, emisión de tokens"
       },
       "copper-co": {
-        "description": "Institutional custody with ClearLoop off-exchange settlement"
+        "description": "Custodia institucional con liquidación off-exchange ClearLoop"
       },
       "cow-protocol": {
-        "description": "Intent-based trading protocol, batch auctions & MEV protection for Ethereum traders"
+        "description": "Protocolo de trading basado en intenciones, subastas por lotes y protección MEV para traders de Ethereum"
       },
       "credora": {
-        "description": "Real-time credit assessment for onchain & offchain counterparties"
+        "description": "Evaluación de crédito en tiempo real para contrapartes on-chain y off-chain"
       },
       "crdit-agricole": {
-        "description": "Major European fund administrator exploring blockchain custody & tokenized fund servicing"
+        "description": "Importante administrador de fondos europeo explorando la custodia blockchain y el servicio de fondos tokenizados"
       },
       "cumberland": {
-        "description": "Institutional OTC trading desk, subsidiary of DRW"
+        "description": "Mesa de trading OTC institucional, subsidiaria de DRW"
       },
       "curve-finance": {
-        "description": "Stablecoin-optimized DEX, deep institutional liquidity"
+        "description": "DEX optimizado para stablecoins, profunda liquidez institucional"
       },
       "cyfrin": {
-        "description": "Smart contract audits, Updraft security education platform"
+        "description": "Auditorías de contratos inteligentes, plataforma de educación en seguridad Updraft"
       },
       "davis-polk-and-wardwell": {
-        "description": "Top-tier securities & crypto regulatory advisory, stablecoin legal frameworks"
+        "description": "Asesoramiento regulatorio de valores y cripto de primer nivel, marcos legales de stablecoins"
       },
       "debevoise-and-plimpton": {
-        "description": "Top-tier crypto & blockchain regulatory advisory"
+        "description": "Asesoramiento regulatorio de cripto y blockchain de primer nivel"
       },
       "decrypt": {
-        "description": "Crypto news & educational media, Ethereum ecosystem coverage"
+        "description": "Noticias cripto y medios educativos, cobertura del ecosistema Ethereum"
       },
       "dedaub": {
-        "description": "Smart contract auditing, Watchdog monitoring tool"
+        "description": "Auditoría de contratos inteligentes, herramienta de monitoreo Watchdog"
       },
       "defillama": {
-        "description": "Open-source DeFi TVL & analytics dashboard"
+        "description": "Panel de control de TVL y análisis DeFi de código abierto"
       },
       "deloitte-blockchain": {
-        "description": "Enterprise blockchain consulting & implementation"
+        "description": "Consultoría e implementación de blockchain empresarial"
       },
       "delphi-digital": {
-        "description": "Institutional crypto research & consulting, protocol analysis & DeFi strategy"
+        "description": "Investigación y consultoría cripto institucional, análisis de protocolos y estrategia DeFi"
       },
       "derive": {
-        "description": "Onchain options protocol for ETH & crypto, institutional-grade derivatives on Ethereum"
+        "description": "Protocolo de opciones on-chain para ETH y cripto, derivados de grado institucional en Ethereum"
       },
       "deutsche-bank": {
-        "description": "Exploring Ethereum L2 (ZKsync-based) for tokenized assets & institutional use cases"
+        "description": "Explorando Ethereum L2 (basado en ZKsync) para activos tokenizados y casos de uso institucionales"
       },
       "devcon-devconnect": {
-        "description": "Ethereum Foundation flagship developer conferences"
+        "description": "Conferencias insignia para desarrolladores de la Fundación Ethereum"
       },
       "dla-piper": {
-        "description": "Global law firm with leading digital assets & blockchain practice"
+        "description": "Firma de abogados global con práctica líder en activos digitales y blockchain"
       },
       "dtcc": {
-        "description": "Central clearing & settlement piloting blockchain integration"
+        "description": "Compensación y liquidación central pilotando la integración blockchain"
       },
       "dune-analytics": {
-        "description": "Community-driven blockchain data analytics platform"
+        "description": "Plataforma de análisis de datos blockchain impulsada por la comunidad"
       },
       "dwf-labs": {
-        "description": "Web3 investment firm & market maker"
+        "description": "Firma de inversión Web3 y creador de mercado"
       },
       "dydx": {
-        "description": "Leading decentralized perpetuals exchange, Ethereum ecosystem-aligned"
+        "description": "Exchange de perpetuos descentralizado líder, alineado con el ecosistema Ethereum"
       },
       "edxm": {
-        "description": "Institutional crypto exchange backed by Citadel, Fidelity & Schwab"
+        "description": "Exchange de criptomonedas institucional respaldado por Citadel, Fidelity y Schwab"
       },
       "eigenda": {
-        "description": "EigenCloud-based data availability layer for Ethereum rollups, high-throughput DA"
+        "description": "Capa de disponibilidad de datos basada en EigenCloud para rollups de Ethereum, DA de alto rendimiento"
       },
       "eigencloud": {
-        "description": "Restaking protocol enabling ETH stakers to secure additional services (AVS)"
+        "description": "Protocolo de restaking que permite a los stakers de ETH asegurar servicios adicionales (AVS)"
       },
       "electric-capital": {
-        "description": "Developer ecosystem reports, Ethereum-focused VC"
+        "description": "Informes del ecosistema de desarrolladores, VC enfocado en Ethereum"
       },
       "elliptic": {
-        "description": "Transaction screening, AML compliance, risk scoring"
+        "description": "Monitoreo de transacciones, cumplimiento AML, puntuación de riesgo"
       },
       "ens": {
-        "description": "Decentralized naming system for Ethereum addresses & more"
+        "description": "Sistema de nombres descentralizado para direcciones de Ethereum y más"
       },
       "enterprise-ethereum-alliance": {
-        "description": "Global standards org for enterprise Ethereum adoption, 250+ member companies, working groups & specifications"
+        "description": "Organización global de estándares para la adopción empresarial de Ethereum, más de 250 empresas miembro, grupos de trabajo y especificaciones"
       },
       "enzyme-finance": {
-        "description": "Onchain asset management infrastructure for DAOs & funds"
+        "description": "Infraestructura de gestión de activos on-chain para DAOs y fondos"
       },
       "erigon": {
-        "description": "Efficient Ethereum archive node implementation"
+        "description": "Implementación eficiente de nodo de archivo de Ethereum"
       },
       "ethena": {
-        "description": "Synthetic dollar protocol (USDe) with institutional-grade yield"
+        "description": "Protocolo de dólar sintético (USDe) con rendimiento de grado institucional"
       },
       "ethena-usde": {
-        "description": "Synthetic dollar protocol (USDe) with delta-hedged institutional yield, EEA member"
+        "description": "Protocolo de dólar sintético (USDe) con rendimiento institucional con cobertura delta, miembro de la EEA"
       },
       "ether-capital": {
-        "description": "Canadian public company (NEO: ETHC) focused on Ethereum treasury & staking yield strategy"
+        "description": "Empresa pública canadiense (NEO: ETHC) enfocada en la tesorería de Ethereum y la estrategia de rendimiento de staking"
       },
       "etherealize": {
-        "description": "Ethereum institutional adoption, Wall Street bridge-building"
+        "description": "Adopción institucional de Ethereum, construcción de puentes con Wall Street"
       },
       "ethereum-attestation-service": {
-        "description": "Onchain attestation protocol for identity & credentials"
+        "description": "Protocolo de atestación on-chain para identidad y credenciales"
       },
       "ethereum-foundation": {
-        "description": "Core protocol research, grants, ecosystem development"
+        "description": "Investigación del protocolo central, subvenciones, desarrollo del ecosistema"
       },
       "etherfi": {
-        "description": "Non-custodial liquid staking & restaking with NFT validator receipts"
+        "description": "Staking líquido sin custodia y restaking con recibos de validador NFT"
       },
       "etherfi-cash": {
-        "description": "DeFi-native spending card, restaking yield for real-world payments on Ethereum"
+        "description": "Tarjeta de gasto nativa de DeFi, rendimiento de restaking para pagos del mundo real en Ethereum"
       },
       "etherisc": {
-        "description": "Decentralized insurance protocol on Ethereum"
+        "description": "Protocolo de seguro descentralizado en Ethereum"
       },
       "ethglobal": {
-        "description": "Premier Ethereum hackathons & developer events"
+        "description": "Principales hackatones y eventos para desarrolladores de Ethereum"
       },
       "euler-finance": {
-        "description": "Modular lending protocol (v2) with customizable vaults"
+        "description": "Protocolo de préstamos modular (v2) con bóvedas personalizables"
       },
       "euroclear": {
-        "description": "Global post-trade services exploring DLT-based settlement for tokenized securities"
+        "description": "Servicios post-negociación globales explorando la liquidación basada en DLT para valores tokenizados"
       },
       "ey-blockchain": {
-        "description": "Enterprise blockchain solutions, Nightfall privacy protocol, tokenization"
+        "description": "Soluciones blockchain empresariales, protocolo de privacidad Nightfall, tokenización"
       },
       "ey-nightfall": {
-        "description": "Privacy-focused L2 using ZK proofs for enterprise Ethereum"
+        "description": "L2 enfocada en la privacidad utilizando pruebas ZK para Ethereum empresarial"
       },
       "falconx": {
-        "description": "Institutional crypto prime broker with trading, credit & settlement"
+        "description": "Prime broker cripto institucional con trading, crédito y liquidación"
       },
       "fidelity-digital-assets": {
-        "description": "Institutional custody, trading & Ethereum ETF (FETH)"
+        "description": "Custodia institucional, trading y ETF de Ethereum (FETH)"
       },
       "figment": {
-        "description": "Institutional staking infrastructure provider, validator operations"
+        "description": "Proveedor de infraestructura de staking institucional, operaciones de validador"
       },
       "finality-capital-partners": {
-        "description": "PoS-focused investment firm, institutional staking & protocol investment"
+        "description": "Firma de inversión enfocada en PoS, staking institucional e inversión en protocolos"
       },
       "finery-markets": {
-        "description": "Non-custodial electronic OTC trading platform for institutions"
+        "description": "Plataforma de trading OTC electrónico sin custodia para instituciones"
       },
       "finoa": {
-        "description": "BaFin-regulated digital asset custodian for institutions"
+        "description": "Custodio de activos digitales regulado por BaFin para instituciones"
       },
       "fireblocks": {
-        "description": "Institutional digital asset custody & transfer platform, MPC-based wallet infrastructure"
+        "description": "Plataforma institucional de custodia y transferencia de activos digitales, infraestructura de billetera basada en MPC"
       },
       "flashbots": {
-        "description": "MEV protection, block building & transaction ordering infrastructure"
+        "description": "Protección MEV, construcción de bloques e infraestructura de ordenamiento de transacciones"
       },
       "flipside-crypto": {
-        "description": "Community-powered onchain analytics, structured blockchain data for institutions"
+        "description": "Análisis on-chain impulsado por la comunidad, datos blockchain estructurados para instituciones"
       },
       "fluid": {
-        "description": "Unified liquidity layer combining lending & DEX, institutional-grade DeFi protocol"
+        "description": "Capa de liquidez unificada que combina préstamos y DEX, protocolo DeFi de grado institucional"
       },
       "fnality-international": {
-        "description": "Wholesale payment system using tokenized central bank money"
+        "description": "Sistema de pago mayorista que utiliza dinero tokenizado de banco central"
       },
       "fordefi": {
-        "description": "Institutional MPC wallet with policy engine & DeFi access"
+        "description": "Billetera MPC institucional con motor de políticas y acceso a DeFi"
       },
       "forta-network": {
-        "description": "Decentralized real-time threat detection network for smart contracts & transactions"
+        "description": "Red descentralizada de detección de amenazas en tiempo real para contratos inteligentes y transacciones"
       },
       "foundry": {
-        "description": "Fast Solidity development toolkit (Forge, Cast, Anvil)"
+        "description": "Kit de herramientas de desarrollo rápido de Solidity (Forge, Cast, Anvil)"
       },
       "fracton-ventures": {
-        "description": "Japan-based Web3 venture firm, Ethereum ecosystem investor & ecosystem builder"
+        "description": "Firma de capital de riesgo Web3 con sede en Japón, inversor y constructor del ecosistema Ethereum"
       },
       "franklin-templeton": {
-        "description": "BENJI tokenized money market fund on Ethereum"
+        "description": "Fondo de mercado monetario tokenizado BENJI en Ethereum"
       },
       "fraxtal": {
-        "description": "Frax ecosystem L2, frxETH liquid staking & modular DeFi infrastructure"
+        "description": "L2 del ecosistema Frax, staking líquido frxETH e infraestructura DeFi modular"
       },
       "gateway-fm": {
-        "description": "Enterprise-grade blockchain infra, Top-15 ETH validator, rollup deployment (Presto), co-developed Polygon zkEVM"
+        "description": "Infraestructura blockchain de grado empresarial, validador de ETH Top-15, despliegue de rollup (Presto), co-desarrolló Polygon zkEVM"
       },
       "gauntlet": {
-        "description": "DeFi risk management platform, economic modeling & parameter optimization"
+        "description": "Plataforma de gestión de riesgos DeFi, modelado económico y optimización de parámetros"
       },
       "gearbox-protocol": {
-        "description": "Composable leverage protocol enabling institutional strategies across DeFi with credit accounts"
+        "description": "Protocolo de apalancamiento componible que permite estrategias institucionales en DeFi con cuentas de crédito"
       },
       "gelato-network": {
-        "description": "Smart contract automation, gasless transactions, relay, VRFs & rollup-as-a-service deployment"
+        "description": "Automatización de contratos inteligentes, transacciones sin gas, retransmisión, VRFs y despliegue de rollup-as-a-service"
       },
       "gemini": {
-        "description": "Regulated exchange & custodian, NYDFS trust company"
+        "description": "Exchange y custodio regulado, compañía fiduciaria de NYDFS"
       },
       "geth": {
-        "description": "Official Go implementation of the Ethereum protocol"
+        "description": "Implementación oficial en Go del protocolo Ethereum"
       },
       "gitcoin": {
-        "description": "Leading Ethereum public goods funding platform, quadratic funding rounds for ecosystem projects"
+        "description": "Plataforma líder de financiación de bienes públicos de Ethereum, rondas de financiación cuadrática para proyectos del ecosistema"
       },
       "giza": {
-        "description": "Verifiable machine learning using ZK proofs onchain"
+        "description": "Aprendizaje automático verificable utilizando pruebas ZK on-chain"
       },
       "glassnode": {
-        "description": "Onchain market intelligence for institutional investors"
+        "description": "Inteligencia de mercado on-chain para inversores institucionales"
       },
       "gmx": {
-        "description": "Decentralized perpetuals & spot exchange on Arbitrum, major Ethereum L2 derivatives venue"
+        "description": "Exchange descentralizado de perpetuos y spot en Arbitrum, principal mercado de derivados L2 de Ethereum"
       },
       "gnosis-pay": {
-        "description": "Visa-compatible onchain payment card linked to Ethereum"
+        "description": "Tarjeta de pago on-chain compatible con Visa vinculada a Ethereum"
       },
       "goldman-sachs": {
-        "description": "Digital Asset Platform (GS DAP) for tokenized bond issuance on private Ethereum-based infrastructure"
+        "description": "Plataforma de Activos Digitales (GS DAP) para la emisión de bonos tokenizados en infraestructura privada basada en Ethereum"
       },
       "goodwin-procter": {
-        "description": "Digital assets & blockchain legal practice, token issuance & DeFi advisory"
+        "description": "Práctica legal de activos digitales y blockchain, emisión de tokens y asesoramiento DeFi"
       },
       "grayscale": {
-        "description": "Ethereum Trust (ETHE), institutional crypto investment vehicles"
+        "description": "Fideicomiso de Ethereum (ETHE), vehículos de inversión cripto institucionales"
       },
       "grayscale-research": {
-        "description": "Institutional crypto research arm of Grayscale, market commentary & sector analysis"
+        "description": "Brazo de investigación cripto institucional de Grayscale, comentarios de mercado y análisis sectorial"
       },
       "growthepie": {
-        "description": "Ethereum L2 ecosystem analytics, onchain activity metrics & L2 comparison data"
+        "description": "Análisis del ecosistema L2 de Ethereum, métricas de actividad on-chain y datos de comparación de L2"
       },
       "gsr": {
-        "description": "Crypto market making, OTC trading & structured products"
+        "description": "Creación de mercado cripto, trading OTC y productos estructurados"
       },
       "halborn": {
-        "description": "Blockchain security auditing, pen testing, advisory"
+        "description": "Auditoría de seguridad blockchain, pruebas de penetración, asesoramiento"
       },
       "hamilton-lane": {
-        "description": "Tokenized private equity fund on Ethereum (via Securitize), onchain institutional PE access"
+        "description": "Fondo de capital privado tokenizado en Ethereum (a través de Securitize), acceso institucional a PE on-chain"
       },
       "hardhat": {
-        "description": "Leading Ethereum development environment & testing framework"
+        "description": "Entorno de desarrollo y marco de pruebas líder de Ethereum"
       },
       "hashdex": {
-        "description": "Crypto ETF/ETP provider, Nasdaq Crypto Index, Ethereum investment products"
+        "description": "Proveedor de ETF/ETP de criptomonedas, Nasdaq Crypto Index, productos de inversión de Ethereum"
       },
       "hashnote": {
-        "description": "Onchain institutional fund (USYC), regulated investment manager"
+        "description": "Fondo institucional on-chain (USYC), gestor de inversiones regulado"
       },
       "hats-protocol": {
-        "description": "Onchain roles & permissions protocol for DAO governance & organizational structure"
+        "description": "Protocolo de roles y permisos on-chain para la gobernanza de DAO y la estructura organizacional"
       },
       "hedgey-finance": {
-        "description": "Token vesting, lockups & treasury management onchain"
+        "description": "Vesting de tokens, bloqueos y gestión de tesorería on-chain"
       },
       "hex-trust": {
-        "description": "Licensed institutional digital asset custodian, staking & DeFi access"
+        "description": "Custodio de activos digitales institucional con licencia, staking y acceso a DeFi"
       },
       "hexagate": {
-        "description": "Real-time Web3 security platform, pre-transaction threat detection (acquired by Chainalysis)"
+        "description": "Plataforma de seguridad Web3 en tiempo real, detección de amenazas pre-transacción (adquirida por Chainalysis)"
       },
       "hidden-road": {
-        "description": "Institutional prime brokerage, credit, and clearing (acquired by Ripple)"
+        "description": "Corretaje prime institucional, crédito y compensación (adquirido por Ripple)"
       },
       "hqlax": {
-        "description": "Distributed ledger for collateral transfers & securities lending"
+        "description": "Libro mayor distribuido para transferencias de garantías y préstamos de valores"
       },
       "hsbc-orion": {
-        "description": "HSBC's digital asset platform for tokenized bonds & gold"
+        "description": "Plataforma de activos digitales de HSBC para bonos y oro tokenizados"
       },
       "hyperlane": {
-        "description": "Permissionless interoperability protocol for cross-chain messaging & bridging"
+        "description": "Protocolo de interoperabilidad no permisionado para mensajería y puentes cross-chain"
       },
       "hypernative": {
-        "description": "Real-time Web3 security monitoring, threat detection & prevention for institutions and protocols"
+        "description": "Monitoreo de seguridad Web3 en tiempo real, detección y prevención de amenazas para instituciones y protocolos"
       },
       "immunefi": {
-        "description": "Leading Web3 bug bounty platform, $100M+ in paid bounties"
+        "description": "Plataforma líder de recompensas por errores Web3, más de $100M en recompensas pagadas"
       },
       "infura": {
-        "description": "Leading Ethereum API & node infrastructure, powers MetaMask & major dApps"
+        "description": "Infraestructura líder de API y nodos de Ethereum, impulsa MetaMask y las principales dApps"
       },
       "intotheblock": {
-        "description": "Institutional crypto analytics, onchain indicators & DeFi intelligence"
+        "description": "Análisis cripto institucional, indicadores on-chain e inteligencia DeFi"
       },
       "jpmorgan-kinexys": {
-        "description": "JPMorgan's blockchain payment platform, programmable payments & institutional DeFi pilots on Ethereum"
+        "description": "Plataforma de pagos blockchain de JPMorgan, pagos programables y pilotos DeFi institucionales en Ethereum"
       },
       "jump-crypto": {
-        "description": "Crypto trading, market making & infrastructure development"
+        "description": "Trading de criptomonedas, creación de mercado y desarrollo de infraestructura"
       },
       "k3-capital": {
-        "description": "DeFi risk curator, Morpho vault management & institutional yield strategies"
+        "description": "Curador de riesgos DeFi, gestión de bóvedas Morpho y estrategias de rendimiento institucionales"
       },
       "kaiko": {
-        "description": "Institutional-grade crypto market data provider, used by central banks, regulators & funds"
+        "description": "Proveedor de datos de mercado cripto de grado institucional, utilizado por bancos centrales, reguladores y fondos"
       },
       "karpatkey": {
-        "description": "Largest active DAO treasury manager, $1.8B+ AUM, manages Aave, ENS, Lido, Uniswap treasuries, non-custodial"
+        "description": "El mayor gestor de tesorería de DAO activo, más de $1.8B en AUM, gestiona las tesorerías de Aave, ENS, Lido, Uniswap, sin custodia"
       },
       "kiln": {
-        "description": "Enterprise-grade staking infrastructure, white-label staking platform"
+        "description": "Infraestructura de staking de grado empresarial, plataforma de staking de marca blanca"
       },
       "kkr": {
-        "description": "Tokenized private equity fund on Ethereum (via Securitize), institutional alternative assets"
+        "description": "Fondo de capital privado tokenizado en Ethereum (a través de Securitize), activos alternativos institucionales"
       },
       "komainu": {
-        "description": "Nomura, Ledger & CoinShares joint venture, regulated custody"
+        "description": "Empresa conjunta de Nomura, Ledger y CoinShares, custodia regulada"
       },
       "kpmg-blockchain": {
-        "description": "Crypto asset management advisory, institutional adoption"
+        "description": "Asesoramiento en gestión de criptoactivos, adopción institucional"
       },
       "kraken": {
-        "description": "Major exchange with institutional services & staking"
+        "description": "Principal exchange con servicios institucionales y staking"
       },
       "l2-iterative-ventures": {
-        "description": "VC focused on zero-knowledge proofs, modular chains & Ethereum L2 infrastructure"
+        "description": "VC enfocado en pruebas de conocimiento cero, cadenas modulares e infraestructura L2 de Ethereum"
       },
       "l2beat": {
-        "description": "Leading Layer 2 risk assessment & data analytics platform, tracks TVL, risk & stage of every L2"
+        "description": "Plataforma líder de evaluación de riesgos y análisis de datos de Capa 2, rastrea TVL, riesgo y etapa de cada L2"
       },
       "labyrs": {
-        "description": "Ethereum-focused blockchain development agency, smart contract engineering & dApp development"
+        "description": "Agencia de desarrollo blockchain enfocada en Ethereum, ingeniería de contratos inteligentes y desarrollo de dApps"
       },
       "latham-and-watkins": {
-        "description": "Leading blockchain & digital asset legal practice"
+        "description": "Práctica legal líder en blockchain y activos digitales"
       },
       "layerzero": {
-        "description": "Cross-chain messaging protocol for omnichain applications"
+        "description": "Protocolo de mensajería cross-chain para aplicaciones omnichain"
       },
       "ledger-enterprise": {
-        "description": "Enterprise-grade self-custody with governance & DeFi access"
+        "description": "Autocustodia de grado empresarial con gobernanza y acceso a DeFi"
       },
       "ledgible": {
-        "description": "Crypto tax & accounting platform for institutions & CPAs"
+        "description": "Plataforma de impuestos y contabilidad cripto para instituciones y contadores públicos"
       },
       "libre-capital": {
-        "description": "Institutional tokenized fund infrastructure, onchain fund administration"
+        "description": "Infraestructura de fondos tokenizados institucionales, administración de fondos on-chain"
       },
       "lido": {
-        "description": "Largest liquid staking protocol on Ethereum (stETH)"
+        "description": "El protocolo de liquid staking más grande en Ethereum (stETH)"
       },
       "lighthouse": {
-        "description": "Ethereum consensus client, security audits & research"
+        "description": "Cliente de consenso de Ethereum, auditorías de seguridad e investigación"
       },
       "linea": {
-        "description": "ConsenSys zkEVM L2 for developers & enterprises"
+        "description": "zkEVM L2 de ConsenSys para desarrolladores y empresas"
       },
       "linklaters": {
-        "description": "Magic circle firm with digital assets & DeFi practice"
+        "description": "Firma del 'círculo mágico' con práctica en activos digitales y DeFi"
       },
       "lionscraft": {
-        "description": "Web3 venture & innovation studio, validator ops standards (ValOS), DUCK risk framework for node operators, institutional staking education"
+        "description": "Estudio de capital de riesgo e innovación Web3, estándares de operaciones de validador (ValOS), marco de riesgo DUCK para operadores de nodos, educación en staking institucional"
       },
       "liquid-collective": {
-        "description": "Enterprise liquid staking standard built for institutions (LsETH)"
+        "description": "Estándar de liquid staking empresarial construido para instituciones (LsETH)"
       },
       "llama": {
-        "description": "Onchain governance & treasury management advisory for major Ethereum protocols"
+        "description": "Asesoramiento en gobernanza on-chain y gestión de tesorería para los principales protocolos de Ethereum"
       },
       "lodestar": {
-        "description": "TypeScript Ethereum consensus client, Web3 tooling"
+        "description": "Cliente de consenso de Ethereum en TypeScript, herramientas Web3"
       },
       "luganodes": {
-        "description": "Institutional staking infrastructure, backed by Lugano's Plan B initiative"
+        "description": "Infraestructura de staking institucional, respaldada por la iniciativa Plan B de Lugano"
       },
       "lukka": {
-        "description": "Enterprise crypto tax, accounting & data management"
+        "description": "Impuestos, contabilidad y gestión de datos cripto empresariales"
       },
       "makerdao-sky": {
-        "description": "Decentralized stablecoin (DAI/USDS) & lending protocol"
+        "description": "Stablecoin descentralizada (DAI/USDS) y protocolo de préstamos"
       },
       "mantle": {
-        "description": "Modular Ethereum L2 with integrated DA layer"
+        "description": "L2 modular de Ethereum con capa DA integrada"
       },
       "maple-finance": {
-        "description": "Institutional onchain lending & credit marketplace"
+        "description": "Mercado institucional de préstamos y crédito on-chain"
       },
       "mara-holdings": {
-        "description": "Major crypto miner & treasury company with ETH holdings alongside BTC"
+        "description": "Importante empresa minera y de tesorería de criptomonedas con tenencias de ETH junto con BTC"
       },
       "marsh": {
-        "description": "Digital asset insurance brokerage & risk advisory"
+        "description": "Corretaje de seguros de activos digitales y asesoramiento de riesgos"
       },
       "mastercard": {
-        "description": "Crypto Credential for onchain identity verification, Multi-Token Network for Ethereum-based settlement"
+        "description": "Credencial Cripto para verificación de identidad on-chain, Red Multi-Token para liquidación basada en Ethereum"
       },
       "matter-labs": {
-        "description": "Developers of zkSync, ZK Stack"
+        "description": "Desarrolladores de zkSync, ZK Stack"
       },
       "mckinsey-digital": {
-        "description": "Digital assets strategy, tokenization & DeFi advisory"
+        "description": "Estrategia de activos digitales, tokenización y asesoramiento DeFi"
       },
       "merkle-science": {
-        "description": "Crypto compliance, risk monitoring & investigation platform"
+        "description": "Plataforma de cumplimiento cripto, monitoreo de riesgos e investigación"
       },
       "messari": {
-        "description": "Crypto research, data analytics & governance tools"
+        "description": "Investigación cripto, análisis de datos y herramientas de gobernanza"
       },
       "metamask-institutional": {
-        "description": "Institutional version of MetaMask with custody integrations & compliance"
+        "description": "Versión institucional de MetaMask con integraciones de custodia y cumplimiento"
       },
       "mev-capital": {
-        "description": "DeFi risk management & vault curation firm, ~$1B+ AUM, largest stablecoin vaults on Morpho"
+        "description": "Firma de gestión de riesgos DeFi y curación de bóvedas, más de $1B en AUM, las bóvedas de stablecoins más grandes en Morpho"
       },
       "midas": {
-        "description": "Tokenized treasury & yield products on Ethereum"
+        "description": "Productos de tesorería y rendimiento tokenizados en Ethereum"
       },
       "mode-network": {
-        "description": "Ethereum L2 focused on DeFi, AI & institutional yield strategies"
+        "description": "L2 de Ethereum enfocada en DeFi, IA y estrategias de rendimiento institucionales"
       },
       "morpheus": {
-        "description": "Decentralized AI agent protocol on Ethereum"
+        "description": "Protocolo de agente de IA descentralizado en Ethereum"
       },
       "morpho": {
-        "description": "Lending optimizer & modular lending protocol with vaults"
+        "description": "Optimizador de préstamos y protocolo de préstamos modular con bóvedas"
       },
       "morrison-cohen": {
-        "description": "Boutique with deep DeFi & blockchain legal expertise"
+        "description": "Boutique con profunda experiencia legal en DeFi y blockchain"
       },
       "mountain-protocol": {
-        "description": "Regulated yield-bearing stablecoin (USDM)"
+        "description": "Stablecoin regulada con rendimiento (USDM)"
       },
       "msci": {
-        "description": "Traditional index giant expanding into digital asset classification & research"
+        "description": "Gigante de índices tradicionales expandiéndose a la clasificación e investigación de activos digitales"
       },
       "nansen": {
-        "description": "Wallet labeling, smart money tracking, onchain intelligence"
+        "description": "Etiquetado de billeteras, seguimiento de dinero inteligente, inteligencia on-chain"
       },
       "nayms": {
-        "description": "Onchain insurance marketplace for digital asset risk"
+        "description": "Mercado de seguros on-chain para riesgos de activos digitales"
       },
       "nethermind": {
-        "description": "Ethereum client, blockchain solutions, protocol engineering"
+        "description": "Cliente de Ethereum, soluciones blockchain, ingeniería de protocolos"
       },
       "nexus-mutual": {
-        "description": "Decentralized smart contract cover & protocol insurance on Ethereum"
+        "description": "Cobertura de contratos inteligentes descentralizada y seguro de protocolo en Ethereum"
       },
       "nocturne": {
-        "description": "Private account infrastructure for Ethereum, zero-knowledge stealth addresses"
+        "description": "Infraestructura de cuenta privada para Ethereum, direcciones sigilosas de conocimiento cero"
       },
       "nomura": {
-        "description": "Nomura's digital asset subsidiary, institutional trading, DeFi investment & Ethereum ecosystem VC"
+        "description": "Subsidiaria de activos digitales de Nomura, trading institucional, inversión DeFi y VC del ecosistema Ethereum"
       },
       "northern-trust": {
-        "description": "Institutional custodian with digital asset custody & tokenization capabilities"
+        "description": "Custodio institucional con capacidades de custodia y tokenización de activos digitales"
       },
       "northern-trust-digital-assets": {
-        "description": "Institutional digital asset custody, fund administration & Zodia Custody co-founder"
+        "description": "Custodia institucional de activos digitales, administración de fondos y cofundador de Zodia Custody"
       },
       "notabene": {
-        "description": "FATF Travel Rule compliance for VASPs & institutions"
+        "description": "Cumplimiento de la Regla de Viaje del GAFI para VASPs e instituciones"
       },
       "obol-network": {
-        "description": "Distributed validator technology, fault-tolerant staking clusters"
+        "description": "Tecnología de validador distribuido, clusters de staking tolerantes a fallos"
       },
       "offchain-labs": {
-        "description": "Developers of Arbitrum L2, Orbit chains & Stylus"
+        "description": "Desarrolladores de Arbitrum L2, cadenas Orbit y Stylus"
       },
       "oliver-wyman": {
-        "description": "Digital assets & DeFi risk advisory for financial institutions"
+        "description": "Asesoramiento de riesgos de activos digitales y DeFi para instituciones financieras"
       },
       "ondo-finance": {
-        "description": "Tokenized US Treasuries & institutional-grade financial products (USDY, OUSG)"
+        "description": "Bonos del Tesoro de EE. UU. tokenizados y productos financieros de grado institucional (USDY, OUSG)"
       },
       "op-labs": {
-        "description": "Developers of Optimism, OP Stack & Superchain"
+        "description": "Desarrolladores de Optimism, OP Stack y Superchain"
       },
       "openeden": {
-        "description": "Tokenized US Treasury bills on Ethereum, institutional-grade yield product (TBILL)"
+        "description": "Letras del Tesoro de EE. UU. tokenizadas en Ethereum, producto de rendimiento de grado institucional (TBILL)"
       },
       "openzeppelin": {
-        "description": "Industry-standard Solidity libraries, smart contract audits, Defender platform"
+        "description": "Bibliotecas de Solidity estándar de la industria, auditorías de contratos inteligentes, plataforma Defender"
       },
       "optimism": {
-        "description": "Ethereum L2, Superchain & OP Stack ecosystem"
+        "description": "L2 de Ethereum, ecosistema Superchain y OP Stack"
       },
       "optimism-foundation": {
-        "description": "Retroactive public goods funding, OP Stack ecosystem grants & governance"
+        "description": "Financiación retroactiva de bienes públicos, subvenciones y gobernanza del ecosistema OP Stack"
       },
       "optimism-retropgf": {
-        "description": "Retroactive public goods funding for Ethereum ecosystem builders via OP Collective"
+        "description": "Financiación retroactiva de bienes públicos para constructores del ecosistema Ethereum a través de OP Collective"
       },
       "osl": {
-        "description": "SFC-licensed digital asset exchange & brokerage"
+        "description": "Exchange y corretaje de activos digitales con licencia de la SFC"
       },
       "p2p-org": {
-        "description": "Non-custodial institutional staking, validator infrastructure"
+        "description": "Staking institucional sin custodia, infraestructura de validador"
       },
       "pacific-meta": {
-        "description": "Web3 market entry support for the Japanese & APAC market, Ethereum ecosystem promotion & localization"
+        "description": "Soporte de entrada al mercado Web3 para el mercado japonés y APAC, promoción y localización del ecosistema Ethereum"
       },
       "pantera-capital": {
-        "description": "Institutional blockchain investment fund"
+        "description": "Fondo de inversión blockchain institucional"
       },
       "paradigm": {
-        "description": "Crypto-native investment fund & open-source research (Reth, Foundry)"
+        "description": "Fondo de inversión cripto-nativo e investigación de código abierto (Reth, Foundry)"
       },
       "parsec-finance": {
-        "description": "Professional DeFi analytics, portfolio tracking & onchain monitoring dashboards"
+        "description": "Análisis DeFi profesional, seguimiento de cartera y paneles de monitoreo on-chain"
       },
       "paxos": {
-        "description": "Regulated infrastructure for digital asset settlement"
+        "description": "Infraestructura regulada para la liquidación de activos digitales"
       },
       "paxos-pyusd-usdp": {
-        "description": "Regulated stablecoin issuer (USDP), infrastructure for PayPal's PYUSD, institutional settlement"
+        "description": "Emisor de stablecoin regulada (USDP), infraestructura para PYUSD de PayPal, liquidación institucional"
       },
       "paypal-pyusd-on-ethereum": {
-        "description": "PYUSD stablecoin natively on Ethereum, consumer & merchant crypto payment rails"
+        "description": "Stablecoin PYUSD nativa en Ethereum, rieles de pago cripto para consumidores y comerciantes"
       },
       "paypal-pyusd": {
-        "description": "PayPal USD stablecoin on Ethereum, merchant crypto payments & transfers"
+        "description": "Stablecoin PayPal USD en Ethereum, pagos y transferencias cripto para comerciantes"
       },
       "pendle-finance": {
-        "description": "Yield tokenization & trading protocol"
+        "description": "Protocolo de tokenización y trading de rendimiento"
       },
       "penumbra": {
-        "description": "Privacy-focused trading protocol"
+        "description": "Protocolo de trading enfocado en la privacidad"
       },
       "pimlico": {
-        "description": "Bundler & paymaster infrastructure for ERC-4337"
+        "description": "Infraestructura de bundler y paymaster para ERC-4337"
       },
       "plume-network": {
-        "description": "L2 focused on real-world asset finance (RWAfi)"
+        "description": "L2 enfocada en finanzas de activos del mundo real (RWAfi)"
       },
       "polychain-capital": {
-        "description": "Institutional crypto fund focused on protocol investments"
+        "description": "Fondo cripto institucional enfocado en inversiones en protocolos"
       },
       "polygon": {
-        "description": "Ethereum scaling with zkEVM, PoS chain & CDK"
+        "description": "Escalado de Ethereum con zkEVM, cadena PoS y CDK"
       },
       "polygon-id": {
-        "description": "Self-sovereign identity using ZK proofs"
+        "description": "Identidad autosoberana utilizando pruebas ZK"
       },
       "polymesh": {
-        "description": "Purpose-built blockchain for regulated security tokens"
+        "description": "Blockchain construida específicamente para tokens de seguridad regulados"
       },
       "proshares": {
-        "description": "ETF issuer with Ethereum futures & strategy ETF products"
+        "description": "Emisor de ETF con futuros de Ethereum y productos ETF de estrategia"
       },
       "protocol-guild": {
-        "description": "Collective funding mechanism for Ethereum core protocol contributors & researchers"
+        "description": "Mecanismo de financiación colectiva para colaboradores e investigadores del protocolo central de Ethereum"
       },
       "protofire": {
-        "description": "Smart contract development, DeFi engineering, infrastructure"
+        "description": "Desarrollo de contratos inteligentes, ingeniería DeFi, infraestructura"
       },
       "prysmatic-labs": {
-        "description": "Prysm consensus client for Ethereum PoS"
+        "description": "Cliente de consenso Prysm para Ethereum PoS"
       },
       "pwc-blockchain": {
-        "description": "Digital assets advisory, tax, audit & strategy"
+        "description": "Asesoramiento, impuestos, auditoría y estrategia de activos digitales"
       },
       "pyth-network": {
-        "description": "High-frequency price feeds from institutional market makers"
+        "description": "Fuentes de precios de alta frecuencia de creadores de mercado institucionales"
       },
       "quadrata": {
-        "description": "Onchain passport & identity compliance layer"
+        "description": "Capa de cumplimiento de pasaporte e identidad on-chain"
       },
       "quantstamp": {
-        "description": "Smart contract security auditing & insurance"
+        "description": "Auditoría de seguridad de contratos inteligentes y seguros"
       },
       "quicknode": {
-        "description": "Multi-chain node infrastructure & API platform"
+        "description": "Infraestructura de nodos multicadena y plataforma API"
       },
       "railgun": {
-        "description": "Onchain privacy system for DeFi transactions on Ethereum"
+        "description": "Sistema de privacidad on-chain para transacciones DeFi en Ethereum"
       },
       "re7-labs": {
-        "description": "DeFi risk curator & yield vault operator"
+        "description": "Curador de riesgos DeFi y operador de bóvedas de rendimiento"
       },
       "recap": {
-        "description": "Crypto tax calculation & reporting for institutions"
+        "description": "Cálculo y reporte de impuestos cripto para instituciones"
       },
       "redstone": {
-        "description": "Modular oracle with on-demand data delivery"
+        "description": "Oráculo modular con entrega de datos bajo demanda"
       },
       "request-finance": {
-        "description": "Crypto invoicing, payroll & expense management"
+        "description": "Facturación cripto, nómina y gestión de gastos"
       },
       "reth": {
-        "description": "High-performance Rust Ethereum execution client"
+        "description": "Cliente de ejecución de Ethereum en Rust de alto rendimiento"
       },
       "ribbon-finance-aevo": {
-        "description": "Decentralized options exchange & structured product vaults, institutional trading"
+        "description": "Exchange de opciones descentralizado y bóvedas de productos estructurados, trading institucional"
       },
       "ritual": {
-        "description": "AI infrastructure network, onchain AI model execution"
+        "description": "Red de infraestructura de IA, ejecución de modelos de IA on-chain"
       },
       "robinhood-chain": {
-        "description": "Financial-grade Ethereum L2 for tokenized real-world & digital assets"
+        "description": "L2 de Ethereum de grado financiero para activos tokenizados del mundo real y digitales"
       },
       "robinhood-crypto": {
-        "description": "Major US brokerage with crypto trading, ETH staking & Robinhood Chain L2 on Ethereum"
+        "description": "Principal bróker de EE. UU. con trading de criptomonedas, staking de ETH y Robinhood Chain L2 en Ethereum"
       },
       "rocket-pool": {
-        "description": "Decentralized ETH staking protocol with permissionless node operators"
+        "description": "Protocolo de staking de ETH descentralizado con operadores de nodos no permisionados"
       },
       "runtime-verification": {
-        "description": "Formal verification & smart contract auditing"
+        "description": "Verificación formal y auditoría de contratos inteligentes"
       },
       "rwa-xyz": {
-        "description": "Real-world asset tokenization data aggregator & analytics"
+        "description": "Agregador de datos y análisis de tokenización de activos del mundo real"
       },
       "s-and-p": {
-        "description": "S&P crypto indices, institutional benchmark products"
+        "description": "Índices cripto de S&P, productos de referencia institucionales"
       },
       "sablier": {
-        "description": "Token streaming protocol for vesting, payroll & distributions"
+        "description": "Protocolo de streaming de tokens para vesting, nómina y distribuciones"
       },
       "safe-formerly-gnosis-safe": {
-        "description": "Smart account infrastructure, multi-sig treasury management"
+        "description": "Infraestructura de cuentas inteligentes, gestión de tesorería multifirma"
       },
       "safe-gnosis-safe": {
-        "description": "Leading smart account infrastructure, multi-sig & modular accounts"
+        "description": "Infraestructura líder de cuentas inteligentes, cuentas multifirma y modulares"
       },
       "sardine": {
-        "description": "Fraud prevention, compliance & risk platform for crypto companies & institutions"
+        "description": "Plataforma de prevención de fraude, cumplimiento y riesgo para empresas e instituciones cripto"
       },
       "scroll": {
-        "description": "zkEVM-based L2, EVM-equivalent ZK rollup"
+        "description": "L2 basada en zkEVM, rollup ZK equivalente a EVM"
       },
       "sdx": {
-        "description": "Swiss regulated digital asset exchange, institutional grade"
+        "description": "Exchange de activos digitales regulado suizo, de grado institucional"
       },
       "seba-bank": {
-        "description": "FINMA-licensed crypto bank, institutional custody, trading, tokenization & DeFi access"
+        "description": "Banco cripto con licencia FINMA, custodia institucional, trading, tokenización y acceso a DeFi"
       },
       "securitize": {
-        "description": "SEC-registered transfer agent, tokenization of RWAs, BlackRock BUIDL partner"
+        "description": "Agente de transferencia registrado en la SEC, tokenización de RWAs, socio de BlackRock BUIDL"
       },
       "sensei-node": {
-        "description": "Institutional node infrastructure & staking provider, LATAM-focused Ethereum validator operations"
+        "description": "Proveedor de infraestructura de nodos y staking institucional, operaciones de validador de Ethereum enfocadas en LATAM"
       },
       "sharplink-gaming": {
-        "description": "Nasdaq-listed ETH treasury company, 860K+ ETH, led by Ethereum co-founder Joe Lubin as Chairman"
+        "description": "Empresa de tesorería de ETH listada en Nasdaq, más de 860K ETH, liderada por el cofundador de Ethereum Joe Lubin como Presidente"
       },
       "sherlock": {
-        "description": "Audit contests & smart contract coverage protocol"
+        "description": "Concursos de auditoría y protocolo de cobertura de contratos inteligentes"
       },
       "sigma-prime": {
-        "description": "Ethereum consensus client (Lighthouse) & security audits"
+        "description": "Cliente de consenso de Ethereum (Lighthouse) y auditorías de seguridad"
       },
       "six-group-sdx": {
-        "description": "Swiss regulated digital exchange, CSD & tokenization infrastructure for institutional securities"
+        "description": "Exchange digital regulado suizo, CSD e infraestructura de tokenización para valores institucionales"
       },
       "skyspark": {
-        "description": "Sky/MakerDAO lending arm, Spark Liquidity Layer, institutional DeFi access"
+        "description": "Brazo de préstamos de Sky/MakerDAO, Spark Liquidity Layer, acceso institucional a DeFi"
       },
       "snapshot": {
-        "description": "Gasless offchain governance voting for DAOs"
+        "description": "Votación de gobernanza off-chain sin gas para DAOs"
       },
       "snz": {
-        "description": "Web3 investment firm focused on infrastructure & Ethereum ecosystem projects"
+        "description": "Firma de inversión Web3 enfocada en infraestructura y proyectos del ecosistema Ethereum"
       },
       "socit-gnrale-forge": {
-        "description": "Tokenized bonds, EUR CoinVertible stablecoin on Ethereum, MiCA-licensed"
+        "description": "Bonos tokenizados, stablecoin EUR CoinVertible en Ethereum, con licencia MiCA"
       },
       "solidus-labs": {
-        "description": "Crypto market surveillance, manipulation detection"
+        "description": "Vigilancia del mercado cripto, detección de manipulación"
       },
       "sommelier-finance": {
-        "description": "Institutional-grade DeFi vault strategies"
+        "description": "Estrategias de bóvedas DeFi de grado institucional"
       },
       "spark-protocol": {
-        "description": "Lending protocol powered by Sky/MakerDAO ecosystem"
+        "description": "Protocolo de préstamos impulsado por el ecosistema Sky/MakerDAO"
       },
       "spearbit": {
-        "description": "Decentralized security review collective, elite auditors"
+        "description": "Colectivo descentralizado de revisión de seguridad, auditores de élite"
       },
       "spectral": {
-        "description": "Onchain AI agent creation & deployment platform"
+        "description": "Plataforma de creación y despliegue de agentes de IA on-chain"
       },
       "spiko": {
-        "description": "EU-regulated tokenized money market funds on Ethereum, AMF-approved"
+        "description": "Fondos de mercado monetario tokenizados regulados por la UE en Ethereum, aprobados por la AMF"
       },
       "spire-labs": {
-        "description": "Based rollup infrastructure for institutional tokenization use cases"
+        "description": "Infraestructura de rollup basado para casos de uso de tokenización institucional"
       },
       "spruce-spruceid": {
-        "description": "Decentralized identity tools, Sign-In with Ethereum (SIWE)"
+        "description": "Herramientas de identidad descentralizada, Inicio de Sesión con Ethereum (SIWE)"
       },
       "ssv-network": {
-        "description": "Distributed Validator Technology for decentralized staking"
+        "description": "Tecnología de Validador Distribuido para staking descentralizado"
       },
       "stackup": {
-        "description": "ERC-4337 bundler & account abstraction platform"
+        "description": "Bundler ERC-4337 y plataforma de abstracción de cuentas"
       },
       "stakefish": {
-        "description": "Institutional staking provider by f2pool, one of the largest Ethereum validator operators"
+        "description": "Proveedor de staking institucional de f2pool, uno de los mayores operadores de validadores de Ethereum"
       },
       "staking-rewards": {
-        "description": "Staking data aggregator, yield comparison & validator analytics"
+        "description": "Agregador de datos de staking, comparación de rendimiento y análisis de validadores"
       },
       "standard-chartered-via-zodia-libeara": {
-        "description": "Institutional crypto custody (Zodia) & tokenized fund offerings (Libeara) on Ethereum"
+        "description": "Custodia cripto institucional (Zodia) y ofertas de fondos tokenizados (Libeara) en Ethereum"
       },
       "standard-chartered-zodia-libeara": {
-        "description": "StanChart digital assets via Zodia Custody, Zodia Markets & Libeara tokenization platform"
+        "description": "Activos digitales de StanChart a través de Zodia Custody, Zodia Markets y la plataforma de tokenización Libeara"
       },
       "stargate-finance": {
-        "description": "Cross-chain native asset bridge built on LayerZero"
+        "description": "Puente de activos nativos cross-chain construido sobre LayerZero"
       },
       "starknet": {
-        "description": "STARK-based ZK rollup for Ethereum scaling"
+        "description": "Rollup ZK basado en STARK para escalado de Ethereum"
       },
       "starkware": {
-        "description": "Developers of StarkNet & StarkEx, STARK proof technology"
+        "description": "Desarrolladores de StarkNet y StarkEx, tecnología de prueba STARK"
       },
       "state-street-digital": {
-        "description": "Institutional custodian with digital asset custody & tokenization initiatives on Ethereum"
+        "description": "Custodio institucional con iniciativas de custodia y tokenización de activos digitales en Ethereum"
       },
       "steakhouse-financial": {
-        "description": "DeFi risk curation, vault management & institutional DeFi advisory"
+        "description": "Curación de riesgos DeFi, gestión de bóvedas y asesoramiento DeFi institucional"
       },
       "stripe-crypto": {
-        "description": "Crypto payment integration, USDC payouts on Ethereum, stablecoin-native payment infrastructure"
+        "description": "Integración de pagos cripto, pagos USDC en Ethereum, infraestructura de pagos nativa de stablecoins"
       },
       "stripe-usdc-bridge": {
-        "description": "USDC payment rails on Ethereum via Bridge acquisition, crypto onramp for merchants"
+        "description": "Rieles de pago USDC en Ethereum a través de la adquisición de Bridge, rampa de entrada cripto para comerciantes"
       },
       "superfluid": {
-        "description": "Real-time token streaming protocol for payroll & subscriptions"
+        "description": "Protocolo de streaming de tokens en tiempo real para nómina y suscripciones"
       },
       "superstate": {
-        "description": "Onchain fund management, tokenized treasury fund (USTB)"
+        "description": "Gestión de fondos on-chain, fondo de tesorería tokenizado (USTB)"
       },
       "supra-oracles": {
-        "description": "High-throughput oracle network with DORA protocol for institutional data feeds"
+        "description": "Red de oráculos de alto rendimiento con protocolo DORA para fuentes de datos institucionales"
       },
       "swarm": {
-        "description": "BaFin-regulated tokenized securities platform"
+        "description": "Plataforma de valores tokenizados regulada por BaFin"
       },
       "swift": {
-        "description": "Institutional messaging network piloting tokenized asset transfers on Ethereum"
+        "description": "Red de mensajería institucional pilotando transferencias de activos tokenizados en Ethereum"
       },
       "sygnum-bank": {
-        "description": "FINMA-licensed digital asset bank, tokenization partner for institutional clients"
+        "description": "Banco de activos digitales con licencia FINMA, socio de tokenización para clientes institucionales"
       },
       "symbiotic": {
-        "description": "Permissionless shared security protocol, restaking infrastructure"
+        "description": "Protocolo de seguridad compartida no permisionado, infraestructura de restaking"
       },
       "synthetix": {
-        "description": "Synthetic asset protocol on Ethereum, derivatives liquidity layer for DeFi"
+        "description": "Protocolo de activos sintéticos en Ethereum, capa de liquidez de derivados para DeFi"
       },
       "taiko": {
-        "description": "Based rollup, Ethereum-equivalent ZK-EVM"
+        "description": "Rollup basado, ZK-EVM equivalente a Ethereum"
       },
       "tally": {
-        "description": "Onchain governance platform for DAOs & protocols"
+        "description": "Plataforma de gobernanza on-chain para DAOs y protocolos"
       },
       "talos": {
-        "description": "Institutional-grade trading technology, OMS/EMS for digital assets"
+        "description": "Tecnología de trading de grado institucional, OMS/EMS para activos digitales"
       },
       "tangany": {
-        "description": "White-label custody infrastructure for banks & fintechs"
+        "description": "Infraestructura de custodia de marca blanca para bancos y fintechs"
       },
       "taurus": {
-        "description": "Enterprise custody, tokenization & node infrastructure for banks"
+        "description": "Custodia empresarial, tokenización e infraestructura de nodos para bancos"
       },
       "taxbit": {
-        "description": "Crypto tax reporting & compliance for institutions"
+        "description": "Reporte y cumplimiento de impuestos cripto para instituciones"
       },
       "teku": {
-        "description": "Enterprise-grade Ethereum consensus client"
+        "description": "Cliente de consenso de Ethereum de grado empresarial"
       },
       "tellor": {
-        "description": "Censorship-resistant decentralized oracle for Ethereum"
+        "description": "Oráculo descentralizado resistente a la censura para Ethereum"
       },
       "tenderly": {
-        "description": "Web3 development platform, transaction simulation, monitoring"
+        "description": "Plataforma de desarrollo Web3, simulación de transacciones, monitoreo"
       },
       "tether": {
-        "description": "Largest stablecoin by market cap, widely used on Ethereum"
+        "description": "La stablecoin más grande por capitalización de mercado, ampliamente utilizada en Ethereum"
       },
       "the-block": {
-        "description": "Institutional crypto research, data & news"
+        "description": "Investigación, datos y noticias cripto institucionales"
       },
       "the-graph": {
-        "description": "Decentralized indexing protocol for querying blockchain data"
+        "description": "Protocolo de indexación descentralizado para consultar datos blockchain"
       },
       "thirdweb": {
-        "description": "Full-stack Web3 development platform, SDKs & smart contracts"
+        "description": "Plataforma de desarrollo Web3 full-stack, SDKs y contratos inteligentes"
       },
       "token-terminal": {
-        "description": "Onchain financial data & analytics for protocols & investors"
+        "description": "Datos financieros y análisis on-chain para protocolos e inversores"
       },
       "tokeny": {
-        "description": "ERC-3643 compliant tokenization platform for institutions"
+        "description": "Plataforma de tokenización compatible con ERC-3643 para instituciones"
       },
       "trail-of-bits": {
-        "description": "Blockchain security research, smart contract auditing"
+        "description": "Investigación de seguridad blockchain, auditoría de contratos inteligentes"
       },
       "trm-labs": {
-        "description": "Anti-money laundering, fraud detection & compliance"
+        "description": "Antilavado de dinero, detección de fraude y cumplimiento"
       },
       "twinstake": {
-        "description": "Institutional staking backed by Deutsche Telekom, enterprise-grade validator operations"
+        "description": "Staking institucional respaldado por Deutsche Telekom, operaciones de validador de grado empresarial"
       },
       "ubs": {
-        "description": "Tokenized fund (UBS uMINT) on Ethereum, institutional blockchain bond pilots"
+        "description": "Fondo tokenizado (UBS uMINT) en Ethereum, pilotos de bonos blockchain institucionales"
       },
       "ultrasound-money": {
-        "description": "ETH supply dynamics, burn rate & issuance tracking"
+        "description": "Dinámica de la oferta de ETH, tasa de quema y seguimiento de emisión"
       },
       "uniswap": {
-        "description": "Largest decentralized exchange, AMM pioneer, Uniswap v4"
+        "description": "El exchange descentralizado más grande, pionero de AMM, Uniswap v4"
       },
       "uniswap-foundation": {
-        "description": "Protocol grants, research funding & ecosystem development for Uniswap / Ethereum DeFi"
+        "description": "Subvenciones de protocolo, financiación de investigación y desarrollo del ecosistema para Uniswap / Ethereum DeFi"
       },
       "uniswapx": {
-        "description": "Intent-based trading system by Uniswap, cross-chain swaps with MEV protection"
+        "description": "Sistema de trading basado en intenciones de Uniswap, swaps cross-chain con protección MEV"
       },
       "unslashed-finance": {
-        "description": "Insurance protocol for DeFi risks, slashing, exchange hacks"
+        "description": "Protocolo de seguro para riesgos DeFi, slashing, hacks de exchanges"
       },
       "usual-protocol": {
-        "description": "RWA-backed decentralized stablecoin protocol (USD0), institutional yield distribution"
+        "description": "Protocolo de stablecoin descentralizada respaldada por RWA (USD0), distribución de rendimiento institucional"
       },
       "utopia-labs": {
-        "description": "Payroll & expense management for DAOs & crypto-native orgs"
+        "description": "Gestión de nómina y gastos para DAOs y organizaciones cripto-nativas"
       },
       "vaneck": {
-        "description": "Ethereum ETF & ETN products with staking integration"
+        "description": "Productos ETF y ETN de Ethereum con integración de staking"
       },
       "verax": {
-        "description": "Onchain attestation registry on Linea/Ethereum, composable identity & compliance proofs"
+        "description": "Registro de atestación on-chain en Linea/Ethereum, identidad componible y pruebas de cumplimiento"
       },
       "visa": {
-        "description": "USDC settlement on Ethereum for institutional payment flows, stablecoin rails exploration"
+        "description": "Liquidación de USDC en Ethereum para flujos de pago institucionales, exploración de rieles de stablecoin"
       },
       "warden-finance": {
-        "description": "DeFi risk monitoring & curation, protocol risk dashboards"
+        "description": "Monitoreo y curación de riesgos DeFi, paneles de riesgo de protocolo"
       },
       "willkie-farr-and-gallagher": {
-        "description": "Leading digital assets & DeFi regulatory practice, SEC enforcement defense"
+        "description": "Práctica regulatoria líder en activos digitales y DeFi, defensa contra la aplicación de la SEC"
       },
       "wintermute": {
-        "description": "Leading crypto market maker, DeFi & CeFi liquidity"
+        "description": "Principal creador de mercado cripto, liquidez DeFi y CeFi"
       },
       "wisdomtree": {
-        "description": "Digital asset ETP provider, tokenized fund products & Ethereum ETPs"
+        "description": "Proveedor de ETP de activos digitales, productos de fondos tokenizados y ETPs de Ethereum"
       },
       "wonderland": {
-        "description": "Core DeFi engineering team, smart contract development for major Ethereum protocols"
+        "description": "Equipo de ingeniería central de DeFi, desarrollo de contratos inteligentes para los principales protocolos de Ethereum"
       },
       "worldcoin": {
-        "description": "Proof of personhood protocol using biometrics"
+        "description": "Protocolo de prueba de humanidad utilizando biometría"
       },
       "wormhole": {
-        "description": "Cross-chain messaging & bridge protocol"
+        "description": "Protocolo de mensajería y puente cross-chain"
       },
       "yacademy-yaudit": {
-        "description": "Smart contract auditing collective, security fellowship program"
+        "description": "Colectivo de auditoría de contratos inteligentes, programa de becas de seguridad"
       },
       "zerodev": {
-        "description": "Modular smart account (Kernel) & AA developer SDK"
+        "description": "Cuenta inteligente modular (Kernel) y SDK para desarrolladores de AA"
       },
       "zircuit": {
-        "description": "AI-powered security-first ZK rollup, sequencer-level threat detection for Ethereum L2"
+        "description": "Rollup ZK con enfoque en la seguridad impulsado por IA, detección de amenazas a nivel de secuenciador para Ethereum L2"
       },
       "zksync": {
-        "description": "ZK rollup with native account abstraction"
+        "description": "Rollup ZK con abstracción de cuentas nativa"
       },
       "zodia-custody": {
-        "description": "Standard Chartered & Northern Trust backed institutional custodian"
+        "description": "Custodio institucional respaldado por Standard Chartered y Northern Trust"
       }
     },
     "sub-categories": {
-      "aa-bundler-platform": "AA Bundler / Platform",
-      "aa-infrastructure": "AA Infrastructure",
-      "aa-kernel-sdk": "AA Kernel / SDK",
-      "aa-sdk-paymaster": "AA SDK / Paymaster",
-      "ai-agent-protocol": "AI Agent Protocol",
-      "ai-infrastructure": "AI Infrastructure",
-      "aml-fraud-detection": "AML / Fraud Detection",
+      "aa-bundler-platform": "Bundler / Plataforma AA",
+      "aa-infrastructure": "Infraestructura AA",
+      "aa-kernel-sdk": "Kernel / SDK AA",
+      "aa-sdk-paymaster": "SDK AA / Paymaster",
+      "ai-agent-protocol": "Protocolo de Agente de IA",
+      "ai-infrastructure": "Infraestructura de IA",
+      "aml-fraud-detection": "AML / Detección de Fraude",
       "aml-kyt": "AML / KYT",
-      "aml-risk-screening": "AML / Risk Screening",
-      "aml-platform": "AML Platform",
-      "attestation-protocol": "Attestation Protocol",
-      "audit-coverage": "Audit + Coverage",
-      "auditing-client-dev": "Auditing / Client Dev",
-      "audits-education": "Audits / Education",
-      "autonomous-ai-agents": "Autonomous AI Agents",
-      "banking-tokenization": "Banking / Tokenization",
-      "based-rollup": "Based Rollup (ZK)",
-      "big-4-consulting": "Big 4 Consulting",
-      "blockchain-banking": "Blockchain Banking",
-      "blockchain-development-agency": "Blockchain Development Agency",
-      "blockchain-security": "Blockchain Security",
-      "bug-bounty-platform": "Bug Bounty Platform",
-      "centralized-exchange": "Centralized Exchange",
-      "collateral-management": "Collateral Management",
-      "competitive-audits": "Competitive Audits",
-      "compliance-platform": "Compliance Platform",
-      "conferences": "Conferences",
-      "consensus-client": "Consensus Client",
-      "core-dev-funding": "Core Dev Funding",
-      "core-protocol-services": "Core Protocol / Services",
-      "core-protocol-tooling": "Core Protocol / Tooling",
-      "core-research": "Core Research",
-      "credit-assessment": "Credit Assessment",
-      "cross-chain-bridge": "Cross-Chain Bridge",
-      "cross-chain-communication": "Cross-Chain Communication",
-      "cross-chain-liquidity": "Cross-Chain Liquidity",
-      "cross-chain-protocol": "Cross-Chain Protocol",
-      "crypto-accounting": "Crypto Accounting",
-      "crypto-accounting-erp": "Crypto Accounting / ERP",
-      "crypto-etf-etn": "Crypto ETF / ETN",
-      "crypto-etf-issuer": "Crypto ETF Issuer",
-      "crypto-etf-provider": "Crypto ETF Provider",
-      "crypto-etp-issuer": "Crypto ETP Issuer",
-      "crypto-fund": "Crypto Fund",
-      "crypto-index-etf": "Crypto Index / ETF",
-      "crypto-indices-ratings": "Crypto Indices / Ratings",
-      "crypto-investment-products": "Crypto Investment Products",
-      "crypto-invoicing": "Crypto Invoicing",
-      "crypto-media": "Crypto Media",
-      "crypto-media-events": "Crypto Media / Events",
-      "crypto-payments": "Crypto Payments",
-      "crypto-payments-and-banking": "Crypto Payments & Banking",
-      "crypto-research": "Crypto Research",
-      "crypto-tax": "Crypto Tax",
-      "crypto-treasury": "Crypto Treasury",
-      "crypto-vc": "Crypto VC",
-      "crypto-vc-investment": "Crypto VC / Investment",
-      "crypto-vc-research": "Crypto VC / Research",
-      "crypto-vc-zk-focus": "Crypto VC / ZK Focus",
-      "custody-and-tokenization": "Custody & Tokenization",
-      "custody-administration": "Custody / Administration",
-      "custody-etf": "Custody / ETF",
-      "custody-fund-services": "Custody / Fund Services",
-      "custody-settlement": "Custody / Settlement",
-      "custody-tokenization": "Custody / Tokenization",
-      "custody-as-a-service": "Custody-as-a-Service",
-      "dao-framework": "DAO Framework",
-      "dao-governance-treasury-advisory": "DAO Governance / Treasury Advisory",
-      "dao-payroll": "DAO Payroll",
+      "aml-risk-screening": "AML / Detección de Riesgos",
+      "aml-platform": "Plataforma AML",
+      "attestation-protocol": "Protocolo de Atestación",
+      "audit-coverage": "Auditoría + Cobertura",
+      "auditing-client-dev": "Auditoría / Desarrollo de Cliente",
+      "audits-education": "Auditorías / Educación",
+      "autonomous-ai-agents": "Agentes de IA Autónomos",
+      "banking-tokenization": "Banca / Tokenización",
+      "based-rollup": "Rollup Basado (ZK)",
+      "big-4-consulting": "Consultoría Big 4",
+      "blockchain-banking": "Banca Blockchain",
+      "blockchain-development-agency": "Agencia de Desarrollo Blockchain",
+      "blockchain-security": "Seguridad Blockchain",
+      "bug-bounty-platform": "Plataforma de Recompensas por Errores",
+      "centralized-exchange": "Exchange Centralizado",
+      "collateral-management": "Gestión de Garantías",
+      "competitive-audits": "Auditorías Competitivas",
+      "compliance-platform": "Plataforma de Cumplimiento",
+      "conferences": "Conferencias",
+      "consensus-client": "Cliente de Consenso",
+      "core-dev-funding": "Financiación de Desarrollo Central",
+      "core-protocol-services": "Protocolo Central / Servicios",
+      "core-protocol-tooling": "Protocolo Central / Herramientas",
+      "core-research": "Investigación Central",
+      "credit-assessment": "Evaluación de Crédito",
+      "cross-chain-bridge": "Puente Cross-Chain",
+      "cross-chain-communication": "Comunicación Cross-Chain",
+      "cross-chain-liquidity": "Liquidez Cross-Chain",
+      "cross-chain-protocol": "Protocolo Cross-Chain",
+      "crypto-accounting": "Contabilidad Cripto",
+      "crypto-accounting-erp": "Contabilidad Cripto / ERP",
+      "crypto-etf-etn": "ETF / ETN Cripto",
+      "crypto-etf-issuer": "Emisor de ETF Cripto",
+      "crypto-etf-provider": "Proveedor de ETF Cripto",
+      "crypto-etp-issuer": "Emisor de ETP Cripto",
+      "crypto-fund": "Fondo Cripto",
+      "crypto-index-etf": "Índice Cripto / ETF",
+      "crypto-indices-ratings": "Índices / Calificaciones Cripto",
+      "crypto-investment-products": "Productos de Inversión Cripto",
+      "crypto-invoicing": "Facturación Cripto",
+      "crypto-media": "Medios Cripto",
+      "crypto-media-events": "Medios / Eventos Cripto",
+      "crypto-payments": "Pagos Cripto",
+      "crypto-payments-and-banking": "Pagos y Banca Cripto",
+      "crypto-research": "Investigación Cripto",
+      "crypto-tax": "Impuestos Cripto",
+      "crypto-treasury": "Tesorería Cripto",
+      "crypto-vc": "VC Cripto",
+      "crypto-vc-investment": "VC Cripto / Inversión",
+      "crypto-vc-research": "VC Cripto / Investigación",
+      "crypto-vc-zk-focus": "VC Cripto / Enfoque ZK",
+      "custody-and-tokenization": "Custodia y Tokenización",
+      "custody-administration": "Custodia / Administración",
+      "custody-etf": "Custodia / ETF",
+      "custody-fund-services": "Custodia / Servicios de Fondos",
+      "custody-settlement": "Custodia / Liquidación",
+      "custody-tokenization": "Custodia / Tokenización",
+      "custody-as-a-service": "Custodia como Servicio",
+      "dao-framework": "Marco DAO",
+      "dao-governance-treasury-advisory": "Gobernanza DAO / Asesoramiento de Tesorería",
+      "dao-payroll": "Nómina DAO",
       "dex-amm": "DEX / AMM",
-      "dex-aggregator": "DEX Aggregator",
+      "dex-aggregator": "Agregador de DEX",
       "did-ssi": "DID / SSI",
-      "dvt": "DVT (Distributed Validators)",
-      "data-availability-layer": "Data Availability Layer",
-      "defi-payments": "DeFi / Payments",
-      "defi-analytics": "DeFi Analytics",
-      "defi-data-aggregator": "DeFi Data Aggregator",
-      "defi-engineering": "DeFi Engineering",
-      "defi-insurance": "DeFi Insurance",
-      "defi-risk-backstop": "DeFi Risk / Backstop",
-      "defi-vault-strategies": "DeFi Vault Strategies",
-      "decentralized-insurance": "Decentralized Insurance",
-      "decentralized-oracle": "Decentralized Oracle",
-      "decentralized-staking": "Decentralized Staking",
-      "devops-debugging": "DevOps / Debugging",
-      "developer-tooling": "Developer Tooling",
-      "digital-asset-infrastructure": "Digital Asset Infrastructure",
-      "digital-asset-subsidiary": "Digital Asset Subsidiary",
-      "digital-securities-services": "Digital Securities Services",
-      "eth-supply-data": "ETH Supply Data",
-      "eth-treasury-mining": "ETH Treasury / Mining",
-      "eth-treasury-company": "ETH Treasury Company",
-      "education": "Education",
-      "enterprise-privacy": "Enterprise Privacy",
-      "ethereum-native-oracle": "Ethereum-Native Oracle",
-      "european-crypto-etp": "European Crypto ETP",
-      "execution-client": "Execution Client",
-      "fast-bridge": "Fast Bridge",
-      "federally-chartered-crypto-bank": "Federally Chartered Crypto Bank",
-      "financial-data": "Financial Data",
-      "financial-services-consulting": "Financial Services Consulting",
-      "first-party-oracle": "First-Party Oracle",
-      "formal-verification": "Formal Verification",
-      "fraud-and-compliance": "Fraud & Compliance",
-      "governance-platform": "Governance Platform",
-      "grants-and-ecosystem": "Grants & Ecosystem",
-      "grants-ecosystem": "Grants / Ecosystem",
-      "grants-public-goods": "Grants / Public Goods",
-      "hackathons-events": "Hackathons / Events",
-      "hardware-mpc-custody": "Hardware / MPC Custody",
-      "index-research": "Index / Research",
-      "indexing-protocol": "Indexing Protocol",
-      "industry-membership-body": "Industry Membership Body",
-      "institutional-advocacy": "Institutional Advocacy",
-      "institutional-blockchain-payments": "Institutional Blockchain Payments",
-      "institutional-credit": "Institutional Credit",
-      "institutional-custodian": "Institutional Custodian",
-      "institutional-data-platform": "Institutional Data Platform",
-      "institutional-exchange": "Institutional Exchange",
-      "institutional-identity": "Institutional Identity",
-      "institutional-lending": "Institutional Lending",
-      "institutional-liquid-staking": "Institutional Liquid Staking",
-      "institutional-market-data": "Institutional Market Data",
-      "institutional-research": "Institutional Research",
-      "institutional-staking": "Institutional Staking",
-      "institutional-trading": "Institutional Trading",
-      "institutional-wallet": "Institutional Wallet",
-      "insurance-marketplace": "Insurance Marketplace",
-      "intent-based-routing": "Intent-Based Routing",
-      "intent-based-trading": "Intent-Based Trading",
-      "intent-centric-architecture": "Intent-Centric Architecture",
-      "kyc-as-a-service": "KYC-as-a-Service",
-      "l2-infrastructure": "L2 / Infrastructure",
-      "l2-zk-infrastructure": "L2 / ZK Infrastructure",
-      "l2-analytics": "L2 Analytics",
-      "l2-exploration": "L2 Exploration",
-      "l2-risk-and-data": "L2 Risk & Data",
-      "law-firm": "Law Firm",
-      "lending": "Lending (Sky/Maker)",
-      "lending-borrowing": "Lending / Borrowing",
-      "lending-dex": "Lending / DEX",
-      "lending-stablecoin": "Lending / Stablecoin",
-      "lending-stablecoin-ecosystem": "Lending / Stablecoin Ecosystem",
-      "lending-optimizer": "Lending Optimizer",
-      "leveraged-defi": "Leveraged DeFi",
-      "licensed-custodian": "Licensed Custodian",
-      "licensed-exchange-broker": "Licensed Exchange / Broker",
+      "dvt": "DVT (Validadores Distribuidos)",
+      "data-availability-layer": "Capa de Disponibilidad de Datos",
+      "defi-payments": "DeFi / Pagos",
+      "defi-analytics": "Análisis DeFi",
+      "defi-data-aggregator": "Agregador de Datos DeFi",
+      "defi-engineering": "Ingeniería DeFi",
+      "defi-insurance": "Seguro DeFi",
+      "defi-risk-backstop": "Riesgo DeFi / Respaldo",
+      "defi-vault-strategies": "Estrategias de Bóvedas DeFi",
+      "decentralized-insurance": "Seguro Descentralizado",
+      "decentralized-oracle": "Oráculo Descentralizado",
+      "decentralized-staking": "Staking Descentralizado",
+      "devops-debugging": "DevOps / Depuración",
+      "developer-tooling": "Herramientas para Desarrolladores",
+      "digital-asset-infrastructure": "Infraestructura de Activos Digitales",
+      "digital-asset-subsidiary": "Subsidiaria de Activos Digitales",
+      "digital-securities-services": "Servicios de Valores Digitales",
+      "eth-supply-data": "Datos de Suministro de ETH",
+      "eth-treasury-mining": "Tesorería / Minería de ETH",
+      "eth-treasury-company": "Empresa de Tesorería de ETH",
+      "education": "Educación",
+      "enterprise-privacy": "Privacidad Empresarial",
+      "ethereum-native-oracle": "Oráculo Nativo de Ethereum",
+      "european-crypto-etp": "ETP Cripto Europeo",
+      "execution-client": "Cliente de Ejecución",
+      "fast-bridge": "Puente Rápido",
+      "federally-chartered-crypto-bank": "Banco Cripto con Licencia Federal",
+      "financial-data": "Datos Financieros",
+      "financial-services-consulting": "Consultoría de Servicios Financieros",
+      "first-party-oracle": "Oráculo de Primera Parte",
+      "formal-verification": "Verificación Formal",
+      "fraud-and-compliance": "Fraude y Cumplimiento",
+      "governance-platform": "Plataforma de Gobernanza",
+      "grants-and-ecosystem": "Subvenciones y Ecosistema",
+      "grants-ecosystem": "Subvenciones / Ecosistema",
+      "grants-public-goods": "Subvenciones / Bienes Públicos",
+      "hackathons-events": "Hackatones / Eventos",
+      "hardware-mpc-custody": "Hardware / Custodia MPC",
+      "index-research": "Índice / Investigación",
+      "indexing-protocol": "Protocolo de Indexación",
+      "industry-membership-body": "Organismo de Membresía de la Industria",
+      "institutional-advocacy": "Defensa Institucional",
+      "institutional-blockchain-payments": "Pagos Blockchain Institucionales",
+      "institutional-credit": "Crédito Institucional",
+      "institutional-custodian": "Custodio Institucional",
+      "institutional-data-platform": "Plataforma de Datos Institucionales",
+      "institutional-exchange": "Exchange Institucional",
+      "institutional-identity": "Identidad Institucional",
+      "institutional-lending": "Préstamos Institucionales",
+      "institutional-liquid-staking": "Liquid Staking Institucional",
+      "institutional-market-data": "Datos de Mercado Institucionales",
+      "institutional-research": "Investigación Institucional",
+      "institutional-staking": "Staking Institucional",
+      "institutional-trading": "Trading Institucional",
+      "institutional-wallet": "Billetera Institucional",
+      "insurance-marketplace": "Mercado de Seguros",
+      "intent-based-routing": "Enrutamiento Basado en Intenciones",
+      "intent-based-trading": "Trading Basado en Intenciones",
+      "intent-centric-architecture": "Arquitectura Centrada en Intenciones",
+      "kyc-as-a-service": "KYC como Servicio",
+      "l2-infrastructure": "L2 / Infraestructura",
+      "l2-zk-infrastructure": "L2 / Infraestructura ZK",
+      "l2-analytics": "Análisis de L2",
+      "l2-exploration": "Exploración de L2",
+      "l2-risk-and-data": "Riesgo y Datos de L2",
+      "law-firm": "Firma de Abogados",
+      "lending": "Préstamos (Sky/Maker)",
+      "lending-borrowing": "Préstamos / Empréstitos",
+      "lending-dex": "Préstamos / DEX",
+      "lending-stablecoin": "Préstamos / Stablecoin",
+      "lending-stablecoin-ecosystem": "Préstamos / Ecosistema de Stablecoins",
+      "lending-optimizer": "Optimizador de Préstamos",
+      "leveraged-defi": "DeFi Apalancado",
+      "licensed-custodian": "Custodio Licenciado",
+      "licensed-exchange-broker": "Exchange / Corredor Licenciado",
       "liquid-staking-restaking": "Liquid Staking / Restaking",
-      "liquid-staking-protocol": "Liquid Staking Protocol",
-      "liquidity-transport": "Liquidity Transport",
-      "low-latency-oracle": "Low-Latency Oracle",
-      "mev-proposer-infrastructure": "MEV / Proposer Infrastructure",
-      "mev-infrastructure": "MEV Infrastructure",
-      "mpc-custody-infrastructure": "MPC Custody / Infrastructure",
-      "mpc-custody-settlement": "MPC Custody / Settlement",
-      "mpc-wallet-platform": "MPC Wallet Platform",
-      "market-data-indices": "Market Data / Indices",
-      "market-data-aggregator": "Market Data Aggregator",
-      "market-maker": "Market Maker",
-      "market-maker-infra": "Market Maker / Infra",
-      "market-maker-liquidity": "Market Maker / Liquidity",
-      "market-maker-trading": "Market Maker / Trading",
-      "market-maker-vc": "Market Maker / VC",
-      "market-surveillance": "Market Surveillance",
-      "media-education": "Media / Education",
-      "mempool-transaction-infra": "Mempool / Transaction Infra",
-      "modular-da-layer": "Modular DA Layer",
-      "modular-lending": "Modular Lending",
-      "modular-oracle": "Modular Oracle",
-      "multi-sig-treasury": "Multi-Sig Treasury",
-      "naming-protocol": "Naming Protocol",
-      "node-api-provider": "Node / API Provider",
-      "node-developer-platform": "Node / Developer Platform",
-      "node-rpc-rollup-infra": "Node / RPC / Rollup Infra",
-      "node-infrastructure": "Node Infrastructure",
-      "non-custodial-staking": "Non-Custodial Staking",
-      "otc-liquidity": "OTC / Liquidity",
-      "offchain-voting": "Offchain Voting",
-      "omnichain-messaging": "Omnichain Messaging",
-      "onchain-market-data": "Onchain / Market Data",
-      "onchain-ai": "Onchain AI",
-      "onchain-analytics": "Onchain Analytics",
-      "onchain-asset-mgmt": "Onchain Asset Mgmt",
-      "onchain-attestation-registry": "Onchain Attestation Registry",
-      "onchain-identity-kyc": "Onchain Identity / KYC",
-      "onchain-intelligence": "Onchain Intelligence",
-      "onchain-metrics": "Onchain Metrics",
-      "onchain-options": "Onchain Options",
-      "onchain-payments": "Onchain Payments",
-      "onchain-privacy": "Onchain Privacy",
-      "onchain-treasury-management": "Onchain Treasury Management",
-      "optimistic-rollup": "Optimistic Rollup",
-      "optimistic-rollup-arbitrum": "Optimistic Rollup (Arbitrum)",
-      "optimistic-rollup-op-stack": "Optimistic Rollup (OP Stack)",
-      "oracle-intralayer": "Oracle / IntraLayer",
-      "payment-network": "Payment Network",
-      "payment-processing": "Payment Processing",
-      "permissionless-messaging": "Permissionless Messaging",
-      "perpetual-dex": "Perpetual DEX",
-      "perpetual-dex-arbitrum": "Perpetual DEX (Arbitrum)",
-      "post-trade-dlt-settlement": "Post-Trade / DLT Settlement",
-      "post-trade-infrastructure": "Post-Trade Infrastructure",
-      "prime-broker-credit": "Prime Broker / Credit",
+      "liquid-staking-protocol": "Protocolo de Liquid Staking",
+      "liquidity-transport": "Transporte de Liquidez",
+      "low-latency-oracle": "Oráculo de Baja Latencia",
+      "mev-proposer-infrastructure": "MEV / Infraestructura de Proponente",
+      "mev-infrastructure": "Infraestructura MEV",
+      "mpc-custody-infrastructure": "Custodia MPC / Infraestructura",
+      "mpc-custody-settlement": "Custodia MPC / Liquidación",
+      "mpc-wallet-platform": "Plataforma de Billetera MPC",
+      "market-data-indices": "Datos de Mercado / Índices",
+      "market-data-aggregator": "Agregador de Datos de Mercado",
+      "market-maker": "Creador de Mercado",
+      "market-maker-infra": "Creador de Mercado / Infraestructura",
+      "market-maker-liquidity": "Creador de Mercado / Liquidez",
+      "market-maker-trading": "Creador de Mercado / Trading",
+      "market-maker-vc": "Creador de Mercado / VC",
+      "market-surveillance": "Vigilancia del Mercado",
+      "media-education": "Medios / Educación",
+      "mempool-transaction-infra": "Mempool / Infraestructura de Transacciones",
+      "modular-da-layer": "Capa DA Modular",
+      "modular-lending": "Préstamos Modulares",
+      "modular-oracle": "Oráculo Modular",
+      "multi-sig-treasury": "Tesorería Multifirma",
+      "naming-protocol": "Protocolo de Nombres",
+      "node-api-provider": "Nodo / Proveedor de API",
+      "node-developer-platform": "Nodo / Plataforma para Desarrolladores",
+      "node-rpc-rollup-infra": "Nodo / RPC / Infraestructura de Rollup",
+      "node-infrastructure": "Infraestructura de Nodos",
+      "non-custodial-staking": "Staking sin Custodia",
+      "otc-liquidity": "OTC / Liquidez",
+      "offchain-voting": "Votación Off-Chain",
+      "omnichain-messaging": "Mensajería Omnicadena",
+      "onchain-market-data": "Datos de Mercado On-Chain",
+      "onchain-ai": "IA On-Chain",
+      "onchain-analytics": "Análisis On-Chain",
+      "onchain-asset-mgmt": "Gestión de Activos On-Chain",
+      "onchain-attestation-registry": "Registro de Atestación On-Chain",
+      "onchain-identity-kyc": "Identidad On-Chain / KYC",
+      "onchain-intelligence": "Inteligencia On-Chain",
+      "onchain-metrics": "Métricas On-Chain",
+      "onchain-options": "Opciones On-Chain",
+      "onchain-payments": "Pagos On-Chain",
+      "onchain-privacy": "Privacidad On-Chain",
+      "onchain-treasury-management": "Gestión de Tesorería On-Chain",
+      "optimistic-rollup": "Rollup Optimista",
+      "optimistic-rollup-arbitrum": "Rollup Optimista (Arbitrum)",
+      "optimistic-rollup-op-stack": "Rollup Optimista (OP Stack)",
+      "oracle-intralayer": "Oráculo / IntraCapa",
+      "payment-network": "Red de Pagos",
+      "payment-processing": "Procesamiento de Pagos",
+      "permissionless-messaging": "Mensajería no Permisionada",
+      "perpetual-dex": "DEX de Perpetuos",
+      "perpetual-dex-arbitrum": "DEX de Perpetuos (Arbitrum)",
+      "post-trade-dlt-settlement": "Post-Negociación / Liquidación DLT",
+      "post-trade-infrastructure": "Infraestructura Post-Negociación",
+      "prime-broker-credit": "Prime Broker / Crédito",
       "prime-broker-trading": "Prime Broker / Trading",
-      "privacy-protocol": "Privacy Protocol",
-      "private-accounts": "Private Accounts",
-      "private-l2": "Private L2 (ZK)",
-      "proactive-security-platform": "Proactive Security Platform",
-      "proof-of-personhood": "Proof of Personhood",
-      "protocol-grants": "Protocol Grants",
-      "public-goods-funding": "Public Goods Funding",
-      "qualified-custodian": "Qualified Custodian",
-      "qualified-custodian-bank": "Qualified Custodian / Bank",
-      "rpc-api-provider": "RPC / API Provider",
-      "rwa-backed-stablecoin": "RWA-Backed Stablecoin",
-      "rwafi-l2": "RWAfi L2",
-      "real-world-asset-protocol": "Real World Asset Protocol",
-      "regulated-benchmarks": "Regulated Benchmarks",
-      "regulated-crypto-bank": "Regulated Crypto Bank",
-      "regulated-custodian": "Regulated Custodian",
-      "regulated-exchange": "Regulated Exchange",
-      "regulated-exchange-and-csd": "Regulated Exchange & CSD",
-      "regulated-futures-exchange": "Regulated Futures Exchange",
-      "research-data": "Research / Data",
-      "restaking-protocol": "Restaking Protocol",
-      "retail-institutional-exchange": "Retail / Institutional Exchange",
-      "risk-and-simulation": "Risk & Simulation",
-      "risk-analytics": "Risk Analytics",
-      "risk-curation": "Risk Curation",
-      "risk-curation-advisory": "Risk Curation / Advisory",
-      "risk-curation-yield": "Risk Curation / Yield",
-      "risk-modeling-simulation": "Risk Modeling / Simulation",
-      "risk-monitoring": "Risk Monitoring",
-      "role-based-access": "Role-Based Access",
-      "rollup-deployment": "Rollup Deployment",
-      "rollups-as-a-service": "Rollups-as-a-Service",
-      "security-education": "Security / Education",
-      "security-risk-platform": "Security / Risk Platform",
-      "security-audits-analytics": "Security Audits / Analytics",
-      "security-research-audits": "Security Research / Audits",
-      "security-review-dao": "Security Review DAO",
-      "security-token-chain": "Security Token Chain",
-      "settlement-stablecoin": "Settlement / Stablecoin",
-      "slashing-insurance": "Slashing Insurance",
-      "smart-account": "Smart Account",
-      "smart-contract-audits": "Smart Contract Audits",
-      "smart-contract-automation-raas": "Smart Contract Automation / RaaS",
-      "smart-contract-security": "Smart Contract Security",
-      "smart-wallet": "Smart Wallet",
-      "stablecoin-payments": "Stablecoin / Payments",
-      "stablecoin-dex": "Stablecoin DEX",
-      "stablecoin-infrastructure": "Stablecoin Infrastructure",
-      "stablecoin-issuer": "Stablecoin Issuer",
-      "staking-investment": "Staking / Investment",
-      "staking-data": "Staking Data",
-      "strategy-consulting": "Strategy Consulting",
-      "streaming-payments": "Streaming Payments",
-      "structured-vaults-options": "Structured Vaults / Options",
-      "synthetic-assets": "Synthetic Assets",
-      "synthetic-dollar": "Synthetic Dollar",
-      "systems-integrator": "Systems Integrator",
-      "tax-and-accounting": "Tax & Accounting",
-      "tax-compliance": "Tax Compliance",
-      "threat-detection": "Threat Detection",
-      "token-streaming": "Token Streaming",
-      "token-vesting-treasury": "Token Vesting / Treasury",
-      "tokenization-data": "Tokenization Data",
-      "tokenization-infra": "Tokenization Infra",
-      "tokenization-infrastructure": "Tokenization Infrastructure",
-      "tokenization-platform": "Tokenization Platform",
-      "tokenized-assets": "Tokenized Assets",
-      "tokenized-bonds": "Tokenized Bonds",
-      "tokenized-bonds-stablecoins": "Tokenized Bonds / Stablecoins",
-      "tokenized-credit-fund": "Tokenized Credit Fund",
-      "tokenized-deposits-settlements": "Tokenized Deposits / Settlements",
-      "tokenized-fund": "Tokenized Fund",
-      "tokenized-fund-bonds": "Tokenized Fund / Bonds",
-      "tokenized-fund-etf": "Tokenized Fund / ETF",
-      "tokenized-fund-infrastructure": "Tokenized Fund Infrastructure",
-      "tokenized-money-market-funds": "Tokenized Money Market Funds",
-      "tokenized-pe-fund": "Tokenized PE Fund",
-      "tokenized-products": "Tokenized Products",
-      "tokenized-securities": "Tokenized Securities",
-      "tokenized-t-bills": "Tokenized T-Bills",
-      "tokenized-treasuries": "Tokenized Treasuries",
-      "tradfi-interoperability": "TradFi Interoperability",
-      "trading-infrastructure": "Trading Infrastructure",
-      "traditional-insurance": "Traditional Insurance",
-      "transaction-infrastructure": "Transaction Infrastructure",
-      "travel-rule": "Travel Rule",
-      "treasury-management": "Treasury Management",
-      "venture-studio-incubator": "Venture Studio / Incubator",
-      "web3-accelerator": "Web3 Accelerator",
-      "web3-consulting-infra": "Web3 Consulting / Infra",
-      "web3-developer-platform": "Web3 Developer Platform",
-      "web3-development": "Web3 Development",
-      "web3-infra-consulting": "Web3 Infra Consulting",
-      "web3-market-entry": "Web3 Market Entry (APAC)",
-      "wholesale-settlement": "Wholesale Settlement",
-      "yield-trading": "Yield Trading",
-      "yield-bearing-stablecoin": "Yield-Bearing Stablecoin",
-      "zk-identity": "ZK Identity",
+      "privacy-protocol": "Protocolo de Privacidad",
+      "private-accounts": "Cuentas Privadas",
+      "private-l2": "L2 Privada (ZK)",
+      "proactive-security-platform": "Plataforma de Seguridad Proactiva",
+      "proof-of-personhood": "Prueba de Humanidad",
+      "protocol-grants": "Subvenciones de Protocolo",
+      "public-goods-funding": "Financiación de Bienes Públicos",
+      "qualified-custodian": "Custodio Calificado",
+      "qualified-custodian-bank": "Custodio Calificado / Banco",
+      "rpc-api-provider": "RPC / Proveedor de API",
+      "rwa-backed-stablecoin": "Stablecoin Respaldada por RWA",
+      "rwafi-l2": "L2 de RWAfi",
+      "real-world-asset-protocol": "Protocolo de Activos del Mundo Real",
+      "regulated-benchmarks": "Benchmarks Regulados",
+      "regulated-crypto-bank": "Banco Cripto Regulado",
+      "regulated-custodian": "Custodio Regulado",
+      "regulated-exchange": "Exchange Regulado",
+      "regulated-exchange-and-csd": "Exchange y CSD Regulados",
+      "regulated-futures-exchange": "Exchange de Futuros Regulado",
+      "research-data": "Investigación / Datos",
+      "restaking-protocol": "Protocolo de Restaking",
+      "retail-institutional-exchange": "Exchange Minorista / Institucional",
+      "risk-and-simulation": "Riesgo y Simulación",
+      "risk-analytics": "Análisis de Riesgos",
+      "risk-curation": "Curación de Riesgos",
+      "risk-curation-advisory": "Curación de Riesgos / Asesoramiento",
+      "risk-curation-yield": "Curación de Riesgos / Rendimiento",
+      "risk-modeling-simulation": "Modelado / Simulación de Riesgos",
+      "risk-monitoring": "Monitoreo de Riesgos",
+      "role-based-access": "Acceso Basado en Roles",
+      "rollup-deployment": "Despliegue de Rollup",
+      "rollups-as-a-service": "Rollups como Servicio",
+      "security-education": "Seguridad / Educación",
+      "security-risk-platform": "Plataforma de Seguridad / Riesgos",
+      "security-audits-analytics": "Auditorías de Seguridad / Análisis",
+      "security-research-audits": "Investigación de Seguridad / Auditorías",
+      "security-review-dao": "DAO de Revisión de Seguridad",
+      "security-token-chain": "Cadena de Tokens de Seguridad",
+      "settlement-stablecoin": "Liquidación / Stablecoin",
+      "slashing-insurance": "Seguro contra Slashing",
+      "smart-account": "Cuenta Inteligente",
+      "smart-contract-audits": "Auditorías de Contratos Inteligentes",
+      "smart-contract-automation-raas": "Automatización de Contratos Inteligentes / RaaS",
+      "smart-contract-security": "Seguridad de Contratos Inteligentes",
+      "smart-wallet": "Billetera Inteligente",
+      "stablecoin-payments": "Stablecoin / Pagos",
+      "stablecoin-dex": "DEX de Stablecoins",
+      "stablecoin-infrastructure": "Infraestructura de Stablecoins",
+      "stablecoin-issuer": "Emisor de Stablecoins",
+      "staking-investment": "Staking / Inversión",
+      "staking-data": "Datos de Staking",
+      "strategy-consulting": "Consultoría Estratégica",
+      "streaming-payments": "Pagos por Streaming",
+      "structured-vaults-options": "Bóvedas Estructuradas / Opciones",
+      "synthetic-assets": "Activos Sintéticos",
+      "synthetic-dollar": "Dólar Sintético",
+      "systems-integrator": "Integrador de Sistemas",
+      "tax-and-accounting": "Impuestos y Contabilidad",
+      "tax-compliance": "Cumplimiento Fiscal",
+      "threat-detection": "Detección de Amenazas",
+      "token-streaming": "Streaming de Tokens",
+      "token-vesting-treasury": "Vesting de Tokens / Tesorería",
+      "tokenization-data": "Datos de Tokenización",
+      "tokenization-infra": "Infraestructura de Tokenización",
+      "tokenization-infrastructure": "Infraestructura de Tokenización",
+      "tokenization-platform": "Plataforma de Tokenización",
+      "tokenized-assets": "Activos Tokenizados",
+      "tokenized-bonds": "Bonos Tokenizados",
+      "tokenized-bonds-stablecoins": "Bonos Tokenizados / Stablecoins",
+      "tokenized-credit-fund": "Fondo de Crédito Tokenizado",
+      "tokenized-deposits-settlements": "Depósitos Tokenizados / Liquidaciones",
+      "tokenized-fund": "Fondo Tokenizado",
+      "tokenized-fund-bonds": "Fondo Tokenizado / Bonos",
+      "tokenized-fund-etf": "Fondo Tokenizado / ETF",
+      "tokenized-fund-infrastructure": "Infraestructura de Fondos Tokenizados",
+      "tokenized-money-market-funds": "Fondos del Mercado Monetario Tokenizados",
+      "tokenized-pe-fund": "Fondo de PE Tokenizado",
+      "tokenized-products": "Productos Tokenizados",
+      "tokenized-securities": "Valores Tokenizados",
+      "tokenized-t-bills": "Letras del Tesoro Tokenizadas",
+      "tokenized-treasuries": "Tesorerías Tokenizadas",
+      "tradfi-interoperability": "Interoperabilidad TradFi",
+      "trading-infrastructure": "Infraestructura de Trading",
+      "traditional-insurance": "Seguros Tradicionales",
+      "transaction-infrastructure": "Infraestructura de Transacciones",
+      "travel-rule": "Regla de Viaje",
+      "treasury-management": "Gestión de Tesorería",
+      "venture-studio-incubator": "Estudio de Capital de Riesgo / Incubadora",
+      "web3-accelerator": "Aceleradora Web3",
+      "web3-consulting-infra": "Consultoría / Infraestructura Web3",
+      "web3-developer-platform": "Plataforma para Desarrolladores Web3",
+      "web3-development": "Desarrollo Web3",
+      "web3-infra-consulting": "Consultoría de Infraestructura Web3",
+      "web3-market-entry": "Entrada al Mercado Web3 (APAC)",
+      "wholesale-settlement": "Liquidación Mayorista",
+      "yield-trading": "Trading de Rendimiento",
+      "yield-bearing-stablecoin": "Stablecoin con Rendimiento",
+      "zk-identity": "Identidad ZK",
       "zk-rollup": "ZK Rollup",
       "zk-rollup-stark": "ZK Rollup (STARK)",
-      "zk-rollup-security-focused": "ZK Rollup (Security-Focused)",
+      "zk-rollup-security-focused": "ZK Rollup (Enfocado en Seguridad)",
       "zk-rollup-sidechain": "ZK Rollup / Sidechain",
-      "zkml-verifiable-ai": "ZKML / Verifiable AI"
+      "zkml-verifiable-ai": "ZKML / IA Verificable"
     }
   }
 }

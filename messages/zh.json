@@ -11,7 +11,11 @@
     "more-info": "更多信息",
     "source-info": "来源信息",
     "visit": "访问",
-    "visit-aria-label": "访问 {name}"
+    "visit-aria-label": "访问 {name}",
+    "brand-logo": "{name} Logo",
+    "profile-picture": "{name} 头像",
+    "close-menu": "关闭菜单",
+    "go-up-to": "返回 {path}"
   },
   "footer": {
     "copyright": "以太坊基金会。保留所有权利。",
@@ -26,6 +30,12 @@
     "metadata": {
       "title": "机构版以太坊",
       "description": "以太坊：机构级流动性基座"
+    },
+    "eth-glyph-aria-label": "ethereum.org ETH 图标",
+    "not-found": {
+      "heading": "哎呀！",
+      "description": "页面未找到...",
+      "return-home": "返回首页"
     }
   },
   "contact-form": {
@@ -45,7 +55,7 @@
       "field-too-long": "内容过长（最多 {max} 个字符）",
       "email-too-long": "电子邮件过长（最多 {max} 个字符）",
       "invalid-email": "请输入有效的电子邮件地址",
-      "business-email-required": "请使用企业、机构或组织邮箱（例如，请勿使用 @gmail）。",
+      "business-email-required": "请使用企业、机构或组织邮箱（例如，请勿使用 @gmail 等个人邮箱）。",
       "message-too-long": "留言过长（最多 {max} 个字符）",
       "general-error": "抱歉，留言发送失败。请重试或直接通过以下方式联系我们："
     }
@@ -61,11 +71,13 @@
     "solution-providers": "解决方案提供商",
     "data-hub": "数据门户",
     "library": "资源库",
-    "digital-assets": "数字资产"
+    "digital-assets": "数字资产",
+    "data-portal": "数据门户"
   },
   "home": {
     "hero": {
-      "heading": "机构级流动性基座"
+      "heading": "机构级流动性基座",
+      "tagline": "面向代币化资产、稳定币和金融基础设施的生产级开放结算网络。"
     },
     "numbers": {
       "heading": "以太坊：链上经济的坚实骨干",
@@ -126,6 +138,21 @@
       "tokenization": {
         "label": "资产代币化",
         "description": "作为资产代币化的领先平台，全网 {rwaMarketShare} 的链上 RWA 部署于以太坊及其 L2 之上，稳定币总锁仓量达 {stablecoinTvl}。"
+      },
+      "heading-line1": "机构为何选择",
+      "heading-line2": "以太坊",
+      "intro": "以太坊是一个开放的、全球分布式结算网络，支持可编程的金融活动。与专有或许可系统不同，以太坊是一个中立的基础层，没有单一的运营方，机构可以在其上构建满足合规要求的应用。",
+      "settlement": {
+        "label": "全球结算",
+        "description": "以太坊在不同司法管辖区之间持续结算价值，具有透明且有保障的最终确定性以及公开可验证的执行。"
+      },
+      "programmability": {
+        "label": "可编程性",
+        "description": "智能合约支持自动化发行、转账控制、生命周期管理和条件结算。L2 生态系统和应用可以根据金融机构的需求和要求进行高度定制。"
+      },
+      "composability": {
+        "label": "可组合生态系统",
+        "description": "以太坊支持一个由钱包、托管方、审计方、数据提供商和扩容解决方案组成的生态系统，这些方案目前正被全球机构用于生产环境。"
       }
     },
     "platforms": {
@@ -146,6 +173,14 @@
       "etoro": {
         "label": "股票代币化平台",
         "value": "支持 100 种股票 24/5 交易"
+      },
+      "fidelity": {
+        "label": "FIDD 稳定币 - 富达首个稳定币",
+        "value": ""
+      },
+      "jpmorgan": {
+        "label": "代币化货币市场基金",
+        "value": "首个链上货币市场基金"
       }
     },
     "testimonials": {
@@ -168,7 +203,7 @@
       "tenev": {
         "role": "首席执行官 (CEO)",
         "quote1": "我坚信，资产代币化是自中央限价订单簿诞生以来，资本市场最伟大的创新。",
-        "quote2": "Robinhood 链是首个专为现实世界资产 (RWA) 优化的以太坊 Layer 2 网络。"
+        "quote2": "Robinhood 链是首个专为现实世界资产 (RWA)优化的以太坊 Layer 2 网络。"
       }
     },
     "scaling": {
@@ -197,6 +232,27 @@
         "card1-item1": "L1 达到 10 亿 Gas/秒：实现 1 万 TPS，雄心勃勃的垂直扩容",
         "card1-item2": "L2 达到 1 Teragas/秒：实现 1000 万 TPS，广阔的水平扩容",
         "card2": "精简版以太坊 (Lean Ethereum) 提案致力于实现秒级最终确定性、后量子时代的 Blob 存储以及执行性能的全面提升"
+      },
+      "coming": "Coming",
+      "pectra": {
+        "title": "Pectra",
+        "card1-title": "质押升级",
+        "card1": "Pectra 引入了以太坊质押基础设施的关键改进，包括将验证者上限从 32 ETH 提高到 2,048 ETH，并支持更灵活的质押操作。对于企业和机构质押者而言，这意味着更简单的验证者管理、更低的运营开销以及更高效的规模化质押体验。"
+      },
+      "fusaka": {
+        "title": "Fusaka",
+        "card1-title": "降低费用，提高可扩容性",
+        "card1": "Fusaka 专注于通过数据扩容改进，显著降低交易成本并提高网络吞吐量。对于在以太坊上构建业务的企业而言，这意味着更便宜、更快的交易，使企业级应用和高交易量用例更具可行性。"
+      },
+      "post-quantum": {
+        "title": "后量子时代",
+        "card1-title": "抗量子安全",
+        "card1": "自 2018 年以来，以太坊一直在为量子计算威胁做准备，比任何其他区块链生态系统都要早。以太坊基金会已投入超过 2000 万美元用于形式化验证和密码学研究，人工智能的突破将时间表加快了 100 倍。一个专门的后量子团队于 2026 年初成立，目前有 10 个客户端团队正在构建抗量子实现。全面过渡的目标是 2028 年，远早于预计的 2030 年代中期量子威胁，实现零资金损失和零宕机。"
+      },
+      "glamsterdam": {
+        "title": "Glamsterdam",
+        "card1-title": "执行层优化",
+        "card1": "Glamsterdam 是一项即将进行的升级，专注于进一步优化以太坊执行层和网络性能。对于企业而言，这表明以太坊持续致力于改进支撑机构应用、DeFi 协议和代币化资产平台的基础层基础设施。"
       }
     },
     "library": {
@@ -206,17 +262,48 @@
     "metadata": {
       "title": "机构版以太坊 | 机构级流动性基座",
       "description": "探索顶尖机构为何选择以太坊。无与伦比的系统韧性、深厚的流动性以及久经考验的安全保障。发掘链上应用案例。"
+    },
+    "comparison": {
+      "heading": "以太坊对比",
+      "ethereum": "以太坊",
+      "l1-alt": "其他 L1",
+      "private-dlt": "私有 DLT",
+      "traditional": "传统轨道",
+      "settlement-finality": "结算最终确定性",
+      "auditability": "可审计性",
+      "neutrality": "中立性",
+      "composability": "可组合性",
+      "ethereum_settlement": "数分钟，24/7，全球",
+      "l1-alt_settlement": "数秒，但安全性有限",
+      "private-dlt_settlement": "依赖运营方",
+      "traditional_settlement": "T+1 至 T+3，工作时间",
+      "ethereum_audit": "公开且可验证",
+      "l1-alt_audit": "公开且可验证",
+      "private-dlt_audit": "有限",
+      "traditional_audit": "碎片化",
+      "ethereum_neutrality": "无单一运营方",
+      "l1-alt_neutrality": "通常由运营方控制",
+      "private-dlt_neutrality": "由供应商控制",
+      "traditional_neutrality": "受司法管辖区限制",
+      "ethereum_composability": "高",
+      "l1-alt_composability": "有限",
+      "private-dlt_composability": "低",
+      "traditional_composability": "非常低"
     }
   },
   "rwa": {
     "hero": {
       "heading": "以太坊上的稳定币与现实世界资产",
-      "description": "以太坊是资产代币化的主导网络，承载了全网逾 75% 的代币化现实世界资产 (RWA) 以及超过 60% 的全球稳定币供应量。"
+      "description": "以太坊是资产代币化的主导网络，承载了全网逾 75% 的代币化现实世界资产 (RWA) 以及超过 60% 的全球稳定币供应量。",
+      "description1": "以太坊是资产代币化的市场领导者，承载了所有代币化资产的 60% 以上以及全球稳定币供应量的 60% 以上。",
+      "description2": "机构在以太坊及其 Layer 2 的高流动性、开放且极具韧性的生态系统上，代币化公共和私人证券及信贷等资产，提供 24/7 全天候结算，部署可编程现金，实施可定制的支付轨道等。"
     },
     "overview": {
       "sr-heading": "RWA 与稳定币概览",
       "stablecoins-l1": "部署于以太坊 L1 的稳定币",
-      "stablecoins-l2": "部署于以太坊 L2 的稳定币"
+      "stablecoins-l2": "部署于以太坊 L2 的稳定币",
+      "commodities-share": "大宗商品市场份额",
+      "value-secured": "以太坊上保障的价值"
     },
     "infrastructure": {
       "heading": "以太坊作为金融市场基础设施",
@@ -230,7 +317,11 @@
       "compliance": "合规",
       "compliance-desc": "支持可编程结算，满足合规、信息披露与审计要求",
       "yield": "链上收益",
-      "yield-desc": "获取国债与短久期等熟悉的生息产品"
+      "yield-desc": "获取国债与短久期债券等熟悉的生息产品",
+      "network-effects": "网络效应",
+      "network-effects-desc": "与 DeFi 协议的可组合性",
+      "cost-savings": "成本节约",
+      "cost-savings-desc": "更好的抵押品管理"
     },
     "stablecoins": {
       "heading": "以太坊上的稳定币",
@@ -248,14 +339,99 @@
     "cards": {
       "by": "发行方：{issuer}",
       "buidl-desc": "{brand} 美元机构数字流动性基金",
-      "ustb-desc": "{brand} 短久期美国政府证券基金"
+      "ustb-desc": "{brand} 短久期美国政府证券基金",
+      "mony-desc": "{brand} 代币化货币市场基金",
+      "fdit-desc": "{brand} 代币化货币市场基金"
     },
     "why": {
-      "heading": "为何选择以太坊作为金融市场基础设施"
+      "heading": "为何选择以太坊作为金融市场基础设施",
+      "tagline": "可信结算，全球覆盖。",
+      "desc1": "以太坊将一个最大程度中立的结算层与提供规模化、成本效率和可定制性的 Layer 2 执行环境相结合。",
+      "desc2": "机构可以通过可审计和可编程的方式，转移类现金价值和短期资产。"
     },
     "metadata": {
       "title": "稳定币与资产代币化 | 以太坊 RWA 生态",
       "description": "以太坊是资产代币化与稳定币发行的首选网络。探索专为全天候结算、可编程现金及链上收益打造的基础设施。"
+    },
+    "comparison": {
+      "heading": "对比矩阵",
+      "functions": "功能",
+      "ethereum": "以太坊",
+      "l1-alt": "其他公链",
+      "private-dlt": "私有 DLT",
+      "traditional": "传统轨道",
+      "settlement": "结算最终确定性",
+      "settlement-finality": "结算最终确定性",
+      "resilience": "韧性 / 存续时间",
+      "security": "安全性",
+      "dev-base": "开发者基础",
+      "liquidity": "链上流动性 / 效用",
+      "auditability": "可审计性",
+      "neutrality": "中立性",
+      "geo-risk": "地缘风险",
+      "composability": "可组合性",
+      "ethereum_settlement": "数秒",
+      "l1-alt_settlement": "数秒",
+      "private-dlt_settlement": "依赖运营方",
+      "traditional_settlement": "数天",
+      "ethereum_resilience": "{uptime}",
+      "l1-alt_resilience": "多次宕机",
+      "private-dlt_resilience": "2 年或更短",
+      "traditional_resilience": "现有",
+      "ethereum_security": "12 个客户端，{uptimeYears} 运行时间",
+      "l1-alt_security": "单一客户端，多次宕机",
+      "private-dlt_security": "依赖供应商",
+      "traditional_security": "受司法管辖区限制",
+      "ethereum_dev-base": "高",
+      "l1-alt_dev-base": "中低",
+      "private-dlt_dev-base": "低",
+      "traditional_dev-base": "许可制 / 封闭",
+      "ethereum_liquidity": "高",
+      "l1-alt_liquidity": "中低",
+      "private-dlt_liquidity": "不适用",
+      "traditional_liquidity": "不适用",
+      "ethereum_auditability": "公开且可验证",
+      "l1-alt_auditability": "公开且可验证",
+      "private-dlt_auditability": "有限",
+      "traditional_auditability": "碎片化",
+      "ethereum_neutrality": "无单一运营方，数千个节点",
+      "l1-alt_neutrality": "单一客户端，受控金库，少量验证者运营方",
+      "private-dlt_neutrality": "由供应商控制",
+      "traditional_neutrality": "受司法管辖区限制",
+      "ethereum_geo-risk": "全球",
+      "l1-alt_geo-risk": "受监管风险影响",
+      "private-dlt_geo-risk": "受监管风险影响",
+      "traditional_geo-risk": "受监管",
+      "ethereum_composability": "高",
+      "l1-alt_composability": "中低",
+      "private-dlt_composability": "低",
+      "traditional_composability": "非常低"
+    },
+    "category-breakdown": {
+      "heading": "以太坊在代币化领域领先",
+      "description": "以太坊上代币化资产类别的细分。",
+      "category": "类别",
+      "tvl-eth": "以太坊总锁仓量",
+      "examples": "示例",
+      "treasuries": "国债",
+      "credit": "信贷",
+      "commodities": "大宗商品",
+      "equities": "股票",
+      "real-estate": "房地产",
+      "tvl-total": "总锁仓量",
+      "eth-share": "以太坊份额",
+      "examples-tokenizes-properties": "代币化房产与基金"
+    },
+    "l2-section": {
+      "heading": "以太坊 L2：执行与扩容层",
+      "description": "Layer 2 网络通过专门的执行环境扩展了以太坊的代币化能力。",
+      "throughput": "吞吐量与用户体验",
+      "throughput-desc": "Rollup 在链下处理交易，继承以太坊的安全性，并提供适合支付、做市和高频资金流转的低费率",
+      "configurable": "可配置边界",
+      "configurable-desc": "L2 可以添加合规功能，例如白名单或 KYC 资金池，以及可定制的交易货币，同时保持非托管并结算到 L1",
+      "specialization": "专业化",
+      "specialization-desc": "多个 L2 允许机构隔离工作负载（例如零售支付与资金管理），且不会导致信任碎片化，因为最终结算均在 L1 上进行对账",
+      "cta": "探索 Layer 2"
     }
   },
   "privacy": {
@@ -323,11 +499,118 @@
       "zama": {
         "heading": "Zama",
         "description": "提供在加密数据上进行计算的智能合约开发工具，确保余额与业务逻辑保持机密。"
+      },
+      "description": "隐私不是侧链或数据孤岛。它是一套开放标准，可在 L1 或 L2 上组合使用，旨在满足监管、风险和审计要求。以太坊生态系统为机构隐私提供了多种方法，每种方法都针对不同的用例。",
+      "examples": "示例",
+      "prividium": {
+        "approach": "企业级 Prividium",
+        "description": "Prividium 架构，具有链下数据可用性和链上证明。亚秒级 ZK 最终确定性，内置 KYC/SSO。选择性披露支持合规证明，而无需透露底层交易数据。",
+        "example": "zkSync Prividium（德意志银行 DAMA 项目）",
+        "note": "德意志银行 DAMA 项目"
+      },
+      "programmable-privacy": {
+        "approach": "可编程隐私",
+        "description": "通过私有智能合约实现交易、状态和计算的完全隐私。客户端证明生成将敏感数据保留在用户设备上。可与更广泛的 EVM 生态系统组合。",
+        "example": "Aztec（斯图加特证券交易所机密代币化证券交易）、安永 Nightfall、Miden"
+      },
+      "compliance-pools": {
+        "approach": "合规优先资金池",
+        "description": "在不透露完整交易历史的情况下证明资金来源合法。专为满足监管要求而设计。使机构能够通过加密证明而非完整数据披露来证明 AML 合规性。",
+        "example": "隐私资金池（Vitalik Buterin 共同撰写；已在主网运行）",
+        "note": "Vitalik Buterin 共同撰写；已在主网运行"
+      },
+      "shielded-tx": {
+        "approach": "隐私交易",
+        "description": "ZK 隐私资金池在以太坊及其 L2 上处理数十亿的隐私交易量。成熟的中间件支持私密的 DeFi 交互，包括转账、兑换和借贷——经过大规模生产测试。",
+        "example": "Railgun、安永 Starlight"
+      },
+      "emerging": {
+        "approach": "新兴方法",
+        "description": "全同态加密 (FHE) 支持对加密数据进行计算，加密内存池防止 MEV 提取，机构交易的暗池架构，以及隐私保护型 Rollup。请参阅 IPTF 隐私地图以获取全面概述。",
+        "example": "Fhenix、Zama (FHE)；Shutter Network（加密内存池）；Renegade（暗池）；Miden（隐私 Rollup）"
       }
     },
     "metadata": {
       "title": "面向机构的区块链隐私与合规 | 以太坊",
       "description": "在保护敏感商业数据的前提下完成链上结算。探索以太坊的隐私功能与工具，满足机构级的监管、风控与审计需求。"
+    },
+    "stats": {
+      "teams-label": "构建隐私方案的团队",
+      "years-label": "隐私研发年限",
+      "researchers-label": "以太坊基金会专职隐私研究员",
+      "value-label": "以太坊上保障的价值"
+    },
+    "compliance": {
+      "heading": "合规而不暴露",
+      "selective-disclosure": "选择性披露",
+      "selective-disclosure-desc": "在不发布完整交易细节的情况下，证明特定事实，例如资格、政策合规性或偿付能力。当需要更深入的审查时，查看密钥 / 审计密钥可以为授权方提供范围受限的访问权限。",
+      "privacy-credentials": "隐私保护凭证",
+      "privacy-credentials-desc": "zkID 和证明支持 KYC 式的资格检查，而无需在链上暴露个人信息。验证身份属性而不会产生数据负债。",
+      "composable-primitives": "跨架构可组合",
+      "composable-primitives-desc": "这些原语可插入多种架构，从 Prividium 到私有智能合约，因此机构可以在满足监管要求的同时保护交易对手和市场敏感数据。"
+    },
+    "why-matters": {
+      "heading": "为何这不仅仅是功能问题",
+      "resilience": "韧性",
+      "resilience-desc": "自 2015 年创世以来从未发生过完全宕机。AWS、Cloudflare 和 Facebook 都曾宕机。私有链曾经历数月的宕机。以太坊是生产环境中经过实战检验最多的结算层。",
+      "censorship": "抗审查性",
+      "censorship-desc": "没有单一实体可以阻止交易纳入。对于涉及司法管辖区冲突的跨境业务，这是一项运营要求，而非哲学偏好。",
+      "no-counterparty": "无基础设施交易对手风险",
+      "no-counterparty-desc": "在私有链上，您的结算层由一家公司控制。在以太坊上，它由数学控制。任何董事会决策、收购或战略转向都无法改变规则。",
+      "economics": "经济性",
+      "economics-desc": "透明的效用定价，无锁定。私有链的 SaaS 许可费用随供应商影响力而变化。十多年来，成本差异显著有利于以太坊。",
+      "interoperability": "互操作性",
+      "interoperability-desc": "以太坊上的隐私解决方案可与完整的 DeFi 技术栈组合：{defiTvl} 的总锁仓量，1,700 多个协议，以及全球最深厚的链上流动性。私有链不提供这些。您的资产的效用仅限于一个供应商的生态系统所允许的范围。"
+    },
+    "trust-vs-crypto": {
+      "heading": "基于信任的隐私 vs. 加密隐私",
+      "description": "许可型区块链通过运营方承诺来保证隐私。以太坊通过数学来实现隐私。对于负有信托责任的机构而言，这种区别至关重要。",
+      "trust-heading": "基于信任的隐私",
+      "crypto-heading": "加密隐私",
+      "table-guarantee": "核心保障",
+      "table-trust-guarantee": "“我保证不会查看您的数据。”",
+      "table-crypto-guarantee": "“从数学原理上，我无法查看您的数据。”",
+      "table-mechanism": "机制",
+      "table-trust-mechanism": "运营方和治理委员会承诺尊重数据边界",
+      "table-crypto-mechanism": "零知识证明允许在不披露的情况下进行验证",
+      "table-incentives": "如果激励发生变化",
+      "table-trust-incentives": "承诺失效。治理变更、监管要求或运营方转向可能会推翻隐私保障。",
+      "table-crypto-incentives": "保障依然有效。任何运营方、任何治理变更都无法推翻数学所强制执行的规则。",
+      "table-vendor": "供应商风险",
+      "table-trust-vendor": "隐私取决于特定公司或联盟的持续诚信",
+      "table-crypto-vendor": "隐私由协议本身强制执行——无需交易对手",
+      "table-regulatory": "监管风险敞口",
+      "table-trust-regulatory": "运营方可能被迫提供访问权限；隐私是一个政策决定",
+      "table-crypto-regulatory": "选择性披露支持合规证明，而无需透露底层数据",
+      "closing": "如果您信任联盟运营方诚实运行网络，尊重您的数据边界，并且不改变规则以损害您的利益——那么您又回到了信任人的境地。此时，问题是：为什么不使用带有法律合同的数据库呢？"
+    },
+    "private-chains": {
+      "heading": "私有链的问题",
+      "description": "许可型区块链曾被宣传为企业解决使用公链隐私问题的方案。经过十年的部署，结果却大相径庭。机构在评估私有区块链基础设施时，应考虑在生产环境中出现的风险。",
+      "vendor-dependency": "单一供应商依赖",
+      "vendor-dependency-desc": "私有链由单一公司构建和维护。如果他们改变战略、被收购或失败，您的结算层将面临风险。这是您技术栈最关键层面的供应商锁定。",
+      "no-interop": "无互操作性或效用",
+      "no-interop-desc": "在私有链上铸造的资产存在于一个封闭的生态系统中。无法访问 DeFi 流动性，无法与其他协议组合，没有二级市场，没有效用。",
+      "talent": "有限的开发者人才与糟糕的工具",
+      "talent-desc": "专有语言和框架限制了您的招聘范围。EVM 生态系统每月有 8,000 多名活跃开发者；专有替代方案的开发者数量少几个数量级。结果是：迭代速度慢、成本高，并且难以留住工程人才。",
+      "fragility": "生产环境脆弱性",
+      "fragility-desc": "私有链部署曾因数据库损坏而经历数月的宕机。外部数据库依赖（例如用于索引和定位合约的 PostgreSQL sidecar）会创建单点故障。如果该数据库丢失或损坏，链上对合约的访问将实际上被阻断。",
+      "instability": "平台不稳定性",
+      "instability-desc": "运行时迁移、架构转向和战略变化会扰乱企业部署。机构需要能够承保十年的基础设施。私有链尚未证明这种稳定性。",
+      "auditability": "可审计性差距",
+      "auditability-desc": "存档合约无法在链上访问。需要单独的存储基础设施来提供完整的审计追踪，这为需要按需提供完整交易历史的受监管机构带来了合规风险。",
+      "off-chain-privacy": "依赖链下组件的隐私",
+      "off-chain-privacy-desc": "在私有链上，隐私通常依赖链下组件进行核心操作，这打破了分布式应用可以在链上独立运行的预期。这不是真正的加密隐私；它是伪装成功能的架构复杂性。",
+      "missing-abstractions": "缺失原生抽象",
+      "missing-abstractions-desc": "企业被迫设计自定义模式，将可变数据（具有变化的 ID）与稳定的业务逻辑分离，仅仅是为了锚定引用。原生抽象——相当于 EVM 代理模式——根本不存在，将复杂性推给了应用开发者。",
+      "closing": "私有链重现了区块链技术旨在消除的相同中介风险。略微改进的管道系统并非范式转变。"
+    },
+    "ef-commitment": {
+      "heading": "以太坊基金会的隐私承诺",
+      "description": "隐私是以太坊基金会的一级优先事项。自 2015 年以来，以太坊基金会拥有一支由 50 名顶尖密码学研究人员和开发者组成的专门隐私团队。",
+      "iptf-title": "机构隐私工作组 (IPTF)",
+      "iptf-desc": "协调私人支付、选择性披露、零知识身份和 L2 上的隐私保护应用等方面的研究。该团队确保解决方案符合监管和合规要求，将机构反馈转化为以太坊上的技术规范和概念验证。",
+      "visit-iptf": "访问 IPTF"
     }
   },
   "library": {
@@ -371,7 +654,7 @@
       "permissionless": "无需许可的创新",
       "permissionless-desc": "任何人都能构建或使用新的 DeFi 工具，打造一个没有守门人的动态创新环境。",
       "onchain-yield": "链上收益",
-      "onchain-yield-desc": "获取国债与短久期等熟悉的生息产品。"
+      "onchain-yield-desc": "获取国债与短久期债券等熟悉的生息产品。"
     },
     "innovation": {
       "heading": "DeFi 驱动企业创新",
@@ -411,7 +694,8 @@
             "balancer": "一个 DeFi 协议，兼具自动化资产组合管理与流动性提供功能，允许用户创建或投资可定制的流动性池。",
             "cow-swap": "基于频繁批量拍卖的 DEX 聚合器，提供 MEV 保护、最优流动性发现与低费率。以点对点方式撮合交易，未成交订单路由至底层 AMM。",
             "curve": "专注于稳定币与同价资产高效交易的 DEX 与 AMM，采用独特的 AMM 公式将同价资产的滑点降至最低。",
-            "uniswap": "去中心化交易协议，通过基于智能合约的 AMM 系统实现无需许可的点对点交易，允许任何人创建交易对并提供流动性。"
+            "uniswap": "去中心化交易协议，通过基于智能合约的 AMM 系统实现无需许可的点对点交易，允许任何人创建交易对并提供流动性。",
+            "fluid": "一个 DeFi 协议，将 AMM 交易与借贷结合在一个统一的流动性层上，通过深度共享流动性实现资本高效的兑换。"
           }
         },
         "lending-borrowing": {
@@ -425,7 +709,8 @@
             "maple": "去中心化信贷市场，为机构借款人提供低抵押贷款，放款人可通过向这些经过筛选的贷款提供流动性来赚取收益。",
             "moonwell": "开放借贷协议，致力于简化链上用户体验，提供单币种流动性池与跨市场的超额抵押借贷。",
             "morpho": "去中心化超额抵押借贷协议，基于金库模式运作，通过隔离市场、风险评估人与资金分配人等机制提升借贷池的资本效率。",
-            "sky": "由 MakerDAO 社区创建的 DeFi 协议，提供交易、兑换、质押及围绕数字资产（包括 USDS 稳定币）的多元化收益工具。"
+            "sky": "由 MakerDAO 社区创建的 DeFi 协议，提供交易、兑换、质押及围绕数字资产（包括 USDS 稳定币）的多元化收益工具。",
+            "spark": "一个去中心化借贷协议，为借贷和供应主要数字资产提供有竞争力的利率，专注于稳定币市场和机构级借贷产品。"
           }
         },
         "rwa-yield": {
@@ -472,6 +757,10 @@
     "metadata": {
       "title": "机构级去中心化金融 | 以太坊 DeFi",
       "description": "探索以太坊 DeFi 生态，拥有链上最深厚的流动性。了解开放标准如何推动企业在借贷、交易领域的创新。"
+    },
+    "abbreviations": {
+      "tvl": "总锁仓量",
+      "dex": "去中心化交易所"
     }
   },
   "data-hub": {
@@ -560,7 +849,12 @@
         "security": "安全性",
         "security-desc": "资产可存储于一个能够抵御重大灾难与地缘政治风险的环境中。",
         "risk-gating": "风险隔离",
-        "risk-gating-desc": "将复杂或实验性的业务逻辑隔离出 L1；使主网专注于最终结算、抵押品托管与密码学证明。"
+        "risk-gating-desc": "将复杂或实验性的业务逻辑隔离出 L1；使主网专注于最终结算、抵押品托管与密码学证明。",
+        "description": "以太坊 L1 高度安全且独立于单一运营方，但其挑战包括：",
+        "item1": "环境定制化",
+        "item2": "拥堵时更高的 Gas 费用",
+        "item3": "大量数据是公开的",
+        "closing": "尽管以太坊的网络升级正在迅速扩容 L1 容量，但 L2 提供了即时解决方案。"
       },
       "l2": {
         "heading": "以太坊 L2",
@@ -570,7 +864,10 @@
         "configurable": "灵活可配",
         "configurable-desc": "L2 可嵌入合规功能（如白名单或 KYC 资金池），在保持非托管特性的同时，最终结算至 L1。",
         "specialization": "业务专精",
-        "specialization-desc": "多样化的 L2 支持机构将不同工作负载（如零售支付与资金管理）进行隔离；由于最终对账在 L1 完成，信任基础不会割裂。"
+        "specialization-desc": "多样化的 L2 支持机构将不同工作负载（如零售支付与资金管理）进行隔离；由于最终对账在 L1 完成，信任基础不会割裂。",
+        "description": "L2 提供快速、低成本的交易执行，而以太坊则作为结算的最终真相来源：",
+        "item1": "用户将交易处理发送到 L2 网络，而不是直接在以太坊上",
+        "item2": "L2 批量和/或压缩交易，在链下执行它们，然后将数据发送回 L1 作为真相来源和全球共识"
       }
     },
     "benefits": {
@@ -624,6 +921,15 @@
           "item1": "L2 使用以太坊已有的 EVM、代币标准以及 ETH 等核心资产。",
           "item2": "用户与开发者在 L1 与 L2 生态间可使用相同的钱包、工具与代码，获得一致的体验。",
           "item3": "代币与 NFT 以 L1 为权威来源，确保它们在不同 Rollup 间可互换。"
+        }
+      },
+      "customization": {
+        "title": "定制化",
+        "configurable-environments": {
+          "heading": "可定制环境",
+          "item1": "机构可以设计具有自定义内置合规逻辑的 Rollup，将特定的身份验证协议、许可访问或隐私控制直接嵌入到 L2 架构中",
+          "item2": "启动专用的 L2 生态系统，以维护独特的品牌形象并控制链上端到端用户体验，如 Base 和 Robinhood Chain 等 L2 网络所示",
+          "item3": "L2 参数可以针对吞吐量进行优化，例如保证专用的区块空间、高交易速度和可预测的费用，以适应高交易量企业应用"
         }
       }
     },
@@ -690,6 +996,18 @@
       "world": {
         "description": "World Chain L2 扩容 Proof of Human（人格证明）",
         "cta-label": "日交易量"
+      },
+      "sony": {
+        "description": "Soneium 公共许可型 L2",
+        "cta-label": "已入驻用户"
+      },
+      "ant-group": {
+        "description": "用于代币化的 Jovay L2",
+        "cta-label": "机构合作伙伴"
+      },
+      "robinhood": {
+        "description": "用于资产代币化的公链",
+        "cta-label": "首个 RWA 优化型 L2"
       }
     },
     "enterprise": {
@@ -720,6 +1038,100 @@
     "metadata": {
       "title": "以太坊 Layer 2 生态 | 企业级可扩容方案",
       "description": "Layer 2 提供更快、更低成本的执行，适用于支付、应用链与代币化。了解 L2 如何帮助机构在不牺牲安全性的前提下实现扩容。"
+    },
+    "abbreviations": {
+      "tvl": "总锁仓量",
+      "uops": "每秒用户操作数"
+    }
+  },
+  "why-ethereum": {
+    "hero": {
+      "heading": "为何选择以太坊",
+      "description1": "全球金融市场继续依赖过时、昂贵且碎片化的结算系统，这些系统引入了运营风险、资本效率低下和对账开销。",
+      "description2": "跨境交易仍然缓慢且不透明，而传统基础设施限制了可编程性、透明度和实时可审计性。"
+    },
+    "problem": {
+      "pressures": {
+        "heading": "压力驱动因素",
+        "subheading": "机构变革",
+        "efficiency": "结算效率",
+        "efficiency-desc": "企业面临着缩短结算周期以及减少因防范交易对手风险而占用资金的压力。",
+        "transparency": "透明度与可审计性",
+        "transparency-desc": "监管机构和风险团队越来越期望实时、可验证的记录，而非批量处理的对账。",
+        "digital-assets": "数字资产就绪",
+        "digital-assets-desc": "客户对代币化基金、链上国债和数字证券的需求，要求基础设施在现有监管框架内支持这些产品。",
+        "open-infra": "开放基础设施",
+        "open-infra-desc": "机构正在寻求中立的、基于标准的结算层，以避免专有锁定并实现跨提供商的互操作性。"
+      },
+      "limitations": {
+        "heading": "当前",
+        "subheading": "结算基础设施局限性",
+        "fragmented": "碎片化结算",
+        "fragmented-desc": "结算在交易对手、内部运营和司法管辖区之间仍然是孤立的，需要在每个边界进行手动协调。",
+        "delay": "结算延迟",
+        "delay-desc": "T+2 和 T+3 周期锁定资本，放大交易对手风险敞口，并在波动市场中引入系统性风险。",
+        "reconciliation": "对账开销",
+        "reconciliation-desc": "在参与者之间维护一致的记录需要昂贵的对账和审计流程，这些流程的扩展性很差。",
+        "programmability": "有限的可编程性",
+        "programmability-desc": "传统轨道对条件逻辑、自动化合规或可组合金融产品的支持极少。",
+        "opacity": "交易对手不透明性",
+        "opacity-desc": "参与者缺乏对交易对手头寸和结算状态的实时可见性，这迫使他们依赖信任和定期报告。"
+      }
+    },
+    "features": {
+      "heading": "机构为何选择以太坊",
+      "description": "以太坊是一个开放的、全球分布式结算网络，旨在支持可编程的金融活动。与专有或许可系统不同，以太坊作为一个中立的基础层运行，没有单一的运营方，同时使机构能够在其上构建满足合规要求的应用。",
+      "resilience": {
+        "label": "运营韧性",
+        "description": "{uptime} 的不间断运行时间与网络活性，包括通过 15 次以上的网络升级。多样化的基础设施和开放的客户端生态系统减少了基础设施集中和单一运营方风险。"
+      },
+      "settlement": {
+        "label": "全球结算",
+        "description": "以太坊在不同司法管辖区之间持续结算价值，具有透明且有保障的最终确定性以及公开可验证的执行。"
+      },
+      "collateral": {
+        "label": "抵押品流动性",
+        "description": "通过以太坊始终在线的抵押品市场，随时随地可靠地移动抵押品，已证明超过十年。"
+      },
+      "neutrality": {
+        "label": "中立性",
+        "description": "无单点故障，无中心协调器，无暂停按钮，无交易对手风险。能够抵御地缘政治、监管及基础设施层面的风险。"
+      },
+      "liquidity": {
+        "label": "流动性与效用",
+        "description": "资产代币化的领先平台，部署了所有代币化资产的 {tokenizationShare}。受益于 {yearsOfNetworkEffects} 的网络效应，以太坊的 DeFi 生态系统比第二大生态系统大 {defiMultiplier} 倍。"
+      },
+      "programmability": {
+        "label": "可编程性",
+        "description": "智能合约支持自动化发行、转账控制、生命周期管理和条件结算。应用和 Layer 2 网络可以根据金融机构的精确要求进行定制。"
+      },
+      "composability": {
+        "label": "可组合生态系统",
+        "description": "以太坊的机构级钱包、托管方、审计方、数据提供商和扩容解决方案生态系统支持数十亿美元的机构资本。"
+      }
+    },
+    "risk": {
+      "heading": "以太坊用于风险管理",
+      "description": "以太坊是一个强大的基础，但并非一站式解决方案。成功的采用通常与现有基础设施并行发生，而非全面替代，并且需要仔细评估。",
+      "item1": "监管处理因司法管辖区而异",
+      "item2": "交易费用可能随网络需求波动",
+      "item3": "公开交易可见性需要隐私保护设计选择",
+      "item4": "智能合约风险需要严格的审计和控制流程",
+      "mitigation": {
+        "heading": "缓解方法",
+        "item1": "应用层面的 KYC/AML",
+        "item2": "使用 Layer 2 网络和交易批处理",
+        "item3": "隐私保护型交易架构",
+        "item4": "通过 Layer 2 定制实现许可链与公链的选择",
+        "item5": "隐私、数据保护与控制",
+        "item6": "机构级托管和密钥管理解决方案",
+        "item7": "符合当地监管指导的法律结构"
+      },
+      "closing": "现代化结算基础设施是一个深思熟虑的过程。机构可以逐步采用，从特定用例开始，并随着信心和监管清晰度的增长而扩展。"
+    },
+    "metadata": {
+      "title": "机构为何选择以太坊 | 以太坊的案例",
+      "description": "了解领先机构为何选择以太坊进行结算、代币化和金融基础设施建设。运营韧性、中立性和深厚流动性。"
     }
   }
 }
