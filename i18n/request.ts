@@ -14,8 +14,11 @@ export default getRequestConfig(async ({ requestLocale }) => {
     locale = routing.defaultLocale
   }
 
+  const base = (await import(`../messages/${locale}.json`)).default
+  const sp = (await import(`../messages/solution-providers/${locale}.json`)).default
+
   return {
     locale,
-    messages: (await import(`../messages/${locale}.json`)).default,
+    messages: { ...base, ...sp },
   }
 })

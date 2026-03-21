@@ -78,8 +78,11 @@ export default async function RootLayout({ children, params }: Props) {
   // Enable static rendering
   setRequestLocale(locale)
 
-  // Get messages for the locale
-  const messages = await getMessages()
+  // Get messages for the locale, excluding solutionProviders (server-only)
+  const allMessages = await getMessages()
+  const clientMessages = Object.fromEntries(
+    Object.entries(allMessages).filter(([key]) => key !== "solutionProviders")
+  )
   const t = await getTranslations("common")
   const tNav = await getTranslations("nav")
   const tFooter = await getTranslations("footer")
@@ -111,16 +114,16 @@ export default async function RootLayout({ children, params }: Props) {
           "group/body antialiased"
         )}
       >
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider messages={clientMessages}>
           <header className="group-has-[.css-primary-invert]/body:bg-primary w-full max-w-screen">
             <div className="max-w-8xl mx-auto flex justify-between p-4 pb-10 sm:p-10 gap-x-6">
               <Link
                 href="/"
-                aria-label={tLayout("goHome")}
+                aria-label={tLayout("go-home")}
                 className="group/link inline-flex items-center gap-x-2.5"
               >
                 <EthereumOrgLogo
-                  aria-label="ethereum.org ETH glyph"
+                  aria-label={tLayout("eth-glyph-aria-label")}
                   className="group-hover/link:stroke-secondary-foreground group-hover/link:stroke-[0.25]"
                 />
                 <span className="group-has-[.css-primary-invert]/body:text-primary-foreground text-//foreground group-hover/link:group-has-[.css-primary-invert]/body:text-primary-foreground/80 text-lg font-medium tracking-[0.045rem]">
@@ -139,7 +142,7 @@ export default async function RootLayout({ children, params }: Props) {
                     </Link>
                   ))}
                   <UseCasesDropdown
-                    label={tNav("useCases")}
+                    label={tNav("use-cases")}
                     links={useCaseLinks}
                   />
                   {navLinks.map((link) => (
@@ -159,7 +162,8 @@ export default async function RootLayout({ children, params }: Props) {
                   useCaseLinks={useCaseLinks}
                   navLinks={navLinks}
                   menuLabel={t("menu")}
-                  useCasesLabel={tNav("useCases")}
+                  useCasesLabel={tNav("use-cases")}
+                  closeMenuLabel={t("close-menu")}
                 />
               </div>
             </div>
@@ -172,8 +176,8 @@ export default async function RootLayout({ children, params }: Props) {
             >
               <div className="mx-auto grid max-w-3xl grid-cols-1 gap-10 md:grid-cols-2">
                 <div className="space-y-4">
-                  <h3 className="text-h4">{t("getInTouch")}</h3>
-                  <p>{t("getInTouchDescription")}</p>
+                  <h3 className="text-h4">{t("get-in-touch")}</h3>
+                  <p>{t("get-in-touch-description")}</p>
                 </div>
                 <EnterpriseContactForm />
               </div>
@@ -198,23 +202,23 @@ export default async function RootLayout({ children, params }: Props) {
                   {[
                     {
                       href: "https://ethereum.org/privacy-policy/",
-                      children: tFooter("privacyPolicy"),
+                      children: tFooter("privacy-policy"),
                     },
                     {
                       href: "https://ethereum.org/terms-of-use/",
-                      children: tFooter("termsOfUse"),
+                      children: tFooter("terms-of-use"),
                     },
                     {
                       href: "https://ethereum.org/cookie-policy/",
-                      children: tFooter("cookiePolicy"),
+                      children: tFooter("cookie-policy"),
                     },
                     {
                       href: "https://ethereum.foundation/",
-                      children: tFooter("ethereumFoundation"),
+                      children: tFooter("ethereum-foundation"),
                     },
                     {
                       href: "https://ethereum.org/",
-                      children: tFooter("ethereumOrg"),
+                      children: tFooter("ethereum-org"),
                     },
                   ].map((props) => (
                     <Link

@@ -38,6 +38,7 @@ export default async function Page({ params }: Props) {
   setRequestLocale(locale)
 
   const t = await getTranslations("privacy")
+  const tCommon = await getTranslations("common")
 
   type ExampleLink = {
     name: string
@@ -57,12 +58,12 @@ export default async function Page({ params }: Props) {
           name: "zkSync Prividium",
           href: "https://www.zksync.io/prividium",
           logo: zksyncLogo,
-          note: "Deutsche Bank's Project DAMA",
+          note: t("solutions.prividium.note"),
         },
       ],
     },
     {
-      key: "programmablePrivacy",
+      key: "programmable-privacy",
       examples: [
         { name: "Aztec", href: "https://aztec.network/", logo: aztecLogo },
         {
@@ -74,18 +75,18 @@ export default async function Page({ params }: Props) {
       ],
     },
     {
-      key: "compliancePools",
+      key: "compliance-pools",
       examples: [
         {
           name: "Privacy Pools",
           href: "https://privacypools.com/",
           logo: privacyPoolsLogo,
-          note: "co-authored by Vitalik Buterin; live on mainnet",
+          note: t("solutions.compliance-pools.note"),
         },
       ],
     },
     {
-      key: "shieldedTx",
+      key: "shielded-tx",
       examples: [
         { name: "Railgun", href: "https://railgun.org/", logo: railgunLogo },
         {
@@ -112,14 +113,14 @@ export default async function Page({ params }: Props) {
   ]
 
   const privateChainRisks = [
-    "vendorDependency",
-    "noInterop",
+    "vendor-dependency",
+    "no-interop",
     "talent",
     "fragility",
     "instability",
     "auditability",
-    "offChainPrivacy",
-    "missingAbstractions",
+    "off-chain-privacy",
+    "missing-abstractions",
   ] as const
 
   return (
@@ -135,10 +136,10 @@ export default async function Page({ params }: Props) {
         <section id="stats" className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {(
             [
-              { value: "stats.teams", label: "stats.teamsLabel" },
-              { value: "stats.years", label: "stats.yearsLabel" },
-              { value: "stats.researchers", label: "stats.researchersLabel" },
-              { value: "stats.value", label: "stats.valueLabel" },
+              { value: "stats.teams", label: "stats.teams-label" },
+              { value: "stats.years", label: "stats.years-label" },
+              { value: "stats.researchers", label: "stats.researchers-label" },
+              { value: "stats.value", label: "stats.value-label" },
             ] as const
           ).map(({ value, label }) => (
             <div
@@ -172,7 +173,7 @@ export default async function Page({ params }: Props) {
               <div
                 key={key}
                 className={`flex h-full flex-col justify-between p-8 ${
-                  key === "prividium" || key === "programmablePrivacy"
+                  key === "prividium" || key === "programmable-privacy"
                     ? "bg-card lg:col-span-3"
                     : key === "emerging"
                       ? "border-border border lg:col-span-2"
@@ -189,7 +190,7 @@ export default async function Page({ params }: Props) {
                 </div>
                 <div className="mt-6 space-y-3 border-t pt-4">
                   <p className="text-muted-foreground text-xs font-bold tracking-widest uppercase">
-                    Examples
+                    {t("solutions.examples")}
                   </p>
                   <div className="flex flex-wrap gap-4">
                     {examples.map(({ name, href, logo, note }) => (
@@ -201,7 +202,7 @@ export default async function Page({ params }: Props) {
                         {logo && (
                           <Image
                             src={logo}
-                            alt={name}
+                            alt={tCommon("brand-logo", { name })}
                             sizes="20px"
                             className="size-5 rounded-full"
                           />
@@ -232,18 +233,18 @@ export default async function Page({ params }: Props) {
             {(
               [
                 {
-                  heading: "compliance.selectiveDisclosure",
-                  desc: "compliance.selectiveDisclosureDesc",
+                  heading: "compliance.selective-disclosure",
+                  desc: "compliance.selective-disclosure-desc",
                   icon: <TargetCheck className="size-full text-white" />,
                 },
                 {
-                  heading: "compliance.privacyCredentials",
-                  desc: "compliance.privacyCredentialsDesc",
+                  heading: "compliance.privacy-credentials",
+                  desc: "compliance.privacy-credentials-desc",
                   icon: <BinaryLock className="size-full text-white" />,
                 },
                 {
-                  heading: "compliance.composablePrimitives",
-                  desc: "compliance.composablePrimitivesDesc",
+                  heading: "compliance.composable-primitives",
+                  desc: "compliance.composable-primitives-desc",
                   icon: <LayersLock className="size-full text-white" />,
                 },
               ] as const
@@ -271,30 +272,30 @@ export default async function Page({ params }: Props) {
         >
           <div className="flex-3 space-y-7">
             <h2 className="text-h3-mobile sm:text-h3 tracking-[0.055rem] lg:max-w-lg">
-              {t("whyMatters.heading")}
+              {t("why-matters.heading")}
             </h2>
             <ul className="max-w-prose space-y-4">
               {(
                 [
                   {
-                    heading: "whyMatters.resilience",
-                    desc: "whyMatters.resilienceDesc",
+                    heading: "why-matters.resilience",
+                    desc: "why-matters.resilience-desc",
                   },
                   {
-                    heading: "whyMatters.censorship",
-                    desc: "whyMatters.censorshipDesc",
+                    heading: "why-matters.censorship",
+                    desc: "why-matters.censorship-desc",
                   },
                   {
-                    heading: "whyMatters.noCounterparty",
-                    desc: "whyMatters.noCounterpartyDesc",
+                    heading: "why-matters.no-counterparty",
+                    desc: "why-matters.no-counterparty-desc",
                   },
                   {
-                    heading: "whyMatters.economics",
-                    desc: "whyMatters.economicsDesc",
+                    heading: "why-matters.economics",
+                    desc: "why-matters.economics-desc",
                   },
                   {
-                    heading: "whyMatters.interoperability",
-                    desc: "whyMatters.interoperabilityDesc",
+                    heading: "why-matters.interoperability",
+                    desc: "why-matters.interoperability-desc",
                   },
                 ] as const
               ).map(({ heading, desc }) => (
@@ -326,41 +327,41 @@ export default async function Page({ params }: Props) {
         <section id="trust-vs-crypto" className="space-y-10">
           <div className="space-y-4">
             <h2 className="text-h3-mobile sm:text-h3 max-w-2xl tracking-[0.055rem]">
-              {t("trustVsCrypto.heading")}
+              {t("trust-vs-crypto.heading")}
             </h2>
             <p className="text-muted-foreground max-w-3xl font-medium">
-              {t("trustVsCrypto.description")}
+              {t("trust-vs-crypto.description")}
             </p>
           </div>
 
           <ComparisonTable
             columns={[
-              { key: "trust", label: t("trustVsCrypto.trustHeading") },
+              { key: "trust", label: t("trust-vs-crypto.trust-heading") },
               {
                 key: "crypto",
-                label: t("trustVsCrypto.cryptoHeading"),
+                label: t("trust-vs-crypto.crypto-heading"),
                 highlighted: true,
               },
             ]}
             rows={(
               [
-                "Guarantee",
-                "Mechanism",
-                "Incentives",
-                "Vendor",
-                "Regulatory",
+                "guarantee",
+                "mechanism",
+                "incentives",
+                "vendor",
+                "regulatory",
               ] as const
             ).map((key) => ({
-              label: t(`trustVsCrypto.table${key}`),
+              label: t(`trust-vs-crypto.table-${key}`),
               cells: {
-                trust: t(`trustVsCrypto.tableTrust${key}`),
-                crypto: t(`trustVsCrypto.tableCrypto${key}`),
+                trust: t(`trust-vs-crypto.table-trust-${key}`),
+                crypto: t(`trust-vs-crypto.table-crypto-${key}`),
               },
             }))}
           />
 
           <p className="text-muted-foreground max-w-3xl border-l-4 pl-4 font-medium italic">
-            {t("trustVsCrypto.closing")}
+            {t("trust-vs-crypto.closing")}
           </p>
         </section>
 
@@ -368,10 +369,10 @@ export default async function Page({ params }: Props) {
         <section id="private-chains" className="space-y-10">
           <div className="space-y-4">
             <h2 className="text-h3-mobile sm:text-h3 max-w-2xl tracking-[0.055rem]">
-              {t("privateChains.heading")}
+              {t("private-chains.heading")}
             </h2>
             <p className="text-muted-foreground max-w-3xl font-medium">
-              {t("privateChains.description")}
+              {t("private-chains.description")}
             </p>
           </div>
 
@@ -379,17 +380,17 @@ export default async function Page({ params }: Props) {
             {privateChainRisks.map((key) => (
               <div key={key} className="space-y-2">
                 <h3 className="text-h6 text-foreground font-bold">
-                  {t(`privateChains.${key}`)}
+                  {t(`private-chains.${key}`)}
                 </h3>
                 <p className="text-muted-foreground font-medium">
-                  {t(`privateChains.${key}Desc`)}
+                  {t(`private-chains.${key}-desc`)}
                 </p>
               </div>
             ))}
           </div>
 
           <p className="text-muted-foreground max-w-3xl border-l-4 pl-4 font-medium italic">
-            {t("privateChains.closing")}
+            {t("private-chains.closing")}
           </p>
         </section>
 
@@ -401,24 +402,24 @@ export default async function Page({ params }: Props) {
           <div className="flex-1 space-y-7">
             <div className="space-y-4">
               <h2 className="text-h3-mobile sm:text-h3 max-w-2xl tracking-[0.055rem]">
-                {t("efCommitment.heading")}
+                {t("ef-commitment.heading")}
               </h2>
               <p className="text-muted-foreground text-xl font-medium">
-                {t("efCommitment.description")}
+                {t("ef-commitment.description")}
               </p>
             </div>
             <div className="bg-card mt-12 p-8">
               <h3 className="text-foreground text-2xl font-bold">
-                {t("efCommitment.iptfTitle")}
+                {t("ef-commitment.iptf-title")}
               </h3>
               <p className="text-muted-foreground mt-2 font-medium">
-                {t("efCommitment.iptfDesc")}
+                {t("ef-commitment.iptf-desc")}
               </p>
               <LinkWithArrow
                 href="https://iptf.ethereum.org/"
                 className="text-secondary-foreground mt-6"
               >
-                Visit IPTF
+                {t("ef-commitment.visit-iptf")}
               </LinkWithArrow>
             </div>
           </div>

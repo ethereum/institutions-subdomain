@@ -77,7 +77,7 @@ export default async function Page({ params }: Props) {
 
   const metrics: Metric[] = [
     {
-      label: t("overview.stablecoinsL1"),
+      label: t("overview.stablecoins-l1"),
       value: formatLargeCurrency(
         locale,
         stablecoinAssetMarketShareData.data.assetValue.mainnet
@@ -89,7 +89,7 @@ export default async function Page({ params }: Props) {
       ...stablecoinAssetMarketShareData.sourceInfo,
     },
     {
-      label: t("overview.stablecoinsL2"),
+      label: t("overview.stablecoins-l2"),
       value: formatLargeCurrency(
         locale,
         stablecoinAssetMarketShareData.data.assetValue.layer2
@@ -101,14 +101,14 @@ export default async function Page({ params }: Props) {
       ...stablecoinAssetMarketShareData.sourceInfo,
     },
     {
-      label: t("overview.commoditiesShare"),
+      label: t("overview.commodities-share"),
       value: "70%",
       lastUpdated: "",
       source: "",
       sourceHref: "",
     },
     {
-      label: t("overview.valueSecured"),
+      label: t("overview.value-secured"),
       value: formatLargeCurrency(locale, totalValueSecuredData.data.sum),
       lastUpdated: formatDateMonthDayYear(
         locale,
@@ -197,7 +197,7 @@ export default async function Page({ params }: Props) {
         locale,
         assetValueByAssetIdsData.data.BUIDL
       ),
-      description: t("cards.buidlDesc", { brand: "BlackRock" }),
+      description: t("cards.buidl-desc", { brand: "BlackRock" }),
       imgSrc: buidlUsd,
       issuer: "BlackRock & Securitize",
       metricHref: "https://app.rwa.xyz/assets/BUIDL",
@@ -214,7 +214,7 @@ export default async function Page({ params }: Props) {
         locale,
         assetValueByAssetIdsData.data.USTB
       ),
-      description: t("cards.ustbDesc", { brand: "Superstate" }),
+      description: t("cards.ustb-desc", { brand: "Superstate" }),
       imgSrc: superstateLogo,
       issuer: "Superstate",
       metricHref: "https://app.rwa.xyz/assets/USTB",
@@ -231,7 +231,7 @@ export default async function Page({ params }: Props) {
         locale,
         assetValueByAssetIdsData.data.MONY
       ),
-      description: t("cards.monyDesc", { brand: "JPMorgan" }),
+      description: t("cards.mony-desc", { brand: "JPMorgan" }),
       imgSrc: kinexysLogo,
       issuer: "JPMorgan",
       metricHref: "https://app.rwa.xyz/assets/MONY",
@@ -248,7 +248,7 @@ export default async function Page({ params }: Props) {
         locale,
         assetValueByAssetIdsData.data.FDIT
       ),
-      description: t("cards.fditDesc", { brand: "Fidelity" }),
+      description: t("cards.fdit-desc", { brand: "Fidelity" }),
       imgSrc: fditStar,
       issuer: "Fidelity",
       metricHref: "https://app.rwa.xyz/assets/FDIT",
@@ -287,7 +287,7 @@ export default async function Page({ params }: Props) {
       { name: "Ondo", href: "https://ondo.finance/" },
       { name: "Backed", href: "https://backed.fi/" },
     ],
-    realEstate: [],
+    "real-estate": [],
   }
 
   const creditPlatforms: AssetDetails[] = [
@@ -295,7 +295,7 @@ export default async function Page({ params }: Props) {
       header: "Aave",
       valuation: "",
       imgSrc: aaveLogo,
-      description: t("rwas.activeLoans"),
+      description: t("rwas.active-loans"),
       metricHref: "https://defillama.com/protocol/aave",
       visitHref: "https://aave.com/",
     },
@@ -303,7 +303,7 @@ export default async function Page({ params }: Props) {
       header: "Morpho",
       valuation: "",
       imgSrc: morphoLogo,
-      description: t("rwas.activeLoans"),
+      description: t("rwas.active-loans"),
       metricHref: "https://defillama.com/protocol/morpho",
       visitHref: "https://morpho.org/",
     },
@@ -314,7 +314,7 @@ export default async function Page({ params }: Props) {
         locale,
         protocolsValueBySlugData.data.centrifuge
       ),
-      description: t("rwas.activeLoans"),
+      description: t("rwas.active-loans"),
       metricHref: "https://app.rwa.xyz/platforms/centrifuge",
       visitHref: "https://centrifuge.io/",
       ...protocolsValueBySlugData.sourceInfo,
@@ -330,7 +330,7 @@ export default async function Page({ params }: Props) {
         locale,
         protocolsValueBySlugData.data.maple
       ),
-      description: t("rwas.activeLoans"),
+      description: t("rwas.active-loans"),
       metricHref: "https://app.rwa.xyz/platforms/maple",
       visitHref: "https://maple.finance/",
       ...protocolsValueBySlugData.sourceInfo,
@@ -346,7 +346,7 @@ export default async function Page({ params }: Props) {
         locale,
         assetValueByAssetIdsData.data.mF_ONE
       ),
-      description: t("rwas.activeLoans"),
+      description: t("rwas.active-loans"),
       metricHref: "https://app.rwa.xyz/assets/mF-ONE",
       visitHref: "https://midas.app/mfone",
       ...assetValueByAssetIdsData.sourceInfo,
@@ -365,7 +365,7 @@ export default async function Page({ params }: Props) {
       </Hero>
       <article className="max-w-8xl mx-auto w-full space-y-20 px-4 py-10 sm:px-10 sm:py-20 md:space-y-40">
         <section id="overview">
-          <h2 className="sr-only">{t("overview.srHeading")}</h2>
+          <h2 className="sr-only">{t("overview.sr-heading")}</h2>
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             {metrics.map(({ label, value, ...sourceInfo }, idx) => {
               const { source, sourceHref } = sourceInfo
@@ -409,43 +409,43 @@ export default async function Page({ params }: Props) {
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
                 {t("infrastructure.depth")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  {t("infrastructure.depthDesc")}
+                  {t("infrastructure.depth-desc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
                 {t("infrastructure.scale")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  {t("infrastructure.scaleDesc")}
+                  {t("infrastructure.scale-desc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
                 {t("infrastructure.settlement")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  {t("infrastructure.settlementDesc")}
+                  {t("infrastructure.settlement-desc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
                 {t("infrastructure.compliance")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  {t("infrastructure.complianceDesc")}
+                  {t("infrastructure.compliance-desc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
                 {t("infrastructure.yield")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  {t("infrastructure.yieldDesc")}
+                  {t("infrastructure.yield-desc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                {t("infrastructure.networkEffects")}
+                {t("infrastructure.network-effects")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  {t("infrastructure.networkEffectsDesc")}
+                  {t("infrastructure.network-effects-desc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                {t("infrastructure.costSavings")}
+                {t("infrastructure.cost-savings")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  {t("infrastructure.costSavingsDesc")}
+                  {t("infrastructure.cost-savings-desc")}
                 </p>
               </li>
             </ul>
@@ -473,8 +473,8 @@ export default async function Page({ params }: Props) {
                 label: t("comparison.ethereum"),
                 highlighted: true,
               },
-              { key: "l1Alt", label: t("comparison.l1Alt") },
-              { key: "privateDlt", label: t("comparison.privateDlt") },
+              { key: "l1Alt", label: t("comparison.l1-alt") },
+              { key: "privateDlt", label: t("comparison.private-dlt") },
               { key: "traditional", label: t("comparison.traditional") },
             ]}
             rows={(
@@ -482,19 +482,19 @@ export default async function Page({ params }: Props) {
                 "settlement",
                 "resilience",
                 "security",
-                "devBase",
+                "dev-base",
                 "liquidity",
                 "auditability",
                 "neutrality",
-                "geoRisk",
+                "geo-risk",
                 "composability",
               ] as const
             ).map((row) => ({
               label: t(`comparison.${row}`),
               cells: {
                 ethereum: t(`comparison.ethereum_${row}`),
-                l1Alt: t(`comparison.l1Alt_${row}`),
-                privateDlt: t(`comparison.privateDlt_${row}`),
+                l1Alt: t(`comparison.l1-alt_${row}`),
+                privateDlt: t(`comparison.private-dlt_${row}`),
                 traditional: t(`comparison.traditional_${row}`),
               },
             }))}
@@ -505,7 +505,7 @@ export default async function Page({ params }: Props) {
           <div className="space-y-2">
             <h2>{t("stablecoins.heading")}</h2>
             <p className="text-muted-foreground font-medium">
-              {t("stablecoins.marketCap")}{" "}
+              {t("stablecoins.market-cap")}{" "}
               <InlineText className="text-foreground font-bold">
                 {formatLargeCurrency(
                   locale,
@@ -544,24 +544,24 @@ export default async function Page({ params }: Props) {
 
         <section id="category-breakdown" className="space-y-8">
           <div className="space-y-2">
-            <h2>{t("categoryBreakdown.heading")}</h2>
+            <h2>{t("category-breakdown.heading")}</h2>
             <p className="text-muted-foreground font-medium">
-              {t("categoryBreakdown.description")}
+              {t("category-breakdown.description")}
             </p>
           </div>
 
           <ComparisonTable
-            labelHeader={t("categoryBreakdown.category")}
+            labelHeader={t("category-breakdown.category")}
             labelWidth="160px"
             columns={[
-              { key: "tvlEth", label: t("categoryBreakdown.tvlEth") },
-              { key: "tvlTotal", label: t("categoryBreakdown.tvlTotal") },
+              { key: "tvlEth", label: t("category-breakdown.tvl-eth") },
+              { key: "tvlTotal", label: t("category-breakdown.tvl-total") },
               {
                 key: "ethShare",
-                label: t("categoryBreakdown.ethShare"),
+                label: t("category-breakdown.eth-share"),
                 highlighted: true,
               },
-              { key: "examples", label: t("categoryBreakdown.examples") },
+              { key: "examples", label: t("category-breakdown.examples") },
             ]}
             rows={(
               [
@@ -569,14 +569,14 @@ export default async function Page({ params }: Props) {
                 "credit",
                 "commodities",
                 "equities",
-                "realEstate",
+                "real-estate",
               ] as const
             ).map((cat) => ({
-              label: t(`categoryBreakdown.${cat}`),
+              label: t(`category-breakdown.${cat}`),
               cells: {
-                tvlEth: t(`categoryBreakdown.${cat}Tvl`),
-                tvlTotal: t(`categoryBreakdown.${cat}Total`),
-                ethShare: t(`categoryBreakdown.${cat}Share`),
+                tvlEth: t(`category-breakdown.${cat}-tvl`),
+                tvlTotal: t(`category-breakdown.${cat}-total`),
+                ethShare: t(`category-breakdown.${cat}-share`),
                 examples:
                   categoryExamples[cat]?.length > 0
                     ? categoryExamples[cat].map((example, i) => (
@@ -591,7 +591,7 @@ export default async function Page({ params }: Props) {
                           </Link>
                         </span>
                       ))
-                    : t(`categoryBreakdown.${cat}Examples`),
+                    : t(`category-breakdown.${cat}-examples`),
               },
             }))}
           />
@@ -601,7 +601,7 @@ export default async function Page({ params }: Props) {
           <div className="space-y-2">
             <h2>{t("rwas.heading")}</h2>
             <p className="text-muted-foreground font-medium">
-              {t("rwas.totalSector")}{" "}
+              {t("rwas.total-sector")}{" "}
               <InlineText className="text-foreground font-bold">
                 {formatLargeCurrency(
                   locale,
@@ -631,7 +631,7 @@ export default async function Page({ params }: Props) {
                 )}
               </p>
               <InlineText className="text-muted font-medium">
-                {t("rwas.treasuriesSector")}
+                {t("rwas.treasuries-sector")}
                 <SourceInfoTooltip
                   lastUpdated={formatDateMonthDayYear(
                     locale,
@@ -705,7 +705,7 @@ export default async function Page({ params }: Props) {
           <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <div className="bg-secondary-foreground text-secondary space-y-2 p-8">
               <h3 className="text-xl font-bold tracking-[0.025rem]">
-                {t("rwas.privateCredit")}
+                {t("rwas.private-credit")}
               </h3>
               <p className="text-big font-bold tracking-[0.055rem]">
                 {formatLargeCurrency(
@@ -714,7 +714,7 @@ export default async function Page({ params }: Props) {
                 )}
               </p>
               <InlineText className="text-muted font-medium">
-                {t("rwas.activeLoans")}
+                {t("rwas.active-loans")}
                 <SourceInfoTooltip
                   lastUpdated={formatDateMonthDayYear(
                     locale,
@@ -809,33 +809,33 @@ export default async function Page({ params }: Props) {
         >
           <div className="flex-1 space-y-7">
             <h2 className="sm:text-h3 text-h3-mobile tracking-[0.055rem]">
-              {t("l2Section.heading")}
+              {t("l2-section.heading")}
             </h2>
             <p className="text-muted-foreground font-medium">
-              {t("l2Section.description")}
+              {t("l2-section.description")}
             </p>
             <LinkWithArrow href="/layer-2" className="css-secondary block">
-              {t("l2Section.cta")}
+              {t("l2-section.cta")}
             </LinkWithArrow>
           </div>
           <div className="flex-1">
             <ul className="space-y-4 font-medium">
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                {t("l2Section.throughput")}
+                {t("l2-section.throughput")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  {t("l2Section.throughputDesc")}
+                  {t("l2-section.throughput-desc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                {t("l2Section.configurable")}
+                {t("l2-section.configurable")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  {t("l2Section.configurableDesc")}
+                  {t("l2-section.configurable-desc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                {t("l2Section.specialization")}
+                {t("l2-section.specialization")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  {t("l2Section.specializationDesc")}
+                  {t("l2-section.specialization-desc")}
                 </p>
               </li>
             </ul>

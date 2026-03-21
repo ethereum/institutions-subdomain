@@ -27,7 +27,7 @@ export function ScalingPanel() {
       title: t("pectra.title"),
       cards: [
         {
-          cardTitle: t("pectra.card1Title"),
+          cardTitle: t("pectra.card1-title"),
           content: t("pectra.card1"),
           href: "https://blog.ethereum.org/2025/03/06/pectra",
         },
@@ -37,19 +37,19 @@ export function ScalingPanel() {
       title: t("fusaka.title"),
       cards: [
         {
-          cardTitle: t("fusaka.card1Title"),
+          cardTitle: t("fusaka.card1-title"),
           content: t("fusaka.card1"),
           href: "https://blog.ethereum.org/2025/08/22/protocol-update-002",
         },
       ],
     },
     {
-      title: t("postQuantum.title"),
+      title: t("post-quantum.title"),
       badge: t("coming"),
       cards: [
         {
-          cardTitle: t("postQuantum.card1Title"),
-          content: t("postQuantum.card1"),
+          cardTitle: t("post-quantum.card1-title"),
+          content: t("post-quantum.card1"),
           href: "https://blog.ethereum.org/2025/07/31/lean-ethereum",
         },
       ],
@@ -59,7 +59,7 @@ export function ScalingPanel() {
       badge: t("coming"),
       cards: [
         {
-          cardTitle: t("glamsterdam.card1Title"),
+          cardTitle: t("glamsterdam.card1-title"),
           content: t("glamsterdam.card1"),
           href: "https://blog.ethereum.org/2025/08/05/protocol-update-001",
         },
@@ -129,7 +129,7 @@ export function ScalingPanel() {
                     href={href}
                     className="!text-secondary hover:!text-secondary/80 text-normal font-medium"
                   >
-                    {t("learnMore")}
+                    {t("learn-more")}
                   </LinkWithArrow>
                 </div>
               ))}

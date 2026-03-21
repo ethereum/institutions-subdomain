@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from "react"
 import { ChevronDown, ExternalLink, X } from "lucide-react"
-import { useTranslations } from "next-intl"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardLabel } from "@/components/ui/card"
@@ -15,13 +14,31 @@ import {
   type SolutionProvider,
 } from "./data"
 
-export function ProviderGrid({ providers }: { providers: SolutionProvider[] }) {
+export type ProviderGridTranslations = {
+  filters: {
+    allCategories: string
+    allRegions: string
+    noResults: string
+    clearAll: string
+  }
+  categories: Record<MacroCategory, string>
+  regions: Record<Region, string>
+  providerSingular: string
+  providerPlural: string
+}
+
+export function ProviderGrid({
+  providers,
+  translations: i18n,
+}: {
+  providers: SolutionProvider[]
+  translations: ProviderGridTranslations
+}) {
   const [categoryFilter, setCategoryFilter] = useState<MacroCategory | "all">(
     "all"
   )
   const [regionFilter, setRegionFilter] = useState<Region | "all">("all")
   const [regionOpen, setRegionOpen] = useState(false)
-  const t = useTranslations("solutionProviders")
 
   const regionFiltered = useMemo(() => {
     if (regionFilter === "all") return providers
@@ -69,8 +86,8 @@ export function ProviderGrid({ providers }: { providers: SolutionProvider[] }) {
 
   const regionLabel =
     regionFilter === "all"
-      ? t("filters.allRegions")
-      : t(`regions.${regionFilter}`)
+      ? i18n.filters.allRegions
+      : i18n.regions[regionFilter]
 
   return (
     <div className="space-y-8">
@@ -86,7 +103,7 @@ export function ProviderGrid({ providers }: { providers: SolutionProvider[] }) {
               : "border-border text-foreground hover:text-secondary-foreground border"
           }
         >
-          {t("filters.allCategories")}
+          {i18n.filters.allCategories}
           <span className="opacity-60">{regionFiltered.length}</span>
         </Button>
         {MACRO_CATEGORIES.map((cat) => (
@@ -103,7 +120,7 @@ export function ProviderGrid({ providers }: { providers: SolutionProvider[] }) {
                 : "border-border text-foreground hover:text-secondary-foreground border"
             }
           >
-            {t(`categories.${cat}`)}
+            {i18n.categories[cat]}
             <span className="opacity-60">{categoryCounts[cat]}</span>
           </Button>
         ))}
@@ -152,7 +169,7 @@ export function ProviderGrid({ providers }: { providers: SolutionProvider[] }) {
                     : "text-foreground hover:bg-section/50 font-medium"
                 }`}
               >
-                {t("filters.allRegions")}
+                {i18n.filters.allRegions}
                 <span className="text-muted-foreground text-xs">
                   {providers.length}
                 </span>
@@ -174,7 +191,7 @@ export function ProviderGrid({ providers }: { providers: SolutionProvider[] }) {
                     {regionFilter === region && (
                       <span className="bg-secondary-foreground inline-block h-3 w-[3px]" />
                     )}
-                    {t(`regions.${region}`)}
+                    {i18n.regions[region]}
                   </span>
                   <span className="text-muted-foreground text-xs">
                     {regionCounts[region]}
@@ -190,10 +207,12 @@ export function ProviderGrid({ providers }: { providers: SolutionProvider[] }) {
       {grouped.map(({ category, providers: catProviders }) => (
         <div key={category} className="space-y-4">
           <div>
-            <h3 className="text-h5">{t(`categories.${category}`)}</h3>
+            <h3 className="text-h5">{i18n.categories[category]}</h3>
             <p className="text-muted-foreground font-medium">
               {catProviders.length}{" "}
-              {catProviders.length === 1 ? "provider" : "providers"}
+              {catProviders.length === 1
+                ? i18n.providerSingular
+                : i18n.providerPlural}
             </p>
           </div>
 
@@ -227,7 +246,7 @@ export function ProviderGrid({ providers }: { providers: SolutionProvider[] }) {
                         <span className="text-muted-foreground/40">·</span>
                         <span className="text-muted-foreground">
                           {provider.region
-                            .map((r) => t(`regions.${r}`))
+                            .map((r) => i18n.regions[r])
                             .join(", ")}
                         </span>
                       </>
@@ -259,7 +278,7 @@ export function ProviderGrid({ providers }: { providers: SolutionProvider[] }) {
       {totalFiltered === 0 && (
         <div className="py-24 text-center">
           <p className="text-muted-foreground text-base font-medium">
-            {t("filters.noResults")}
+            {i18n.filters.noResults}
           </p>
           <button
             onClick={() => {
@@ -268,7 +287,7 @@ export function ProviderGrid({ providers }: { providers: SolutionProvider[] }) {
             }}
             className="text-secondary-foreground hover:text-secondary-foreground/70 mt-3 text-sm font-medium transition-colors"
           >
-            {t("filters.clearAll")}
+            {i18n.filters.clearAll}
           </button>
         </div>
       )}

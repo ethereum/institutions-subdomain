@@ -31,7 +31,7 @@ const RwaChartCard = ({
 }) => {
   const locale = useLocale()
   const tCommon = useTranslations("common")
-  const tCharts = useTranslations("dataHub.charts")
+  const tCharts = useTranslations("data-hub.charts")
   const [showL2, setShowL2] = useState(true)
 
   const toggleShowL2 = () => {
@@ -42,10 +42,10 @@ const RwaChartCard = ({
     <Card variant="flex-column">
       <CardHeader className="flex gap-2 !px-0 max-sm:flex-col sm:items-center">
         <CardContent className="flex-1 gap-4">
-          <CardTitle className="text-xl">{tCharts("rwaTitle")}</CardTitle>
+          <CardTitle className="text-xl">{tCharts("rwa-title")}</CardTitle>
           <CardDescription className="font-medium">
             <Button variant="link" onClick={toggleShowL2}>
-              {showL2 ? tCharts("hideL2Data") : tCharts("showL2Data")}
+              {showL2 ? tCharts("hide-l2-data") : tCharts("show-l2-data")}
             </Button>
           </CardDescription>
         </CardContent>

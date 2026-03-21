@@ -202,28 +202,28 @@ const StablecoinMarketSharePieChart = ({
   chartData,
 }: StablecoinMarketsharePieChartProps) => {
   const locale = useLocale()
-  const tCharts = useTranslations("dataHub.charts")
+  const tCharts = useTranslations("data-hub.charts")
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
   const [activated, setActivated] = useState(false)
 
   const chartConfig = {
     marketShare: {
-      label: tCharts("marketShare"),
+      label: tCharts("market-share"),
     },
     ethereum: {
-      label: tCharts("ethMainnet"),
+      label: tCharts("eth-mainnet"),
       color: "var(--chart-1)",
     },
     "ethereum-l2s": {
-      label: tCharts("ethL2s"),
+      label: tCharts("eth-l2s"),
       color: "var(--chart-2)",
     },
     "alt-2nd": {
-      label: tCharts("secondLargest"),
+      label: tCharts("second-largest"),
       color: "var(--chart-3)",
     },
     "alt-3rd": {
-      label: tCharts("thirdLargest"),
+      label: tCharts("third-largest"),
       color: "var(--chart-4)",
     },
     "alt-rest": {

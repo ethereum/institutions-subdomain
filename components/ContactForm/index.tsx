@@ -41,7 +41,7 @@ type FormErrors = {
 type SubmissionState = "idle" | "submitting" | "success" | "error"
 
 const EnterpriseContactForm = () => {
-  const t = useTranslations("contactForm")
+  const t = useTranslations("contact-form")
   const pathname = usePathname()
   const prevPathname = useRef(pathname)
   const captchaRef = useRef<HCaptcha>(null)
@@ -100,7 +100,7 @@ const EnterpriseContactForm = () => {
     const sanitized = sanitizeInput(value)
     if (!sanitized) return t("errors.required")
     if (sanitized.length > maxLength)
-      return t("errors.fieldTooLong", { max: maxLength })
+      return t("errors.field-too-long", { max: maxLength })
     return undefined
   }
 
@@ -110,14 +110,14 @@ const EnterpriseContactForm = () => {
     if (!sanitized) return t("errors.required")
 
     if (sanitized.length > MAX_INPUT_LENGTH)
-      return t("errors.emailTooLong", { max: MAX_INPUT_LENGTH })
+      return t("errors.email-too-long", { max: MAX_INPUT_LENGTH })
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(sanitized)) return t("errors.invalidEmail")
+    if (!emailRegex.test(sanitized)) return t("errors.invalid-email")
 
     const domain = sanitized.toLowerCase().split("@")[1]
     if (CONSUMER_DOMAINS.includes(domain))
-      return t("errors.businessEmailRequired")
+      return t("errors.business-email-required")
 
     return undefined
   }
@@ -126,7 +126,7 @@ const EnterpriseContactForm = () => {
     const sanitized = sanitizeInput(message)
     if (!sanitized) return t("errors.required")
     if (sanitized.length > MAX_MESSAGE_LENGTH)
-      return t("errors.messageTooLong", { max: MAX_MESSAGE_LENGTH })
+      return t("errors.message-too-long", { max: MAX_MESSAGE_LENGTH })
     return undefined
   }
 
@@ -195,7 +195,7 @@ const EnterpriseContactForm = () => {
       setErrors({
         general: (
           <>
-            {t("errors.generalError")}{" "}
+            {t("errors.general-error")}{" "}
             <Link
               href={`mailto:${ENTERPRISE_EMAIL}?subject=Enterprise%20inquiry`}
               inline
@@ -236,9 +236,9 @@ const EnterpriseContactForm = () => {
       <div className="border-border/50 bg-primary flex w-full max-w-prose flex-col items-center gap-y-6 rounded border p-6 text-center">
         <div className="mb-2 flex items-center gap-4">
           <HeartHandshake className="text-primary-foreground size-8" />
-          <h4 className="text-xl font-semibold">{t("successTitle")}</h4>
+          <h4 className="text-xl font-semibold">{t("success-title")}</h4>
         </div>
-        <p className="text-body-medium">{t("successMessage")}</p>
+        <p className="text-body-medium">{t("success-message")}</p>
       </div>
     )
 
@@ -271,23 +271,23 @@ const EnterpriseContactForm = () => {
   return (
     <div className="w-full max-w-[440px] space-y-6">
       <div className="space-y-2">
-        {renderField("firstName", t("firstNamePlaceholder"), {
+        {renderField("firstName", t("first-name-placeholder"), {
           autoComplete: "given-name",
         })}
-        {renderField("lastName", t("lastNamePlaceholder"), {
+        {renderField("lastName", t("last-name-placeholder"), {
           autoComplete: "family-name",
         })}
-        {renderField("email", t("emailPlaceholder"), {
+        {renderField("email", t("email-placeholder"), {
           type: "email",
           autoComplete: "email",
         })}
-        {renderField("company", t("companyPlaceholder"), {
+        {renderField("company", t("company-placeholder"), {
           autoComplete: "organization",
         })}
-        {renderField("jobTitle", t("jobTitlePlaceholder"), {
+        {renderField("jobTitle", t("job-title-placeholder"), {
           autoComplete: "organization-title",
         })}
-        {renderField("country", t("countryPlaceholder"), {
+        {renderField("country", t("country-placeholder"), {
           autoComplete: "country-name",
         })}
       </div>
@@ -296,7 +296,7 @@ const EnterpriseContactForm = () => {
         <div className="relative">
           <Textarea
             name="message"
-            placeholder={t("messagePlaceholder")}
+            placeholder={t("message-placeholder")}
             value={formData.message}
             onChange={handleInputChange("message")}
             onBlur={handleBlur("message")}

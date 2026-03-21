@@ -55,7 +55,7 @@ export default async function Page({ params }: Props) {
   const { locale } = await params
   setRequestLocale(locale)
 
-  const t = await getTranslations("dataHub")
+  const t = await getTranslations("data-hub")
   const tCommon = await getTranslations("common")
 
   const [
@@ -90,7 +90,7 @@ export default async function Page({ params }: Props) {
 
   const metrics: Metric[] = [
     {
-      label: t("metrics.marketCap"),
+      label: t("metrics.market-cap"),
       value: formatLargeCurrency(
         locale,
         etherMarketDetailsData.data.etherMarketCap
@@ -111,7 +111,7 @@ export default async function Page({ params }: Props) {
       ...totalValueSecuredData.sourceInfo,
     },
     {
-      label: t("metrics.ethStaked"),
+      label: t("metrics.eth-staked"),
       value: formatLargeCurrency(
         locale,
         beaconChainData.data.totalStakedEther * ethPrice.data.usd
@@ -120,7 +120,7 @@ export default async function Page({ params }: Props) {
       ...beaconChainData.sourceInfo,
     },
     {
-      label: t("metrics.securityRatio"),
+      label: t("metrics.security-ratio"),
       value: formatMultiplier(locale, totalValueSecuredData.data.securityRatio),
       lastUpdated: formatDateMonthDayYear(
         locale,
@@ -234,7 +234,7 @@ export default async function Page({ params }: Props) {
 
             <Card variant="flex-column">
               <CardTitle className="text-h5">
-                {t("defi.vsNext.title")}
+                {t("defi.vs-next.title")}
               </CardTitle>
 
               <CardContent variant="flex-1-height-between">
@@ -246,7 +246,7 @@ export default async function Page({ params }: Props) {
                     )}
                   </AnimatedNumberInView>
                   <CardSmallText className="text-center text-sm">
-                    {t("defi.vsNext.larger")}
+                    {t("defi.vs-next.larger")}
                   </CardSmallText>
                 </div>
                 <div className="flex justify-between">
@@ -282,10 +282,10 @@ export default async function Page({ params }: Props) {
             <Card variant="flex-column">
               <CardContent>
                 <CardTitle className="text-xl">
-                  {t("stablecoins.marketShare.title")}
+                  {t("stablecoins.market-share.title")}
                 </CardTitle>
                 <CardDescription className="text-sm font-medium">
-                  {t("stablecoins.marketShare.description")}
+                  {t("stablecoins.market-share.description")}
                 </CardDescription>
               </CardContent>
 
@@ -465,7 +465,7 @@ export default async function Page({ params }: Props) {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: "dataHub" })
+  const t = await getTranslations({ locale, namespace: "data-hub" })
   return getMetadata({
     slug: "data-hub",
     title: t("metadata.title"),

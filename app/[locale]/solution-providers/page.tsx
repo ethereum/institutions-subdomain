@@ -5,8 +5,8 @@ import Hero from "@/components/Hero"
 
 import { getMetadata } from "@/lib/utils/metadata"
 
-import { solutionProviders } from "./data"
-import { ProviderGrid } from "./provider-grid"
+import { MACRO_CATEGORIES, REGIONS, solutionProviders } from "./data"
+import { ProviderGrid, type ProviderGridTranslations } from "./provider-grid"
 
 import { type Locale, routing } from "@/i18n/routing"
 
@@ -24,9 +24,34 @@ export default async function Page({ params }: Props) {
 
   const t = await getTranslations("solutionProviders")
 
-  const sortedProviders = [...solutionProviders].sort((a, b) =>
-    a.name.localeCompare(b.name)
-  )
+  // Resolve translatable fields on each provider for the client
+  const displayProviders = [...solutionProviders]
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((p) => ({
+      ...p,
+      subCategory: t(`sub-categories.${p.subCategory}`),
+      description: p.description
+        ? t(`providers.${p.description}.description`)
+        : undefined,
+    }))
+
+  // Pre-resolve UI translations for the client component
+  const translations: ProviderGridTranslations = {
+    filters: {
+      allCategories: t("filters.all-categories"),
+      allRegions: t("filters.all-regions"),
+      noResults: t("filters.no-results"),
+      clearAll: t("filters.clear-all"),
+    },
+    categories: Object.fromEntries(
+      MACRO_CATEGORIES.map((cat) => [cat, t(`categories.${cat}`)])
+    ) as ProviderGridTranslations["categories"],
+    regions: Object.fromEntries(
+      REGIONS.map((r) => [r, t(`regions.${r}`)])
+    ) as ProviderGridTranslations["regions"],
+    providerSingular: t("provider-singular"),
+    providerPlural: t("provider-plural"),
+  }
 
   return (
     <main className="row-start-2 flex flex-col items-center sm:items-start">
@@ -35,7 +60,10 @@ export default async function Page({ params }: Props) {
       </Hero>
       <article className="max-w-8xl mx-auto w-full px-4 py-12 sm:px-10 sm:py-16">
         <section id="providers">
-          <ProviderGrid providers={sortedProviders} />
+          <ProviderGrid
+            providers={displayProviders}
+            translations={translations}
+          />
         </section>
       </article>
     </main>

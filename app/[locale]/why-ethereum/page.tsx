@@ -34,7 +34,7 @@ export function generateStaticParams() {
 export default async function WhyEthereum({ params }: Props) {
   const { locale } = await params
   setRequestLocale(locale)
-  const t = await getTranslations("whyEthereum")
+  const t = await getTranslations("why-ethereum")
   const uptime = getTimeSinceGenesis()
 
   return (
@@ -73,7 +73,7 @@ export default async function WhyEthereum({ params }: Props) {
                     </h4>
                   </div>
                   <div className="text-muted-foreground col-start-2 font-medium">
-                    {t(`problem.limitations.${key}Desc`)}
+                    {t(`problem.limitations.${key}-desc`)}
                   </div>
                 </div>
               ))}
@@ -89,8 +89,8 @@ export default async function WhyEthereum({ params }: Props) {
                 [
                   "efficiency",
                   "transparency",
-                  "digitalAssets",
-                  "openInfra",
+                  "digital-assets",
+                  "open-infra",
                 ] as const
               ).map((key) => (
                 <div
@@ -102,7 +102,7 @@ export default async function WhyEthereum({ params }: Props) {
                     <h4 className="text-h6">{t(`problem.pressures.${key}`)}</h4>
                   </div>
                   <div className="text-muted-foreground col-start-2 font-medium">
-                    {t(`problem.pressures.${key}Desc`)}
+                    {t(`problem.pressures.${key}-desc`)}
                   </div>
                 </div>
               ))}
@@ -211,7 +211,7 @@ export default async function WhyEthereum({ params }: Props) {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: "whyEthereum" })
+  const t = await getTranslations({ locale, namespace: "why-ethereum" })
 
   return getMetadata({
     slug: "why-ethereum",

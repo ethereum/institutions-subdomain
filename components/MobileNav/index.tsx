@@ -13,6 +13,7 @@ type MobileNavProps = {
   navLinks: LinkProps[]
   menuLabel: string
   useCasesLabel: string
+  closeMenuLabel: string
 }
 
 const MobileNav = ({
@@ -21,6 +22,7 @@ const MobileNav = ({
   navLinks,
   menuLabel,
   useCasesLabel,
+  closeMenuLabel,
 }: MobileNavProps) => {
   const [open, setOpen] = useState(false)
   const triggerRef = useRef<HTMLButtonElement>(null)
@@ -57,7 +59,7 @@ const MobileNav = ({
             size="icon"
             className="ms-auto"
             onClick={() => setOpen(false)}
-            aria-label="Close menu"
+            aria-label={closeMenuLabel}
           >
             <X className="size-10" />
           </Button>

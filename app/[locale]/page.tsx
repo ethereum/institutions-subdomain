@@ -80,36 +80,6 @@ import robertMitchnick from "@/public/images/profiles/robert-mitchnick.png"
 import tomZschach from "@/public/images/profiles/tom-zschach.png"
 import vladTenev from "@/public/images/profiles/vlad-tenev.png"
 
-const logos: { src: StaticImageData; alt: string; className?: string }[] = [
-  { src: blackRock, alt: "BlackRock logo", className: "py-1 translate-y-0.5" },
-  { src: coinbase, alt: "Coinbase logo", className: "py-0.5" },
-  { src: etoro, alt: "eToro logo", className: "py-0.5" },
-  {
-    src: fidelity,
-    alt: "Fidelity logo",
-    className: "invert translate-y-[3px]",
-  },
-  {
-    src: jpMorgan,
-    alt: "JPMorgan logo",
-    className: "py-0.5 translate-y-1.5 invert",
-  },
-  {
-    src: morganStanley,
-    alt: "Morgan Stanley logo",
-    className: "h-[18px] invert opacity-80",
-  },
-  { src: mastercard, alt: "Mastercard logo", className: "translate-y-[3px]" },
-  { src: robinhood, alt: "Robinhood logo", className: "translate-y-1" },
-  {
-    src: standardChartered,
-    alt: "Standard Chartered logo",
-    className: "scale-120 mx-4 translate-y-1",
-  },
-  { src: swift, alt: "Swift logo", className: "translate-y-[3px]" },
-  { src: ubs, alt: "UBS logo", className: "translate-y-[3px]" },
-]
-
 const getTestimonials = (
   t: (key: string) => string
 ): {
@@ -165,6 +135,36 @@ export default async function Home({ params }: Props) {
   const t = await getTranslations("home")
   const tCommon = await getTranslations("common")
 
+  const logos: { src: StaticImageData; alt: string; className?: string }[] = [
+    { src: blackRock, alt: tCommon("brand-logo", { name: "BlackRock" }), className: "py-1 translate-y-0.5" },
+    { src: coinbase, alt: tCommon("brand-logo", { name: "Coinbase" }), className: "py-0.5" },
+    { src: etoro, alt: tCommon("brand-logo", { name: "eToro" }), className: "py-0.5" },
+    {
+      src: fidelity,
+      alt: tCommon("brand-logo", { name: "Fidelity" }),
+      className: "invert translate-y-[3px]",
+    },
+    {
+      src: jpMorgan,
+      alt: tCommon("brand-logo", { name: "JPMorgan" }),
+      className: "py-0.5 translate-y-1.5 invert",
+    },
+    {
+      src: morganStanley,
+      alt: tCommon("brand-logo", { name: "Morgan Stanley" }),
+      className: "h-[18px] invert opacity-80",
+    },
+    { src: mastercard, alt: tCommon("brand-logo", { name: "Mastercard" }), className: "translate-y-[3px]" },
+    { src: robinhood, alt: tCommon("brand-logo", { name: "Robinhood" }), className: "translate-y-1" },
+    {
+      src: standardChartered,
+      alt: tCommon("brand-logo", { name: "Standard Chartered" }),
+      className: "scale-120 mx-4 translate-y-1",
+    },
+    { src: swift, alt: tCommon("brand-logo", { name: "Swift" }), className: "translate-y-[3px]" },
+    { src: ubs, alt: tCommon("brand-logo", { name: "UBS" }), className: "translate-y-[3px]" },
+  ]
+
   const uptime = getTimeSinceGenesis()
 
   const [
@@ -186,8 +186,8 @@ export default async function Home({ params }: Props) {
   const metrics: Metric[] = [
     {
       value: formatDuration(locale, uptime, { maxDecimalPoints: 1 }),
-      label: t("numbers.uptimeLabel"),
-      source: t("numbers.genesisSource", {
+      label: t("numbers.uptime-label"),
+      source: t("numbers.genesis-source", {
         date: formatDateMonthDayYear(locale, MAINNET_GENESIS),
       }),
       lastUpdated: formatDateMonthDayYear(locale, Date.now()),
@@ -197,7 +197,7 @@ export default async function Home({ params }: Props) {
         locale,
         beaconChainData.data.totalStakedEther * ethPrice.data.usd
       ),
-      label: t("numbers.networkSecurityLabel", {
+      label: t("numbers.network-security-label", {
         ethAmount: formatLargeNumber(
           locale,
           beaconChainData.data.totalStakedEther
@@ -213,10 +213,10 @@ export default async function Home({ params }: Props) {
       ),
       label: (
         <>
-          {t("numbers.stablecoinTvlLabel")}
+          {t("numbers.stablecoin-tvl-label")}
           <br />
           <span className="font-medium">
-            {t("numbers.stablecoinMarketShare", {
+            {t("numbers.stablecoin-market-share", {
               percent: formatPercent(
                 locale,
                 stablecoinAssetMarketShareData.data.marketShare.mainnet
@@ -238,10 +238,10 @@ export default async function Home({ params }: Props) {
       ),
       label: (
         <>
-          {t("numbers.defiTvlLabel")}
+          {t("numbers.defi-tvl-label")}
           <br />{" "}
           <span className="font-medium">
-            {t("numbers.defiMarketShare", {
+            {t("numbers.defi-market-share", {
               percent: formatPercent(
                 locale,
                 defiTvlAllCurrentData.data.mainnetDefiMarketshare +
@@ -344,7 +344,7 @@ export default async function Home({ params }: Props) {
               href="/data-hub"
               className="css-secondary w-fit text-lg"
             >
-              {tCommon("liveData")}
+              {tCommon("live-data")}
             </LinkWithArrow>
           </div>
           <div className="grid grid-cols-[auto_auto] gap-14 max-sm:grid-cols-2">
@@ -358,9 +358,9 @@ export default async function Home({ params }: Props) {
 
         <section id="digital-assets" className="w-full space-y-7">
           <div className="space-y-2 text-center">
-            <h2>{t("useCases.heading")}</h2>
+            <h2>{t("use-cases.heading")}</h2>
             <p className="text-muted-foreground text-xl tracking-[0.025rem]">
-              {t("useCases.subheading")}
+              {t("use-cases.subheading")}
             </p>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -374,13 +374,13 @@ export default async function Home({ params }: Props) {
                     }
                   />
                 </div>
-                <CardLabel variant="large">{t("useCases.rwa.label")}</CardLabel>
+                <CardLabel variant="large">{t("use-cases.rwa.label")}</CardLabel>
                 <CardDescription>
-                  {t("useCases.rwa.description")}
+                  {t("use-cases.rwa.description")}
                 </CardDescription>
               </CardContent>
               <LinkWithArrow href="/rwa" className="css-secondary max-md:mt-6">
-                {t("useCases.rwa.link")}
+                {t("use-cases.rwa.link")}
               </LinkWithArrow>
             </Card>
             <Card variant="flex-height">
@@ -392,14 +392,14 @@ export default async function Home({ params }: Props) {
                   />
                 </div>
                 <CardLabel variant="large">
-                  {t("useCases.defi.label")}
+                  {t("use-cases.defi.label")}
                 </CardLabel>
                 <CardDescription>
-                  {t("useCases.defi.description")}
+                  {t("use-cases.defi.description")}
                 </CardDescription>
               </CardContent>
               <LinkWithArrow href="/defi" className="css-secondary max-md:mt-6">
-                {t("useCases.defi.link")}
+                {t("use-cases.defi.link")}
               </LinkWithArrow>
             </Card>
             <Card variant="flex-height">
@@ -411,17 +411,17 @@ export default async function Home({ params }: Props) {
                   />
                 </div>
                 <CardLabel variant="large">
-                  {t("useCases.privacy.label")}
+                  {t("use-cases.privacy.label")}
                 </CardLabel>
                 <CardDescription>
-                  {t("useCases.privacy.description")}
+                  {t("use-cases.privacy.description")}
                 </CardDescription>
               </CardContent>
               <LinkWithArrow
                 href="/privacy"
                 className="css-secondary max-md:mt-6"
               >
-                {t("useCases.privacy.link")}
+                {t("use-cases.privacy.link")}
               </LinkWithArrow>
             </Card>
             <Card variant="flex-height">
@@ -433,17 +433,17 @@ export default async function Home({ params }: Props) {
                   />
                 </div>
                 <CardLabel variant="large">
-                  {t("useCases.layer2.label")}
+                  {t("use-cases.layer2.label")}
                 </CardLabel>
                 <CardDescription>
-                  {t("useCases.layer2.description")}
+                  {t("use-cases.layer2.description")}
                 </CardDescription>
               </CardContent>
               <LinkWithArrow
                 href="/layer-2"
                 className="css-secondary max-md:mt-6"
               >
-                {t("useCases.layer2.link")}
+                {t("use-cases.layer2.link")}
               </LinkWithArrow>
             </Card>
           </div>
@@ -453,9 +453,9 @@ export default async function Home({ params }: Props) {
           <section id="leader" className="space-y-12">
             <div className="space-y-4 text-center">
               <h2>
-                {t("leader.headingLine1")}
+                {t("leader.heading-line1")}
                 <br />
-                {t("leader.headingLine2")}
+                {t("leader.heading-line2")}
               </h2>
               <p className="text-muted-foreground mx-auto max-w-4xl text-xl font-medium">
                 {t("leader.intro")}
@@ -497,13 +497,13 @@ export default async function Home({ params }: Props) {
                   label: t("comparison.ethereum"),
                   highlighted: true,
                 },
-                { key: "l1Alt", label: t("comparison.l1Alt") },
-                { key: "privateDlt", label: t("comparison.privateDlt") },
+                { key: "l1Alt", label: t("comparison.l1-alt") },
+                { key: "privateDlt", label: t("comparison.private-dlt") },
                 { key: "traditional", label: t("comparison.traditional") },
               ]}
               rows={(
                 [
-                  { key: "settlement", label: "settlementFinality" },
+                  { key: "settlement", label: "settlement-finality" },
                   { key: "audit", label: "auditability" },
                   { key: "neutrality", label: "neutrality" },
                   { key: "composability", label: "composability" },
@@ -512,8 +512,8 @@ export default async function Home({ params }: Props) {
                 label: t(`comparison.${label}`),
                 cells: {
                   ethereum: t(`comparison.ethereum_${key}`),
-                  l1Alt: t(`comparison.l1Alt_${key}`),
-                  privateDlt: t(`comparison.privateDlt_${key}`),
+                  l1Alt: t(`comparison.l1-alt_${key}`),
+                  privateDlt: t(`comparison.private-dlt_${key}`),
                   traditional: t(`comparison.traditional_${key}`),
                 },
               }))}
@@ -548,7 +548,7 @@ export default async function Home({ params }: Props) {
                     </h3>
                     <Image
                       src={imgSrc}
-                      alt={`${name} logo`}
+                      alt={tCommon("brand-logo", { name })}
                       className={cn("h-7 w-auto", imgClassName)}
                     />
                     <p className="text-muted-foreground">{label}</p>
@@ -585,14 +585,14 @@ export default async function Home({ params }: Props) {
                       </div>
                       {locale !== "en" && (
                         <p className="text-muted-foreground text-sm">
-                          {t("testimonials.translatedFrom")}
+                          {t("testimonials.translated-from")}
                         </p>
                       )}
                       <div className="flex gap-4">
                         <div className="relative size-12 shrink-0 overflow-hidden rounded-full">
                           <Image
                             src={imgSrc}
-                            alt={`${name} profile picture`}
+                            alt={tCommon("profile-picture", { name })}
                             fill
                             className="object-cover object-top grayscale"
                             placeholder="blur"
@@ -616,56 +616,6 @@ export default async function Home({ params }: Props) {
             </div>
           </section>
         </div>
-
-        {/* <section id="events" className="flex max-lg:flex-col">
-          <Image
-            src={eventPlaceholder}
-            alt="event placeholder"
-            placeholder="blur"
-            className="w-full shrink-0 object-cover grayscale max-lg:h-80 lg:w-md lg:max-w-md"
-          />
-          <div className="border-secondary-foreground border p-4 max-sm:mx-6 sm:p-10 sm:max-lg:mx-10 lg:my-10">
-            <p className="text-accent-foreground font-bold tracking-[0.02rem]">
-              Premier
-            </p>
-            <h2 className="text-h3-mobile sm:text-h3 mb-6 tracking-[0.055rem]">
-              Institutional events
-            </h2>
-            <p className="mb-12 font-medium">
-              <span className="font-bold">
-                Step inside the room where decisions are made.
-              </span>{" "}
-              Our events bring together a handpicked circle of industry
-              trailblazers and rising power players. Each gathering features
-              insider perspectives from world-class experts followed by high
-              value networking designed to spark business opportunities.
-            </p>
-            <div className="flex flex-wrap gap-4 max-sm:flex-col max-sm:py-4 sm:items-center sm:p-4">
-              <div className="bg-primary grid size-22 place-items-center rounded-sm">
-                <EthGlyphColor />
-              </div>
-              <div className="flex-1 shrink-0 space-y-1">
-                <h3 className="text-h6 sm:text-nowrap">
-                  Ethereum Foundation:
-                  <br />
-                  Institution dinner
-                </h3>
-                <p className="text-muted-foreground font-bold tracking-[0.02rem]">
-                  Buenos Aires
-                </p>
-                <p className="text-muted-foreground text-sm font-medium tracking-[0.0175rem]">
-                  17.11.2025
-                </p>
-              </div>
-              <LinkWithArrow
-                href="#"
-                className="css-secondary sm:mx-auto"
-              >
-                Apply here
-              </LinkWithArrow>
-            </div>
-          </div>
-        </section> */}
 
         <section id="scaling" className="space-y-12 md:space-y-20">
           <div className="flex flex-col items-center gap-y-2 text-center">
@@ -703,7 +653,7 @@ export default async function Home({ params }: Props) {
             href="/library"
             className="css-secondary mx-auto block w-fit text-lg"
           >
-            {tCommon("viewAllResources")}
+            {tCommon("view-all-resources")}
           </LinkWithArrow>
         </section>
       </article>

@@ -86,12 +86,12 @@ export const USE_CASE_NAV_ITEMS = [
 ] as const
 
 export const TOP_NAV_ITEMS = [
-  { href: "/why-ethereum", translationKey: "whyEthereum" },
+  { href: "/why-ethereum", translationKey: "why-ethereum" },
 ] as const
 
 export const NAV_ITEMS = [
-  { href: "/solution-providers", translationKey: "solutionProviders" },
-  { href: "/data-hub", translationKey: "dataHub" },
+  { href: "/solution-providers", translationKey: "solution-providers" },
+  { href: "/data-hub", translationKey: "data-hub" },
   { href: "/library", translationKey: "library" },
 ] as const
 

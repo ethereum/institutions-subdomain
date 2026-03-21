@@ -47,7 +47,7 @@ export const getDefiEcosystem = (
     platforms: [
       {
         name: "1inch",
-        description: t("categories.dex.platforms.oneInch"),
+        description: t("categories.dex.platforms.one-inch"),
         imgSrc: oneInch,
         href: "https://1inch.com/",
       },
@@ -65,7 +65,7 @@ export const getDefiEcosystem = (
       },
       {
         name: "CoWSwap",
-        description: t("categories.dex.platforms.cowSwap"),
+        description: t("categories.dex.platforms.cow-swap"),
         imgSrc: cowSwap,
         href: "https://swap.cow.fi/",
       },
@@ -173,7 +173,7 @@ export const getDefiEcosystem = (
       },
       {
         name: "Franklin Templeton BENJI",
-        description: t("categories.rwa-yield.platforms.ftBenji"),
+        description: t("categories.rwa-yield.platforms.ft-benji"),
         imgSrc: ftBenji,
         href: "https://digitalassets.franklintempleton.com/benji/",
       },
@@ -203,7 +203,7 @@ export const getDefiEcosystem = (
       },
       {
         name: "Sky",
-        description: t("categories.rwa-yield.platforms.skyRwa"),
+        description: t("categories.rwa-yield.platforms.sky-rwa"),
         imgSrc: sky,
         href: "https://sky.money/",
       },
@@ -221,7 +221,7 @@ export const getDefiEcosystem = (
       },
       {
         name: "WisdomTree",
-        description: t("categories.rwa-yield.platforms.wisdomTree"),
+        description: t("categories.rwa-yield.platforms.wisdom-tree"),
         imgSrc: wisdomTree,
         href: "https://www.wisdomtree.com/",
       },
@@ -233,13 +233,13 @@ export const getDefiEcosystem = (
     platforms: [
       {
         name: "EtherFi",
-        description: t("categories.staking.platforms.etherFi"),
+        description: t("categories.staking.platforms.ether-fi"),
         imgSrc: etherFi,
         href: "https://www.ether.fi/",
       },
       {
         name: "EigenCloud",
-        description: t("categories.staking.platforms.eigenCloud"),
+        description: t("categories.staking.platforms.eigen-cloud"),
         imgSrc: eigenCloud,
         href: "https://www.eigencloud.xyz/",
       },
@@ -251,13 +251,13 @@ export const getDefiEcosystem = (
       },
       {
         name: "Liquid Collective",
-        description: t("categories.staking.platforms.liquidCollective"),
+        description: t("categories.staking.platforms.liquid-collective"),
         imgSrc: liquidCollective,
         href: "https://liquidcollective.io/",
       },
       {
         name: "Rocket Pool",
-        description: t("categories.staking.platforms.rocketPool"),
+        description: t("categories.staking.platforms.rocket-pool"),
         imgSrc: rocketPool,
         href: "https://rocketpool.net/",
       },

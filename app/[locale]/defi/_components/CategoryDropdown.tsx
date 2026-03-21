@@ -29,7 +29,7 @@ const CategoryDropdown = ({ categoryState }: CategoryDropdownProps) => {
 
   const label =
     categoryKey === "all"
-      ? tEcosystem("allCategories")
+      ? tEcosystem("all-categories")
       : defiEcosystem[categoryKey].heading
 
   const handleClick = (selectedCategoryKey: CategoryKeyWithAll) => () => {
@@ -46,7 +46,7 @@ const CategoryDropdown = ({ categoryState }: CategoryDropdownProps) => {
       <DropdownMenuContent>
         <DropdownMenuItem>
           <p className="text-base font-bold" onClick={handleClick("all")}>
-            {tEcosystem("allCategories")}
+            {tEcosystem("all-categories")}
           </p>
         </DropdownMenuItem>
 

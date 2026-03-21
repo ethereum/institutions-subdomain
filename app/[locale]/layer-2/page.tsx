@@ -150,14 +150,14 @@ export default async function Page({ params }: Props) {
     Partial<SourceInfo & LastUpdated>)[] = [
     {
       heading: "Ernst & Young",
-      description: t("caseStudies.ey.description"),
+      description: t("case-studies.ey.description"),
       href: "https://blockchain.ey.com/technology",
       imgSrc: ey,
       ctaLabel: (
         <>
           90%
           <br />
-          {t("caseStudies.ey.ctaLabel")}
+          {t("case-studies.ey.cta-label")}
         </>
       ),
       lastUpdated: formatDateMonthDayYear(locale, new Date("2024-04-06")),
@@ -166,14 +166,14 @@ export default async function Page({ params }: Props) {
     },
     {
       heading: "Coinbase",
-      description: t("caseStudies.coinbase.description"),
+      description: t("case-studies.coinbase.description"),
       href: "https://www.base.org/",
       imgSrc: coinbase,
       ctaLabel: (
         <>
           {formatLargeCurrency(locale, baseTvlData.data.baseTvl)}
           <br />
-          {t("caseStudies.coinbase.ctaLabel")}
+          {t("case-studies.coinbase.cta-label")}
         </>
       ),
       lastUpdated: formatDateMonthDayYear(locale, baseTvlData.lastUpdated),
@@ -181,14 +181,14 @@ export default async function Page({ params }: Props) {
     },
     {
       heading: "Deutsche Bank",
-      description: t("caseStudies.deutscheBank.description"),
+      description: t("case-studies.deutsche-bank.description"),
       href: "https://www.db.com/news/detail/20250618-dama-2-litepaper-institutional-blueprint-for-asset-tokenisation-and-servicing-on-ethereum-layer-2?language_id=1",
       imgSrc: deutscheBank,
       ctaLabel: (
         <>
           $84T
           <br />
-          {t("caseStudies.deutscheBank.ctaLabel")}
+          {t("case-studies.deutsche-bank.cta-label")}
         </>
       ),
       lastUpdated: formatDateMonthDayYear(locale, new Date("2025-06-18")),
@@ -198,7 +198,7 @@ export default async function Page({ params }: Props) {
     },
     {
       heading: "Celo",
-      description: t("caseStudies.celo.description"),
+      description: t("case-studies.celo.description"),
       href: "https://celo.org/",
       imgSrc: celo,
       ctaLabel: (
@@ -208,7 +208,7 @@ export default async function Page({ params }: Props) {
             celoMonthlyStablecoinVolumeData.data.celoMonthlyStablecoinVolume
           )}
           <br />
-          {t("caseStudies.celo.ctaLabel")}
+          {t("case-studies.celo.cta-label")}
         </>
       ),
       lastUpdated: formatDateMonthDayYear(
@@ -219,7 +219,7 @@ export default async function Page({ params }: Props) {
     },
     {
       heading: "World",
-      description: t("caseStudies.world.description"),
+      description: t("case-studies.world.description"),
       href: "https://world.org/world-chain",
       imgSrc: worldChain,
       ctaLabel: (
@@ -229,7 +229,7 @@ export default async function Page({ params }: Props) {
             worldChainTxCountData.data.worldChainTxCount
           )}
           <br />
-          {t("caseStudies.world.ctaLabel")}
+          {t("case-studies.world.cta-label")}
         </>
       ),
       lastUpdated: formatDateMonthDayYear(
@@ -240,14 +240,14 @@ export default async function Page({ params }: Props) {
     },
     {
       heading: "Sony (Soneium)",
-      description: t("caseStudies.sony.description"),
+      description: t("case-studies.sony.description"),
       href: "https://soneium.org/",
       imgSrc: soneium,
       ctaLabel: (
         <>
           500K+
           <br />
-          {t("caseStudies.sony.ctaLabel")}
+          {t("case-studies.sony.cta-label")}
         </>
       ),
       lastUpdated: formatDateMonthDayYear(locale, new Date("2025-01-01")),
@@ -257,20 +257,20 @@ export default async function Page({ params }: Props) {
     {
       // TODO: Replace placeholder logo with Ant Group / Jovay logo asset
       heading: "Ant Group (Jovay)",
-      description: t("caseStudies.antGroup.description"),
+      description: t("case-studies.ant-group.description"),
       href: "https://www.antgroup.com/",
       imgSrc: ey,
-      ctaLabel: <>{t("caseStudies.antGroup.ctaLabel")}</>,
+      ctaLabel: <>{t("case-studies.ant-group.cta-label")}</>,
       lastUpdated: formatDateMonthDayYear(locale, new Date("2025-01-01")),
       source: "Ant Group",
       sourceHref: "https://www.antgroup.com/",
     },
     {
       heading: "Robinhood",
-      description: t("caseStudies.robinhood.description"),
+      description: t("case-studies.robinhood.description"),
       href: "https://docs.robinhood.com/chain/",
       imgSrc: robinhood,
-      ctaLabel: <>{t("caseStudies.robinhood.ctaLabel")}</>,
+      ctaLabel: <>{t("case-studies.robinhood.cta-label")}</>,
       lastUpdated: formatDateMonthDayYear(locale, new Date("2025-05-01")),
       source: "Robinhood",
       sourceHref: "https://robinhood.com/",
@@ -285,11 +285,11 @@ export default async function Page({ params }: Props) {
       </Hero>
       <article className="max-w-8xl mx-auto w-full space-y-20 px-4 py-10 sm:px-10 sm:py-20 md:space-y-40">
         <section className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_3fr]">
-          <h2 className="sr-only">{t("metrics.srHeading")}</h2>
+          <h2 className="sr-only">{t("metrics.sr-heading")}</h2>
           <Card variant="flex-height">
             <CardContent>
               <CardLabel className="text-base font-medium tracking-[0.02rem]">
-                <span title="Total Value Locked">{t("metrics.tvlAcross")}</span>
+                <span title={t("abbreviations.tvl")}>{t("metrics.tvl-across")}</span>
               </CardLabel>
               <CardValue asChild>
                 <AnimatedNumberInView>
@@ -329,8 +329,8 @@ export default async function Page({ params }: Props) {
             <CardHeader className="flex gap-2 !px-0 max-sm:flex-col sm:items-center">
               <CardContent className="flex-1 gap-4">
                 <CardTitle className="text-xl">
-                  {t("metrics.avgUops")}{" "}
-                  <span title="User Operations Per Second">UOPS</span>
+                  {t("metrics.avg-uops")}{" "}
+                  <span title={t("abbreviations.uops")}>UOPS</span>
                 </CardTitle>
               </CardContent>
               <div className="text-h4 font-bold tracking-[0.04rem]">
@@ -443,25 +443,25 @@ export default async function Page({ params }: Props) {
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
                 {t("trust.transparency")}
                 <p className="text-muted-foreground mt-1 text-base font-medium tracking-[0.02rem]">
-                  {t("trust.transparencyDesc")}
+                  {t("trust.transparency-desc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                {t("trust.dataAvailability")}
+                {t("trust.data-availability")}
                 <p className="text-muted-foreground mt-1 text-base font-medium tracking-[0.02rem]">
-                  {t("trust.dataAvailabilityDesc")}
+                  {t("trust.data-availability-desc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                {t("trust.exitWindow")}
+                {t("trust.exit-window")}
                 <p className="text-muted-foreground mt-1 text-base font-medium tracking-[0.02rem]">
-                  {t("trust.exitWindowDesc")}
+                  {t("trust.exit-window-desc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
                 {t("trust.recoverability")}
                 <p className="text-muted-foreground mt-1 text-base font-medium tracking-[0.02rem]">
-                  {t("trust.recoverabilityDesc")}
+                  {t("trust.recoverability-desc")}
                 </p>
               </li>
             </ul>
@@ -504,10 +504,10 @@ export default async function Page({ params }: Props) {
         <section id="frameworks" className="space-y-8">
           <div className="space-y-2">
             <h2 className="text-h3-mobile sm:text-h3">
-              {t("frameworksSection.heading")}
+              {t("frameworks-section.heading")}
             </h2>
             <p className="text-muted-foreground font-medium">
-              {t("frameworksSection.description")}
+              {t("frameworks-section.description")}
             </p>
           </div>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
@@ -516,7 +516,7 @@ export default async function Page({ params }: Props) {
                 key={heading}
                 href={href}
                 className="bg-card group flex h-full w-full flex-col justify-between p-6 transition-transform hover:scale-105 hover:transition-transform"
-                aria-label={tCommon("visitAriaLabel", { name: heading })}
+                aria-label={tCommon("visit-aria-label", { name: heading })}
               >
                 <div className="space-y-2">
                   <Image
@@ -547,7 +547,7 @@ export default async function Page({ params }: Props) {
                 key={heading}
                 href={href}
                 className="bg-card group flex h-full flex-col justify-between gap-2 p-6 transition-transform hover:scale-105 hover:transition-transform"
-                aria-label={tCommon("visitAriaLabel", { name: heading })}
+                aria-label={tCommon("visit-aria-label", { name: heading })}
               >
                 <div className="space-y-2">
                   <Image
@@ -588,44 +588,44 @@ export default async function Page({ params }: Props) {
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
                   <h4 className="text-h6">
-                    {t("enterprise.existing.immediateAccess")}
+                    {t("enterprise.existing.immediate-access")}
                   </h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  {t("enterprise.existing.immediateAccessDesc")}
+                  {t("enterprise.existing.immediate-access-desc")}
                 </div>
               </div>
               <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
                   <h4 className="text-h6">
-                    {t("enterprise.existing.lowerCosts")}
+                    {t("enterprise.existing.lower-costs")}
                   </h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  {t("enterprise.existing.lowerCostsDesc")}
+                  {t("enterprise.existing.lower-costs-desc")}
                 </div>
               </div>
               <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
                   <h4 className="text-h6">
-                    {t("enterprise.existing.regulatoryAlignment")}
+                    {t("enterprise.existing.regulatory-alignment")}
                   </h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  {t("enterprise.existing.regulatoryAlignmentDesc")}
+                  {t("enterprise.existing.regulatory-alignment-desc")}
                 </div>
               </div>
               <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
                   <h4 className="text-h6">
-                    {t("enterprise.existing.productionSecurity")}
+                    {t("enterprise.existing.production-security")}
                   </h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  {t("enterprise.existing.productionSecurityDesc")}
+                  {t("enterprise.existing.production-security-desc")}
                 </div>
               </div>
             </Card>
@@ -639,44 +639,44 @@ export default async function Page({ params }: Props) {
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
                   <h4 className="text-h6">
-                    {t("enterprise.custom.tailoredEnvironments")}
+                    {t("enterprise.custom.tailored-environments")}
                   </h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  {t("enterprise.custom.tailoredEnvironmentsDesc")}
+                  {t("enterprise.custom.tailored-environments-desc")}
                 </div>
               </div>
               <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
                   <h4 className="text-h6">
-                    {t("enterprise.custom.customFeatures")}
+                    {t("enterprise.custom.custom-features")}
                   </h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  {t("enterprise.custom.customFeaturesDesc")}
+                  {t("enterprise.custom.custom-features-desc")}
                 </div>
               </div>
               <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
                   <h4 className="text-h6">
-                    {t("enterprise.custom.sharedSecurity")}
+                    {t("enterprise.custom.shared-security")}
                   </h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  {t("enterprise.custom.sharedSecurityDesc")}
+                  {t("enterprise.custom.shared-security-desc")}
                 </div>
               </div>
               <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 py-6">
                 <div className="col-span-2 grid grid-cols-subgrid items-center gap-x-3">
                   <Check className="text-secondary-foreground" />
                   <h4 className="text-h6">
-                    {t("enterprise.custom.fasterTimeToMarket")}
+                    {t("enterprise.custom.faster-time-to-market")}
                   </h4>
                 </div>
                 <div className="text-muted-foreground col-start-2 font-medium">
-                  {t("enterprise.custom.fasterTimeToMarketDesc")}
+                  {t("enterprise.custom.faster-time-to-market-desc")}
                 </div>
               </div>
             </Card>
@@ -685,7 +685,7 @@ export default async function Page({ params }: Props) {
 
         <section id="cases" className="space-y-8">
           <h2 className="text-h3-mobile sm:text-h3">
-            {t("caseStudiesSection.heading")}
+            {t("case-studies-section.heading")}
           </h2>
           <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,260px),1fr))] gap-4">
             {caseStudies.map(
@@ -705,7 +705,7 @@ export default async function Page({ params }: Props) {
                     <Link
                       href={href}
                       className="group css-secondary space-y-2"
-                      aria-label={tCommon("visitAriaLabel", { name: heading })}
+                      aria-label={tCommon("visit-aria-label", { name: heading })}
                     >
                       <Image
                         src={imgSrc}

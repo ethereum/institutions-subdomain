@@ -54,7 +54,7 @@ export default async function Page({ params }: Props) {
     {
       label: (
         <>
-          {t("metrics.defiTvl")} <span title="Total Value Locked">TVL</span>
+          {t("metrics.defi-tvl")} <span title={t("abbreviations.tvl")}>TVL</span>
         </>
       ),
       value: formatLargeCurrency(
@@ -70,7 +70,7 @@ export default async function Page({ params }: Props) {
     {
       label: (
         <>
-          {t("metrics.shareGlobal")} <span title="Total Value Locked">TVL</span>
+          {t("metrics.share-global")} <span title={t("abbreviations.tvl")}>TVL</span>
         </>
       ),
       value: formatPercent(
@@ -90,9 +90,9 @@ export default async function Page({ params }: Props) {
       ),
       label: (
         <>
-          {t("metrics.dexVolume")}{" "}
-          <span title="Decentralized Exchange">DEX</span>{" "}
-          {t("metrics.dexVolumeSuffix")}
+          {t("metrics.dex-volume")}{" "}
+          <span title={t("abbreviations.dex")}>DEX</span>{" "}
+          {t("metrics.dex-volume-suffix")}
         </>
       ),
       lastUpdated: formatDateMonthDayYear(locale, dexVolume.lastUpdated),
@@ -101,7 +101,7 @@ export default async function Page({ params }: Props) {
     {
       label: (
         <>
-          <span title="Total Value Locked">TVL</span> {t("metrics.tvlVsNext")}
+          <span title={t("abbreviations.tvl")}>TVL</span> {t("metrics.tvl-vs-next")}
         </>
       ),
       value: formatMultiplier(
@@ -162,7 +162,7 @@ export default async function Page({ params }: Props) {
             locale === "en" ? "md:gap-12" : "md:gap-4"
           )}
         >
-          <h2 className="sr-only">{t("metrics.srHeading")}</h2>
+          <h2 className="sr-only">{t("metrics.sr-heading")}</h2>
           {metrics.map(
             ({ label, value, source, sourceHref, lastUpdated }, idx) => (
               <Card key={idx} variant="flex-height">
@@ -213,27 +213,27 @@ export default async function Page({ params }: Props) {
             </p>
             <ul className="max-w-prose space-y-4 font-medium">
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                {t("primitives.openStandards")}
+                {t("primitives.open-standards")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  {t("primitives.openStandardsDesc")}
+                  {t("primitives.open-standards-desc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                {t("primitives.deepLiquidity")}
+                {t("primitives.deep-liquidity")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  {t("primitives.deepLiquidityDesc")}
+                  {t("primitives.deep-liquidity-desc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
                 {t("primitives.composable")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  {t("primitives.composableDesc")}
+                  {t("primitives.composable-desc")}
                 </p>
               </li>
               <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
                 {t("primitives.permissionless")}
                 <p className="text-muted-foreground mt-1 text-base font-medium">
-                  {t("primitives.permissionlessDesc")}
+                  {t("primitives.permissionless-desc")}
                 </p>
               </li>
             </ul>
