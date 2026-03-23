@@ -535,6 +535,7 @@
       "description": "Liquide en cadena mientras protege datos empresariales confidenciales. Explore las funciones y herramientas de privacidad de Ethereum para las necesidades regulatorias, de riesgo y de auditoría institucional."
     },
     "stats": {
+      "sr-heading": "Resumen del ecosistema de privacidad",
       "teams-label": "Equipos construyendo sobre privacidad",
       "years-label": "Años de I+D en privacidad",
       "researchers-label": "Investigadores de privacidad dedicados en la EF",

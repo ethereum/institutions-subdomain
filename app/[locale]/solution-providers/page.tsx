@@ -23,6 +23,7 @@ export default async function Page({ params }: Props) {
   setRequestLocale(locale)
 
   const t = await getTranslations("solutionProviders")
+  const tCommon = await getTranslations("common")
 
   // Resolve translatable fields on each provider for the client
   const displayProviders = [...solutionProviders]
@@ -51,6 +52,7 @@ export default async function Page({ params }: Props) {
     ) as ProviderGridTranslations["regions"],
     providerSingular: t("provider-singular"),
     providerPlural: t("provider-plural"),
+    visit: tCommon("visit"),
   }
 
   return (

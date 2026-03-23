@@ -1,10 +1,11 @@
 "use client"
 
 import { useMemo, useState } from "react"
-import { ChevronDown, ExternalLink, X } from "lucide-react"
+import { ChevronDown, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardLabel } from "@/components/ui/card"
+import Link from "@/components/ui/link"
 
 import {
   MACRO_CATEGORIES,
@@ -25,6 +26,7 @@ export type ProviderGridTranslations = {
   regions: Record<Region, string>
   providerSingular: string
   providerPlural: string
+  visit: string
 }
 
 export function ProviderGrid({
@@ -222,14 +224,11 @@ export function ProviderGrid({
                 <Card
                   key={provider.name}
                   variant="flex-column"
-                  className="group/card h-full transition-opacity hover:opacity-90"
+                  className="group/card h-full transition-[opacity_transform] hover:scale-105 hover:opacity-90 hover:transition-transform"
                 >
                   <CardContent>
                     <div className="flex items-start justify-between gap-2">
                       <CardLabel variant="large">{provider.name}</CardLabel>
-                      {provider.url && (
-                        <ExternalLink className="text-muted-foreground mt-0.5 size-4 shrink-0 opacity-0 transition-opacity group-hover/card:opacity-100" />
-                      )}
                     </div>
                     {provider.description && (
                       <p className="text-muted-foreground mt-2 line-clamp-2 text-sm leading-relaxed">
@@ -252,20 +251,24 @@ export function ProviderGrid({
                       </>
                     )}
                   </div>
+                  <p className="text-secondary-foreground mt//-12 lg:mt-//16 font-bold">
+                    {i18n.visit}{" "}
+                    <span className="group-hover/card:animate-x-bounce inline-block">
+                      →
+                    </span>
+                  </p>
                 </Card>
               )
 
               if (provider.url) {
                 return (
-                  <a
+                  <Link
                     key={provider.name}
                     href={provider.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="no-underline"
+                    className="w-full"
                   >
                     {content}
-                  </a>
+                  </Link>
                 )
               }
 

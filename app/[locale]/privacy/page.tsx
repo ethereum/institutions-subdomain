@@ -4,15 +4,24 @@ import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import type { Metric } from "@/lib/types"
 
-import BigNumber from "@/components/BigNumber"
 import Hero from "@/components/Hero"
+import { SourceInfoTooltip } from "@/components/InfoTooltip"
 import MaskedParallelsIcon from "@/components/MaskedParallelsIcon"
 import BinaryLock from "@/components/svg/binary-lock"
 import LayersLock from "@/components/svg/layers-lock"
 import TargetCheck from "@/components/svg/target-check"
+import { AnimatedNumberInView } from "@/components/ui/animated-number"
+import {
+  Card,
+  CardContent,
+  CardLabel,
+  CardSource,
+  CardValue,
+} from "@/components/ui/card"
 import { ComparisonTable } from "@/components/ui/comparison-table"
 import Link, { LinkWithArrow } from "@/components/ui/link"
 
+import { cn } from "@/lib/utils"
 import { formatDateMonthDayYear } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
 import { formatLargeCurrency } from "@/lib/utils/number"
@@ -55,7 +64,7 @@ export default async function Page({ params }: Props) {
   const privacyResearchStart = 2019
   const privacyRdYears = new Date().getFullYear() - privacyResearchStart
 
-  const stats: Metric[] = [
+  const metrics: Metric[] = [
     {
       value: Intl.NumberFormat(locale).format(750) + "+",
       label: t("stats.teams-label"),
@@ -171,13 +180,49 @@ export default async function Page({ params }: Props) {
       </Hero>
 
       <article className="max-w-8xl mx-auto w-full space-y-20 px-4 py-10 sm:px-10 sm:py-20 md:space-y-40">
-        {/* 2. Stats Bar */}
-        <section id="stats" className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          {stats.map(({ label, ...props }, idx) => (
-            <BigNumber key={idx} className="bg-card p-6 [&>span]:text-sm" {...props}>
-              {label}
-            </BigNumber>
-          ))}
+        {/* 2. Metrics Bar */}
+        <section id="overview" className="space-y-4">
+          <h2 className="sr-only">{t("stats.sr-heading")}</h2>
+          <div
+            className={cn(
+              "grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4",
+              locale === "en" ? "md:gap-12" : "md:gap-4"
+            )}
+          >
+            {metrics.map(
+              ({ label, value, source, sourceHref, lastUpdated }, idx) => (
+                <Card key={idx} variant="flex-height">
+                  <CardContent>
+                    <CardLabel className="text-base font-medium tracking-[0.02rem]">
+                      {label}
+                    </CardLabel>
+                    <CardValue asChild>
+                      <AnimatedNumberInView>{value}</AnimatedNumberInView>
+                    </CardValue>
+                  </CardContent>
+                  {source && (
+                    <CardSource>
+                      {tCommon("source")}:{" "}
+                      {sourceHref ? (
+                        <Link
+                          href={sourceHref}
+                          className="text-muted-foreground hover:text-foreground"
+                          inline
+                        >
+                          {source}
+                        </Link>
+                      ) : (
+                        source
+                      )}
+                      {lastUpdated && (
+                        <SourceInfoTooltip lastUpdated={lastUpdated} />
+                      )}
+                    </CardSource>
+                  )}
+                </Card>
+              )
+            )}
+          </div>
         </section>
 
         {/* 3. Privacy Solutions */}
@@ -329,12 +374,17 @@ export default async function Page({ params }: Props) {
                 >
                   {t(heading)}
                   <p className="text-muted-foreground mt-1 text-base font-medium">
-                    {t(desc, desc === "why-matters.interoperability-desc" ? {
-                      defiTvl: formatLargeCurrency(
-                        locale,
-                        defiTvlAllCurrentData.data.mainnetDefiTvl
-                      ),
-                    } : undefined)}
+                    {t(
+                      desc,
+                      desc === "why-matters.interoperability-desc"
+                        ? {
+                            defiTvl: formatLargeCurrency(
+                              locale,
+                              defiTvlAllCurrentData.data.mainnetDefiTvl
+                            ),
+                          }
+                        : undefined
+                    )}
                   </p>
                 </li>
               ))}

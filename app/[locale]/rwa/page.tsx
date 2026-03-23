@@ -637,6 +637,7 @@ export default async function Page({ params }: Props) {
                           href={example.href}
                           inline
                           className="css-secondary"
+                          showDecorator
                         >
                           {example.name}
                         </Link>
@@ -841,7 +842,7 @@ export default async function Page({ params }: Props) {
 
         <section
           id="why-ethereum"
-          className="bg-primary text-primary-foreground -mx-4 px-4 py-16 sm:-mx-10 sm:px-10 md:py-24"
+          className="bg-primary text-primary-foreground px-4 py-16 sm:px-10 md:py-24"
         >
           <div className="max-w-8xl mx-auto grid grid-cols-1 gap-x-32 gap-y-8 md:grid-cols-2 md:items-center">
             <h2 className="text-h3-mobile sm:text-h2 tracking-[0.055rem]">

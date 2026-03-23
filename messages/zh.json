@@ -535,6 +535,7 @@
       "description": "在保护敏感商业数据的前提下完成链上结算。探索以太坊的隐私功能与工具，满足机构级的监管、风控与审计需求。"
     },
     "stats": {
+      "sr-heading": "隐私生态概览",
       "teams-label": "构建隐私方案的团队",
       "years-label": "隐私研发年限",
       "researchers-label": "以太坊基金会专职隐私研究员",

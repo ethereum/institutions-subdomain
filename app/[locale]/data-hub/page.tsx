@@ -315,7 +315,7 @@ export default async function Page({ params }: Props) {
         </section>
 
         <section id="rwa" className="space-y-4">
-          <h2 className="text-h3-mobile sm:text-h3 lg:w-lg lg:max-w-lg lg:shrink-0">
+          <h2 className="text-h3-mobile sm:text-h3 lg:shrink-0">
             {t("sections.rwa")}
           </h2>
           <RwaChartCard data={timeseriesRwaValueData} />
