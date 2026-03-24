@@ -1,7 +1,7 @@
 "use client"
 
 import { Fragment, useRef, useState } from "react"
-import { X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import Link, { LinkProps } from "@/components/ui/link"
@@ -37,9 +37,10 @@ const MobileNav = ({
       <Button
         ref={triggerRef}
         variant="ghost"
-        className="group-has-[.css-primary-invert]/body:text-primary-foreground hover:group-has-[.css-primary-invert]/body:text-primary-foreground/70 text-lg font-medium md:hidden"
+        className="group-has-[.css-primary-invert]/body:text-primary-foreground hover:group-has-[.css-primary-invert]/body:text-primary-foreground/70 text-lg font-medium lg:hidden"
         onClick={() => setOpen(true)}
       >
+        <Menu />
         {menuLabel}
       </Button>
 

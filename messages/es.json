@@ -68,11 +68,10 @@
     "defi": "Finanzas onchain",
     "privacy": "Privacidad compatible",
     "layer2": "Ethereum L2s",
-    "solution-providers": "Proveedores de soluciones",
-    "data-hub": "Portal de datos",
+    "solution-providers": "Solucionadores",
+    "data-hub": "Datos en vivo",
     "library": "Biblioteca",
-    "digital-assets": "Activos digitales",
-    "data-portal": "Portal de datos"
+    "digital-assets": "Activos digitales"
   },
   "home": {
     "hero": {

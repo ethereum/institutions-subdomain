@@ -131,7 +131,7 @@ export default async function RootLayout({ children, params }: Props) {
                 </span>
               </Link>
               <div className="flex items-center gap-4">
-                <nav className="flex items-center gap-4 max-md:hidden">
+                <nav className="flex items-center gap-4 text-center max-lg:hidden">
                   {topNavLinks.map((link) => (
                     <Link
                       key={link.href}
