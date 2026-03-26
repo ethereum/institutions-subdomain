@@ -39,6 +39,7 @@ import blackGlyphBanner from "@/public/images/banners/black-glyph-banner.png"
 import coinbase from "@/public/images/logos/apps/coinbase.png"
 import deutscheBank from "@/public/images/logos/apps/deutsche-bank.png"
 import ey from "@/public/images/logos/apps/ey.png"
+import antGroup from "@/public/images/logos/institutions/ant-group.png"
 import robinhood from "@/public/images/logos/institutions/robinhood.png"
 import soneium from "@/public/images/logos/institutions/soneium.png"
 import arbitrum from "@/public/images/logos/networks/arbitrum.png"
@@ -255,11 +256,10 @@ export default async function Page({ params }: Props) {
       sourceHref: "https://soneium.org/",
     },
     {
-      // TODO: Replace placeholder logo with Ant Group / Jovay logo asset
       heading: "Ant Group (Jovay)",
       description: t("case-studies.ant-group.description"),
       href: "https://www.antgroup.com/",
-      imgSrc: ey,
+      imgSrc: antGroup,
       ctaLabel: <>{t("case-studies.ant-group.cta-label")}</>,
       lastUpdated: formatDateMonthDayYear(locale, new Date("2025-01-01")),
       source: "Ant Group",
