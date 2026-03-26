@@ -39,6 +39,7 @@
   --breakpoint-xs: 30rem; /* 480px */
 
   --font-sans: var(--font-satoshi);
+  --font-serif: var(--font-serif);
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
   --color-chart-3: var(--chart-3);
@@ -178,7 +179,9 @@
   }
 
   h1,
-  h2,
+  h2 {
+    @apply font-serif leading-normal font-medium;
+  }
   h3,
   h4,
   h5,
@@ -225,6 +228,15 @@
   @keyframes hero-bg-slide {
     to {
       transform: translateX(var(--x-travel));
+    }
+  }
+
+  @keyframes levitate {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
     }
   }
 

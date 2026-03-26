@@ -23,7 +23,7 @@ const InfoTooltip = ({ children, className, ariaLabel }: InfoTooltipProps) => {
   return (
     <TooltipPopover content={<div className={className}>{children}</div>}>
       <Info
-        aria-label={ariaLabel || t("moreInfo")}
+        aria-label={ariaLabel || t("more-info")}
         className="size-[0.875em] translate-y-[0.06125em]"
       />
     </TooltipPopover>
@@ -42,7 +42,7 @@ const SourceInfoTooltip = ({
   const t = useTranslations("common")
   return (
     <InlineTextIcon className={className}>
-      <InfoTooltip ariaLabel={t("sourceInfo")}>
+      <InfoTooltip ariaLabel={t("source-info")}>
         {children}
         {source && (
           <p className={cn("text-nowrap", children && "mt-2")}>
@@ -57,7 +57,9 @@ const SourceInfoTooltip = ({
           </p>
         )}
         {lastUpdated && (
-          <p className="text-nowrap">{t("lastUpdated")}: {lastUpdated}</p>
+          <p className="text-nowrap">
+            {t("last-updated")}: {lastUpdated}
+          </p>
         )}
       </InfoTooltip>
     </InlineTextIcon>

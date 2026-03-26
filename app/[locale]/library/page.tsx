@@ -34,16 +34,9 @@ export default async function Page({ params }: Props) {
 
   return (
     <main className="row-start-2 flex flex-col items-center sm:items-start">
-      <Hero
-        heading={t("hero.heading")}
-        shape="book-open-text-fill"
-      >
-        <p>
-          {t("hero.description1")}
-        </p>
-        <p>
-          {t("hero.description2")}
-        </p>
+      <Hero heading={t("hero.heading")} shape="book-open-text-fill">
+        <p>{t("hero.description1")}</p>
+        <p>{t("hero.description2")}</p>
       </Hero>
       <article className="max-w-8xl mx-auto w-full space-y-10 px-4 py-10 sm:px-10 sm:py-20 md:space-y-20">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:gap-[6.5rem]">
@@ -57,7 +50,9 @@ export default async function Page({ params }: Props) {
                   <h2>{title}</h2>
                 </LibraryCardTitle>
               </LibraryCardTitleLink>
-              <LibraryCardDate>{formatDateMonthDayYear(locale, date)}</LibraryCardDate>
+              <LibraryCardDate>
+                {formatDateMonthDayYear(locale, date)}
+              </LibraryCardDate>
             </LibraryCard>
           ))}
         </div>

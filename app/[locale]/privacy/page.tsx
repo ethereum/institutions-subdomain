@@ -1,25 +1,45 @@
-import Image, { StaticImageData } from "next/image"
+import Image, { type StaticImageData } from "next/image"
 import type { Metadata } from "next/types"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 
+import type { Metric } from "@/lib/types"
+
 import Hero from "@/components/Hero"
+import { SourceInfoTooltip } from "@/components/InfoTooltip"
 import MaskedParallelsIcon from "@/components/MaskedParallelsIcon"
 import BinaryLock from "@/components/svg/binary-lock"
-import CpuLock from "@/components/svg/cpu-lock"
 import LayersLock from "@/components/svg/layers-lock"
 import TargetCheck from "@/components/svg/target-check"
-import { Card } from "@/components/ui/card"
-import Link from "@/components/ui/link"
+import { AnimatedNumberInView } from "@/components/ui/animated-number"
+import {
+  Card,
+  CardContent,
+  CardLabel,
+  CardSource,
+  CardValue,
+} from "@/components/ui/card"
+import { ComparisonTable } from "@/components/ui/comparison-table"
+import Link, { LinkWithArrow } from "@/components/ui/link"
 
 import { cn } from "@/lib/utils"
+import { formatDateMonthDayYear } from "@/lib/utils/date"
 import { getMetadata } from "@/lib/utils/metadata"
+import { formatLargeCurrency } from "@/lib/utils/number"
 
+import fetchTotalValueSecured from "@/app/_actions/fetchTotalValueSecured"
+import fetchDefiTvlAllCurrent from "@/app/_actions/fetchTvlDefiAllCurrent"
 import { type Locale, routing } from "@/i18n/routing"
 import blurWalking from "@/public/images/banners/blur-walking.png"
-import chainlink from "@/public/images/logos/apps/chainlink.png"
-import railgun from "@/public/images/logos/apps/railgun.png"
-import zama from "@/public/images/logos/apps/zama.png"
-import aztec from "@/public/images/logos/networks/aztec.png"
+import eyLogo from "@/public/images/logos/apps/ey.png"
+import fhenixLogo from "@/public/images/logos/apps/fhenix.png"
+import midenLogo from "@/public/images/logos/apps/miden.png"
+import privacyPoolsLogo from "@/public/images/logos/apps/privacy-pools.png"
+import railgunLogo from "@/public/images/logos/apps/railgun.png"
+import renegadeLogo from "@/public/images/logos/apps/renegade.png"
+import shutterLogo from "@/public/images/logos/apps/shutter.png"
+import zamaLogo from "@/public/images/logos/apps/zama.png"
+import aztecLogo from "@/public/images/logos/networks/aztec.png"
+import zksyncLogo from "@/public/images/logos/networks/zksync.png"
 
 type Props = {
   params: Promise<{ locale: Locale }>
@@ -36,207 +56,338 @@ export default async function Page({ params }: Props) {
   const t = await getTranslations("privacy")
   const tCommon = await getTranslations("common")
 
-  const productionSolutions: {
-    key: string
-    href: string
-    imgSrc: StaticImageData
-  }[] = [
+  const [totalValueSecuredData, defiTvlAllCurrentData] = await Promise.all([
+    fetchTotalValueSecured(),
+    fetchDefiTvlAllCurrent(),
+  ])
+
+  const privacyResearchStart = 2019
+  const privacyRdYears = new Date().getFullYear() - privacyResearchStart
+
+  const metrics: Metric[] = [
     {
-      key: "chainlink",
-      href: "https://chain.link/automated-compliance-engine",
-      imgSrc: chainlink,
+      value: Intl.NumberFormat(locale).format(750) + "+",
+      label: t("stats.teams-label"),
     },
     {
-      key: "railgun",
-      href: "https://www.railgun.org/",
-      imgSrc: railgun,
+      value: Intl.NumberFormat(locale).format(privacyRdYears) + "+",
+      label: t("stats.years-label"),
     },
     {
-      key: "aztec",
-      href: "https://aztec.network/",
-      imgSrc: aztec,
+      value: Intl.NumberFormat(locale).format(50) + "+",
+      label: t("stats.researchers-label"),
     },
     {
-      key: "zama",
-      href: "https://www.zama.ai/",
-      imgSrc: zama,
+      value: formatLargeCurrency(locale, totalValueSecuredData.data.sum),
+      label: t("stats.value-label"),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        totalValueSecuredData.lastUpdated
+      ),
+      ...totalValueSecuredData.sourceInfo,
     },
   ]
 
+  type ExampleLink = {
+    name: string
+    href: string
+    logo?: StaticImageData
+    note?: string
+  }
+
+  const solutions: {
+    key: string
+    examples: ExampleLink[]
+  }[] = [
+    {
+      key: "prividium",
+      examples: [
+        {
+          name: "zkSync Prividium",
+          href: "https://www.zksync.io/prividium",
+          logo: zksyncLogo,
+          note: t("solutions.prividium.note"),
+        },
+      ],
+    },
+    {
+      key: "programmable-privacy",
+      examples: [
+        { name: "Aztec", href: "https://aztec.network/", logo: aztecLogo },
+        {
+          name: "EY Nightfall",
+          href: "https://blockchain.ey.com/technology",
+          logo: eyLogo,
+        },
+        { name: "Miden", href: "https://miden.xyz/", logo: midenLogo },
+      ],
+    },
+    {
+      key: "compliance-pools",
+      examples: [
+        {
+          name: "Privacy Pools",
+          href: "https://privacypools.com/",
+          logo: privacyPoolsLogo,
+          note: t("solutions.compliance-pools.note"),
+        },
+      ],
+    },
+    {
+      key: "shielded-tx",
+      examples: [
+        { name: "Railgun", href: "https://railgun.org/", logo: railgunLogo },
+        {
+          name: "EY Starlight",
+          href: "https://blockchain.ey.com/technology",
+          logo: eyLogo,
+        },
+      ],
+    },
+    {
+      key: "emerging",
+      examples: [
+        { name: "Fhenix", href: "https://www.fhenix.io/", logo: fhenixLogo },
+        { name: "Zama", href: "https://www.zama.org/", logo: zamaLogo },
+        {
+          name: "Shutter",
+          href: "https://www.shutter.network/",
+          logo: shutterLogo,
+        },
+        { name: "Renegade", href: "https://renegade.fi/", logo: renegadeLogo },
+        { name: "Miden", href: "https://miden.xyz/", logo: midenLogo },
+      ],
+    },
+  ]
+
+  const privateChainRisks = [
+    "vendor-dependency",
+    "no-interop",
+    "talent",
+    "fragility",
+    "instability",
+    "auditability",
+    "off-chain-privacy",
+    "missing-abstractions",
+  ] as const
+
   return (
     <main className="row-start-2 flex flex-col items-center sm:items-start">
+      {/* 1. Hero */}
       <Hero heading={t("hero.heading")} shape="lock">
-        <p>
-          {t("hero.description1")}
-        </p>
-        <p>
-          {t("hero.description2")}
-        </p>
+        <p>{t("hero.description1")}</p>
+        <p>{t("hero.description2")}</p>
       </Hero>
+
       <article className="max-w-8xl mx-auto w-full space-y-20 px-4 py-10 sm:px-10 sm:py-20 md:space-y-40">
-        <section id="direct" className="flex gap-10 max-lg:flex-col md:gap-16">
-          <div className="space-y-6">
-            <h2 className="text-h3-mobile sm:text-h3 max-lg:mx-auto max-lg:text-center lg:w-lg lg:max-w-lg lg:shrink-0">
-              {t("direct.heading")}
+        {/* 2. Metrics Bar */}
+        <section id="overview" className="space-y-4">
+          <h2 className="sr-only">{t("stats.sr-heading")}</h2>
+          <div
+            className={cn(
+              "grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4",
+              locale === "en" ? "md:gap-12" : "md:gap-4"
+            )}
+          >
+            {metrics.map(
+              ({ label, value, source, sourceHref, lastUpdated }, idx) => (
+                <Card key={idx} variant="flex-height">
+                  <CardContent>
+                    <CardLabel className="text-base font-medium tracking-[0.02rem]">
+                      {label}
+                    </CardLabel>
+                    <CardValue asChild>
+                      <AnimatedNumberInView>{value}</AnimatedNumberInView>
+                    </CardValue>
+                  </CardContent>
+                  {source && (
+                    <CardSource>
+                      {tCommon("source")}:{" "}
+                      {sourceHref ? (
+                        <Link
+                          href={sourceHref}
+                          className="text-muted-foreground hover:text-foreground"
+                          inline
+                        >
+                          {source}
+                        </Link>
+                      ) : (
+                        source
+                      )}
+                      {lastUpdated && (
+                        <SourceInfoTooltip lastUpdated={lastUpdated} />
+                      )}
+                    </CardSource>
+                  )}
+                </Card>
+              )
+            )}
+          </div>
+        </section>
+
+        {/* 3. Privacy Solutions */}
+        <section id="solutions" className="space-y-14">
+          <div className="space-y-4">
+            <h2 className="text-h3-mobile sm:text-h3 max-w-2xl tracking-[0.055rem]">
+              {t("solutions.heading")}
             </h2>
-            <p>
-              {t("direct.description")}
+            <p className="text-muted-foreground max-w-3xl font-medium">
+              {t("solutions.description")}
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
-            <div className="space-y-2">
-              <h3 className="text-h5 text-foreground tracking-[0.03rem]">
-                {t("direct.neutralStacks")}
-              </h3>
-              <div className="text-muted-foreground font-medium">
-                {t("direct.neutralStacksDesc")}
+
+          {/* Bento: 2 rows — top 2 cards, bottom 3 cards */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
+            {solutions.map(({ key, examples }) => (
+              <div
+                key={key}
+                className={`flex h-full flex-col justify-between p-8 ${
+                  key === "prividium" || key === "programmable-privacy"
+                    ? "bg-card lg:col-span-3"
+                    : key === "emerging"
+                      ? "border-border border lg:col-span-2"
+                      : "bg-card lg:col-span-2"
+                }`}
+              >
+                <div className="space-y-3">
+                  <h3 className="text-h5 text-foreground tracking-[0.03rem]">
+                    {t(`solutions.${key}.approach`)}
+                  </h3>
+                  <p className="text-muted-foreground font-medium">
+                    {t(`solutions.${key}.description`)}
+                  </p>
+                </div>
+                <div className="mt-6 space-y-3 border-t pt-4">
+                  <p className="text-muted-foreground text-xs font-bold tracking-widest uppercase">
+                    {t("solutions.examples")}
+                  </p>
+                  <div className="flex flex-wrap gap-4">
+                    {examples.map(({ name, href, logo, note }) => (
+                      <Link
+                        key={name}
+                        href={href}
+                        className="flex items-center gap-1"
+                      >
+                        {logo && (
+                          <Image
+                            src={logo}
+                            alt={tCommon("brand-logo", { name })}
+                            sizes="20px"
+                            className="size-5 rounded-full"
+                          />
+                        )}
+                        <span className="text-secondary-foreground hover:text-secondary-foreground/70 text-sm font-medium transition-colors">
+                          {name}
+                        </span>
+                        {note && (
+                          <span className="text-muted-foreground text-xs">
+                            {note}
+                          </span>
+                        )}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="space-y-2">
-              <h3 className="text-h5 text-foreground tracking-[0.03rem]">
-                {t("direct.compliance")}
-              </h3>
-              <div className="text-muted-foreground font-medium">
-                {t("direct.complianceDesc")}
-              </div>
-            </div>
-            <div className="space-y-2">
-              <h3 className="text-h5 text-foreground tracking-[0.03rem]">
-                {t("direct.pilots")}
-              </h3>
-              <div className="text-muted-foreground font-medium">
-                {t("direct.pilotsDesc")}
-              </div>
-            </div>
-            <div className="space-y-2">
-              <h3 className="text-h5 text-foreground tracking-[0.03rem]">
-                {t("direct.education")}
-              </h3>
-              <div className="text-muted-foreground font-medium">
-                {t("direct.educationDesc")}
-              </div>
-            </div>
+            ))}
           </div>
         </section>
 
-        <section id="building-blocks" className="space-y-14">
-          <h2 className="text-h3-mobile sm:text-h3 max-w-lg tracking-[0.055rem]">
-            {t("buildingBlocks.heading")}
+        {/* 4. Compliance Without Exposure */}
+        <section id="compliance" className="space-y-10">
+          <h2 className="text-h3-mobile sm:text-h3 max-w-2xl tracking-[0.055rem]">
+            {t("compliance.heading")}
           </h2>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <Link
-              href="https://ethereum.org/zero-knowledge-proofs/"
-              className="group h-full transition-transform hover:scale-105 hover:transition-transform"
-            >
-              <Card className="h-full space-y-2">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {(
+              [
+                {
+                  heading: "compliance.selective-disclosure",
+                  desc: "compliance.selective-disclosure-desc",
+                  icon: <TargetCheck className="size-full text-white" />,
+                },
+                {
+                  heading: "compliance.privacy-credentials",
+                  desc: "compliance.privacy-credentials-desc",
+                  icon: <BinaryLock className="size-full text-white" />,
+                },
+                {
+                  heading: "compliance.composable-primitives",
+                  desc: "compliance.composable-primitives-desc",
+                  icon: <LayersLock className="size-full text-white" />,
+                },
+              ] as const
+            ).map(({ heading, desc, icon }) => (
+              <div key={heading} className="bg-card space-y-4 p-8">
                 <div className="size-37 shrink-0 overflow-hidden p-2.5">
                   <MaskedParallelsIcon
                     className="text-secondary-foreground"
-                    maskShape={<TargetCheck className="size-full text-white" />}
+                    maskShape={icon}
                   />
                 </div>
-
-                <h3 className="text-h5 text-section-foreground group-hover:text-secondary-foreground tracking-[0.03rem]">
-                  {t("buildingBlocks.zk.label")}
+                <h3 className="text-h5 text-foreground tracking-[0.03rem]">
+                  {t(heading)}
                 </h3>
-                <p className="text-muted-foreground font-medium">
-                  {t("buildingBlocks.zk.description")}
-                </p>
-              </Card>
-            </Link>
-            <Link
-              href="https://pse.dev/blog/zero-to-start-applied-fully-homomorphic-encryption-fhe-part-1"
-              className="group h-full transition-transform hover:scale-105 hover:transition-transform"
-            >
-              <Card className="h-full space-y-2">
-                <div className="size-37 shrink-0 overflow-hidden p-2.5">
-                  <MaskedParallelsIcon
-                    className="text-secondary-foreground"
-                    maskShape={<BinaryLock className="size-full text-white" />}
-                  />
-                </div>
-
-                <h3 className="text-h5 text-section-foreground group-hover:text-secondary-foreground tracking-[0.03rem]">
-                  {t("buildingBlocks.fhe.label")}
-                </h3>
-                <p className="text-muted-foreground font-medium">
-                  {t("buildingBlocks.fhe.description")}
-                </p>
-              </Card>
-            </Link>
-            <Link
-              href="https://ethereum.org/developers/docs/oracles/#authenticity-proofs"
-              className="group h-full transition-transform hover:scale-105 hover:transition-transform"
-            >
-              <Card className="h-full space-y-2">
-                <div className="size-37 shrink-0 overflow-hidden p-2.5">
-                  <MaskedParallelsIcon
-                    className="text-secondary-foreground"
-                    maskShape={<CpuLock className="size-full text-white" />}
-                  />
-                </div>
-
-                <h3 className="text-h5 text-section-foreground group-hover:text-secondary-foreground tracking-[0.03rem]">
-                  {t("buildingBlocks.tee.label")}
-                </h3>
-                <p className="text-muted-foreground font-medium">
-                  {t("buildingBlocks.tee.description")}
-                </p>
-              </Card>
-            </Link>
-            <Link
-              href="https://l2beat.com/zk-catalog"
-              className="group h-full transition-transform hover:scale-105 hover:transition-transform"
-            >
-              <Card className="h-full space-y-2">
-                <div className="size-37 shrink-0 overflow-hidden p-2.5">
-                  <MaskedParallelsIcon
-                    className="text-secondary-foreground"
-                    maskShape={<LayersLock className="size-full text-white" />}
-                  />
-                </div>
-
-                <h3 className="text-h5 text-section-foreground group-hover:text-secondary-foreground tracking-[0.03rem]">
-                  {t("buildingBlocks.l2.label")}
-                </h3>
-                <p className="text-muted-foreground font-medium">
-                  {t("buildingBlocks.l2.description")}
-                </p>
-              </Card>
-            </Link>
+                <p className="text-muted-foreground font-medium">{t(desc)}</p>
+              </div>
+            ))}
           </div>
         </section>
 
-        <section id="why" className="flex gap-x-32 gap-y-14 max-lg:flex-col">
+        {/* 5. Why This Matters */}
+        <section
+          id="why-matters"
+          className="flex gap-x-32 gap-y-14 max-lg:flex-col"
+        >
           <div className="flex-3 space-y-7">
             <h2 className="text-h3-mobile sm:text-h3 tracking-[0.055rem] lg:max-w-lg">
-              {t("why.heading")}
+              {t("why-matters.heading")}
             </h2>
             <ul className="max-w-prose space-y-4">
-              <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                {t("why.auditReady")}
-                <p className="text-muted-foreground mt-1 text-base font-medium">
-                  {t("why.auditReadyDesc")}
-                </p>
-              </li>
-              <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                {t("why.composability")}
-                <p className="text-muted-foreground mt-1 text-base font-medium">
-                  {t("why.composabilityDesc")}
-                </p>
-              </li>
-              <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                {t("why.noLockIn")}
-                <p className="text-muted-foreground mt-1 text-base font-medium">
-                  {t("why.noLockInDesc")}
-                </p>
-              </li>
-              <li className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]">
-                {t("why.security")}
-                <p className="text-muted-foreground mt-1 text-base font-medium">
-                  {t("why.securityDesc")}
-                </p>
-              </li>
+              {(
+                [
+                  {
+                    heading: "why-matters.resilience",
+                    desc: "why-matters.resilience-desc",
+                  },
+                  {
+                    heading: "why-matters.censorship",
+                    desc: "why-matters.censorship-desc",
+                  },
+                  {
+                    heading: "why-matters.no-counterparty",
+                    desc: "why-matters.no-counterparty-desc",
+                  },
+                  {
+                    heading: "why-matters.economics",
+                    desc: "why-matters.economics-desc",
+                  },
+                  {
+                    heading: "why-matters.interoperability",
+                    desc: "why-matters.interoperability-desc",
+                  },
+                ] as const
+              ).map(({ heading, desc }) => (
+                <li
+                  key={heading}
+                  className="ms-6 list-disc text-xl font-bold tracking-[0.025rem]"
+                >
+                  {t(heading)}
+                  <p className="text-muted-foreground mt-1 text-base font-medium">
+                    {t(
+                      desc,
+                      desc === "why-matters.interoperability-desc"
+                        ? {
+                            defiTvl: formatLargeCurrency(
+                              locale,
+                              defiTvlAllCurrentData.data.mainnetDefiTvl
+                            ),
+                          }
+                        : undefined
+                    )}
+                  </p>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="relative min-h-80 flex-2">
@@ -251,47 +402,113 @@ export default async function Page({ params }: Props) {
           </div>
         </section>
 
-        <section id="solutions" className="space-y-8">
-          <h2 className="text-h4 tracking-[0.04rem]">
-            {t("solutions.heading")}
-          </h2>
-          <div
-            className={cn(
-              "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4",
-              "*:bg-card *:space-y-2 *:p-6"
-            )}
-          >
-            {productionSolutions.map(
-              ({ key, imgSrc, href }) => (
-                <Link
-                  key={key}
-                  href={href}
-                  className="bg-card group flex h-full flex-col justify-between p-6 transition-transform hover:scale-105 hover:transition-transform"
-                  aria-label={`${tCommon("visit")} ${t(`solutions.${key}.heading`)}`}
-                >
-                  <div className="space-y-2">
-                    <Image
-                      src={imgSrc}
-                      alt=""
-                      sizes="48px"
-                      className="size-12"
-                    />
-                    <h3 className="text-h5 text-section-foreground tracking-[0.03rem]">
-                      {t(`solutions.${key}.heading`)}
-                    </h3>
-                    <p className="text-muted-foreground font-medium">
-                      {t(`solutions.${key}.description`)}
-                    </p>
-                  </div>
-                  <p className="text-secondary-foreground mt-4 mb-0">
-                    {tCommon("visit")}{" "}
-                    <span className="group-hover:animate-x-bounce inline-block">
-                      →
-                    </span>
-                  </p>
-                </Link>
-              )
-            )}
+        {/* 6. Trust vs Cryptographic Privacy */}
+        <section id="trust-vs-crypto" className="space-y-10">
+          <div className="space-y-4">
+            <h2 className="text-h3-mobile sm:text-h3 max-w-2xl tracking-[0.055rem]">
+              {t("trust-vs-crypto.heading")}
+            </h2>
+            <p className="text-muted-foreground max-w-3xl font-medium">
+              {t("trust-vs-crypto.description")}
+            </p>
+          </div>
+
+          <ComparisonTable
+            columns={[
+              { key: "trust", label: t("trust-vs-crypto.trust-heading") },
+              {
+                key: "crypto",
+                label: t("trust-vs-crypto.crypto-heading"),
+                highlighted: true,
+              },
+            ]}
+            rows={(
+              [
+                "guarantee",
+                "mechanism",
+                "incentives",
+                "vendor",
+                "regulatory",
+              ] as const
+            ).map((key) => ({
+              label: t(`trust-vs-crypto.table-${key}`),
+              cells: {
+                trust: t(`trust-vs-crypto.table-trust-${key}`),
+                crypto: t(`trust-vs-crypto.table-crypto-${key}`),
+              },
+            }))}
+          />
+
+          <p className="text-muted-foreground max-w-3xl border-l-4 pl-4 font-medium italic">
+            {t("trust-vs-crypto.closing")}
+          </p>
+        </section>
+
+        {/* 7. Problems with Private Chains */}
+        <section id="private-chains" className="space-y-10">
+          <div className="space-y-4">
+            <h2 className="text-h3-mobile sm:text-h3 max-w-2xl tracking-[0.055rem]">
+              {t("private-chains.heading")}
+            </h2>
+            <p className="text-muted-foreground max-w-3xl font-medium">
+              {t("private-chains.description")}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-14">
+            {privateChainRisks.map((key) => (
+              <div key={key} className="space-y-2">
+                <h3 className="text-h6 text-foreground font-bold">
+                  {t(`private-chains.${key}`)}
+                </h3>
+                <p className="text-muted-foreground font-medium">
+                  {t(`private-chains.${key}-desc`)}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-muted-foreground max-w-3xl border-l-4 pl-4 font-medium italic">
+            {t("private-chains.closing")}
+          </p>
+        </section>
+
+        {/* 9. EF Privacy Commitment */}
+        <section
+          id="ef-commitment"
+          className="flex gap-x-32 gap-y-14 max-lg:flex-col"
+        >
+          <div className="flex-1 space-y-7">
+            <div className="space-y-4">
+              <h2 className="text-h3-mobile sm:text-h3 max-w-2xl tracking-[0.055rem]">
+                {t("ef-commitment.heading")}
+              </h2>
+              <p className="text-muted-foreground text-xl font-medium">
+                {t("ef-commitment.description")}
+              </p>
+            </div>
+            <div className="bg-card mt-12 p-8">
+              <h3 className="text-foreground text-2xl font-bold">
+                {t("ef-commitment.iptf-title")}
+              </h3>
+              <p className="text-muted-foreground mt-2 font-medium">
+                {t("ef-commitment.iptf-desc")}
+              </p>
+              <LinkWithArrow
+                href="https://iptf.ethereum.org/"
+                className="text-secondary-foreground mt-6"
+              >
+                {t("ef-commitment.visit-iptf")}
+              </LinkWithArrow>
+            </div>
+          </div>
+          <div className="relative flex-1">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/eth-diamond.svg"
+              alt=""
+              className="absolute inset-0 size-full animate-[levitate_3s_ease-in-out_infinite] object-contain object-center"
+            />
           </div>
         </section>
       </article>

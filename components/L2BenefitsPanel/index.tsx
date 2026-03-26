@@ -24,20 +24,20 @@ export function L2BenefitsPanel({ securityValue }: L2BenefitsPanelProps) {
     }[]
   }[] = [
     {
-      title: t("inheritDecentralization.title"),
+      title: t("inherit-decentralization.title"),
       cards: [
         {
-          heading: t("inheritDecentralization.noBootstrapping.heading"),
+          heading: t("inherit-decentralization.no-bootstrapping.heading"),
           items: [
-            t("inheritDecentralization.noBootstrapping.item1"),
-            t("inheritDecentralization.noBootstrapping.item2"),
-            t("inheritDecentralization.noBootstrapping.item3"),
+            t("inherit-decentralization.no-bootstrapping.item1"),
+            t("inherit-decentralization.no-bootstrapping.item2"),
+            t("inherit-decentralization.no-bootstrapping.item3"),
           ],
         },
         {
-          heading: t("inheritDecentralization.sharedSecurity.heading"),
+          heading: t("inherit-decentralization.shared-security.heading"),
           items: [
-            t.rich("inheritDecentralization.sharedSecurity.item1", {
+            t.rich("inherit-decentralization.shared-security.item1", {
               securityValue,
               link: (chunks) => (
                 <Link
@@ -49,45 +49,45 @@ export function L2BenefitsPanel({ securityValue }: L2BenefitsPanelProps) {
                 </Link>
               ),
             }),
-            t("inheritDecentralization.sharedSecurity.item2"),
+            t("inherit-decentralization.shared-security.item2"),
           ],
         },
       ],
     },
     {
-      title: t("cheaperSecurity.title"),
+      title: t("cheaper-security.title"),
       cards: [
         {
-          heading: t("cheaperSecurity.noInflation.heading"),
+          heading: t("cheaper-security.no-inflation.heading"),
           items: [
-            t("cheaperSecurity.noInflation.item1"),
-            t("cheaperSecurity.noInflation.item2"),
-            t("cheaperSecurity.noInflation.item3"),
-            t("cheaperSecurity.noInflation.item4"),
+            t("cheaper-security.no-inflation.item1"),
+            t("cheaper-security.no-inflation.item2"),
+            t("cheaper-security.no-inflation.item3"),
+            t("cheaper-security.no-inflation.item4"),
           ],
         },
       ],
     },
     {
-      title: t("enhancedPerformance.title"),
+      title: t("enhanced-performance.title"),
       cards: [
         {
-          heading: t("enhancedPerformance.highPerformance.heading"),
-          items: [t("enhancedPerformance.highPerformance.item1")],
+          heading: t("enhanced-performance.high-performance.heading"),
+          items: [t("enhanced-performance.high-performance.item1")],
         },
         {
-          heading: t("enhancedPerformance.fasterCheaper.heading"),
+          heading: t("enhanced-performance.faster-cheaper.heading"),
           items: [
-            t("enhancedPerformance.fasterCheaper.item1"),
-            t("enhancedPerformance.fasterCheaper.item2"),
+            t("enhanced-performance.faster-cheaper.item1"),
+            t("enhanced-performance.faster-cheaper.item2"),
           ],
         },
         {
-          heading: t("enhancedPerformance.saferValidation.heading"),
+          heading: t("enhanced-performance.safer-validation.heading"),
           items: [
-            t("enhancedPerformance.saferValidation.item1"),
-            t("enhancedPerformance.saferValidation.item2"),
-            t("enhancedPerformance.saferValidation.item3"),
+            t("enhanced-performance.safer-validation.item1"),
+            t("enhanced-performance.safer-validation.item2"),
+            t("enhanced-performance.safer-validation.item3"),
           ],
         },
       ],
@@ -96,11 +96,24 @@ export function L2BenefitsPanel({ securityValue }: L2BenefitsPanelProps) {
       title: t("interoperability.title"),
       cards: [
         {
-          heading: t("interoperability.sharedStandards.heading"),
+          heading: t("interoperability.shared-standards.heading"),
           items: [
-            t("interoperability.sharedStandards.item1"),
-            t("interoperability.sharedStandards.item2"),
-            t("interoperability.sharedStandards.item3"),
+            t("interoperability.shared-standards.item1"),
+            t("interoperability.shared-standards.item2"),
+            t("interoperability.shared-standards.item3"),
+          ],
+        },
+      ],
+    },
+    {
+      title: t("customization.title"),
+      cards: [
+        {
+          heading: t("customization.configurable-environments.heading"),
+          items: [
+            t("customization.configurable-environments.item1"),
+            t("customization.configurable-environments.item2"),
+            t("customization.configurable-environments.item3"),
           ],
         },
       ],
@@ -126,7 +139,7 @@ export function L2BenefitsPanel({ securityValue }: L2BenefitsPanelProps) {
           </Fragment>
         ))}
       </div>
-      <div className="overflow-hidden">
+      <div className="min-w-0 flex-1 overflow-hidden">
         <TransitionPanel
           activeIndex={activeIndex}
           transition={{ duration: 0.2, ease: "easeInOut" }}

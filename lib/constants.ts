@@ -78,15 +78,20 @@ export const SOURCE = {
  */
 
 // Navigation structure using translation keys for i18n support
-export const DA_NAV_ITEMS = [
+export const USE_CASE_NAV_ITEMS = [
   { href: "/rwa", translationKey: "rwa" },
   { href: "/defi", translationKey: "defi" },
   { href: "/privacy", translationKey: "privacy" },
   { href: "/layer-2", translationKey: "layer2" },
 ] as const
 
+export const TOP_NAV_ITEMS = [
+  { href: "/why-ethereum", translationKey: "why-ethereum" },
+] as const
+
 export const NAV_ITEMS = [
-  { href: "/data-hub", translationKey: "dataHub" },
+  { href: "/solution-providers", translationKey: "solution-providers" },
+  { href: "/data-hub", translationKey: "data-hub" },
   { href: "/library", translationKey: "library" },
 ] as const
 
@@ -95,6 +100,7 @@ export const NAV_ITEMS = [
  */
 
 export const RWA_API_STABLECOINS_GROUP_ID = 28
+export const RWA_API_COMMODITIES_GROUP_ID = 37
 
 /**
  * Enterprise/permissioned chains to exclude from public RWA market share calculations.
@@ -109,6 +115,7 @@ export const RWA_API_EXCLUDED_NETWORK_IDS = [
 export const RWA_API_MEASURE_ID_BY_CATEGORY = {
   RWAS: 71, // Bridged Token Value (Dollar)
   STABLECOINS: 70, // Bridged Token Market Cap (Dollar)
+  COMMODITIES: 71, // Bridged Token Value (Dollar), filtered to commodities asset class
 } as const satisfies Record<string, number>
 
 export const RWA_API_MAINNET = {
@@ -136,4 +143,16 @@ export const RWA_API_LAYER_2S = [
 
 export const RWA_API_LAYER_2S_IDS = RWA_API_LAYER_2S.map(
   ({ id }) => id as number
+)
+
+/**
+ * DefiLlama uses different chain names than rwa.xyz in some cases.
+ * Map from our canonical name to DefiLlama's name.
+ */
+const DEFILLAMA_CHAIN_ALIASES: Record<string, string> = {
+  Optimism: "OP Mainnet",
+}
+
+export const DEFILLAMA_L2_CHAIN_NAMES = RWA_API_LAYER_2S.map(
+  ({ name }) => DEFILLAMA_CHAIN_ALIASES[name] || name
 )

@@ -41,7 +41,11 @@ export const fetchTotalValueSecured = async (): Promise<
       message: error instanceof Error ? error.message : String(error),
       url,
     })
-    throw error
+    return {
+      data: { sum: 0, securityRatio: 0 },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.ULTRASOUND,
+    }
   }
 }
 

@@ -2,81 +2,93 @@
   "common": {
     "institutions": "Instituciones",
     "menu": "Menú",
-    "getInTouch": "Ponerse en contacto",
-    "getInTouchDescription": "Responderemos a sus preguntas, ayudaremos a identificar posibles caminos a seguir, brindaremos soporte técnico y lo conectaremos con líderes relevantes de la industria",
-    "liveData": "Datos en tiempo real",
-    "viewAllResources": "Ver todos los recursos",
+    "get-in-touch": "Ponerse en contacto",
+    "get-in-touch-description": "Responderemos a sus preguntas, ayudaremos a identificar posibles caminos a seguir, brindaremos soporte técnico y lo conectaremos con líderes relevantes de la industria",
+    "live-data": "Datos en tiempo real",
+    "view-all-resources": "Ver todos los recursos",
     "source": "Fuente",
-    "lastUpdated": "Última actualización",
-    "moreInfo": "Más información",
-    "sourceInfo": "Información de la fuente",
+    "last-updated": "Última actualización",
+    "more-info": "Más información",
+    "source-info": "Información de la fuente",
     "visit": "Visitar",
-    "visitAriaLabel": "Visitar {name}"
+    "visit-aria-label": "Visitar {name}",
+    "brand-logo": "{name} logo",
+    "profile-picture": "{name} profile picture",
+    "close-menu": "Cerrar menú",
+    "go-up-to": "Subir a {path}"
   },
   "footer": {
     "copyright": "Ethereum Foundation. Todos los derechos reservados.",
-    "privacyPolicy": "Política de privacidad",
-    "termsOfUse": "Términos de uso",
-    "cookiePolicy": "Política de cookies",
-    "ethereumFoundation": "Ethereum Foundation",
-    "ethereumOrg": "ethereum.org"
+    "privacy-policy": "Política de privacidad",
+    "terms-of-use": "Términos de uso",
+    "cookie-policy": "Política de cookies",
+    "ethereum-foundation": "Ethereum Foundation",
+    "ethereum-org": "ethereum.org"
   },
   "layout": {
-    "goHome": "Ir al inicio",
+    "go-home": "Ir al inicio",
     "metadata": {
       "title": "Ethereum para instituciones",
       "description": "Ethereum: La capa de liquidez institucional"
+    },
+    "eth-glyph-aria-label": "ethereum.org ETH glyph",
+    "not-found": {
+      "heading": "Oops!",
+      "description": "Página no encontrada...",
+      "return-home": "Volver al inicio"
     }
   },
-  "contactForm": {
-    "firstNamePlaceholder": "Nombre",
-    "lastNamePlaceholder": "Apellido",
-    "emailPlaceholder": "Correo de trabajo",
-    "companyPlaceholder": "Nombre de la empresa",
-    "jobTitlePlaceholder": "Cargo",
-    "countryPlaceholder": "País / Región",
-    "messagePlaceholder": "¿Cómo podemos ayudarle?",
+  "contact-form": {
+    "first-name-placeholder": "Nombre",
+    "last-name-placeholder": "Apellido",
+    "email-placeholder": "Correo de trabajo",
+    "company-placeholder": "Nombre de la empresa",
+    "job-title-placeholder": "Cargo",
+    "country-placeholder": "País / Región",
+    "message-placeholder": "¿Cómo podemos ayudarle?",
     "send": "Enviar →",
     "sending": "Transmitiendo solicitud",
-    "successTitle": "¡Gracias por contactarnos!",
-    "successMessage": "Hemos recibido su mensaje y alguien de nuestro equipo para empresas se pondrá en contacto con usted en unos pocos días hábiles.",
+    "success-title": "¡Gracias por contactarnos!",
+    "success-message": "Hemos recibido su mensaje y alguien de nuestro equipo para empresas se pondrá en contacto con usted en unos pocos días hábiles.",
     "errors": {
       "required": "Obligatorio",
-      "fieldTooLong": "Demasiado largo ({max} caracteres como máximo)",
-      "emailTooLong": "El correo electrónico es demasiado largo (máximo {max} caracteres)",
-      "invalidEmail": "Por favor, introduzca una dirección de correo electrónico válida",
-      "businessEmailRequired": "Por favor, use una dirección de correo electrónico empresarial, institucional u organizacional (p. ej., no use @gmail).",
-      "messageTooLong": "El mensaje es demasiado largo (máximo {max} caracteres)",
-      "generalError": "No se pudo enviar su mensaje. Por favor, inténtelo de nuevo o contáctenos directamente en"
+      "field-too-long": "Demasiado largo ({max} caracteres como máximo)",
+      "email-too-long": "El correo electrónico es demasiado largo (máximo {max} caracteres)",
+      "invalid-email": "Por favor, introduzca una dirección de correo electrónico válida",
+      "business-email-required": "Por favor, use una dirección de correo electrónico empresarial, institucional u organizacional (p. ej., no use @gmail).",
+      "message-too-long": "El mensaje es demasiado largo (máximo {max} caracteres)",
+      "general-error": "No se pudo enviar su mensaje. Por favor, inténtelo de nuevo o contáctenos directamente en"
     }
   },
   "nav": {
     "home": "Inicio",
-    "rwa": "RWA y monedas estables",
-    "defi": "Finanzas descentralizadas",
+    "why-ethereum": "Por qué Ethereum",
+    "use-cases": "Casos de uso",
+    "rwa": "Tokenización y stablecoins",
+    "defi": "Finanzas onchain",
     "privacy": "Privacidad compatible",
-    "layer2": "Ecosistema L2",
-    "dataHub": "Datos en tiempo real",
+    "layer2": "Ethereum L2s",
+    "solution-providers": "Solucionadores",
+    "data-hub": "Datos en vivo",
     "library": "Biblioteca",
-    "digitalAssets": "Activos digitales"
+    "digital-assets": "Activos digitales"
   },
   "home": {
     "hero": {
-      "heading": "La capa de liquidez institucional"
+      "heading": "La capa de liquidez institucional",
+      "tagline": "Red de liquidación abierta y de grado de producción para activos tokenizados, monedas estables e infraestructura financiera."
     },
     "numbers": {
       "heading": "Ethereum es la columna vertebral de la economía en cadena",
-      "uptimeLabel": "Tiempo de actividad y disponibilidad ininterrumpidos",
-      "genesisSource": "Génesis {date}",
-      "networkSecurityLabel": "Valor total que asegura la red ({ethAmount} ETH)",
-      "stablecoinTvlLabel": "TVL de monedas estables",
-      "stablecoinMarketShare": "{percent}+ del suministro global",
-      "defiTvlLabel": "TVL de DeFi",
-      "defiMarketShare": "{percent}+ de todas las cadenas de bloques",
-      "dexVolumeLabel": "Volumen de DEX en 24 horas",
-      "dexVolumeSubLabel": "(promedio de 12 meses)"
+      "uptime-label": "Tiempo de actividad y disponibilidad ininterrumpidos",
+      "genesis-source": "Génesis {date}",
+      "network-security-label": "Valor total que asegura la red ({ethAmount} ETH)",
+      "stablecoin-tvl-label": "TVL de monedas estables",
+      "stablecoin-market-share": "{percent}+ del suministro global",
+      "defi-tvl-label": "TVL de DeFi",
+      "defi-market-share": "{percent}+ de todas las cadenas de bloques"
     },
-    "useCases": {
+    "use-cases": {
       "heading": "Casos de uso institucional",
       "subheading": "Explore el panorama de activos digitales de Ethereum, desde tokens hasta tecnologías",
       "rwa": {
@@ -120,11 +132,26 @@
       },
       "liquidity": {
         "label": "Liquidez profunda",
-        "description": "Más de {dexVolume} en volumen diario de DEX, la liquidez más profunda de cualquier entorno en cadena. Ethereum es la capa de liquidez elegida por las instituciones para crear productos de vanguardia de próxima generación."
+        "description": "La plataforma líder para la tokenización de activos, con {tokenizationShare} de todos los activos tokenizados desplegados. El ecosistema DeFi de Ethereum se beneficia de {yearsOfNetworkEffects} de efectos de red, siendo su ecosistema DeFi {defiMultiplier} más grande que el siguiente ecosistema más grande."
       },
       "tokenization": {
         "label": "Tokenización",
         "description": "La plataforma líder para la tokenización de activos, con el {rwaMarketShare} de todos los RWA en cadena desplegados en Ethereum y sus L2, y {stablecoinTvl} en TVL de monedas estables."
+      },
+      "heading-line1": "Por qué las instituciones eligen",
+      "heading-line2": "Ethereum",
+      "intro": "Ethereum es una red de liquidación abierta y distribuida globalmente que soporta actividad financiera programable. A diferencia de los sistemas propietarios o permisionados, Ethereum es una capa base neutral, sin un único operador, sobre la cual las instituciones pueden construir aplicaciones conscientes del cumplimiento.",
+      "settlement": {
+        "label": "Liquidación global",
+        "description": "Ethereum liquida valor continuamente a través de jurisdicciones, con finalidad transparente y garantizada, y ejecución públicamente verificable."
+      },
+      "programmability": {
+        "label": "Programabilidad",
+        "description": "Los contratos inteligentes permiten la emisión automatizada, controles de transferencia, gestión del ciclo de vida y liquidación condicional. Los ecosistemas y aplicaciones de L2 pueden personalizarse altamente según las necesidades y requisitos de las instituciones financieras."
+      },
+      "composability": {
+        "label": "Ecosistema componible",
+        "description": "Ethereum soporta un ecosistema de billeteras, custodios, auditores, proveedores de datos y soluciones de escalado utilizadas globalmente en producción por instituciones hoy en día."
       }
     },
     "platforms": {
@@ -145,11 +172,19 @@
       "etoro": {
         "label": "Plataforma de tokenización de acciones",
         "value": "100 acciones operan 24/5"
+      },
+      "fidelity": {
+        "label": "FIDD Stablecoin - La primera stablecoin de Fidelity",
+        "value": "{amount} en circulacion"
+      },
+      "jpmorgan": {
+        "label": "Fondo del mercado monetario tokenizado",
+        "value": "{amount} AUM"
       }
     },
     "testimonials": {
       "heading": "Los líderes de la industria eligen Ethereum",
-      "translatedFrom": "Traducido del inglés",
+      "translated-from": "Traducido del inglés",
       "kendrick": {
         "role": "Director Global de Investigación de Activos Digitales",
         "quote1": "Creo que los activos del mundo real tokenizados crecerán de los 34 mil millones de dólares actuales a 300 mil millones de dólares en los próximos 12 meses. Todo este crecimiento ocurrirá en Ethereum porque TradFi confía en Ethereum.",
@@ -173,29 +208,50 @@
     "scaling": {
       "heading": "Ethereum está escalando",
       "description": "El rendimiento de Ethereum no es estático. La hoja de ruta activa de I+D de la red prepara el escenario para un ecosistema infinitamente escalable, mientras que los proveedores basados en Ethereum a nivel mundial superan hoy los límites de capacidad de procesamiento.",
-      "learnMore": "Saber más",
-      "immediateAcceleration": {
+      "learn-more": "Saber más",
+      "immediate-acceleration": {
         "title": "Aceleración inmediata",
         "card1": "Aumentar el límite de gas de la red principal a 100M/bloque incrementa rápidamente las TPS de la red principal",
         "card2": "El muestreo de disponibilidad de datos PeerDAS escala la capacidad de blobs, multiplicando las TPS de las L2",
         "card3": "La expiración del historial purga el almacenamiento para mantener el rendimiento de los nodos cómodo a escala"
       },
-      "alternativeProvider": {
+      "alternative-provider": {
         "title": "Innovación de proveedores alternativos",
         "card1": "La capacidad de procesamiento de Eigen DA alcanza los 100 MB/segundo, lo que permite que los rollups de Ethereum operen a 12,8 veces el rendimiento máximo de Visa y permite más de 800K transferencias ERC-20 por segundo",
         "card2": "Airbender de ZKSync alcanza un rendimiento de prueba hasta 6 veces más rápido que sus competidores, probando bloques de Ethereum en tiempo real con 8 GPUs NVIDIA 5090, y desbloqueando la liquidación en tiempo real para finanzas sensibles a la latencia"
       },
-      "activeDevelopment": {
+      "active-development": {
         "title": "Desarrollo activo",
         "card1": "El muestreo de disponibilidad de datos PeerDAS prepara el escenario para multiplicar por 8 el rendimiento actual de la red principal",
         "card2": "Las listas de acceso a nivel de bloque permiten la ejecución paralela de transacciones dentro de los bloques y la computación paralela de raíces de estado, acelerando los tiempos de procesamiento de bloques"
       },
-      "terabyteScale": {
+      "terabyte-scale": {
         "title": "Visión a escala de terabytes",
-        "card1Heading": "Los objetivos de 2 a 5 años proponen",
-        "card1Item1": "1 gigagas/seg en L1: 10K TPS, escala vertical ambiciosa",
-        "card1Item2": "1 teragas/seg en L2: 10M TPS, escala horizontal extensa",
+        "card1-heading": "Los objetivos de 2 a 5 años proponen",
+        "card1-item1": "1 gigagas/seg en L1: 10K TPS, escala vertical ambiciosa",
+        "card1-item2": "1 teragas/seg en L2: 10M TPS, escala horizontal extensa",
         "card2": "La propuesta Lean Ethereum apunta a la finalidad en segundos, almacenamiento de blobs post-cuántico y mejoras en el rendimiento de ejecución"
+      },
+      "coming": "Próximamente",
+      "pectra": {
+        "title": "Pectra",
+        "card1-title": "Actualizaciones de staking",
+        "card1": "Pectra introdujo mejoras clave en la infraestructura de staking de Ethereum, incluyendo el aumento del límite de validadores de 32 a 2.048 ETH y la habilitación de operaciones de staking más flexibles. Para empresas y stakers institucionales, esto significa una gestión de validadores más sencilla, menores gastos operativos y una experiencia de staking más eficiente a escala."
+      },
+      "fusaka": {
+        "title": "Fusaka",
+        "card1-title": "Tarifas reducidas, mayor escalabilidad",
+        "card1": "Fusaka se centró en reducir drásticamente los costos de transacción y aumentar el rendimiento de la red a través de mejoras en el escalado de datos. Para las empresas que construyen sobre Ethereum, esto se traduce en transacciones más baratas y rápidas, haciendo que las aplicaciones de grado empresarial y los casos de uso de alto volumen sean significativamente más viables."
+      },
+      "post-quantum": {
+        "title": "Post-Cuántico",
+        "card1-title": "Seguridad resistente a la computación cuántica",
+        "card1": "Ethereum se ha estado preparando para la amenaza de la computación cuántica desde 2018, más tiempo que cualquier otro ecosistema de blockchain. La EF ha comprometido más de $20 millones a la verificación formal y la investigación criptográfica, con avances en IA que aceleran los plazos 100 veces. Se formó un equipo post-cuántico dedicado a principios de 2026, con 10 equipos de clientes que ahora están construyendo implementaciones resistentes a la computación cuántica. La transición completa está prevista para 2028, mucho antes de la amenaza cuántica estimada para mediados de la década de 2030, con cero pérdida de fondos y cero tiempo de inactividad."
+      },
+      "glamsterdam": {
+        "title": "Glamsterdam",
+        "card1-title": "Optimización de la capa de ejecución",
+        "card1": "Glamsterdam es una próxima actualización centrada en optimizar aún más la capa de ejecución de Ethereum y el rendimiento de la red. Para las empresas, esto señala el compromiso continuo de Ethereum con la mejora de la infraestructura de la capa base que sustenta las aplicaciones institucionales, los protocolos DeFi y las plataformas de activos tokenizados."
       }
     },
     "library": {
@@ -205,79 +261,176 @@
     "metadata": {
       "title": "Ethereum para instituciones | La capa de liquidez institucional",
       "description": "Descubra por qué las principales instituciones construyen en Ethereum. Resiliencia inigualable, liquidez profunda y seguridad probada para la economía en cadena. Explore casos de uso."
+    },
+    "comparison": {
+      "heading": "Cómo se compara Ethereum",
+      "ethereum": "Ethereum",
+      "l1-alt": "Alternativas L1",
+      "private-dlt": "DLT privada",
+      "traditional": "Rieles tradicionales",
+      "settlement-finality": "Finalidad de liquidación",
+      "auditability": "Auditabilidad",
+      "neutrality": "Neutralidad",
+      "composability": "Componibilidad",
+      "ethereum_settlement": "Minutos, 24/7, global",
+      "l1-alt_settlement": "Segundos, pero seguridad limitada",
+      "private-dlt_settlement": "Dependiente del operador",
+      "traditional_settlement": "T+1 a T+3, horario comercial",
+      "ethereum_audit": "Público y verificable",
+      "l1-alt_audit": "Público y verificable",
+      "private-dlt_audit": "Limitado",
+      "traditional_audit": "Fragmentado",
+      "ethereum_neutrality": "Sin un único operador",
+      "l1-alt_neutrality": "A menudo controlado por el operador",
+      "private-dlt_neutrality": "Controlado por el proveedor",
+      "traditional_neutrality": "Sujeto a jurisdicción",
+      "ethereum_composability": "Alta",
+      "l1-alt_composability": "Limitada",
+      "private-dlt_composability": "Baja",
+      "traditional_composability": "Muy baja"
     }
   },
   "rwa": {
     "hero": {
       "heading": "Monedas estables y activos del mundo real en Ethereum",
-      "description": "Ethereum es la red dominante para la tokenización de activos, hogar de más del 75 % de todos los activos del mundo real (RWA) tokenizados y de más del 60 % del suministro global de monedas estables"
+      "description": "Ethereum es la red dominante para la tokenización de activos, hogar de más del 75 % de todos los activos del mundo real (RWA) tokenizados y de más del 60 % del suministro global de monedas estables",
+      "description1": "Ethereum es el líder del mercado en tokenización de activos, albergando más del 60 % de todos los activos tokenizados y más del 60 % del suministro global de monedas estables.",
+      "description2": "Las instituciones tokenizan activos como valores públicos y privados y crédito, ofrecen liquidación 24/7, implementan efectivo programable, rieles de pago personalizables y más, en el ecosistema líquido, abierto y resiliente de Ethereum y sus Layer 2s."
     },
     "overview": {
-      "srHeading": "Resumen de activos del mundo real y monedas estables",
-      "description": "Las instituciones tokenizan acciones, ofrecen liquidación 24/7, despliegan efectivo programable, lanzan rieles de pago y más, en el ecosistema líquido, abierto y resiliente de Ethereum y sus L2",
-      "stablecoinsL1": "Monedas estables en Ethereum L1",
-      "stablecoinsL2": "Monedas estables en Ethereum L2"
+      "sr-heading": "Resumen de activos del mundo real y monedas estables",
+      "stablecoins-l1": "Monedas estables en Ethereum L1",
+      "stablecoins-l2": "Monedas estables en Ethereum L2",
+      "commodities-share": "Cuota de mercado en materias primas",
+      "value-secured": "Valor asegurado en Ethereum"
     },
     "infrastructure": {
       "heading": "Ethereum como infraestructura del mercado financiero",
       "description": "Ethereum alberga el ecosistema de monedas estables más grande y conectado para pagos, tesorería y liquidación: conectándose directamente con billeteras, intercambios y DeFi",
       "depth": "Profundidad",
-      "depthDesc": "La red principal de Ethereum alberga la mayoría de todas las monedas estables en cadena",
+      "depth-desc": "La red principal de Ethereum alberga la mayoría de todas las monedas estables en cadena",
       "scale": "Escala",
-      "scaleDesc": "Las capas 2 de Ethereum añaden rieles de bajas tarifas para flujos minoristas y de alta frecuencia",
+      "scale-desc": "Las capas 2 de Ethereum añaden rieles de bajas tarifas para flujos minoristas y de alta frecuencia",
       "settlement": "Liquidación tipo efectivo",
-      "settlementDesc": "Liquidación denominada en dólares 24/7 a la velocidad de internet",
+      "settlement-desc": "Liquidación denominada en dólares 24/7 a la velocidad de internet",
       "compliance": "Cumplimiento",
-      "complianceDesc": "Liquidación programable para cumplimiento, divulgaciones y auditabilidad",
+      "compliance-desc": "Liquidación programable para cumplimiento, divulgaciones y auditabilidad",
       "yield": "Rendimiento en cadena",
-      "yieldDesc": "Acceda a instrumentos familiares, como bonos del Tesoro y productos de corta duración"
+      "yield-desc": "Acceda a instrumentos familiares, como bonos del Tesoro y productos de corta duración",
+      "network-effects": "Efectos de red",
+      "network-effects-desc": "Componibilidad con protocolos DeFi",
+      "cost-savings": "Ahorro de costos",
+      "cost-savings-desc": "Mejor gestión de garantías"
     },
     "stablecoins": {
       "heading": "Monedas estables en Ethereum",
-      "marketCap": "Capitalización de mercado total de monedas estables en Ethereum L1:",
+      "market-cap": "Capitalización de mercado total de monedas estables en Ethereum L1:",
       "by": "Por {issuer}"
     },
     "rwas": {
       "heading": "Activos del mundo real (RWA) en Ethereum",
-      "totalSector": "Sector total de RWA en Ethereum L1:",
+      "total-sector": "Sector total de RWA en Ethereum L1:",
       "treasuries": "Bonos del Tesoro y equivalentes de efectivo tokenizados",
-      "treasuriesSector": "del sector en Ethereum + L2",
-      "privateCredit": "Activos del mundo real tokenizados",
-      "activeLoans": "Valor total en Ethereum + L2"
+      "treasuries-sector": "del sector en Ethereum + L2",
+      "private-credit": "Activos del mundo real tokenizados",
+      "active-loans": "Valor total en Ethereum + L2"
     },
     "cards": {
       "by": "Por {issuer}",
-      "buidlDesc": "Fondo de Liquidez Digital Institucional en USD de {brand}",
-      "ustbDesc": "Fondo de Valores del Gobierno de EE. UU. de Corta Duración de {brand}",
-      "ousgDesc": "Fondo de Bonos del Gobierno de EE. UU. a Corto Plazo de {brand}"
+      "buidl-desc": "Fondo de Liquidez Digital Institucional en USD de {brand}",
+      "ustb-desc": "Fondo de Valores del Gobierno de EE. UU. de Corta Duración de {brand}",
+      "mony-desc": "Fondo del mercado monetario tokenizado de {brand}",
+      "fdit-desc": "Fondo del mercado monetario tokenizado de {brand}"
     },
     "why": {
       "heading": "Por qué Ethereum para la infraestructura del mercado financiero",
-      "description": "Liquidación creíble, alcance global. Ethereum combina una capa de liquidación L1 máximamente neutral con entornos de ejecución L2 que ofrecen escala y eficiencia de costos, para que las instituciones puedan mover valor similar al efectivo y activos de corta duración con auditabilidad y controles programáticos.",
-      "l1": {
-        "heading": "Ethereum L1",
-        "subheading": "La capa de liquidación y liquidez",
-        "finality": "Finalidad y neutralidad creíble",
-        "finalityDesc": "Liquidación de alto valor, raíces de estado para rollups y registros duraderos que las instituciones pueden auditar y atestar",
-        "security": "Seguridad",
-        "securityDesc": "Los activos pueden almacenarse en un entorno diseñado para resistir grandes catástrofes y tensiones geopolíticas",
-        "riskGating": "Limitación de riesgos",
-        "riskGatingDesc": "Mantenga la lógica compleja o experimental fuera de la L1; úsela para la liquidación final, la custodia de garantías y las pruebas"
-      },
-      "l2": {
-        "heading": "L2 de Ethereum",
-        "subheading": "La capa de ejecución y escalabilidad",
-        "throughput": "Rendimiento y experiencia de usuario",
-        "throughputDesc": "Los rollups procesan transacciones fuera de cadena, heredan la seguridad de la L1 y ofrecen tarifas bajas adecuadas para pagos, creación de mercado y flujos de alta frecuencia",
-        "configurable": "Configurable",
-        "configurableDesc": "Las L2 pueden añadir funciones de cumplimiento, como listas de permitidos o grupos con KYC, manteniendo su carácter no custodio y liquidando en la L1",
-        "specialization": "Especialización",
-        "specializationDesc": "Múltiples L2 permiten a las instituciones segregar las cargas de trabajo, como los pagos minoristas frente a las operaciones de tesorería, sin fragmentar la confianza, porque la liquidación se concilia en la L1"
-      }
+      "tagline": "Liquidación creíble, alcance global.",
+      "desc1": "Ethereum combina una capa de liquidación máximamente neutral con entornos de ejecución de Layer 2 que ofrecen escala, eficiencia de costos y personalización.",
+      "desc2": "Las instituciones pueden mover valor similar al efectivo y activos de corta duración con auditabilidad y controles programáticos."
     },
     "metadata": {
       "title": "Monedas estables y tokenización de activos | RWA en Ethereum",
       "description": "Ethereum es la opción dominante para tokenizar activos y emitir monedas estables. Explore la red para liquidación 24/7, efectivo programable y rendimiento en cadena."
+    },
+    "comparison": {
+      "heading": "Matriz de comparación",
+      "functions": "Funciones",
+      "ethereum": "Ethereum",
+      "l1-alt": "Otras públicas",
+      "private-dlt": "DLT privada",
+      "traditional": "Rieles tradicionales",
+      "settlement": "Finalidad de liquidación",
+      "settlement-finality": "Finalidad de liquidación",
+      "resilience": "Resiliencia / Permanencia",
+      "security": "Seguridad",
+      "dev-base": "Base de desarrolladores",
+      "liquidity": "Liquidez / Utilidad en cadena",
+      "auditability": "Auditabilidad",
+      "neutrality": "Neutralidad",
+      "geo-risk": "Riesgo geográfico",
+      "composability": "Componibilidad",
+      "ethereum_settlement": "Segundos",
+      "l1-alt_settlement": "Segundos",
+      "private-dlt_settlement": "Dependiente del operador",
+      "traditional_settlement": "Días",
+      "ethereum_resilience": "{uptime}",
+      "l1-alt_resilience": "Múltiples tiempos de inactividad",
+      "private-dlt_resilience": "2 años o menos",
+      "traditional_resilience": "Establecido",
+      "ethereum_security": "12 clientes, {uptimeYears} de tiempo de actividad",
+      "l1-alt_security": "Cliente único, tiempos de inactividad",
+      "private-dlt_security": "Dependiente del proveedor",
+      "traditional_security": "Sujeto a jurisdicción",
+      "ethereum_dev-base": "Alta",
+      "l1-alt_dev-base": "Media-Baja",
+      "private-dlt_dev-base": "Baja",
+      "traditional_dev-base": "Permisionado / Cerrado",
+      "ethereum_liquidity": "Alta",
+      "l1-alt_liquidity": "Media-Baja",
+      "private-dlt_liquidity": "N/A",
+      "traditional_liquidity": "N/A",
+      "ethereum_auditability": "Público y verificable",
+      "l1-alt_auditability": "Público y verificable",
+      "private-dlt_auditability": "Limitada",
+      "traditional_auditability": "Fragmentada",
+      "ethereum_neutrality": "Sin un único operador, miles de nodos",
+      "l1-alt_neutrality": "Cliente único, tesorería controlada, bajo número de operadores de validadores",
+      "private-dlt_neutrality": "Controlado por el proveedor",
+      "traditional_neutrality": "Sujeto a jurisdicción",
+      "ethereum_geo-risk": "Global",
+      "l1-alt_geo-risk": "Sujeto a riesgo regulatorio",
+      "private-dlt_geo-risk": "Sujeto a riesgo regulatorio",
+      "traditional_geo-risk": "Regulado",
+      "ethereum_composability": "Alta",
+      "l1-alt_composability": "Media-Baja",
+      "private-dlt_composability": "Baja",
+      "traditional_composability": "Muy baja"
+    },
+    "category-breakdown": {
+      "heading": "Ethereum lidera en tokenización",
+      "description": "Desglose de las categorías de activos tokenizados en Ethereum.",
+      "category": "Categoría",
+      "tvl-eth": "TVL ETH",
+      "examples": "Ejemplos",
+      "treasuries": "Bonos del Tesoro",
+      "credit": "Crédito",
+      "commodities": "Materias primas",
+      "equities": "Acciones",
+      "real-estate": "Bienes raíces",
+      "tvl-total": "TVL Total",
+      "eth-share": "Cuota de ETH",
+      "examples-tokenizes-properties": "Propiedades y fondos tokenizados"
+    },
+    "l2-section": {
+      "heading": "L2 de Ethereum: La capa de ejecución y escala",
+      "description": "Las redes de capa 2 extienden las capacidades de tokenización de Ethereum con entornos de ejecución especializados.",
+      "throughput": "Rendimiento y UX",
+      "throughput-desc": "Rollups process transactions offchain, inherit Ethereum's security, and deliver low fees suitable for payments, market-making, and high-frequency flows",
+      "configurable": "Perímetros configurables",
+      "configurable-desc": "Las L2 pueden añadir características de cumplimiento, como listas blancas o pools con KYC, moneda personalizable para transacciones, mientras permanecen sin custodia y liquidan en L1",
+      "specialization": "Especialización",
+      "specialization-desc": "Múltiples L2 permiten a las instituciones segregar cargas de trabajo, como pagos minoristas vs. operaciones de tesorería, sin fragmentar la confianza, porque la liquidación se concilia en L1",
+      "cta": "Explorar Layer 2"
     }
   },
   "privacy": {
@@ -289,16 +442,16 @@
     "direct": {
       "heading": "Un equipo de choque de privacidad para instituciones",
       "description": "La Ethereum Foundation combina su equipo de investigación criptográfica (PSE) de más de 50 investigadores líderes en privacidad con su Grupo de Trabajo de Privacidad Institucional (IPTF) para ofrecer privacidad de nivel institucional en rieles públicos",
-      "neutralStacks": "Pilas de privacidad neutrales",
-      "neutralStacksDesc": "Evite la dependencia de proveedores con pilas de privacidad que se adaptan a los casos de uso institucional. El IPTF asesora, diseña y lanza soluciones de privacidad neutrales respecto al proveedor en Ethereum.",
+      "neutral-stacks": "Pilas de privacidad neutrales",
+      "neutral-stacks-desc": "Evite la dependencia de proveedores con pilas de privacidad que se adaptan a los casos de uso institucional. El IPTF asesora, diseña y lanza soluciones de privacidad neutrales respecto al proveedor en Ethereum.",
       "compliance": "Avanzando en el cumplimiento",
-      "complianceDesc": "Co-diseñe pruebas de políticas que satisfagan los estándares de auditoría y regulación empresarial. PSE trabaja para avanzar en las soluciones de privacidad en cadena y la auditabilidad para la adopción en el mundo real.",
+      "compliance-desc": "Co-diseñe pruebas de políticas que satisfagan los estándares de auditoría y regulación empresarial. PSE trabaja para avanzar en las soluciones de privacidad en cadena y la auditabilidad para la adopción en el mundo real.",
       "pilots": "Pilotos listos para producción",
-      "pilotsDesc": "Ponga en marcha pilotos que liquidan públicamente y se componen con la liquidez existente, mientras mantienen confidenciales las contrapartes, los montos y la lógica específicos.",
+      "pilots-desc": "Ponga en marcha pilotos que liquidan públicamente y se componen con la liquidez existente, mientras mantienen confidenciales las contrapartes, los montos y la lógica específicos.",
       "education": "Educación institucional",
-      "educationDesc": "Nos involucramos directamente para identificar las necesidades de privacidad y las soluciones en cadena, publicando guías e informes para compartir aprendizajes y acelerar una adopción segura y compatible."
+      "education-desc": "Nos involucramos directamente para identificar las necesidades de privacidad y las soluciones en cadena, publicando guías e informes para compartir aprendizajes y acelerar una adopción segura y compatible."
     },
-    "buildingBlocks": {
+    "building-blocks": {
       "heading": "Bloques de construcción de privacidad en Ethereum",
       "zk": {
         "label": "Pruebas de conocimiento cero (ZK)",
@@ -319,14 +472,14 @@
     },
     "why": {
       "heading": "Por qué Ethereum para la privacidad",
-      "auditReady": "Neutralidad creíble, listo para auditoría",
-      "auditReadyDesc": "Demuestre el cumplimiento sin exponer datos sin procesar. Desbloquee la verificación de verificaciones de KYC, fuentes legítimas de fondos y límites de transacciones, con divulgación selectiva para reguladores y auditores.",
+      "audit-ready": "Neutralidad creíble, listo para auditoría",
+      "audit-ready-desc": "Demuestre el cumplimiento sin exponer datos sin procesar. Desbloquee la verificación de verificaciones de KYC, fuentes legítimas de fondos y límites de transacciones, con divulgación selectiva para reguladores y auditores.",
       "composability": "Componibilidad con liquidez",
-      "composabilityDesc": "Los flujos privados aún pueden conectarse a la liquidez en Ethereum y sus L2. La privacidad es componible con los rieles de monedas estables y activos del mundo real (RWA), la liquidez de los DEX, la custodia institucional y más.",
-      "noLockIn": "Sin dependencia de proveedores",
-      "noLockInDesc": "Lance en la red principal de Ethereum para una máxima componibilidad, o lance en las L2 de Ethereum para menores costos de liquidación, con acceso a las mismas herramientas de privacidad y estándares neutrales respecto al proveedor.",
+      "composability-desc": "Los flujos privados aún pueden conectarse a la liquidez en Ethereum y sus L2. La privacidad es componible con los rieles de monedas estables y activos del mundo real (RWA), la liquidez de los DEX, la custodia institucional y más.",
+      "no-lock-in": "Sin dependencia de proveedores",
+      "no-lock-in-desc": "Lance en la red principal de Ethereum para una máxima componibilidad, o lance en las L2 de Ethereum para menores costos de liquidación, con acceso a las mismas herramientas de privacidad y estándares neutrales respecto al proveedor.",
       "security": "Seguridad a escala",
-      "securityDesc": "Las funciones de privacidad heredan la descentralización y resiliencia de Ethereum. Cree productos y servicios preparados para el futuro sobre una base global diseñada para la máxima seguridad y disponibilidad permanente."
+      "security-desc": "Las funciones de privacidad heredan la descentralización y resiliencia de Ethereum. Cree productos y servicios preparados para el futuro sobre una base global diseñada para la máxima seguridad y disponibilidad permanente."
     },
     "solutions": {
       "heading": "Soluciones de privacidad en producción",
@@ -345,11 +498,119 @@
       "zama": {
         "heading": "Zama",
         "description": "Herramientas para crear contratos inteligentes que realizan cálculos sobre datos cifrados, de modo que los saldos y la lógica permanezcan confidenciales."
+      },
+      "description": "La privacidad no es una cadena lateral ni un silo. Es un conjunto de estándares abiertos, componibles en L1 o L2, diseñados para cumplir con los requisitos regulatorios, de riesgo y de auditoría. El ecosistema de Ethereum ofrece múltiples enfoques para la privacidad institucional, cada uno abordando diferentes casos de uso.",
+      "examples": "Ejemplos",
+      "prividium": {
+        "approach": "Prividium empresarial",
+        "description": "Arquitectura Prividium con disponibilidad de datos fuera de cadena y pruebas en cadena. Finalidad ZK en subsegundos con KYC/SSO incorporado. La divulgación selectiva permite pruebas de cumplimiento sin revelar los datos subyacentes de la transacción.",
+        "example": "zkSync Prividium (Proyecto DAMA de Deutsche Bank)",
+        "note": "Proyecto DAMA de Deutsche Bank"
+      },
+      "programmable-privacy": {
+        "approach": "Privacidad programable",
+        "description": "Privacidad completa en transacciones, estado y computación a través de contratos inteligentes privados. La generación de pruebas del lado del cliente mantiene los datos sensibles en los dispositivos del usuario. Componible con el ecosistema EVM más amplio.",
+        "example": "Aztec (Transacción de seguridad tokenizada confidencial de Boerse Stuttgart), EY Nightfall, Miden"
+      },
+      "compliance-pools": {
+        "approach": "Pools con prioridad en el cumplimiento",
+        "description": "Demuestre que los fondos son limpios sin revelar el historial completo de transacciones. Diseñado desde el primer día para el problema regulatorio. Permite a las instituciones demostrar el cumplimiento de AML a través de la atestación criptográfica en lugar de la divulgación completa de datos.",
+        "example": "Privacy Pools (co-escrito por Vitalik Buterin; en vivo en la red principal)",
+        "note": "co-escrito por Vitalik Buterin; en vivo en la red principal"
+      },
+      "shielded-tx": {
+        "approach": "Transacciones blindadas",
+        "description": "Pools de privacidad ZK que procesan miles de millones en volumen blindado a través de Ethereum y sus L2. Middleware maduro que permite interacciones DeFi privadas, incluyendo transferencias, intercambios y préstamos, probado en producción a escala.",
+        "example": "Railgun, EY Starlight"
+      },
+      "emerging": {
+        "approach": "Enfoques emergentes",
+        "description": "Cifrado totalmente homomórfico (FHE) que permite la computación sobre datos cifrados, mempools cifrados que previenen la extracción de MEV, arquitecturas de dark pool para el comercio institucional y rollups que preservan la privacidad. Consulte el Mapa de Privacidad del IPTF para una visión general completa.",
+        "example": "Fhenix, Zama (FHE); Shutter Network (mempool cifrado); Renegade (dark pools); Miden (rollup de privacidad)"
       }
     },
     "metadata": {
       "title": "Privacidad y cumplimiento de cadena de bloques para instituciones | Ethereum",
       "description": "Liquide en cadena mientras protege datos empresariales confidenciales. Explore las funciones y herramientas de privacidad de Ethereum para las necesidades regulatorias, de riesgo y de auditoría institucional."
+    },
+    "stats": {
+      "sr-heading": "Resumen del ecosistema de privacidad",
+      "teams-label": "Equipos construyendo sobre privacidad",
+      "years-label": "Años de I+D en privacidad",
+      "researchers-label": "Investigadores de privacidad dedicados en la EF",
+      "value-label": "Valor asegurado en Ethereum"
+    },
+    "compliance": {
+      "heading": "Cumplimiento sin exposición",
+      "selective-disclosure": "Divulgación selectiva",
+      "selective-disclosure-desc": "Demuestre hechos específicos como elegibilidad, cumplimiento de políticas o solvencia sin publicar los detalles completos de la transacción. Cuando se requiera una revisión más profunda, las claves de visualización / claves de auditoría pueden habilitar el acceso con alcance para las partes autorizadas.",
+      "privacy-credentials": "Credenciales que preservan la privacidad",
+      "privacy-credentials-desc": "zkID y las atestaciones soportan verificaciones de elegibilidad tipo KYC sin exponer información personal en cadena. Verifique las propiedades de identidad sin crear responsabilidades de datos.",
+      "composable-primitives": "Componible a través de arquitecturas",
+      "composable-primitives-desc": "Estas primitivas se conectan a múltiples arquitecturas, desde prividiums hasta contratos inteligentes privados, para que las instituciones puedan cumplir con los requisitos regulatorios mientras protegen a las contrapartes y los datos sensibles al mercado."
+    },
+    "why-matters": {
+      "heading": "Por qué esto importa más allá de las características",
+      "resilience": "Resiliencia",
+      "resilience-desc": "Ninguna interrupción completa desde su génesis en 2015. AWS, Cloudflare y Facebook han sufrido caídas. Las cadenas privadas han experimentado interrupciones de varios meses. Ethereum es la capa de liquidación más probada en producción.",
+      "censorship": "Resistencia a la censura",
+      "censorship-desc": "Ninguna entidad única puede bloquear la inclusión de transacciones. Para operaciones transfronterizas con conflictos jurisdiccionales, esto es un requisito operativo, no una preferencia filosófica.",
+      "no-counterparty": "Sin riesgo de contraparte de infraestructura",
+      "no-counterparty-desc": "En una cadena privada, su capa de liquidación está controlada por una empresa. En Ethereum, está controlada por las matemáticas. Ninguna decisión de la junta, adquisición o cambio de estrategia puede cambiar las reglas.",
+      "economics": "Economía",
+      "economics-desc": "Precios de utilidad transparentes sin dependencia. Las licencias SaaS para cadenas privadas escalan con el apalancamiento del proveedor. A lo largo de una década, la diferencia de costos se acumula significativamente a favor de Ethereum.",
+      "interoperability": "Interoperabilidad",
+      "interoperability-desc": "Las soluciones de privacidad en Ethereum se componen con todo el stack DeFi: {defiTvl} en TVL, más de 1.700 protocolos y la liquidez en cadena más profunda a nivel global. Las cadenas privadas no ofrecen nada de esto. Sus activos son tan útiles como lo permita el ecosistema de un solo proveedor."
+    },
+    "trust-vs-crypto": {
+      "heading": "Privacidad basada en la confianza vs. Privacidad criptográfica",
+      "description": "Las blockchains permisionadas prometen privacidad a través de compromisos del operador. Ethereum ofrece privacidad a través de las matemáticas. Para las instituciones con deberes fiduciarios, la distinción es material.",
+      "trust-heading": "Privacidad basada en la confianza",
+      "crypto-heading": "Privacidad criptográfica",
+      "table-guarantee": "Garantía principal",
+      "table-trust-guarantee": "\"Prometo que no miraré sus datos.\"",
+      "table-crypto-guarantee": "\"Matemáticamente no puedo ver sus datos.\"",
+      "table-mechanism": "Mecanismo",
+      "table-trust-mechanism": "Los operadores y los comités de gobernanza se comprometen a respetar los límites de los datos",
+      "table-crypto-mechanism": "Las pruebas de conocimiento cero permiten la verificación sin divulgación",
+      "table-incentives": "Si los incentivos cambian",
+      "table-trust-incentives": "La promesa se rompe. Los cambios de gobernanza, las demandas regulatorias o los giros del operador pueden anular las garantías de privacidad.",
+      "table-crypto-incentives": "La garantía se mantiene. Ningún operador, ningún cambio de gobernanza puede anular lo que las matemáticas imponen.",
+      "table-vendor": "Riesgo de proveedor",
+      "table-trust-vendor": "La privacidad depende de la buena fe continua de una empresa o consorcio específico",
+      "table-crypto-vendor": "La privacidad es impuesta por el propio protocolo — no se requiere contraparte",
+      "table-regulatory": "Exposición regulatoria",
+      "table-trust-regulatory": "Los operadores pueden ser obligados a proporcionar acceso; la privacidad es una decisión política",
+      "table-crypto-regulatory": "La divulgación selectiva permite pruebas de cumplimiento sin revelar los datos subyacentes",
+      "closing": "Si confía en que los operadores del consorcio ejecutarán la red honestamente, respetarán sus límites de datos y no cambiarán las reglas en contra de sus intereses, entonces vuelve a confiar en las personas. En ese punto, la pregunta es: ¿por qué no una base de datos con contratos legales?"
+    },
+    "private-chains": {
+      "heading": "El problema con las cadenas privadas",
+      "description": "Las blockchains permisionadas se presentaron como la respuesta empresarial a las preocupaciones de privacidad del uso de cadenas públicas. Después de una década de implementaciones, los resultados cuentan una historia diferente. Las instituciones que evalúan la infraestructura de blockchain privada deben considerar los riesgos que han surgido en producción.",
+      "vendor-dependency": "Dependencia de un único proveedor",
+      "vendor-dependency-desc": "Las cadenas privadas son construidas y mantenidas por una única empresa. Si cambian de estrategia, son adquiridas o fallan, su capa de liquidación está en riesgo. Esto es una dependencia del proveedor en la capa más crítica de su pila tecnológica.",
+      "no-interop": "Sin interoperabilidad ni utilidad",
+      "no-interop-desc": "Los activos acuñados en una cadena privada existen en un ecosistema cerrado. Sin acceso a la liquidez DeFi, sin componibilidad con otros protocolos, sin mercado secundario, sin utilidad.",
+      "talent": "Talento de desarrolladores limitado y herramientas deficientes",
+      "talent-desc": "Los lenguajes y frameworks propietarios restringen su grupo de contratación. El ecosistema EVM tiene más de 8.000 desarrolladores activos mensuales; las alternativas propietarias tienen muchos órdenes de magnitud menos. El resultado: iteración más lenta, mayor costo y dificultad para retener talento de ingeniería.",
+      "fragility": "Fragilidad en producción",
+      "fragility-desc": "Las implementaciones de cadenas privadas han experimentado interrupciones de varios meses debido a la corrupción de la base de datos. Las dependencias de bases de datos externas (por ejemplo, sidecars de PostgreSQL utilizados para indexar y localizar contratos) crean puntos únicos de falla. Si esa base de datos se pierde o se corrompe, el acceso en el libro mayor a los contratos se bloquea efectivamente.",
+      "instability": "Inestabilidad de la plataforma",
+      "instability-desc": "Las migraciones en tiempo de ejecución, los cambios de arquitectura y los cambios de estrategia interrumpen las implementaciones empresariales. Las instituciones necesitan una infraestructura que puedan respaldar durante una década. Las cadenas privadas no han demostrado esa estabilidad.",
+      "auditability": "Brechas de auditabilidad",
+      "auditability-desc": "Contratos archivados no accesibles en el libro mayor. Se requiere una infraestructura de almacenamiento separada para rastros de auditoría completos, creando riesgo de cumplimiento para las instituciones reguladas que necesitan un historial completo de transacciones bajo demanda.",
+      "off-chain-privacy": "Privacidad que depende de componentes fuera de cadena",
+      "off-chain-privacy-desc": "En las cadenas privadas, la privacidad a menudo se apoya en componentes fuera de cadena para operaciones centrales, rompiendo la expectativa de que una aplicación distribuida pueda operar de forma independiente en el libro mayor. Esto no es verdadera privacidad criptográfica; es complejidad arquitectónica disfrazada de característica.",
+      "missing-abstractions": "Abstracciones nativas faltantes",
+      "missing-abstractions-desc": "Las empresas se ven obligadas a diseñar patrones personalizados que separan los datos mutables (con IDs cambiantes) de la lógica de negocio estable solo para anclar referencias. Las abstracciones nativas, equivalentes a los patrones de proxy EVM, simplemente no existen, lo que traslada la complejidad a los desarrolladores de aplicaciones.",
+      "closing": "Las cadenas privadas recrean el mismo riesgo de intermediario que la tecnología blockchain fue diseñada para eliminar. Una fontanería ligeramente mejor no es un cambio de paradigma."
+    },
+    "ef-commitment": {
+      "heading": "El compromiso de privacidad de la Ethereum Foundation",
+      "description": "La privacidad es una prioridad de primer nivel para la Ethereum Foundation. Desde 2015, la EF ha tenido un equipo de privacidad dedicado de 50 personas compuesto por investigadores y desarrolladores criptográficos líderes.",
+      "iptf-title": "Grupo de Trabajo de Privacidad Institucional (IPTF)",
+      "iptf-desc": "Coordina la investigación en pagos privados, divulgación selectiva, identidad de conocimiento cero y aplicaciones que preservan la privacidad en L2. El equipo asegura que las soluciones cumplan con los requisitos regulatorios y de cumplimiento, convirtiendo los comentarios institucionales en especificaciones técnicas y POCs en Ethereum.",
+      "visit-iptf": "Visitar IPTF"
     }
   },
   "library": {
@@ -358,7 +619,7 @@
       "description1": "Informes, artículos y análisis de todo el panorama institucional, junto con el liderazgo de pensamiento y actualizaciones del equipo de Aceleración Empresarial de la Ethereum Foundation.",
       "description2": "Explore tendencias del mercado, desarrollos técnicos y oportunidades estratégicas para las instituciones que construyen en la economía en cadena."
     },
-    "notFound": {
+    "not-found": {
       "title": "Recursos institucionales de Ethereum",
       "description": "¡Vaya! No se encontró la publicación"
     },
@@ -374,26 +635,26 @@
       "description2": "100 % de tiempo de actividad, infraestructura segura y probada en batalla, y la capa de liquidez más profunda de cualquier cadena de bloques: Ethereum es para DeFi."
     },
     "metrics": {
-      "srHeading": "Resumen del ecosistema DeFi",
-      "defiTvl": "DeFi",
-      "shareGlobal": "Cuota de DeFi global",
-      "dexVolume": "24h",
-      "dexVolumeSuffix": "Volumen (promedio de 12 meses)",
-      "tvlVsNext": "frente al siguiente ecosistema más grande"
+      "sr-heading": "Resumen del ecosistema DeFi",
+      "defi-tvl": "DeFi",
+      "share-global": "Cuota de DeFi global",
+      "dex-volume": "24h",
+      "dex-volume-suffix": "Volumen (promedio de 12 meses)",
+      "tvl-vs-next": "frente al siguiente ecosistema más grande"
     },
     "primitives": {
       "heading": "Ethereum es la plataforma para las primitivas DeFi",
       "description": "La infraestructura de Ethereum, probada en batalla y siempre activa, asegura el mayor conjunto de activos digitales y liquidez, impulsada por la mayor cantidad de desarrolladores y el ecosistema de cadena de bloques más amplio. Ethereum no bloquea a los usuarios en una sola cadena, fomentando un ecosistema global unificado donde la innovación y la liquidez se potencian.",
-      "openStandards": "Estándares abiertos",
-      "openStandardsDesc": "La EVM compartida, los estándares de tokens y de contratos inteligentes de Ethereum proporcionan interoperabilidad en todo el ecosistema DeFi",
-      "deepLiquidity": "Liquidez profunda",
-      "deepLiquidityDesc": "Ethereum tiene la liquidez DeFi más profunda de cualquier cadena de bloques, albergando un mercado global único y eficiente para activos digitales",
+      "open-standards": "Estándares abiertos",
+      "open-standards-desc": "La EVM compartida, los estándares de tokens y de contratos inteligentes de Ethereum proporcionan interoperabilidad en todo el ecosistema DeFi",
+      "deep-liquidity": "Liquidez profunda",
+      "deep-liquidity-desc": "Ethereum tiene la liquidez DeFi más profunda de cualquier cadena de bloques, albergando un mercado global único y eficiente para activos digitales",
       "composable": "Primitivas componibles",
-      "composableDesc": "Los bloques de construcción y protocolos de código abierto actúan como 'legos de dinero' que los desarrolladores pueden combinar para crear productos sofisticados",
+      "composable-desc": "Los bloques de construcción y protocolos de código abierto actúan como 'legos de dinero' que los desarrolladores pueden combinar para crear productos sofisticados",
       "permissionless": "Innovación sin permiso",
-      "permissionlessDesc": "Cualquier persona puede crear o acceder a nuevos instrumentos DeFi, desbloqueando un panorama dinámico de innovación sin guardianes",
-      "onchainYield": "Rendimiento en cadena",
-      "onchainYieldDesc": "Acceda a instrumentos familiares, como bonos del Tesoro y productos de corta duración"
+      "permissionless-desc": "Cualquier persona puede crear o acceder a nuevos instrumentos DeFi, desbloqueando un panorama dinámico de innovación sin guardianes",
+      "onchain-yield": "Rendimiento en cadena",
+      "onchain-yield-desc": "Acceda a instrumentos familiares, como bonos del Tesoro y productos de corta duración"
     },
     "innovation": {
       "heading": "DeFi impulsa la innovación empresarial",
@@ -421,19 +682,20 @@
       "heading": "Ecosistema DeFi de Ethereum",
       "description": "Una pequeña selección de aplicaciones DeFi que se ejecutan en Ethereum y sus redes de capa 2",
       "show": "Mostrar",
-      "allCategories": "Todas las categorías",
-      "visitAriaLabel": "Visitar {name}",
+      "all-categories": "Todas las categorías",
+      "visit-aria-label": "Visitar {name}",
       "categories": {
         "dex": {
           "heading": "Intercambios descentralizados (DEX)",
           "subtext": "Explore plataformas en cadena donde los usuarios pueden operar con tokens en cualquier momento, 24/7",
           "platforms": {
-            "oneInch": "Un agregador de DEX que obtiene liquidez de diversos DEX y redes para encontrar las mejores rutas y tasas de intercambio posibles.",
+            "one-inch": "Un agregador de DEX que obtiene liquidez de diversos DEX y redes para encontrar las mejores rutas y tasas de intercambio posibles.",
             "aerodrome": "Un intercambio descentralizado en la L2 Base que combina un AMM con un modelo de gobernanza y recompensas de protocolo diseñado para alinear incentivos.",
             "balancer": "Un protocolo DeFi que actúa como administrador de cartera automatizado y proveedor de liquidez, permitiendo a los usuarios crear o invertir en grupos de liquidez personalizables.",
-            "cowSwap": "Un agregador de DEX construido en torno a subastas por lotes frecuentes para proporcionar protección contra el MEV, encontrar una liquidez óptima y minimizar las tarifas, emparejando operaciones de igual a igual y enviando las órdenes no completadas a los AMM subyacentes.",
+            "cow-swap": "Un agregador de DEX construido en torno a subastas por lotes frecuentes para proporcionar protección contra el MEV, encontrar una liquidez óptima y minimizar las tarifas, emparejando operaciones de igual a igual y enviando las órdenes no completadas a los AMM subyacentes.",
             "curve": "Un DEX y AMM enfocado en el comercio eficiente de monedas estables y tokens volátiles, utilizando una fórmula de AMM única para minimizar el deslizamiento de activos con precios similares.",
-            "uniswap": "Un protocolo de DEX que permite el comercio entre pares sin permiso, a través de un sistema AMM basado en contratos inteligentes que permite a cualquier persona crear pares personalizados y suministrar liquidez."
+            "uniswap": "Un protocolo de DEX que permite el comercio entre pares sin permiso, a través de un sistema AMM basado en contratos inteligentes que permite a cualquier persona crear pares personalizados y suministrar liquidez.",
+            "fluid": "Un protocolo DeFi que combina el comercio AMM con préstamos y empréstitos en una capa de liquidez unificada, lo que permite intercambios eficientes en capital con liquidez profunda y compartida."
           }
         },
         "lending-borrowing": {
@@ -447,7 +709,8 @@
             "maple": "Un mercado de crédito descentralizado que proporciona préstamos con garantía insuficiente a prestatarios institucionales y permite a los prestamistas obtener rendimientos suministrando liquidez a estos préstamos seleccionados.",
             "moonwell": "Un protocolo de préstamo y préstamo abierto diseñado para simplificar la experiencia del usuario en cadena, que cuenta con grupos de liquidez de un solo lado y préstamos sobrecolateralizados en todos los mercados.",
             "morpho": "Un protocolo descentralizado para préstamos y préstamos basados en bóvedas sobrecolateralizadas, que tiene como objetivo mejorar la eficiencia del capital de los grupos de préstamos a través de mercados aislados, curadores de riesgos y asignadores de carteras.",
-            "sky": "Un protocolo DeFi (creado por la comunidad MakerDAO) que ofrece un conjunto de herramientas para intercambiar, convertir, hacer staking y obtener rendimientos de activos digitales, incluida la moneda estable USDS."
+            "sky": "Un protocolo DeFi (creado por la comunidad MakerDAO) que ofrece un conjunto de herramientas para intercambiar, convertir, hacer staking y obtener rendimientos de activos digitales, incluida la moneda estable USDS.",
+            "spark": "Un protocolo de préstamo descentralizado que ofrece tasas competitivas para pedir prestado y suministrar los principales activos digitales, con un enfoque en los mercados de monedas estables y productos de préstamo de grado institucional."
           }
         },
         "rwa-yield": {
@@ -457,26 +720,26 @@
             "centrifuge": "Un protocolo de préstamos independiente de los activos que tiene como objetivo hacer que el crédito sea más accesible para las empresas, permitiéndoles tokenizar activos del mundo real y usarlos como garantía en cadena.",
             "circle": "Una firma global de tecnología financiera que proporciona infraestructura financiera y de pagos, fondos del mercado monetario tokenizados y más, conocida por emitir la moneda estable USD Coin (USDC) totalmente regulada.",
             "ethena": "Un protocolo de dólar sintético enfocado en proporcionar una solución criptonativa para el dinero, que ofrece USDe, una moneda estable respaldada por criptoactivos y las correspondientes posiciones cortas de futuros, y una cuenta de ahorros denominada en dólares.",
-            "ftBenji": "Una aplicación móvil que permite a los inversores explorar valores tokenizados, activos digitales e invertir en el Franklin OnChain U.S. Government Money Fund (BENJI), el primer fondo monetario tokenizado emitido de forma nativa en una cadena de bloques.",
+            "ft-benji": "Una aplicación móvil que permite a los inversores explorar valores tokenizados, activos digitales e invertir en el Franklin OnChain U.S. Government Money Fund (BENJI), el primer fondo monetario tokenizado emitido de forma nativa en una cadena de bloques.",
             "frax": "Un ecosistema de moneda estable fraccional-algorítmica que tiene como objetivo proporcionar dinero algorítmico, descentralizado y escalable en lugar de activos digitales de suministro fijo.",
             "ondo": "Un protocolo DeFi enfocado en hacer que los productos y servicios financieros de nivel institucional, como los bonos del Tesoro de EE. UU. tokenizados, sean accesibles en cadena.",
             "pendle": "Un protocolo DeFi para el comercio de derivados de tasas de interés a través de la tokenización del rendimiento futuro, permitiendo a los usuarios asegurar el rendimiento futuro de los tokens que generan rendimiento, especular sobre los movimientos de rendimiento y proporcionar liquidez para los tokens que generan rendimiento.",
             "securitize": "Una plataforma para tokenizar activos del mundo real y emitir y gestionar valores de activos digitales en cadena, permitiendo a las empresas recaudar capital y a los inversores operar con acciones tokenizadas en fondos y empresas privadas.",
-            "skyRwa": "Un protocolo DeFi (creado por la comunidad MakerDAO) que ofrece un conjunto de herramientas para intercambiar, convertir, hacer staking y obtener rendimientos de activos digitales, incluida la moneda estable USDS.",
+            "sky-rwa": "Un protocolo DeFi (creado por la comunidad MakerDAO) que ofrece un conjunto de herramientas para intercambiar, convertir, hacer staking y obtener rendimientos de activos digitales, incluida la moneda estable USDS.",
             "tether": "Emisor de la moneda estable USDT, una moneda estable vinculada al dólar estadounidense que se enfoca en el uso de monedas fiduciarias en cadena.",
             "veda": "Una plataforma de infraestructura de bóvedas para que las instituciones lancen y gestionen productos personalizados en cadena a escala.",
-            "wisdomTree": "Un administrador de activos global que ofrece una gama de productos cotizados (ETP), incluidos ETP criptográficos respaldados físicamente."
+            "wisdom-tree": "Un administrador de activos global que ofrece una gama de productos cotizados (ETP), incluidos ETP criptográficos respaldados físicamente."
           }
         },
         "staking": {
           "heading": "Staking y Restaking",
           "subtext": "Haga staking de ETH a través de una red de staking para ayudar a asegurar Ethereum y ganar recompensas, o haga restaking de LST para ayudar a asegurar otros protocolos",
           "platforms": {
-            "etherFi": "Una plataforma de restaking para ganar recompensas adicionales sobre monedas estables, tokens de staking líquido y otros activos digitales, con depósitos representados por un token de restaking líquido que se puede usar en DeFi, y bóvedas de estrategia automatizadas.",
-            "eigenCloud": "Una plataforma construida sobre el restaking de EigenLayer que proporciona computación verificable para IA y otras aplicaciones complejas, aprovechando la seguridad de Ethereum a través de ETH con restaking y tokens de staking líquido con restaking.",
+            "ether-fi": "Una plataforma de restaking para ganar recompensas adicionales sobre monedas estables, tokens de staking líquido y otros activos digitales, con depósitos representados por un token de restaking líquido que se puede usar en DeFi, y bóvedas de estrategia automatizadas.",
+            "eigen-cloud": "Una plataforma construida sobre el restaking de EigenLayer que proporciona computación verificable para IA y otras aplicaciones complejas, aprovechando la seguridad de Ethereum a través de ETH con restaking y tokens de staking líquido con restaking.",
             "lido": "Una red de staking líquido gestionada por una DAO que permite a los usuarios hacer staking de su ETH y otros activos PoS para ganar recompensas de staking, con los activos en staking representados por stETH, un token de staking líquido que se puede usar en DeFi y se emite para representar las recompensas de staking.",
-            "liquidCollective": "Una red de staking líquido construida para proporcionar una forma segura y descentralizada de hacer staking de ETH a través de operadores y plataformas, con los activos en staking representados por LsETH, un token de staking líquido que se puede usar en DeFi mientras acumula recompensas de staking, diseñado para cumplir con los requisitos institucionales de seguridad y cumplimiento.",
-            "rocketPool": "Un protocolo de staking líquido enfocado en la descentralización y la resistencia a la censura, que permite a los usuarios con tan solo 0,01 ETH participar en el staking y recibir un token de staking líquido (rETH) que se puede usar en DeFi mientras continúa acumulando recompensas de staking.",
+            "liquid-collective": "Una red de staking líquido construida para proporcionar una forma segura y descentralizada de hacer staking de ETH a través de operadores y plataformas, con los activos en staking representados por LsETH, un token de staking líquido que se puede usar en DeFi mientras acumula recompensas de staking, diseñado para cumplir con los requisitos institucionales de seguridad y cumplimiento.",
+            "rocket-pool": "Un protocolo de staking líquido enfocado en la descentralización y la resistencia a la censura, que permite a los usuarios con tan solo 0,01 ETH participar en el staking y recibir un token de staking líquido (rETH) que se puede usar en DeFi mientras continúa acumulando recompensas de staking.",
             "stakewise": "Una plataforma de staking líquido que ofrece opciones de staking tanto individual como colectivo, respaldada por una red descentralizada de bóvedas de staking personalizadas, con un token de staking líquido unificado (osETH) que se puede usar en DeFi mientras continúa acumulando recompensas de staking.",
             "symbiotic": "Un protocolo de restaking que permite a los usuarios asegurar redes de cadena de bloques adicionales al realizar el restaking de sus activos en staking y tokens de staking líquido existentes, con un sistema flexible y modular para que las redes gestionen recompensas y penalizaciones independientes."
           }
@@ -494,19 +757,23 @@
     "metadata": {
       "title": "Finanzas descentralizadas para instituciones | DeFi en Ethereum",
       "description": "Explore el ecosistema DeFi de Ethereum, hogar de la liquidez más profunda en cadena. Conozca cómo los estándares abiertos impulsan la innovación empresarial en préstamos, créditos e intercambios."
+    },
+    "abbreviations": {
+      "tvl": "Valor total bloqueado",
+      "dex": "Intercambio descentralizado"
     }
   },
-  "dataHub": {
+  "data-hub": {
     "hero": {
       "heading": "Centro de datos",
       "description1": "Datos en tiempo real sobre el ecosistema de Ethereum, que cubren la actividad de la red, DeFi, monedas estables, RWA y redes de capa 2.",
       "description2": "Explore métricas seleccionadas para la actividad de la red principal, el escalado de las L2, los mercados DeFi, los activos tokenizados y más."
     },
     "metrics": {
-      "marketCap": "Capitalización de mercado de Ether",
+      "market-cap": "Capitalización de mercado de Ether",
       "tvs": "Valor total asegurado",
-      "ethStaked": "ETH en staking",
-      "securityRatio": "Relación de seguridad"
+      "eth-staked": "ETH en staking",
+      "security-ratio": "Relación de seguridad"
     },
     "sections": {
       "overview": "Resumen",
@@ -520,13 +787,13 @@
         "title": "TVL de DeFi",
         "description": "Valor total bloqueado en protocolos DeFi en Ethereum"
       },
-      "vsNext": {
+      "vs-next": {
         "title": "Ethereum frente al siguiente ecosistema DeFi más grande",
         "larger": "Más grande"
       }
     },
     "stablecoins": {
-      "marketShare": {
+      "market-share": {
         "title": "Cuota de mercado de monedas estables",
         "description": "Distribución de la capitalización de mercado de monedas estables en Ethereum L1"
       }
@@ -543,17 +810,17 @@
     "charts": {
       "mainnet": "Red principal",
       "layer2": "Capa 2",
-      "layer2Tvl": "TVL de capa 2",
-      "stablecoinTvlWithL2": "TVL de monedas estables (red principal y L2)",
-      "stablecoinTvlMainnetOnly": "TVL de monedas estables (red principal)",
-      "rwaTitle": "Valor de los activos del mundo real (RWA)",
-      "hideL2Data": "Ocultar datos de la capa 2",
-      "showL2Data": "Mostrar datos de la capa 2",
-      "marketShare": "Porcentaje de cuota de mercado",
-      "ethMainnet": "Ethereum (red principal)",
-      "ethL2s": "Ethereum (L2)",
-      "secondLargest": "2.º ecosistema más grande",
-      "thirdLargest": "3.er ecosistema más grande",
+      "layer2-tvl": "TVL de capa 2",
+      "stablecoin-tvl-with-l2": "TVL de monedas estables (red principal y L2)",
+      "stablecoin-tvl-mainnet-only": "TVL de monedas estables (red principal)",
+      "rwa-title": "Valor de los activos del mundo real (RWA)",
+      "hide-l2-data": "Ocultar datos de la capa 2",
+      "show-l2-data": "Mostrar datos de la capa 2",
+      "market-share": "Porcentaje de cuota de mercado",
+      "eth-mainnet": "Ethereum (red principal)",
+      "eth-l2s": "Ethereum (L2)",
+      "second-largest": "2.º ecosistema más grande",
+      "third-largest": "3.er ecosistema más grande",
       "remainder": "Resto del mercado"
     },
     "metadata": {
@@ -568,11 +835,9 @@
       "description2": "Ideales para la tokenización, los pagos y las aplicaciones de cadena específicas compatibles, las L2 pueden ofrecer entornos personalizados, rieles optimizados y una ejecución más rápida y económica, al tiempo que dependen de Ethereum para la finalidad."
     },
     "metrics": {
-      "srHeading": "Resumen del ecosistema de capa 2",
-      "tvlAcross": "TVL en todas las L2",
-      "avgTxCost": "Costo promedio diario por transacción",
-      "avgUops": "Promedio",
-      "numberOfL2s": "Número de L2"
+      "sr-heading": "Resumen del ecosistema de capa 2",
+      "tvl-across": "TVL en todas las L2",
+      "avg-uops": "Promedio"
     },
     "role": {
       "heading": "El papel de las L2",
@@ -580,42 +845,50 @@
         "heading": "Ethereum L1",
         "subheading": "La capa de liquidación y liquidez",
         "finality": "Finalidad y neutralidad creíble",
-        "finalityDesc": "Liquidación de alto valor, raíces de estado para rollups y registros duraderos que las instituciones pueden auditar y atestar",
+        "finality-desc": "Liquidación de alto valor, raíces de estado para rollups y registros duraderos que las instituciones pueden auditar y atestar",
         "security": "Seguridad",
-        "securityDesc": "Los activos pueden almacenarse en un entorno diseñado para resistir grandes catástrofes y tensiones geopolíticas",
-        "riskGating": "Limitación de riesgos",
-        "riskGatingDesc": "Mantenga la lógica compleja o experimental fuera de la L1; úsela para la liquidación final, la custodia de garantías y las pruebas"
+        "security-desc": "Los activos pueden almacenarse en un entorno diseñado para resistir grandes catástrofes y tensiones geopolíticas",
+        "risk-gating": "Limitación de riesgos",
+        "risk-gating-desc": "Mantenga la lógica compleja o experimental fuera de la L1; úsela para la liquidación final, la custodia de garantías y las pruebas",
+        "description": "Ethereum L1 es altamente seguro e independiente de un único operador, pero sus desafíos incluyen:",
+        "item1": "Personalización de entornos",
+        "item2": "Tarifas de gas más altas durante la congestión",
+        "item3": "Gran parte de los datos son públicos",
+        "closing": "Si bien las actualizaciones de red de Ethereum están escalando rápidamente la capacidad de L1 hoy, las L2 ofrecen una solución inmediata."
       },
       "l2": {
         "heading": "L2 de Ethereum",
         "subheading": "La capa de ejecución y escalabilidad",
         "throughput": "Rendimiento y experiencia de usuario",
-        "throughputDesc": "Los rollups procesan transacciones fuera de cadena, heredan la seguridad de la L1 y ofrecen tarifas bajas adecuadas para pagos, creación de mercado y flujos de alta frecuencia",
+        "throughput-desc": "Los rollups procesan transacciones fuera de cadena, heredan la seguridad de la L1 y ofrecen tarifas bajas adecuadas para pagos, creación de mercado y flujos de alta frecuencia",
         "configurable": "Configurable",
-        "configurableDesc": "Las L2 pueden añadir funciones de cumplimiento, como listas de permitidos o grupos con KYC, manteniendo su carácter no custodio y liquidando en la L1",
+        "configurable-desc": "Las L2 pueden añadir funciones de cumplimiento, como listas de permitidos o grupos con KYC, manteniendo su carácter no custodio y liquidando en la L1",
         "specialization": "Especialización",
-        "specializationDesc": "Múltiples L2 permiten a las instituciones segregar las cargas de trabajo, como los pagos minoristas frente a las operaciones de tesorería, sin fragmentar la confianza, porque la liquidación se concilia en la L1"
+        "specialization-desc": "Múltiples L2 permiten a las instituciones segregar las cargas de trabajo, como los pagos minoristas frente a las operaciones de tesorería, sin fragmentar la confianza, porque la liquidación se concilia en la L1",
+        "description": "Las L2 ofrecen una ejecución de transacciones rápida y de bajo costo, mientras que Ethereum actúa como la fuente definitiva de verdad para la liquidación:",
+        "item1": "Los usuarios envían el procesamiento de transacciones a la red L2, en lugar de directamente a Ethereum",
+        "item2": "La L2 agrupa y/o comprime transacciones, las ejecuta fuera de cadena y, a su vez, envía los datos de vuelta a la L1 como fuente de verdad y consenso global"
       }
     },
     "benefits": {
       "heading": "Beneficios de las L2",
-      "inheritDecentralization": {
+      "inherit-decentralization": {
         "title": "Heredar la descentralización de Ethereum",
-        "noBootstrapping": {
+        "no-bootstrapping": {
           "heading": "Sin arranque desde cero",
           "item1": "Evite el costoso proceso de crear y pagar un nuevo conjunto de validadores",
           "item2": "Las nuevas cadenas deben construir la descentralización desde cero, un proceso lento y que requiere mucho capital que puede dar lugar a cadenas frágiles y centralizadas",
           "item3": "Las L2 heredan la descentralización inigualable de Ethereum, ahorrando recursos y accediendo a una profunda seguridad económica"
         },
-        "sharedSecurity": {
+        "shared-security": {
           "heading": "Seguridad compartida",
           "item1": "Las L2 aprovechan <link>más de {securityValue} en seguridad económica</link>, pagando solo tarifas basadas en el uso.",
           "item2": "Todos los rollups liquidan en Ethereum, creando una capa compartida y descentralizada de seguridad y disponibilidad de datos"
         }
       },
-      "cheaperSecurity": {
+      "cheaper-security": {
         "title": "Costos de seguridad más económicos",
-        "noInflation": {
+        "no-inflation": {
           "heading": "Sin carga de inflación",
           "item1": "Las L1 alternativas pagan por la seguridad y el uso a través de altas tasas de inflación de sus tokens nativos",
           "item2": "Las L2 pagan tarifas basadas en el uso en ETH, lo que elimina la necesidad de un token nativo de la L2 para facilitar la seguridad económica",
@@ -623,18 +896,18 @@
           "item4": "Altos niveles de rentabilidad, p. ej., márgenes del 95 % en Base"
         }
       },
-      "enhancedPerformance": {
+      "enhanced-performance": {
         "title": "Rendimiento mejorado",
-        "highPerformance": {
+        "high-performance": {
           "heading": "Validación de alto rendimiento",
           "item1": "Al separar la ejecución del consenso y heredar la finalidad de Ethereum, los rollups permiten un alto rendimiento sin sacrificar la seguridad del usuario ni la descentralización"
         },
-        "fasterCheaper": {
+        "faster-cheaper": {
           "heading": "Más rápido y económico",
           "item1": "Los rollups pueden paralelizar la ejecución y la prueba: no necesitan esperar a que miles de nodos se sincronicen",
           "item2": "Una prueba reemplaza millones de re-computaciones redundantes en los nodos, lo que reduce enormemente los costos de validación"
         },
-        "saferValidation": {
+        "safer-validation": {
           "heading": "Validación más segura",
           "item1": "Los rollups heredan la resistencia a la censura y la finalidad de Ethereum",
           "item2": "Los activos se mantienen en contratos de Ethereum y las actualizaciones se aplican mediante pruebas de fraude o de validez",
@@ -643,11 +916,20 @@
       },
       "interoperability": {
         "title": "Interoperabilidad",
-        "sharedStandards": {
+        "shared-standards": {
           "heading": "Estándares compartidos",
           "item1": "Las L2 aprovechan la EVM establecida de Ethereum, los estándares de tokens y los activos principales como ETH",
           "item2": "Los usuarios y desarrolladores se benefician de una experiencia constante, utilizando las mismas billeteras, herramientas y código en todo el ecosistema de L1 y L2 de Ethereum",
           "item3": "Los tokens y los NFT mantienen una fuente de verdad canónica en la L1, lo que los hace fungibles entre diferentes rollups"
+        }
+      },
+      "customization": {
+        "title": "Personalización",
+        "configurable-environments": {
+          "heading": "Entornos personalizables",
+          "item1": "Las instituciones pueden diseñar rollups con lógica de cumplimiento personalizada incorporada, incrustando protocolos específicos de verificación de identidad, acceso permisionado o controles de privacidad directamente en la arquitectura de la L2",
+          "item2": "Lance ecosistemas L2 dedicados para mantener una identidad de marca única y controlar la experiencia de usuario de principio a fin en cadena, como lo demuestran las redes L2 como Base y Robinhood Chain",
+          "item3": "Los parámetros de la L2 pueden optimizarse para el rendimiento, como garantizar un espacio de bloque dedicado, altas velocidades de transacción y tarifas predecibles adaptadas a aplicaciones empresariales de alto volumen"
         }
       }
     },
@@ -655,13 +937,13 @@
       "heading": "Ethereum como la capa de confianza",
       "description": "En un rollup, las transacciones se ejecutan fuera de cadena pero los datos se publican en la L1 de Ethereum",
       "transparency": "Transparencia",
-      "transparencyDesc": "Cada usuario puede ver el estado del rollup en la L1",
-      "dataAvailability": "Disponibilidad de datos",
-      "dataAvailabilityDesc": "Incluso si el secuenciador de la L2 desaparece o censura a los usuarios, todo el historial de transacciones es accesible e inmutable en Ethereum",
-      "exitWindow": "Ventana de salida",
-      "exitWindowDesc": "Cualquier persona puede retirar directamente sus activos de la L2 a la L1 interactuando con el contrato inteligente de la L1",
+      "transparency-desc": "Cada usuario puede ver el estado del rollup en la L1",
+      "data-availability": "Disponibilidad de datos",
+      "data-availability-desc": "Incluso si el secuenciador de la L2 desaparece o censura a los usuarios, todo el historial de transacciones es accesible e inmutable en Ethereum",
+      "exit-window": "Ventana de salida",
+      "exit-window-desc": "Cualquier persona puede retirar directamente sus activos de la L2 a la L1 interactuando con el contrato inteligente de la L1",
       "recoverability": "Recuperabilidad",
-      "recoverabilityDesc": "La disponibilidad de datos en la L1 hace que los fondos de los usuarios sean recuperables incluso si la L2 falla; esta característica, conocida como la \"salida de emergencia\", mantiene la confianza de los rollups minimizada en lugar de depender del operador de la L2",
+      "recoverability-desc": "La disponibilidad de datos en la L1 hace que los fondos de los usuarios sean recuperables incluso si la L2 falla; esta característica, conocida como la \"salida de emergencia\", mantiene la confianza de los rollups minimizada en lugar de depender del operador de la L2",
       "issuance": {
         "heading": "Emisión en L1 (puente a L2)",
         "description": "Los activos deben emitirse en la L1 y pasarse por el puente a la L2",
@@ -670,17 +952,16 @@
         "maximizes": "Maximiza la interoperabilidad y la componibilidad en todo el ecosistema de Ethereum"
       }
     },
-    "frameworksSection": {
+    "frameworks-section": {
       "heading": "Despliegue simplificado y flexibilidad",
       "description": "Elija entre marcos robustos y auditados para lanzar su cadena de bloques en semanas, no en años"
     },
     "frameworks": {
       "arbitrum": "Un conjunto de soluciones de escalado de Ethereum que facilitan la creación y el uso de aplicaciones descentralizadas.",
       "optimism": "El OP Stack es una pila de desarrollo estandarizada para poner en marcha una L2. La Superchain es una red de cadenas interoperables basadas en el OP Stack.",
-      "polygon": "Los protocolos y las tecnologías de escalado de Polygon se utilizan para crear y desplegar aplicaciones, o lanzar rollups ZK y validiums como L2.",
       "zksync": "Un motor de escalado y privacidad para Ethereum con una red de cadenas interoperables, asegurado por tecnología de privacidad ZK."
     },
-    "networksSection": {
+    "networks-section": {
       "heading": "Despliegue en L2 probadas",
       "description": "Construya en redes seguras y escalables sin la carga operativa de lanzar y mantener su propia cadena"
     },
@@ -692,59 +973,165 @@
       "unichain": "Unichain es una L2 centrada en DeFi construida para transacciones de alto rendimiento y liquidez entre cadenas. Proporciona un entorno unificado para protocolos financieros, combinando la eficiencia del capital con la seguridad de los rollups.",
       "scroll": "Scroll es una capa 2 basada en zkEVM construida para la compatibilidad con Ethereum. Permite el despliegue nativo de los contratos inteligentes existentes mientras mantiene la equivalencia total con la EVM y las pruebas sin confianza ancladas a la L1."
     },
-    "caseStudiesSection": {
+    "case-studies-section": {
       "heading": "Casos de estudio"
     },
-    "caseStudies": {
+    "case-studies": {
       "ey": {
         "description": "Plataforma L2 Nightfall",
-        "ctaLabel": "Transacciones más económicas"
+        "cta-label": "Transacciones más económicas"
       },
       "coinbase": {
         "description": "Ecosistema L2 Base",
-        "ctaLabel": "Valor total asegurado"
+        "cta-label": "Valor total asegurado"
       },
-      "deutscheBank": {
+      "deutsche-bank": {
         "description": "L2 permisionada DAMA 2",
-        "ctaLabel": "Est. nativo digital para 2045"
+        "cta-label": "Est. nativo digital para 2045"
       },
       "celo": {
         "description": "L1 transicionada a L2 de Ethereum",
-        "ctaLabel": "Volumen mensual de monedas estables"
+        "cta-label": "Volumen mensual de monedas estables"
       },
       "world": {
         "description": "L2 World Chain para escalar Proof of Human",
-        "ctaLabel": "Transacciones diarias"
+        "cta-label": "Transacciones diarias"
+      },
+      "sony": {
+        "description": "L2 permisionada pública de Soneium",
+        "cta-label": "Usuarios incorporados"
+      },
+      "ant-group": {
+        "description": "L2 Jovay para tokenización",
+        "cta-label": "Socios institucionales"
+      },
+      "robinhood": {
+        "description": "Cadena pública para tokenización de activos",
+        "cta-label": "Primera L2 optimizada para RWA"
       }
     },
     "enterprise": {
       "heading": "L2 para empresas",
       "existing": {
         "heading": "Usar una L2 existente",
-        "immediateAccess": "Acceso inmediato",
-        "immediateAccessDesc": "Acceda a ecosistemas maduros con grandes comunidades de desarrolladores y redes de liquidez",
-        "lowerCosts": "Menores costos de integración",
-        "lowerCostsDesc": "Herede la descentralización y seguridad de Ethereum: no es necesario arrancar la infraestructura desde cero",
-        "regulatoryAlignment": "Alineación regulatoria",
-        "regulatoryAlignmentDesc": "Muchas L2 ya están construyendo módulos de cumplimiento adecuados para las instituciones financieras",
-        "productionSecurity": "Seguridad en producción",
-        "productionSecurityDesc": "Construya sobre cadenas L2 en vivo y probadas en batalla, con miles de millones de dólares en valor asegurado"
+        "immediate-access": "Acceso inmediato",
+        "immediate-access-desc": "Acceda a ecosistemas maduros con grandes comunidades de desarrolladores y redes de liquidez",
+        "lower-costs": "Menores costos de integración",
+        "lower-costs-desc": "Herede la descentralización y seguridad de Ethereum: no es necesario arrancar la infraestructura desde cero",
+        "regulatory-alignment": "Alineación regulatoria",
+        "regulatory-alignment-desc": "Muchas L2 ya están construyendo módulos de cumplimiento adecuados para las instituciones financieras",
+        "production-security": "Seguridad en producción",
+        "production-security-desc": "Construya sobre cadenas L2 en vivo y probadas en batalla, con miles de millones de dólares en valor asegurado"
       },
       "custom": {
         "heading": "Lanzar una L2 personalizada",
-        "tailoredEnvironments": "Entornos a medida",
-        "tailoredEnvironmentsDesc": "Despliegue un rollup privado o público utilizando pilas existentes, adaptado a sus necesidades empresariales específicas",
-        "customFeatures": "Funciones personalizadas",
-        "customFeaturesDesc": "Implemente acceso permisionado, capas de privacidad, ganchos de cumplimiento o integración de sistemas internos",
-        "sharedSecurity": "Seguridad compartida",
-        "sharedSecurityDesc": "Incluso los rollups privados liquidan en Ethereum, beneficiándose de su conjunto de validadores sin el costo de construir uno",
-        "fasterTimeToMarket": "Menor tiempo de comercialización",
-        "fasterTimeToMarketDesc": "Construya utilizando marcos de rollup auditados y probados en batalla para desplegar en semanas, no en años"
+        "tailored-environments": "Entornos a medida",
+        "tailored-environments-desc": "Despliegue un rollup privado o público utilizando pilas existentes, adaptado a sus necesidades empresariales específicas",
+        "custom-features": "Funciones personalizadas",
+        "custom-features-desc": "Implemente acceso permisionado, capas de privacidad, ganchos de cumplimiento o integración de sistemas internos",
+        "shared-security": "Seguridad compartida",
+        "shared-security-desc": "Incluso los rollups privados liquidan en Ethereum, beneficiándose de su conjunto de validadores sin el costo de construir uno",
+        "faster-time-to-market": "Menor tiempo de comercialización",
+        "faster-time-to-market-desc": "Construya utilizando marcos de rollup auditados y probados en batalla para desplegar en semanas, no en años"
       }
     },
     "metadata": {
       "title": "Ecosistema de capa 2 de Ethereum | Soluciones escalables para empresas",
       "description": "Las capas 2 ofrecen una ejecución más rápida y económica, ideal para pagos, cadenas de aplicaciones y tokenización. Conozca cómo las L2 ayudan a las instituciones a escalar sin sacrificar la seguridad."
+    },
+    "abbreviations": {
+      "tvl": "Valor total bloqueado",
+      "uops": "Operaciones de usuario por segundo"
+    }
+  },
+  "why-ethereum": {
+    "hero": {
+      "heading": "Por qué Ethereum",
+      "description1": "Los mercados financieros globales siguen dependiendo de sistemas de liquidación obsoletos, costosos y fragmentados que introducen riesgo operativo, ineficiencia de capital y sobrecarga de conciliación.",
+      "description2": "Las transacciones transfronterizas siguen siendo lentas y opacas, mientras que la infraestructura heredada limita la programabilidad, la transparencia y la auditabilidad en tiempo real."
+    },
+    "problem": {
+      "pressures": {
+        "heading": "Factores de presión del",
+        "subheading": "Cambio institucional",
+        "efficiency": "Eficiencia de liquidación",
+        "efficiency-desc": "Las empresas están bajo presión para comprimir los plazos de liquidación y reducir el capital atrapado en los colchones de riesgo de contraparte.",
+        "transparency": "Transparencia y auditabilidad",
+        "transparency-desc": "Los reguladores y los equipos de riesgo esperan cada vez más registros verificables en tiempo real en lugar de conciliaciones procesadas por lotes.",
+        "digital-assets": "Preparación para activos digitales",
+        "digital-assets-desc": "La demanda de los clientes de fondos tokenizados, tesorerías en cadena y valores digitales requiere una infraestructura que soporte estos productos dentro de los marcos regulatorios existentes.",
+        "open-infra": "Infraestructura abierta",
+        "open-infra-desc": "Las instituciones buscan capas de liquidación neutrales y basadas en estándares que eviten la dependencia de proveedores propietarios y permitan la interoperabilidad entre proveedores."
+      },
+      "limitations": {
+        "heading": "Actuales",
+        "subheading": "Limitaciones de la infraestructura de liquidación",
+        "fragmented": "Liquidación fragmentada",
+        "fragmented-desc": "La liquidación permanece aislada entre contrapartes, operaciones internas y jurisdicciones, requiriendo coordinación manual en cada límite.",
+        "delay": "Retraso en la liquidación",
+        "delay-desc": "Los ciclos T+2 y T+3 inmovilizan capital, amplifican la exposición a la contraparte e introducen riesgo sistémico durante mercados volátiles.",
+        "reconciliation": "Sobrecarga de conciliación",
+        "reconciliation-desc": "Mantener registros consistentes entre los participantes exige costosos procesos de conciliación y auditoría que escalan mal.",
+        "programmability": "Programabilidad limitada",
+        "programmability-desc": "Los rieles heredados ofrecen un soporte mínimo para lógica condicional, cumplimiento automatizado o productos financieros componibles.",
+        "opacity": "Opacidad de la contraparte",
+        "opacity-desc": "Los participantes carecen de visibilidad en tiempo real sobre las posiciones de la contraparte y el estado de la liquidación, lo que obliga a depender de la confianza y los informes periódicos."
+      }
+    },
+    "features": {
+      "heading": "Por qué las instituciones eligen Ethereum",
+      "description": "Ethereum es una red de liquidación abierta y distribuida globalmente diseñada para soportar actividad financiera programable. A diferencia de los sistemas propietarios o permisionados, Ethereum opera como una capa base neutral sin un único operador, al tiempo que permite a las instituciones construir aplicaciones conscientes del cumplimiento.",
+      "resilience": {
+        "label": "Resiliencia operativa",
+        "description": "{uptime} de tiempo de actividad y disponibilidad ininterrumpidos, incluyendo más de 15 actualizaciones de red. Una infraestructura diversa y un ecosistema de clientes abierto reducen la concentración de infraestructura y los riesgos de un único operador."
+      },
+      "settlement": {
+        "label": "Liquidación global",
+        "description": "Ethereum liquida valor continuamente a través de jurisdicciones, con finalidad transparente y ejecución públicamente verificable."
+      },
+      "collateral": {
+        "label": "Movilidad de garantías",
+        "description": "Movimiento confiable de garantías cuando lo necesite a través de los mercados de garantías siempre activos de Ethereum, probados durante más de una década."
+      },
+      "neutrality": {
+        "label": "Neutralidad",
+        "description": "Sin punto único de falla, sin coordinador central, sin botón de pausa, sin riesgo de contraparte. Resiliente a riesgos geopolíticos, regulatorios y a nivel de infraestructura."
+      },
+      "liquidity": {
+        "label": "Liquidez y utilidad",
+        "description": "La plataforma líder para la tokenización de activos con {tokenizationShare} de todos los activos tokenizados desplegados. Beneficiándose de {yearsOfNetworkEffects} de efectos de red, el ecosistema DeFi de Ethereum es {defiMultiplier} veces más grande que el siguiente más grande."
+      },
+      "programmability": {
+        "label": "Programabilidad",
+        "description": "Los contratos inteligentes permiten la emisión automatizada, controles de transferencia, gestión del ciclo de vida y liquidación condicional. Las aplicaciones y las redes de capa 2 pueden personalizarse según los requisitos exactos de las instituciones financieras."
+      },
+      "composability": {
+        "label": "Ecosistema componible",
+        "description": "El ecosistema de Ethereum de billeteras, custodios, auditores, proveedores de datos y soluciones de escalado de grado institucional soporta miles de millones en capital institucional."
+      }
+    },
+    "risk": {
+      "heading": "Ethereum para la gestión de riesgos",
+      "description": "Ethereum es una base poderosa, pero no una solución llave en mano. La adopción exitosa generalmente ocurre junto con la infraestructura existente, no como un reemplazo total, y requiere una evaluación cuidadosa.",
+      "item1": "El tratamiento regulatorio varía según la jurisdicción",
+      "item2": "Las tarifas de transacción pueden fluctuar según la demanda de la red",
+      "item3": "La visibilidad pública de las transacciones requiere opciones de diseño que preserven la privacidad",
+      "item4": "El riesgo de los contratos inteligentes requiere procesos rigurosos de auditoría y control",
+      "mitigation": {
+        "heading": "Enfoques de mitigación",
+        "item1": "KYC/AML en la capa de aplicación",
+        "item2": "Uso de redes de capa 2 y procesamiento por lotes de transacciones",
+        "item3": "Arquitecturas de transacciones que preservan la privacidad",
+        "item4": "Cadenas permisionadas vs. públicas a través de la personalización de la capa 2",
+        "item5": "Privacidad, protección de datos y controles",
+        "item6": "Soluciones de custodia institucional y gestión de claves",
+        "item7": "Estructuración legal alineada con la guía regulatoria local"
+      },
+      "closing": "Modernizar la infraestructura de liquidación es un proceso deliberado. Las instituciones pueden adoptar de forma incremental, comenzando con casos de uso específicos y expandiéndose a medida que crece la confianza y la claridad regulatoria."
+    },
+    "metadata": {
+      "title": "Por qué Ethereum para instituciones | El caso de Ethereum",
+      "description": "Comprenda por qué las principales instituciones eligen Ethereum para la liquidación, la tokenización y la infraestructura financiera. Resiliencia operativa, neutralidad y liquidez profunda."
     }
   }
 }

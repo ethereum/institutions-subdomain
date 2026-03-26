@@ -24,11 +24,11 @@ const L2TimeseriesTvlLineChart = ({
   chartData,
 }: L2TimeseriesTvlLineChartProps) => {
   const locale = useLocale()
-  const tCharts = useTranslations("dataHub.charts")
+  const tCharts = useTranslations("data-hub.charts")
 
   const chartConfig = {
     value: {
-      label: tCharts("layer2Tvl"),
+      label: tCharts("layer2-tvl"),
       color: "var(--chart-1)",
     },
   } satisfies ChartConfig

@@ -1,54 +1,71 @@
 "use server"
 
-import type { DataTimestamped } from "@/lib/types"
+import { unstable_cache } from "next/cache"
+
+import type { DataTimestamped, GrowthepieApiResult } from "@/lib/types"
+
+type JSONData = GrowthepieApiResult[]
 
 import { every } from "@/lib/utils/time"
 
-import { SITE_ORIGIN, SOURCE } from "@/lib/constants"
-
-type JSONData = DataTimestamped<BaseTvlData>
+import { SOURCE } from "@/lib/constants"
 
 export type BaseTvlData = { baseTvl: number }
 
-export const fetchBaseTvl = async (): Promise<DataTimestamped<BaseTvlData>> => {
-  // Call internal trimmed endpoint and let Next cache the small response.
-  const secret = process.env.INTERNAL_API_SECRET || ""
+const fetchBaseTvlData = async (): Promise<BaseTvlData> => {
+  const url = "https://api.growthepie.com/v1/export/tvl.json"
 
-  if (!secret) throw new Error("Internal API secret not found")
+  // No Next cache -- avoids caching the large (~5MB) upstream response
+  const res = await fetch(url, { cache: "no-store" })
+  if (!res.ok)
+    throw new Error(
+      `Fetch response not OK from ${url}: ${res.status} ${res.statusText}`
+    )
 
-  const internalUrl = new URL("/api/growthepie-v1-export-tvl/base", SITE_ORIGIN)
+  const json: JSONData = await res.json()
 
-  internalUrl.searchParams.set("secret", secret)
+  const dataBaseUSD = json.filter(
+    ({ metric_key, origin_key }) =>
+      metric_key === "tvl" && origin_key.toLowerCase() === "base"
+  )
+  const sortedDescendingDate = dataBaseUSD.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  )
 
-  const url = internalUrl.toString()
+  if (!sortedDescendingDate.length)
+    throw new Error(
+      `No data found for metric_key === "tvl" && origin_key === "base"`
+    )
 
+  return { baseTvl: sortedDescendingDate[0].value }
+}
+
+const getCachedBaseTvlData = () =>
+  unstable_cache(fetchBaseTvlData, ["growthepie-base-tvl"], {
+    revalidate: every("day"),
+  })()
+
+export const fetchBaseTvl = async (): Promise<
+  DataTimestamped<BaseTvlData>
+> => {
   try {
-    const response = await fetch(url, {
-      next: {
-        revalidate: every("day"),
-        tags: ["internal:growthepie:v1:export:tvl:base-current"],
-      },
-    })
-
-    if (!response.ok)
-      throw new Error(
-        `Fetch response not OK from ${url}: ${response.status} ${response.statusText}`
-      )
-
-    const json: JSONData = await response.json()
+    const data = await getCachedBaseTvlData()
 
     return {
-      data: json.data,
-      lastUpdated: json.lastUpdated,
+      data,
+      lastUpdated: Date.now(),
       sourceInfo: SOURCE.GROWTHEPIE,
     }
   } catch (error: unknown) {
     console.error("fetchBaseTvl failed", {
       name: error instanceof Error ? error.name : undefined,
       message: error instanceof Error ? error.message : String(error),
-      url,
     })
-    throw error
+    return {
+      data: { baseTvl: 0 },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.GROWTHEPIE,
+    }
   }
 }
 

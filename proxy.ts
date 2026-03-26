@@ -1,8 +1,13 @@
-import createMiddleware from "next-intl/middleware";
+import type { NextRequest } from "next/server"
+import createMiddleware from "next-intl/middleware"
 
-import { routing } from "@/i18n/routing";
+import { routing } from "@/i18n/routing"
 
-export default createMiddleware(routing);
+const intlMiddleware = createMiddleware(routing)
+
+export function proxy(request: NextRequest) {
+  return intlMiddleware(request)
+}
 
 export const config = {
   // Match all pathnames except for
@@ -12,4 +17,4 @@ export const config = {
   // - /static (static files)
   // - /*.* (files with extensions like .ico, .png, etc.)
   matcher: ["/((?!api|_next|_vercel|static|.*\\..*).*)"],
-};
+}

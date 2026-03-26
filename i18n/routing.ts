@@ -1,7 +1,7 @@
-import { defineRouting } from "next-intl/routing";
+import { defineRouting } from "next-intl/routing"
 
-export const locales = ["en", "zh", "es"] as const;
-export type Locale = (typeof locales)[number];
+export const locales = ["en", "zh", "es"] as const
+export type Locale = (typeof locales)[number]
 
 export const routing = defineRouting({
   locales,
@@ -15,4 +15,4 @@ export const routing = defineRouting({
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",
   },
-});
+})
