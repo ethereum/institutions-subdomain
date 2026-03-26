@@ -16,8 +16,8 @@ import { RWA_API_MEASURE_ID_BY_CATEGORY, SOURCE } from "@/lib/constants"
 const RWA_XYZ_TREASURIES_ASSET_IDS = {
   BUIDL: 2331,
   USTB: 1385,
-  MONY: 18743,
-  FDIT: 17291,
+  MONY: 16736,
+  FDIT: 15419,
   mF_ONE: 15152,
 } as const satisfies Record<string, number>
 
