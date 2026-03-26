@@ -144,3 +144,15 @@ export const RWA_API_LAYER_2S = [
 export const RWA_API_LAYER_2S_IDS = RWA_API_LAYER_2S.map(
   ({ id }) => id as number
 )
+
+/**
+ * DefiLlama uses different chain names than rwa.xyz in some cases.
+ * Map from our canonical name to DefiLlama's name.
+ */
+const DEFILLAMA_CHAIN_ALIASES: Record<string, string> = {
+  Optimism: "OP Mainnet",
+}
+
+export const DEFILLAMA_L2_CHAIN_NAMES = RWA_API_LAYER_2S.map(
+  ({ name }) => DEFILLAMA_CHAIN_ALIASES[name] || name
+)

@@ -24,6 +24,7 @@ import { formatDuration } from "@/lib/utils/time"
 
 import fetchAssetMarketShare from "@/app/_actions/fetchAssetMarketShare"
 import fetchAssetValueByAssetIds from "@/app/_actions/fetchAssetValueByAssetIds"
+import fetchProtocolBorrowed from "@/app/_actions/fetchProtocolBorrowed"
 import fetchProtocolsValueBySlug from "@/app/_actions/fetchProtocolsValueBySlug"
 import fetchProtocolsValueTotal from "@/app/_actions/fetchProtocolsValueTotal"
 import fetchTokenizedTreasuries from "@/app/_actions/fetchTokenizedTreasuries"
@@ -75,6 +76,7 @@ export default async function Page({ params }: Props) {
     assetValueByAssetIdsData,
     protocolsValueBySlugData,
     totalValueSecuredData,
+    protocolBorrowedData,
   ] = await Promise.all([
     fetchAssetMarketShare("STABLECOINS"),
     fetchAssetMarketShare("RWAS"),
@@ -84,6 +86,7 @@ export default async function Page({ params }: Props) {
     fetchAssetValueByAssetIds(),
     fetchProtocolsValueBySlug(),
     fetchTotalValueSecured(),
+    fetchProtocolBorrowed(),
   ])
 
   const metrics: Metric[] = [
@@ -350,19 +353,29 @@ export default async function Page({ params }: Props) {
   const creditPlatforms: AssetDetails[] = [
     {
       header: "Aave",
-      valuation: "",
+      valuation: formatLargeCurrency(locale, protocolBorrowedData.data.aave),
       imgSrc: aaveLogo,
       description: t("rwas.active-loans"),
       metricHref: "https://defillama.com/protocol/aave",
       visitHref: "https://aave.com/",
+      ...protocolBorrowedData.sourceInfo,
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        protocolBorrowedData.lastUpdated
+      ),
     },
     {
       header: "Morpho",
-      valuation: "",
+      valuation: formatLargeCurrency(locale, protocolBorrowedData.data.morpho),
       imgSrc: morphoLogo,
       description: t("rwas.active-loans"),
       metricHref: "https://defillama.com/protocol/morpho",
       visitHref: "https://morpho.org/",
+      ...protocolBorrowedData.sourceInfo,
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        protocolBorrowedData.lastUpdated
+      ),
     },
     {
       header: "Centrifuge",
