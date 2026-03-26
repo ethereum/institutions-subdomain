@@ -175,11 +175,12 @@
       },
       "fidelity": {
         "label": "FIDD Stablecoin - La primera stablecoin de Fidelity",
-        "value": ""
+        "value": "{amount} en circulacion"
       },
       "jpmorgan": {
         "label": "Fondo del mercado monetario tokenizado",
-        "value": "Primer fondo del mercado monetario en cadena"
+        "value": "Fondo del mercado monetario en cadena",
+        "source": "Comunicado de prensa de JPMorgan"
       }
     },
     "testimonials": {

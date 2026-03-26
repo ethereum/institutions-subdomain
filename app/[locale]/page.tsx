@@ -60,6 +60,7 @@ import fetchBaseTvl from "@/app/_actions/fetchBaseTvl"
 import fetchBeaconChain from "@/app/_actions/fetchBeaconChain"
 import fetchEtherPrice from "@/app/_actions/fetchEtherPrice"
 import fetchSecuritizeAum from "@/app/_actions/fetchSecuritizeAum"
+import fetchStablecoinSupply from "@/app/_actions/fetchStablecoinSupply"
 import fetchDefiTvlAllCurrent from "@/app/_actions/fetchTvlDefiAllCurrent"
 import { getTimeSinceGenesis } from "@/app/_actions/getTimeSinceGenesis"
 import { type Locale, routing } from "@/i18n/routing"
@@ -176,6 +177,7 @@ export default async function Home({ params }: Props) {
     rwaAssetMarketShareData,
     securitizeAumData,
     baseTvlData,
+    stablecoinSupplyData,
   ] = await Promise.all([
     fetchBeaconChain(),
     fetchEtherPrice(),
@@ -184,6 +186,7 @@ export default async function Home({ params }: Props) {
     fetchAssetMarketShare("RWAS"),
     fetchSecuritizeAum(),
     fetchBaseTvl(),
+    fetchStablecoinSupply(),
   ])
 
   const metrics: Metric[] = [
@@ -298,13 +301,27 @@ export default async function Home({ params }: Props) {
       name: "Fidelity",
       imgSrc: fidelity,
       label: t("platforms.fidelity.label"),
-      value: t("platforms.fidelity.value"),
+      value: t("platforms.fidelity.value", {
+        amount: formatLargeCurrency(
+          locale,
+          stablecoinSupplyData.data.FIDD
+        ),
+      }),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        stablecoinSupplyData.lastUpdated
+      ),
+      ...stablecoinSupplyData.sourceInfo,
     },
     {
       name: "JPMorgan",
       imgSrc: jpMorgan,
       label: t("platforms.jpmorgan.label"),
       value: t("platforms.jpmorgan.value"),
+      source: t("platforms.jpmorgan.source"),
+      sourceHref:
+        "https://am.jpmorgan.com/us/en/asset-management/adv/about-us/media/press-releases/jp-morgan-asset-management-launches-its-first-tokenized-money-market-fund/",
+      lastUpdated: formatDateMonthDayYear(locale, "2025-12-15"),
     },
   ]
 

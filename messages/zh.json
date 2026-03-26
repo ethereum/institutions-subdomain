@@ -175,11 +175,12 @@
       },
       "fidelity": {
         "label": "FIDD 稳定币 - 富达首个稳定币",
-        "value": ""
+        "value": "{amount} 供应量"
       },
       "jpmorgan": {
         "label": "代币化货币市场基金",
-        "value": "首个链上货币市场基金"
+        "value": "链上货币市场基金",
+        "source": "摩根大通新闻稿"
       }
     },
     "testimonials": {

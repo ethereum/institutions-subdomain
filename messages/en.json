@@ -185,11 +185,12 @@
       },
       "fidelity": {
         "label": "FIDD Stablecoin - Fidelity's first stablecoin",
-        "value": ""
+        "value": "{amount} supply"
       },
       "jpmorgan": {
         "label": "Tokenized Money Market Fund",
-        "value": "First onchain money market fund"
+        "value": "Onchain money market fund",
+        "source": "JPMorgan press release"
       }
     },
     "testimonials": {
