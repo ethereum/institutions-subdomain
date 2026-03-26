@@ -12,6 +12,7 @@ import { fetchWithRetry } from "@/lib/utils/fetch"
 import { every } from "@/lib/utils/time"
 
 import {
+  RWA_API_COMMODITIES_GROUP_ID,
   RWA_API_EXCLUDED_NETWORK_IDS,
   RWA_API_LAYER_2S_IDS,
   RWA_API_MAINNET,
@@ -92,8 +93,11 @@ const fetchMarketShareData = async (category: AssetCategory) => {
         },
         {
           field: "asset_class_id",
-          operator: category === "STABLECOINS" ? "equals" : "notEquals",
-          value: RWA_API_STABLECOINS_GROUP_ID,
+          operator: category === "RWAS" ? "notEquals" : "equals",
+          value:
+            category === "COMMODITIES"
+              ? RWA_API_COMMODITIES_GROUP_ID
+              : RWA_API_STABLECOINS_GROUP_ID,
         },
       ],
     },

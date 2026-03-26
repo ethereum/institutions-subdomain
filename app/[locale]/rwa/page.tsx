@@ -17,6 +17,7 @@ import { getMetadata } from "@/lib/utils/metadata"
 import {
   formatLargeCurrency,
   formatLargeCurrencyRange,
+  formatPercent,
   formatPercentRange,
 } from "@/lib/utils/number"
 import { formatDuration } from "@/lib/utils/time"
@@ -68,6 +69,7 @@ export default async function Page({ params }: Props) {
   const [
     stablecoinAssetMarketShareData,
     rwaAssetMarketShareData,
+    commoditiesAssetMarketShareData,
     protocolsValueTotal,
     tokenizedTreasuriesData,
     assetValueByAssetIdsData,
@@ -76,6 +78,7 @@ export default async function Page({ params }: Props) {
   ] = await Promise.all([
     fetchAssetMarketShare("STABLECOINS"),
     fetchAssetMarketShare("RWAS"),
+    fetchAssetMarketShare("COMMODITIES"),
     fetchProtocolsValueTotal(),
     fetchTokenizedTreasuries(),
     fetchAssetValueByAssetIds(),
@@ -110,10 +113,16 @@ export default async function Page({ params }: Props) {
     },
     {
       label: t("overview.commodities-share"),
-      value: "70%",
-      lastUpdated: "",
-      source: "",
-      sourceHref: "",
+      value: formatPercent(
+        locale,
+        commoditiesAssetMarketShareData.data.marketShare.mainnet +
+          commoditiesAssetMarketShareData.data.marketShare.layer2
+      ),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        commoditiesAssetMarketShareData.lastUpdated
+      ),
+      ...commoditiesAssetMarketShareData.sourceInfo,
     },
     {
       label: t("overview.value-secured"),

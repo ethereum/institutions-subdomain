@@ -100,6 +100,7 @@ export const NAV_ITEMS = [
  */
 
 export const RWA_API_STABLECOINS_GROUP_ID = 28
+export const RWA_API_COMMODITIES_GROUP_ID = 37
 
 /**
  * Enterprise/permissioned chains to exclude from public RWA market share calculations.
@@ -114,6 +115,7 @@ export const RWA_API_EXCLUDED_NETWORK_IDS = [
 export const RWA_API_MEASURE_ID_BY_CATEGORY = {
   RWAS: 71, // Bridged Token Value (Dollar)
   STABLECOINS: 70, // Bridged Token Market Cap (Dollar)
+  COMMODITIES: 71, // Bridged Token Value (Dollar), filtered to commodities asset class
 } as const satisfies Record<string, number>
 
 export const RWA_API_MAINNET = {
