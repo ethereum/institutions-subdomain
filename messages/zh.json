@@ -179,8 +179,7 @@
       },
       "jpmorgan": {
         "label": "代币化货币市场基金",
-        "value": "链上货币市场基金",
-        "source": "摩根大通新闻稿"
+        "value": "{amount} AUM"
       }
     },
     "testimonials": {

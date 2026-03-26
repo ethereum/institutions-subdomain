@@ -189,8 +189,7 @@
       },
       "jpmorgan": {
         "label": "Tokenized Money Market Fund",
-        "value": "Onchain money market fund",
-        "source": "JPMorgan press release"
+        "value": "{amount} AUM"
       }
     },
     "testimonials": {

@@ -179,8 +179,7 @@
       },
       "jpmorgan": {
         "label": "Fondo del mercado monetario tokenizado",
-        "value": "Fondo del mercado monetario en cadena",
-        "source": "Comunicado de prensa de JPMorgan"
+        "value": "{amount} AUM"
       }
     },
     "testimonials": {

@@ -59,6 +59,7 @@ import fetchAssetMarketShare from "@/app/_actions/fetchAssetMarketShare"
 import fetchBaseTvl from "@/app/_actions/fetchBaseTvl"
 import fetchBeaconChain from "@/app/_actions/fetchBeaconChain"
 import fetchEtherPrice from "@/app/_actions/fetchEtherPrice"
+import fetchAssetValueByAssetIds from "@/app/_actions/fetchAssetValueByAssetIds"
 import fetchSecuritizeAum from "@/app/_actions/fetchSecuritizeAum"
 import fetchStablecoinSupply from "@/app/_actions/fetchStablecoinSupply"
 import fetchDefiTvlAllCurrent from "@/app/_actions/fetchTvlDefiAllCurrent"
@@ -178,6 +179,7 @@ export default async function Home({ params }: Props) {
     securitizeAumData,
     baseTvlData,
     stablecoinSupplyData,
+    assetValueByAssetIdsData,
   ] = await Promise.all([
     fetchBeaconChain(),
     fetchEtherPrice(),
@@ -187,6 +189,7 @@ export default async function Home({ params }: Props) {
     fetchSecuritizeAum(),
     fetchBaseTvl(),
     fetchStablecoinSupply(),
+    fetchAssetValueByAssetIds(),
   ])
 
   const metrics: Metric[] = [
@@ -317,11 +320,17 @@ export default async function Home({ params }: Props) {
       name: "JPMorgan",
       imgSrc: jpMorgan,
       label: t("platforms.jpmorgan.label"),
-      value: t("platforms.jpmorgan.value"),
-      source: t("platforms.jpmorgan.source"),
-      sourceHref:
-        "https://am.jpmorgan.com/us/en/asset-management/adv/about-us/media/press-releases/jp-morgan-asset-management-launches-its-first-tokenized-money-market-fund/",
-      lastUpdated: formatDateMonthDayYear(locale, "2025-12-15"),
+      value: t("platforms.jpmorgan.value", {
+        amount: formatLargeCurrency(
+          locale,
+          assetValueByAssetIdsData.data.MONY
+        ),
+      }),
+      lastUpdated: formatDateMonthDayYear(
+        locale,
+        assetValueByAssetIdsData.lastUpdated
+      ),
+      ...assetValueByAssetIdsData.sourceInfo,
     },
   ]
 
