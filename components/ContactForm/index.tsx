@@ -15,7 +15,11 @@ import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
 import { sanitizeInput } from "@/lib/utils/sanitize"
 
-import { CONSUMER_DOMAINS, ENTERPRISE_EMAIL } from "@/lib/constants"
+import {
+  CONSUMER_DOMAINS,
+  ENTERPRISE_EMAIL,
+  WEBSITE_EMAIL,
+} from "@/lib/constants"
 
 import Link from "../ui/link"
 
@@ -197,7 +201,7 @@ const EnterpriseContactForm = () => {
           <>
             {t("errors.generalError")}{" "}
             <Link
-              href={`mailto:${ENTERPRISE_EMAIL}?subject=Enterprise%20inquiry`}
+              href={`mailto:${ENTERPRISE_EMAIL}?cc=${WEBSITE_EMAIL}&subject=Enterprise%20inquiry`}
               inline
               showDecorator
               className="text-nowrap text-current hover:text-current/80"

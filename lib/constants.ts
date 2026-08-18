@@ -9,7 +9,8 @@ export const SITE_ORIGIN =
 
 export const MAINNET_GENESIS = "2015-07-30T15:26:13Z"
 
-export const ENTERPRISE_EMAIL = "enterprise@ethereum.org"
+export const ENTERPRISE_EMAIL = "epic@ethereum.org"
+export const WEBSITE_EMAIL = "website@ethereum.org"
 
 // Consumer email domains to block (enforced client-side for UX, server-side for security)
 export const CONSUMER_DOMAINS = [
