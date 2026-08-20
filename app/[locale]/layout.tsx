@@ -1,4 +1,4 @@
-import localFont from "next/font/local"
+import { Montserrat, Playfair_Display } from "next/font/google"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next/types"
 import { NextIntlClientProvider } from "next-intl"
@@ -9,7 +9,6 @@ import {
 } from "next-intl/server"
 
 import EnterpriseContactForm from "@/components/ContactForm"
-import DigitalAssetsDropdown from "@/components/DigitalAssetsDropdown"
 import LanguageSwitcher from "@/components/LanguageSwitcher"
 import MobileNav from "@/components/MobileNav"
 import EthereumOrgLogo from "@/components/svg/ethereum-org-logo"
@@ -17,48 +16,26 @@ import Farcaster from "@/components/svg/farcaster"
 import LinkedIn from "@/components/svg/linked-in"
 import Twitter from "@/components/svg/twitter"
 import Link, { LinkProps } from "@/components/ui/link"
+import UseCasesDropdown from "@/components/UseCasesDropdown"
 
 import { cn } from "@/lib/utils"
 
-import { DA_NAV_ITEMS, NAV_ITEMS } from "@/lib/constants"
+import { NAV_ITEMS, TOP_NAV_ITEMS, USE_CASE_NAV_ITEMS } from "@/lib/constants"
 
 import "../globals.css"
 
 import { routing } from "@/i18n/routing"
 
-const satoshi = localFont({
-  src: [
-    {
-      path: "../fonts/Satoshi-Regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../fonts/Satoshi-Italic.woff2",
-      weight: "400",
-      style: "italic",
-    },
-    {
-      path: "../fonts/Satoshi-Medium.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../fonts/Satoshi-MediumItalic.woff2",
-      weight: "500",
-      style: "italic",
-    },
-    {
-      path: "../fonts/Satoshi-Bold.woff2",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../fonts/Satoshi-BoldItalic.woff2",
-      weight: "700",
-      style: "italic",
-    },
-  ],
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  weight: ["400", "500"],
+})
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+  weight: ["400", "500", "600", "700"],
 })
 
 const SOCIAL_LINKS: LinkProps[] = [
@@ -101,15 +78,23 @@ export default async function RootLayout({ children, params }: Props) {
   // Enable static rendering
   setRequestLocale(locale)
 
-  // Get messages for the locale
-  const messages = await getMessages()
+  // Get messages for the locale, excluding solutionProviders (server-only)
+  const allMessages = await getMessages()
+  const clientMessages = Object.fromEntries(
+    Object.entries(allMessages).filter(([key]) => key !== "solutionProviders")
+  )
   const t = await getTranslations("common")
   const tNav = await getTranslations("nav")
   const tFooter = await getTranslations("footer")
   const tLayout = await getTranslations("layout")
 
   // Build navigation links with translations
-  const daNavLinks: LinkProps[] = DA_NAV_ITEMS.map((item) => ({
+  const topNavLinks: LinkProps[] = TOP_NAV_ITEMS.map((item) => ({
+    href: item.href,
+    children: tNav(item.translationKey),
+  }))
+
+  const useCaseLinks: LinkProps[] = USE_CASE_NAV_ITEMS.map((item) => ({
     href: item.href,
     children: tNav(item.translationKey),
   }))
@@ -123,21 +108,22 @@ export default async function RootLayout({ children, params }: Props) {
     <html lang={locale}>
       <body
         className={cn(
-          satoshi.className,
+          montserrat.className,
+          playfairDisplay.variable,
           "grid min-h-screen grid-rows-[auto_1fr_auto] items-center justify-items-center",
           "group/body antialiased"
         )}
       >
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider messages={clientMessages}>
           <header className="group-has-[.css-primary-invert]/body:bg-primary w-full max-w-screen">
-            <div className="max-w-8xl mx-auto flex justify-between p-4 pb-10 sm:p-10">
+            <div className="max-w-8xl mx-auto flex justify-between p-4 pb-10 sm:p-10 gap-x-6">
               <Link
                 href="/"
-                aria-label={tLayout("goHome")}
+                aria-label={tLayout("go-home")}
                 className="group/link inline-flex items-center gap-x-2.5"
               >
                 <EthereumOrgLogo
-                  aria-label="ethereum.org ETH glyph"
+                  aria-label={tLayout("eth-glyph-aria-label")}
                   className="group-hover/link:stroke-secondary-foreground group-hover/link:stroke-[0.25]"
                 />
                 <span className="group-has-[.css-primary-invert]/body:text-primary-foreground text-//foreground group-hover/link:group-has-[.css-primary-invert]/body:text-primary-foreground/80 text-lg font-medium tracking-[0.045rem]">
@@ -145,12 +131,20 @@ export default async function RootLayout({ children, params }: Props) {
                 </span>
               </Link>
               <div className="flex items-center gap-4">
-                <nav className="flex items-center gap-4 max-md:hidden">
-                  <DigitalAssetsDropdown
-                    label={tNav("digitalAssets")}
-                    links={daNavLinks}
+                <nav className="flex items-center gap-4 text-center max-lg:hidden">
+                  {topNavLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="css-primary-conditional"
+                    >
+                      {link.children}
+                    </Link>
+                  ))}
+                  <UseCasesDropdown
+                    label={tNav("use-cases")}
+                    links={useCaseLinks}
                   />
-
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}
@@ -164,21 +158,26 @@ export default async function RootLayout({ children, params }: Props) {
                 <LanguageSwitcher />
                 {/* <LanguageSwitcher className="text-primary-foreground text-xl" /> */}
                 <MobileNav
-                  daNavLinks={daNavLinks}
+                  topNavLinks={topNavLinks}
+                  useCaseLinks={useCaseLinks}
                   navLinks={navLinks}
                   menuLabel={t("menu")}
-                  digitalAssetsLabel={tNav("digitalAssets")}
+                  useCasesLabel={tNav("use-cases")}
+                  closeMenuLabel={t("close-menu")}
                 />
               </div>
             </div>
           </header>
           {children}
           <footer className="row-start-3">
-            <div className="bg-primary text-primary-foreground w-screen px-4 py-20 sm:px-10">
+            <div
+              id="contact"
+              className="bg-primary text-primary-foreground w-screen px-4 py-20 sm:px-10"
+            >
               <div className="mx-auto grid max-w-3xl grid-cols-1 gap-10 md:grid-cols-2">
                 <div className="space-y-4">
-                  <h3 className="text-h4">{t("getInTouch")}</h3>
-                  <p>{t("getInTouchDescription")}</p>
+                  <h3 className="text-h4">{t("get-in-touch")}</h3>
+                  <p>{t("get-in-touch-description")}</p>
                 </div>
                 <EnterpriseContactForm />
               </div>
@@ -190,10 +189,12 @@ export default async function RootLayout({ children, params }: Props) {
                     <Link key={props.href} {...props} />
                   ))}
                 </div>
-                <nav className="*:text-muted-foreground *:hover:text-foreground flex items-center gap-x-6 gap-y-1.5 text-nowrap *:block *:text-sm *:tracking-[0.0175rem] max-xl:flex-col sm:ms-auto sm:max-xl:items-end">
-                  {[...daNavLinks, ...navLinks].map((props) => (
-                    <Link key={props.href} {...props} />
-                  ))}
+                <nav className="*:text-muted-foreground *:hover:text-foreground flex items-center gap-x-6 gap-y-1.5 text-nowrap *:block *:text-sm *:tracking-[0.0175rem] max-2xl:flex-col sm:ms-auto sm:max-2xl:items-end">
+                  {[...topNavLinks, ...useCaseLinks, ...navLinks].map(
+                    (props) => (
+                      <Link key={props.href} {...props} />
+                    )
+                  )}
                 </nav>
               </div>
               <div className="text-muted-foreground space-y-3 text-xs font-medium *:tracking-[0.0175rem]">
@@ -201,23 +202,23 @@ export default async function RootLayout({ children, params }: Props) {
                   {[
                     {
                       href: "https://ethereum.org/privacy-policy/",
-                      children: tFooter("privacyPolicy"),
+                      children: tFooter("privacy-policy"),
                     },
                     {
                       href: "https://ethereum.org/terms-of-use/",
-                      children: tFooter("termsOfUse"),
+                      children: tFooter("terms-of-use"),
                     },
                     {
                       href: "https://ethereum.org/cookie-policy/",
-                      children: tFooter("cookiePolicy"),
+                      children: tFooter("cookie-policy"),
                     },
                     {
                       href: "https://ethereum.foundation/",
-                      children: tFooter("ethereumFoundation"),
+                      children: tFooter("ethereum-foundation"),
                     },
                     {
                       href: "https://ethereum.org/",
-                      children: tFooter("ethereumOrg"),
+                      children: tFooter("ethereum-org"),
                     },
                   ].map((props) => (
                     <Link

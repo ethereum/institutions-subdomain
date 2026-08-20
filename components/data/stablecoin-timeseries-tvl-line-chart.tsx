@@ -26,7 +26,7 @@ const StablecoinTimeseriesTvlLineChart = ({
   showL2,
 }: StablecoinTimeseriesTvlLineChartProps) => {
   const locale = useLocale()
-  const tCharts = useTranslations("dataHub.charts")
+  const tCharts = useTranslations("data-hub.charts")
 
   const chartConfig = {
     mainnet: {

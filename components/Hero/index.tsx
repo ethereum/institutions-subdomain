@@ -2,6 +2,7 @@ import {
   BadgeDollarSign,
   BookOpenText,
   ChartNoAxesCombined,
+  CircleHelp,
   Coins,
   Handshake,
   Layers2,
@@ -24,6 +25,7 @@ const heroShapes = {
   handshake: <Handshake />,
   coins: <Coins />,
   "book-open-text-fill": <BookOpenText />,
+  "circle-help": <CircleHelp />,
 } as const satisfies Record<string, ReactNode>
 
 type HeroShape = keyof typeof heroShapes

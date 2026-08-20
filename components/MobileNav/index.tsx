@@ -1,24 +1,28 @@
 "use client"
 
 import { Fragment, useRef, useState } from "react"
-import { X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import Link, { LinkProps } from "@/components/ui/link"
 import { PersistentPanel } from "@/components/ui/persistent-panel"
 
 type MobileNavProps = {
-  daNavLinks: LinkProps[]
+  topNavLinks: LinkProps[]
+  useCaseLinks: LinkProps[]
   navLinks: LinkProps[]
   menuLabel: string
-  digitalAssetsLabel: string
+  useCasesLabel: string
+  closeMenuLabel: string
 }
 
 const MobileNav = ({
-  daNavLinks,
+  topNavLinks,
+  useCaseLinks,
   navLinks,
   menuLabel,
-  digitalAssetsLabel,
+  useCasesLabel,
+  closeMenuLabel,
 }: MobileNavProps) => {
   const [open, setOpen] = useState(false)
   const triggerRef = useRef<HTMLButtonElement>(null)
@@ -27,17 +31,16 @@ const MobileNav = ({
     setOpen(false)
   }
 
-  const allNavLinks = [...daNavLinks, ...navLinks]
-
   return (
     <>
       {/* Menu trigger button */}
       <Button
         ref={triggerRef}
         variant="ghost"
-        className="group-has-[.css-primary-invert]/body:text-primary-foreground hover:group-has-[.css-primary-invert]/body:text-primary-foreground/70 text-lg font-medium md:hidden"
+        className="group-has-[.css-primary-invert]/body:text-primary-foreground hover:group-has-[.css-primary-invert]/body:text-primary-foreground/70 text-lg font-medium lg:hidden"
         onClick={() => setOpen(true)}
       >
+        <Menu />
         {menuLabel}
       </Button>
 
@@ -57,7 +60,7 @@ const MobileNav = ({
             size="icon"
             className="ms-auto"
             onClick={() => setOpen(false)}
-            aria-label="Close menu"
+            aria-label={closeMenuLabel}
           >
             <X className="size-10" />
           </Button>
@@ -65,9 +68,29 @@ const MobileNav = ({
 
         {/* Navigation links */}
         <nav className="[&_hr]:border-chart-2 flex flex-col gap-y-6 overflow-y-auto p-10 pb-26">
-          <p className="text-chart-2">{digitalAssetsLabel}</p>
-          {allNavLinks.map((props, idx) => (
-            <Fragment key={idx}>
+          {topNavLinks.map((props, idx) => (
+            <Fragment key={`top-${idx}`}>
+              <Link
+                className="text-primary-foreground hover:text-primary-foreground/70 block text-2xl font-medium tracking-[0.03rem]"
+                onClick={handleLinkClick}
+                {...props}
+              />
+              <hr className="last:hidden" />
+            </Fragment>
+          ))}
+          <p className="text-chart-2">{useCasesLabel}</p>
+          {useCaseLinks.map((props, idx) => (
+            <Fragment key={`uc-${idx}`}>
+              <Link
+                className="text-primary-foreground hover:text-primary-foreground/70 block text-2xl font-medium tracking-[0.03rem]"
+                onClick={handleLinkClick}
+                {...props}
+              />
+              <hr className="last:hidden" />
+            </Fragment>
+          ))}
+          {navLinks.map((props, idx) => (
+            <Fragment key={`nav-${idx}`}>
               <Link
                 className="text-primary-foreground hover:text-primary-foreground/70 block text-2xl font-medium tracking-[0.03rem]"
                 onClick={handleLinkClick}

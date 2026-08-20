@@ -38,9 +38,7 @@ export async function getLibraryPosts(
   try {
     const slugDirs = fs
       .readdirSync(POSTS_DIR)
-      .filter((entry) =>
-        fs.statSync(path.join(POSTS_DIR, entry)).isDirectory()
-      )
+      .filter((entry) => fs.statSync(path.join(POSTS_DIR, entry)).isDirectory())
 
     const posts = slugDirs
       .map((slug) => {

@@ -113,7 +113,7 @@ const cardLabelVariants = cva("", {
   variants: {
     variant: {
       default: "text-muted-foreground font-medium",
-      large: "!text-h5 text-card-foreground tracking-[0.03rem]",
+      large: "!text-h5 text-card-foreground font-bold tracking-[0.03rem]",
     },
   },
   defaultVariants: {
