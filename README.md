@@ -1,9 +1,16 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/e8e487f1-b459-4b2a-bade-c030e1cab733/deploy-status?branch=main)](https://app.netlify.com/projects/institutions-subdomain/deploys)
-
 <div align="center" style="margin-top: 1em; margin-bottom: 3em;">
-  <a href="https://institutions.ethereum.org"><img alt="ethereum institutions logo" src="./public/images/banners/black-white-site-hero.svg" alt="institutions.ethereum.org" width="420"></a>
+  <a href="https://ethereum.org/organizations/enterprise"><img alt="Ethereum for Institutions logo" src="./public/images/banners/black-white-site-hero.svg" width="420"></a>
   <h1>Ethereum for Institutions</h1>
 </div>
+
+> [!IMPORTANT]
+> **This repository is archived and no longer maintained.**
+>
+> institutions.ethereum.org has been retired. Its content now lives on ethereum.org at **[ethereum.org/organizations/enterprise](https://ethereum.org/organizations/enterprise)**, and requests to institutions.ethereum.org redirect there.
+>
+> To report issues or contribute, use the [ethereum.org website repository](https://github.com/ethereum/ethereum-org-website).
+
+The documentation below is kept for historical reference only.
 
 ## Stack
 
