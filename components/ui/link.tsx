@@ -64,7 +64,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
         <span className="sr-only select-none"> (opens in a new tab)</span>
         {showDecorator && (
           <InlineTextIcon>
-            <ExternalLink className="text-muted group-hover:text-muted-foreground inline size-[1em] shrink-0" />
+            <ExternalLink className="inline size-[1em] shrink-0 opacity-50" />
           </InlineTextIcon>
         )}
       </a>

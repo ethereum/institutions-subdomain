@@ -24,7 +24,12 @@ export const fetchCeloMonthlyStablecoinVolume = async (): Promise<
   const apiKey = process.env.RWA_API_KEY || ""
 
   if (!apiKey) {
-    throw new Error(`No API key available for ${url.toString()}`)
+    console.warn(`No API key available for ${url.toString()}`)
+    return {
+      data: { celoMonthlyStablecoinVolume: 0 },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.RWA,
+    }
   }
 
   const celoNetworkId = RWA_API_LAYER_2S.find(({ name }) => name === "Celo")!.id // Force unwrapped due to type safety
@@ -106,7 +111,11 @@ export const fetchCeloMonthlyStablecoinVolume = async (): Promise<
       message: error instanceof Error ? error.message : String(error),
       url,
     })
-    throw error
+    return {
+      data: { celoMonthlyStablecoinVolume: 0 },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.RWA,
+    }
   }
 }
 

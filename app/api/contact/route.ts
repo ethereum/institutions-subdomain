@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 
 import { sanitizeInput } from "@/lib/utils/sanitize"
+
 import { CONSUMER_DOMAINS } from "@/lib/constants"
 
 import PostHogClient from "@/lib/posthog-server"

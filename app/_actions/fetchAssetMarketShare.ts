@@ -12,6 +12,7 @@ import { fetchWithRetry } from "@/lib/utils/fetch"
 import { every } from "@/lib/utils/time"
 
 import {
+  RWA_API_COMMODITIES_GROUP_ID,
   RWA_API_EXCLUDED_NETWORK_IDS,
   RWA_API_LAYER_2S_IDS,
   RWA_API_MAINNET,
@@ -56,7 +57,24 @@ const fetchMarketShareData = async (category: AssetCategory) => {
   const apiKey = process.env.RWA_API_KEY || ""
 
   if (!apiKey) {
-    throw new Error(`No API key available for ${url.toString()}`)
+    console.warn(`No API key available for ${url.toString()}`)
+    return {
+      assetValue: {
+        mainnet: 0,
+        layer2: 0,
+        altNetwork2nd: 0,
+        altNetwork3rd: 0,
+        altNetworksRest: 0,
+      },
+      marketShare: {
+        mainnet: 0,
+        layer2: 0,
+        altNetwork2nd: 0,
+        altNetwork3rd: 0,
+        altNetworksRest: 0,
+      },
+      assetValueSumAll: 0,
+    }
   }
 
   const myQuery = {
@@ -75,8 +93,11 @@ const fetchMarketShareData = async (category: AssetCategory) => {
         },
         {
           field: "asset_class_id",
-          operator: category === "STABLECOINS" ? "equals" : "notEquals",
-          value: RWA_API_STABLECOINS_GROUP_ID,
+          operator: category === "RWAS" ? "notEquals" : "equals",
+          value:
+            category === "COMMODITIES"
+              ? RWA_API_COMMODITIES_GROUP_ID
+              : RWA_API_STABLECOINS_GROUP_ID,
         },
       ],
     },
@@ -208,7 +229,27 @@ export const fetchAssetMarketShare = async (
       name: error instanceof Error ? error.name : undefined,
       message: error instanceof Error ? error.message : String(error),
     })
-    throw error
+    return {
+      data: {
+        assetValue: {
+          mainnet: 0,
+          layer2: 0,
+          altNetwork2nd: 0,
+          altNetwork3rd: 0,
+          altNetworksRest: 0,
+        },
+        marketShare: {
+          mainnet: 0,
+          layer2: 0,
+          altNetwork2nd: 0,
+          altNetwork3rd: 0,
+          altNetworksRest: 0,
+        },
+        assetValueSumAll: 0,
+      },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.RWA,
+    }
   }
 }
 

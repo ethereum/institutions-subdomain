@@ -28,7 +28,12 @@ export const fetchSecuritizeAum = async (): Promise<
   const apiKey = process.env.RWA_API_KEY || ""
 
   if (!apiKey) {
-    throw new Error(`No API key available for ${url.toString()}`)
+    console.warn(`No API key available for ${url.toString()}`)
+    return {
+      data: { series: [], currentValue: 0 },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.RWA,
+    }
   }
 
   const myQuery = {
@@ -103,7 +108,11 @@ export const fetchSecuritizeAum = async (): Promise<
       message: error instanceof Error ? error.message : String(error),
       url,
     })
-    throw error
+    return {
+      data: { series: [], currentValue: 0 },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.RWA,
+    }
   }
 }
 

@@ -33,7 +33,12 @@ export const fetchProtocolsValueBySlug = async (): Promise<
   const apiKey = process.env.RWA_API_KEY || ""
 
   if (!apiKey) {
-    throw new Error(`No API key available for ${url.toString()}`)
+    console.warn(`No API key available for ${url.toString()}`)
+    return {
+      data: { centrifuge: 0, maple: 0 },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.RWA,
+    }
   }
 
   const myQuery = {
@@ -137,7 +142,11 @@ export const fetchProtocolsValueBySlug = async (): Promise<
       message: error instanceof Error ? error.message : String(error),
       url: url,
     })
-    throw error
+    return {
+      data: { centrifuge: 0, maple: 0 },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.RWA,
+    }
   }
 }
 

@@ -112,12 +112,20 @@ export function InfiniteSlider({
         {...hoverProps}
       >
         {/* First group (measured window) */}
-        <div ref={groupRef} className="flex shrink-0" style={styles}>
+        <div
+          ref={groupRef}
+          className="flex shrink-0 items-center"
+          style={styles}
+        >
           {children}
         </div>
         {/* Clone groups */}
         {Array.from({ length: 2 }).map((_, cloneIndex) => (
-          <div key={cloneIndex} className="flex shrink-0" style={styles}>
+          <div
+            key={cloneIndex}
+            className="flex shrink-0 items-center"
+            style={styles}
+          >
             {children}
           </div>
         ))}

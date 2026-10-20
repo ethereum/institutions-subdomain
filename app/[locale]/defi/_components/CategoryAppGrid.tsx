@@ -25,7 +25,7 @@ const CategoryAppGrid = ({ category }: { category: CategoryKey }) => {
             key={name}
             href={href}
             className="bg-card group flex h-full flex-col justify-between p-6 transition-transform hover:scale-105 hover:transition-transform"
-            aria-label={tEcosystem("visitAriaLabel", { name })}
+            aria-label={tEcosystem("visit-aria-label", { name })}
           >
             <div className="space-y-2">
               <Image src={imgSrc} alt="" sizes="48px" className="size-12" />

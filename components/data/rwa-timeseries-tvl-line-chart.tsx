@@ -26,7 +26,7 @@ const RwaTimeseriesTvlLineChart = ({
   showL2,
 }: RwaTimeseriesTvlLineChartProps) => {
   const locale = useLocale()
-  const tCharts = useTranslations("dataHub.charts")
+  const tCharts = useTranslations("data-hub.charts")
 
   const chartConfig = {
     mainnet: {

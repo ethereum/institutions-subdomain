@@ -89,7 +89,16 @@ export const fetchDefiTvlAllCurrent = async (): Promise<
       message: error instanceof Error ? error.message : String(error),
       url,
     })
-    throw error
+    return {
+      data: {
+        mainnetDefiTvl: 0,
+        mainnetDefiMarketshare: 0,
+        layer2DefiMarketshare: 0,
+        runnerUpMultiplier: 0,
+      },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.LLAMA,
+    }
   }
 }
 

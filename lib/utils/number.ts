@@ -158,6 +158,60 @@ export const formatLargeCurrency = (
   })
 
 /**
+ * Formats a range of large currency values using compact notation.
+ *
+ * @param locale - The locale to use for formatting (e.g., "en", "zh", "es").
+ * @param start - The start of the range.
+ * @param end - The end of the range.
+ * @param options - Optional `Intl.NumberFormatOptions` to customize formatting.
+ * @returns The formatted currency range string.
+ *
+ * @example
+ * formatLargeCurrencyRange("en", 8.8e9, 9.5e9); // "$8.8B - $9.5B"
+ * formatLargeCurrencyRange("zh", 2.0e9, 2.8e9); // "20亿美元 - 28亿美元"
+ */
+export const formatLargeCurrencyRange = (
+  locale: string,
+  start: number,
+  end: number,
+  options?: Partial<Intl.NumberFormatOptions>
+) =>
+  Intl.NumberFormat(locale, {
+    style: "currency",
+    currency: "USD",
+    notation: "compact",
+    currencyDisplay: "narrowSymbol",
+    minimumSignificantDigits: 2,
+    maximumSignificantDigits: 2,
+    ...options,
+  }).formatRange(start, end)
+
+/**
+ * Formats a range of percentages using the locale-appropriate format.
+ *
+ * @param locale - The locale to use for formatting (e.g., "en", "zh", "es").
+ * @param start - The start of the range as a decimal (e.g., 0.93 for 93%).
+ * @param end - The end of the range as a decimal (e.g., 0.97 for 97%).
+ * @param options - Optional `Intl.NumberFormatOptions` to customize formatting.
+ * @returns The formatted percentage range string.
+ *
+ * @example
+ * formatPercentRange("en", 0.93, 0.97); // "93% - 97%"
+ */
+export const formatPercentRange = (
+  locale: string,
+  start: number,
+  end: number,
+  options?: Partial<Intl.NumberFormatOptions>
+) =>
+  Intl.NumberFormat(locale, {
+    style: "percent",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+    ...options,
+  }).formatRange(start, end)
+
+/**
  * Formats a number according to the specified locale and formatting options.
  *
  * @param locale - The locale to use for formatting (e.g., "en", "zh", "es").

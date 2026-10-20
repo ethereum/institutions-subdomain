@@ -131,7 +131,18 @@ export const fetchL2ScalingSummary = async (): Promise<
       message: error instanceof Error ? error.message : String(error),
       url,
     })
-    throw error
+    return {
+      data: {
+        nativelyMintedTvl: 0,
+        canonicallyBridgedTvl: 0,
+        externallyBridgedTvl: 0,
+        totalTvl: 0,
+        allProjectsCount: 0,
+        allL2Slugs: [],
+      },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.L2BEAT,
+    }
   }
 }
 

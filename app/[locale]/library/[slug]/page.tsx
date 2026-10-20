@@ -76,8 +76,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const tLib = await getTranslations({ locale, namespace: "library" })
     return getMetadata({
       slug: ["library", slug],
-      title: tLib("notFound.title"),
-      description: tLib("notFound.description"),
+      title: tLib("not-found.title"),
+      description: tLib("not-found.description"),
       locale,
     })
   }

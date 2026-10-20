@@ -45,7 +45,11 @@ export const fetchEtherMarketDetails = async (): Promise<
       message: error instanceof Error ? error.message : String(error),
       url,
     })
-    throw error
+    return {
+      data: { etherMarketCap: 0 },
+      lastUpdated: Date.now(),
+      sourceInfo: SOURCE.ULTRASOUND,
+    }
   }
 }
 
